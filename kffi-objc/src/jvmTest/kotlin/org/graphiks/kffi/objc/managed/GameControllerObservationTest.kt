@@ -9,7 +9,12 @@ import org.graphiks.kffi.objc.GCControllerDirectionPad
 import org.graphiks.kffi.objc.GCControllerElement
 import org.graphiks.kffi.objc.GCPhysicalInputProfile
 import org.graphiks.kffi.objc.NSArray
+import java.lang.foreign.Arena
+import java.lang.foreign.FunctionDescriptor
+import java.lang.foreign.Linker
 import java.lang.foreign.MemorySegment
+import java.lang.foreign.SymbolLookup
+import java.lang.foreign.ValueLayout
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNotEquals
@@ -44,6 +49,31 @@ class GameControllerObservationTest {
         observation.close()
 
         assertEquals(MemorySegment.NULL, profile.valueDidChangeHandler())
+    }
+
+    @Test
+    fun retainedLateCallbackAfterCloseIsIgnoredWithoutGameControllerHardware() {
+        if (!System.getProperty("os.name").startsWith("Mac", ignoreCase = true)) return
+
+        val profile = RecordingPhysicalInputProfile()
+        var invocations = 0
+        val observation = profile.observeValueChanges { _, _ -> invocations += 1 }
+        val retainedHandler = GameControllerObservationBlockRuntime.copy(profile.currentHandler)
+
+        try {
+            observation.close()
+            GameControllerObservationBlockRuntime.invokeObjectObject(
+                retainedHandler,
+                MemorySegment.NULL,
+                MemorySegment.NULL,
+            )
+
+            assertEquals(MemorySegment.NULL, profile.currentHandler)
+            assertEquals(0, invocations)
+        } finally {
+            GameControllerObservationBlockRuntime.release(retainedHandler)
+            observation.close()
+        }
     }
 
     @Suppress("UNUSED_VARIABLE")
@@ -86,5 +116,37 @@ private class RecordingPhysicalInputProfile : GCPhysicalInputProfile(MemorySegme
     override fun setValueDidChangeHandler(value: MemorySegment) {
         currentHandler = value
         events += if (value == MemorySegment.NULL) "clear" else "set"
+    }
+}
+
+/** Calls a retained Objective-C block directly to model a framework callback queued before close. */
+private object GameControllerObservationBlockRuntime {
+    private const val BLOCK_INVOKE_OFFSET = 16L
+    private const val BLOCK_LITERAL_SIZE = 32L
+    private val arena = Arena.global()
+    private val linker = Linker.nativeLinker()
+    private val symbols = SymbolLookup.libraryLookup("/usr/lib/libSystem.B.dylib", arena)
+    private val copy = linker.downcallHandle(
+        symbols.find("_Block_copy").orElseThrow(),
+        FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS),
+    )
+    private val release = linker.downcallHandle(
+        symbols.find("_Block_release").orElseThrow(),
+        FunctionDescriptor.ofVoid(ValueLayout.ADDRESS),
+    )
+
+    fun copy(block: MemorySegment): MemorySegment = copy.invokeExact(block) as MemorySegment
+
+    fun release(block: MemorySegment) {
+        release.invokeExact(block)
+    }
+
+    fun invokeObjectObject(block: MemorySegment, first: MemorySegment, second: MemorySegment) {
+        val literal = block.reinterpret(BLOCK_LITERAL_SIZE)
+        val function = literal.get(ValueLayout.ADDRESS, BLOCK_INVOKE_OFFSET)
+        linker.downcallHandle(
+            function,
+            FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS),
+        ).invokeWithArguments(block, first, second)
     }
 }

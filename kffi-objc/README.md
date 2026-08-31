@@ -129,7 +129,12 @@ handler admission, and releases CoreFoundation resources after any already-admit
 returned. The API never requests Input Monitoring permission; applications remain responsible for
 explaining and initiating any permission flow separately.
 
-## Passive ScreenCaptureKit control plane
+## macOS AppKit baseline and passive ScreenCaptureKit control plane
+
+The AppKit-oriented managed layer has a functional **macOS 13+** baseline for
+ScreenCaptureKit. This is a capability boundary, not a global KFFI deployment-target increase:
+bindings that are usable on earlier macOS releases remain independently usable. The
+content-sharing picker is an optional **macOS 14+** capability and is always guarded at runtime.
 
 `ScreenCaptureControlPlanes.capability()` is the macOS 13+ readiness check for a future capture
 flow. It returns only detached Kotlin values: the current `MacOsVersion`, baseline availability,
@@ -147,6 +152,13 @@ if (capability.supportsMacOs13Baseline && capability.preflightScreenCaptureAcces
 `ScreenCaptureSources.inspect()` exposes the same deliberately passive model. ScreenCaptureKit is
 loaded lazily only after the macOS 13 runtime guard; picker availability is strictly a macOS 14+
 capability flag and does not resolve or call picker classes on earlier releases.
+
+The capability check and source model are non-prompting: they load the framework when supported
+and call only `CGPreflightScreenCaptureAccess()`. Enumerating `SCShareableContent`, starting an
+`SCStream`, taking a screenshot, presenting a picker, or requesting Screen Recording access are
+intentionally outside this passive layer and can require Screen Recording permission. Similarly,
+GameController and HID adapters observe actual connected hardware only when an application creates
+them; no hardware discovery is performed by these capability checks.
 
 ## ScreenCaptureKit frame leases
 

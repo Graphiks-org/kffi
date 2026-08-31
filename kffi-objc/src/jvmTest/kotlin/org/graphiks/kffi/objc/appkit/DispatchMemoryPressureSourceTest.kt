@@ -91,6 +91,25 @@ class DispatchMemoryPressureSourceTest {
             executor.shutdownNow()
         }
     }
+
+    @Test
+    fun handlerFailureIsContainedAndCloseStillReachesQuiescence() {
+        val fixture = MemoryPressureFixture()
+        val invocations = AtomicInteger()
+        val source = DispatchMemoryPressureSource(fixture) {
+            invocations.incrementAndGet()
+            error("memory-pressure observer failed")
+        }
+
+        fixture.emit(DISPATCH_MEMORYPRESSURE_WARN)
+        source.close()
+        fixture.completeCancellation()
+
+        assertEquals(1, invocations.get())
+        assertTrue(source.isClosed)
+        assertTrue(source.isQuiescent)
+        assertEquals(listOf("create", "resume", "cancel", "release"), fixture.calls)
+    }
 }
 
 private class MemoryPressureFixture : DispatchMemoryPressureNative {
