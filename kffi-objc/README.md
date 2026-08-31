@@ -71,3 +71,34 @@ KFFI_OBJC_INTEGRATION=1 ./gradlew :kffi-objc:objcIntegrationTest
 
 The direct Gradle task assumes a macOS AppKit runtime; the script performs the
 platform check and sets the artifact directory.
+
+## Managed display and memory-pressure services
+
+The `org.graphiks.kffi.objc.appkit` package keeps CoreGraphics and Dispatch
+pointers behind closeable JVM owners. Active displays can be enumerated as
+detached immutable snapshots:
+
+```kotlin
+val displays: List<CGDisplaySnapshot> = AppKitDisplayServices.enumerate()
+```
+
+`AppKitDisplayServices.currentMode(displayId)` returns an
+`OwnedCGDisplayMode`; close it after reading or applying the mode. Display
+capture uses `withCapturedDisplay` or `withCapturedDisplays`, which guarantees
+the matching CoreGraphics release on normal and exceptional exits.
+
+`DispatchMemoryPressureSource` creates and resumes a private Dispatch source
+for `WARN` and `CRITICAL` events. Closing it is idempotent, immediately revokes
+new handler admission, requests cancellation, and defers native release until
+the source and any already-admitted handler are quiescent:
+
+```kotlin
+DispatchMemoryPressureSource { event ->
+    when (event) {
+        DispatchMemoryPressureEvent.WARN -> trimCaches()
+        DispatchMemoryPressureEvent.CRITICAL -> releaseOptionalResources()
+    }
+}.use {
+    runApplicationLoop()
+}
+```
