@@ -81,8 +81,11 @@ FRAMEWORKS=(
 NATIVE_LIBRARIES=(
     "/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics"
     "/System/Library/Frameworks/CoreHaptics.framework/CoreHaptics"
+    "/System/Library/Frameworks/CoreMedia.framework/CoreMedia"
+    "/System/Library/Frameworks/CoreVideo.framework/CoreVideo"
     "/System/Library/Frameworks/GameController.framework/GameController"
     "/System/Library/Frameworks/IOKit.framework/IOKit"
+    "/System/Library/Frameworks/IOSurface.framework/IOSurface"
 )
 INCLUDE_FRAMEWORK_ARGS=()
 for framework in "${FRAMEWORKS[@]}"; do
@@ -103,8 +106,20 @@ IOKIT_FUNCTIONS=(
     IOHIDDeviceGetService
     IORegistryEntryGetRegistryEntryID
 )
+FRAME_DELIVERY_FUNCTIONS=(
+    CMSampleBufferGetImageBuffer
+    CVPixelBufferLockBaseAddress
+    CVPixelBufferUnlockBaseAddress
+    CVPixelBufferGetBaseAddress
+    CVPixelBufferGetBytesPerRow
+    CVPixelBufferGetHeight
+    CVPixelBufferGetPlaneCount
+    CVPixelBufferGetBaseAddressOfPlane
+    CVPixelBufferGetBytesPerRowOfPlane
+    CVPixelBufferGetHeightOfPlane
+)
 INCLUDE_FUNCTION_ARGS=()
-for function in "${IOKIT_FUNCTIONS[@]}"; do
+for function in "${IOKIT_FUNCTIONS[@]}" "${FRAME_DELIVERY_FUNCTIONS[@]}"; do
     INCLUDE_FUNCTION_ARGS+=(--include-function "$function")
 done
 LIBRARY_ARGS=()

@@ -2066,6 +2066,186 @@ var NSBrowserColumnConfigurationDidChangeNotification: MemorySegment
     set(value) = NSBrowserColumnConfigurationDidChangeNotification_VH.set(NSBrowserColumnConfigurationDidChangeNotification_SEGMENT, 0L, value)
 
 /**
+ * {@snippet lang=c : CVPixelBufferLockBaseAddress typedef CVReturn = Int(typedef CVPixelBufferRef = (Declared(__CVBuffer))*,typedef CVPixelBufferLockFlags = Declared(CVPixelBufferLockFlags))
+ */
+private val CVPixelBufferLockBaseAddress_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
+private val CVPixelBufferLockBaseAddress_ADDR: MemorySegment by lazy { LOOKUP.find("CVPixelBufferLockBaseAddress").orElseThrow() }
+private val CVPixelBufferLockBaseAddress_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CVPixelBufferLockBaseAddress_ADDR, CVPixelBufferLockBaseAddress_DESC) }
+
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
+fun CVPixelBufferLockBaseAddress(arg0: MemorySegment, arg1: CVPixelBufferLockFlags): Int {
+    try {
+        return CVPixelBufferLockBaseAddress_HANDLE.invokeExact(arg0, arg1.rawValue) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CVPixelBufferUnlockBaseAddress typedef CVReturn = Int(typedef CVPixelBufferRef = (Declared(__CVBuffer))*,typedef CVPixelBufferLockFlags = Declared(CVPixelBufferLockFlags))
+ */
+private val CVPixelBufferUnlockBaseAddress_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
+private val CVPixelBufferUnlockBaseAddress_ADDR: MemorySegment by lazy { LOOKUP.find("CVPixelBufferUnlockBaseAddress").orElseThrow() }
+private val CVPixelBufferUnlockBaseAddress_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CVPixelBufferUnlockBaseAddress_ADDR, CVPixelBufferUnlockBaseAddress_DESC) }
+
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
+fun CVPixelBufferUnlockBaseAddress(arg0: MemorySegment, arg1: CVPixelBufferLockFlags): Int {
+    try {
+        return CVPixelBufferUnlockBaseAddress_HANDLE.invokeExact(arg0, arg1.rawValue) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CVPixelBufferGetHeight typedef size_t = UNSIGNED = Long(typedef CVPixelBufferRef = (Declared(__CVBuffer))*)
+ */
+private val CVPixelBufferGetHeight_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
+private val CVPixelBufferGetHeight_ADDR: MemorySegment by lazy { LOOKUP.find("CVPixelBufferGetHeight").orElseThrow() }
+private val CVPixelBufferGetHeight_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CVPixelBufferGetHeight_ADDR, CVPixelBufferGetHeight_DESC) }
+
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
+fun CVPixelBufferGetHeight(arg0: MemorySegment): Long {
+    try {
+        return CVPixelBufferGetHeight_HANDLE.invokeExact(arg0) as Long
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CVPixelBufferGetBaseAddress (Void)*(typedef CVPixelBufferRef = (Declared(__CVBuffer))*)
+ */
+private val CVPixelBufferGetBaseAddress_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val CVPixelBufferGetBaseAddress_ADDR: MemorySegment by lazy { LOOKUP.find("CVPixelBufferGetBaseAddress").orElseThrow() }
+private val CVPixelBufferGetBaseAddress_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CVPixelBufferGetBaseAddress_ADDR, CVPixelBufferGetBaseAddress_DESC) }
+
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
+fun CVPixelBufferGetBaseAddress(arg0: MemorySegment): MemorySegment {
+    try {
+        return CVPixelBufferGetBaseAddress_HANDLE.invokeExact(arg0) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CVPixelBufferGetBytesPerRow typedef size_t = UNSIGNED = Long(typedef CVPixelBufferRef = (Declared(__CVBuffer))*)
+ */
+private val CVPixelBufferGetBytesPerRow_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
+private val CVPixelBufferGetBytesPerRow_ADDR: MemorySegment by lazy { LOOKUP.find("CVPixelBufferGetBytesPerRow").orElseThrow() }
+private val CVPixelBufferGetBytesPerRow_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CVPixelBufferGetBytesPerRow_ADDR, CVPixelBufferGetBytesPerRow_DESC) }
+
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
+fun CVPixelBufferGetBytesPerRow(arg0: MemorySegment): Long {
+    try {
+        return CVPixelBufferGetBytesPerRow_HANDLE.invokeExact(arg0) as Long
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CVPixelBufferGetPlaneCount typedef size_t = UNSIGNED = Long(typedef CVPixelBufferRef = (Declared(__CVBuffer))*)
+ */
+private val CVPixelBufferGetPlaneCount_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
+private val CVPixelBufferGetPlaneCount_ADDR: MemorySegment by lazy { LOOKUP.find("CVPixelBufferGetPlaneCount").orElseThrow() }
+private val CVPixelBufferGetPlaneCount_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CVPixelBufferGetPlaneCount_ADDR, CVPixelBufferGetPlaneCount_DESC) }
+
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
+fun CVPixelBufferGetPlaneCount(arg0: MemorySegment): Long {
+    try {
+        return CVPixelBufferGetPlaneCount_HANDLE.invokeExact(arg0) as Long
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CVPixelBufferGetHeightOfPlane typedef size_t = UNSIGNED = Long(typedef CVPixelBufferRef = (Declared(__CVBuffer))*,typedef size_t = UNSIGNED = Long)
+ */
+private val CVPixelBufferGetHeightOfPlane_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
+private val CVPixelBufferGetHeightOfPlane_ADDR: MemorySegment by lazy { LOOKUP.find("CVPixelBufferGetHeightOfPlane").orElseThrow() }
+private val CVPixelBufferGetHeightOfPlane_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CVPixelBufferGetHeightOfPlane_ADDR, CVPixelBufferGetHeightOfPlane_DESC) }
+
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
+fun CVPixelBufferGetHeightOfPlane(arg0: MemorySegment, arg1: Long): Long {
+    try {
+        return CVPixelBufferGetHeightOfPlane_HANDLE.invokeExact(arg0, arg1) as Long
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CVPixelBufferGetBaseAddressOfPlane (Void)*(typedef CVPixelBufferRef = (Declared(__CVBuffer))*,typedef size_t = UNSIGNED = Long)
+ */
+private val CVPixelBufferGetBaseAddressOfPlane_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
+private val CVPixelBufferGetBaseAddressOfPlane_ADDR: MemorySegment by lazy { LOOKUP.find("CVPixelBufferGetBaseAddressOfPlane").orElseThrow() }
+private val CVPixelBufferGetBaseAddressOfPlane_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CVPixelBufferGetBaseAddressOfPlane_ADDR, CVPixelBufferGetBaseAddressOfPlane_DESC) }
+
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
+fun CVPixelBufferGetBaseAddressOfPlane(arg0: MemorySegment, arg1: Long): MemorySegment {
+    try {
+        return CVPixelBufferGetBaseAddressOfPlane_HANDLE.invokeExact(arg0, arg1) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : CVPixelBufferGetBytesPerRowOfPlane typedef size_t = UNSIGNED = Long(typedef CVPixelBufferRef = (Declared(__CVBuffer))*,typedef size_t = UNSIGNED = Long)
+ */
+private val CVPixelBufferGetBytesPerRowOfPlane_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
+private val CVPixelBufferGetBytesPerRowOfPlane_ADDR: MemorySegment by lazy { LOOKUP.find("CVPixelBufferGetBytesPerRowOfPlane").orElseThrow() }
+private val CVPixelBufferGetBytesPerRowOfPlane_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CVPixelBufferGetBytesPerRowOfPlane_ADDR, CVPixelBufferGetBytesPerRowOfPlane_DESC) }
+
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
+fun CVPixelBufferGetBytesPerRowOfPlane(arg0: MemorySegment, arg1: Long): Long {
+    try {
+        return CVPixelBufferGetBytesPerRowOfPlane_HANDLE.invokeExact(arg0, arg1) as Long
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
  * {@snippet lang=c : kCIFormatARGB8 typedef const CIFormat = Int
  */
 private val kCIFormatARGB8_LAYOUT: ValueLayout by lazy { ValueLayout.JAVA_INT }
@@ -3776,120 +3956,3 @@ private val NSImageNameTouchBarAudioOutputVolumeHighTemplate_VH: VarHandle by la
 var NSImageNameTouchBarAudioOutputVolumeHighTemplate: MemorySegment
     get() = NSImageNameTouchBarAudioOutputVolumeHighTemplate_VH.get(NSImageNameTouchBarAudioOutputVolumeHighTemplate_SEGMENT, 0L) as MemorySegment
     set(value) = NSImageNameTouchBarAudioOutputVolumeHighTemplate_VH.set(NSImageNameTouchBarAudioOutputVolumeHighTemplate_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarAudioOutputVolumeLowTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarAudioOutputVolumeLowTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarAudioOutputVolumeLowTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarAudioOutputVolumeLowTemplate").orElseThrow().reinterpret(NSImageNameTouchBarAudioOutputVolumeLowTemplate_LAYOUT.byteSize()) }
-private val NSImageNameTouchBarAudioOutputVolumeLowTemplate_VH: VarHandle by lazy { NSImageNameTouchBarAudioOutputVolumeLowTemplate_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = 2)
-var NSImageNameTouchBarAudioOutputVolumeLowTemplate: MemorySegment
-    get() = NSImageNameTouchBarAudioOutputVolumeLowTemplate_VH.get(NSImageNameTouchBarAudioOutputVolumeLowTemplate_SEGMENT, 0L) as MemorySegment
-    set(value) = NSImageNameTouchBarAudioOutputVolumeLowTemplate_VH.set(NSImageNameTouchBarAudioOutputVolumeLowTemplate_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarAudioOutputVolumeMediumTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarAudioOutputVolumeMediumTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarAudioOutputVolumeMediumTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarAudioOutputVolumeMediumTemplate").orElseThrow().reinterpret(NSImageNameTouchBarAudioOutputVolumeMediumTemplate_LAYOUT.byteSize()) }
-private val NSImageNameTouchBarAudioOutputVolumeMediumTemplate_VH: VarHandle by lazy { NSImageNameTouchBarAudioOutputVolumeMediumTemplate_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = 2)
-var NSImageNameTouchBarAudioOutputVolumeMediumTemplate: MemorySegment
-    get() = NSImageNameTouchBarAudioOutputVolumeMediumTemplate_VH.get(NSImageNameTouchBarAudioOutputVolumeMediumTemplate_SEGMENT, 0L) as MemorySegment
-    set(value) = NSImageNameTouchBarAudioOutputVolumeMediumTemplate_VH.set(NSImageNameTouchBarAudioOutputVolumeMediumTemplate_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarAudioOutputVolumeOffTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarAudioOutputVolumeOffTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarAudioOutputVolumeOffTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarAudioOutputVolumeOffTemplate").orElseThrow().reinterpret(NSImageNameTouchBarAudioOutputVolumeOffTemplate_LAYOUT.byteSize()) }
-private val NSImageNameTouchBarAudioOutputVolumeOffTemplate_VH: VarHandle by lazy { NSImageNameTouchBarAudioOutputVolumeOffTemplate_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = 2)
-var NSImageNameTouchBarAudioOutputVolumeOffTemplate: MemorySegment
-    get() = NSImageNameTouchBarAudioOutputVolumeOffTemplate_VH.get(NSImageNameTouchBarAudioOutputVolumeOffTemplate_SEGMENT, 0L) as MemorySegment
-    set(value) = NSImageNameTouchBarAudioOutputVolumeOffTemplate_VH.set(NSImageNameTouchBarAudioOutputVolumeOffTemplate_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarBookmarksTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarBookmarksTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarBookmarksTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarBookmarksTemplate").orElseThrow().reinterpret(NSImageNameTouchBarBookmarksTemplate_LAYOUT.byteSize()) }
-private val NSImageNameTouchBarBookmarksTemplate_VH: VarHandle by lazy { NSImageNameTouchBarBookmarksTemplate_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = 2)
-var NSImageNameTouchBarBookmarksTemplate: MemorySegment
-    get() = NSImageNameTouchBarBookmarksTemplate_VH.get(NSImageNameTouchBarBookmarksTemplate_SEGMENT, 0L) as MemorySegment
-    set(value) = NSImageNameTouchBarBookmarksTemplate_VH.set(NSImageNameTouchBarBookmarksTemplate_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarColorPickerFill typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarColorPickerFill_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarColorPickerFill_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarColorPickerFill").orElseThrow().reinterpret(NSImageNameTouchBarColorPickerFill_LAYOUT.byteSize()) }
-private val NSImageNameTouchBarColorPickerFill_VH: VarHandle by lazy { NSImageNameTouchBarColorPickerFill_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = 2)
-var NSImageNameTouchBarColorPickerFill: MemorySegment
-    get() = NSImageNameTouchBarColorPickerFill_VH.get(NSImageNameTouchBarColorPickerFill_SEGMENT, 0L) as MemorySegment
-    set(value) = NSImageNameTouchBarColorPickerFill_VH.set(NSImageNameTouchBarColorPickerFill_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarColorPickerFont typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarColorPickerFont_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarColorPickerFont_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarColorPickerFont").orElseThrow().reinterpret(NSImageNameTouchBarColorPickerFont_LAYOUT.byteSize()) }
-private val NSImageNameTouchBarColorPickerFont_VH: VarHandle by lazy { NSImageNameTouchBarColorPickerFont_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = 2)
-var NSImageNameTouchBarColorPickerFont: MemorySegment
-    get() = NSImageNameTouchBarColorPickerFont_VH.get(NSImageNameTouchBarColorPickerFont_SEGMENT, 0L) as MemorySegment
-    set(value) = NSImageNameTouchBarColorPickerFont_VH.set(NSImageNameTouchBarColorPickerFont_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarColorPickerStroke typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarColorPickerStroke_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarColorPickerStroke_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarColorPickerStroke").orElseThrow().reinterpret(NSImageNameTouchBarColorPickerStroke_LAYOUT.byteSize()) }
-private val NSImageNameTouchBarColorPickerStroke_VH: VarHandle by lazy { NSImageNameTouchBarColorPickerStroke_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = 2)
-var NSImageNameTouchBarColorPickerStroke: MemorySegment
-    get() = NSImageNameTouchBarColorPickerStroke_VH.get(NSImageNameTouchBarColorPickerStroke_SEGMENT, 0L) as MemorySegment
-    set(value) = NSImageNameTouchBarColorPickerStroke_VH.set(NSImageNameTouchBarColorPickerStroke_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarCommunicationAudioTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarCommunicationAudioTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarCommunicationAudioTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarCommunicationAudioTemplate").orElseThrow().reinterpret(NSImageNameTouchBarCommunicationAudioTemplate_LAYOUT.byteSize()) }
-private val NSImageNameTouchBarCommunicationAudioTemplate_VH: VarHandle by lazy { NSImageNameTouchBarCommunicationAudioTemplate_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = 2)
-var NSImageNameTouchBarCommunicationAudioTemplate: MemorySegment
-    get() = NSImageNameTouchBarCommunicationAudioTemplate_VH.get(NSImageNameTouchBarCommunicationAudioTemplate_SEGMENT, 0L) as MemorySegment
-    set(value) = NSImageNameTouchBarCommunicationAudioTemplate_VH.set(NSImageNameTouchBarCommunicationAudioTemplate_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarCommunicationVideoTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarCommunicationVideoTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarCommunicationVideoTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarCommunicationVideoTemplate").orElseThrow().reinterpret(NSImageNameTouchBarCommunicationVideoTemplate_LAYOUT.byteSize()) }
-private val NSImageNameTouchBarCommunicationVideoTemplate_VH: VarHandle by lazy { NSImageNameTouchBarCommunicationVideoTemplate_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = 2)
-var NSImageNameTouchBarCommunicationVideoTemplate: MemorySegment
-    get() = NSImageNameTouchBarCommunicationVideoTemplate_VH.get(NSImageNameTouchBarCommunicationVideoTemplate_SEGMENT, 0L) as MemorySegment
-    set(value) = NSImageNameTouchBarCommunicationVideoTemplate_VH.set(NSImageNameTouchBarCommunicationVideoTemplate_SEGMENT, 0L, value)
