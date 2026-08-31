@@ -10,6 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Revocable managed C callbacks for CoreGraphics event taps and display reconfiguration, plus
+  immutable HID device lifecycle snapshots, with exception containment and quiescent teardown.
 - Revocable managed Objective-C blocks for the six completion and handler ABI shapes needed by
   framework adapters, with clear-before-release teardown and quiescent callback ownership.
 - Managed Objective-C callback signatures for `NSTextInputClient` ranges, points,
