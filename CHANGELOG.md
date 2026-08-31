@@ -10,6 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- A managed session-level CoreGraphics listen-only event tap with non-prompting permission
+  preflight, borrowed event delivery, and quiescent CoreFoundation teardown.
 - Pointer-free CoreGraphics display snapshots, closeable display-mode owners, scoped display
   capture, and a quiescent closeable Dispatch memory-pressure source for AppKit JVM consumers.
 - Scoped AppKit drop-transfer helpers for borrowed dragging info, bounded `NSData` copies, and
