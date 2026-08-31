@@ -82,6 +82,22 @@ interface JvmManagedObjCRoute {
     fun dispatchULongPoint(self: Long, command: Long, point: JvmManagedObjCPoint): Long
 }
 
+/** Loader-neutral route invoked by process-lifetime managed Objective-C block trampolines. */
+@CallbackRuntimeApi
+interface JvmManagedObjCBlockRoute {
+    fun dispatchVoidError(block: Long, error: Long)
+
+    fun dispatchVoidObjectObject(block: Long, first: Long, second: Long)
+
+    fun dispatchVoidObjectObjectObject(block: Long, first: Long, second: Long, third: Long)
+
+    fun dispatchVoidObjectFloatBoolean(block: Long, value: Long, amount: Float, enabled: Boolean)
+
+    fun dispatchVoidObjectFloat(block: Long, value: Long, amount: Float)
+
+    fun dispatchVoidObjectFloatFloat(block: Long, value: Long, first: Float, second: Float)
+}
+
 /**
  * Parent-loader bridge for managed Objective-C classes.
  *
@@ -92,6 +108,7 @@ interface JvmManagedObjCRoute {
 object JvmManagedObjCBridge {
     private val lastLoaderGeneration = AtomicLong(0L)
     private val routes = ConcurrentHashMap<Long, JvmManagedObjCRoute>()
+    private val blockRoutes = ConcurrentHashMap<Long, JvmManagedObjCBlockRoute>()
 
     val voidObject: NativeAddress by lazy { allocate("dispatchVoidObject", "(JJJ)V") }
     val booleanObject: NativeAddress by lazy { allocate("dispatchBooleanObject", "(JJJ)Z") }
@@ -134,6 +151,22 @@ object JvmManagedObjCBridge {
             "dispatchULongPoint",
         )
     }
+    val blockVoidError: NativeAddress by lazy { allocate("dispatchBlockVoidError", "(JJ)V") }
+    val blockVoidObjectObject: NativeAddress by lazy {
+        allocate("dispatchBlockVoidObjectObject", "(JJJ)V")
+    }
+    val blockVoidObjectObjectObject: NativeAddress by lazy {
+        allocate("dispatchBlockVoidObjectObjectObject", "(JJJJ)V")
+    }
+    val blockVoidObjectFloatBoolean: NativeAddress by lazy {
+        allocate("dispatchBlockVoidObjectFloatBoolean", "(JJFZ)V")
+    }
+    val blockVoidObjectFloat: NativeAddress by lazy {
+        allocate("dispatchBlockVoidObjectFloat", "(JJF)V")
+    }
+    val blockVoidObjectFloatFloat: NativeAddress by lazy {
+        allocate("dispatchBlockVoidObjectFloatFloat", "(JJFF)V")
+    }
 
     fun allocateLoaderGeneration(): Long {
         val generation = lastLoaderGeneration.incrementAndGet()
@@ -147,6 +180,14 @@ object JvmManagedObjCBridge {
             "A managed Objective-C route already exists for receiver $receiver"
         }
         return AutoCloseable { routes.remove(receiver, route) }
+    }
+
+    fun installBlock(block: Long, route: JvmManagedObjCBlockRoute): AutoCloseable {
+        require(block != 0L) { "Managed Objective-C block address must not be null" }
+        check(blockRoutes.putIfAbsent(block, route) == null) {
+            "A managed Objective-C block route already exists for block $block"
+        }
+        return AutoCloseable { blockRoutes.remove(block, route) }
     }
 
     @JvmStatic
@@ -243,6 +284,47 @@ object JvmManagedObjCBridge {
                 y = point.get(ValueLayout.JAVA_DOUBLE, 8L),
             ),
         ) ?: 0L
+    }
+
+    @JvmStatic
+    fun dispatchBlockVoidError(block: Long, error: Long) {
+        contain(Unit) { blockRoutes[block]?.dispatchVoidError(block, error) }
+    }
+
+    @JvmStatic
+    fun dispatchBlockVoidObjectObject(block: Long, first: Long, second: Long) {
+        contain(Unit) { blockRoutes[block]?.dispatchVoidObjectObject(block, first, second) }
+    }
+
+    @JvmStatic
+    fun dispatchBlockVoidObjectObjectObject(block: Long, first: Long, second: Long, third: Long) {
+        contain(Unit) {
+            blockRoutes[block]?.dispatchVoidObjectObjectObject(block, first, second, third)
+        }
+    }
+
+    @JvmStatic
+    fun dispatchBlockVoidObjectFloatBoolean(
+        block: Long,
+        value: Long,
+        amount: Float,
+        enabled: Boolean,
+    ) {
+        contain(Unit) {
+            blockRoutes[block]?.dispatchVoidObjectFloatBoolean(block, value, amount, enabled)
+        }
+    }
+
+    @JvmStatic
+    fun dispatchBlockVoidObjectFloat(block: Long, value: Long, amount: Float) {
+        contain(Unit) { blockRoutes[block]?.dispatchVoidObjectFloat(block, value, amount) }
+    }
+
+    @JvmStatic
+    fun dispatchBlockVoidObjectFloatFloat(block: Long, value: Long, first: Float, second: Float) {
+        contain(Unit) {
+            blockRoutes[block]?.dispatchVoidObjectFloatFloat(block, value, first, second)
+        }
     }
 
     private fun allocate(method: String, signature: String): NativeAddress =
