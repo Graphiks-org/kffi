@@ -15,6 +15,8 @@ import org.graphiks.kffi.objc.NSRange
 import org.graphiks.kffi.objc.NSRect
 import org.graphiks.kffi.objc.NSSize
 import org.graphiks.kffi.objc.ObjCRuntime
+import java.lang.foreign.FunctionDescriptor
+import java.lang.foreign.ValueLayout
 
 /** One finite Objective-C method ABI shape supported by the managed bridge. */
 class ObjCMethodSignature<R> internal constructor(
@@ -23,6 +25,88 @@ class ObjCMethodSignature<R> internal constructor(
     internal val trampoline: NativeAddress,
     internal val abiZero: R,
 )
+
+/** One finite Objective-C block ABI shape owned by the managed block bridge. */
+internal class ObjCBlockSignature(
+    val identity: String,
+    val typeEncoding: String,
+    val functionDescriptor: FunctionDescriptor,
+    val trampoline: NativeAddress,
+)
+
+/** The only Objective-C block ABI shapes currently admitted by the managed layer. */
+internal object ObjCBlockSignatures {
+    val VoidError: ObjCBlockSignature = signature(
+        identity = "void-error",
+        typeEncoding = "v16@?0@8",
+        trampoline = JvmManagedObjCBridge.blockVoidError,
+        ValueLayout.ADDRESS,
+    )
+
+    val VoidObjectObject: ObjCBlockSignature = signature(
+        identity = "void-object-object",
+        typeEncoding = "v24@?0@8@16",
+        trampoline = JvmManagedObjCBridge.blockVoidObjectObject,
+        ValueLayout.ADDRESS,
+        ValueLayout.ADDRESS,
+    )
+
+    val VoidObjectObjectObject: ObjCBlockSignature = signature(
+        identity = "void-object-object-object",
+        typeEncoding = "v32@?0@8@16@24",
+        trampoline = JvmManagedObjCBridge.blockVoidObjectObjectObject,
+        ValueLayout.ADDRESS,
+        ValueLayout.ADDRESS,
+        ValueLayout.ADDRESS,
+    )
+
+    val VoidObjectFloatBoolean: ObjCBlockSignature = signature(
+        identity = "void-object-float-boolean",
+        typeEncoding = "v24@?0@8f16${booleanEncoding()}20",
+        trampoline = JvmManagedObjCBridge.blockVoidObjectFloatBoolean,
+        ValueLayout.ADDRESS,
+        ValueLayout.JAVA_FLOAT,
+        ValueLayout.JAVA_BOOLEAN,
+    )
+
+    val VoidObjectFloat: ObjCBlockSignature = signature(
+        identity = "void-object-float",
+        typeEncoding = "v20@?0@8f16",
+        trampoline = JvmManagedObjCBridge.blockVoidObjectFloat,
+        ValueLayout.ADDRESS,
+        ValueLayout.JAVA_FLOAT,
+    )
+
+    val VoidObjectFloatFloat: ObjCBlockSignature = signature(
+        identity = "void-object-float-float",
+        typeEncoding = "v24@?0@8f16f20",
+        trampoline = JvmManagedObjCBridge.blockVoidObjectFloatFloat,
+        ValueLayout.ADDRESS,
+        ValueLayout.JAVA_FLOAT,
+        ValueLayout.JAVA_FLOAT,
+    )
+
+    private fun signature(
+        identity: String,
+        typeEncoding: String,
+        trampoline: NativeAddress,
+        vararg argumentLayouts: java.lang.foreign.MemoryLayout,
+    ): ObjCBlockSignature {
+        val descriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, *argumentLayouts)
+        return ObjCBlockSignature(
+            identity = identity,
+            typeEncoding = typeEncoding,
+            functionDescriptor = descriptor,
+            trampoline = trampoline,
+        )
+    }
+
+    private fun booleanEncoding(): String = when (System.getProperty("os.arch")) {
+        "aarch64", "arm64" -> "B"
+        "amd64", "x86_64" -> "c"
+        else -> error("Unsupported Objective-C host architecture: ${System.getProperty("os.arch")}")
+    }
+}
 
 /** Scalar Objective-C method shapes needed by lifecycle and window delegates. */
 object ObjCMethodSignatures {
