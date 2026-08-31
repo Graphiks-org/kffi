@@ -142,6 +142,10 @@ internal fun ManagedCFunction.hidDeviceLifecycleNativeHandles(): HidDeviceLifecy
 internal fun ManagedCFunction.isQuiescentForManagedAdapter(): Boolean =
     owner().state.isQuiescent
 
+internal fun ManagedCFunction.onQuiescentForManagedAdapter(action: () -> Unit) {
+    owner().state.onQuiescent(action)
+}
+
 private fun ManagedCFunction.owner(
     expectedKind: ManagedCFunctionKind? = null,
 ): ManagedCFunctionOwner {
@@ -195,6 +199,15 @@ private class ManagedCFunctionState(
 
     fun close() {
         registration.get()?.close()
+    }
+
+    fun onQuiescent(action: () -> Unit) {
+        val activeRegistration = registration.get()
+        if (activeRegistration == null) {
+            action()
+        } else {
+            activeRegistration.onQuiescent(action)
+        }
     }
 
     fun detach() {
