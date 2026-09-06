@@ -215,6 +215,64 @@ class ObjCManagedTextInputSignatureTest {
         }
     }
 
+    @Test
+    fun commandSelectorAndAttributesCallbacksAreTypedAndRevokedAfterClose() {
+        requireMacOS()
+        val managed = ObjCManagedClass.registerOnce(
+            superclassName = "NSView",
+            protocols = setOf("NSTextInputClient"),
+            methods = mapOf(
+                "doCommandBySelector:" to ObjCMethodSignatures.VoidSelector,
+                "validAttributesForMarkedText" to ObjCMethodSignatures.Object,
+            ),
+        )
+        val receivedCommands = mutableListOf<String>()
+        val attributes = NSObject(ObjCRuntime.getClass("NSObject"))
+        val instance = managed.createInstance {
+            onVoidSelector("doCommandBySelector:") { command -> receivedCommands += command }
+            onObject("validAttributesForMarkedText", fallback = null) { attributes }
+        }
+        ObjCRuntime.msgSend(
+            ValueLayout.ADDRESS,
+            instance.receiver.ptr,
+            ObjCRuntime.sel("retain"),
+        )
+
+        try {
+            ObjCRuntime.msgSend(
+                null,
+                instance.receiver.ptr,
+                ObjCRuntime.sel("doCommandBySelector:"),
+                ObjCRuntime.sel("insertNewline:"),
+            )
+            val returnedAttributes = ObjCRuntime.msgSend(
+                ValueLayout.ADDRESS,
+                instance.receiver.ptr,
+                ObjCRuntime.sel("validAttributesForMarkedText"),
+            ) as MemorySegment
+            assertEquals(listOf("insertNewline:"), receivedCommands)
+            assertEquals(attributes.ptr, returnedAttributes)
+
+            instance.close()
+
+            ObjCRuntime.msgSend(
+                null,
+                instance.receiver.ptr,
+                ObjCRuntime.sel("doCommandBySelector:"),
+                ObjCRuntime.sel("deleteBackward:"),
+            )
+            val closedAttributes = ObjCRuntime.msgSend(
+                ValueLayout.ADDRESS,
+                instance.receiver.ptr,
+                ObjCRuntime.sel("validAttributesForMarkedText"),
+            ) as MemorySegment
+            assertEquals(listOf("insertNewline:"), receivedCommands)
+            assertEquals(MemorySegment.NULL, closedAttributes)
+        } finally {
+            ObjCRuntime.msgSend(null, instance.receiver.ptr, ObjCRuntime.sel("release"))
+        }
+    }
+
     private fun sendRange(instance: ObjCManagedInstance, selector: String): NSRange =
         NSRange(
             ObjCRuntime.msgSendStruct(

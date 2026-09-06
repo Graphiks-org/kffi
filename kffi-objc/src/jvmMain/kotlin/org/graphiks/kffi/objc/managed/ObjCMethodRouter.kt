@@ -94,6 +94,24 @@ class ObjCMethodRouter internal constructor(
     }
 
     /**
+     * Binds a selector-valued Objective-C argument after freezing it into its Kotlin spelling.
+     */
+    fun onVoidSelector(selector: String, handler: (String) -> Unit) {
+        bind(selector, ObjCMethodSignatures.VoidSelector, VoidSelectorBinding(handler))
+    }
+
+    /**
+     * Binds a no-argument Objective-C object return. Returned objects are borrowed by the caller.
+     */
+    fun onObject(
+        selector: String,
+        fallback: NSObject?,
+        handler: () -> NSObject?,
+    ) {
+        bind(selector, ObjCMethodSignatures.Object, ObjectBinding(fallback, handler))
+    }
+
+    /**
      * Binds [selector] to [handler]. The [NSObject] argument is borrowed and is valid only for the
      * dynamic extent of the handler call. Do not retain or use it after the handler returns unless
      * explicit strong ownership is acquired before returning.
@@ -207,6 +225,18 @@ class ObjCMethodRouter internal constructor(
         (bindings[command] as? VoidBinding)?.handler?.invoke()
     }
 
+    internal fun invokeVoidSelector(command: Long, argument: Long) {
+        check(frozen) { "Managed Objective-C router is not frozen" }
+        val binding = bindings[command] as? VoidSelectorBinding ?: return
+        binding.handler(ObjCRuntime.selectorName(segment(argument)))
+    }
+
+    internal fun invokeObject(command: Long): NSObject? {
+        check(frozen) { "Managed Objective-C router is not frozen" }
+        val binding = bindings[command] as? ObjectBinding ?: return null
+        return binding.handler()
+    }
+
     internal fun invokeULongObject(command: Long, argument: Long): Long {
         check(frozen) { "Managed Objective-C router is not frozen" }
         val binding = bindings[command] as? ULongObjectBinding ?: return 0L
@@ -279,6 +309,9 @@ class ObjCMethodRouter internal constructor(
     internal fun noArgumentBooleanFallback(command: Long): Boolean =
         (bindings[command] as? BooleanBinding)?.fallback ?: false
 
+    internal fun objectFallback(command: Long): NSObject? =
+        (bindings[command] as? ObjectBinding)?.fallback
+
     internal fun uLongFallback(command: Long): Long =
         (bindings[command] as? ULongObjectBinding)?.fallback ?: 0L
 
@@ -345,6 +378,15 @@ private class VoidBinding(
     val handler: () -> Unit,
 ) : ObjCMethodBinding
 
+private class VoidSelectorBinding(
+    val handler: (String) -> Unit,
+) : ObjCMethodBinding
+
+private class ObjectBinding(
+    val fallback: NSObject?,
+    val handler: () -> NSObject?,
+) : ObjCMethodBinding
+
 private class ULongObjectBinding(
     val fallback: Long,
     val handler: (NSObject) -> Long,
@@ -409,6 +451,13 @@ internal object ObjCMethodDispatch {
         override fun dispatchVoid(self: Long, command: Long) {
             ObjCManagedTrampolines.dispatchVoid(this, command)
         }
+
+        override fun dispatchVoidSelector(self: Long, command: Long, argument: Long) {
+            ObjCManagedTrampolines.dispatchVoidSelector(this, command, argument)
+        }
+
+        override fun dispatchObject(self: Long, command: Long): Long =
+            ObjCManagedTrampolines.dispatchObject(this, command)?.ptr?.address() ?: 0L
 
         override fun dispatchULongObject(self: Long, command: Long, argument: Long): Long =
             ObjCManagedTrampolines.dispatchULongObject(this, command, argument)
@@ -532,6 +581,36 @@ internal object ObjCMethodDispatch {
         CallbackRuntime.dispatchSafely(callbackType, route.token) {
             route.router.invokeVoid(command)
         }
+    }
+
+    fun dispatchVoidSelector(
+        boundary: ObjCNativeBoundary<Unit>,
+        route: NativeRoute,
+        command: Long,
+        argument: Long,
+    ) {
+        acquireRoute(boundary, route)
+        beforeCallbackAdmissionForTest.get()?.invoke()
+        CallbackRuntime.dispatchSafely(callbackType, route.token) {
+            route.router.invokeVoidSelector(command, argument)
+        }
+    }
+
+    fun dispatchObject(
+        boundary: ObjCNativeBoundary<NSObject?>,
+        route: NativeRoute,
+        command: Long,
+    ): NSObject? {
+        acquireRoute(boundary, route)
+        val fallback = route.router.objectFallback(command)
+        boundary.fallback = fallback
+        beforeCallbackAdmissionForTest.get()?.invoke()
+        var admitted = false
+        val result = CallbackRuntime.dispatchSafely(callbackType, route.token, fallback) {
+            admitted = true
+            route.router.invokeObject(command)
+        }
+        return if (admitted) result else ObjCMethodSignatures.Object.abiZero
     }
 
     fun dispatchULongObject(

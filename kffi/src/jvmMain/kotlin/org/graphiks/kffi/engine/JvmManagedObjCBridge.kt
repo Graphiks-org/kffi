@@ -48,6 +48,10 @@ interface JvmManagedObjCRoute {
 
     fun dispatchVoid(self: Long, command: Long)
 
+    fun dispatchVoidSelector(self: Long, command: Long, argument: Long)
+
+    fun dispatchObject(self: Long, command: Long): Long
+
     fun dispatchULongObject(self: Long, command: Long, argument: Long): Long
 
     fun dispatchVoidObjectRange(
@@ -114,6 +118,8 @@ object JvmManagedObjCBridge {
     val booleanObject: NativeAddress by lazy { allocate("dispatchBooleanObject", "(JJJ)Z") }
     val boolean: NativeAddress by lazy { allocate("dispatchBoolean", "(JJ)Z") }
     val void: NativeAddress by lazy { allocate("dispatchVoid", "(JJ)V") }
+    val voidSelector: NativeAddress by lazy { allocate("dispatchVoidSelector", "(JJJ)V") }
+    val objectNoArgument: NativeAddress by lazy { allocate("dispatchObject", "(JJ)J") }
     val uLongObject: NativeAddress by lazy { allocate("dispatchULongObject", "(JJJ)J") }
     val voidObjectRange: NativeAddress by lazy {
         JvmUpcallEngine.allocateObjCVoidObjectRangeTrampoline(
@@ -207,6 +213,15 @@ object JvmManagedObjCBridge {
     fun dispatchVoid(self: Long, command: Long) {
         contain(Unit) { routes[self]?.dispatchVoid(self, command) }
     }
+
+    @JvmStatic
+    fun dispatchVoidSelector(self: Long, command: Long, argument: Long) {
+        contain(Unit) { routes[self]?.dispatchVoidSelector(self, command, argument) }
+    }
+
+    @JvmStatic
+    fun dispatchObject(self: Long, command: Long): Long =
+        contain(0L) { routes[self]?.dispatchObject(self, command) ?: 0L }
 
     @JvmStatic
     fun dispatchULongObject(self: Long, command: Long, argument: Long): Long =

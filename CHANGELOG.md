@@ -31,6 +31,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   framework adapters, with clear-before-release teardown and quiescent callback ownership.
 - Managed Objective-C callback signatures for `NSTextInputClient` ranges, points,
   rectangles, and out-ranges without exposing raw memory to Kotlin handlers.
+- Managed Objective-C `void(id, SEL, SEL)` and `id(id, SEL)` callback signatures,
+  including typed selector spelling and object-return routing needed by
+  `NSTextInputClient` command and marked-text attribute callbacks.
 - Managed peer-local AppKit pointer tracking with opaque, idempotent owners that install and
   revoke `NSTrackingArea` instances and lease `NSWindow.acceptsMouseMovedEvents` safely.
 - Immutable managed AppKit `NSEvent` observations for Objective-C event callbacks,
