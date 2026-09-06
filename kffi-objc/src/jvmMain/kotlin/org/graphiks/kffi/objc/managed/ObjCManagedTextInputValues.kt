@@ -1,7 +1,11 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc.managed
 
+import org.graphiks.kffi.objc.NSAttributedString
 import org.graphiks.kffi.objc.NSObject
 import org.graphiks.kffi.objc.ObjCRuntime
+import org.graphiks.kffi.objc.initWithString
 import java.lang.foreign.Arena
 import java.lang.foreign.MemorySegment
 import java.lang.foreign.ValueLayout
@@ -55,31 +59,33 @@ class ObjCManagedTextInputValues : AutoCloseable {
         values.forEach(ObjCManagedRuntime::release)
     }
 
-    private fun newAttributedString(text: String): MemorySegment = Arena.ofConfined().use { arena ->
-        val allocated = ObjCRuntime.msgSend(
-            ValueLayout.ADDRESS,
-            ObjCRuntime.getClass("NSAttributedString"),
-            ObjCRuntime.sel("alloc"),
-        ) as MemorySegment
-        var initialized = false
-        try {
-            val value = ObjCRuntime.msgSend(
+    private fun newAttributedString(text: String): MemorySegment = ObjCRuntime.autoreleasePool {
+        Arena.ofConfined().use { arena ->
+            val allocated = ObjCRuntime.msgSend(
                 ValueLayout.ADDRESS,
-                allocated,
-                ObjCRuntime.sel("initWithString:"),
-                ObjCRuntime.newNSString(arena, text),
+                ObjCRuntime.getClass("NSAttributedString"),
+                ObjCRuntime.sel("alloc"),
             ) as MemorySegment
-            check(value != MemorySegment.NULL) { "NSAttributedString initWithString: returned nil" }
-            initialized = true
-            value
-        } finally {
-            if (!initialized) ObjCManagedRuntime.release(allocated)
+            check(allocated != MemorySegment.NULL) { "NSAttributedString alloc returned nil" }
+            var initializerInvoked = false
+            try {
+                val string = ObjCRuntime.newNSString(arena, text)
+                initializerInvoked = true
+                val value = NSAttributedString(allocated).initWithString(string)
+                check(value != MemorySegment.NULL) { "NSAttributedString initWithString: returned nil" }
+                value
+            } finally {
+                // An Objective-C init method consumes its alloc receiver even when it returns nil.
+                if (!initializerInvoked) ObjCManagedRuntime.release(allocated)
+            }
         }
     }
 
-    private fun newEmptyArray(): MemorySegment = ObjCRuntime.msgSend(
+    private fun newEmptyArray(): MemorySegment = (ObjCRuntime.msgSend(
         ValueLayout.ADDRESS,
         ObjCRuntime.getClass("NSArray"),
         ObjCRuntime.sel("new"),
-    ) as MemorySegment
+    ) as MemorySegment).also { value ->
+        check(value != MemorySegment.NULL) { "NSArray new returned nil" }
+    }
 }
