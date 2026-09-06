@@ -1,6 +1,8 @@
 package org.graphiks.kffi.objc.managed
 
 import org.graphiks.kffi.CallbackExceptionHandler
+import org.graphiks.kffi.objc.NSArray
+import org.graphiks.kffi.objc.NSAttributedString
 import org.graphiks.kffi.objc.NSObject
 import org.graphiks.kffi.objc.NSPoint
 import org.graphiks.kffi.objc.NSRange
@@ -212,6 +214,106 @@ class ObjCManagedTextInputSignatureTest {
             }
         } finally {
             ObjCRuntime.msgSend(null, instance.receiver.ptr, ObjCRuntime.sel("release"))
+        }
+    }
+
+    @Test
+    fun commandSelectorAndAttributesCallbacksAreTypedAndRevokedAfterClose() {
+        requireMacOS()
+        val managed = ObjCManagedClass.registerOnce(
+            superclassName = "NSView",
+            protocols = setOf("NSTextInputClient"),
+            methods = mapOf(
+                "doCommandBySelector:" to ObjCMethodSignatures.VoidSelector,
+                "validAttributesForMarkedText" to ObjCMethodSignatures.Object,
+            ),
+        )
+        val receivedCommands = mutableListOf<String>()
+        val attributes = NSObject(ObjCRuntime.getClass("NSObject"))
+        val instance = managed.createInstance {
+            onVoidSelector("doCommandBySelector:") { command -> receivedCommands += command }
+            onObject("validAttributesForMarkedText", fallback = null) { attributes }
+        }
+        ObjCRuntime.msgSend(
+            ValueLayout.ADDRESS,
+            instance.receiver.ptr,
+            ObjCRuntime.sel("retain"),
+        )
+
+        try {
+            ObjCRuntime.msgSend(
+                null,
+                instance.receiver.ptr,
+                ObjCRuntime.sel("doCommandBySelector:"),
+                ObjCRuntime.sel("insertNewline:"),
+            )
+            val returnedAttributes = ObjCRuntime.msgSend(
+                ValueLayout.ADDRESS,
+                instance.receiver.ptr,
+                ObjCRuntime.sel("validAttributesForMarkedText"),
+            ) as MemorySegment
+            assertEquals(listOf("insertNewline:"), receivedCommands)
+            assertEquals(attributes.ptr, returnedAttributes)
+
+            instance.close()
+
+            ObjCRuntime.msgSend(
+                null,
+                instance.receiver.ptr,
+                ObjCRuntime.sel("doCommandBySelector:"),
+                ObjCRuntime.sel("deleteBackward:"),
+            )
+            val closedAttributes = ObjCRuntime.msgSend(
+                ValueLayout.ADDRESS,
+                instance.receiver.ptr,
+                ObjCRuntime.sel("validAttributesForMarkedText"),
+            ) as MemorySegment
+            assertEquals(listOf("insertNewline:"), receivedCommands)
+            assertEquals(MemorySegment.NULL, closedAttributes)
+        } finally {
+            ObjCRuntime.msgSend(null, instance.receiver.ptr, ObjCRuntime.sel("release"))
+        }
+    }
+
+    @Test
+    fun managedTextInputValuesKeepReturnedAttributedTextAliveUntilOwnerClose() {
+        requireMacOS()
+        val values = ObjCManagedTextInputValues()
+        val managed = ObjCManagedClass.registerOnce(
+            superclassName = "NSView",
+            methods = mapOf(
+                "kffiManagedAttributedText" to ObjCMethodSignatures.Object,
+                "kffiManagedMarkedAttributes" to ObjCMethodSignatures.Object,
+            ),
+        )
+        val instance = managed.createInstance {
+            onObject("kffiManagedAttributedText", fallback = null) {
+                values.attributedString("Kadre IME")
+            }
+            onObject("kffiManagedMarkedAttributes", fallback = null) {
+                values.markedTextAttributes()
+            }
+        }
+
+        try {
+            val returned = ObjCRuntime.msgSend(
+                ValueLayout.ADDRESS,
+                instance.receiver.ptr,
+                ObjCRuntime.sel("kffiManagedAttributedText"),
+            ) as MemorySegment
+            assertEquals("Kadre IME", NSAttributedString(returned).stringAsString())
+            val attributes = ObjCRuntime.msgSend(
+                ValueLayout.ADDRESS,
+                instance.receiver.ptr,
+                ObjCRuntime.sel("kffiManagedMarkedAttributes"),
+            ) as MemorySegment
+            assertEquals(0L, NSArray(attributes).count())
+
+            values.close()
+            assertSame(null, values.attributedString("closed"))
+        } finally {
+            instance.close()
+            values.close()
         }
     }
 
