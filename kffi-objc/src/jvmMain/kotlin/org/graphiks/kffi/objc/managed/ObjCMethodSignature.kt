@@ -138,6 +138,20 @@ object ObjCMethodSignatures {
         abiZero = Unit,
     )
 
+    val VoidSelector: ObjCMethodSignature<Unit> = ObjCMethodSignature(
+        identity = "void-selector",
+        typeEncoding = "v@::",
+        trampoline = JvmManagedObjCBridge.voidSelector,
+        abiZero = Unit,
+    )
+
+    val Object: ObjCMethodSignature<NSObject?> = ObjCMethodSignature(
+        identity = "object",
+        typeEncoding = "@@:",
+        trampoline = JvmManagedObjCBridge.objectNoArgument,
+        abiZero = null,
+    )
+
     val ULongObject: ObjCMethodSignature<Long> = ObjCMethodSignature(
         identity = "ulong-object",
         typeEncoding = "Q@:@",
@@ -263,6 +277,40 @@ internal object ObjCManagedTrampolines {
             }
         } catch (failure: Throwable) {
             boundary?.contain(failure) ?: ObjCMethodDispatch.containUnrouted(failure, Unit)
+        }
+    }
+
+    fun dispatchVoidSelector(
+        route: ObjCMethodDispatch.NativeRoute,
+        command: Long,
+        argument: Long,
+    ) {
+        var boundary: ObjCNativeBoundary<Unit>? = null
+        try {
+            ObjCRuntime.autoreleasePool {
+                val installedBoundary = ObjCNativeBoundary(Unit)
+                boundary = installedBoundary
+                ObjCMethodDispatch.dispatchVoidSelector(installedBoundary, route, command, argument)
+            }
+        } catch (failure: Throwable) {
+            boundary?.contain(failure) ?: ObjCMethodDispatch.containUnrouted(failure, Unit)
+        }
+    }
+
+    fun dispatchObject(
+        route: ObjCMethodDispatch.NativeRoute,
+        command: Long,
+    ): NSObject? {
+        var boundary: ObjCNativeBoundary<NSObject?>? = null
+        return try {
+            ObjCRuntime.autoreleasePool {
+                val installedBoundary = ObjCNativeBoundary(ObjCMethodSignatures.Object.abiZero)
+                boundary = installedBoundary
+                ObjCMethodDispatch.dispatchObject(installedBoundary, route, command)
+            }
+        } catch (failure: Throwable) {
+            boundary?.contain(failure)
+                ?: ObjCMethodDispatch.containUnrouted(failure, ObjCMethodSignatures.Object.abiZero)
         }
     }
 
