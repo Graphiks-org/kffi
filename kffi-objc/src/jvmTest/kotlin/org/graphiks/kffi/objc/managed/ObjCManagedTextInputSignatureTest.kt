@@ -1,6 +1,7 @@
 package org.graphiks.kffi.objc.managed
 
 import org.graphiks.kffi.CallbackExceptionHandler
+import org.graphiks.kffi.objc.NSAttributedString
 import org.graphiks.kffi.objc.NSObject
 import org.graphiks.kffi.objc.NSPoint
 import org.graphiks.kffi.objc.NSRange
@@ -270,6 +271,36 @@ class ObjCManagedTextInputSignatureTest {
             assertEquals(MemorySegment.NULL, closedAttributes)
         } finally {
             ObjCRuntime.msgSend(null, instance.receiver.ptr, ObjCRuntime.sel("release"))
+        }
+    }
+
+    @Test
+    fun managedTextInputValuesKeepReturnedAttributedTextAliveUntilOwnerClose() {
+        requireMacOS()
+        val values = ObjCManagedTextInputValues()
+        val managed = ObjCManagedClass.registerOnce(
+            superclassName = "NSView",
+            methods = mapOf("kffiManagedAttributedText" to ObjCMethodSignatures.Object),
+        )
+        val instance = managed.createInstance {
+            onObject("kffiManagedAttributedText", fallback = null) {
+                values.attributedString("Kadre IME")
+            }
+        }
+
+        try {
+            val returned = ObjCRuntime.msgSend(
+                ValueLayout.ADDRESS,
+                instance.receiver.ptr,
+                ObjCRuntime.sel("kffiManagedAttributedText"),
+            ) as MemorySegment
+            assertEquals("Kadre IME", NSAttributedString(returned).stringAsString())
+
+            values.close()
+            assertSame(null, values.attributedString("closed"))
+        } finally {
+            instance.close()
+            values.close()
         }
     }
 

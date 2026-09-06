@@ -34,6 +34,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Managed Objective-C `void(id, SEL, SEL)` and `id(id, SEL)` callback signatures,
   including typed selector spelling and object-return routing needed by
   `NSTextInputClient` command and marked-text attribute callbacks.
+- A closeable managed `NSTextInputClient` value owner that retains returned
+  attributed strings and marked-text attributes until native receiver teardown.
 - Managed peer-local AppKit pointer tracking with opaque, idempotent owners that install and
   revoke `NSTrackingArea` instances and lease `NSWindow.acceptsMouseMovedEvents` safely.
 - Immutable managed AppKit `NSEvent` observations for Objective-C event callbacks,
