@@ -133,6 +133,7 @@ mkdir -p "$STAGING"
 "$KEXTRACT" \
     --objc \
     --split-output \
+    --objc-protocol-receiver NSDraggingInfo \
     "${LIBRARY_ARGS[@]}" \
     "${INCLUDE_FRAMEWORK_ARGS[@]}" \
     "${INCLUDE_FUNCTION_ARGS[@]}" \
