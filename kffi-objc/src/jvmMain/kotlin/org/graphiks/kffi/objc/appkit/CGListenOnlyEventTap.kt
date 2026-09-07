@@ -65,6 +65,12 @@ class CGListenOnlyEventTap private constructor(
     val isQuiescent: Boolean
         get() = lock.withLock { quiescent }
 
+    /** Re-enables this installed tap after CoreGraphics has disabled it recoverably. */
+    fun reenable() = lock.withLock {
+        check(!closed) { "event tap is closed" }
+        native.enableTap(tap, enabled = true)
+    }
+
     override fun close() {
         val shouldClose = lock.withLock {
             if (closed) return

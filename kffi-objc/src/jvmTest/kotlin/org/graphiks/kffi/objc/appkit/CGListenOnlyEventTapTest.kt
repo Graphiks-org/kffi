@@ -108,6 +108,19 @@ class CGListenOnlyEventTapTest {
     }
 
     @Test
+    fun reenableRestoresTheAlreadyInstalledListenOnlyTap() {
+        val native = RecordingEventTapNative()
+        val tap = CGListenOnlyEventTap.install(0x400L, native) { _, _ -> }
+
+        try {
+            tap.reenable()
+            assertEquals("enable:256:true", native.calls.last())
+        } finally {
+            tap.close()
+        }
+    }
+
+    @Test
     fun borrowedEventReadsRequestedIntegerFieldThroughTheSafeAdapter() {
         assumeTrue(System.getProperty("os.name").contains("Mac", ignoreCase = true))
         val event = CGEventCreateMouseEvent(
