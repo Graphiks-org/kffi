@@ -1,7 +1,12 @@
-@file:OptIn(org.graphiks.kffi.CallbackRuntimeApi::class)
+@file:OptIn(
+    org.graphiks.kffi.CallbackRuntimeApi::class,
+    org.graphiks.kffi.objc.PlatformAvailability::class,
+)
 
 package org.graphiks.kffi.objc.managed
 
+import org.graphiks.kffi.objc.CGEventField
+import org.graphiks.kffi.objc.CGEventGetIntegerValueField
 import org.graphiks.kffi.Callback
 import org.graphiks.kffi.CallbackPolicy
 import org.graphiks.kffi.CallbackRegistration
@@ -18,8 +23,16 @@ import java.util.concurrent.atomic.AtomicReference
 import java.util.concurrent.locks.ReentrantLock
 import kotlin.concurrent.withLock
 
-/** A CoreGraphics event borrowed for the duration of one event-tap delivery. */
-class BorrowedCGEvent internal constructor(internal val native: MemorySegment)
+/**
+ * A CoreGraphics event borrowed for the duration of one event-tap delivery.
+ *
+ * The underlying event reference is intentionally not exposed outside KFFI. Read fields only
+ * while the event-tap handler that received this object is still running.
+ */
+class BorrowedCGEvent internal constructor(internal val native: MemorySegment) {
+    /** Reads a CoreGraphics integer-valued [field] from this borrowed event. */
+    fun integerValue(field: CGEventField): Long = CGEventGetIntegerValueField(native, field)
+}
 
 /** Revocable owner for one of the closed managed C callback shapes. */
 interface ManagedCFunction : AutoCloseable

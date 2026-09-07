@@ -1,5 +1,13 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc.appkit
 
+import org.graphiks.kffi.objc.CFRelease
+import org.graphiks.kffi.objc.CGEventCreateMouseEvent
+import org.graphiks.kffi.objc.CGEventField
+import org.graphiks.kffi.objc.CGEventSetIntegerValueField
+import org.graphiks.kffi.objc.CGMouseButton
+import org.graphiks.kffi.objc.CGPoint
 import org.graphiks.kffi.objc.CGEventTapLocation
 import org.graphiks.kffi.objc.CGEventTapOptions
 import org.graphiks.kffi.objc.CGEventTapPlacement
@@ -38,7 +46,7 @@ class CGListenOnlyEventTapTest {
     fun installUsesSessionListenOnlyTapAndReturnsTheBorrowedEventUnchanged() {
         val native = RecordingEventTapNative()
         var observed: BorrowedCGEvent? = null
-        val tap = CGListenOnlyEventTap.install(0x440L, native) { event -> observed = event }
+        val tap = CGListenOnlyEventTap.install(0x440L, native) { _, event -> observed = event }
 
         val returned = native.emit(CGEventType.kCGEventMouseMoved, 0xCAFE)
 
@@ -81,13 +89,55 @@ class CGListenOnlyEventTapTest {
     }
 
     @Test
+    fun installForwardsTheNativeEventTypeWithoutExposingTheEventPointer() {
+        val native = RecordingEventTapNative()
+        var observedType: CGEventType? = null
+        var observed: BorrowedCGEvent? = null
+        val tap = CGListenOnlyEventTap.install(0x400L, native) { type, event ->
+            observedType = type
+            observed = event
+        }
+
+        try {
+            assertEquals(0xD00D, native.emit(CGEventType.kCGEventMouseMoved, 0xD00D).address())
+            assertEquals(CGEventType.kCGEventMouseMoved, observedType)
+            assertEquals(0xD00D, observed?.native?.address())
+        } finally {
+            tap.close()
+        }
+    }
+
+    @Test
+    fun borrowedEventReadsRequestedIntegerFieldThroughTheSafeAdapter() {
+        assumeTrue(System.getProperty("os.name").contains("Mac", ignoreCase = true))
+        val event = CGEventCreateMouseEvent(
+            MemorySegment.NULL,
+            CGEventType.kCGEventMouseMoved,
+            CGPoint(0.0, 0.0),
+            CGMouseButton.kCGMouseButtonLeft,
+        )
+        check(event != MemorySegment.NULL) { "CGEventCreateMouseEvent returned null" }
+
+        try {
+            CGEventSetIntegerValueField(event, CGEventField.kCGMouseEventDeltaX, 37L)
+            CGEventSetIntegerValueField(event, CGEventField.kCGMouseEventDeltaY, -19L)
+            val borrowed = BorrowedCGEvent(event)
+
+            assertEquals(37L, borrowed.integerValue(CGEventField.kCGMouseEventDeltaX))
+            assertEquals(-19L, borrowed.integerValue(CGEventField.kCGMouseEventDeltaY))
+        } finally {
+            CFRelease(event)
+        }
+    }
+
+    @Test
     fun annotatedSessionIsAllowedButHidTapIsRejectedBeforeAllocation() {
         val annotatedNative = RecordingEventTapNative()
         CGListenOnlyEventTap.install(
             mask = 1L,
             location = CGEventTapLocation.kCGAnnotatedSessionEventTap,
             native = annotatedNative,
-            handler = {},
+            handler = { _, _ -> },
         ).close()
         assertTrue(annotatedNative.calls.first().startsWith("create:kCGAnnotatedSessionEventTap:"))
 
@@ -97,7 +147,7 @@ class CGListenOnlyEventTapTest {
                 mask = 1L,
                 location = CGEventTapLocation.kCGHIDEventTap,
                 native = hidNative,
-                handler = {},
+            handler = { _, _ -> },
             )
         }
         assertTrue(hidNative.calls.isEmpty())
@@ -109,7 +159,7 @@ class CGListenOnlyEventTapTest {
         val entered = CountDownLatch(1)
         val resume = CountDownLatch(1)
         val invocations = AtomicInteger()
-        val tap = CGListenOnlyEventTap.install(1L, native) {
+        val tap = CGListenOnlyEventTap.install(1L, native) { _, _ ->
             invocations.incrementAndGet()
             entered.countDown()
             assertTrue(resume.await(5, TimeUnit.SECONDS))
@@ -149,7 +199,7 @@ class CGListenOnlyEventTapTest {
     @Test
     fun handlerFailureIsContainedAndStillReturnsTheBorrowedEventUnchanged() {
         val native = RecordingEventTapNative()
-        val tap = CGListenOnlyEventTap.install(1L, native) {
+        val tap = CGListenOnlyEventTap.install(1L, native) { _, _ ->
             throw IllegalStateException("observer failed")
         }
 
@@ -173,7 +223,7 @@ class CGListenOnlyEventTapTest {
         )
 
         val thrown = assertFailsWith<IllegalStateException> {
-            CGListenOnlyEventTap.install(1L, native) {}
+            CGListenOnlyEventTap.install(1L, native) { _, _ -> }
         }
 
         assertSame(installFailure, thrown)
@@ -188,7 +238,7 @@ class CGListenOnlyEventTapTest {
         val permission = CGListenOnlyEventTap.preflight()
         assumeTrue(permission == EventTapPermissionState.Granted)
 
-        CGListenOnlyEventTap.install(1L shl CGEventType.kCGEventMouseMoved.value.toInt()) {}.use { tap ->
+        CGListenOnlyEventTap.install(1L shl CGEventType.kCGEventMouseMoved.value.toInt()) { _, _ -> }.use { tap ->
             assertFalse(tap.isClosed)
         }
     }

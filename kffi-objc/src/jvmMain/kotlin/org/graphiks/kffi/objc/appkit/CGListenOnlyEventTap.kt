@@ -17,6 +17,7 @@ import org.graphiks.kffi.objc.CGEventTapEnable
 import org.graphiks.kffi.objc.CGEventTapLocation
 import org.graphiks.kffi.objc.CGEventTapOptions
 import org.graphiks.kffi.objc.CGEventTapPlacement
+import org.graphiks.kffi.objc.CGEventType
 import org.graphiks.kffi.objc.CGPreflightListenEventAccess
 import org.graphiks.kffi.objc.kCFRunLoopCommonModes
 import org.graphiks.kffi.objc.managed.BorrowedCGEvent
@@ -101,13 +102,13 @@ class CGListenOnlyEventTap private constructor(
         /** Installs a listen-only tap at the session event stream. */
         fun install(
             mask: CGEventMask,
-            handler: (BorrowedCGEvent) -> Unit,
+            handler: (CGEventType, BorrowedCGEvent) -> Unit,
         ): CGListenOnlyEventTap = install(mask, CoreGraphicsEventTapNative, handler)
 
         internal fun install(
             mask: CGEventMask,
             native: CGEventTapNative,
-            handler: (BorrowedCGEvent) -> Unit,
+            handler: (CGEventType, BorrowedCGEvent) -> Unit,
         ): CGListenOnlyEventTap = install(
             mask = mask,
             location = CGEventTapLocation.kCGSessionEventTap,
@@ -119,16 +120,16 @@ class CGListenOnlyEventTap private constructor(
             mask: CGEventMask,
             location: CGEventTapLocation,
             native: CGEventTapNative,
-            handler: (BorrowedCGEvent) -> Unit,
+            handler: (CGEventType, BorrowedCGEvent) -> Unit,
         ): CGListenOnlyEventTap {
             require(
                 location == CGEventTapLocation.kCGSessionEventTap ||
                     location == CGEventTapLocation.kCGAnnotatedSessionEventTap,
             ) { "Listen-only event taps support only session or annotated-session locations" }
 
-            val callback = ManagedCFunctions.eventTap { _, event ->
+            val callback = ManagedCFunctions.eventTap { type, event ->
                 try {
-                    handler(event)
+                    handler(type, event)
                 } catch (failure: Throwable) {
                     CallbackRuntime.reportUnroutedFailure(failure)
                 }
