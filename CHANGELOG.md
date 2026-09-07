@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- Generated Objective-C global lookups now load `AppKit.framework`, allowing
+  `NSWorkspaceAccessibilityDisplayOptionsDidChangeNotification` to resolve on macOS.
+
 ### Added
 - Detached CoreGraphics display-mode inventories with deterministic mode ordering and copied I/O
   flags, a closeable pointer-free display-reconfiguration observer, and macOS 26+ AppKit screen

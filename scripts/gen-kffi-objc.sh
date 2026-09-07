@@ -79,6 +79,7 @@ FRAMEWORKS=(
     UniformTypeIdentifiers PDFKit QuickLook
 )
 NATIVE_LIBRARIES=(
+    "/System/Library/Frameworks/AppKit.framework/AppKit"
     "/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics"
     "/System/Library/Frameworks/CoreHaptics.framework/CoreHaptics"
     "/System/Library/Frameworks/CoreMedia.framework/CoreMedia"
