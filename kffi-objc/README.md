@@ -89,6 +89,13 @@ val displays: List<CGDisplaySnapshot> = AppKitDisplayServices.enumerate()
 capture uses `withCapturedDisplay` or `withCapturedDisplays`, which guarantees
 the matching CoreGraphics release on normal and exceptional exits.
 
+`AppKitDisplayServices.allModes(displayId)` returns detached mode values,
+deterministically ordered before their local ordinals are assigned. The copied
+CoreGraphics I/O flags keep otherwise similar modes distinguishable without
+exposing a native mode reference. `CGDisplayReconfigurationObserver` delivers
+detached display IDs and change flags; closing it revokes future Kotlin handler
+admission before the native callback is unregistered.
+
 `DispatchMemoryPressureSource` creates and resumes a private Dispatch source
 for `WARN` and `CRITICAL` events. Closing it is idempotent, immediately revokes
 new handler admission, requests cancellation, and defers native release until

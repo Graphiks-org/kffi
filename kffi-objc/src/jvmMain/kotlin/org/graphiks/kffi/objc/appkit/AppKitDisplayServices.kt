@@ -4,12 +4,17 @@ package org.graphiks.kffi.objc.appkit
 
 import org.graphiks.kffi.objc.CFRelease
 import org.graphiks.kffi.objc.CFRetain
+import org.graphiks.kffi.objc.CFArrayGetCount
+import org.graphiks.kffi.objc.CFArrayGetValueAtIndex
 import org.graphiks.kffi.objc.CGCaptureAllDisplays
 import org.graphiks.kffi.objc.CGDisplayBoundsTyped
 import org.graphiks.kffi.objc.CGDisplayCapture
 import org.graphiks.kffi.objc.CGDisplayCopyDisplayMode
+import org.graphiks.kffi.objc.CGDisplayCopyAllDisplayModes
 import org.graphiks.kffi.objc.CGDisplayModeGetPixelHeight
 import org.graphiks.kffi.objc.CGDisplayModeGetPixelWidth
+import org.graphiks.kffi.objc.CGDisplayModeGetRefreshRate
+import org.graphiks.kffi.objc.CGDisplayModeGetIOFlags
 import org.graphiks.kffi.objc.CGDisplayPixelsHigh
 import org.graphiks.kffi.objc.CGDisplayPixelsWide
 import org.graphiks.kffi.objc.CGDisplayRelease
@@ -36,6 +41,18 @@ data class CGDisplayBoundsSnapshot(
     val y: Double,
     val width: Double,
     val height: Double,
+)
+
+/** Immutable mode data detached from a CoreGraphics display-mode reference. */
+data class CGDisplayModeSnapshot(
+    /** Stable only within one ordered CoreGraphics mode list for the same display. */
+    val ordinal: Int,
+    val pixelWidth: Long,
+    val pixelHeight: Long,
+    /** Null when CoreGraphics reports a non-positive or non-finite refresh rate. */
+    val refreshRateHz: Double?,
+    /** CoreGraphics' unsigned I/O flags, copied to a non-negative [Long]. */
+    val ioFlags: Long,
 )
 
 /**
@@ -113,6 +130,41 @@ object AppKitDisplayServices {
         }
     }
 
+    /** Returns every currently known mode as detached data and releases the CoreFoundation array. */
+    fun allModes(displayId: Int): List<CGDisplayModeSnapshot> = allModes(displayId, CoreGraphicsDisplayNative)
+
+    internal fun allModes(displayId: Int, native: AppKitDisplayNative): List<CGDisplayModeSnapshot> {
+        val modes = native.copyAllDisplayModes(displayId)
+        check(modes != 0L) { "CGDisplayCopyAllDisplayModes returned null for display $displayId" }
+        return try {
+            val count = native.modeCount(modes)
+            check(count >= 0L && count <= Int.MAX_VALUE) {
+                "CGDisplayCopyAllDisplayModes returned invalid count $count for display $displayId"
+            }
+            val unordered = List(count.toInt()) { ordinal ->
+                val mode = native.modeAt(modes, ordinal.toLong())
+                check(mode != 0L) { "CGDisplayCopyAllDisplayModes returned null mode $ordinal for display $displayId" }
+                CGDisplayModeSnapshot(
+                    ordinal = -1,
+                    pixelWidth = native.modePixelWidth(mode),
+                    pixelHeight = native.modePixelHeight(mode),
+                    refreshRateHz = native.modeRefreshRate(mode).takeIf { it.isFinite() && it > 0.0 },
+                    ioFlags = native.modeIoFlags(mode),
+                )
+            }
+            unordered
+                .sortedWith(
+                    compareBy<CGDisplayModeSnapshot>(CGDisplayModeSnapshot::pixelWidth)
+                        .thenBy(CGDisplayModeSnapshot::pixelHeight)
+                        .thenBy { it.refreshRateHz ?: Double.NEGATIVE_INFINITY }
+                        .thenBy(CGDisplayModeSnapshot::ioFlags),
+                )
+                .mapIndexed { ordinal, mode -> mode.copy(ordinal = ordinal) }
+        } finally {
+            native.release(modes)
+        }
+    }
+
     /** Applies an open owned mode without exposing its native reference. */
     fun setMode(displayId: Int, mode: OwnedCGDisplayMode) {
         setMode(displayId, mode, CoreGraphicsDisplayNative)
@@ -165,8 +217,13 @@ internal interface AppKitDisplayNative {
     fun pixelHeight(displayId: Int): Long
     fun bounds(displayId: Int): CGDisplayBoundsSnapshot
     fun copyDisplayMode(displayId: Int): Long
+    fun copyAllDisplayModes(displayId: Int): Long
+    fun modeCount(modes: Long): Long
+    fun modeAt(modes: Long, index: Long): Long
     fun modePixelWidth(mode: Long): Long
     fun modePixelHeight(mode: Long): Long
+    fun modeRefreshRate(mode: Long): Double
+    fun modeIoFlags(mode: Long): Long
     fun retain(mode: Long)
     fun release(mode: Long)
     fun setDisplayMode(displayId: Int, mode: Long)
@@ -215,11 +272,25 @@ private object CoreGraphicsDisplayNative : AppKitDisplayNative {
 
     override fun copyDisplayMode(displayId: Int): Long = CGDisplayCopyDisplayMode(displayId).address()
 
+    override fun copyAllDisplayModes(displayId: Int): Long =
+        CGDisplayCopyAllDisplayModes(displayId, MemorySegment.NULL).address()
+
+    override fun modeCount(modes: Long): Long = CFArrayGetCount(MemorySegment.ofAddress(modes))
+
+    override fun modeAt(modes: Long, index: Long): Long =
+        CFArrayGetValueAtIndex(MemorySegment.ofAddress(modes), index).address()
+
     override fun modePixelWidth(mode: Long): Long =
         CGDisplayModeGetPixelWidth(MemorySegment.ofAddress(mode))
 
     override fun modePixelHeight(mode: Long): Long =
         CGDisplayModeGetPixelHeight(MemorySegment.ofAddress(mode))
+
+    override fun modeRefreshRate(mode: Long): Double =
+        CGDisplayModeGetRefreshRate(MemorySegment.ofAddress(mode))
+
+    override fun modeIoFlags(mode: Long): Long =
+        CGDisplayModeGetIOFlags(MemorySegment.ofAddress(mode)).toLong() and UINT32_MASK
 
     override fun retain(mode: Long) {
         CFRetain(MemorySegment.ofAddress(mode))
@@ -258,3 +329,5 @@ private object CoreGraphicsDisplayNative : AppKitDisplayNative {
         }
     }
 }
+
+private const val UINT32_MASK = 0xFFFF_FFFFL
