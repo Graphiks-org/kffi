@@ -60,11 +60,15 @@ class AppKitDisplayServicesTest {
 
         assertEquals(1920, mode.pixelWidth)
         assertEquals(1080, mode.pixelHeight)
+        assertEquals(60.0, mode.refreshRateHz)
+        assertEquals(0L, mode.ioFlags)
         assertEquals(
             listOf(
                 "copyMode:17",
                 "modeWide:51966",
                 "modeHigh:51966",
+                "modeRefresh:51966",
+                "modeIoFlags:51966",
                 "retain:51966",
                 "setMode:29:51966",
                 "release:51966",

@@ -66,6 +66,10 @@ class OwnedCGDisplayMode internal constructor(
     private var handle: Long,
     val pixelWidth: Long,
     val pixelHeight: Long,
+    /** Null when CoreGraphics reports a non-positive or non-finite refresh rate. */
+    val refreshRateHz: Double?,
+    /** CoreGraphics' unsigned I/O flags, copied to a non-negative [Long]. */
+    val ioFlags: Long,
 ) : AutoCloseable {
     private val lock = ReentrantLock()
 
@@ -75,7 +79,7 @@ class OwnedCGDisplayMode internal constructor(
     fun copy(): OwnedCGDisplayMode = lock.withLock {
         val current = requireOpen()
         native.retain(current)
-        OwnedCGDisplayMode(native, current, pixelWidth, pixelHeight)
+        OwnedCGDisplayMode(native, current, pixelWidth, pixelHeight, refreshRateHz, ioFlags)
     }
 
     override fun close() {
@@ -123,6 +127,8 @@ object AppKitDisplayServices {
                 handle = mode,
                 pixelWidth = native.modePixelWidth(mode),
                 pixelHeight = native.modePixelHeight(mode),
+                refreshRateHz = native.modeRefreshRate(mode).takeIf { it.isFinite() && it > 0.0 },
+                ioFlags = native.modeIoFlags(mode),
             )
         } catch (failure: Throwable) {
             native.release(mode)
