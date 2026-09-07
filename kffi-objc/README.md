@@ -96,6 +96,12 @@ exposing a native mode reference. `CGDisplayReconfigurationObserver` delivers
 detached display IDs and change flags; closing it revokes future Kotlin handler
 admission before the native callback is unregistered.
 
+On macOS 26+, `AppKitScreenServices.snapshots()` safely associates every
+`NSScreen` with its `CGDirectDisplayID` and returns detached screen frame,
+visible frame, scale factor, localized name, and primary status. It deliberately
+does not guess this association on earlier releases from geometry or private
+device-description keys.
+
 `DispatchMemoryPressureSource` creates and resumes a private Dispatch source
 for `WARN` and `CRITICAL` events. Closing it is idempotent, immediately revokes
 new handler admission, requests cancellation, and defers native release until
