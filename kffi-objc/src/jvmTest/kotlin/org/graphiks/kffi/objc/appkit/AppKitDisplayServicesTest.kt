@@ -60,6 +60,7 @@ class AppKitDisplayServicesTest {
 
         assertEquals(1920, mode.pixelWidth)
         assertEquals(1080, mode.pixelHeight)
+        assertEquals(51966L, mode.modeIdentity)
         assertEquals(60.0, mode.refreshRateHz)
         assertEquals(0L, mode.ioFlags)
         assertEquals(
@@ -67,6 +68,7 @@ class AppKitDisplayServicesTest {
                 "copyMode:17",
                 "modeWide:51966",
                 "modeHigh:51966",
+                "modeIdentity:51966",
                 "modeRefresh:51966",
                 "modeIoFlags:51966",
                 "retain:51966",
@@ -126,8 +128,8 @@ class AppKitDisplayServicesTest {
 
         assertEquals(
             listOf(
-                CGDisplayModeSnapshot(0, 1920, 1080, null, 4),
-                CGDisplayModeSnapshot(1, 2560, 1440, 120.0, 9),
+                CGDisplayModeSnapshot(512, 1920, 1080, null, 4),
+                CGDisplayModeSnapshot(256, 2560, 1440, 120.0, 9),
             ),
             AppKitDisplayServices.allModes(17, native),
         )
@@ -136,11 +138,13 @@ class AppKitDisplayServicesTest {
                 "copyAllModes:17",
                 "count:48879",
                 "modeAt:48879:0",
+                "modeIdentity:256",
                 "modeWide:256",
                 "modeHigh:256",
                 "modeRefresh:256",
                 "modeIoFlags:256",
                 "modeAt:48879:1",
+                "modeIdentity:512",
                 "modeWide:512",
                 "modeHigh:512",
                 "modeRefresh:512",
@@ -152,7 +156,7 @@ class AppKitDisplayServicesTest {
     }
 
     @Test
-    fun allModesOrdersStableNativeIdentityBeforeAssigningOrdinals() {
+    fun allModesOrdersDetachedSnapshotsDeterministically() {
         val native = RecordingDisplayNative(
             allModes = listOf(
                 0x300L to (1920L to 1080L),
@@ -165,11 +169,62 @@ class AppKitDisplayServicesTest {
 
         assertEquals(
             listOf(
-                CGDisplayModeSnapshot(0, 1920, 1080, 60.0, 3),
-                CGDisplayModeSnapshot(1, 1920, 1080, 60.0, 7),
-                CGDisplayModeSnapshot(2, 2560, 1440, 120.0, 1),
+                CGDisplayModeSnapshot(512, 1920, 1080, 60.0, 3),
+                CGDisplayModeSnapshot(768, 1920, 1080, 60.0, 7),
+                CGDisplayModeSnapshot(256, 2560, 1440, 120.0, 1),
             ),
             AppKitDisplayServices.allModes(17, native),
+        )
+    }
+
+    @Test
+    fun allModesRejectsDuplicateOrMissingIoModeIdentitiesWithoutPublishingAnInventory() {
+        val duplicateIdentity = RecordingDisplayNative(
+            allModes = listOf(
+                0x100L to (1920L to 1080L),
+                0x200L to (2560L to 1440L),
+            ),
+            modeIdentities = mapOf(0x100L to 91, 0x200L to 91),
+        )
+        val missingIdentity = RecordingDisplayNative(
+            allModes = listOf(0x300L to (1920L to 1080L)),
+            modeIdentities = mapOf(0x300L to 0),
+        )
+
+        assertFailsWith<IllegalStateException> {
+            AppKitDisplayServices.allModes(17, duplicateIdentity)
+        }
+        assertFailsWith<IllegalStateException> {
+            AppKitDisplayServices.allModes(17, missingIdentity)
+        }
+        assertEquals(listOf("release:48879"), duplicateIdentity.calls.filter { it.startsWith("release:") })
+        assertEquals(listOf("release:48879"), missingIdentity.calls.filter { it.startsWith("release:") })
+    }
+
+    @Test
+    fun allModesKeepsIoModeIdentityWhenCoreGraphicsEnumerationOrderChanges() {
+        val firstOrder = RecordingDisplayNative(
+            allModes = listOf(
+                0x100L to (1920L to 1080L),
+                0x200L to (2560L to 1440L),
+            ),
+            modeIdentities = mapOf(0x100L to 41, 0x200L to -1),
+        )
+        val reordered = RecordingDisplayNative(
+            allModes = listOf(
+                0x200L to (2560L to 1440L),
+                0x100L to (1920L to 1080L),
+            ),
+            modeIdentities = mapOf(0x100L to 41, 0x200L to -1),
+        )
+
+        assertEquals(
+            listOf(41L, 4_294_967_295L),
+            AppKitDisplayServices.allModes(17, firstOrder).map(CGDisplayModeSnapshot::modeIdentity),
+        )
+        assertEquals(
+            listOf(41L, 4_294_967_295L),
+            AppKitDisplayServices.allModes(17, reordered).map(CGDisplayModeSnapshot::modeIdentity),
         )
     }
 }
@@ -181,6 +236,7 @@ private class RecordingDisplayNative(
     private val allModes: List<Pair<Long, Pair<Long, Long>>> = emptyList(),
     private val refreshRates: Map<Long, Double> = emptyMap(),
     private val ioFlags: Map<Long, Long> = emptyMap(),
+    private val modeIdentities: Map<Long, Int> = emptyMap(),
     private val bounds: CGDisplayBoundsSnapshot = CGDisplayBoundsSnapshot(0.0, 0.0, 1.0, 1.0),
 ) : AppKitDisplayNative {
     val calls = mutableListOf<String>()
@@ -243,6 +299,11 @@ private class RecordingDisplayNative(
     override fun modeIoFlags(mode: Long): Long {
         calls += "modeIoFlags:$mode"
         return ioFlags[mode] ?: 0L
+    }
+
+    override fun modeIdentity(mode: Long): Long {
+        calls += "modeIdentity:$mode"
+        return (modeIdentities[mode] ?: mode.toInt()).toLong() and 0xFFFF_FFFFL
     }
 
     override fun retain(mode: Long) {
