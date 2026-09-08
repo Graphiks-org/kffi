@@ -74,6 +74,20 @@ class ExclusiveDisplayLeaseTest {
     }
 
     @Test
+    fun openLeaseRejectsANegativeModeIdentityBeforeAnyNativeMutation() {
+        val native = LeaseDisplayNative()
+
+        val failed = assertIs<ExclusiveDisplayLeaseOpenResult.FailedBeforeCapture>(
+            AppKitDisplayServices.openExclusiveLease(DISPLAY_ID, -1L, native),
+        )
+
+        assertEquals(ExclusiveDisplayNativeOperation.ResolveTargetMode, failed.failure.operation)
+        assertTrue(native.calls.isEmpty())
+        assertFalse(native.captureRetained)
+        assertEquals(0, native.ownedReferenceCount)
+    }
+
+    @Test
     fun releaseRestoresThenReleasesCaptureThenFreesReferencesAndIsIdempotent() {
         val native = LeaseDisplayNative()
         val lease = assertIs<ExclusiveDisplayLeaseOpenResult.Opened>(
