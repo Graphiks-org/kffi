@@ -320,8 +320,8 @@ private class ManagedExclusiveWindowPresentationLease(
         get() = lock.withLock { closeResult }
 
     override fun present(displayId: Int): ExclusiveWindowPresentationResult = lock.withLock {
-        if (!native.isMainThread()) return ExclusiveWindowPresentationResult.WrongThread
         if (terminalState != TerminalState.Open) return ExclusiveWindowPresentationResult.Closed
+        if (!native.isMainThread()) return ExclusiveWindowPresentationResult.WrongThread
         val screen = try {
             window.screen(displayId)
         } catch (gone: ExclusiveWindowPresentationWindowGoneException) {
@@ -383,8 +383,8 @@ private class ManagedExclusiveWindowPresentationLease(
     }
 
     override fun readback(): ExclusiveWindowPresentationReadbackResult = lock.withLock {
-        if (!native.isMainThread()) return ExclusiveWindowPresentationReadbackResult.WrongThread
         if (terminalState != TerminalState.Open) return ExclusiveWindowPresentationReadbackResult.Closed
+        if (!native.isMainThread()) return ExclusiveWindowPresentationReadbackResult.WrongThread
         try {
             ExclusiveWindowPresentationReadbackResult.Readback(window.readback())
         } catch (gone: ExclusiveWindowPresentationWindowGoneException) {
@@ -412,8 +412,8 @@ private class ManagedExclusiveWindowPresentationLease(
     }
 
     override fun restore(): ExclusiveWindowPresentationRestoreResult = lock.withLock {
-        if (!native.isMainThread()) return ExclusiveWindowPresentationRestoreResult.WrongThread
         if (terminalState != TerminalState.Open) return ExclusiveWindowPresentationRestoreResult.Closed
+        if (!native.isMainThread()) return ExclusiveWindowPresentationRestoreResult.WrongThread
 
         if (!styleOutstanding && !frameOutstanding && !levelOutstanding) {
             return readbackForNoopRestore()

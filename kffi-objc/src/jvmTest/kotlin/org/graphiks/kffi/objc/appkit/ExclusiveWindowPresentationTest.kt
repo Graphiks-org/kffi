@@ -13,6 +13,7 @@ import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertIs
 import kotlin.test.assertNull
+import kotlin.test.assertSame
 import kotlin.test.assertTrue
 
 class ExclusiveWindowPresentationTest {
@@ -74,7 +75,7 @@ class ExclusiveWindowPresentationTest {
             val duplicate = ExclusiveWindowPresentationServices.open(WINDOW, fake)
 
             assertEquals(ExclusiveWindowPresentationOpenResult.DuplicateWindowLease, duplicate)
-            assertEquals(listOf("snapshot"), fake.calls)
+            assertEquals(listOf("snapshot", "owner-close"), fake.calls)
         }
     }
 
@@ -166,6 +167,9 @@ class ExclusiveWindowPresentationTest {
             val result = lease.restore()
 
             assertEquals(ExclusiveWindowPresentationRestoreResult.WindowGone, result)
+            assertEquals(ExclusiveWindowPresentationRestoreResult.WindowGone, lease.lastRestoreResult)
+            val close = assertIs<ExclusiveWindowPresentationCloseResult.Terminated>(lease.lastCloseResult)
+            assertEquals(ExclusiveWindowPresentationTerminalRestoration.WindowGone, close.restoration)
             assertTrue(fake.calls.contains("window-gone"))
             assertEquals(
                 ExclusiveWindowPresentationOpenResult.WindowGone,
@@ -187,6 +191,48 @@ class ExclusiveWindowPresentationTest {
                 ExclusiveWindowPresentationOpenResult.WindowGone,
                 ExclusiveWindowPresentationServices.open(WINDOW, fake),
             )
+        }
+    }
+
+    @Test
+    fun windowGoneDuringPresentTerminalizesAndCachesCleanup() {
+        val fake = FakeWindowNative()
+        withLease(fake) { lease ->
+            fake.calls.clear()
+            fake.windowExists = false
+
+            assertEquals(ExclusiveWindowPresentationResult.WindowGone, lease.present(DISPLAY_ID))
+            assertEquals(ExclusiveWindowPresentationRestoreResult.WindowGone, lease.lastRestoreResult)
+            val close = assertIs<ExclusiveWindowPresentationCloseResult.Terminated>(lease.lastCloseResult)
+            assertEquals(ExclusiveWindowPresentationTerminalRestoration.WindowGone, close.restoration)
+            assertTrue(close.cleanupFailures.isEmpty())
+            assertEquals(0, fake.ownedWindowCount)
+            assertEquals(1, fake.releaseCount)
+
+            val terminalCalls = fake.calls.toList()
+            fake.mainThread = false
+            assertSame(close, lease.close())
+            assertEquals(ExclusiveWindowPresentationResult.Closed, lease.present(DISPLAY_ID))
+            assertEquals(ExclusiveWindowPresentationReadbackResult.Closed, lease.readback())
+            assertEquals(ExclusiveWindowPresentationRestoreResult.Closed, lease.restore())
+            assertEquals(terminalCalls, fake.calls)
+        }
+    }
+
+    @Test
+    fun windowGoneDuringReadbackTerminalizesAndCachesCleanup() {
+        val fake = FakeWindowNative()
+        withLease(fake) { lease ->
+            fake.calls.clear()
+            fake.windowExists = false
+
+            assertEquals(ExclusiveWindowPresentationReadbackResult.WindowGone, lease.readback())
+            assertEquals(ExclusiveWindowPresentationRestoreResult.WindowGone, lease.lastRestoreResult)
+            val close = assertIs<ExclusiveWindowPresentationCloseResult.Terminated>(lease.lastCloseResult)
+            assertEquals(ExclusiveWindowPresentationTerminalRestoration.WindowGone, close.restoration)
+            assertTrue(close.cleanupFailures.isEmpty())
+            assertEquals(0, fake.ownedWindowCount)
+            assertEquals(1, fake.releaseCount)
         }
     }
 
@@ -224,12 +270,73 @@ class ExclusiveWindowPresentationTest {
         withLease(fake) { lease ->
             assertIs<ExclusiveWindowPresentationResult.Presented>(lease.present(DISPLAY_ID))
 
-            lease.close()
-            val first = lease.lastRestoreResult
-            lease.close()
+            val firstClose = assertIs<ExclusiveWindowPresentationCloseResult.Terminated>(lease.close())
+            val firstRestore = lease.lastRestoreResult
+            val secondClose = lease.close()
 
-            assertIs<ExclusiveWindowPresentationRestoreResult.Restored>(first)
-            assertEquals(first, lease.lastRestoreResult)
+            assertIs<ExclusiveWindowPresentationRestoreResult.Restored>(firstRestore)
+            assertEquals(firstRestore, lease.lastRestoreResult)
+            assertSame(firstClose, secondClose)
+            assertSame(firstClose, lease.lastCloseResult)
+        }
+    }
+
+    @Test
+    fun terminalCloseRestoresThenReleasesOwnerBeforeRemovingRegistryGuard() {
+        val fake = FakeWindowNative(probeRegistryDuringOwnerClose = true)
+        withLease(fake) { lease ->
+            assertIs<ExclusiveWindowPresentationResult.Presented>(lease.present(DISPLAY_ID))
+            fake.calls.clear()
+
+            val close = assertIs<ExclusiveWindowPresentationCloseResult.Terminated>(lease.close())
+
+            assertEquals(
+                listOf(
+                    "restore-style",
+                    "restore-frame",
+                    "restore-level",
+                    "readback:17",
+                    "owner-close",
+                    "registry-active",
+                ),
+                fake.calls,
+            )
+            assertEquals(ExclusiveWindowPresentationOpenResult.DuplicateWindowLease, fake.ownerCloseRegistryProbe)
+            assertTrue(close.cleanupFailures.isEmpty())
+
+            fake.calls.clear()
+            withLease(fake) {}
+            assertEquals(listOf("snapshot", "owner-close", "registry-active"), fake.calls)
+        }
+    }
+
+    @Test
+    fun ownerCloseFailureIsTypedAndDoesNotKeepTheRegistryGuard() {
+        val fake = FakeWindowNative(failOwnerClose = true)
+        withLease(fake) { lease ->
+            assertIs<ExclusiveWindowPresentationResult.Presented>(lease.present(DISPLAY_ID))
+            fake.calls.clear()
+
+            val close = assertIs<ExclusiveWindowPresentationCloseResult.Terminated>(lease.close())
+
+            assertEquals(
+                listOf(
+                    ExclusiveWindowPresentationFailure(
+                        ExclusiveWindowPresentationOperation.ReleaseOwner,
+                        "owner close failed",
+                    ),
+                ),
+                close.cleanupFailures,
+            )
+            assertEquals(
+                listOf("restore-style", "restore-frame", "restore-level", "readback:17", "owner-close"),
+                fake.calls,
+            )
+            assertSame(close, lease.close())
+
+            fake.calls.clear()
+            withLease(fake) {}
+            assertEquals(listOf("snapshot", "owner-close"), fake.calls)
         }
     }
 
@@ -347,7 +454,7 @@ class ExclusiveWindowPresentationTest {
             val close = assertIs<ExclusiveWindowPresentationCloseResult.Terminated>(lease.close())
 
             assertEquals(ExclusiveWindowPresentationTerminalRestoration.Restored(restored.readback), close.restoration)
-            assertTrue(fake.calls.isEmpty())
+            assertEquals(listOf("owner-close"), fake.calls)
             assertEquals(0, fake.ownedWindowCount)
             assertEquals(1, fake.releaseCount)
         }
@@ -376,6 +483,36 @@ class ExclusiveWindowPresentationTest {
 
             assertIs<ExclusiveWindowPresentationRestoreResult.Restored>(lease.restore())
             assertEquals(listOf("restore-frame", "readback:17"), fake.calls)
+        }
+    }
+
+    @Test
+    fun secondRestoreDetectsExternalDivergenceAfterVerifiedRestoration() {
+        val fake = FakeWindowNative()
+        withLease(fake) { lease ->
+            assertIs<ExclusiveWindowPresentationResult.Presented>(lease.present(DISPLAY_ID))
+            assertIs<ExclusiveWindowPresentationRestoreResult.Restored>(lease.restore())
+            fake.readbackStyleMask = EXTERNAL_STYLE
+            fake.calls.clear()
+
+            val divergent = assertIs<ExclusiveWindowPresentationRestoreResult.PartiallyRestored>(lease.restore())
+
+            assertEquals(
+                listOf(
+                    ExclusiveWindowPresentationFailure(
+                        ExclusiveWindowPresentationOperation.VerifyRestorationStyle,
+                        "restored style mask did not match the opening snapshot",
+                    ),
+                ),
+                divergent.failures,
+            )
+            assertEquals(listOf("readback:17"), fake.calls)
+            fake.calls.clear()
+
+            val close = assertIs<ExclusiveWindowPresentationCloseResult.Terminated>(lease.close())
+
+            assertEquals(ExclusiveWindowPresentationTerminalRestoration.Restored(INITIAL_READBACK), close.restoration)
+            assertEquals(listOf("restore-style", "readback:17", "owner-close"), fake.calls)
         }
     }
 
@@ -461,6 +598,8 @@ private class FakeWindowNative(
     private val presentationReadbackStyleMask: Long? = null,
     private val keepRestoredFrame: Boolean = false,
     private val throwAfterPresentationMutation: ExclusiveWindowPresentationOperation? = null,
+    private val failOwnerClose: Boolean = false,
+    private val probeRegistryDuringOwnerClose: Boolean = false,
 ) : ExclusiveWindowPresentationNative {
     val calls = mutableListOf<String>()
     val callsAfterRestore: List<String>
@@ -477,6 +616,9 @@ private class FakeWindowNative(
     var ownedWindowCount = 0
     var releaseCount = 0
     var suppressNextRestoreFrame = keepRestoredFrame
+    var ownerCloseRegistryProbe: ExclusiveWindowPresentationOpenResult? = null
+    private var ownerCloseFailed = false
+    private var probingRegistry = false
 
     override fun isMacOs26OrLater(): Boolean = macOs26OrLater
 
@@ -485,7 +627,7 @@ private class FakeWindowNative(
     override fun retainWindow(window: Long): ExclusiveWindowPresentationWindow {
         requireWindow()
         ownedWindowCount += 1
-        return FakeWindow(window)
+        return FakeWindow(window, probeOwner = probingRegistry)
     }
 
     private fun snapshot(): ExclusiveWindowPresentationSnapshot {
@@ -583,6 +725,7 @@ private class FakeWindowNative(
 
     private inner class FakeWindow(
         override val identity: Long,
+        private val probeOwner: Boolean,
     ) : ExclusiveWindowPresentationWindow {
         override fun snapshot(): ExclusiveWindowPresentationSnapshot = this@FakeWindowNative.snapshot()
 
@@ -603,6 +746,24 @@ private class FakeWindowNative(
         override fun restoreLevel(level: Long) = this@FakeWindowNative.restoreLevel(level)
 
         override fun close() {
+            if (probeOwner) {
+                ownedWindowCount -= 1
+                return
+            }
+            calls += "owner-close"
+            if (probeRegistryDuringOwnerClose) {
+                probingRegistry = true
+                try {
+                    ownerCloseRegistryProbe = ExclusiveWindowPresentationServices.open(WINDOW, this@FakeWindowNative)
+                } finally {
+                    probingRegistry = false
+                }
+                calls += "registry-active"
+            }
+            if (failOwnerClose && !ownerCloseFailed) {
+                ownerCloseFailed = true
+                throw IllegalStateException("owner close failed")
+            }
             ownedWindowCount -= 1
             releaseCount += 1
         }
