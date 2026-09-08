@@ -49,6 +49,7 @@ enum class ExclusiveWindowPresentationOperation {
     VerifyRestorationStyle,
     VerifyRestorationFrame,
     VerifyRestorationLevel,
+    ReleaseOwner,
 }
 
 /** A detached native failure, including every failure observed during restoration cleanup. */
@@ -126,6 +127,32 @@ sealed interface ExclusiveWindowPresentationRestoreResult {
     data object WrongThread : ExclusiveWindowPresentationRestoreResult
 }
 
+/** Result of terminally closing an exclusive window presentation lease. */
+sealed interface ExclusiveWindowPresentationCloseResult {
+    data class Terminated(
+        val restoration: ExclusiveWindowPresentationTerminalRestoration,
+        val cleanupFailures: List<ExclusiveWindowPresentationFailure>,
+    ) : ExclusiveWindowPresentationCloseResult
+
+    data object WrongThread : ExclusiveWindowPresentationCloseResult
+}
+
+/** Restoration state captured when an exclusive presentation lease is terminally closed. */
+sealed interface ExclusiveWindowPresentationTerminalRestoration {
+    data object NotRequired : ExclusiveWindowPresentationTerminalRestoration
+
+    data class Restored(
+        val readback: ExclusiveWindowPresentationReadback,
+    ) : ExclusiveWindowPresentationTerminalRestoration
+
+    data class PartiallyRestored(
+        val readback: ExclusiveWindowPresentationReadback?,
+        val failures: List<ExclusiveWindowPresentationFailure>,
+    ) : ExclusiveWindowPresentationTerminalRestoration
+
+    data object WindowGone : ExclusiveWindowPresentationTerminalRestoration
+}
+
 /** A managed, pointer-free owner of an exclusive AppKit window presentation. */
 interface ExclusiveWindowPresentationLease {
     fun present(displayId: Int): ExclusiveWindowPresentationResult
@@ -136,7 +163,9 @@ interface ExclusiveWindowPresentationLease {
 
     val lastRestoreResult: ExclusiveWindowPresentationRestoreResult?
 
-    fun close(): ExclusiveWindowPresentationRestoreResult
+    val lastCloseResult: ExclusiveWindowPresentationCloseResult.Terminated?
+
+    fun close(): ExclusiveWindowPresentationCloseResult
 }
 
 /** Opens an exclusive window presentation lease without mutating the window. */
@@ -273,11 +302,14 @@ private class ManagedExclusiveWindowPresentationLease(
     private var frameOutstanding = false
     private var levelOutstanding = false
     private var closed = false
-    private var closeInvoked = false
     private var restoreResult: ExclusiveWindowPresentationRestoreResult? = null
+    private var closeResult: ExclusiveWindowPresentationCloseResult.Terminated? = null
 
     override val lastRestoreResult: ExclusiveWindowPresentationRestoreResult?
         get() = lock.withLock { restoreResult }
+
+    override val lastCloseResult: ExclusiveWindowPresentationCloseResult.Terminated?
+        get() = lock.withLock { closeResult }
 
     override fun present(displayId: Int): ExclusiveWindowPresentationResult = lock.withLock {
         if (!native.isMainThread()) return ExclusiveWindowPresentationResult.WrongThread
@@ -354,12 +386,22 @@ private class ManagedExclusiveWindowPresentationLease(
         }
     }
 
-    override fun close(): ExclusiveWindowPresentationRestoreResult = lock.withLock {
-        if (!native.isMainThread()) return ExclusiveWindowPresentationRestoreResult.WrongThread
-        if (closed) return ExclusiveWindowPresentationRestoreResult.Closed
-        if (closeInvoked) return requireNotNull(restoreResult)
-        closeInvoked = true
-        restore()
+    override fun close(): ExclusiveWindowPresentationCloseResult = lock.withLock {
+        if (!native.isMainThread()) return ExclusiveWindowPresentationCloseResult.WrongThread
+        closeResult?.let { return it }
+        val restoration = when (val result = restore()) {
+            is ExclusiveWindowPresentationRestoreResult.Restored ->
+                ExclusiveWindowPresentationTerminalRestoration.Restored(result.readback)
+
+            is ExclusiveWindowPresentationRestoreResult.PartiallyRestored ->
+                ExclusiveWindowPresentationTerminalRestoration.PartiallyRestored(result.readback, result.failures)
+
+            ExclusiveWindowPresentationRestoreResult.WindowGone -> ExclusiveWindowPresentationTerminalRestoration.WindowGone
+            ExclusiveWindowPresentationRestoreResult.Closed,
+            ExclusiveWindowPresentationRestoreResult.WrongThread,
+            -> ExclusiveWindowPresentationTerminalRestoration.NotRequired
+        }
+        ExclusiveWindowPresentationCloseResult.Terminated(restoration, emptyList()).also { closeResult = it }
     }
 
     override fun restore(): ExclusiveWindowPresentationRestoreResult = lock.withLock {

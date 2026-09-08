@@ -258,8 +258,20 @@ class ExclusiveWindowPresentationTest {
         assertEquals(ExclusiveWindowPresentationResult.WrongThread, lease.present(DISPLAY_ID))
         assertEquals(ExclusiveWindowPresentationReadbackResult.WrongThread, lease.readback())
         assertEquals(ExclusiveWindowPresentationRestoreResult.WrongThread, lease.restore())
-        assertEquals(ExclusiveWindowPresentationRestoreResult.WrongThread, lease.close())
+        assertEquals(ExclusiveWindowPresentationCloseResult.WrongThread, lease.close())
+        assertNull(lease.lastCloseResult)
         assertTrue(fake.calls.isEmpty())
+    }
+
+    @Test
+    fun closeOfAnUntouchedLeaseExposesItsTerminalResult() {
+        val fake = FakeWindowNative()
+        val lease = open(fake)
+
+        val terminated = assertIs<ExclusiveWindowPresentationCloseResult.Terminated>(lease.close())
+
+        assertIs<ExclusiveWindowPresentationTerminalRestoration.NotRequired>(terminated.restoration)
+        assertEquals(terminated, lease.lastCloseResult)
     }
 
     @Test
@@ -341,7 +353,7 @@ object ExclusiveWindowPresentationSmokeProbe {
                     ExclusiveWindowPresentationOpenResult.UnavailablePlatform -> Unit
                     is ExclusiveWindowPresentationOpenResult.Opened -> {
                         check(opened.lease.readback() is ExclusiveWindowPresentationReadbackResult.Readback)
-                        check(opened.lease.close() is ExclusiveWindowPresentationRestoreResult.Restored)
+                        check(opened.lease.close() is ExclusiveWindowPresentationCloseResult.Terminated)
                     }
                     else -> error("unexpected exclusive presentation smoke result: $opened")
                 }
