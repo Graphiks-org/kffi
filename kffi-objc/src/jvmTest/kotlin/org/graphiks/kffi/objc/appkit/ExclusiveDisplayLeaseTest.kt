@@ -48,6 +48,32 @@ class ExclusiveDisplayLeaseTest {
     }
 
     @Test
+    fun openLeaseCapturesAndReadbacksAZeroTargetModeIdentity() {
+        val native = LeaseDisplayNative(targetModeIdentity = 0L)
+
+        val opened = assertIs<ExclusiveDisplayLeaseOpenResult.Opened>(
+            AppKitDisplayServices.openExclusiveLease(DISPLAY_ID, 0L, native),
+        )
+
+        assertEquals(ExclusiveDisplayTerminal.Captured(0L), opened.lease.readback().terminal)
+        assertEquals(ExclusiveDisplayTerminal.Released(INITIAL_IDENTITY), opened.lease.release().terminal)
+        assertEquals(0, native.ownedReferenceCount)
+    }
+
+    @Test
+    fun openLeasePreservesAZeroInitialModeIdentityThroughReleaseReadback() {
+        val native = LeaseDisplayNative(initialModeIdentity = 0L)
+
+        val opened = assertIs<ExclusiveDisplayLeaseOpenResult.Opened>(
+            AppKitDisplayServices.openExclusiveLease(DISPLAY_ID, TARGET_IDENTITY, native),
+        )
+
+        assertEquals(ExclusiveDisplayTerminal.Captured(TARGET_IDENTITY), opened.lease.readback().terminal)
+        assertEquals(ExclusiveDisplayTerminal.Released(0L), opened.lease.release().terminal)
+        assertEquals(0, native.ownedReferenceCount)
+    }
+
+    @Test
     fun releaseRestoresThenReleasesCaptureThenFreesReferencesAndIsIdempotent() {
         val native = LeaseDisplayNative()
         val lease = assertIs<ExclusiveDisplayLeaseOpenResult.Opened>(
@@ -395,7 +421,10 @@ class ExclusiveDisplayLeaseTest {
     }
 }
 
-private class LeaseDisplayNative : AppKitDisplayNative {
+private class LeaseDisplayNative(
+    private val initialModeIdentity: Long = INITIAL_IDENTITY,
+    private val targetModeIdentity: Long = TARGET_IDENTITY,
+) : AppKitDisplayNative {
     val calls = mutableListOf<String>()
     private val ownedReferences = mutableMapOf<Long, Int>()
     private val failures = mutableMapOf<String, ArrayDeque<String>>()
@@ -455,8 +484,8 @@ private class LeaseDisplayNative : AppKitDisplayNative {
     override fun modeIdentity(mode: Long): Long {
         calls += "modeIdentity:$mode"
         return when (mode) {
-            INITIAL_MODE -> INITIAL_IDENTITY
-            TARGET_MODE, IMPOSTOR_MODE -> TARGET_IDENTITY
+            INITIAL_MODE -> initialModeIdentity
+            TARGET_MODE, IMPOSTOR_MODE -> targetModeIdentity
             else -> 0
         }
     }

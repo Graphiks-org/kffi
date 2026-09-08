@@ -254,7 +254,7 @@ object AppKitDisplayServices {
                 val mode = native.modeAt(modes, ordinal.toLong())
                 check(mode != 0L) { "CGDisplayCopyAllDisplayModes returned null mode $ordinal for display $displayId" }
                 val modeIdentity = native.modeIdentity(mode)
-                check(modeIdentity != 0L) {
+                check(modeIdentity >= 0L) {
                     "CGDisplayModeGetIODisplayModeID returned invalid identity for mode $ordinal on display $displayId"
                 }
                 check(identities.add(modeIdentity)) {
@@ -296,10 +296,10 @@ object AppKitDisplayServices {
         var targetMode = 0L
         val initialModeIdentity: Long
         try {
-            if (modeIdentity <= 0) {
+            if (modeIdentity < 0) {
                 failExclusiveOperation(
                     ExclusiveDisplayNativeOperation.ResolveTargetMode,
-                    "modeIdentity must be positive",
+                    "modeIdentity must be non-negative",
                 )
             }
             initialMode = exclusiveNativeCall(ExclusiveDisplayNativeOperation.CopyInitialMode) {
@@ -314,10 +314,10 @@ object AppKitDisplayServices {
             initialModeIdentity = exclusiveNativeCall(ExclusiveDisplayNativeOperation.CopyInitialMode) {
                 native.modeIdentity(initialMode)
             }
-            if (initialModeIdentity == 0L) {
+            if (initialModeIdentity < 0L) {
                 failExclusiveOperation(
                     ExclusiveDisplayNativeOperation.CopyInitialMode,
-                    "Current mode has no I/O identity for display $displayId",
+                    "Current mode has a negative I/O identity for display $displayId",
                 )
             }
 
@@ -344,7 +344,7 @@ object AppKitDisplayServices {
                             "CGDisplayCopyAllDisplayModes returned null mode $ordinal for display $displayId"
                         }
                         val candidateIdentity = native.modeIdentity(candidate)
-                        check(candidateIdentity != 0L) {
+                        check(candidateIdentity >= 0L) {
                             "CGDisplayModeGetIODisplayModeID returned invalid identity for mode $ordinal on display $displayId"
                         }
                         check(identities.add(candidateIdentity)) {
