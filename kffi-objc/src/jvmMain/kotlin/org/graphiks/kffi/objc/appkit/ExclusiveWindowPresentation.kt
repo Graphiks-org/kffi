@@ -5,6 +5,7 @@ package org.graphiks.kffi.objc.appkit
 import org.graphiks.kffi.objc.CGShieldingWindowLevel
 import org.graphiks.kffi.objc.NSArray
 import org.graphiks.kffi.objc.NSPoint
+import org.graphiks.kffi.objc.NSOperatingSystemVersion
 import org.graphiks.kffi.objc.NSProcessInfo
 import org.graphiks.kffi.objc.NSRect
 import org.graphiks.kffi.objc.NSScreen
@@ -12,6 +13,8 @@ import org.graphiks.kffi.objc.NSSize
 import org.graphiks.kffi.objc.NSThread
 import org.graphiks.kffi.objc.NSWindow
 import org.graphiks.kffi.objc.NSWindowStyleMask
+import org.graphiks.kffi.objc.managed.ObjCStrongRef
+import org.graphiks.kffi.objc.managed.retainStrong
 import java.lang.foreign.MemorySegment
 import java.util.concurrent.locks.ReentrantLock
 import kotlin.concurrent.withLock
@@ -43,6 +46,9 @@ enum class ExclusiveWindowPresentationOperation {
     RestoreStyle,
     RestoreFrame,
     RestoreLevel,
+    VerifyRestorationStyle,
+    VerifyRestorationFrame,
+    VerifyRestorationLevel,
 }
 
 /** A detached native failure, including every failure observed during restoration cleanup. */
@@ -74,6 +80,10 @@ sealed interface ExclusiveWindowPresentationResult {
 
     data object WindowGone : ExclusiveWindowPresentationResult
 
+    data object Closed : ExclusiveWindowPresentationResult
+
+    data object WrongThread : ExclusiveWindowPresentationResult
+
     data class TargetReadbackMismatch(
         val expectedDisplayId: Int,
         val actualDisplayId: Int?,
@@ -87,6 +97,19 @@ sealed interface ExclusiveWindowPresentationResult {
     data class Failed(val failure: ExclusiveWindowPresentationFailure) : ExclusiveWindowPresentationResult
 }
 
+/** Result of observing a lease's detached window state. */
+sealed interface ExclusiveWindowPresentationReadbackResult {
+    data class Readback(val value: ExclusiveWindowPresentationReadback) : ExclusiveWindowPresentationReadbackResult
+
+    data object WindowGone : ExclusiveWindowPresentationReadbackResult
+
+    data object Closed : ExclusiveWindowPresentationReadbackResult
+
+    data object WrongThread : ExclusiveWindowPresentationReadbackResult
+
+    data class Failed(val failure: ExclusiveWindowPresentationFailure) : ExclusiveWindowPresentationReadbackResult
+}
+
 /** Result of restoring a window to the detached state captured when its lease opened. */
 sealed interface ExclusiveWindowPresentationRestoreResult {
     data class Restored(val readback: ExclusiveWindowPresentationReadback) : ExclusiveWindowPresentationRestoreResult
@@ -97,21 +120,23 @@ sealed interface ExclusiveWindowPresentationRestoreResult {
     ) : ExclusiveWindowPresentationRestoreResult
 
     data object WindowGone : ExclusiveWindowPresentationRestoreResult
+
+    data object Closed : ExclusiveWindowPresentationRestoreResult
+
+    data object WrongThread : ExclusiveWindowPresentationRestoreResult
 }
 
 /** A managed, pointer-free owner of an exclusive AppKit window presentation. */
-interface ExclusiveWindowPresentationLease : AutoCloseable {
+interface ExclusiveWindowPresentationLease {
     fun present(displayId: Int): ExclusiveWindowPresentationResult
 
-    fun readback(): ExclusiveWindowPresentationReadback
+    fun readback(): ExclusiveWindowPresentationReadbackResult
 
     fun restore(): ExclusiveWindowPresentationRestoreResult
 
     val lastRestoreResult: ExclusiveWindowPresentationRestoreResult?
 
-    override fun close() {
-        restore()
-    }
+    fun close(): ExclusiveWindowPresentationRestoreResult
 }
 
 /** Opens an exclusive window presentation lease without mutating the window. */
@@ -119,8 +144,21 @@ object ExclusiveWindowPresentationServices {
     private val registryLock = ReentrantLock()
     private val activeWindows = mutableSetOf<WindowLeaseIdentity>()
 
-    fun open(window: NSWindow): ExclusiveWindowPresentationOpenResult =
-        open(window.ptr.address(), CocoaExclusiveWindowPresentationNative)
+    fun open(window: NSWindow): ExclusiveWindowPresentationOpenResult {
+        val native = CocoaExclusiveWindowPresentationNative
+        if (!native.isMacOs26OrLater()) return ExclusiveWindowPresentationOpenResult.UnavailablePlatform
+        if (!native.isMainThread()) return ExclusiveWindowPresentationOpenResult.WrongThread
+        if (window.ptr == MemorySegment.NULL) return ExclusiveWindowPresentationOpenResult.WindowGone
+        return try {
+            openRetained(native, native.retainWindow(window))
+        } catch (gone: ExclusiveWindowPresentationWindowGoneException) {
+            ExclusiveWindowPresentationOpenResult.WindowGone
+        } catch (failure: Throwable) {
+            ExclusiveWindowPresentationOpenResult.Failed(
+                ExclusiveWindowPresentationFailure(ExclusiveWindowPresentationOperation.Snapshot, failure.messageOrType()),
+            )
+        }
+    }
 
     /** Internal seam for deterministic, pointer-free state-machine tests. */
     internal fun open(
@@ -131,23 +169,44 @@ object ExclusiveWindowPresentationServices {
         if (!native.isMainThread()) return ExclusiveWindowPresentationOpenResult.WrongThread
         if (window == 0L) return ExclusiveWindowPresentationOpenResult.WindowGone
 
-        val identity = WindowLeaseIdentity(native, window)
+        val ownedWindow = try {
+            native.retainWindow(window)
+        } catch (gone: ExclusiveWindowPresentationWindowGoneException) {
+            return ExclusiveWindowPresentationOpenResult.WindowGone
+        } catch (failure: Throwable) {
+            return ExclusiveWindowPresentationOpenResult.Failed(
+                ExclusiveWindowPresentationFailure(ExclusiveWindowPresentationOperation.Snapshot, failure.messageOrType()),
+            )
+        }
+        return openRetained(native, ownedWindow)
+    }
+
+    private fun openRetained(
+        native: ExclusiveWindowPresentationNative,
+        ownedWindow: ExclusiveWindowPresentationWindow,
+    ): ExclusiveWindowPresentationOpenResult {
+        val identity = WindowLeaseIdentity(native, ownedWindow.identity)
         registryLock.withLock {
-            if (!activeWindows.add(identity)) return ExclusiveWindowPresentationOpenResult.DuplicateWindowLease
+            if (!activeWindows.add(identity)) {
+                ownedWindow.close()
+                return ExclusiveWindowPresentationOpenResult.DuplicateWindowLease
+            }
         }
         val snapshot = try {
-            native.snapshot(window)
+            ownedWindow.snapshot()
         } catch (gone: ExclusiveWindowPresentationWindowGoneException) {
+            ownedWindow.close()
             release(identity)
             return ExclusiveWindowPresentationOpenResult.WindowGone
         } catch (failure: Throwable) {
+            ownedWindow.close()
             release(identity)
             return ExclusiveWindowPresentationOpenResult.Failed(
                 ExclusiveWindowPresentationFailure(ExclusiveWindowPresentationOperation.Snapshot, failure.messageOrType()),
             )
         }
         return ExclusiveWindowPresentationOpenResult.Opened(
-            ManagedExclusiveWindowPresentationLease(native, window, snapshot, identity, ::release),
+            ManagedExclusiveWindowPresentationLease(native, ownedWindow, snapshot, identity, ::release),
         )
     }
 
@@ -162,23 +221,30 @@ internal interface ExclusiveWindowPresentationNative {
 
     fun isMainThread(): Boolean
 
-    fun snapshot(window: Long): ExclusiveWindowPresentationSnapshot
+    fun retainWindow(window: Long): ExclusiveWindowPresentationWindow
+}
+
+/** Strong native ownership claim used by one lease; it never reconstructs a window wrapper. */
+internal interface ExclusiveWindowPresentationWindow : AutoCloseable {
+    val identity: Long
+
+    fun snapshot(): ExclusiveWindowPresentationSnapshot
 
     fun screen(displayId: Int): ExclusiveWindowPresentationScreen?
 
-    fun presentBorderless(window: Long)
+    fun presentBorderless()
 
-    fun presentFrame(window: Long, screen: ExclusiveWindowPresentationScreen)
+    fun presentFrame(screen: ExclusiveWindowPresentationScreen)
 
-    fun presentShieldingLevel(window: Long): Long
+    fun presentShieldingLevel(): Long
 
-    fun readback(window: Long): ExclusiveWindowPresentationReadback
+    fun readback(): ExclusiveWindowPresentationReadback
 
-    fun restoreStyle(window: Long, styleMask: Long)
+    fun restoreStyle(styleMask: Long)
 
-    fun restoreFrame(window: Long, frame: CGDisplayBoundsSnapshot)
+    fun restoreFrame(frame: CGDisplayBoundsSnapshot)
 
-    fun restoreLevel(window: Long, level: Long)
+    fun restoreLevel(level: Long)
 }
 
 /** Borrowed `NSScreen` information used only within the native boundary. */
@@ -197,7 +263,7 @@ private data class WindowLeaseIdentity(
 
 private class ManagedExclusiveWindowPresentationLease(
     private val native: ExclusiveWindowPresentationNative,
-    private val window: Long,
+    private val window: ExclusiveWindowPresentationWindow,
     private val snapshot: ExclusiveWindowPresentationSnapshot,
     private val identity: WindowLeaseIdentity,
     private val release: (WindowLeaseIdentity) -> Unit,
@@ -214,9 +280,10 @@ private class ManagedExclusiveWindowPresentationLease(
         get() = lock.withLock { restoreResult }
 
     override fun present(displayId: Int): ExclusiveWindowPresentationResult = lock.withLock {
-        if (closed) return ExclusiveWindowPresentationResult.WindowGone
+        if (!native.isMainThread()) return ExclusiveWindowPresentationResult.WrongThread
+        if (closed) return ExclusiveWindowPresentationResult.Closed
         val screen = try {
-            native.screen(displayId)
+            window.screen(displayId)
         } catch (gone: ExclusiveWindowPresentationWindowGoneException) {
             closeAsWindowGone()
             return ExclusiveWindowPresentationResult.WindowGone
@@ -227,24 +294,27 @@ private class ManagedExclusiveWindowPresentationLease(
         } ?: return ExclusiveWindowPresentationResult.MissingTargetScreen(displayId)
 
         var presentationLevel: Long? = null
+        var operation = ExclusiveWindowPresentationOperation.PresentBorderless
         try {
-            native.presentBorderless(window)
+            window.presentBorderless()
             styleOutstanding = true
-            native.presentFrame(window, screen)
+            operation = ExclusiveWindowPresentationOperation.PresentFrame
+            window.presentFrame(screen)
             frameOutstanding = true
-            presentationLevel = native.presentShieldingLevel(window)
+            operation = ExclusiveWindowPresentationOperation.PresentShieldingLevel
+            presentationLevel = window.presentShieldingLevel()
             levelOutstanding = true
         } catch (gone: ExclusiveWindowPresentationWindowGoneException) {
             closeAsWindowGone()
             return ExclusiveWindowPresentationResult.WindowGone
         } catch (failure: Throwable) {
             return ExclusiveWindowPresentationResult.Failed(
-                ExclusiveWindowPresentationFailure(presentationOperation(), failure.messageOrType()),
+                ExclusiveWindowPresentationFailure(operation, failure.messageOrType()),
             )
         }
 
         val actual = try {
-            native.readback(window)
+            window.readback()
         } catch (gone: ExclusiveWindowPresentationWindowGoneException) {
             closeAsWindowGone()
             return ExclusiveWindowPresentationResult.WindowGone
@@ -269,22 +339,32 @@ private class ManagedExclusiveWindowPresentationLease(
         }
     }
 
-    override fun readback(): ExclusiveWindowPresentationReadback = lock.withLock {
-        check(!closed) { "Exclusive window presentation lease is closed" }
-        native.readback(window)
-    }
-
-    override fun close() {
-        lock.withLock {
-            if (closeInvoked) return
-            closeInvoked = true
-            restore()
+    override fun readback(): ExclusiveWindowPresentationReadbackResult = lock.withLock {
+        if (!native.isMainThread()) return ExclusiveWindowPresentationReadbackResult.WrongThread
+        if (closed) return ExclusiveWindowPresentationReadbackResult.Closed
+        try {
+            ExclusiveWindowPresentationReadbackResult.Readback(window.readback())
+        } catch (gone: ExclusiveWindowPresentationWindowGoneException) {
+            closeAsWindowGone()
+            ExclusiveWindowPresentationReadbackResult.WindowGone
+        } catch (failure: Throwable) {
+            ExclusiveWindowPresentationReadbackResult.Failed(
+                ExclusiveWindowPresentationFailure(ExclusiveWindowPresentationOperation.Readback, failure.messageOrType()),
+            )
         }
     }
 
+    override fun close(): ExclusiveWindowPresentationRestoreResult = lock.withLock {
+        if (!native.isMainThread()) return ExclusiveWindowPresentationRestoreResult.WrongThread
+        if (closed) return ExclusiveWindowPresentationRestoreResult.Closed
+        if (closeInvoked) return requireNotNull(restoreResult)
+        closeInvoked = true
+        restore()
+    }
+
     override fun restore(): ExclusiveWindowPresentationRestoreResult = lock.withLock {
-        restoreResult?.let { if (closed) return it }
-        if (closed) return requireNotNull(restoreResult)
+        if (!native.isMainThread()) return ExclusiveWindowPresentationRestoreResult.WrongThread
+        if (closed) return ExclusiveWindowPresentationRestoreResult.Closed
 
         if (!styleOutstanding && !frameOutstanding && !levelOutstanding) {
             return readbackForNoopRestore()
@@ -293,15 +373,15 @@ private class ManagedExclusiveWindowPresentationLease(
         val failures = mutableListOf<ExclusiveWindowPresentationFailure>()
         try {
             if (styleOutstanding) restoreComponent(ExclusiveWindowPresentationOperation.RestoreStyle, failures) {
-                native.restoreStyle(window, snapshot.styleMask)
+                window.restoreStyle(snapshot.styleMask)
                 styleOutstanding = false
             }
             if (frameOutstanding) restoreComponent(ExclusiveWindowPresentationOperation.RestoreFrame, failures) {
-                native.restoreFrame(window, snapshot.frame)
+                window.restoreFrame(snapshot.frame)
                 frameOutstanding = false
             }
             if (levelOutstanding) restoreComponent(ExclusiveWindowPresentationOperation.RestoreLevel, failures) {
-                native.restoreLevel(window, snapshot.level)
+                window.restoreLevel(snapshot.level)
                 levelOutstanding = false
             }
         } catch (gone: ExclusiveWindowPresentationWindowGoneException) {
@@ -309,13 +389,14 @@ private class ManagedExclusiveWindowPresentationLease(
         }
 
         val readback = try {
-            native.readback(window)
+            window.readback()
         } catch (gone: ExclusiveWindowPresentationWindowGoneException) {
             return closeAsWindowGone()
         } catch (failure: Throwable) {
             failures += ExclusiveWindowPresentationFailure(ExclusiveWindowPresentationOperation.Readback, failure.messageOrType())
             null
         }
+        verifyRestoration(readback, failures)
         val result = if (failures.isEmpty() && !styleOutstanding && !frameOutstanding && !levelOutstanding) {
             ExclusiveWindowPresentationRestoreResult.Restored(requireNotNull(readback))
         } else {
@@ -327,9 +408,16 @@ private class ManagedExclusiveWindowPresentationLease(
     }
 
     private fun readbackForNoopRestore(): ExclusiveWindowPresentationRestoreResult = try {
-        val result = ExclusiveWindowPresentationRestoreResult.Restored(native.readback(window))
+        val readback = window.readback()
+        val failures = mutableListOf<ExclusiveWindowPresentationFailure>()
+        verifyRestoration(readback, failures)
+        val result = if (failures.isEmpty()) {
+            ExclusiveWindowPresentationRestoreResult.Restored(readback)
+        } else {
+            ExclusiveWindowPresentationRestoreResult.PartiallyRestored(readback, failures)
+        }
         restoreResult = result
-        closeAfterCompleteRestore()
+        if (result is ExclusiveWindowPresentationRestoreResult.Restored) closeAfterCompleteRestore()
         result
     } catch (gone: ExclusiveWindowPresentationWindowGoneException) {
         closeAsWindowGone()
@@ -358,15 +446,37 @@ private class ManagedExclusiveWindowPresentationLease(
         }
     }
 
-    private fun presentationOperation(): ExclusiveWindowPresentationOperation = when {
-        !styleOutstanding -> ExclusiveWindowPresentationOperation.PresentBorderless
-        !frameOutstanding -> ExclusiveWindowPresentationOperation.PresentFrame
-        !levelOutstanding -> ExclusiveWindowPresentationOperation.PresentShieldingLevel
-        else -> ExclusiveWindowPresentationOperation.Readback
+    private fun verifyRestoration(
+        readback: ExclusiveWindowPresentationReadback?,
+        failures: MutableList<ExclusiveWindowPresentationFailure>,
+    ) {
+        val observed = readback ?: return
+        if (!styleOutstanding && observed.styleMask != snapshot.styleMask) {
+            styleOutstanding = true
+            failures += ExclusiveWindowPresentationFailure(
+                ExclusiveWindowPresentationOperation.VerifyRestorationStyle,
+                "restored style mask did not match the opening snapshot",
+            )
+        }
+        if (!frameOutstanding && (observed.frame != snapshot.frame || observed.displayId != snapshot.displayId)) {
+            frameOutstanding = true
+            failures += ExclusiveWindowPresentationFailure(
+                ExclusiveWindowPresentationOperation.VerifyRestorationFrame,
+                "restored frame did not match the opening snapshot",
+            )
+        }
+        if (!levelOutstanding && observed.level != snapshot.level) {
+            levelOutstanding = true
+            failures += ExclusiveWindowPresentationFailure(
+                ExclusiveWindowPresentationOperation.VerifyRestorationLevel,
+                "restored level did not match the opening snapshot",
+            )
+        }
     }
 
     private fun closeAfterCompleteRestore() {
         closed = true
+        window.close()
         release(identity)
     }
 
@@ -374,6 +484,7 @@ private class ManagedExclusiveWindowPresentationLease(
         val result = ExclusiveWindowPresentationRestoreResult.WindowGone
         restoreResult = result
         closed = true
+        window.close()
         release(identity)
         return result
     }
@@ -381,19 +492,36 @@ private class ManagedExclusiveWindowPresentationLease(
 
 private object CocoaExclusiveWindowPresentationNative : ExclusiveWindowPresentationNative {
     override fun isMacOs26OrLater(): Boolean =
-        NSProcessInfo(NSProcessInfo.processInfo()).operatingSystemVersion().majorVersion >= 26L
+        NSProcessInfo(NSProcessInfo.processInfo()).isOperatingSystemAtLeastVersion(
+            NSOperatingSystemVersion(26L, 0L, 0L),
+        )
 
     override fun isMainThread(): Boolean = NSThread.isMainThread()
 
-    override fun snapshot(window: Long): ExclusiveWindowPresentationSnapshot {
-        val nativeWindow = window(window)
-        return ExclusiveWindowPresentationSnapshot(
-            styleMask = nativeWindow.styleMask().rawValue,
-            frame = nativeWindow.frame().toSnapshot(),
-            displayId = displayId(nativeWindow.screen()),
-            level = nativeWindow.level(),
-        )
+    fun retainWindow(window: NSWindow): ExclusiveWindowPresentationWindow =
+        CocoaExclusiveWindowPresentationWindow(window.retainStrong())
+
+    override fun retainWindow(window: Long): ExclusiveWindowPresentationWindow {
+        if (window == 0L) throw ExclusiveWindowPresentationWindowGoneException()
+        return retainWindow(NSWindow(MemorySegment.ofAddress(window)))
     }
+}
+
+private class CocoaExclusiveWindowPresentationWindow(
+    private val ownership: ObjCStrongRef<NSWindow>,
+) : ExclusiveWindowPresentationWindow {
+    private val window: NSWindow
+        get() = ownership.value
+
+    override val identity: Long
+        get() = window.ptr.address()
+
+    override fun snapshot(): ExclusiveWindowPresentationSnapshot = ExclusiveWindowPresentationSnapshot(
+        styleMask = window.styleMask().rawValue,
+        frame = window.frame().toSnapshot(),
+        displayId = displayId(window.screen()),
+        level = window.level(),
+    )
 
     override fun screen(displayId: Int): ExclusiveWindowPresentationScreen? {
         val screens = NSArray(NSScreen.screens())
@@ -406,45 +534,41 @@ private object CocoaExclusiveWindowPresentationNative : ExclusiveWindowPresentat
             ?.let { ExclusiveWindowPresentationScreen(displayId, it.frame().toSnapshot()) }
     }
 
-    override fun presentBorderless(window: Long) {
-        window(window).setStyleMask(NSWindowStyleMask(NSWindowStyleMask.NSWindowStyleMaskBorderless.rawValue))
+    override fun presentBorderless() {
+        window.setStyleMask(NSWindowStyleMask(NSWindowStyleMask.NSWindowStyleMaskBorderless.rawValue))
     }
 
-    override fun presentFrame(window: Long, screen: ExclusiveWindowPresentationScreen) {
-        window(window).setFrame_display_animate(screen.frame.toRect(), true, false)
+    override fun presentFrame(screen: ExclusiveWindowPresentationScreen) {
+        window.setFrame_display_animate(screen.frame.toRect(), true, false)
     }
 
-    override fun presentShieldingLevel(window: Long): Long {
+    override fun presentShieldingLevel(): Long {
         val level = CGShieldingWindowLevel().toLong()
-        window(window).setLevel(level)
+        window.setLevel(level)
         return level
     }
 
-    override fun readback(window: Long): ExclusiveWindowPresentationReadback {
-        val nativeWindow = window(window)
-        return ExclusiveWindowPresentationReadback(
-            styleMask = nativeWindow.styleMask().rawValue,
-            frame = nativeWindow.frame().toSnapshot(),
-            displayId = displayId(nativeWindow.screen()),
-            level = nativeWindow.level(),
-        )
+    override fun readback(): ExclusiveWindowPresentationReadback = ExclusiveWindowPresentationReadback(
+        styleMask = window.styleMask().rawValue,
+        frame = window.frame().toSnapshot(),
+        displayId = displayId(window.screen()),
+        level = window.level(),
+    )
+
+    override fun restoreStyle(styleMask: Long) {
+        window.setStyleMask(NSWindowStyleMask(styleMask))
     }
 
-    override fun restoreStyle(window: Long, styleMask: Long) {
-        window(window).setStyleMask(NSWindowStyleMask(styleMask))
+    override fun restoreFrame(frame: CGDisplayBoundsSnapshot) {
+        window.setFrame_display_animate(frame.toRect(), true, false)
     }
 
-    override fun restoreFrame(window: Long, frame: CGDisplayBoundsSnapshot) {
-        window(window).setFrame_display_animate(frame.toRect(), true, false)
+    override fun restoreLevel(level: Long) {
+        window.setLevel(level)
     }
 
-    override fun restoreLevel(window: Long, level: Long) {
-        window(window).setLevel(level)
-    }
-
-    private fun window(address: Long): NSWindow {
-        if (address == 0L) throw ExclusiveWindowPresentationWindowGoneException()
-        return NSWindow(MemorySegment.ofAddress(address))
+    override fun close() {
+        ownership.close()
     }
 
     private fun displayId(screen: MemorySegment): Int? =
