@@ -17,7 +17,6 @@ import org.graphiks.kffi.objc.CGDisplayModeGetPixelHeight
 import org.graphiks.kffi.objc.CGDisplayModeGetPixelWidth
 import org.graphiks.kffi.objc.CGDisplayModeGetRefreshRate
 import org.graphiks.kffi.objc.CGDisplayModeGetIOFlags
-import org.graphiks.kffi.objc.CGDisplayIsCaptured
 import org.graphiks.kffi.objc.CGDisplayPixelsHigh
 import org.graphiks.kffi.objc.CGDisplayPixelsWide
 import org.graphiks.kffi.objc.CGDisplayRelease
@@ -130,12 +129,29 @@ sealed interface ExclusiveDisplayLeaseOpenResult {
         val failure: ExclusiveDisplayNativeFailure,
     ) : ExclusiveDisplayLeaseOpenResult
 
-    data class FailedAfterCapture(
+    @ConsistentCopyVisibility
+    data class FailedAfterCapture internal constructor(
         val terminal: ExclusiveDisplayTerminal,
         val cleanup: ExclusiveDisplayReleaseResult,
         val recovery: ExclusiveDisplayLease?,
         val failure: ExclusiveDisplayNativeFailure,
-    ) : ExclusiveDisplayLeaseOpenResult
+    ) : ExclusiveDisplayLeaseOpenResult {
+        init {
+            require(terminal == cleanup.terminal) {
+                "FailedAfterCapture terminal must match cleanup terminal"
+            }
+            require(
+                when (terminal) {
+                    is ExclusiveDisplayTerminal.Released -> recovery == null
+                    is ExclusiveDisplayTerminal.Captured,
+                    ExclusiveDisplayTerminal.Unknown,
+                    -> recovery != null
+                },
+            ) {
+                "FailedAfterCapture recovery must exist exactly while release is unconfirmed"
+            }
+        }
+    }
 }
 
 /**
@@ -449,7 +465,6 @@ internal interface AppKitDisplayNative {
     fun modeIoFlags(mode: Long): Long
     fun modeIdentity(mode: Long): Long
     fun modesEqual(first: Long, second: Long): Boolean
-    fun isCaptured(displayId: Int): Boolean
     fun retain(mode: Long)
     fun release(mode: Long)
     fun setDisplayMode(displayId: Int, mode: Long)
@@ -524,8 +539,6 @@ private object CoreGraphicsDisplayNative : AppKitDisplayNative {
     override fun modesEqual(first: Long, second: Long): Boolean =
         CFEqual(MemorySegment.ofAddress(first), MemorySegment.ofAddress(second)).toInt() != 0
 
-    override fun isCaptured(displayId: Int): Boolean = CGDisplayIsCaptured(displayId) != 0
-
     override fun retain(mode: Long) {
         CFRetain(MemorySegment.ofAddress(mode))
     }
@@ -586,10 +599,13 @@ private class CoreGraphicsExclusiveDisplayLease(
         released?.let { return it }
         val failures = mutableListOf<ExclusiveDisplayNativeFailure>()
         if (restorePending && initialMode != 0L) {
-            restorePending = false
-            captureFailure(failures, ExclusiveDisplayNativeOperation.RestoreInitialMode) {
+            val restoreSucceeded = captureFailure(
+                failures,
+                ExclusiveDisplayNativeOperation.RestoreInitialMode,
+            ) {
                 native.setDisplayMode(displayId, initialMode)
             }
+            if (restoreSucceeded) restorePending = false
         }
         if (capturePending) {
             val releaseSucceeded = captureFailure(
@@ -601,8 +617,9 @@ private class CoreGraphicsExclusiveDisplayLease(
             if (releaseSucceeded) capturePending = false
         }
         val terminal = readTerminal(failures)
-        capturePending = terminal !is ExclusiveDisplayTerminal.Released
-        releaseReferences(failures)
+        if (terminal is ExclusiveDisplayTerminal.Released) {
+            releaseReferences(failures)
+        }
         ExclusiveDisplayReleaseResult(terminal, failures.toList()).also { result ->
             if (terminal is ExclusiveDisplayTerminal.Released) released = result
         }
@@ -638,13 +655,6 @@ private class CoreGraphicsExclusiveDisplayLease(
             failures += nativeFailure(ExclusiveDisplayNativeOperation.Readback, failure)
         }
 
-        val captured = try {
-            native.isCaptured(displayId)
-        } catch (failure: Throwable) {
-            failures += nativeFailure(ExclusiveDisplayNativeOperation.Readback, failure)
-            null
-        }
-
         if (currentMode != 0L) {
             captureFailure(failures, ExclusiveDisplayNativeOperation.ReleaseReference) {
                 native.release(currentMode)
@@ -652,11 +662,10 @@ private class CoreGraphicsExclusiveDisplayLease(
         }
 
         return when {
-            captured == false -> ExclusiveDisplayTerminal.Released(certifiedIdentity)
-            captured == true && certifiedIdentity != null ->
+            certifiedIdentity == null -> ExclusiveDisplayTerminal.Unknown
+            capturePending ->
                 ExclusiveDisplayTerminal.Captured(certifiedIdentity)
-
-            else -> ExclusiveDisplayTerminal.Unknown
+            else -> ExclusiveDisplayTerminal.Released(certifiedIdentity)
         }
     }
 

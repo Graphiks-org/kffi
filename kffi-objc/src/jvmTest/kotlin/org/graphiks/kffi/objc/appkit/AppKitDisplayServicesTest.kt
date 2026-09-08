@@ -311,11 +311,6 @@ private class RecordingDisplayNative(
         return first == second
     }
 
-    override fun isCaptured(displayId: Int): Boolean {
-        calls += "isCaptured:$displayId"
-        return false
-    }
-
     override fun retain(mode: Long) {
         calls += "retain:$mode"
     }

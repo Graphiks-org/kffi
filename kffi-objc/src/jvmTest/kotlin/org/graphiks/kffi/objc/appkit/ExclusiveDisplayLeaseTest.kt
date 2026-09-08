@@ -3,6 +3,7 @@ package org.graphiks.kffi.objc.appkit
 import java.lang.foreign.MemorySegment
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
 import kotlin.test.assertFalse
 import kotlin.test.assertIs
 import kotlin.test.assertNotNull
@@ -11,6 +12,13 @@ import kotlin.test.assertSame
 import kotlin.test.assertTrue
 
 class ExclusiveDisplayLeaseTest {
+    @Test
+    fun nativeLeaseContractDoesNotDependOnDeprecatedCaptureReadback() {
+        assertFalse(
+            AppKitDisplayNative::class.java.declaredMethods.any { it.name == "isCaptured" },
+        )
+    }
+
     @Test
     fun openCapturesBeforeSettingAndCertifiesTheTargetBeforeReturning() {
         val native = LeaseDisplayNative()
@@ -60,7 +68,6 @@ class ExclusiveDisplayLeaseTest {
                 "copyMode:$DISPLAY_ID",
                 "modeIdentity:$INITIAL_MODE",
                 "equal:$INITIAL_MODE:$INITIAL_MODE",
-                "isCaptured:$DISPLAY_ID",
                 "release:$INITIAL_MODE",
                 "release:$TARGET_MODE",
                 "release:$INITIAL_MODE",
@@ -89,7 +96,6 @@ class ExclusiveDisplayLeaseTest {
                 "copyMode:$DISPLAY_ID",
                 "modeIdentity:$IMPOSTOR_MODE",
                 "equal:$IMPOSTOR_MODE:$TARGET_MODE",
-                "isCaptured:$DISPLAY_ID",
                 "release:$IMPOSTOR_MODE",
             ),
             native.calls,
@@ -175,13 +181,14 @@ class ExclusiveDisplayLeaseTest {
         val captured = assertIs<ExclusiveDisplayTerminal.Captured>(failed.terminal)
         assertEquals(INITIAL_IDENTITY, captured.modeIdentity)
         val recovery = assertNotNull(failed.recovery)
-        assertEquals(0, native.ownedReferenceCount)
+        assertEquals(2, native.ownedReferenceCount)
 
         val retried = recovery.release()
 
-        assertEquals(ExclusiveDisplayTerminal.Released(null), retried.terminal)
+        assertEquals(ExclusiveDisplayTerminal.Released(INITIAL_IDENTITY), retried.terminal)
         assertFalse(native.captureRetained)
         assertEquals(2, native.calls.count { it == "releaseCapture:$DISPLAY_ID" })
+        assertEquals(0, native.ownedReferenceCount)
     }
 
     @Test
@@ -189,7 +196,7 @@ class ExclusiveDisplayLeaseTest {
         val native = LeaseDisplayNative().apply {
             failNext("setMode:$DISPLAY_ID:$TARGET_MODE", "target rejected")
             failNext("releaseCapture:$DISPLAY_ID", "release uncertain")
-            failNext("isCaptured:$DISPLAY_ID", "capture readback unavailable")
+            failNext("equal:$INITIAL_MODE:$INITIAL_MODE", "mode readback unavailable")
         }
 
         val failed = assertIs<ExclusiveDisplayLeaseOpenResult.FailedAfterCapture>(
@@ -198,9 +205,12 @@ class ExclusiveDisplayLeaseTest {
 
         assertSame(ExclusiveDisplayTerminal.Unknown, failed.terminal)
         assertSame(ExclusiveDisplayTerminal.Unknown, failed.cleanup.terminal)
-        assertNotNull(failed.recovery)
+        val recovery = assertNotNull(failed.recovery)
         assertFalse(failed.terminal is ExclusiveDisplayTerminal.Released)
         assertFalse(failed.terminal is ExclusiveDisplayTerminal.Captured)
+        assertEquals(2, native.ownedReferenceCount)
+
+        assertEquals(ExclusiveDisplayTerminal.Released(INITIAL_IDENTITY), recovery.release().terminal)
         assertEquals(0, native.ownedReferenceCount)
     }
 
@@ -213,24 +223,36 @@ class ExclusiveDisplayLeaseTest {
         native.calls.clear()
         native.failNext("setMode:$DISPLAY_ID:$INITIAL_MODE", "restore failed")
         native.failNext("releaseCapture:$DISPLAY_ID", "release failed")
-        native.failNext("isCaptured:$DISPLAY_ID", "readback failed")
+        native.failNext("equal:$TARGET_MODE:$TARGET_MODE", "readback failed")
         native.failNext("release:$TARGET_MODE", "readback ref failed")
         native.failNext("release:$TARGET_MODE", "target ref failed")
+        native.failNext("release:$INITIAL_MODE", "retry readback ref failed")
         native.failNext("release:$INITIAL_MODE", "initial ref failed")
 
-        val result = lease.release()
+        val first = lease.release()
 
-        assertSame(ExclusiveDisplayTerminal.Unknown, result.terminal)
+        assertSame(ExclusiveDisplayTerminal.Unknown, first.terminal)
         assertEquals(
             listOf(
                 ExclusiveDisplayNativeOperation.RestoreInitialMode,
                 ExclusiveDisplayNativeOperation.ReleaseCapture,
                 ExclusiveDisplayNativeOperation.Readback,
                 ExclusiveDisplayNativeOperation.ReleaseReference,
+            ),
+            first.failures.map(ExclusiveDisplayNativeFailure::operation),
+        )
+        assertEquals(2, native.ownedReferenceCount)
+
+        val second = lease.release()
+
+        assertEquals(ExclusiveDisplayTerminal.Released(INITIAL_IDENTITY), second.terminal)
+        assertEquals(
+            listOf(
+                ExclusiveDisplayNativeOperation.ReleaseReference,
                 ExclusiveDisplayNativeOperation.ReleaseReference,
                 ExclusiveDisplayNativeOperation.ReleaseReference,
             ),
-            result.failures.map(ExclusiveDisplayNativeFailure::operation),
+            second.failures.map(ExclusiveDisplayNativeFailure::operation),
         )
         assertEquals(
             listOf(
@@ -239,8 +261,13 @@ class ExclusiveDisplayLeaseTest {
                 "copyMode:$DISPLAY_ID",
                 "modeIdentity:$TARGET_MODE",
                 "equal:$TARGET_MODE:$TARGET_MODE",
-                "isCaptured:$DISPLAY_ID",
                 "release:$TARGET_MODE",
+                "setMode:$DISPLAY_ID:$INITIAL_MODE",
+                "releaseCapture:$DISPLAY_ID",
+                "copyMode:$DISPLAY_ID",
+                "modeIdentity:$INITIAL_MODE",
+                "equal:$INITIAL_MODE:$INITIAL_MODE",
+                "release:$INITIAL_MODE",
                 "release:$TARGET_MODE",
                 "release:$INITIAL_MODE",
             ),
@@ -260,6 +287,93 @@ class ExclusiveDisplayLeaseTest {
         assertSame(ExclusiveDisplayTerminal.Unknown, lease.readback().terminal)
 
         lease.release()
+        assertEquals(0, native.ownedReferenceCount)
+    }
+
+    @Test
+    fun successfulCaptureReleaseIsNotRetriedWhenModeReadbackIsUnknown() {
+        val native = LeaseDisplayNative()
+        val lease = assertIs<ExclusiveDisplayLeaseOpenResult.Opened>(
+            AppKitDisplayServices.openExclusiveLease(DISPLAY_ID, TARGET_IDENTITY, native),
+        ).lease
+        native.calls.clear()
+        native.failNext("copyMode:$DISPLAY_ID", "mode unavailable")
+
+        assertSame(ExclusiveDisplayTerminal.Unknown, lease.release().terminal)
+        lease.release()
+
+        assertEquals(1, native.calls.count { it == "releaseCapture:$DISPLAY_ID" })
+    }
+
+    @Test
+    fun recoveryRetriesFailedRestoreBeforeFreeingOwnedModeReferences() {
+        val native = LeaseDisplayNative()
+        val lease = assertIs<ExclusiveDisplayLeaseOpenResult.Opened>(
+            AppKitDisplayServices.openExclusiveLease(DISPLAY_ID, TARGET_IDENTITY, native),
+        ).lease
+        native.calls.clear()
+        native.failNext("setMode:$DISPLAY_ID:$INITIAL_MODE", "restore busy")
+        native.failNext("releaseCapture:$DISPLAY_ID", "release busy")
+
+        val first = lease.release()
+
+        assertEquals(ExclusiveDisplayTerminal.Captured(TARGET_IDENTITY), first.terminal)
+        assertEquals(
+            listOf(
+                ExclusiveDisplayNativeOperation.RestoreInitialMode,
+                ExclusiveDisplayNativeOperation.ReleaseCapture,
+            ),
+            first.failures.map(ExclusiveDisplayNativeFailure::operation),
+        )
+        assertEquals(2, native.ownedReferenceCount)
+
+        val second = lease.release()
+
+        assertEquals(ExclusiveDisplayTerminal.Released(INITIAL_IDENTITY), second.terminal)
+        assertEquals(2, native.calls.count { it == "setMode:$DISPLAY_ID:$INITIAL_MODE" })
+        assertEquals(2, native.calls.count { it == "releaseCapture:$DISPLAY_ID" })
+        assertEquals(0, native.ownedReferenceCount)
+    }
+
+    @Test
+    fun failedAfterCaptureRejectsContradictoryTerminalRecoveryCombinations() {
+        val native = LeaseDisplayNative()
+        val recovery = assertIs<ExclusiveDisplayLeaseOpenResult.Opened>(
+            AppKitDisplayServices.openExclusiveLease(DISPLAY_ID, TARGET_IDENTITY, native),
+        ).lease
+        val failure = ExclusiveDisplayNativeFailure(
+            ExclusiveDisplayNativeOperation.Readback,
+            "uncertain",
+        )
+        val released = ExclusiveDisplayTerminal.Released(INITIAL_IDENTITY)
+        val captured = ExclusiveDisplayTerminal.Captured(TARGET_IDENTITY)
+
+        assertFailsWith<IllegalArgumentException> {
+            ExclusiveDisplayLeaseOpenResult.FailedAfterCapture(
+                terminal = released,
+                cleanup = ExclusiveDisplayReleaseResult(released, emptyList()),
+                recovery = recovery,
+                failure = failure,
+            )
+        }
+        assertFailsWith<IllegalArgumentException> {
+            ExclusiveDisplayLeaseOpenResult.FailedAfterCapture(
+                terminal = captured,
+                cleanup = ExclusiveDisplayReleaseResult(captured, emptyList()),
+                recovery = null,
+                failure = failure,
+            )
+        }
+        assertFailsWith<IllegalArgumentException> {
+            ExclusiveDisplayLeaseOpenResult.FailedAfterCapture(
+                terminal = ExclusiveDisplayTerminal.Unknown,
+                cleanup = ExclusiveDisplayReleaseResult(released, emptyList()),
+                recovery = recovery,
+                failure = failure,
+            )
+        }
+
+        recovery.release()
         assertEquals(0, native.ownedReferenceCount)
     }
 
@@ -349,13 +463,8 @@ private class LeaseDisplayNative : AppKitDisplayNative {
 
     override fun modesEqual(first: Long, second: Long): Boolean {
         calls += "equal:$first:$second"
+        fail("equal:$first:$second")
         return first == second
-    }
-
-    override fun isCaptured(displayId: Int): Boolean {
-        calls += "isCaptured:$displayId"
-        fail("isCaptured:$displayId")
-        return captured
     }
 
     override fun retain(mode: Long) {
