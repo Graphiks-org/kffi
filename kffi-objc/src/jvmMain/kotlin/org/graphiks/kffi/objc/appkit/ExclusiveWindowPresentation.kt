@@ -337,16 +337,16 @@ private class ManagedExclusiveWindowPresentationLease(
         var operation = ExclusiveWindowPresentationOperation.PresentBorderless
         try {
             markPresentationMutation()
-            window.presentBorderless()
             styleOutstanding = true
+            window.presentBorderless()
             operation = ExclusiveWindowPresentationOperation.PresentFrame
             markPresentationMutation()
-            window.presentFrame(screen)
             frameOutstanding = true
+            window.presentFrame(screen)
             operation = ExclusiveWindowPresentationOperation.PresentShieldingLevel
             markPresentationMutation()
-            presentationLevel = window.presentShieldingLevel()
             levelOutstanding = true
+            presentationLevel = window.presentShieldingLevel()
         } catch (gone: ExclusiveWindowPresentationWindowGoneException) {
             closeAsWindowGone()
             return ExclusiveWindowPresentationResult.WindowGone
