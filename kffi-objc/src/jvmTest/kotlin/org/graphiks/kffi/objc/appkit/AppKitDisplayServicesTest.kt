@@ -306,6 +306,16 @@ private class RecordingDisplayNative(
         return (modeIdentities[mode] ?: mode.toInt()).toLong() and 0xFFFF_FFFFL
     }
 
+    override fun modesEqual(first: Long, second: Long): Boolean {
+        calls += "equal:$first:$second"
+        return first == second
+    }
+
+    override fun isCaptured(displayId: Int): Boolean {
+        calls += "isCaptured:$displayId"
+        return false
+    }
+
     override fun retain(mode: Long) {
         calls += "retain:$mode"
     }
