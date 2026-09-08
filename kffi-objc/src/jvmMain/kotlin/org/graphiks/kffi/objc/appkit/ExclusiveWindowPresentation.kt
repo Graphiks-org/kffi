@@ -301,9 +301,17 @@ private class ManagedExclusiveWindowPresentationLease(
     private var styleOutstanding = false
     private var frameOutstanding = false
     private var levelOutstanding = false
-    private var closed = false
+    private var everMutated = false
+    private var verifiedRestored = false
     private var restoreResult: ExclusiveWindowPresentationRestoreResult? = null
     private var closeResult: ExclusiveWindowPresentationCloseResult.Terminated? = null
+    private var terminalState = TerminalState.Open
+
+    private enum class TerminalState {
+        Open,
+        Closing,
+        Closed,
+    }
 
     override val lastRestoreResult: ExclusiveWindowPresentationRestoreResult?
         get() = lock.withLock { restoreResult }
@@ -313,7 +321,7 @@ private class ManagedExclusiveWindowPresentationLease(
 
     override fun present(displayId: Int): ExclusiveWindowPresentationResult = lock.withLock {
         if (!native.isMainThread()) return ExclusiveWindowPresentationResult.WrongThread
-        if (closed) return ExclusiveWindowPresentationResult.Closed
+        if (terminalState != TerminalState.Open) return ExclusiveWindowPresentationResult.Closed
         val screen = try {
             window.screen(displayId)
         } catch (gone: ExclusiveWindowPresentationWindowGoneException) {
@@ -328,12 +336,15 @@ private class ManagedExclusiveWindowPresentationLease(
         var presentationLevel: Long? = null
         var operation = ExclusiveWindowPresentationOperation.PresentBorderless
         try {
+            markPresentationMutation()
             window.presentBorderless()
             styleOutstanding = true
             operation = ExclusiveWindowPresentationOperation.PresentFrame
+            markPresentationMutation()
             window.presentFrame(screen)
             frameOutstanding = true
             operation = ExclusiveWindowPresentationOperation.PresentShieldingLevel
+            markPresentationMutation()
             presentationLevel = window.presentShieldingLevel()
             levelOutstanding = true
         } catch (gone: ExclusiveWindowPresentationWindowGoneException) {
@@ -373,7 +384,7 @@ private class ManagedExclusiveWindowPresentationLease(
 
     override fun readback(): ExclusiveWindowPresentationReadbackResult = lock.withLock {
         if (!native.isMainThread()) return ExclusiveWindowPresentationReadbackResult.WrongThread
-        if (closed) return ExclusiveWindowPresentationReadbackResult.Closed
+        if (terminalState != TerminalState.Open) return ExclusiveWindowPresentationReadbackResult.Closed
         try {
             ExclusiveWindowPresentationReadbackResult.Readback(window.readback())
         } catch (gone: ExclusiveWindowPresentationWindowGoneException) {
@@ -387,26 +398,22 @@ private class ManagedExclusiveWindowPresentationLease(
     }
 
     override fun close(): ExclusiveWindowPresentationCloseResult = lock.withLock {
-        if (!native.isMainThread()) return ExclusiveWindowPresentationCloseResult.WrongThread
         closeResult?.let { return it }
-        val restoration = when (val result = restore()) {
-            is ExclusiveWindowPresentationRestoreResult.Restored ->
-                ExclusiveWindowPresentationTerminalRestoration.Restored(result.readback)
-
-            is ExclusiveWindowPresentationRestoreResult.PartiallyRestored ->
-                ExclusiveWindowPresentationTerminalRestoration.PartiallyRestored(result.readback, result.failures)
-
-            ExclusiveWindowPresentationRestoreResult.WindowGone -> ExclusiveWindowPresentationTerminalRestoration.WindowGone
-            ExclusiveWindowPresentationRestoreResult.Closed,
-            ExclusiveWindowPresentationRestoreResult.WrongThread,
-            -> ExclusiveWindowPresentationTerminalRestoration.NotRequired
+        if (!native.isMainThread()) return ExclusiveWindowPresentationCloseResult.WrongThread
+        val restoration = when {
+            !everMutated -> ExclusiveWindowPresentationTerminalRestoration.NotRequired
+            verifiedRestored -> {
+                val restored = checkNotNull(restoreResult as? ExclusiveWindowPresentationRestoreResult.Restored)
+                ExclusiveWindowPresentationTerminalRestoration.Restored(restored.readback)
+            }
+            else -> restore().toTerminalRestoration()
         }
-        ExclusiveWindowPresentationCloseResult.Terminated(restoration, emptyList()).also { closeResult = it }
+        terminalize(restoration)
     }
 
     override fun restore(): ExclusiveWindowPresentationRestoreResult = lock.withLock {
         if (!native.isMainThread()) return ExclusiveWindowPresentationRestoreResult.WrongThread
-        if (closed) return ExclusiveWindowPresentationRestoreResult.Closed
+        if (terminalState != TerminalState.Open) return ExclusiveWindowPresentationRestoreResult.Closed
 
         if (!styleOutstanding && !frameOutstanding && !levelOutstanding) {
             return readbackForNoopRestore()
@@ -445,7 +452,7 @@ private class ManagedExclusiveWindowPresentationLease(
             ExclusiveWindowPresentationRestoreResult.PartiallyRestored(readback, failures)
         }
         restoreResult = result
-        if (result is ExclusiveWindowPresentationRestoreResult.Restored) closeAfterCompleteRestore()
+        verifiedRestored = result is ExclusiveWindowPresentationRestoreResult.Restored
         result
     }
 
@@ -459,7 +466,7 @@ private class ManagedExclusiveWindowPresentationLease(
             ExclusiveWindowPresentationRestoreResult.PartiallyRestored(readback, failures)
         }
         restoreResult = result
-        if (result is ExclusiveWindowPresentationRestoreResult.Restored) closeAfterCompleteRestore()
+        verifiedRestored = result is ExclusiveWindowPresentationRestoreResult.Restored
         result
     } catch (gone: ExclusiveWindowPresentationWindowGoneException) {
         closeAsWindowGone()
@@ -471,6 +478,7 @@ private class ManagedExclusiveWindowPresentationLease(
             ),
         )
         restoreResult = result
+        verifiedRestored = false
         result
     }
 
@@ -516,19 +524,58 @@ private class ManagedExclusiveWindowPresentationLease(
         }
     }
 
-    private fun closeAfterCompleteRestore() {
-        closed = true
-        window.close()
-        release(identity)
+    private fun markPresentationMutation() {
+        everMutated = true
+        verifiedRestored = false
     }
 
     private fun closeAsWindowGone(): ExclusiveWindowPresentationRestoreResult.WindowGone {
         val result = ExclusiveWindowPresentationRestoreResult.WindowGone
         restoreResult = result
-        closed = true
-        window.close()
-        release(identity)
+        verifiedRestored = false
+        terminalize(ExclusiveWindowPresentationTerminalRestoration.WindowGone)
         return result
+    }
+
+    private fun ExclusiveWindowPresentationRestoreResult.toTerminalRestoration():
+        ExclusiveWindowPresentationTerminalRestoration = when (this) {
+        is ExclusiveWindowPresentationRestoreResult.Restored ->
+            ExclusiveWindowPresentationTerminalRestoration.Restored(readback)
+
+        is ExclusiveWindowPresentationRestoreResult.PartiallyRestored ->
+            ExclusiveWindowPresentationTerminalRestoration.PartiallyRestored(readback, failures)
+
+        ExclusiveWindowPresentationRestoreResult.WindowGone -> ExclusiveWindowPresentationTerminalRestoration.WindowGone
+        ExclusiveWindowPresentationRestoreResult.Closed,
+        ExclusiveWindowPresentationRestoreResult.WrongThread,
+        -> error("an open main-thread lease cannot reject its terminal restoration")
+    }
+
+    private fun terminalize(
+        restoration: ExclusiveWindowPresentationTerminalRestoration,
+    ): ExclusiveWindowPresentationCloseResult.Terminated {
+        closeResult?.let { return it }
+        check(terminalState == TerminalState.Open)
+        terminalState = TerminalState.Closing
+        val cleanupFailures = mutableListOf<ExclusiveWindowPresentationFailure>()
+        try {
+            try {
+                window.close()
+            } catch (failure: Throwable) {
+                cleanupFailures += ExclusiveWindowPresentationFailure(
+                    ExclusiveWindowPresentationOperation.ReleaseOwner,
+                    failure.messageOrType(),
+                )
+            }
+        } finally {
+            try {
+                release(identity)
+            } finally {
+                terminalState = TerminalState.Closed
+            }
+        }
+        return ExclusiveWindowPresentationCloseResult.Terminated(restoration, cleanupFailures.toList())
+            .also { closeResult = it }
     }
 }
 
