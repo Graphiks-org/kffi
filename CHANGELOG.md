@@ -10,6 +10,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Detached CoreGraphics display-mode inventories with deterministic mode ordering and copied I/O
+  flags, a closeable pointer-free display-reconfiguration observer, and macOS 26+ AppKit screen
+  snapshots safely associated with CoreGraphics display identifiers.
 - A callback-scoped, pointer-free ScreenCaptureKit frame lease that copies bounded CoreVideo
   planes into detached Kotlin byte arrays, with read-only lock/unlock safety and quiescent output
   teardown.

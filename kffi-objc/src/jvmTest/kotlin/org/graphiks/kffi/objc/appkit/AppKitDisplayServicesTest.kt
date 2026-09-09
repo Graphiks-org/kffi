@@ -60,11 +60,15 @@ class AppKitDisplayServicesTest {
 
         assertEquals(1920, mode.pixelWidth)
         assertEquals(1080, mode.pixelHeight)
+        assertEquals(60.0, mode.refreshRateHz)
+        assertEquals(0L, mode.ioFlags)
         assertEquals(
             listOf(
                 "copyMode:17",
                 "modeWide:51966",
                 "modeHigh:51966",
+                "modeRefresh:51966",
+                "modeIoFlags:51966",
                 "retain:51966",
                 "setMode:29:51966",
                 "release:51966",
@@ -108,12 +112,75 @@ class AppKitDisplayServicesTest {
         )
         assertEquals(listOf("bounds:17"), native.calls)
     }
+
+    @Test
+    fun allModesCopiesEveryModeThenReleasesTheNativeArray() {
+        val native = RecordingDisplayNative(
+            allModes = listOf(
+                0x100L to (2560L to 1440L),
+                0x200L to (1920L to 1080L),
+            ),
+            refreshRates = mapOf(0x100L to 120.0, 0x200L to 0.0),
+            ioFlags = mapOf(0x100L to 9L, 0x200L to 4L),
+        )
+
+        assertEquals(
+            listOf(
+                CGDisplayModeSnapshot(0, 1920, 1080, null, 4),
+                CGDisplayModeSnapshot(1, 2560, 1440, 120.0, 9),
+            ),
+            AppKitDisplayServices.allModes(17, native),
+        )
+        assertEquals(
+            listOf(
+                "copyAllModes:17",
+                "count:48879",
+                "modeAt:48879:0",
+                "modeWide:256",
+                "modeHigh:256",
+                "modeRefresh:256",
+                "modeIoFlags:256",
+                "modeAt:48879:1",
+                "modeWide:512",
+                "modeHigh:512",
+                "modeRefresh:512",
+                "modeIoFlags:512",
+                "release:48879",
+            ),
+            native.calls,
+        )
+    }
+
+    @Test
+    fun allModesOrdersStableNativeIdentityBeforeAssigningOrdinals() {
+        val native = RecordingDisplayNative(
+            allModes = listOf(
+                0x300L to (1920L to 1080L),
+                0x100L to (2560L to 1440L),
+                0x200L to (1920L to 1080L),
+            ),
+            refreshRates = mapOf(0x300L to 60.0, 0x100L to 120.0, 0x200L to 60.0),
+            ioFlags = mapOf(0x300L to 7L, 0x100L to 1L, 0x200L to 3L),
+        )
+
+        assertEquals(
+            listOf(
+                CGDisplayModeSnapshot(0, 1920, 1080, 60.0, 3),
+                CGDisplayModeSnapshot(1, 1920, 1080, 60.0, 7),
+                CGDisplayModeSnapshot(2, 2560, 1440, 120.0, 1),
+            ),
+            AppKitDisplayServices.allModes(17, native),
+        )
+    }
 }
 
 private class RecordingDisplayNative(
     private val activeDisplays: IntArray = intArrayOf(),
     private val pixels: Map<Int, Pair<Long, Long>> = emptyMap(),
     private val modeAddress: Long = 1L,
+    private val allModes: List<Pair<Long, Pair<Long, Long>>> = emptyList(),
+    private val refreshRates: Map<Long, Double> = emptyMap(),
+    private val ioFlags: Map<Long, Long> = emptyMap(),
     private val bounds: CGDisplayBoundsSnapshot = CGDisplayBoundsSnapshot(0.0, 0.0, 1.0, 1.0),
 ) : AppKitDisplayNative {
     val calls = mutableListOf<String>()
@@ -143,14 +210,39 @@ private class RecordingDisplayNative(
         return modeAddress
     }
 
+    override fun copyAllDisplayModes(displayId: Int): Long {
+        calls += "copyAllModes:$displayId"
+        return 0xBEEFL
+    }
+
+    override fun modeCount(modes: Long): Long {
+        calls += "count:$modes"
+        return allModes.size.toLong()
+    }
+
+    override fun modeAt(modes: Long, index: Long): Long {
+        calls += "modeAt:$modes:$index"
+        return allModes[index.toInt()].first
+    }
+
     override fun modePixelWidth(mode: Long): Long {
         calls += "modeWide:$mode"
-        return 1920
+        return allModes.firstOrNull { it.first == mode }?.second?.first ?: 1920
     }
 
     override fun modePixelHeight(mode: Long): Long {
         calls += "modeHigh:$mode"
-        return 1080
+        return allModes.firstOrNull { it.first == mode }?.second?.second ?: 1080
+    }
+
+    override fun modeRefreshRate(mode: Long): Double {
+        calls += "modeRefresh:$mode"
+        return refreshRates[mode] ?: 60.0
+    }
+
+    override fun modeIoFlags(mode: Long): Long {
+        calls += "modeIoFlags:$mode"
+        return ioFlags[mode] ?: 0L
     }
 
     override fun retain(mode: Long) {
