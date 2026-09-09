@@ -43,7 +43,21 @@ class ObjCMethodRouter internal constructor(
     private val declaredMethods: Map<String, ObjCMethodSignature<*>>,
 ) {
     private val bindings = mutableMapOf<Long, ObjCMethodBinding>()
+    private var eventObservationContext = NSEventObservation.Context()
+    private var selectorAddress: (String) -> Long = { ObjCRuntime.sel(it).address() }
+    private var eventFromArgument: (Long) -> NSEvent = ::nativeEvent
     private var frozen = false
+
+    internal constructor(
+        declaredMethods: Map<String, ObjCMethodSignature<*>>,
+        touchSource: NSEventObservation.TouchSource,
+        selectorAddress: (String) -> Long,
+        eventFromArgument: (Long) -> NSEvent,
+    ) : this(declaredMethods) {
+        eventObservationContext = NSEventObservation.Context(touchSource)
+        this.selectorAddress = selectorAddress
+        this.eventFromArgument = eventFromArgument
+    }
 
     /**
      * Binds [selector] to [handler]. The [NSObject] argument is borrowed and is valid only for the
@@ -61,7 +75,11 @@ class ObjCMethodRouter internal constructor(
      * the handler may retain the observation after the Objective-C callback has returned.
      */
     fun onNSEvent(selector: String, handler: (NSEventObservation) -> Unit) {
-        bind(selector, ObjCMethodSignatures.VoidObject, NSEventBinding(handler))
+        bind(
+            selector,
+            ObjCMethodSignatures.VoidObject,
+            NSEventBinding(selector, eventObservationContext, handler),
+        )
     }
 
     /**
@@ -188,24 +206,28 @@ class ObjCMethodRouter internal constructor(
 
     internal fun freeze() {
         val boundSelectors = bindings.keys
-        val missing = declaredMethods.keys.filter { ObjCRuntime.sel(it).address() !in boundSelectors }
+        val missing = declaredMethods.keys.filter { selectorAddress(it) !in boundSelectors }
         require(missing.isEmpty()) {
             "Missing managed Objective-C bindings: ${missing.sorted().joinToString()}"
         }
         frozen = true
     }
 
-    internal fun invokeVoidObject(command: Long, argument: Long) {
+    internal fun invokeVoidObject(receiver: MemorySegment, command: Long, argument: Long) {
         check(frozen) { "Managed Objective-C router is not frozen" }
         when (val binding = bindings[command]) {
             is VoidObjectBinding -> binding.handler(NSObject(segment(argument)))
             is NSEventBinding -> {
                 require(argument != 0L) { "Managed NSEvent callback received a nil event" }
-                binding.handler(NSEventObservation.from(NSEvent(segment(argument))))
+                binding.handler(binding.observe(eventFromArgument(argument), receiver))
             }
 
             else -> Unit
         }
+    }
+
+    internal fun close() {
+        eventObservationContext.close()
     }
 
     internal fun invokeBooleanObject(command: Long, argument: Long): Boolean {
@@ -344,14 +366,16 @@ class ObjCMethodRouter internal constructor(
         require(declaredSignature.identity == expectedSignature.identity) {
             "Selector '$selector' uses '${declaredSignature.identity}', not '${expectedSignature.identity}'"
         }
-        val selectorAddress = ObjCRuntime.sel(selector).address()
-        require(bindings.putIfAbsent(selectorAddress, binding) == null) {
+        val command = selectorAddress(selector)
+        require(bindings.putIfAbsent(command, binding) == null) {
             "Selector '$selector' was bound more than once"
         }
     }
 
     private fun segment(address: Long): MemorySegment =
         if (address == 0L) MemorySegment.NULL else MemorySegment.ofAddress(address)
+
+    private fun nativeEvent(address: Long): NSEvent = NSEvent(MemorySegment.ofAddress(address))
 }
 
 private sealed interface ObjCMethodBinding
@@ -361,8 +385,13 @@ private class VoidObjectBinding(
 ) : ObjCMethodBinding
 
 private class NSEventBinding(
+    private val selector: String,
+    private val context: NSEventObservation.Context,
     val handler: (NSEventObservation) -> Unit,
-) : ObjCMethodBinding
+) : ObjCMethodBinding {
+    fun observe(event: NSEvent, receiver: MemorySegment): NSEventObservation =
+        context.snapshot(event, selector, receiver)
+}
 
 private class BooleanObjectBinding(
     val fallback: Boolean,
@@ -435,6 +464,7 @@ internal object ObjCMethodDispatch {
 
     internal data class NativeRoute(
         val token: NativeAddress,
+        val receiver: MemorySegment,
         val router: ObjCMethodRouter,
         val onError: CallbackExceptionHandler,
     ) : JvmManagedObjCRoute {
@@ -523,8 +553,15 @@ internal object ObjCMethodDispatch {
         val token = requireNotNull(registration.userdata) {
             "Managed Objective-C callback registration did not allocate routing userdata"
         }
-        val route = NativeRoute(token, router, onError)
-        return JvmManagedObjCBridge.install(receiver.address(), route)
+        val route = NativeRoute(token, receiver, router, onError)
+        val installedRoute = JvmManagedObjCBridge.install(receiver.address(), route)
+        return AutoCloseable {
+            try {
+                installedRoute.close()
+            } finally {
+                router.close()
+            }
+        }
     }
 
     fun dispatchVoidObject(
@@ -536,7 +573,7 @@ internal object ObjCMethodDispatch {
         acquireRoute(boundary, route)
         beforeCallbackAdmissionForTest.get()?.invoke()
         CallbackRuntime.dispatchSafely(callbackType, route.token) {
-            route.router.invokeVoidObject(command, argument)
+            route.router.invokeVoidObject(route.receiver, command, argument)
         }
     }
 
