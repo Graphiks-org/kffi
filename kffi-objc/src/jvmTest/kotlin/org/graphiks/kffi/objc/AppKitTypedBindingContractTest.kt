@@ -45,6 +45,13 @@ class AppKitTypedBindingContractTest {
         assertTrue(floating < modal)
     }
 
+    @Test
+    fun generatedAppKitWorkspaceAccessibilityNotificationResolvesOnMacOs() {
+        if (!System.getProperty("os.name").startsWith("Mac", ignoreCase = true)) return
+
+        assertTrue(NSWorkspaceAccessibilityDisplayOptionsDidChangeNotification != MemorySegment.NULL)
+    }
+
     @Suppress("UNUSED_VARIABLE")
     private val typedCallContract: (NSApplication, NSEvent, NSWindow) -> Unit = { app, event, window ->
         val policy: NSApplicationActivationPolicy = app.activationPolicy()
