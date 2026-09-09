@@ -14,6 +14,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `NSWorkspaceAccessibilityDisplayOptionsDidChangeNotification` to resolve on macOS.
 
 ### Added
+- Stable, non-negative I/O display-mode identities for detached CoreGraphics
+  mode inventories, which reject missing or duplicate identities rather than
+  publishing a partial list.
 - Detached CoreGraphics display-mode inventories with deterministic mode ordering and copied I/O
   flags, a closeable pointer-free display-reconfiguration observer, and macOS 26+ AppKit screen
   snapshots safely associated with CoreGraphics display identifiers.
