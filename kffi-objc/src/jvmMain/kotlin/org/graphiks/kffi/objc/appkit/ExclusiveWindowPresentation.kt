@@ -129,11 +129,26 @@ sealed interface ExclusiveWindowPresentationRestoreResult {
 
 /** Result of terminally closing an exclusive window presentation lease. */
 sealed interface ExclusiveWindowPresentationCloseResult {
+    /**
+     * A terminal outcome cached after the final restoration, native owner release, and duplicate-guard release.
+     *
+     * Once available, this same instance is returned by later [ExclusiveWindowPresentationLease.close] calls,
+     * including calls made off the AppKit main thread. Those cached calls perform no native I/O.
+     */
     data class Terminated(
         val restoration: ExclusiveWindowPresentationTerminalRestoration,
         val cleanupFailures: List<ExclusiveWindowPresentationFailure>,
     ) : ExclusiveWindowPresentationCloseResult
 
+    /**
+     * Terminalization is already running synchronously on this lease.
+     *
+     * No terminal outcome is available yet. This can be returned only by a reentrant close invoked from native
+     * owner cleanup; it performs no additional native I/O and does not change the in-progress cleanup.
+     */
+    data object Closing : ExclusiveWindowPresentationCloseResult
+
+    /** The lease is still open, but the caller is not on the AppKit main thread. */
     data object WrongThread : ExclusiveWindowPresentationCloseResult
 }
 
@@ -153,18 +168,45 @@ sealed interface ExclusiveWindowPresentationTerminalRestoration {
     data object WindowGone : ExclusiveWindowPresentationTerminalRestoration
 }
 
-/** A managed, pointer-free owner of an exclusive AppKit window presentation. */
+/**
+ * A managed, pointer-free owner of an exclusive AppKit window presentation.
+ *
+ * The lease retains its native window owner and holds its duplicate-window guard until terminal [close], including
+ * after [present] or a successful [restore].
+ */
 interface ExclusiveWindowPresentationLease {
     fun present(displayId: Int): ExclusiveWindowPresentationResult
 
     fun readback(): ExclusiveWindowPresentationReadbackResult
 
+    /**
+     * Attempts a retryable, non-terminal restoration to the opening snapshot.
+     *
+     * A successful result keeps the native owner and duplicate-window guard until [close].
+     */
     fun restore(): ExclusiveWindowPresentationRestoreResult
 
+    /**
+     * The latest actual restoration attempt, or `null` before one has completed.
+     *
+     * Terminal cache lookups and wrong-thread rejections do not replace this value.
+     */
     val lastRestoreResult: ExclusiveWindowPresentationRestoreResult?
 
+    /**
+     * The cached terminal close outcome, or `null` while the lease is open or terminalization is in progress.
+     *
+     * This detached cache is safe to read off the AppKit main thread.
+     */
     val lastCloseResult: ExclusiveWindowPresentationCloseResult.Terminated?
 
+    /**
+     * Performs the final restoration when required, then releases the retained native owner and duplicate guard.
+     *
+     * After [ExclusiveWindowPresentationCloseResult.Terminated] is returned, later calls return that same cached
+     * result without native I/O, including off the AppKit main thread. A synchronous reentrant call made while
+     * owner cleanup is in progress returns [ExclusiveWindowPresentationCloseResult.Closing].
+     */
     fun close(): ExclusiveWindowPresentationCloseResult
 }
 
@@ -399,6 +441,7 @@ private class ManagedExclusiveWindowPresentationLease(
 
     override fun close(): ExclusiveWindowPresentationCloseResult = lock.withLock {
         closeResult?.let { return it }
+        if (terminalState == TerminalState.Closing) return ExclusiveWindowPresentationCloseResult.Closing
         if (!native.isMainThread()) return ExclusiveWindowPresentationCloseResult.WrongThread
         val restoration = when {
             !everMutated -> ExclusiveWindowPresentationTerminalRestoration.NotRequired

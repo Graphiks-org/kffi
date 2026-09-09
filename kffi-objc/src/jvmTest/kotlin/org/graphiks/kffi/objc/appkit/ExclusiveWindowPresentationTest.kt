@@ -282,6 +282,26 @@ class ExclusiveWindowPresentationTest {
     }
 
     @Test
+    fun reentrantCloseDuringOwnerReleaseReportsClosingThenCachesTheTerminalResult() {
+        val fake = FakeWindowNative()
+        withLease(fake) { lease ->
+            assertIs<ExclusiveWindowPresentationResult.Presented>(lease.present(DISPLAY_ID))
+            val reentrantResults = mutableListOf<ExclusiveWindowPresentationCloseResult>()
+            fake.onOwnerClose = { reentrantResults += lease.close() }
+
+            val terminal = assertIs<ExclusiveWindowPresentationCloseResult.Terminated>(lease.close())
+
+            assertEquals(
+                listOf<ExclusiveWindowPresentationCloseResult>(ExclusiveWindowPresentationCloseResult.Closing),
+                reentrantResults,
+            )
+            assertTrue(terminal.cleanupFailures.isEmpty())
+            assertSame(terminal, lease.close())
+            assertSame(terminal, lease.lastCloseResult)
+        }
+    }
+
+    @Test
     fun terminalCloseRestoresThenReleasesOwnerBeforeRemovingRegistryGuard() {
         val fake = FakeWindowNative(probeRegistryDuringOwnerClose = true)
         withLease(fake) { lease ->
@@ -617,6 +637,7 @@ private class FakeWindowNative(
     var releaseCount = 0
     var suppressNextRestoreFrame = keepRestoredFrame
     var ownerCloseRegistryProbe: ExclusiveWindowPresentationOpenResult? = null
+    var onOwnerClose: (() -> Unit)? = null
     private var ownerCloseFailed = false
     private var probingRegistry = false
 
@@ -760,6 +781,7 @@ private class FakeWindowNative(
                 }
                 calls += "registry-active"
             }
+            onOwnerClose?.invoke()
             if (failOwnerClose && !ownerCloseFailed) {
                 ownerCloseFailed = true
                 throw IllegalStateException("owner close failed")
