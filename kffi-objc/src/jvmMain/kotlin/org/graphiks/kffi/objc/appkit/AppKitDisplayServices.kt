@@ -4,6 +4,7 @@ package org.graphiks.kffi.objc.appkit
 
 import org.graphiks.kffi.objc.CFRelease
 import org.graphiks.kffi.objc.CFRetain
+import org.graphiks.kffi.objc.CFEqual
 import org.graphiks.kffi.objc.CFArrayGetCount
 import org.graphiks.kffi.objc.CFArrayGetValueAtIndex
 import org.graphiks.kffi.objc.CGCaptureAllDisplays
@@ -55,6 +56,103 @@ data class CGDisplayModeSnapshot(
     /** CoreGraphics' unsigned I/O flags, copied to a non-negative [Long]. */
     val ioFlags: Long,
 )
+
+/** The state CoreGraphics could certify after an exclusive-display operation. */
+sealed interface ExclusiveDisplayTerminal {
+    data class Captured(val modeIdentity: Long) : ExclusiveDisplayTerminal
+
+    data class Released(val modeIdentity: Long?) : ExclusiveDisplayTerminal
+
+    data object Unknown : ExclusiveDisplayTerminal
+}
+
+/** Pointer-free snapshot of an exclusive display lease. */
+data class ExclusiveDisplayReadback(val terminal: ExclusiveDisplayTerminal) {
+    val modeIdentity: Long?
+        get() = when (terminal) {
+            is ExclusiveDisplayTerminal.Captured -> terminal.modeIdentity
+            is ExclusiveDisplayTerminal.Released -> terminal.modeIdentity
+            ExclusiveDisplayTerminal.Unknown -> null
+        }
+
+    val captureRetained: Boolean?
+        get() = when (terminal) {
+            is ExclusiveDisplayTerminal.Captured -> true
+            is ExclusiveDisplayTerminal.Released -> false
+            ExclusiveDisplayTerminal.Unknown -> null
+        }
+}
+
+/** Closed set of native operations that can fail while managing an exclusive display. */
+enum class ExclusiveDisplayNativeOperation {
+    CopyInitialMode,
+    CopyModeList,
+    ResolveTargetMode,
+    Capture,
+    SetTargetMode,
+    Readback,
+    RestoreInitialMode,
+    ReleaseCapture,
+    ReleaseReference,
+}
+
+/** Detached native failure suitable for crossing the KFFI boundary. */
+data class ExclusiveDisplayNativeFailure(
+    val operation: ExclusiveDisplayNativeOperation,
+    val message: String,
+)
+
+/** Terminal state and every cleanup failure observed while releasing a lease. */
+data class ExclusiveDisplayReleaseResult(
+    val terminal: ExclusiveDisplayTerminal,
+    val failures: List<ExclusiveDisplayNativeFailure>,
+)
+
+/** Persistent, pointer-free owner of one CoreGraphics display capture. */
+interface ExclusiveDisplayLease : AutoCloseable {
+    val displayId: Int
+
+    fun readback(): ExclusiveDisplayReadback
+
+    fun release(): ExclusiveDisplayReleaseResult
+
+    override fun close() {
+        release()
+    }
+}
+
+/** Result of attempting to capture a display and install an exact I/O display mode. */
+sealed interface ExclusiveDisplayLeaseOpenResult {
+    data class Opened(val lease: ExclusiveDisplayLease) : ExclusiveDisplayLeaseOpenResult
+
+    data class FailedBeforeCapture(
+        val failure: ExclusiveDisplayNativeFailure,
+    ) : ExclusiveDisplayLeaseOpenResult
+
+    @ConsistentCopyVisibility
+    data class FailedAfterCapture internal constructor(
+        val terminal: ExclusiveDisplayTerminal,
+        val cleanup: ExclusiveDisplayReleaseResult,
+        val recovery: ExclusiveDisplayLease?,
+        val failure: ExclusiveDisplayNativeFailure,
+    ) : ExclusiveDisplayLeaseOpenResult {
+        init {
+            require(terminal == cleanup.terminal) {
+                "FailedAfterCapture terminal must match cleanup terminal"
+            }
+            require(
+                when (terminal) {
+                    is ExclusiveDisplayTerminal.Released -> recovery == null
+                    is ExclusiveDisplayTerminal.Captured,
+                    ExclusiveDisplayTerminal.Unknown,
+                    -> recovery != null
+                },
+            ) {
+                "FailedAfterCapture recovery must exist exactly while release is unconfirmed"
+            }
+        }
+    }
+}
 
 /**
  * A retained CoreGraphics display mode.
@@ -156,7 +254,7 @@ object AppKitDisplayServices {
                 val mode = native.modeAt(modes, ordinal.toLong())
                 check(mode != 0L) { "CGDisplayCopyAllDisplayModes returned null mode $ordinal for display $displayId" }
                 val modeIdentity = native.modeIdentity(mode)
-                check(modeIdentity != 0L) {
+                check(modeIdentity >= 0L) {
                     "CGDisplayModeGetIODisplayModeID returned invalid identity for mode $ordinal on display $displayId"
                 }
                 check(identities.add(modeIdentity)) {
@@ -179,6 +277,130 @@ object AppKitDisplayServices {
                 )
         } finally {
             native.release(modes)
+        }
+    }
+
+    /** Captures [displayId] and installs the mode identified by [modeIdentity]. */
+    fun openExclusiveLease(
+        displayId: Int,
+        modeIdentity: Long,
+    ): ExclusiveDisplayLeaseOpenResult =
+        openExclusiveLease(displayId, modeIdentity, CoreGraphicsDisplayNative)
+
+    internal fun openExclusiveLease(
+        displayId: Int,
+        modeIdentity: Long,
+        native: AppKitDisplayNative,
+    ): ExclusiveDisplayLeaseOpenResult {
+        var initialMode = 0L
+        var targetMode = 0L
+        val initialModeIdentity: Long
+        try {
+            if (modeIdentity < 0) {
+                failExclusiveOperation(
+                    ExclusiveDisplayNativeOperation.ResolveTargetMode,
+                    "modeIdentity must be non-negative",
+                )
+            }
+            initialMode = exclusiveNativeCall(ExclusiveDisplayNativeOperation.CopyInitialMode) {
+                native.copyDisplayMode(displayId)
+            }
+            if (initialMode == 0L) {
+                failExclusiveOperation(
+                    ExclusiveDisplayNativeOperation.CopyInitialMode,
+                    "CGDisplayCopyDisplayMode returned null for display $displayId",
+                )
+            }
+            initialModeIdentity = exclusiveNativeCall(ExclusiveDisplayNativeOperation.CopyInitialMode) {
+                native.modeIdentity(initialMode)
+            }
+            if (initialModeIdentity < 0L) {
+                failExclusiveOperation(
+                    ExclusiveDisplayNativeOperation.CopyInitialMode,
+                    "Current mode has a negative I/O identity for display $displayId",
+                )
+            }
+
+            val modes = exclusiveNativeCall(ExclusiveDisplayNativeOperation.CopyModeList) {
+                native.copyAllDisplayModes(displayId)
+            }
+            if (modes == 0L) {
+                failExclusiveOperation(
+                    ExclusiveDisplayNativeOperation.CopyModeList,
+                    "CGDisplayCopyAllDisplayModes returned null for display $displayId",
+                )
+            }
+            try {
+                exclusiveNativeCall(ExclusiveDisplayNativeOperation.ResolveTargetMode) {
+                    val count = native.modeCount(modes)
+                    check(count >= 0L && count <= Int.MAX_VALUE) {
+                        "CGDisplayCopyAllDisplayModes returned invalid count $count for display $displayId"
+                    }
+                    val identities = HashSet<Long>(count.toInt())
+                    var target = 0L
+                    repeat(count.toInt()) { ordinal ->
+                        val candidate = native.modeAt(modes, ordinal.toLong())
+                        check(candidate != 0L) {
+                            "CGDisplayCopyAllDisplayModes returned null mode $ordinal for display $displayId"
+                        }
+                        val candidateIdentity = native.modeIdentity(candidate)
+                        check(candidateIdentity >= 0L) {
+                            "CGDisplayModeGetIODisplayModeID returned invalid identity for mode $ordinal on display $displayId"
+                        }
+                        check(identities.add(candidateIdentity)) {
+                            "CGDisplayCopyAllDisplayModes returned duplicate mode identity " +
+                                "$candidateIdentity for display $displayId"
+                        }
+                        if (candidateIdentity == modeIdentity) target = candidate
+                    }
+                    check(target != 0L) {
+                        "Display mode identity $modeIdentity is unavailable for display $displayId"
+                    }
+                    native.retain(target)
+                    targetMode = target
+                }
+            } finally {
+                exclusiveNativeCall(ExclusiveDisplayNativeOperation.ReleaseReference) {
+                    native.release(modes)
+                }
+            }
+
+            exclusiveNativeCall(ExclusiveDisplayNativeOperation.Capture) {
+                native.capture(displayId)
+            }
+        } catch (failure: ExclusiveDisplayOperationException) {
+            releaseBeforeCapture(native, targetMode, initialMode)
+            return ExclusiveDisplayLeaseOpenResult.FailedBeforeCapture(failure.failure)
+        }
+
+        val lease = CoreGraphicsExclusiveDisplayLease(
+            displayId = displayId,
+            initialMode = initialMode,
+            initialModeIdentity = initialModeIdentity,
+            targetMode = targetMode,
+            targetModeIdentity = modeIdentity,
+            native = native,
+        )
+        return try {
+            exclusiveNativeCall(ExclusiveDisplayNativeOperation.SetTargetMode) {
+                native.setDisplayMode(displayId, targetMode)
+            }
+            val terminal = lease.readback().terminal
+            if (terminal != ExclusiveDisplayTerminal.Captured(modeIdentity)) {
+                failExclusiveOperation(
+                    ExclusiveDisplayNativeOperation.Readback,
+                    "CoreGraphics did not certify target mode $modeIdentity after capture",
+                )
+            }
+            ExclusiveDisplayLeaseOpenResult.Opened(lease)
+        } catch (failure: ExclusiveDisplayOperationException) {
+            val cleanup = lease.release()
+            ExclusiveDisplayLeaseOpenResult.FailedAfterCapture(
+                terminal = cleanup.terminal,
+                cleanup = cleanup,
+                recovery = lease.takeUnless { cleanup.terminal is ExclusiveDisplayTerminal.Released },
+                failure = failure.failure,
+            )
         }
     }
 
@@ -242,6 +464,7 @@ internal interface AppKitDisplayNative {
     fun modeRefreshRate(mode: Long): Double
     fun modeIoFlags(mode: Long): Long
     fun modeIdentity(mode: Long): Long
+    fun modesEqual(first: Long, second: Long): Boolean
     fun retain(mode: Long)
     fun release(mode: Long)
     fun setDisplayMode(displayId: Int, mode: Long)
@@ -313,6 +536,9 @@ private object CoreGraphicsDisplayNative : AppKitDisplayNative {
     override fun modeIdentity(mode: Long): Long =
         CGDisplayModeGetIODisplayModeID(MemorySegment.ofAddress(mode)).toLong() and UINT32_MASK
 
+    override fun modesEqual(first: Long, second: Long): Boolean =
+        CFEqual(MemorySegment.ofAddress(first), MemorySegment.ofAddress(second)).toInt() != 0
+
     override fun retain(mode: Long) {
         CFRetain(MemorySegment.ofAddress(mode))
     }
@@ -349,6 +575,170 @@ private object CoreGraphicsDisplayNative : AppKitDisplayNative {
             "$operation failed with ${result.name} (${result.value})"
         }
     }
+}
+
+private class CoreGraphicsExclusiveDisplayLease(
+    override val displayId: Int,
+    private var initialMode: Long,
+    private val initialModeIdentity: Long,
+    private var targetMode: Long,
+    private val targetModeIdentity: Long,
+    private val native: AppKitDisplayNative,
+) : ExclusiveDisplayLease {
+    private val lock = ReentrantLock()
+    private var released: ExclusiveDisplayReleaseResult? = null
+    private var restorePending = true
+    private var capturePending = true
+
+    override fun readback(): ExclusiveDisplayReadback = lock.withLock {
+        released?.let { return ExclusiveDisplayReadback(it.terminal) }
+        ExclusiveDisplayReadback(readTerminal(mutableListOf()))
+    }
+
+    override fun release(): ExclusiveDisplayReleaseResult = lock.withLock {
+        released?.let { return it }
+        val failures = mutableListOf<ExclusiveDisplayNativeFailure>()
+        if (restorePending && initialMode != 0L) {
+            val restoreSucceeded = captureFailure(
+                failures,
+                ExclusiveDisplayNativeOperation.RestoreInitialMode,
+            ) {
+                native.setDisplayMode(displayId, initialMode)
+            }
+            if (restoreSucceeded) restorePending = false
+        }
+        if (capturePending) {
+            val releaseSucceeded = captureFailure(
+                failures,
+                ExclusiveDisplayNativeOperation.ReleaseCapture,
+            ) {
+                native.releaseCapture(displayId)
+            }
+            if (releaseSucceeded) capturePending = false
+        }
+        val terminal = readTerminal(failures)
+        if (terminal is ExclusiveDisplayTerminal.Released) {
+            releaseReferences(failures)
+        }
+        ExclusiveDisplayReleaseResult(terminal, failures.toList()).also { result ->
+            if (terminal is ExclusiveDisplayTerminal.Released) released = result
+        }
+    }
+
+    private fun readTerminal(
+        failures: MutableList<ExclusiveDisplayNativeFailure>,
+    ): ExclusiveDisplayTerminal {
+        var currentMode = 0L
+        var certifiedIdentity: Long? = null
+        try {
+            currentMode = native.copyDisplayMode(displayId)
+            if (currentMode == 0L) {
+                failures += nativeFailure(
+                    ExclusiveDisplayNativeOperation.Readback,
+                    "CGDisplayCopyDisplayMode returned null for display $displayId",
+                )
+            } else {
+                val currentIdentity = native.modeIdentity(currentMode)
+                certifiedIdentity = when {
+                    initialMode != 0L &&
+                        currentIdentity == initialModeIdentity &&
+                        native.modesEqual(currentMode, initialMode) -> currentIdentity
+
+                    targetMode != 0L &&
+                        currentIdentity == targetModeIdentity &&
+                        native.modesEqual(currentMode, targetMode) -> currentIdentity
+
+                    else -> null
+                }
+            }
+        } catch (failure: Throwable) {
+            failures += nativeFailure(ExclusiveDisplayNativeOperation.Readback, failure)
+        }
+
+        if (currentMode != 0L) {
+            captureFailure(failures, ExclusiveDisplayNativeOperation.ReleaseReference) {
+                native.release(currentMode)
+            }
+        }
+
+        return when {
+            certifiedIdentity == null -> ExclusiveDisplayTerminal.Unknown
+            capturePending ->
+                ExclusiveDisplayTerminal.Captured(certifiedIdentity)
+            else -> ExclusiveDisplayTerminal.Released(certifiedIdentity)
+        }
+    }
+
+    private fun releaseReferences(failures: MutableList<ExclusiveDisplayNativeFailure>) {
+        val target = targetMode
+        targetMode = 0L
+        if (target != 0L) {
+            captureFailure(failures, ExclusiveDisplayNativeOperation.ReleaseReference) {
+                native.release(target)
+            }
+        }
+        val initial = initialMode
+        initialMode = 0L
+        if (initial != 0L) {
+            captureFailure(failures, ExclusiveDisplayNativeOperation.ReleaseReference) {
+                native.release(initial)
+            }
+        }
+    }
+}
+
+private class ExclusiveDisplayOperationException(
+    val failure: ExclusiveDisplayNativeFailure,
+) : RuntimeException(failure.message)
+
+private inline fun <R> exclusiveNativeCall(
+    operation: ExclusiveDisplayNativeOperation,
+    block: () -> R,
+): R = try {
+    block()
+} catch (failure: ExclusiveDisplayOperationException) {
+    throw failure
+} catch (failure: Throwable) {
+    throw ExclusiveDisplayOperationException(nativeFailure(operation, failure))
+}
+
+private fun failExclusiveOperation(
+    operation: ExclusiveDisplayNativeOperation,
+    message: String,
+): Nothing = throw ExclusiveDisplayOperationException(nativeFailure(operation, message))
+
+private fun nativeFailure(
+    operation: ExclusiveDisplayNativeOperation,
+    failure: Throwable,
+): ExclusiveDisplayNativeFailure = nativeFailure(
+    operation,
+    failure.message ?: failure::class.java.simpleName,
+)
+
+private fun nativeFailure(
+    operation: ExclusiveDisplayNativeOperation,
+    message: String,
+): ExclusiveDisplayNativeFailure = ExclusiveDisplayNativeFailure(operation, message)
+
+private inline fun captureFailure(
+    failures: MutableList<ExclusiveDisplayNativeFailure>,
+    operation: ExclusiveDisplayNativeOperation,
+    block: () -> Unit,
+): Boolean = try {
+    block()
+    true
+} catch (failure: Throwable) {
+    failures += nativeFailure(operation, failure)
+    false
+}
+
+private fun releaseBeforeCapture(
+    native: AppKitDisplayNative,
+    targetMode: Long,
+    initialMode: Long,
+) {
+    if (targetMode != 0L) runCatching { native.release(targetMode) }
+    if (initialMode != 0L) runCatching { native.release(initialMode) }
 }
 
 private const val UINT32_MASK = 0xFFFF_FFFFL

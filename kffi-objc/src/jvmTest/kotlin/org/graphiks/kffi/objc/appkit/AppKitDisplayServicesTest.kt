@@ -178,7 +178,14 @@ class AppKitDisplayServicesTest {
     }
 
     @Test
-    fun allModesRejectsDuplicateOrMissingIoModeIdentitiesWithoutPublishingAnInventory() {
+    fun allModesAcceptsAUniqueZeroIoModeIdentityAndRejectsDuplicateIdentities() {
+        val zeroIdentity = RecordingDisplayNative(
+            allModes = listOf(
+                0x100L to (1920L to 1080L),
+                0x200L to (2560L to 1440L),
+            ),
+            modeIdentities = mapOf(0x100L to 0, 0x200L to 91),
+        )
         val duplicateIdentity = RecordingDisplayNative(
             allModes = listOf(
                 0x100L to (1920L to 1080L),
@@ -186,19 +193,27 @@ class AppKitDisplayServicesTest {
             ),
             modeIdentities = mapOf(0x100L to 91, 0x200L to 91),
         )
-        val missingIdentity = RecordingDisplayNative(
-            allModes = listOf(0x300L to (1920L to 1080L)),
-            modeIdentities = mapOf(0x300L to 0),
+        val duplicateZeroIdentity = RecordingDisplayNative(
+            allModes = listOf(
+                0x300L to (1920L to 1080L),
+                0x400L to (2560L to 1440L),
+            ),
+            modeIdentities = mapOf(0x300L to 0, 0x400L to 0),
         )
 
+        val inventory = AppKitDisplayServices.allModes(17, zeroIdentity)
+
+        assertEquals(listOf(0L, 91L), inventory.map(CGDisplayModeSnapshot::modeIdentity))
+        assertTrue(inventory.all { it.modeIdentity >= 0L })
         assertFailsWith<IllegalStateException> {
             AppKitDisplayServices.allModes(17, duplicateIdentity)
         }
         assertFailsWith<IllegalStateException> {
-            AppKitDisplayServices.allModes(17, missingIdentity)
+            AppKitDisplayServices.allModes(17, duplicateZeroIdentity)
         }
+        assertEquals(listOf("release:48879"), zeroIdentity.calls.filter { it.startsWith("release:") })
         assertEquals(listOf("release:48879"), duplicateIdentity.calls.filter { it.startsWith("release:") })
-        assertEquals(listOf("release:48879"), missingIdentity.calls.filter { it.startsWith("release:") })
+        assertEquals(listOf("release:48879"), duplicateZeroIdentity.calls.filter { it.startsWith("release:") })
     }
 
     @Test
@@ -304,6 +319,11 @@ private class RecordingDisplayNative(
     override fun modeIdentity(mode: Long): Long {
         calls += "modeIdentity:$mode"
         return (modeIdentities[mode] ?: mode.toInt()).toLong() and 0xFFFF_FFFFL
+    }
+
+    override fun modesEqual(first: Long, second: Long): Boolean {
+        calls += "equal:$first:$second"
+        return first == second
     }
 
     override fun retain(mode: Long) {
