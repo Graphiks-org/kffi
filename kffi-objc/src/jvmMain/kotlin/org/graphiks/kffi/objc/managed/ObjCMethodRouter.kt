@@ -172,6 +172,15 @@ class ObjCMethodRouter internal constructor(
         bind(selector, ObjCMethodSignatures.Range, RangeBinding(fallback, handler))
     }
 
+    /** Binds an NSPoint return; failures use [fallback], while a revoked route returns zero. */
+    fun onPoint(
+        selector: String,
+        fallback: NSPoint,
+        handler: () -> NSPoint,
+    ) {
+        bind(selector, ObjCMethodSignatures.Point, PointBinding(fallback, handler))
+    }
+
     fun onObjectRangeOutRange(
         selector: String,
         fallback: ObjCObjectRangeResult,
@@ -319,6 +328,12 @@ class ObjCMethodRouter internal constructor(
         return binding.handler(range.toNSRange())
     }
 
+    internal fun invokePoint(command: Long): NSPoint {
+        check(frozen) { "Managed Objective-C router is not frozen" }
+        val binding = bindings[command] as? PointBinding ?: return ObjCMethodSignatures.Point.abiZero
+        return binding.handler()
+    }
+
     internal fun invokeULongPoint(command: Long, point: JvmManagedObjCPoint): Long {
         check(frozen) { "Managed Objective-C router is not frozen" }
         val binding = bindings[command] as? ULongPointBinding ?: return 0L
@@ -339,6 +354,9 @@ class ObjCMethodRouter internal constructor(
 
     internal fun rangeFallback(command: Long): NSRange =
         (bindings[command] as? RangeBinding)?.fallback ?: NSRange(0L, 0L)
+
+    internal fun pointFallback(command: Long): NSPoint =
+        (bindings[command] as? PointBinding)?.fallback ?: ObjCMethodSignatures.Point.abiZero
 
     internal fun objectRangeFallback(command: Long): ObjCObjectRangeResult =
         (bindings[command] as? ObjectRangeOutRangeBinding)?.fallback
@@ -434,6 +452,11 @@ private class RangeBinding(
     val handler: () -> NSRange,
 ) : ObjCMethodBinding
 
+private class PointBinding(
+    val fallback: NSPoint,
+    val handler: () -> NSPoint,
+) : ObjCMethodBinding
+
 private class ObjectRangeOutRangeBinding(
     val fallback: ObjCObjectRangeResult,
     val handler: (NSRange) -> ObjCObjectRangeResult,
@@ -519,6 +542,9 @@ internal object ObjCMethodDispatch {
 
         override fun dispatchRange(self: Long, command: Long): JvmManagedObjCRange =
             ObjCManagedTrampolines.dispatchRange(this, command)
+
+        override fun dispatchPoint(self: Long, command: Long): JvmManagedObjCPoint =
+            ObjCManagedTrampolines.dispatchPoint(this, command)
 
         override fun dispatchObjectRangeOutRange(
             self: Long,
@@ -717,6 +743,23 @@ internal object ObjCMethodDispatch {
             route.router.invokeRange(command)
         }
         return if (admitted) result else ObjCMethodSignatures.Range.abiZero
+    }
+
+    fun dispatchPoint(
+        boundary: ObjCNativeBoundary<NSPoint>,
+        route: NativeRoute,
+        command: Long,
+    ): NSPoint {
+        acquireRoute(boundary, route)
+        val fallback = route.router.pointFallback(command)
+        boundary.fallback = fallback
+        beforeCallbackAdmissionForTest.get()?.invoke()
+        var admitted = false
+        val result = CallbackRuntime.dispatchSafely(callbackType, route.token, fallback) {
+            admitted = true
+            route.router.invokePoint(command)
+        }
+        return if (admitted) result else ObjCMethodSignatures.Point.abiZero
     }
 
     fun dispatchObjectRangeOutRange(

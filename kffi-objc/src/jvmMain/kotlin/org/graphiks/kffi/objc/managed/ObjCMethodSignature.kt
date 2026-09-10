@@ -108,7 +108,7 @@ internal object ObjCBlockSignatures {
     }
 }
 
-/** Scalar Objective-C method shapes needed by lifecycle and window delegates. */
+/** Finite Objective-C method shapes needed by managed framework callbacks. */
 object ObjCMethodSignatures {
     val VoidObject: ObjCMethodSignature<Unit> = ObjCMethodSignature(
         identity = "void-object",
@@ -178,6 +178,13 @@ object ObjCMethodSignatures {
         typeEncoding = "{_NSRange=QQ}@:",
         trampoline = JvmManagedObjCBridge.range,
         abiZero = NSRange(0L, 0L),
+    )
+
+    val Point: ObjCMethodSignature<NSPoint> = ObjCMethodSignature(
+        identity = "point",
+        typeEncoding = "{CGPoint=dd}@:",
+        trampoline = JvmManagedObjCBridge.point,
+        abiZero = NSPoint(0.0, 0.0),
     )
 
     val ObjectRangeOutRange: ObjCMethodSignature<NSObject?> = ObjCMethodSignature(
@@ -398,6 +405,24 @@ internal object ObjCManagedTrampolines {
                 ?: ObjCMethodDispatch.containUnrouted(failure, ObjCMethodSignatures.Range.abiZero)
         }
         return result.toBridgeRange()
+    }
+
+    fun dispatchPoint(
+        route: ObjCMethodDispatch.NativeRoute,
+        command: Long,
+    ): JvmManagedObjCPoint {
+        var boundary: ObjCNativeBoundary<NSPoint>? = null
+        val result = try {
+            ObjCRuntime.autoreleasePool {
+                val installedBoundary = ObjCNativeBoundary(ObjCMethodSignatures.Point.abiZero)
+                boundary = installedBoundary
+                ObjCMethodDispatch.dispatchPoint(installedBoundary, route, command)
+            }
+        } catch (failure: Throwable) {
+            boundary?.contain(failure)
+                ?: ObjCMethodDispatch.containUnrouted(failure, ObjCMethodSignatures.Point.abiZero)
+        }
+        return JvmManagedObjCPoint(result.x, result.y)
     }
 
     fun dispatchObjectRangeOutRange(

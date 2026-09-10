@@ -71,6 +71,8 @@ interface JvmManagedObjCRoute {
 
     fun dispatchRange(self: Long, command: Long): JvmManagedObjCRange
 
+    fun dispatchPoint(self: Long, command: Long): JvmManagedObjCPoint
+
     fun dispatchObjectRangeOutRange(
         self: Long,
         command: Long,
@@ -137,6 +139,12 @@ object JvmManagedObjCBridge {
         JvmUpcallEngine.allocateObjCRangeTrampoline(
             JvmManagedObjCBridge::class.java,
             "dispatchRange",
+        )
+    }
+    val point: NativeAddress by lazy {
+        JvmUpcallEngine.allocateObjCPointTrampoline(
+            JvmManagedObjCBridge::class.java,
+            "dispatchPoint",
         )
     }
     val objectRangeOutRange: NativeAddress by lazy {
@@ -264,6 +272,11 @@ object JvmManagedObjCBridge {
     }
 
     @JvmStatic
+    fun dispatchPoint(self: Long, command: Long): MemorySegment = contain(zeroPointSegment) {
+        routes[self]?.dispatchPoint(self, command)?.toSegment() ?: zeroPointSegment
+    }
+
+    @JvmStatic
     fun dispatchObjectRangeOutRange(
         self: Long,
         command: Long,
@@ -360,6 +373,12 @@ object JvmManagedObjCBridge {
             segment.set(ValueLayout.JAVA_LONG, 8L, length)
         }
 
+    private fun JvmManagedObjCPoint.toSegment(): MemorySegment =
+        Arena.ofAuto().allocate(16L, 8L).also { segment ->
+            segment.set(ValueLayout.JAVA_DOUBLE, 0L, x)
+            segment.set(ValueLayout.JAVA_DOUBLE, 8L, y)
+        }
+
     private fun JvmManagedObjCRect.toSegment(): MemorySegment =
         Arena.ofAuto().allocate(32L, 8L).also { segment ->
             segment.set(ValueLayout.JAVA_DOUBLE, 0L, x)
@@ -387,6 +406,8 @@ object JvmManagedObjCBridge {
     }
 
     private val zeroRange = JvmManagedObjCRange(0L, 0L)
+    // The native fallback must not allocate or expose mutable process-wide state per call.
+    private val zeroPointSegment = Arena.global().allocate(16L, 8L).asReadOnly()
     private val zeroObjectRangeResult = JvmManagedObjCObjectRangeResult(0L, zeroRange)
     private val zeroRectRangeResult = JvmManagedObjCRectRangeResult(
         value = JvmManagedObjCRect(0.0, 0.0, 0.0, 0.0),

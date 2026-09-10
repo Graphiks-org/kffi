@@ -90,6 +90,15 @@ object JvmUpcallEngine {
         FunctionDescriptor.of(objcRange, pointer, pointer),
     )
 
+    fun allocateObjCPointTrampoline(
+        dispatcherClass: Class<*>,
+        dispatchMethod: String,
+    ): NativeAddress = allocateTrampoline(
+        dispatcherClass,
+        dispatchMethod,
+        FunctionDescriptor.of(objcPoint, pointer, pointer),
+    )
+
     fun allocateObjCObjectRangeOutRangeTrampoline(
         dispatcherClass: Class<*>,
         dispatchMethod: String,

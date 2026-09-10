@@ -59,3 +59,68 @@ interface NSDraggingDestination {
         throw UnsupportedOperationException("Optional ObjC method 'updateDraggingItemsForDrag:' not implemented")
 
 }
+
+/**
+ * Generated adapter for a borrowed Objective-C receiver conforming to [NSDraggingDestination].
+ * The caller owns the native pointer lifetime and must not retain this adapter past it.
+ */
+private class NSDraggingDestinationPointerReceiver(private val ptr: MemorySegment) : NSDraggingDestination {
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    override fun draggingEntered(sender: MemorySegment): NSDragOperation {
+        val sel = ObjCRuntime.sel("draggingEntered:")
+        return NSDragOperation(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, sender) as Long)
+    }
+
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    override fun draggingUpdated(sender: MemorySegment): NSDragOperation {
+        val sel = ObjCRuntime.sel("draggingUpdated:")
+        return NSDragOperation(ObjCRuntime.msgSend(ValueLayout.JAVA_LONG, ptr, sel, sender) as Long)
+    }
+
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    override fun draggingExited(sender: MemorySegment): Unit {
+        val sel = ObjCRuntime.sel("draggingExited:")
+        ObjCRuntime.msgSend(null, ptr, sel, sender)
+    }
+
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    override fun prepareForDragOperation(sender: MemorySegment): Boolean {
+        val sel = ObjCRuntime.sel("prepareForDragOperation:")
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, sender) as Boolean
+    }
+
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    override fun performDragOperation(sender: MemorySegment): Boolean {
+        val sel = ObjCRuntime.sel("performDragOperation:")
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel, sender) as Boolean
+    }
+
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    override fun concludeDragOperation(sender: MemorySegment): Unit {
+        val sel = ObjCRuntime.sel("concludeDragOperation:")
+        ObjCRuntime.msgSend(null, ptr, sel, sender)
+    }
+
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    override fun draggingEnded(sender: MemorySegment): Unit {
+        val sel = ObjCRuntime.sel("draggingEnded:")
+        ObjCRuntime.msgSend(null, ptr, sel, sender)
+    }
+
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    override fun wantsPeriodicDraggingUpdates(): Boolean {
+        val sel = ObjCRuntime.sel("wantsPeriodicDraggingUpdates")
+        return ObjCRuntime.msgSend(ValueLayout.JAVA_BOOLEAN, ptr, sel) as Boolean
+    }
+
+    @PlatformAvailability(platform = "ios", unavailable = true)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    override fun updateDraggingItemsForDrag(sender: MemorySegment): Unit {
+        val sel = ObjCRuntime.sel("updateDraggingItemsForDrag:")
+        ObjCRuntime.msgSend(null, ptr, sel, sender)
+    }
+
+}
+
+/** Wraps this borrowed native receiver as [NSDraggingDestination] without retaining it. */
+fun MemorySegment.asNSDraggingDestination(): NSDraggingDestination = NSDraggingDestinationPointerReceiver(this)
