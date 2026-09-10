@@ -135,6 +135,7 @@ mkdir -p "$STAGING"
     --objc \
     --split-output \
     --objc-protocol-receiver NSDraggingInfo \
+    --objc-protocol-receiver NSDraggingDestination \
     "${LIBRARY_ARGS[@]}" \
     "${INCLUDE_FRAMEWORK_ARGS[@]}" \
     "${INCLUDE_FUNCTION_ARGS[@]}" \

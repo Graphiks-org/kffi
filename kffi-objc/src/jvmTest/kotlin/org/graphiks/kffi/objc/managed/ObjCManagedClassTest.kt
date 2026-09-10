@@ -2,6 +2,8 @@ package org.graphiks.kffi.objc.managed
 
 import org.graphiks.kffi.CallbackExceptionHandler
 import org.graphiks.kffi.objc.NSObject
+import org.graphiks.kffi.objc.NSPoint
+import org.graphiks.kffi.objc.asNSDraggingDestination
 import org.graphiks.kffi.objc.ObjCRuntime
 import org.graphiks.kffi.objc.ObjCSubclassing
 import org.graphiks.kffi.engine.JvmUpcallEngine
@@ -21,6 +23,168 @@ import kotlin.test.assertSame
 import kotlin.test.assertTrue
 
 class ObjCManagedClassTest {
+    @Test
+    @OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+    fun generatedDraggingDestinationReceiverDispatchesToManagedView() {
+        requireMacOS()
+        val managedClass = ObjCManagedClass.registerOnce(
+            superclassName = "NSView",
+            methods = mapOf("draggingEntered:" to ObjCMethodSignatures.ULongObject),
+        )
+        val arguments = mutableListOf<Long>()
+        val instance = managedClass.createInstance {
+            onULongObject("draggingEntered:", fallback = 0L) {
+                arguments += it.ptr.address()
+                1L
+            }
+        }
+        try {
+            val result = instance.receiver.ptr.asNSDraggingDestination()
+                .draggingEntered(instance.receiver.ptr)
+            assertEquals(1L, result.rawValue)
+            assertEquals(listOf(instance.receiver.ptr.address()), arguments)
+        } finally {
+            instance.close()
+        }
+    }
+
+    @Test
+    fun pointReturnCrossesTheObjectiveCRuntime() {
+        requireMacOS()
+        val managedClass = ObjCManagedClass.registerOnce(
+            methods = mapOf("kffiLocation" to ObjCMethodSignatures.Point),
+        )
+        val instance = managedClass.createInstance {
+            onPoint("kffiLocation", fallback = NSPoint(0.0, 0.0)) { NSPoint(12.5, -7.25) }
+        }
+        try {
+            val result = sendPoint(instance, "kffiLocation")
+            assertEquals(12.5, result.x)
+            assertEquals(-7.25, result.y)
+        } finally {
+            instance.close()
+        }
+    }
+
+    @Test
+    fun pointExceptionIsReportedAndReturnsBindingFallback() {
+        requireMacOS()
+        val managedClass = ObjCManagedClass.registerOnce(
+            methods = mapOf("kffiThrowingLocation" to ObjCMethodSignatures.Point),
+        )
+        val failures = ConcurrentLinkedQueue<Throwable>()
+        val expected = IllegalStateException("managed point callback failed")
+        for (fallback in listOf(NSPoint(0.0, 0.0), NSPoint(3.5, -2.0))) {
+            val instance = managedClass.createInstance(
+                onError = CallbackExceptionHandler(failures::add),
+            ) {
+                onPoint("kffiThrowingLocation", fallback) { throw expected }
+            }
+            try {
+                val result = sendPoint(instance, "kffiThrowingLocation")
+                assertEquals(fallback.x, result.x)
+                assertEquals(fallback.y, result.y)
+                assertSame(expected, failures.remove())
+                assertTrue(failures.isEmpty())
+            } finally {
+                instance.close()
+            }
+        }
+    }
+
+    @Test
+    fun pointMessageAfterCloseReturnsAbiZeroWithoutInvokingHandler() {
+        requireMacOS()
+        val managedClass = ObjCManagedClass.registerOnce(
+            methods = mapOf("kffiClosedLocation" to ObjCMethodSignatures.Point),
+        )
+        val invocations = AtomicInteger()
+        val instance = managedClass.createInstance {
+            onPoint("kffiClosedLocation", fallback = NSPoint(9.0, 8.0)) {
+                invocations.incrementAndGet()
+                NSPoint(1.0, 2.0)
+            }
+        }
+        ObjCRuntime.msgSend(ValueLayout.ADDRESS, instance.receiver.ptr, ObjCRuntime.sel("retain"))
+        try {
+            instance.close()
+            val result = sendPoint(instance, "kffiClosedLocation")
+            assertEquals(0.0, result.x)
+            assertEquals(0.0, result.y)
+            assertEquals(0, invocations.get())
+        } finally {
+            ObjCRuntime.msgSend(null, instance.receiver.ptr, ObjCRuntime.sel("release"))
+        }
+    }
+
+    @Test
+    fun pointBoundaryFailureBeforeRouteLookupReturnsAbiZero() {
+        requireMacOS()
+        val managedClass = ObjCManagedClass.registerOnce(
+            methods = mapOf("kffiBoundaryLocation" to ObjCMethodSignatures.Point),
+        )
+        val invocations = AtomicInteger()
+        val instance = managedClass.createInstance {
+            onPoint("kffiBoundaryLocation", fallback = NSPoint(9.0, 8.0)) {
+                invocations.incrementAndGet()
+                NSPoint(1.0, 2.0)
+            }
+        }
+        val expected = IllegalStateException("point failure before route lookup")
+        val failures = ConcurrentLinkedQueue<Throwable>()
+        val thread = Thread.currentThread()
+        val previousHandler = thread.uncaughtExceptionHandler
+        val seam = ObjCMethodDispatch.installBeforeRouteLookupForTest { throw expected }
+        try {
+            thread.uncaughtExceptionHandler = Thread.UncaughtExceptionHandler { _, failure ->
+                failures += failure
+            }
+            val result = sendPoint(instance, "kffiBoundaryLocation")
+            assertEquals(0.0, result.x)
+            assertEquals(0.0, result.y)
+            assertSame(expected, failures.single())
+            assertEquals(0, invocations.get())
+        } finally {
+            seam.close()
+            thread.uncaughtExceptionHandler = previousHandler
+            instance.close()
+        }
+    }
+
+    @Test
+    fun pointBoundaryFailureAfterRouteLookupUsesBindingFallback() {
+        requireMacOS()
+        val managedClass = ObjCManagedClass.registerOnce(
+            methods = mapOf("kffiAdmissionLocation" to ObjCMethodSignatures.Point),
+        )
+        val invocations = AtomicInteger()
+        val failures = ConcurrentLinkedQueue<Throwable>()
+        val expected = IllegalStateException("point failure before callback admission")
+        val instance = managedClass.createInstance(
+            onError = CallbackExceptionHandler(failures::add),
+        ) {
+            onPoint("kffiAdmissionLocation", fallback = NSPoint(9.0, 8.0)) {
+                invocations.incrementAndGet()
+                NSPoint(1.0, 2.0)
+            }
+        }
+        val seam = ObjCMethodDispatch.installBeforeCallbackAdmissionForTest { throw expected }
+        try {
+            val result = sendPoint(instance, "kffiAdmissionLocation")
+            assertEquals(9.0, result.x)
+            assertEquals(8.0, result.y)
+            assertSame(expected, failures.single())
+            assertEquals(0, invocations.get())
+        } finally {
+            seam.close()
+            instance.close()
+        }
+    }
+
+    private fun sendPoint(instance: ObjCManagedInstance, selector: String): NSPoint = NSPoint(
+        ObjCRuntime.msgSendStruct(NSPoint.layout, instance.receiver.ptr, ObjCRuntime.sel(selector)),
+    )
+
     @Test
     fun twoInstancesRouteOneSelectorToDifferentHandlersThroughObjCRuntime() {
         requireMacOS()

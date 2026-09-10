@@ -14,6 +14,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `NSWorkspaceAccessibilityDisplayOptionsDidChangeNotification` to resolve on macOS.
 
 ### Added
+- Generated borrowed `NSDraggingDestination` receivers and managed `NSPoint(id, SEL)`
+  callbacks via `ObjCMethodSignatures.Point` and `ObjCMethodRouter.onPoint`, with
+  exception fallbacks and ABI-zero returns after route revocation.
 - Stable, non-negative I/O display-mode identities for detached CoreGraphics
   mode inventories, which reject missing or duplicate identities rather than
   publishing a partial list.
