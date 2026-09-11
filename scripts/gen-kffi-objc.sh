@@ -134,6 +134,7 @@ mkdir -p "$STAGING"
 "$KEXTRACT" \
     --objc \
     --split-output \
+    --objc-protocol-receiver CHHapticPatternPlayer \
     --objc-protocol-receiver NSDraggingInfo \
     --objc-protocol-receiver NSDraggingDestination \
     "${LIBRARY_ARGS[@]}" \
