@@ -17,6 +17,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Generated borrowed `NSDraggingDestination` receivers and managed `NSPoint(id, SEL)`
   callbacks via `ObjCMethodSignatures.Point` and `ObjCMethodRouter.onPoint`, with
   exception fallbacks and ABI-zero returns after route revocation.
+- Pointer-free AppKit window-geometry operations that resolve CoreGraphics physical positions
+  through their matching AppKit screens and certify effective outer bounds with Window Server
+  readback, including mixed-scale and display-straddling windows.
 - Stable, non-negative I/O display-mode identities for detached CoreGraphics
   mode inventories, which reject missing or duplicate identities rather than
   publishing a partial list.
