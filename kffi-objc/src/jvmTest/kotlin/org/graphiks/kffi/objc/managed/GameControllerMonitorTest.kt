@@ -151,6 +151,47 @@ class GameControllerMonitorTest {
         monitor.close()
     }
 
+    @Test
+    fun physicalInputObservationEmitsDetachedEventsUntilItIsClosed() {
+        val native = controller(nativeIdentity = 41L, name = "First")
+        val fixture = GameControllerMonitorFixture(initial = listOf(native))
+        val monitor = GameControllerMonitor.create(fixture) { }
+        val id = monitor.controllers.single().id
+        val events = mutableListOf<GameControllerPhysicalInputEvent>()
+        val observation = monitor.observePhysicalInput(id, events::add).getOrThrow()
+        val input = GameControllerPhysicalInput.Button(
+            nativeNames = setOf("Button A", "Primary"),
+            value = 0.75f,
+            pressed = true,
+        )
+
+        native.emitPhysicalInput(input)
+        observation.close()
+        native.emitPhysicalInput(input)
+
+        assertEquals(listOf(GameControllerPhysicalInputEvent(id, input)), events)
+        monitor.close()
+    }
+
+    @Test
+    fun physicalInputObservationClosesWhenItsControllerDisconnects() {
+        val native = controller(nativeIdentity = 41L, name = "First")
+        val fixture = GameControllerMonitorFixture(initial = listOf(native))
+        val monitor = GameControllerMonitor.create(fixture) { }
+        val id = monitor.controllers.single().id
+        val events = mutableListOf<GameControllerPhysicalInputEvent>()
+        val observation = monitor.observePhysicalInput(id, events::add).getOrThrow()
+
+        fixture.disconnect(native.nativeIdentity)
+        native.emitPhysicalInput(
+            GameControllerPhysicalInput.Axis(setOf("Left X Axis"), 0.5f),
+        )
+
+        assertTrue(observation.isClosed)
+        assertEquals(emptyList(), events)
+        monitor.close()
+    }
+
     private fun controller(nativeIdentity: Long, name: String): RecordingNativeController =
         RecordingNativeController(
             nativeIdentity,
@@ -201,6 +242,10 @@ private class RecordingNativeController(
         private set
     var hapticsRequests = 0
         private set
+    private var inputHandler: ((GameControllerPhysicalInput) -> Unit)? = null
+    private var inputObservation: GameControllerPhysicalInputObservation? = null
+
+    fun emitPhysicalInput(input: GameControllerPhysicalInput) = inputHandler?.invoke(input)
 
     override fun snapshot(): GameControllerDescriptor {
         snapshotFailure?.let { throw it }
@@ -231,7 +276,19 @@ private class RecordingNativeController(
         )
     }
 
+    override fun observePhysicalInput(
+        onInput: (GameControllerPhysicalInput) -> Unit,
+    ): GameControllerPhysicalInputObservation? {
+        check(inputHandler == null) { "Physical input is already observed" }
+        inputHandler = onInput
+        return GameControllerPhysicalInputObservation(
+            AutoCloseable { inputHandler = null },
+        ).also { inputObservation = it }
+    }
+
     override fun close() {
         closeCount += 1
+        inputObservation?.close()
+        inputObservation = null
     }
 }
