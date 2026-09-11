@@ -195,6 +195,11 @@ internal interface GameControllerHapticsSession {
     fun release()
 }
 
+/** Returns only the localities directly advertised by the native GameController device. */
+internal fun supportedGameControllerHapticLocalities(
+    deviceHaptics: GCDeviceHaptics,
+): Set<GameControllerHapticLocality> = CoreHapticsFactory.supportedLocalities(deviceHaptics)
+
 private object CoreHapticsFactory : GameControllerHapticsFactory {
     override fun create(
         deviceHaptics: GCDeviceHaptics,
