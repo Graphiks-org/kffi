@@ -18,6 +18,7 @@ import org.graphiks.kffi.objc.NSProcessInfo
 import org.graphiks.kffi.objc.NSNotificationCenter
 import org.graphiks.kffi.objc.ObjCRuntime
 import org.graphiks.kffi.objc.allKeysForObject
+import org.graphiks.kffi.objc.allValues
 import org.graphiks.kffi.objc.vendorName
 import org.graphiks.kffi.objc.productCategory
 import java.lang.foreign.MemorySegment
@@ -36,12 +37,23 @@ data class GameControllerDescriptor(
     val vendorName: String? = null,
     val productCategory: String? = null,
     val hasPhysicalInputProfile: Boolean = false,
+    val profile: GameControllerProfile = GameControllerProfile.Native,
+)
+
+/** The semantic mapping available from the controller's GameController profile. */
+enum class GameControllerProfile { Standard, Native }
+
+/** One detached GameController state captured before the monitor publishes a connection. */
+data class GameControllerSnapshot(
+    val descriptor: GameControllerDescriptor,
+    val initialPhysicalInputs: List<GameControllerPhysicalInput>,
 )
 
 /** A pointer-free controller projection owned by one [GameControllerMonitor]. */
 data class GameControllerDevice(
     val id: GameControllerDeviceId,
     val descriptor: GameControllerDescriptor,
+    val initialPhysicalInputs: List<GameControllerPhysicalInput> = emptyList(),
 ) {
     val vendorName: String?
         get() = descriptor.vendorName
@@ -213,7 +225,7 @@ class GameControllerMonitor private constructor(
             controller.close()
             return
         }
-        val descriptor = try {
+        val snapshot = try {
             controller.snapshot()
         } catch (failure: Throwable) {
             try {
@@ -225,7 +237,11 @@ class GameControllerMonitor private constructor(
         }
         managedControllers[controller.nativeIdentity] = ManagedController(
             controller = controller,
-            device = GameControllerDevice(nextDeviceId(), descriptor),
+            device = GameControllerDevice(
+                id = nextDeviceId(),
+                descriptor = snapshot.descriptor,
+                initialPhysicalInputs = snapshot.initialPhysicalInputs.toList(),
+            ),
         )
     }
 
@@ -234,7 +250,12 @@ class GameControllerMonitor private constructor(
             controller.close()
             return null
         }
-        val device = GameControllerDevice(nextDeviceId(), controller.snapshot())
+        val snapshot = controller.snapshot()
+        val device = GameControllerDevice(
+            id = nextDeviceId(),
+            descriptor = snapshot.descriptor,
+            initialPhysicalInputs = snapshot.initialPhysicalInputs.toList(),
+        )
         managedControllers[controller.nativeIdentity] = ManagedController(controller, device)
         return GameControllerLifecycleEvent.Connected(device)
     }
@@ -319,7 +340,7 @@ internal interface GameControllerMonitorNativeSession : AutoCloseable {
 internal interface GameControllerMonitorNativeController : AutoCloseable {
     val nativeIdentity: Long
 
-    fun snapshot(): GameControllerDescriptor
+    fun snapshot(): GameControllerSnapshot
 
     fun createHaptics(locality: GameControllerHapticLocality): Result<GameControllerHaptics>
 
@@ -385,11 +406,26 @@ private class RetainedGameController(
 
     override val nativeIdentity: Long = strong.value.ptr.address()
 
-    override fun snapshot(): GameControllerDescriptor = GameControllerDescriptor(
-        vendorName = strong.value.vendorName().toNullableString(),
-        productCategory = strong.value.productCategory().toNullableString(),
-        hasPhysicalInputProfile = strong.value.physicalInputProfile() != MemorySegment.NULL,
-    )
+    override fun snapshot(): GameControllerSnapshot {
+        val nativeProfile = strong.value.physicalInputProfile()
+        return GameControllerSnapshot(
+            descriptor = GameControllerDescriptor(
+                vendorName = strong.value.vendorName().toNullableString(),
+                productCategory = strong.value.productCategory().toNullableString(),
+                hasPhysicalInputProfile = nativeProfile != MemorySegment.NULL,
+                profile = if (strong.value.extendedGamepad() != MemorySegment.NULL) {
+                    GameControllerProfile.Standard
+                } else {
+                    GameControllerProfile.Native
+                },
+            ),
+            initialPhysicalInputs = if (nativeProfile == MemorySegment.NULL) {
+                emptyList()
+            } else {
+                GCPhysicalInputProfile(nativeProfile).snapshotPhysicalInputs()
+            },
+        )
+    }
 
     override fun createHaptics(
         locality: GameControllerHapticLocality,
@@ -486,6 +522,19 @@ private fun GCPhysicalInputProfile.snapshotPhysicalInput(
 
         else -> GameControllerPhysicalInput.Other(nativeNames, element.isAnalog())
     }
+}
+
+private fun GCPhysicalInputProfile.snapshotPhysicalInputs(): List<GameControllerPhysicalInput> {
+    val nativeElements = elements()
+    if (nativeElements == MemorySegment.NULL) return emptyList()
+    return NSArray(NSDictionary(nativeElements).allValues())
+        .let { values ->
+            List(values.count().toInt()) { index -> values.objectAtIndex(index.toLong()) }
+        }
+        .filter { it != MemorySegment.NULL }
+        .distinctBy(MemorySegment::address)
+        .map { element -> snapshotPhysicalInput(GCControllerElement(element)) }
+        .sortedBy { input -> input.nativeNames.joinToString(separator = "\u0000") }
 }
 
 private fun MemorySegment.nativeNamesFor(element: MemorySegment): Set<String> {

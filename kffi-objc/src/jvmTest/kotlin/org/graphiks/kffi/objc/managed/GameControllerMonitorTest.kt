@@ -47,6 +47,32 @@ class GameControllerMonitorTest {
     }
 
     @Test
+    fun monitorPublishesDetachedInitialPhysicalInputAndProfileKind() {
+        val initialInput = GameControllerPhysicalInput.Button(
+            nativeNames = setOf("Button A"),
+            value = 0.25f,
+            pressed = false,
+        )
+        val native = RecordingNativeController(
+            nativeIdentity = 41L,
+            snapshot = GameControllerSnapshot(
+                descriptor = GameControllerDescriptor(
+                    vendorName = "Standard controller",
+                    profile = GameControllerProfile.Standard,
+                ),
+                initialPhysicalInputs = listOf(initialInput),
+            ),
+        )
+        val monitor = GameControllerMonitor.create(GameControllerMonitorFixture(listOf(native))) { }
+
+        val controller = monitor.controllers.single()
+
+        assertEquals(GameControllerProfile.Standard, controller.descriptor.profile)
+        assertEquals(listOf(initialInput), controller.initialPhysicalInputs)
+        monitor.close()
+    }
+
+    @Test
     fun monitorDropsDuplicateAndLateConnectionsWithoutLeakingTheirNativeOwners() {
         val initial = controller(nativeIdentity = 41L, name = "First")
         val fixture = GameControllerMonitorFixture(initial = listOf(initial))
@@ -87,7 +113,10 @@ class GameControllerMonitorTest {
         val first = controller(nativeIdentity = 41L, name = "First")
         val failing = RecordingNativeController(
             nativeIdentity = 52L,
-            descriptor = GameControllerDescriptor(vendorName = "Failing"),
+            snapshot = GameControllerSnapshot(
+                descriptor = GameControllerDescriptor(vendorName = "Failing"),
+                initialPhysicalInputs = emptyList(),
+            ),
             snapshotFailure = IllegalStateException("snapshot failed"),
         )
         val fixture = GameControllerMonitorFixture(initial = listOf(first, failing))
@@ -195,7 +224,10 @@ class GameControllerMonitorTest {
     private fun controller(nativeIdentity: Long, name: String): RecordingNativeController =
         RecordingNativeController(
             nativeIdentity,
-            GameControllerDescriptor(vendorName = name),
+            GameControllerSnapshot(
+                descriptor = GameControllerDescriptor(vendorName = name),
+                initialPhysicalInputs = emptyList(),
+            ),
         )
 }
 
@@ -235,7 +267,7 @@ private class GameControllerMonitorFixture(
 
 private class RecordingNativeController(
     override val nativeIdentity: Long,
-    private val descriptor: GameControllerDescriptor,
+    private val snapshot: GameControllerSnapshot,
     private val snapshotFailure: Throwable? = null,
 ) : GameControllerMonitorNativeController {
     var closeCount = 0
@@ -247,9 +279,9 @@ private class RecordingNativeController(
 
     fun emitPhysicalInput(input: GameControllerPhysicalInput) = inputHandler?.invoke(input)
 
-    override fun snapshot(): GameControllerDescriptor {
+    override fun snapshot(): GameControllerSnapshot {
         snapshotFailure?.let { throw it }
-        return descriptor
+        return snapshot
     }
 
     override fun createHaptics(
