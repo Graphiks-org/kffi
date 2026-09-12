@@ -159,6 +159,26 @@ fun IOHIDDeviceConformsTo(arg0: MemorySegment, arg1: Int, arg2: Int): Byte {
 }
 
 /**
+ * {@snippet lang=c : IOHIDDeviceGetProperty typedef CFTypeRef = (Void)*(typedef IOHIDDeviceRef = (Declared(__IOHIDDevice))*,typedef CFStringRef = (Declared(__CFString))*)
+ */
+private val IOHIDDeviceGetProperty_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val IOHIDDeviceGetProperty_ADDR: MemorySegment by lazy { LOOKUP.find("IOHIDDeviceGetProperty").orElseThrow() }
+private val IOHIDDeviceGetProperty_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(IOHIDDeviceGetProperty_ADDR, IOHIDDeviceGetProperty_DESC) }
+
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+fun IOHIDDeviceGetProperty(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
+    try {
+        return IOHIDDeviceGetProperty_HANDLE.invokeExact(arg0, arg1) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
  * {@snippet lang=c : IOHIDManagerCreate typedef IOHIDManagerRef = (Declared(__IOHIDManager))*(typedef CFAllocatorRef = (Declared(__CFAllocator))*,typedef IOOptionBits = UNSIGNED = Int)
  */
 private val IOHIDManagerCreate_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
@@ -281,6 +301,26 @@ private val IOHIDManagerSetDeviceMatching_HANDLE: MethodHandle by lazy { Linker.
 fun IOHIDManagerSetDeviceMatching(arg0: MemorySegment, arg1: MemorySegment): Unit {
     try {
         IOHIDManagerSetDeviceMatching_HANDLE.invokeExact(arg0, arg1)
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : IOHIDManagerCopyDevices typedef CFSetRef = (Declared(__CFSet))*(typedef IOHIDManagerRef = (Declared(__IOHIDManager))*)
+ */
+private val IOHIDManagerCopyDevices_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val IOHIDManagerCopyDevices_ADDR: MemorySegment by lazy { LOOKUP.find("IOHIDManagerCopyDevices").orElseThrow() }
+private val IOHIDManagerCopyDevices_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(IOHIDManagerCopyDevices_ADDR, IOHIDManagerCopyDevices_DESC) }
+
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 5, introducedSubminor = -1)
+fun IOHIDManagerCopyDevices(arg0: MemorySegment): MemorySegment {
+    try {
+        return IOHIDManagerCopyDevices_HANDLE.invokeExact(arg0) as MemorySegment
     } catch (ex: Error) {
         throw ex
     } catch (ex: RuntimeException) {

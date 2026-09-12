@@ -101,9 +101,11 @@ IOKIT_FUNCTIONS=(
     IOHIDManagerSetCancelHandler
     IOHIDManagerActivate
     IOHIDManagerCancel
+    IOHIDManagerCopyDevices
     IOHIDManagerRegisterDeviceMatchingCallback
     IOHIDManagerRegisterDeviceRemovalCallback
     IOHIDDeviceConformsTo
+    IOHIDDeviceGetProperty
     IOHIDDeviceGetService
     IORegistryEntryGetRegistryEntryID
 )
