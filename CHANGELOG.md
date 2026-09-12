@@ -16,6 +16,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `NSWorkspaceAccessibilityDisplayOptionsDidChangeNotification` to resolve on macOS.
 
 ### Added
+- A distinct ScreenCaptureKit reservation cancellation result for a host picker dismissed before
+  selection, preserving user cancellation separately from native failures.
 - Generated CoreVideo pixel-width access for ScreenCaptureKit frame leases, so consumers can
   report the exact image width without inferring it from padded row strides.
 - A pointer-free ScreenCaptureKit reservation that resolves a display, window, or host-picker
