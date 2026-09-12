@@ -20,6 +20,8 @@ import org.graphiks.kffi.objc.CVPixelBufferLockFlags
 import org.graphiks.kffi.objc.CVPixelBufferUnlockBaseAddress
 import org.graphiks.kffi.objc.ObjCSubclassing
 import org.graphiks.kffi.objc.ObjCRuntime
+import org.graphiks.kffi.objc.SCStream
+import org.graphiks.kffi.objc.SCStreamOutputType
 import java.lang.foreign.MemorySegment
 import java.lang.foreign.ValueLayout
 import java.util.concurrent.locks.ReentrantLock
@@ -172,10 +174,30 @@ internal class CoreVideoScreenCapturePixelBuffer(
     }
 }
 
+/** Generated ScreenCaptureKit stream operations needed by the frame-delivery adapter. */
+internal interface ScreenCaptureKitStream {
+    fun addScreenOutput(output: MemorySegment)
+
+    fun removeScreenOutput(output: MemorySegment)
+}
+
+/** One native protocol receiver retained while a ScreenCaptureKit stream owns it. */
+internal interface ScreenCaptureOutputReceiver : AutoCloseable {
+    val native: MemorySegment
+}
+
+/** Factory seam for the specialized `SCStreamOutput` receiver. */
+internal fun interface ScreenCaptureOutputReceiverFactory {
+    fun create(delivery: (ScreenCapturePixelBuffer) -> Unit): ScreenCaptureOutputReceiver
+}
+
 /** Private ScreenCaptureKit adapter; callers never receive its SCStream or output receiver. */
 internal class ScreenCaptureKitFrameOutputNative(
-    private val stream: MemorySegment,
+    private val stream: ScreenCaptureKitStream,
+    private val receiverFactory: ScreenCaptureOutputReceiverFactory = NativeScreenCaptureOutputReceiverFactory,
 ) : ScreenCaptureFrameOutputNative {
+    constructor(stream: MemorySegment) : this(GeneratedScreenCaptureKitStream(SCStream(stream)))
+
     private var receiver: ScreenCaptureOutputReceiver? = null
 
     init {
@@ -187,20 +209,9 @@ internal class ScreenCaptureKitFrameOutputNative(
 
     override fun attach(delivery: (ScreenCapturePixelBuffer) -> Unit) {
         check(receiver == null) { "ScreenCaptureKit output is already attached" }
-        val installedReceiver = ScreenCaptureOutputReceiver.create(delivery)
+        val installedReceiver = receiverFactory.create(delivery)
         try {
-            val error = java.lang.foreign.Arena.ofConfined().use { arena ->
-                ObjCRuntime.msgSend(
-                    ValueLayout.JAVA_BYTE,
-                    stream,
-                    ObjCRuntime.sel("addStreamOutput:type:sampleHandlerQueue:error:"),
-                    installedReceiver.native,
-                    0L,
-                    MemorySegment.NULL,
-                    arena.allocate(ValueLayout.ADDRESS),
-                ) as Byte
-            }
-            check(error.toInt() != 0) { "SCStream rejected the frame output" }
+            stream.addScreenOutput(installedReceiver.native)
             receiver = installedReceiver
         } catch (failure: Throwable) {
             installedReceiver.close()
@@ -210,13 +221,7 @@ internal class ScreenCaptureKitFrameOutputNative(
 
     override fun detach() {
         val installedReceiver = receiver ?: return
-        ObjCRuntime.msgSend(
-            null,
-            stream,
-            ObjCRuntime.sel("removeStreamOutput:type:"),
-            installedReceiver.native,
-            0L,
-        )
+        stream.removeScreenOutput(installedReceiver.native)
     }
 
     override fun release() {
@@ -226,10 +231,45 @@ internal class ScreenCaptureKitFrameOutputNative(
     }
 }
 
-private class ScreenCaptureOutputReceiver private constructor(
-    val native: MemorySegment,
+/** Generated-binding implementation of [ScreenCaptureKitStream]. */
+private class GeneratedScreenCaptureKitStream(
+    private val stream: SCStream,
+) : ScreenCaptureKitStream {
+    override fun addScreenOutput(output: MemorySegment) {
+        java.lang.foreign.Arena.ofConfined().use { arena ->
+            check(
+                stream.addStreamOutput_type_sampleHandlerQueue_error(
+                    output = output,
+                    type = SCStreamOutputType.SCStreamOutputTypeScreen,
+                    sampleHandlerQueue = MemorySegment.NULL,
+                    error = arena.allocate(ValueLayout.ADDRESS),
+                ),
+            ) { "SCStream rejected the frame output" }
+        }
+    }
+
+    override fun removeScreenOutput(output: MemorySegment) {
+        java.lang.foreign.Arena.ofConfined().use { arena ->
+            check(
+                stream.removeStreamOutput_type_error(
+                    output = output,
+                    type = SCStreamOutputType.SCStreamOutputTypeScreen,
+                    error = arena.allocate(ValueLayout.ADDRESS),
+                ),
+            ) { "SCStream rejected removal of the frame output" }
+        }
+    }
+}
+
+private object NativeScreenCaptureOutputReceiverFactory : ScreenCaptureOutputReceiverFactory {
+    override fun create(delivery: (ScreenCapturePixelBuffer) -> Unit): ScreenCaptureOutputReceiver =
+        NativeScreenCaptureOutputReceiver.create(delivery)
+}
+
+private class NativeScreenCaptureOutputReceiver private constructor(
+    override val native: MemorySegment,
     private val route: AutoCloseable,
-) : AutoCloseable {
+) : ScreenCaptureOutputReceiver {
     override fun close() {
         try {
             route.close()
@@ -264,7 +304,7 @@ private class ScreenCaptureOutputReceiver private constructor(
             }
         }
 
-        fun create(delivery: (ScreenCapturePixelBuffer) -> Unit): ScreenCaptureOutputReceiver {
+        fun create(delivery: (ScreenCapturePixelBuffer) -> Unit): NativeScreenCaptureOutputReceiver {
             val allocated = ObjCRuntime.msgSend(
                 ValueLayout.ADDRESS,
                 nativeClass,
@@ -283,7 +323,7 @@ private class ScreenCaptureOutputReceiver private constructor(
                         delivery(CoreVideoScreenCapturePixelBuffer(pixelBuffer))
                     }
                 }
-                return ScreenCaptureOutputReceiver(initialized, route)
+                return NativeScreenCaptureOutputReceiver(initialized, route)
             } catch (failure: Throwable) {
                 ObjCRuntime.msgSend(null, initialized, ObjCRuntime.sel("release"))
                 throw failure

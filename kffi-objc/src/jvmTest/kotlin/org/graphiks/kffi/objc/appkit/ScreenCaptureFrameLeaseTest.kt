@@ -214,6 +214,38 @@ class ScreenCaptureFrameLeaseTest {
         assertTrue(output.isClosed)
         assertEquals(listOf("attach", "detach", "release"), native.calls)
     }
+
+    @Test
+    fun screenCaptureKitOutputUsesTheGeneratedStreamLifecycle() {
+        val stream = RecordingScreenCaptureKitStream()
+        val receiver = RecordingScreenCaptureOutputReceiver()
+        val native = ScreenCaptureKitFrameOutputNative(
+            stream = stream,
+            receiverFactory = ScreenCaptureOutputReceiverFactory { _, -> receiver },
+        )
+
+        native.attach { }
+        native.detach()
+        native.release()
+
+        assertEquals(listOf("add", "remove"), stream.calls)
+        assertTrue(receiver.isClosed)
+    }
+
+    @Test
+    fun rejectedScreenCaptureKitOutputClosesTheUnattachedReceiver() {
+        val stream = RecordingScreenCaptureKitStream(addFailure = IllegalStateException("rejected"))
+        val receiver = RecordingScreenCaptureOutputReceiver()
+        val native = ScreenCaptureKitFrameOutputNative(
+            stream = stream,
+            receiverFactory = ScreenCaptureOutputReceiverFactory { _, -> receiver },
+        )
+
+        assertFailsWith<IllegalStateException> { native.attach { } }
+
+        assertEquals(listOf("add"), stream.calls)
+        assertTrue(receiver.isClosed)
+    }
 }
 
 private class RecordingPixelBuffer(
@@ -270,5 +302,29 @@ private class RecordingFrameOutputNative : ScreenCaptureFrameOutputNative {
 
     fun emit(pixelBuffer: ScreenCapturePixelBuffer) {
         delivery?.invoke(pixelBuffer)
+    }
+}
+
+private class RecordingScreenCaptureKitStream(
+    private val addFailure: Throwable? = null,
+) : ScreenCaptureKitStream {
+    val calls = mutableListOf<String>()
+
+    override fun addScreenOutput(output: java.lang.foreign.MemorySegment) {
+        calls += "add"
+        addFailure?.let { throw it }
+    }
+
+    override fun removeScreenOutput(output: java.lang.foreign.MemorySegment) {
+        calls += "remove"
+    }
+}
+
+private class RecordingScreenCaptureOutputReceiver : ScreenCaptureOutputReceiver {
+    override val native: java.lang.foreign.MemorySegment = java.lang.foreign.MemorySegment.ofAddress(42L)
+    var isClosed = false
+
+    override fun close() {
+        isClosed = true
     }
 }
