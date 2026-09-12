@@ -92,7 +92,13 @@ internal object AppKitScreenCapturePickerNative : ScreenCaptureNative {
         target: ScreenCaptureResolvedTarget,
         configuration: ScreenCaptureStreamConfiguration,
         onFrame: (ScreenCaptureFrameLease) -> Unit,
-    ): ScreenCaptureNativeStream = AppKitScreenCaptureNative.open(target, configuration, onFrame)
+        onTerminated: (Throwable?) -> Unit,
+    ): ScreenCaptureNativeStream = AppKitScreenCaptureNative.open(
+        target,
+        configuration,
+        onFrame,
+        onTerminated,
+    )
 }
 
 private object AppKitScreenCapturePickerPresentationNative : ScreenCapturePickerNative {
