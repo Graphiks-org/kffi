@@ -3,12 +3,21 @@
 package org.graphiks.kffi.objc.managed
 
 import org.graphiks.kffi.objc.GCController
+import org.graphiks.kffi.objc.GCControllerAxisInput
+import org.graphiks.kffi.objc.GCControllerButtonInput
 import org.graphiks.kffi.objc.GCControllerDidConnectNotification
 import org.graphiks.kffi.objc.GCControllerDidDisconnectNotification
+import org.graphiks.kffi.objc.GCControllerDirectionPad
+import org.graphiks.kffi.objc.GCControllerElement
 import org.graphiks.kffi.objc.GCDeviceHaptics
+import org.graphiks.kffi.objc.GCPhysicalInputProfile
 import org.graphiks.kffi.objc.NSArray
+import org.graphiks.kffi.objc.NSDictionary
+import org.graphiks.kffi.objc.NSOperatingSystemVersion
+import org.graphiks.kffi.objc.NSProcessInfo
 import org.graphiks.kffi.objc.NSNotificationCenter
 import org.graphiks.kffi.objc.ObjCRuntime
+import org.graphiks.kffi.objc.allKeysForObject
 import org.graphiks.kffi.objc.vendorName
 import org.graphiks.kffi.objc.productCategory
 import java.lang.foreign.MemorySegment
@@ -82,6 +91,41 @@ class GameControllerMonitor private constructor(
             ?.controller
             ?.createHaptics(locality)
             ?: Result.failure(IllegalArgumentException("GameController device $id is not connected"))
+    }
+
+    /**
+     * Observes detached physical-input snapshots for one still-connected controller.
+     *
+     * The physical-input callback was introduced by GameController on macOS 13. Earlier
+     * systems, or controllers without a physical input profile, return a failure instead of
+     * installing a silent no-op observer.
+     */
+    fun observePhysicalInput(
+        id: GameControllerDeviceId,
+        onInput: (GameControllerPhysicalInputEvent) -> Unit,
+    ): Result<GameControllerPhysicalInputObservation> = lock.withLock {
+        when {
+            closed -> Result.failure(IllegalStateException("GameControllerMonitor is closed"))
+            else -> {
+                val controller = managedControllers.values.firstOrNull { it.device.id == id }
+                    ?.controller
+                    ?: return@withLock Result.failure(
+                        IllegalArgumentException("GameController device $id is not connected"),
+                    )
+                val observation = controller.observePhysicalInput { input ->
+                    emitPhysicalInput(id, input, onInput)
+                }
+                if (observation == null) {
+                    Result.failure(
+                        UnsupportedOperationException(
+                            "GameController physical input observation is unavailable for this controller or macOS version",
+                        ),
+                    )
+                } else {
+                    Result.success(observation)
+                }
+            }
+        }
     }
 
     override fun close() {
@@ -201,6 +245,18 @@ class GameControllerMonitor private constructor(
         return GameControllerLifecycleEvent.Disconnected(removed.device.id)
     }
 
+    private fun emitPhysicalInput(
+        id: GameControllerDeviceId,
+        input: GameControllerPhysicalInput,
+        onInput: (GameControllerPhysicalInputEvent) -> Unit,
+    ) {
+        val event = lock.withLock {
+            if (closed || managedControllers.values.none { it.device.id == id }) return
+            GameControllerPhysicalInputEvent(id, input)
+        }
+        onInput(event)
+    }
+
     private fun nextDeviceId(): GameControllerDeviceId {
         val value = nextId.getAndIncrement()
         check(value != 0L) { "GameControllerMonitor device identity space exhausted" }
@@ -266,6 +322,10 @@ internal interface GameControllerMonitorNativeController : AutoCloseable {
     fun snapshot(): GameControllerDescriptor
 
     fun createHaptics(locality: GameControllerHapticLocality): Result<GameControllerHaptics>
+
+    fun observePhysicalInput(
+        onInput: (GameControllerPhysicalInput) -> Unit,
+    ): GameControllerPhysicalInputObservation?
 }
 
 private object GameControllerMonitorNativeRuntime : GameControllerMonitorNative {
@@ -320,6 +380,9 @@ private class NativeSession(
 private class RetainedGameController(
     private val strong: ObjCStrongRef<GCController>,
 ) : GameControllerMonitorNativeController {
+    private val lock = ReentrantLock()
+    private var physicalInputObservation: GameControllerPhysicalInputObservation? = null
+
     override val nativeIdentity: Long = strong.value.ptr.address()
 
     override fun snapshot(): GameControllerDescriptor = GameControllerDescriptor(
@@ -345,7 +408,39 @@ private class RetainedGameController(
         }
     }
 
-    override fun close() = strong.close()
+    override fun observePhysicalInput(
+        onInput: (GameControllerPhysicalInput) -> Unit,
+    ): GameControllerPhysicalInputObservation? = lock.withLock {
+        physicalInputObservation?.takeUnless(GameControllerPhysicalInputObservation::isClosed)
+            ?.let { return null }
+        if (!supportsGameControllerPhysicalInputObservation()) return null
+        val nativeProfile = strong.value.physicalInputProfile()
+        if (nativeProfile == MemorySegment.NULL) return null
+        val profile = GCPhysicalInputProfile(nativeProfile)
+        GameControllerPhysicalInputObservation(
+            profile.observeValueChanges { changedProfile, element ->
+                onInput(changedProfile.snapshotPhysicalInput(element))
+            },
+        ).also { physicalInputObservation = it }
+    }
+
+    override fun close() {
+        val observation = lock.withLock {
+            physicalInputObservation.also { physicalInputObservation = null }
+        }
+        var failure: Throwable? = null
+        try {
+            observation?.close()
+        } catch (closeFailure: Throwable) {
+            failure = closeFailure
+        }
+        try {
+            strong.close()
+        } catch (closeFailure: Throwable) {
+            failure?.addSuppressed(closeFailure) ?: run { failure = closeFailure }
+        }
+        failure?.let { throw it }
+    }
 }
 
 private fun MemorySegment.asRetainedGameController(): RetainedGameController? {
@@ -355,3 +450,50 @@ private fun MemorySegment.asRetainedGameController(): RetainedGameController? {
 
 private fun MemorySegment.toNullableString(): String? =
     takeIf { it != MemorySegment.NULL }?.let(ObjCRuntime::toJavaString)
+
+private fun supportsGameControllerPhysicalInputObservation(): Boolean =
+    NSProcessInfo(NSProcessInfo.processInfo()).isOperatingSystemAtLeastVersion(
+        NSOperatingSystemVersion(13L, 0L, 0L),
+    )
+
+private fun GCPhysicalInputProfile.snapshotPhysicalInput(
+    element: GCControllerElement,
+): GameControllerPhysicalInput {
+    val buttonNames = buttons().nativeNamesFor(element.ptr)
+    val axisNames = axes().nativeNamesFor(element.ptr)
+    val directionPadNames = dpads().nativeNamesFor(element.ptr)
+    val nativeNames = (elements().nativeNamesFor(element.ptr) + buttonNames + axisNames + directionPadNames)
+        .toSortedSet()
+    return when {
+        buttonNames.isNotEmpty() -> {
+            val button = GCControllerButtonInput(element.ptr)
+            GameControllerPhysicalInput.Button(nativeNames, button.value(), button.isPressed())
+        }
+
+        axisNames.isNotEmpty() -> GameControllerPhysicalInput.Axis(
+            nativeNames,
+            GCControllerAxisInput(element.ptr).value(),
+        )
+
+        directionPadNames.isNotEmpty() -> {
+            val directionPad = GCControllerDirectionPad(element.ptr)
+            GameControllerPhysicalInput.DirectionPad(
+                nativeNames,
+                GCControllerAxisInput(directionPad.xAxis()).value(),
+                GCControllerAxisInput(directionPad.yAxis()).value(),
+            )
+        }
+
+        else -> GameControllerPhysicalInput.Other(nativeNames, element.isAnalog())
+    }
+}
+
+private fun MemorySegment.nativeNamesFor(element: MemorySegment): Set<String> {
+    if (this == MemorySegment.NULL) return emptySet()
+    val keys = NSArray(NSDictionary(this).allKeysForObject(element))
+    return buildSet {
+        repeat(keys.count().toInt()) { index ->
+            keys.objectAtIndex(index.toLong()).toNullableString()?.let(::add)
+        }
+    }
+}
