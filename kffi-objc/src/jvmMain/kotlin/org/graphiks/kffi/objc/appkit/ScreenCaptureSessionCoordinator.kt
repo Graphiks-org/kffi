@@ -40,6 +40,50 @@ sealed interface ScreenCaptureOpenResult {
     data class Failed(val cause: Throwable) : ScreenCaptureOpenResult
 }
 
+/** Detached identity of a source selected before a ScreenCaptureKit stream starts. */
+sealed interface ScreenCaptureReservationSource {
+    data object Unknown : ScreenCaptureReservationSource
+
+    data class Display(val id: Long) : ScreenCaptureReservationSource {
+        init {
+            require(id >= 0) { "display id must be non-negative" }
+        }
+    }
+
+    data class Window(val id: Long, val title: String?) : ScreenCaptureReservationSource {
+        init {
+            require(id >= 0) { "window id must be non-negative" }
+        }
+    }
+}
+
+/** Result of resolving a capture target without starting native frame production. */
+sealed interface ScreenCaptureReservationResult {
+    data class Reserved(val reservation: ScreenCaptureReservation) : ScreenCaptureReservationResult
+
+    data class Failed(val cause: Throwable) : ScreenCaptureReservationResult
+}
+
+/**
+ * Pointer-free ScreenCaptureKit target reservation.
+ *
+ * The reservation owns the native resolved target until [start] transfers that ownership to a
+ * managed stream coordinator. Closing before [start] releases the resolved target without ever
+ * creating a stream.
+ */
+interface ScreenCaptureReservation : AutoCloseable {
+    val source: ScreenCaptureReservationSource
+
+    fun start(
+        configuration: ScreenCaptureStreamConfiguration,
+        onFrame: (ScreenCaptureFrameLease) -> Unit,
+        onOpened: (ScreenCaptureOpenResult) -> Unit,
+        onStopped: (ScreenCaptureStopResult) -> Unit,
+    ): AutoCloseable
+
+    override fun close()
+}
+
 /** Terminal result reported after an already opened stream has stopped. */
 sealed interface ScreenCaptureStopResult {
     data object Stopped : ScreenCaptureStopResult
@@ -81,8 +125,163 @@ internal interface ScreenCaptureNativeStream : AutoCloseable {
 }
 
 /** Opaque resolved source token; only the AppKit native implementation may attach native state. */
-internal open class ScreenCaptureResolvedTarget : AutoCloseable {
+internal open class ScreenCaptureResolvedTarget(
+    open val source: ScreenCaptureReservationSource = ScreenCaptureReservationSource.Unknown,
+) : AutoCloseable {
     override fun close() = Unit
+}
+
+/** Resolves a target once and transfers its native ownership to a later explicit start. */
+internal object ScreenCaptureReservationCoordinator {
+    fun reserve(
+        native: ScreenCaptureNative,
+        target: ScreenCaptureTarget,
+        callback: (ScreenCaptureReservationResult) -> Unit,
+    ): AutoCloseable = ReservationAttempt(native, target, callback)
+}
+
+private class ReservationAttempt(
+    private val native: ScreenCaptureNative,
+    target: ScreenCaptureTarget,
+    private val callback: (ScreenCaptureReservationResult) -> Unit,
+) : AutoCloseable {
+    private val lock = ReentrantLock()
+    private var closed = false
+    private var completed = false
+    private var resolver: AutoCloseable? = null
+
+    init {
+        val installedResolver = native.resolve(target, ::resolved)
+        val closeImmediately = lock.withLock {
+            if (closed || completed) installedResolver else {
+                resolver = installedResolver
+                null
+            }
+        }
+        closeImmediately?.close()
+    }
+
+    override fun close() {
+        val owner = lock.withLock {
+            if (closed) return
+            closed = true
+            resolver.also { resolver = null }
+        }
+        owner?.close()
+    }
+
+    private fun resolved(result: Result<ScreenCaptureResolvedTarget>) {
+        val resolved = result.getOrElse { failure ->
+            deliverFailure(failure)
+            return
+        }
+        val accepted = lock.withLock {
+            if (closed || completed) {
+                false
+            } else {
+                completed = true
+                resolver = null
+                true
+            }
+        }
+        if (!accepted) {
+            resolved.close()
+            return
+        }
+        callback(ScreenCaptureReservationResult.Reserved(ManagedReservation(native, resolved)))
+    }
+
+    private fun deliverFailure(failure: Throwable) {
+        val accepted = lock.withLock {
+            if (closed || completed) {
+                false
+            } else {
+                completed = true
+                resolver = null
+                true
+            }
+        }
+        if (accepted) callback(ScreenCaptureReservationResult.Failed(failure))
+    }
+}
+
+private class ManagedReservation(
+    private val native: ScreenCaptureNative,
+    resolved: ScreenCaptureResolvedTarget,
+) : ScreenCaptureReservation {
+    private val lock = ReentrantLock()
+    private var resolved: ScreenCaptureResolvedTarget? = resolved
+    private var stream: AutoCloseable? = null
+    private var closed = false
+    private var starting = false
+
+    override val source: ScreenCaptureReservationSource = resolved.source
+
+    override fun start(
+        configuration: ScreenCaptureStreamConfiguration,
+        onFrame: (ScreenCaptureFrameLease) -> Unit,
+        onOpened: (ScreenCaptureOpenResult) -> Unit,
+        onStopped: (ScreenCaptureStopResult) -> Unit,
+    ): AutoCloseable {
+        val target = lock.withLock {
+            check(!closed) { "ScreenCaptureKit reservation is closed" }
+            check(!starting && stream == null) { "ScreenCaptureKit reservation has already started" }
+            starting = true
+            checkNotNull(resolved).also { resolved = null }
+        }
+        val opened = ScreenCaptureSessionCoordinator.open(
+            native = ResolvedTargetNative(native, target),
+            target = ScreenCaptureTarget.HostPicker,
+            configuration = configuration,
+            onFrame = onFrame,
+            onOpened = onOpened,
+            onStopped = onStopped,
+        )
+        val closeImmediately = lock.withLock {
+            starting = false
+            if (closed) {
+                opened
+            } else {
+                stream = opened
+                null
+            }
+        }
+        closeImmediately?.close()
+        return opened
+    }
+
+    override fun close() {
+        val owner = lock.withLock {
+            if (closed) return
+            closed = true
+            val reservedTarget = resolved
+            resolved = null
+            stream ?: reservedTarget
+        }
+        owner?.close()
+    }
+}
+
+/** One-shot resolver used to transfer a previously resolved target into the existing coordinator. */
+private class ResolvedTargetNative(
+    private val delegate: ScreenCaptureNative,
+    private var resolved: ScreenCaptureResolvedTarget?,
+) : ScreenCaptureNative {
+    override fun resolve(
+        target: ScreenCaptureTarget,
+        callback: (Result<ScreenCaptureResolvedTarget>) -> Unit,
+    ): AutoCloseable {
+        val value = checkNotNull(resolved) { "ScreenCaptureKit resolved target was consumed twice" }
+        resolved = null
+        callback(Result.success(value))
+        return AutoCloseable { }
+    }
+
+    override fun open(
+        target: ScreenCaptureResolvedTarget,
+        configuration: ScreenCaptureStreamConfiguration,
+        onFrame: (ScreenCaptureFrameLease) -> Unit,
+    ): ScreenCaptureNativeStream = delegate.open(target, configuration, onFrame)
 }
 
 /**

@@ -54,6 +54,34 @@ object ScreenCaptureKitCaptures {
         return ScreenCaptureSourceEnumerator.enumerate(AppKitScreenCaptureSourceNative, callback)
     }
 
+    /**
+     * Resolves a display, window, or macOS 14+ picker choice without starting frame production.
+     *
+     * The callback receives one pointer-free [ScreenCaptureReservation] that owns the resolved
+     * native target. Its [ScreenCaptureReservation.start] is the only operation that can create
+     * an `SCStream`; closing it before then releases the target without starting capture.
+     */
+    fun reserve(
+        target: ScreenCaptureTarget,
+        callback: (ScreenCaptureReservationResult) -> Unit,
+    ): AutoCloseable {
+        require(MacOsVersion.current().major >= ScreenCaptureControlPlanes.minimumMacOsMajor) {
+            "ScreenCaptureKit capture requires macOS ${ScreenCaptureControlPlanes.minimumMacOsMajor}+"
+        }
+        val native = when (target) {
+            ScreenCaptureTarget.HostPicker -> {
+                require(MacOsVersion.current().major >= ScreenCaptureControlPlanes.minimumContentSharingPickerMacOsMajor) {
+                    "ScreenCaptureKit host picker requires macOS ${ScreenCaptureControlPlanes.minimumContentSharingPickerMacOsMajor}+"
+                }
+                AppKitScreenCapturePickerNative
+            }
+
+            is ScreenCaptureTarget.Display, is ScreenCaptureTarget.Window -> AppKitScreenCaptureNative
+        }
+        ScreenCaptureKitFramework.ensureLoaded()
+        return ScreenCaptureReservationCoordinator.reserve(native, target, callback)
+    }
+
     fun open(
         target: ScreenCaptureTarget,
         configuration: ScreenCaptureStreamConfiguration,
@@ -169,6 +197,10 @@ internal sealed class AppKitResolvedTarget : ScreenCaptureResolvedTarget() {
 private class ResolvedDisplay(
     private val display: ObjCStrongRef<SCDisplay>,
 ) : AppKitResolvedTarget() {
+    override val source: ScreenCaptureReservationSource = ScreenCaptureReservationSource.Display(
+        display.value.displayID().toUInt().toLong(),
+    )
+
     override fun createFilter(): OwnedObjC<SCContentFilter> {
         val allocated = allocateObjectiveC("SCContentFilter")
         val initialized = try {
@@ -186,6 +218,11 @@ private class ResolvedDisplay(
 private class ResolvedWindow(
     private val window: ObjCStrongRef<SCWindow>,
 ) : AppKitResolvedTarget() {
+    override val source: ScreenCaptureReservationSource = ScreenCaptureReservationSource.Window(
+        window.value.windowID().toUInt().toLong(),
+        window.value.title().toNullableString(),
+    )
+
     override fun createFilter(): OwnedObjC<SCContentFilter> {
         val allocated = allocateObjectiveC("SCContentFilter")
         val initialized = try {
