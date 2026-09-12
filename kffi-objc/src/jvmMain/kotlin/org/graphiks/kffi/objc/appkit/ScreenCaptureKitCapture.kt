@@ -325,6 +325,7 @@ private fun createConfiguration(configuration: ScreenCaptureStreamConfiguration)
         native.setHeight(configuration.height.toLong())
         native.setPixelFormat(BGRA_PIXEL_FORMAT)
         native.setShowsCursor(configuration.showsCursor)
+        configuration.minimumFrameIntervalAsCMTime()?.let(native::setMinimumFrameInterval)
         return OwnedObjC(native)
     } catch (failure: Throwable) {
         releaseObjectiveC(native.ptr)
