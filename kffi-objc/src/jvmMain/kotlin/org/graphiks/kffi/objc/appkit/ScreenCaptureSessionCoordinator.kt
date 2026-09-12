@@ -5,6 +5,9 @@ import kotlin.concurrent.withLock
 
 /** A ScreenCaptureKit source identity with no native pointer exposed to callers. */
 sealed interface ScreenCaptureTarget {
+    /** Lets the system picker choose the initial capture source; available on macOS 14 and newer. */
+    data object HostPicker : ScreenCaptureTarget
+
     data class Display(val id: Long) : ScreenCaptureTarget {
         init {
             require(id >= 0) { "display id must be non-negative" }
@@ -157,7 +160,10 @@ internal class ScreenCaptureSessionCoordinator private constructor(
                 true
             }
         }
-        if (!shouldOpen) return
+        if (!shouldOpen) {
+            resolvedTarget.close()
+            return
+        }
 
         val created = try {
             native.open(resolvedTarget, configuration, onFrame)
