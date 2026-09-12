@@ -16,6 +16,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `NSWorkspaceAccessibilityDisplayOptionsDidChangeNotification` to resolve on macOS.
 
 ### Added
+- Optional ScreenCaptureKit minimum frame intervals encoded as valid nanosecond CoreMedia times,
+  preserving caller-requested pacing in the managed stream configuration.
 - A distinct ScreenCaptureKit reservation cancellation result for a host picker dismissed before
   selection, preserving user cancellation separately from native failures.
 - Generated CoreVideo pixel-width access for ScreenCaptureKit frame leases, so consumers can
