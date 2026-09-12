@@ -16,6 +16,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `NSWorkspaceAccessibilityDisplayOptionsDidChangeNotification` to resolve on macOS.
 
 ### Added
+- A pointer-free ScreenCaptureKit reservation that resolves a display, window, or host-picker
+  choice before an explicit stream start, allowing callers to release the selected native target
+  without ever producing a frame.
 - A managed macOS 14+ ScreenCaptureKit host picker that resolves its selected
   filter into a pointer-free stream session, with callback-safe observer teardown.
 - Generated borrowed `NSDraggingDestination` receivers and managed `NSPoint(id, SEL)`

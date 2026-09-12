@@ -8,6 +8,52 @@ import kotlin.test.assertTrue
 
 class ScreenCaptureSessionCoordinatorTest {
     @Test
+    fun reservationKeepsTheResolvedTargetWithoutStartingCapture() {
+        val native = RecordingScreenCaptureRuntime()
+        val results = mutableListOf<ScreenCaptureReservationResult>()
+        val target = ClosingResolvedTarget()
+        ScreenCaptureReservationCoordinator.reserve(
+            native = native,
+            target = ScreenCaptureTarget.Display(7L),
+            callback = results::add,
+        )
+
+        native.completeResolution(target)
+
+        val reservation = assertIs<ScreenCaptureReservationResult.Reserved>(results.single()).reservation
+        assertEquals(0, native.openCalls)
+
+        reservation.close()
+
+        assertTrue(target.isClosed)
+        assertEquals(0, native.openCalls)
+    }
+
+    @Test
+    fun reservationCloseReenteredDuringNativeOpenStopsTheLateStream() {
+        lateinit var reservation: ScreenCaptureReservation
+        val native = RecordingScreenCaptureRuntime(onOpen = { reservation.close() })
+        val results = mutableListOf<ScreenCaptureReservationResult>()
+        ScreenCaptureReservationCoordinator.reserve(
+            native = native,
+            target = ScreenCaptureTarget.Display(7L),
+            callback = results::add,
+        )
+        native.completeResolution()
+        reservation = assertIs<ScreenCaptureReservationResult.Reserved>(results.single()).reservation
+
+        reservation.start(
+            configuration = ScreenCaptureStreamConfiguration(640, 480),
+            onFrame = {},
+            onOpened = {},
+            onStopped = {},
+        )
+
+        assertEquals(1, native.openCalls)
+        assertEquals(1, native.stream.stopCalls)
+    }
+
+    @Test
     fun startFailureClosesTheNativeStreamAndReportsOneOpenFailure() {
         val native = RecordingScreenCaptureRuntime()
         val results = mutableListOf<ScreenCaptureOpenResult>()
