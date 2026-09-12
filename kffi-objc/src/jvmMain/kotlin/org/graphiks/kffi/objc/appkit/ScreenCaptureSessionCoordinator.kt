@@ -1,7 +1,12 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc.appkit
 
+import org.graphiks.kffi.objc.CMTime
+import org.graphiks.kffi.objc.CMTimeFlags
 import java.util.concurrent.locks.ReentrantLock
 import kotlin.concurrent.withLock
+import kotlin.time.Duration
 
 /** A ScreenCaptureKit source identity with no native pointer exposed to callers. */
 sealed interface ScreenCaptureTarget {
@@ -26,12 +31,29 @@ data class ScreenCaptureStreamConfiguration(
     val width: Int,
     val height: Int,
     val showsCursor: Boolean = true,
+    val minimumFrameInterval: Duration? = null,
 ) {
     init {
         require(width > 0) { "width must be positive" }
         require(height > 0) { "height must be positive" }
+        require(minimumFrameInterval == null || minimumFrameInterval.isFinite() && minimumFrameInterval.isPositive()) {
+            "minimumFrameInterval must be finite and positive"
+        }
     }
 }
+
+/** Converts the Kotlin duration to the exact nanosecond CoreMedia representation expected by AppKit. */
+internal fun ScreenCaptureStreamConfiguration.minimumFrameIntervalAsCMTime(): CMTime? =
+    minimumFrameInterval?.let { interval ->
+        CMTime(
+            value = interval.inWholeNanoseconds,
+            timescale = NANOSECONDS_PER_SECOND,
+            flags = CMTimeFlags.kCMTimeFlags_Valid,
+            epoch = 0L,
+        )
+    }
+
+private const val NANOSECONDS_PER_SECOND = 1_000_000_000
 
 /** Result of the asynchronous request to open a ScreenCaptureKit stream. */
 sealed interface ScreenCaptureOpenResult {

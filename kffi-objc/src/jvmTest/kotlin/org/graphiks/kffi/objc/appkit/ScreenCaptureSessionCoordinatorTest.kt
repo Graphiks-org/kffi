@@ -1,12 +1,32 @@
+@file:OptIn(org.graphiks.kffi.objc.PlatformAvailability::class)
+
 package org.graphiks.kffi.objc.appkit
 
 import java.util.concurrent.atomic.AtomicBoolean
+import org.graphiks.kffi.objc.CMTimeFlags
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertIs
 import kotlin.test.assertTrue
+import kotlin.time.Duration.Companion.nanoseconds
 
 class ScreenCaptureSessionCoordinatorTest {
+    @Test
+    fun configurationEncodesTheMinimumFrameIntervalAsAValidCoreMediaTime() {
+        val nativeTime = checkNotNull(
+            ScreenCaptureStreamConfiguration(
+                width = 640,
+                height = 480,
+                minimumFrameInterval = 1_500.nanoseconds,
+            ).minimumFrameIntervalAsCMTime(),
+        )
+
+        assertEquals(1_500L, nativeTime.value())
+        assertEquals(1_000_000_000, nativeTime.timescale())
+        assertEquals(CMTimeFlags.kCMTimeFlags_Valid, nativeTime.flags())
+        assertEquals(0L, nativeTime.epoch())
+    }
+
     @Test
     fun reservationReportsPickerCancellationWithoutErasingItsMeaning() {
         val native = RecordingScreenCaptureRuntime()
