@@ -189,6 +189,13 @@ intentionally outside this passive layer and can require Screen Recording permis
 GameController and HID adapters observe actual connected hardware only when an application creates
 them; no hardware discovery is performed by these capability checks.
 
+`ScreenCaptureKitCaptures.reserve(target, callback)` is the explicit next step when a caller
+needs a selected source but must not yet start frames. Its successful callback carries a
+pointer-free `ScreenCaptureReservation`, including a detached source identity for direct display
+and window choices. The reservation owns the native selection until `start(...)` transfers it to
+the managed stream owner; closing it first releases that selection without creating an `SCStream`.
+The system picker is resolved under the same macOS 14+ runtime guard.
+
 ## ScreenCaptureKit frame leases
 
 The frame-delivery layer keeps `SCStream`, `CMSampleBuffer`, `CVPixelBuffer`, and `IOSurface`
