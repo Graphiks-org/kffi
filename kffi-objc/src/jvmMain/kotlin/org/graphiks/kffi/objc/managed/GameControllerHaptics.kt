@@ -4,21 +4,47 @@ package org.graphiks.kffi.objc.managed
 
 import org.graphiks.kffi.objc.CHHapticEngine
 import org.graphiks.kffi.objc.GCDeviceHaptics
+import org.graphiks.kffi.objc.GCHapticsLocalityAll
 import org.graphiks.kffi.objc.GCHapticsLocalityDefault
+import org.graphiks.kffi.objc.GCHapticsLocalityHandles
+import org.graphiks.kffi.objc.GCHapticsLocalityLeftHandle
+import org.graphiks.kffi.objc.GCHapticsLocalityLeftTrigger
+import org.graphiks.kffi.objc.GCHapticsLocalityRightHandle
+import org.graphiks.kffi.objc.GCHapticsLocalityRightTrigger
+import org.graphiks.kffi.objc.GCHapticsLocalityTriggers
 import org.graphiks.kffi.objc.NSError
+import org.graphiks.kffi.objc.NSSet
 import org.graphiks.kffi.objc.ObjCRuntime
+import org.graphiks.kffi.objc.containsObject
 import java.lang.foreign.Arena
 import java.lang.foreign.MemorySegment
 import java.lang.foreign.ValueLayout
 import java.util.concurrent.locks.ReentrantLock
 import kotlin.concurrent.withLock
 
-/** A Kotlin-owned haptic engine created for a game controller's default locality. */
+/** A detached locality exposed by a GameController haptics device. */
+enum class GameControllerHapticLocality {
+    Default,
+    All,
+    Handles,
+    LeftHandle,
+    RightHandle,
+    Triggers,
+    LeftTrigger,
+    RightTrigger,
+}
+
+/** A Kotlin-owned haptic engine created for one advertised game-controller locality. */
 class GameControllerHaptics private constructor(
     private val session: GameControllerHapticsSession,
+    val locality: GameControllerHapticLocality,
+    supportedLocalities: Set<GameControllerHapticLocality>,
 ) : AutoCloseable {
     private val lock = ReentrantLock()
     private var closed = false
+
+    /** Immutable snapshot of the localities reported before this engine was created. */
+    val supportedLocalities: Set<GameControllerHapticLocality> = supportedLocalities.toSet()
 
     /** Starts the engine, mapping any native `NSError` to a Kotlin exception. */
     fun start(): Result<Unit> = lock.withLock {
@@ -54,22 +80,48 @@ class GameControllerHaptics private constructor(
     }
 
     companion object {
-        /** Creates an engine for the guaranteed default haptic locality. */
+        /** Creates an engine for the default locality when the controller advertises it. */
         fun create(deviceHaptics: GCDeviceHaptics): Result<GameControllerHaptics> =
-            create(deviceHaptics, CoreHapticsFactory)
+            create(deviceHaptics, GameControllerHapticLocality.Default, CoreHapticsFactory)
+
+        /**
+         * Creates an engine for an explicitly advertised locality.
+         *
+         * This API never chooses a substitute locality: callers must select one of
+         * [supportedLocalities].
+         */
+        fun create(
+            deviceHaptics: GCDeviceHaptics,
+            locality: GameControllerHapticLocality,
+        ): Result<GameControllerHaptics> = create(deviceHaptics, locality, CoreHapticsFactory)
 
         internal fun create(
             deviceHaptics: GCDeviceHaptics,
+            locality: GameControllerHapticLocality,
             factory: GameControllerHapticsFactory,
         ): Result<GameControllerHaptics> = runCatching {
-            val session = factory.create(deviceHaptics)
+            val supportedLocalities = factory.supportedLocalities(deviceHaptics).toSet()
+            if (locality !in supportedLocalities) {
+                throw GameControllerHapticsException(
+                    domain = null,
+                    code = null,
+                    message = "The controller does not advertise haptic locality $locality",
+                )
+            }
+            val session = factory.create(deviceHaptics, locality)
                 ?: throw GameControllerHapticsException(
                     domain = null,
                     code = null,
                     message = "The controller could not create a haptic engine",
                 )
-            GameControllerHaptics(session)
+            GameControllerHaptics(session, locality, supportedLocalities)
         }
+
+        internal fun create(
+            deviceHaptics: GCDeviceHaptics,
+            factory: GameControllerHapticsFactory,
+        ): Result<GameControllerHaptics> =
+            create(deviceHaptics, GameControllerHapticLocality.Default, factory)
     }
 }
 
@@ -87,7 +139,14 @@ internal data class GameControllerHapticsFailure(
 )
 
 internal fun interface GameControllerHapticsFactory {
-    fun create(deviceHaptics: GCDeviceHaptics): GameControllerHapticsSession?
+    fun create(
+        deviceHaptics: GCDeviceHaptics,
+        locality: GameControllerHapticLocality,
+    ): GameControllerHapticsSession?
+
+    fun supportedLocalities(
+        deviceHaptics: GCDeviceHaptics,
+    ): Set<GameControllerHapticLocality> = setOf(GameControllerHapticLocality.Default)
 }
 
 internal interface GameControllerHapticsSession {
@@ -100,14 +159,38 @@ internal interface GameControllerHapticsSession {
 }
 
 private object CoreHapticsFactory : GameControllerHapticsFactory {
-    override fun create(deviceHaptics: GCDeviceHaptics): GameControllerHapticsSession? =
+    override fun create(
+        deviceHaptics: GCDeviceHaptics,
+        locality: GameControllerHapticLocality,
+    ): GameControllerHapticsSession? =
         ObjCRuntime.autoreleasePool {
-            val engine = deviceHaptics.createEngineWithLocality(GCHapticsLocalityDefault)
+            val engine = deviceHaptics.createEngineWithLocality(locality.nativeValue)
             if (engine == MemorySegment.NULL) return@autoreleasePool null
             ObjCManagedRuntime.retain(engine)
             CoreHapticsSession(CHHapticEngine(engine))
         }
+
+    override fun supportedLocalities(
+        deviceHaptics: GCDeviceHaptics,
+    ): Set<GameControllerHapticLocality> = ObjCRuntime.autoreleasePool {
+        val nativeLocalities = deviceHaptics.supportedLocalities()
+        if (nativeLocalities == MemorySegment.NULL) return@autoreleasePool emptySet()
+        GameControllerHapticLocality.entries
+            .filterTo(linkedSetOf()) { locality -> NSSet(nativeLocalities).containsObject(locality.nativeValue) }
+    }
 }
+
+private val GameControllerHapticLocality.nativeValue: MemorySegment
+    get() = when (this) {
+        GameControllerHapticLocality.Default -> GCHapticsLocalityDefault
+        GameControllerHapticLocality.All -> GCHapticsLocalityAll
+        GameControllerHapticLocality.Handles -> GCHapticsLocalityHandles
+        GameControllerHapticLocality.LeftHandle -> GCHapticsLocalityLeftHandle
+        GameControllerHapticLocality.RightHandle -> GCHapticsLocalityRightHandle
+        GameControllerHapticLocality.Triggers -> GCHapticsLocalityTriggers
+        GameControllerHapticLocality.LeftTrigger -> GCHapticsLocalityLeftTrigger
+        GameControllerHapticLocality.RightTrigger -> GCHapticsLocalityRightTrigger
+    }
 
 private class CoreHapticsSession(
     private val engine: CHHapticEngine,
