@@ -64,9 +64,19 @@ object ScreenCaptureKitCaptures {
         require(MacOsVersion.current().major >= ScreenCaptureControlPlanes.minimumMacOsMajor) {
             "ScreenCaptureKit capture requires macOS ${ScreenCaptureControlPlanes.minimumMacOsMajor}+"
         }
+        val native = when (target) {
+            ScreenCaptureTarget.HostPicker -> {
+                require(MacOsVersion.current().major >= ScreenCaptureControlPlanes.minimumContentSharingPickerMacOsMajor) {
+                    "ScreenCaptureKit host picker requires macOS ${ScreenCaptureControlPlanes.minimumContentSharingPickerMacOsMajor}+"
+                }
+                AppKitScreenCapturePickerNative
+            }
+
+            is ScreenCaptureTarget.Display, is ScreenCaptureTarget.Window -> AppKitScreenCaptureNative
+        }
         ScreenCaptureKitFramework.ensureLoaded()
         return ScreenCaptureSessionCoordinator.open(
-            native = AppKitScreenCaptureNative,
+            native = native,
             target = target,
             configuration = configuration,
             onFrame = onFrame,
@@ -83,7 +93,7 @@ class ScreenCaptureKitFailure internal constructor(
     message: String,
 ) : IllegalStateException(message)
 
-private object AppKitScreenCaptureNative : ScreenCaptureNative {
+internal object AppKitScreenCaptureNative : ScreenCaptureNative {
     override fun resolve(
         target: ScreenCaptureTarget,
         callback: (Result<ScreenCaptureResolvedTarget>) -> Unit,
@@ -152,7 +162,7 @@ private object AppKitScreenCaptureSourceNative : ScreenCaptureSourceNative {
     }
 }
 
-private sealed class AppKitResolvedTarget : ScreenCaptureResolvedTarget() {
+internal sealed class AppKitResolvedTarget : ScreenCaptureResolvedTarget() {
     abstract fun createFilter(): OwnedObjC<SCContentFilter>
 }
 
@@ -191,6 +201,8 @@ private class ResolvedWindow(
 }
 
 private fun resolveTarget(target: ScreenCaptureTarget, content: SCShareableContent): AppKitResolvedTarget = when (target) {
+    ScreenCaptureTarget.HostPicker -> error("ScreenCaptureKit host picker resolves its own source")
+
     is ScreenCaptureTarget.Display -> arrays(content.displays())
         .map(::SCDisplay)
         .firstOrNull { it.displayID().toUInt().toLong() == target.id }
@@ -389,7 +401,7 @@ private fun objectObjectCompletion(
     return AutoCloseable { owner.getAndSet(null)?.close() }
 }
 
-private class OwnedObjC<T : NSObject>(
+internal class OwnedObjC<T : NSObject>(
     val value: T,
 ) : AutoCloseable {
     private val closed = AtomicBoolean()
@@ -417,12 +429,12 @@ private fun releaseObjectiveC(pointer: MemorySegment) {
     if (pointer != MemorySegment.NULL) ObjCManagedRuntime.release(pointer)
 }
 
-private fun requireNotNullObject(pointer: MemorySegment, operation: String): MemorySegment {
+internal fun requireNotNullObject(pointer: MemorySegment, operation: String): MemorySegment {
     check(pointer != MemorySegment.NULL) { "$operation returned nil" }
     return pointer
 }
 
-private fun NSError.toCaptureFailure(): ScreenCaptureKitFailure {
+internal fun NSError.toCaptureFailure(): ScreenCaptureKitFailure {
     val domain = runCatching { ObjCRuntime.toJavaString(domain()) }.getOrNull()
     val code = runCatching(::code).getOrNull()
     val message = runCatching(::localizedDescriptionAsString).getOrNull()

@@ -10,10 +10,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Fixed
+- Managed ScreenCaptureKit source resolution now closes a resolved native token
+  when cancellation wins its completion race.
 - Generated Objective-C global lookups now load `AppKit.framework`, allowing
   `NSWorkspaceAccessibilityDisplayOptionsDidChangeNotification` to resolve on macOS.
 
 ### Added
+- A managed macOS 14+ ScreenCaptureKit host picker that resolves its selected
+  filter into a pointer-free stream session, with callback-safe observer teardown.
 - Generated borrowed `NSDraggingDestination` receivers and managed `NSPoint(id, SEL)`
   callbacks via `ObjCMethodSignatures.Point` and `ObjCMethodRouter.onPoint`, with
   exception fallbacks and ABI-zero returns after route revocation.

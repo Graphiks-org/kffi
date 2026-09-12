@@ -83,7 +83,7 @@ data class ScreenCaptureSources(
 /** Passive, macOS 13+ ScreenCaptureKit control-plane checks. */
 object ScreenCaptureControlPlanes {
     const val minimumMacOsMajor: Int = 13
-    private const val contentSharingPickerMacOsMajor: Int = 14
+    const val minimumContentSharingPickerMacOsMajor: Int = 14
 
     /**
      * Reads ScreenCaptureKit capability without causing a Screen Recording prompt.
@@ -117,7 +117,7 @@ object ScreenCaptureControlPlanes {
             macOsVersion = macOsVersion,
             supportsMacOs13Baseline = true,
             preflightScreenCaptureAccess = native.preflightScreenCaptureAccess(),
-            supportsContentSharingPicker = macOsVersion.major >= contentSharingPickerMacOsMajor,
+            supportsContentSharingPicker = macOsVersion.major >= minimumContentSharingPickerMacOsMajor,
         )
     }
 }

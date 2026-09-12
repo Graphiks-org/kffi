@@ -50,6 +50,26 @@ class ScreenCaptureSessionCoordinatorTest {
     }
 
     @Test
+    fun closeWhileResolvingClosesTheLateResolvedTarget() {
+        val native = RecordingScreenCaptureRuntime()
+        val attempt = ScreenCaptureSessionCoordinator.open(
+            native = native,
+            target = ScreenCaptureTarget.Window(11L),
+            configuration = ScreenCaptureStreamConfiguration(640, 480),
+            onFrame = {},
+            onOpened = {},
+            onStopped = {},
+        )
+        val lateTarget = ClosingResolvedTarget()
+
+        attempt.close()
+        native.completeResolution(lateTarget)
+
+        assertTrue(lateTarget.isClosed)
+        assertEquals(0, native.openCalls)
+    }
+
+    @Test
     fun activeCloseStopsBeforeReleasingAndReportsTerminationOnce() {
         val native = RecordingScreenCaptureRuntime()
         val opened = mutableListOf<ScreenCaptureOpenResult>()
@@ -158,8 +178,16 @@ private class RecordingScreenCaptureRuntime(
         return stream
     }
 
-    fun completeResolution() {
-        resolution?.invoke(Result.success(ScreenCaptureResolvedTarget()))
+    fun completeResolution(target: ScreenCaptureResolvedTarget = ScreenCaptureResolvedTarget()) {
+        resolution?.invoke(Result.success(target))
+    }
+}
+
+private class ClosingResolvedTarget : ScreenCaptureResolvedTarget() {
+    var isClosed = false
+
+    override fun close() {
+        isClosed = true
     }
 }
 
