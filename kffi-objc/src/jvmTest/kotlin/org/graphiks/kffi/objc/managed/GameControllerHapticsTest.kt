@@ -15,7 +15,7 @@ class GameControllerHapticsTest {
         val session = RecordingHapticsSession()
         val result = GameControllerHaptics.create(
             GCDeviceHaptics(MemorySegment.NULL),
-            GameControllerHapticsFactory { session },
+            GameControllerHapticsFactory { _, _ -> session },
         )
 
         val haptics = result.getOrThrow()
@@ -36,7 +36,7 @@ class GameControllerHapticsTest {
         val session = RecordingHapticsSession(failure)
         val haptics = GameControllerHaptics.create(
             GCDeviceHaptics(MemorySegment.NULL),
-            GameControllerHapticsFactory { session },
+            GameControllerHapticsFactory { _, _ -> session },
         ).getOrThrow()
 
         val result = haptics.start()
@@ -53,7 +53,7 @@ class GameControllerHapticsTest {
     fun facadeReturnsFailureWhenTheDeviceCannotCreateAnEngine() {
         val result = GameControllerHaptics.create(
             GCDeviceHaptics(MemorySegment.NULL),
-            GameControllerHapticsFactory { null },
+            GameControllerHapticsFactory { _, _ -> null },
         )
 
         assertTrue(result.isFailure)
@@ -65,7 +65,7 @@ class GameControllerHapticsTest {
         val session = RecordingHapticsSession()
         val haptics = GameControllerHaptics.create(
             GCDeviceHaptics(MemorySegment.NULL),
-            GameControllerHapticsFactory { session },
+            GameControllerHapticsFactory { _, _ -> session },
         ).getOrThrow()
         haptics.close()
 
@@ -74,6 +74,44 @@ class GameControllerHapticsTest {
         assertFalse(result.isSuccess)
         assertFailsWith<IllegalStateException> { result.getOrThrow() }
         assertEquals(listOf("stop", "release"), session.calls)
+    }
+
+    @Test
+    fun facadeCreatesOnlyAnAdvertisedHapticLocality() {
+        val session = RecordingHapticsSession()
+        val factory = RecordingLocalizedHapticsFactory(
+            supportedLocalities = setOf(GameControllerHapticLocality.LeftHandle),
+            session = session,
+        )
+
+        val haptics = GameControllerHaptics.create(
+            deviceHaptics = GCDeviceHaptics(MemorySegment.NULL),
+            locality = GameControllerHapticLocality.LeftHandle,
+            factory = factory,
+        ).getOrThrow()
+
+        assertEquals(GameControllerHapticLocality.LeftHandle, haptics.locality)
+        assertEquals(setOf(GameControllerHapticLocality.LeftHandle), haptics.supportedLocalities)
+        assertEquals(listOf(GameControllerHapticLocality.LeftHandle), factory.createdLocalities)
+        haptics.close()
+    }
+
+    @Test
+    fun facadeRejectsAnUnadvertisedHapticLocalityBeforeCreatingAnEngine() {
+        val factory = RecordingLocalizedHapticsFactory(
+            supportedLocalities = setOf(GameControllerHapticLocality.RightHandle),
+            session = RecordingHapticsSession(),
+        )
+
+        val result = GameControllerHaptics.create(
+            deviceHaptics = GCDeviceHaptics(MemorySegment.NULL),
+            locality = GameControllerHapticLocality.LeftHandle,
+            factory = factory,
+        )
+
+        assertTrue(result.isFailure)
+        assertIs<GameControllerHapticsException>(result.exceptionOrNull())
+        assertEquals(emptyList(), factory.createdLocalities)
     }
 }
 
@@ -93,5 +131,24 @@ private class RecordingHapticsSession(
 
     override fun release() {
         calls += "release"
+    }
+}
+
+private class RecordingLocalizedHapticsFactory(
+    private val supportedLocalities: Set<GameControllerHapticLocality>,
+    private val session: GameControllerHapticsSession,
+) : GameControllerHapticsFactory {
+    val createdLocalities = mutableListOf<GameControllerHapticLocality>()
+
+    override fun supportedLocalities(
+        deviceHaptics: GCDeviceHaptics,
+    ): Set<GameControllerHapticLocality> = supportedLocalities
+
+    override fun create(
+        deviceHaptics: GCDeviceHaptics,
+        locality: GameControllerHapticLocality,
+    ): GameControllerHapticsSession? {
+        createdLocalities += locality
+        return session
     }
 }
