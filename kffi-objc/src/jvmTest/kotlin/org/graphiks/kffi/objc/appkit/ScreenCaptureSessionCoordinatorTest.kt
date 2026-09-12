@@ -240,6 +240,34 @@ class ScreenCaptureSessionCoordinatorTest {
     }
 
     @Test
+    fun nativeTerminationDuringStreamCreationIsReportedAsAnOpenFailure() {
+        lateinit var native: RecordingScreenCaptureRuntime
+        val failure = IllegalStateException("source disappeared before start")
+        native = RecordingScreenCaptureRuntime(
+            onOpen = { native.stream.completeNativeTermination(failure) },
+        )
+        val opened = mutableListOf<ScreenCaptureOpenResult>()
+        val stopped = mutableListOf<ScreenCaptureStopResult>()
+        ScreenCaptureSessionCoordinator.open(
+            native = native,
+            target = ScreenCaptureTarget.Display(7L),
+            configuration = ScreenCaptureStreamConfiguration(640, 480),
+            onFrame = {},
+            onOpened = opened::add,
+            onStopped = stopped::add,
+        )
+
+        native.completeResolution()
+
+        assertTrue(native.stream.isClosed)
+        assertEquals(0, native.stream.stopCalls)
+        assertEquals(0, native.stream.startCalls)
+        assertEquals(listOf<ScreenCaptureStopResult>(), stopped)
+        assertEquals(1, opened.size)
+        assertEquals(failure, assertIs<ScreenCaptureOpenResult.Failed>(opened.single()).cause)
+    }
+
+    @Test
     fun nativeDelegateTerminationWinsTheRaceWithARequestedStopWithoutDoubleReporting() {
         val native = RecordingScreenCaptureRuntime()
         val opened = mutableListOf<ScreenCaptureOpenResult>()
@@ -366,10 +394,12 @@ private class RecordingScreenCaptureNativeStream : ScreenCaptureNativeStream {
     private var start: ((Throwable?) -> Unit)? = null
     private var stop: ((Throwable?) -> Unit)? = null
     var termination: ((Throwable?) -> Unit)? = null
+    var startCalls = 0
     var stopCalls = 0
     var isClosed = false
 
     override fun start(completion: (Throwable?) -> Unit) {
+        startCalls += 1
         start = completion
     }
 
