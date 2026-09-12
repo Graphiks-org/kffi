@@ -3,11 +3,13 @@
 package org.graphiks.kffi.objc.appkit
 
 import org.graphiks.kffi.objc.NSArray
+import org.graphiks.kffi.objc.CGRequestScreenCaptureAccess
 import org.graphiks.kffi.objc.NSError
 import org.graphiks.kffi.objc.NSObject
 import org.graphiks.kffi.objc.ObjCRuntime
 import org.graphiks.kffi.objc.SCContentFilter
 import org.graphiks.kffi.objc.SCDisplay
+import org.graphiks.kffi.objc.SCRunningApplication
 import org.graphiks.kffi.objc.SCShareableContent
 import org.graphiks.kffi.objc.SCStream
 import org.graphiks.kffi.objc.SCStreamConfiguration
@@ -30,6 +32,28 @@ import java.util.concurrent.atomic.AtomicReference
  * must copy pixels during [onFrame] if they need to retain them.
  */
 object ScreenCaptureKitCaptures {
+    /** Explicitly requests the system-wide Screen Recording permission on macOS 13 and newer. */
+    fun requestPermission(): ScreenCapturePermissionRequestResult {
+        require(MacOsVersion.current().major >= ScreenCaptureControlPlanes.minimumMacOsMajor) {
+            "ScreenCaptureKit capture requires macOS ${ScreenCaptureControlPlanes.minimumMacOsMajor}+"
+        }
+        return ScreenCapturePermissionRequester.request(::CGRequestScreenCaptureAccess)
+    }
+
+    /**
+     * Explicitly enumerates currently shareable sources. Closing the returned owner suppresses a
+     * late completion; this operation never starts a stream or presents a picker.
+     */
+    fun enumerateSources(
+        callback: (ScreenCaptureSourceEnumerationResult) -> Unit,
+    ): AutoCloseable {
+        require(MacOsVersion.current().major >= ScreenCaptureControlPlanes.minimumMacOsMajor) {
+            "ScreenCaptureKit source enumeration requires macOS ${ScreenCaptureControlPlanes.minimumMacOsMajor}+"
+        }
+        ScreenCaptureKitFramework.ensureLoaded()
+        return ScreenCaptureSourceEnumerator.enumerate(AppKitScreenCaptureSourceNative, callback)
+    }
+
     fun open(
         target: ScreenCaptureTarget,
         configuration: ScreenCaptureStreamConfiguration,
@@ -107,6 +131,27 @@ private object AppKitScreenCaptureNative : ScreenCaptureNative {
     }
 }
 
+/** ScreenCaptureKit source discovery; every result is copied before its completion block returns. */
+private object AppKitScreenCaptureSourceNative : ScreenCaptureSourceNative {
+    override fun enumerate(
+        callback: (Result<ScreenCaptureSourceCatalog>) -> Unit,
+    ): AutoCloseable = objectObjectCompletion(
+        invoke = SCShareableContent::getShareableContentWithCompletionHandler,
+    ) { content, error ->
+        val failure = error?.let { NSError(it.ptr).toCaptureFailure() }
+        when {
+            failure != null -> callback(Result.failure(failure))
+            content == null -> callback(
+                Result.failure(
+                    ScreenCaptureKitFailure(null, null, "ScreenCaptureKit returned no shareable content"),
+                ),
+            )
+
+            else -> callback(runCatching { snapshotSources(SCShareableContent(content.ptr)) })
+        }
+    }
+}
+
 private sealed class AppKitResolvedTarget : ScreenCaptureResolvedTarget() {
     abstract fun createFilter(): OwnedObjC<SCContentFilter>
 }
@@ -159,6 +204,56 @@ private fun resolveTarget(target: ScreenCaptureTarget, content: SCShareableConte
         ?.retainStrong()
         ?.let(::ResolvedWindow)
         ?: error("ScreenCaptureKit window ${target.id} is no longer available")
+}
+
+private fun snapshotSources(content: SCShareableContent): ScreenCaptureSourceCatalog = ScreenCaptureSourceCatalog(
+    displays = arrays(content.displays()).map { pointer ->
+        SCDisplay(pointer).toSource()
+    },
+    windows = arrays(content.windows()).map { pointer ->
+        SCWindow(pointer).toSource()
+    },
+)
+
+private fun SCDisplay.toSource(): ScreenCaptureDisplaySource = ScreenCaptureDisplaySource(
+    id = displayID().toUInt().toLong(),
+    pixelWidth = width().toPositiveInt("display pixel width"),
+    pixelHeight = height().toPositiveInt("display pixel height"),
+    bounds = frame().toSourceBounds(),
+)
+
+private fun SCWindow.toSource(): ScreenCaptureWindowSource = ScreenCaptureWindowSource(
+    id = windowID().toUInt().toLong(),
+    title = title().toNullableString(),
+    owner = owningApplication().toApplicationOrNull(),
+    bounds = frame().toSourceBounds(),
+    layer = windowLayer(),
+    isOnScreen = isOnScreen(),
+)
+
+private fun MemorySegment.toApplicationOrNull(): ScreenCaptureApplication? {
+    if (this == MemorySegment.NULL) return null
+    val application = SCRunningApplication(this)
+    return ScreenCaptureApplication(
+        name = application.applicationName().toNullableString(),
+        bundleIdentifier = application.bundleIdentifier().toNullableString(),
+        processId = application.processID(),
+    )
+}
+
+private fun org.graphiks.kffi.objc.CGRect.toSourceBounds(): ScreenCaptureSourceBounds = ScreenCaptureSourceBounds(
+    x = origin.x,
+    y = origin.y,
+    width = size.width,
+    height = size.height,
+)
+
+private fun MemorySegment.toNullableString(): String? =
+    takeUnless { it == MemorySegment.NULL }?.let(ObjCRuntime::toJavaString)
+
+private fun Long.toPositiveInt(description: String): Int {
+    require(this in 1..Int.MAX_VALUE.toLong()) { "$description must fit a positive Int" }
+    return toInt()
 }
 
 private fun createFilter(target: AppKitResolvedTarget): OwnedObjC<SCContentFilter> = target.createFilter()
