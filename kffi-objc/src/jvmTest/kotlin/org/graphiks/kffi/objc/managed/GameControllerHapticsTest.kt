@@ -8,6 +8,8 @@ import kotlin.test.assertFailsWith
 import kotlin.test.assertFalse
 import kotlin.test.assertIs
 import kotlin.test.assertTrue
+import kotlin.time.Duration
+import kotlin.time.Duration.Companion.milliseconds
 
 class GameControllerHapticsTest {
     @Test
@@ -46,6 +48,52 @@ class GameControllerHapticsTest {
         assertEquals("com.apple.CoreHaptics", error.domain)
         assertEquals(-4815, error.code)
         assertEquals("The haptic engine could not start", error.message)
+        haptics.close()
+    }
+
+    @Test
+    fun continuousPlaybackMapsNativeErrorsToSafeKotlinFailures() {
+        val failure = GameControllerHapticsFailure(
+            domain = "com.apple.CoreHaptics",
+            code = -4805,
+            description = "The haptic pattern player could not start",
+        )
+        val session = RecordingHapticsSession(continuousPlaybackFailure = failure)
+        val haptics = GameControllerHaptics.create(
+            GCDeviceHaptics(MemorySegment.NULL),
+            GameControllerHapticsFactory { _, _ -> session },
+        ).getOrThrow()
+
+        val result = haptics.playContinuous(intensity = 0.75f, duration = 250.milliseconds)
+
+        assertTrue(result.isFailure)
+        val error = assertIs<GameControllerHapticsException>(result.exceptionOrNull())
+        assertEquals("com.apple.CoreHaptics", error.domain)
+        assertEquals(-4805, error.code)
+        assertEquals("The haptic pattern player could not start", error.message)
+        assertEquals(listOf(0.75f to 250.milliseconds), session.continuousPulses)
+        haptics.close()
+    }
+
+    @Test
+    fun continuousPlaybackRejectsInvalidInputsBeforeCallingTheNativeSession() {
+        val session = RecordingHapticsSession()
+        val haptics = GameControllerHaptics.create(
+            GCDeviceHaptics(MemorySegment.NULL),
+            GameControllerHapticsFactory { _, _ -> session },
+        ).getOrThrow()
+
+        assertFailsWith<IllegalArgumentException> {
+            haptics.playContinuous(intensity = Float.NaN, duration = 250.milliseconds)
+        }
+        assertFailsWith<IllegalArgumentException> {
+            haptics.playContinuous(intensity = 0.75f, duration = (-1).milliseconds)
+        }
+        assertFailsWith<IllegalArgumentException> {
+            haptics.playContinuous(intensity = 0.75f, duration = Duration.INFINITE)
+        }
+
+        assertEquals(emptyList(), session.continuousPulses)
         haptics.close()
     }
 
@@ -117,12 +165,22 @@ class GameControllerHapticsTest {
 
 private class RecordingHapticsSession(
     private val startFailure: GameControllerHapticsFailure? = null,
+    private val continuousPlaybackFailure: GameControllerHapticsFailure? = null,
 ) : GameControllerHapticsSession {
     val calls = mutableListOf<String>()
+    val continuousPulses = mutableListOf<Pair<Float, Duration>>()
 
     override fun start(): GameControllerHapticsFailure? {
         calls += "start"
         return startFailure
+    }
+
+    override fun playContinuous(
+        intensity: Float,
+        duration: Duration,
+    ): GameControllerHapticsFailure? {
+        continuousPulses += intensity to duration
+        return continuousPlaybackFailure
     }
 
     override fun stop() {

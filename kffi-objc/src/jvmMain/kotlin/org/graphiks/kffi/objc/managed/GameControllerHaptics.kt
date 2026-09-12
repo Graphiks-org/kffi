@@ -3,6 +3,11 @@
 package org.graphiks.kffi.objc.managed
 
 import org.graphiks.kffi.objc.CHHapticEngine
+import org.graphiks.kffi.objc.CHHapticEvent
+import org.graphiks.kffi.objc.CHHapticEventParameter
+import org.graphiks.kffi.objc.CHHapticEventParameterIDHapticIntensity
+import org.graphiks.kffi.objc.CHHapticEventTypeHapticContinuous
+import org.graphiks.kffi.objc.CHHapticPattern
 import org.graphiks.kffi.objc.GCDeviceHaptics
 import org.graphiks.kffi.objc.GCHapticsLocalityAll
 import org.graphiks.kffi.objc.GCHapticsLocalityDefault
@@ -14,13 +19,17 @@ import org.graphiks.kffi.objc.GCHapticsLocalityRightTrigger
 import org.graphiks.kffi.objc.GCHapticsLocalityTriggers
 import org.graphiks.kffi.objc.NSError
 import org.graphiks.kffi.objc.NSSet
+import org.graphiks.kffi.objc.NSArray_arrayWithObject
 import org.graphiks.kffi.objc.ObjCRuntime
+import org.graphiks.kffi.objc.asCHHapticPatternPlayer
 import org.graphiks.kffi.objc.containsObject
 import java.lang.foreign.Arena
 import java.lang.foreign.MemorySegment
 import java.lang.foreign.ValueLayout
 import java.util.concurrent.locks.ReentrantLock
 import kotlin.concurrent.withLock
+import kotlin.time.Duration
+import kotlin.time.DurationUnit
 
 /** A detached locality exposed by a GameController haptics device. */
 enum class GameControllerHapticLocality {
@@ -50,6 +59,31 @@ class GameControllerHaptics private constructor(
     fun start(): Result<Unit> = lock.withLock {
         if (closed) return Result.failure(IllegalStateException("GameControllerHaptics is closed"))
         session.start()?.let { failure ->
+            Result.failure(
+                GameControllerHapticsException(
+                    domain = failure.domain,
+                    code = failure.code,
+                    message = failure.description,
+                ),
+            )
+        } ?: Result.success(Unit)
+    }
+
+    /**
+     * Plays one continuous haptic pulse through this engine's advertised locality.
+     *
+     * The engine must already be started with [start]. A successful result only means that
+     * Core Haptics accepted the fire-and-forget playback request.
+     */
+    fun playContinuous(intensity: Float, duration: Duration): Result<Unit> = lock.withLock {
+        if (closed) return Result.failure(IllegalStateException("GameControllerHaptics is closed"))
+        require(intensity.isFinite() && intensity in 0.0f..1.0f) {
+            "Haptic intensity must be finite and within 0.0..1.0"
+        }
+        require(duration.isFinite() && duration.isPositive()) {
+            "Haptic duration must be finite and positive"
+        }
+        session.playContinuous(intensity, duration)?.let { failure ->
             Result.failure(
                 GameControllerHapticsException(
                     domain = failure.domain,
@@ -153,6 +187,9 @@ internal interface GameControllerHapticsSession {
     /** Returns a detached Kotlin error snapshot, or null on success. */
     fun start(): GameControllerHapticsFailure?
 
+    /** Returns a detached Kotlin error snapshot, or null when Core Haptics accepted the pulse. */
+    fun playContinuous(intensity: Float, duration: Duration): GameControllerHapticsFailure?
+
     fun stop()
 
     fun release()
@@ -204,6 +241,61 @@ private class CoreHapticsSession(
         }
     }
 
+    override fun playContinuous(
+        intensity: Float,
+        duration: Duration,
+    ): GameControllerHapticsFailure? = ObjCRuntime.autoreleasePool {
+        Arena.ofConfined().use { arena ->
+            val outError = arena.allocate(ValueLayout.ADDRESS)
+            var parameter = MemorySegment.NULL
+            var event = MemorySegment.NULL
+            var pattern = MemorySegment.NULL
+            var player = MemorySegment.NULL
+            try {
+                parameter = CHHapticEventParameter(allocateObjectiveCObject("CHHapticEventParameter"))
+                    .initWithParameterID_value(CHHapticEventParameterIDHapticIntensity, intensity)
+                if (parameter == MemorySegment.NULL) {
+                    return@use hapticsFailure("Core Haptics could not create an intensity parameter")
+                }
+
+                event = CHHapticEvent(allocateObjectiveCObject("CHHapticEvent"))
+                    .initWithEventType_parameters_relativeTime_duration(
+                        type = CHHapticEventTypeHapticContinuous,
+                        eventParams = NSArray_arrayWithObject(parameter),
+                        time = 0.0,
+                        duration = duration.toDouble(DurationUnit.SECONDS),
+                    )
+                if (event == MemorySegment.NULL) {
+                    return@use hapticsFailure("Core Haptics could not create a continuous event")
+                }
+
+                clearHapticsError(outError)
+                pattern = CHHapticPattern(allocateObjectiveCObject("CHHapticPattern"))
+                    .initWithEvents_parameters_error(
+                        events = NSArray_arrayWithObject(event),
+                        parameters = MemorySegment.NULL,
+                        outError = outError,
+                    )
+                if (pattern == MemorySegment.NULL) return@use hapticsError(outError)
+
+                clearHapticsError(outError)
+                player = engine.createPlayerWithPattern_error(pattern, outError)
+                if (player == MemorySegment.NULL) return@use hapticsError(outError)
+
+                clearHapticsError(outError)
+                if (!player.asCHHapticPatternPlayer().startAtTime_error(0.0, outError)) {
+                    return@use hapticsError(outError)
+                }
+                null
+            } finally {
+                releaseObjectiveCObject(player)
+                releaseObjectiveCObject(pattern)
+                releaseObjectiveCObject(event)
+                releaseObjectiveCObject(parameter)
+            }
+        }
+    }
+
     override fun stop() {
         engine.stopWithCompletionHandler(MemorySegment.NULL)
     }
@@ -234,3 +326,28 @@ private fun MemorySegment.toHapticsFailure(): GameControllerHapticsFailure {
         }
     return GameControllerHapticsFailure(domain, code, description)
 }
+
+private fun allocateObjectiveCObject(className: String): MemorySegment = (
+    ObjCRuntime.msgSend(
+        ValueLayout.ADDRESS,
+        ObjCRuntime.getClass(className),
+        ObjCRuntime.sel("alloc"),
+    ) as MemorySegment
+).also { value -> check(value != MemorySegment.NULL) { "$className alloc returned nil" } }
+
+private fun releaseObjectiveCObject(value: MemorySegment) {
+    if (value != MemorySegment.NULL) ObjCManagedRuntime.release(value)
+}
+
+private fun clearHapticsError(outError: MemorySegment) {
+    outError.set(ValueLayout.ADDRESS, 0L, MemorySegment.NULL)
+}
+
+private fun hapticsError(outError: MemorySegment): GameControllerHapticsFailure =
+    outError.get(ValueLayout.ADDRESS, 0L).toHapticsFailure()
+
+private fun hapticsFailure(description: String): GameControllerHapticsFailure = GameControllerHapticsFailure(
+    domain = null,
+    code = null,
+    description = description,
+)
