@@ -7,6 +7,20 @@ import java.lang.foreign.*
 import java.lang.foreign.MemoryLayout.PathElement.*
 
 /**
+ * {@snippet lang=c : GCHapticsLocalityDefault typedef const GCHapticsLocality = (Void)*
+ */
+private val GCHapticsLocalityDefault_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val GCHapticsLocalityDefault_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCHapticsLocalityDefault").orElseThrow().reinterpret(GCHapticsLocalityDefault_LAYOUT.byteSize()) }
+private val GCHapticsLocalityDefault_VH: VarHandle by lazy { GCHapticsLocalityDefault_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+var GCHapticsLocalityDefault: MemorySegment
+    get() = GCHapticsLocalityDefault_VH.get(GCHapticsLocalityDefault_SEGMENT, 0L) as MemorySegment
+    set(value) = GCHapticsLocalityDefault_VH.set(GCHapticsLocalityDefault_SEGMENT, 0L, value)
+
+/**
  * {@snippet lang=c : GCHapticsLocalityAll typedef const GCHapticsLocality = (Void)*
  */
 private val GCHapticsLocalityAll_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }

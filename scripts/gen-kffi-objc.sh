@@ -115,6 +115,7 @@ FRAME_DELIVERY_FUNCTIONS=(
     CVPixelBufferUnlockBaseAddress
     CVPixelBufferGetBaseAddress
     CVPixelBufferGetBytesPerRow
+    CVPixelBufferGetWidth
     CVPixelBufferGetHeight
     CVPixelBufferGetPlaneCount
     CVPixelBufferGetBaseAddressOfPlane

@@ -7,6 +7,17 @@ import java.lang.foreign.*
 import java.lang.foreign.MemoryLayout.PathElement.*
 
 /**
+ * {@snippet lang=c : NSMacSimpleTextDocumentType typedef NSAttributedStringDocumentType = typedef NSString = (Void)*
+ */
+private val NSMacSimpleTextDocumentType_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSMacSimpleTextDocumentType_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSMacSimpleTextDocumentType").orElseThrow().reinterpret(NSMacSimpleTextDocumentType_LAYOUT.byteSize()) }
+private val NSMacSimpleTextDocumentType_VH: VarHandle by lazy { NSMacSimpleTextDocumentType_LAYOUT.varHandle() }
+
+var NSMacSimpleTextDocumentType: MemorySegment
+    get() = NSMacSimpleTextDocumentType_VH.get(NSMacSimpleTextDocumentType_SEGMENT, 0L) as MemorySegment
+    set(value) = NSMacSimpleTextDocumentType_VH.set(NSMacSimpleTextDocumentType_SEGMENT, 0L, value)
+
+/**
  * {@snippet lang=c : NSDocFormatTextDocumentType typedef NSAttributedStringDocumentType = typedef NSString = (Void)*
  */
 private val NSDocFormatTextDocumentType_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
@@ -4465,25 +4476,3 @@ private val GCCurrentExtendedGamepadSnapshotDataVersion_VH: VarHandle by lazy { 
 var GCCurrentExtendedGamepadSnapshotDataVersion: GCExtendedGamepadSnapshotDataVersion
     get() = GCExtendedGamepadSnapshotDataVersion.fromValue(GCCurrentExtendedGamepadSnapshotDataVersion_VH.get(GCCurrentExtendedGamepadSnapshotDataVersion_SEGMENT, 0L) as Long)
     set(value) = GCCurrentExtendedGamepadSnapshotDataVersion_VH.set(GCCurrentExtendedGamepadSnapshotDataVersion_SEGMENT, 0L, value.value)
-
-/**
- * {@snippet lang=c : GCExtendedGamepadSnapshotDataFromNSData typedef BOOL = Bool((typedef GCExtendedGamepadSnapshotData = Declared(GCExtendedGamepadSnapshotData))*,typedef NSData = (Void)*)
- */
-private val GCExtendedGamepadSnapshotDataFromNSData_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private val GCExtendedGamepadSnapshotDataFromNSData_ADDR: MemorySegment by lazy { LOOKUP.find("GCExtendedGamepadSnapshotDataFromNSData").orElseThrow() }
-private val GCExtendedGamepadSnapshotDataFromNSData_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(GCExtendedGamepadSnapshotDataFromNSData_ADDR, GCExtendedGamepadSnapshotDataFromNSData_DESC) }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 13, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use the -[GCController controllerWithExtendedGamepad] method instead")
-@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 15, deprecatedSubminor = -1, message = "Use the -[GCController controllerWithExtendedGamepad] method instead")
-@PlatformAvailability(platform = "tvos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 13, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use the -[GCController controllerWithExtendedGamepad] method instead")
-fun GCExtendedGamepadSnapshotDataFromNSData(arg0: MemorySegment, arg1: MemorySegment): Boolean {
-    try {
-        return GCExtendedGamepadSnapshotDataFromNSData_HANDLE.invokeExact(arg0, arg1) as Boolean
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        throw AssertionError("should not reach here", ex)
-    }
-}
