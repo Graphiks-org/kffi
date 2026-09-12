@@ -92,7 +92,13 @@ internal object AppKitScreenCapturePickerNative : ScreenCaptureNative {
         target: ScreenCaptureResolvedTarget,
         configuration: ScreenCaptureStreamConfiguration,
         onFrame: (ScreenCaptureFrameLease) -> Unit,
-    ): ScreenCaptureNativeStream = AppKitScreenCaptureNative.open(target, configuration, onFrame)
+        onTerminated: (Throwable?) -> Unit,
+    ): ScreenCaptureNativeStream = AppKitScreenCaptureNative.open(
+        target,
+        configuration,
+        onFrame,
+        onTerminated,
+    )
 }
 
 private object AppKitScreenCapturePickerPresentationNative : ScreenCapturePickerNative {
@@ -323,9 +329,9 @@ private class AppKitScreenCapturePickerObserver private constructor(
                             "v@:@",
                         ),
                     ) { "Objective-C runtime rejected ScreenCaptureKit picker failure method" }
-                    check(ObjCSubclassing.addProtocol(allocated, "SCContentSharingPickerObserver")) {
-                        "ScreenCaptureKit SCContentSharingPickerObserver protocol was unavailable"
-                    }
+                    // ScreenCaptureKit may defer the Objective-C protocol metadata; its optional
+                    // observer callbacks are selected by their Objective-C selectors.
+                    ObjCSubclassing.addProtocol(allocated, "SCContentSharingPickerObserver")
                     ObjCSubclassing.registerClass(allocated)
                     allocated
                 }

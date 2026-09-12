@@ -140,6 +140,7 @@ internal object AppKitScreenCaptureNative : ScreenCaptureNative {
         target: ScreenCaptureResolvedTarget,
         configuration: ScreenCaptureStreamConfiguration,
         onFrame: (ScreenCaptureFrameLease) -> Unit,
+        onTerminated: (Throwable?) -> Unit,
     ): ScreenCaptureNativeStream {
         val resolved = target as? AppKitResolvedTarget
             ?: error("ScreenCaptureKit target was resolved by a different backend")
@@ -147,15 +148,27 @@ internal object AppKitScreenCaptureNative : ScreenCaptureNative {
         try {
             val streamConfiguration = createConfiguration(configuration)
             try {
-                val stream = createStream(filter.value, streamConfiguration.value)
+                val delegate = ScreenCaptureStreamDelegate.create(onTerminated)
                 try {
-                    val output = ScreenCaptureFrameOutput.attach(
-                        ScreenCaptureKitFrameOutputNative(stream.value.ptr),
-                        onFrame,
-                    )
-                    return AppKitScreenCaptureNativeStream(stream, filter, streamConfiguration, output)
+                    val stream = createStream(filter.value, streamConfiguration.value, delegate.native)
+                    try {
+                        val output = ScreenCaptureFrameOutput.attach(
+                            ScreenCaptureKitFrameOutputNative(stream.value.ptr),
+                            onFrame,
+                        )
+                        return AppKitScreenCaptureNativeStream(
+                            stream,
+                            filter,
+                            streamConfiguration,
+                            output,
+                            delegate,
+                        )
+                    } catch (failure: Throwable) {
+                        stream.close()
+                        throw failure
+                    }
                 } catch (failure: Throwable) {
-                    stream.close()
+                    delegate.close()
                     throw failure
                 }
             } catch (failure: Throwable) {
@@ -336,10 +349,11 @@ private fun createConfiguration(configuration: ScreenCaptureStreamConfiguration)
 private fun createStream(
     filter: SCContentFilter,
     configuration: SCStreamConfiguration,
+    delegate: MemorySegment,
 ): OwnedObjC<SCStream> {
     val allocated = allocateObjectiveC("SCStream")
     val initialized = try {
-        SCStream(allocated).initWithFilter_configuration_delegate(filter.ptr, configuration.ptr, MemorySegment.NULL)
+        SCStream(allocated).initWithFilter_configuration_delegate(filter.ptr, configuration.ptr, delegate)
     } catch (failure: Throwable) {
         releaseObjectiveC(allocated)
         throw failure
@@ -352,6 +366,7 @@ private class AppKitScreenCaptureNativeStream(
     private val filter: OwnedObjC<SCContentFilter>,
     private val configuration: OwnedObjC<SCStreamConfiguration>,
     private val output: ScreenCaptureFrameOutput,
+    private val delegate: ScreenCaptureStreamDelegate,
 ) : ScreenCaptureNativeStream {
     private val closed = AtomicBoolean()
     private val startCompletion = AtomicReference<AutoCloseable?>(null)
@@ -385,6 +400,7 @@ private class AppKitScreenCaptureNativeStream(
         closeCapture { startCompletion.getAndSet(null)?.close() }.onFailure { failure = append(failure, it) }
         closeCapture { stopCompletion.getAndSet(null)?.close() }.onFailure { failure = append(failure, it) }
         closeCapture { stream.close() }.onFailure { failure = append(failure, it) }
+        closeCapture { delegate.close() }.onFailure { failure = append(failure, it) }
         closeCapture { configuration.close() }.onFailure { failure = append(failure, it) }
         closeCapture { filter.close() }.onFailure { failure = append(failure, it) }
         failure?.let { throw it }
