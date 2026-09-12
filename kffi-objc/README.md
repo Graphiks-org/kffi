@@ -200,12 +200,14 @@ The system picker is resolved under the same macOS 14+ runtime guard.
 
 The frame-delivery layer keeps `SCStream`, `CMSampleBuffer`, `CVPixelBuffer`, and `IOSurface`
 private to KFFI. When a higher-level capture flow delivers a `ScreenCaptureFrameLease`, it is valid
-only for the duration of that handler. Call `copyPlanes(maxBytes)` inside the handler to obtain
-bounded, Kotlin-owned `ByteArray` plane copies and their row/height metadata; no pointer or native
-surface can escape:
+only for the duration of that handler. Read `frame.width` for the exact full image width, then
+call `copyPlanes(maxBytes)` inside the handler to obtain bounded, Kotlin-owned `ByteArray` plane
+copies and their row/height metadata; `width` is not inferred from a padded row stride. No pointer
+or native surface can escape:
 
 ```kotlin
 fun consume(frame: ScreenCaptureFrameLease) {
+    val width = frame.width
     val planes = frame.copyPlanes(maxBytes = 8 * 1024 * 1024)
     val pixels = planes.first().bytes
     process(pixels)

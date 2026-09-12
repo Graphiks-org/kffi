@@ -7,6 +7,19 @@ import java.lang.foreign.*
 import java.lang.foreign.MemoryLayout.PathElement.*
 
 /**
+ * {@snippet lang=c : NSImageNameTouchBarAudioOutputVolumeHighTemplate typedef const NSImageName = (Void)*
+ */
+private val NSImageNameTouchBarAudioOutputVolumeHighTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
+private val NSImageNameTouchBarAudioOutputVolumeHighTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarAudioOutputVolumeHighTemplate").orElseThrow().reinterpret(NSImageNameTouchBarAudioOutputVolumeHighTemplate_LAYOUT.byteSize()) }
+private val NSImageNameTouchBarAudioOutputVolumeHighTemplate_VH: VarHandle by lazy { NSImageNameTouchBarAudioOutputVolumeHighTemplate_LAYOUT.varHandle() }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = 2)
+var NSImageNameTouchBarAudioOutputVolumeHighTemplate: MemorySegment
+    get() = NSImageNameTouchBarAudioOutputVolumeHighTemplate_VH.get(NSImageNameTouchBarAudioOutputVolumeHighTemplate_SEGMENT, 0L) as MemorySegment
+    set(value) = NSImageNameTouchBarAudioOutputVolumeHighTemplate_VH.set(NSImageNameTouchBarAudioOutputVolumeHighTemplate_SEGMENT, 0L, value)
+
+/**
  * {@snippet lang=c : NSImageNameTouchBarAudioOutputVolumeLowTemplate typedef const NSImageName = (Void)*
  */
 private val NSImageNameTouchBarAudioOutputVolumeLowTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
@@ -4050,14 +4063,3 @@ private val NSGlyphInfoAttributeName_VH: VarHandle by lazy { NSGlyphInfoAttribut
 var NSGlyphInfoAttributeName: MemorySegment
     get() = NSGlyphInfoAttributeName_VH.get(NSGlyphInfoAttributeName_SEGMENT, 0L) as MemorySegment
     set(value) = NSGlyphInfoAttributeName_VH.set(NSGlyphInfoAttributeName_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : NSMacSimpleTextDocumentType typedef NSAttributedStringDocumentType = typedef NSString = (Void)*
- */
-private val NSMacSimpleTextDocumentType_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSMacSimpleTextDocumentType_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSMacSimpleTextDocumentType").orElseThrow().reinterpret(NSMacSimpleTextDocumentType_LAYOUT.byteSize()) }
-private val NSMacSimpleTextDocumentType_VH: VarHandle by lazy { NSMacSimpleTextDocumentType_LAYOUT.varHandle() }
-
-var NSMacSimpleTextDocumentType: MemorySegment
-    get() = NSMacSimpleTextDocumentType_VH.get(NSMacSimpleTextDocumentType_SEGMENT, 0L) as MemorySegment
-    set(value) = NSMacSimpleTextDocumentType_VH.set(NSMacSimpleTextDocumentType_SEGMENT, 0L, value)

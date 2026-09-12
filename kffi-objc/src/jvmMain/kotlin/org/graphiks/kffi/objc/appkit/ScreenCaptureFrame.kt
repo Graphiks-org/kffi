@@ -15,6 +15,7 @@ import org.graphiks.kffi.objc.CVPixelBufferGetBytesPerRowOfPlane
 import org.graphiks.kffi.objc.CVPixelBufferGetHeight
 import org.graphiks.kffi.objc.CVPixelBufferGetHeightOfPlane
 import org.graphiks.kffi.objc.CVPixelBufferGetPlaneCount
+import org.graphiks.kffi.objc.CVPixelBufferGetWidth
 import org.graphiks.kffi.objc.CVPixelBufferLockBaseAddress
 import org.graphiks.kffi.objc.CVPixelBufferLockFlags
 import org.graphiks.kffi.objc.CVPixelBufferUnlockBaseAddress
@@ -49,6 +50,17 @@ class ScreenCaptureFrameLease internal constructor(
 
     val isClosed: Boolean
         get() = lock.withLock { closed }
+
+    /**
+     * The complete pixel width of this frame, available only for the lifetime of this lease.
+     *
+     * This is the width of the pixel buffer itself, rather than a value derived from a plane
+     * stride; row padding must never be interpreted as image pixels.
+     */
+    val width: Int
+        get() = lock.withLock {
+            checkNotNull(pixelBuffer) { "Screen capture frame lease is closed" }.width()
+        }
 
     /**
      * Copies every pixel-buffer plane while holding the buffer's read-only lock.
@@ -104,6 +116,7 @@ class ScreenCaptureFrameLease internal constructor(
 
 /** Internal CoreVideo seam; implementations must not retain an unlocked base address. */
 internal interface ScreenCapturePixelBuffer {
+    fun width(): Int
     fun lockReadOnly()
     fun unlock()
     fun planeCount(): Int
@@ -140,6 +153,8 @@ internal interface ScreenCaptureFrameOutputNative {
 internal class CoreVideoScreenCapturePixelBuffer(
     private val native: MemorySegment,
 ) : ScreenCapturePixelBuffer {
+    override fun width(): Int = CVPixelBufferGetWidth(native).toIntExact()
+
     override fun lockReadOnly() {
         check(CVPixelBufferLockBaseAddress(native, CVPixelBufferLockFlags.kCVPixelBufferLock_ReadOnly) == 0) {
             "CVPixelBufferLockBaseAddress failed"

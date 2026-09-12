@@ -11,6 +11,7 @@ CVReturn CVPixelBufferLockBaseAddress(CVPixelBufferRef pixelBuffer, CVOptionFlag
 CVReturn CVPixelBufferUnlockBaseAddress(CVPixelBufferRef pixelBuffer, CVOptionFlags unlockFlags);
 void *CVPixelBufferGetBaseAddress(CVPixelBufferRef pixelBuffer);
 size_t CVPixelBufferGetBytesPerRow(CVPixelBufferRef pixelBuffer);
+size_t CVPixelBufferGetWidth(CVPixelBufferRef pixelBuffer);
 size_t CVPixelBufferGetHeight(CVPixelBufferRef pixelBuffer);
 size_t CVPixelBufferGetPlaneCount(CVPixelBufferRef pixelBuffer);
 void *CVPixelBufferGetBaseAddressOfPlane(CVPixelBufferRef pixelBuffer, size_t planeIndex);
