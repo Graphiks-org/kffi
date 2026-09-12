@@ -2106,6 +2106,26 @@ fun CVPixelBufferUnlockBaseAddress(arg0: MemorySegment, arg1: CVPixelBufferLockF
 }
 
 /**
+ * {@snippet lang=c : CVPixelBufferGetWidth typedef size_t = UNSIGNED = Long(typedef CVPixelBufferRef = (Declared(__CVBuffer))*)
+ */
+private val CVPixelBufferGetWidth_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
+private val CVPixelBufferGetWidth_ADDR: MemorySegment by lazy { LOOKUP.find("CVPixelBufferGetWidth").orElseThrow() }
+private val CVPixelBufferGetWidth_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(CVPixelBufferGetWidth_ADDR, CVPixelBufferGetWidth_DESC) }
+
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 4, introducedSubminor = -1)
+fun CVPixelBufferGetWidth(arg0: MemorySegment): Long {
+    try {
+        return CVPixelBufferGetWidth_HANDLE.invokeExact(arg0) as Long
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
  * {@snippet lang=c : CVPixelBufferGetHeight typedef size_t = UNSIGNED = Long(typedef CVPixelBufferRef = (Declared(__CVBuffer))*)
  */
 private val CVPixelBufferGetHeight_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
@@ -3943,16 +3963,3 @@ private val NSImageNameTouchBarAudioOutputMuteTemplate_VH: VarHandle by lazy { N
 var NSImageNameTouchBarAudioOutputMuteTemplate: MemorySegment
     get() = NSImageNameTouchBarAudioOutputMuteTemplate_VH.get(NSImageNameTouchBarAudioOutputMuteTemplate_SEGMENT, 0L) as MemorySegment
     set(value) = NSImageNameTouchBarAudioOutputMuteTemplate_VH.set(NSImageNameTouchBarAudioOutputMuteTemplate_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : NSImageNameTouchBarAudioOutputVolumeHighTemplate typedef const NSImageName = (Void)*
- */
-private val NSImageNameTouchBarAudioOutputVolumeHighTemplate_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val NSImageNameTouchBarAudioOutputVolumeHighTemplate_SEGMENT: MemorySegment by lazy { LOOKUP.find("NSImageNameTouchBarAudioOutputVolumeHighTemplate").orElseThrow().reinterpret(NSImageNameTouchBarAudioOutputVolumeHighTemplate_LAYOUT.byteSize()) }
-private val NSImageNameTouchBarAudioOutputVolumeHighTemplate_VH: VarHandle by lazy { NSImageNameTouchBarAudioOutputVolumeHighTemplate_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 12, introducedSubminor = 2)
-var NSImageNameTouchBarAudioOutputVolumeHighTemplate: MemorySegment
-    get() = NSImageNameTouchBarAudioOutputVolumeHighTemplate_VH.get(NSImageNameTouchBarAudioOutputVolumeHighTemplate_SEGMENT, 0L) as MemorySegment
-    set(value) = NSImageNameTouchBarAudioOutputVolumeHighTemplate_VH.set(NSImageNameTouchBarAudioOutputVolumeHighTemplate_SEGMENT, 0L, value)

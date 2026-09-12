@@ -11,6 +11,23 @@ import java.util.concurrent.TimeUnit
 
 class ScreenCaptureFrameLeaseTest {
     @Test
+    fun exposesThePixelBufferWidthWhileTheLeaseIsOpen() {
+        val lease = ScreenCaptureFrameLease.from(
+            RecordingPixelBuffer(
+                planes = listOf(byteArrayOf(1, 2, 3, 4)),
+                bytesPerRows = listOf(4),
+                heights = listOf(1),
+                pixelWidth = 2,
+            ),
+        )
+
+        assertEquals(2, lease.width)
+
+        lease.close()
+        assertFailsWith<IllegalStateException> { lease.width }
+    }
+
+    @Test
     fun copiesPlanarFramesAsDetachedBytesAndUnlocks() {
         val native = RecordingPixelBuffer(
             planes = listOf(byteArrayOf(1, 2, 3, 4), byteArrayOf(5, 6)),
@@ -252,11 +269,14 @@ private class RecordingPixelBuffer(
     val planes: List<ByteArray>,
     private val bytesPerRows: List<Int>,
     private val heights: List<Int>,
+    private val pixelWidth: Int = bytesPerRows.firstOrNull() ?: 0,
     private val planar: Boolean = true,
     private val copyFailure: Throwable? = null,
 ) : ScreenCapturePixelBuffer {
     val calls = mutableListOf<String>()
     var copyCalls = 0
+
+    override fun width(): Int = pixelWidth
 
     override fun lockReadOnly() {
         calls += "lock"

@@ -7,6 +7,28 @@ import java.lang.foreign.*
 import java.lang.foreign.MemoryLayout.PathElement.*
 
 /**
+ * {@snippet lang=c : GCExtendedGamepadSnapshotDataFromNSData typedef BOOL = Bool((typedef GCExtendedGamepadSnapshotData = Declared(GCExtendedGamepadSnapshotData))*,typedef NSData = (Void)*)
+ */
+private val GCExtendedGamepadSnapshotDataFromNSData_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val GCExtendedGamepadSnapshotDataFromNSData_ADDR: MemorySegment by lazy { LOOKUP.find("GCExtendedGamepadSnapshotDataFromNSData").orElseThrow() }
+private val GCExtendedGamepadSnapshotDataFromNSData_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(GCExtendedGamepadSnapshotDataFromNSData_ADDR, GCExtendedGamepadSnapshotDataFromNSData_DESC) }
+
+@PlatformAvailability(platform = "ios", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 13, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use the -[GCController controllerWithExtendedGamepad] method instead")
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 15, introducedSubminor = -1, deprecated = true, deprecatedMajor = 10, deprecatedMinor = 15, deprecatedSubminor = -1, message = "Use the -[GCController controllerWithExtendedGamepad] method instead")
+@PlatformAvailability(platform = "tvos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 13, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use the -[GCController controllerWithExtendedGamepad] method instead")
+fun GCExtendedGamepadSnapshotDataFromNSData(arg0: MemorySegment, arg1: MemorySegment): Boolean {
+    try {
+        return GCExtendedGamepadSnapshotDataFromNSData_HANDLE.invokeExact(arg0, arg1) as Boolean
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
  * {@snippet lang=c : NSDataFromGCExtendedGamepadSnapshotData typedef NSData = (Void)*((typedef GCExtendedGamepadSnapshotData = Declared(GCExtendedGamepadSnapshotData))*)
  */
 private val NSDataFromGCExtendedGamepadSnapshotData_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
@@ -4247,17 +4269,3 @@ private val GCRacingWheelDidDisconnectNotification_VH: VarHandle by lazy { GCRac
 var GCRacingWheelDidDisconnectNotification: MemorySegment
     get() = GCRacingWheelDidDisconnectNotification_VH.get(GCRacingWheelDidDisconnectNotification_SEGMENT, 0L) as MemorySegment
     set(value) = GCRacingWheelDidDisconnectNotification_VH.set(GCRacingWheelDidDisconnectNotification_SEGMENT, 0L, value)
-
-/**
- * {@snippet lang=c : GCHapticsLocalityDefault typedef const GCHapticsLocality = (Void)*
- */
-private val GCHapticsLocalityDefault_LAYOUT: ValueLayout by lazy { ValueLayout.ADDRESS }
-private val GCHapticsLocalityDefault_SEGMENT: MemorySegment by lazy { LOOKUP.find("GCHapticsLocalityDefault").orElseThrow().reinterpret(GCHapticsLocalityDefault_LAYOUT.byteSize()) }
-private val GCHapticsLocalityDefault_VH: VarHandle by lazy { GCHapticsLocalityDefault_LAYOUT.varHandle() }
-
-@PlatformAvailability(platform = "ios", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "macos", introducedMajor = 11, introducedMinor = 0, introducedSubminor = -1)
-@PlatformAvailability(platform = "tvos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
-var GCHapticsLocalityDefault: MemorySegment
-    get() = GCHapticsLocalityDefault_VH.get(GCHapticsLocalityDefault_SEGMENT, 0L) as MemorySegment
-    set(value) = GCHapticsLocalityDefault_VH.set(GCHapticsLocalityDefault_SEGMENT, 0L, value)
