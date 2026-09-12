@@ -36880,6 +36880,2078 @@ value class SCShareableContentStyle(val rawValue: Long) {
 }
 
 /**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/CoreMedia.framework/Headers/CMBase.h:362:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMBase_h_362_1_(val value: Long) {
+    kCMPersistentTrackID_Invalid(0L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMBase_h_362_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMBase_h_362_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum CMTimeRoundingMethod}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+enum class CMTimeRoundingMethod(val value: Long) {
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMTimeRoundingMethod_RoundHalfAwayFromZero(1L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMTimeRoundingMethod_RoundTowardZero(2L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMTimeRoundingMethod_RoundAwayFromZero(3L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMTimeRoundingMethod_QuickTime(4L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMTimeRoundingMethod_RoundTowardPositiveInfinity(5L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMTimeRoundingMethod_RoundTowardNegativeInfinity(6L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMTimeRoundingMethod_Default(1L);
+
+    companion object {
+        fun fromValue(v: Long): CMTimeRoundingMethod = entries.firstOrNull { it.value == v }
+            ?: error("Unknown CMTimeRoundingMethod value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/CoreMedia.framework/Headers/CMAttachment.h:31:1)}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMAttachment_h_31_1_(val value: Long) {
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMAttachmentMode_ShouldNotPropagate(0L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMAttachmentMode_ShouldPropagate(1L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMAttachment_h_31_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMAttachment_h_31_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/CoreMedia.framework/Headers/CMBlockBuffer.h:61:1)}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMBlockBuffer_h_61_1_(val value: Long) {
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMBlockBufferNoErr(0L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMBlockBufferStructureAllocationFailedErr(-12700L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMBlockBufferBlockAllocationFailedErr(-12701L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMBlockBufferBadCustomBlockSourceErr(-12702L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMBlockBufferBadOffsetParameterErr(-12703L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMBlockBufferBadLengthParameterErr(-12704L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMBlockBufferBadPointerParameterErr(-12705L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMBlockBufferEmptyBBufErr(-12706L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMBlockBufferUnallocatedBlockErr(-12707L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMBlockBufferInsufficientSpaceErr(-12708L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMBlockBuffer_h_61_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMBlockBuffer_h_61_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/CoreMedia.framework/Headers/CMBlockBuffer.h:98:1)}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMBlockBuffer_h_98_1_(val value: Long) {
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMBlockBufferAssureMemoryNowFlag(1L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMBlockBufferAlwaysCopyDataFlag(2L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMBlockBufferDontOptimizeDepthFlag(4L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMBlockBufferPermitEmptyReferenceFlag(8L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMBlockBuffer_h_98_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMBlockBuffer_h_98_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/CoreMedia.framework/Headers/CMBlockBuffer.h:142:1)}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMBlockBuffer_h_142_1_(val value: Long) {
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMBlockBufferCustomBlockSourceVersion(0L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMBlockBuffer_h_142_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMBlockBuffer_h_142_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/CoreAudioTypes.framework/Headers/CoreAudioBaseTypes.h:92:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreAudioTypes_framework_Headers_CoreAudioBaseTypes_h_92_1_(val value: Long) {
+    kAudio_NoError(0L), kAudio_UnimplementedError(-4L), kAudio_FileNotFoundError(-43L), kAudio_FilePermissionError(-54L), kAudio_TooManyFilesOpenError(-42L), kAudio_BadFilePathError(561017960L), kAudio_ParamError(-50L), kAudio_MemFullError(-108L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreAudioTypes_framework_Headers_CoreAudioBaseTypes_h_92_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreAudioTypes_framework_Headers_CoreAudioBaseTypes_h_92_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/CoreAudioTypes.framework/Headers/CoreAudioBaseTypes.h:391:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreAudioTypes_framework_Headers_CoreAudioBaseTypes_h_391_1_(val value: Long) {
+    kAudioFormatLinearPCM(1819304813L), kAudioFormatAC3(1633889587L), kAudioFormat60958AC3(1667326771L), kAudioFormatAppleIMA4(1768775988L), kAudioFormatMPEG4AAC(1633772320L), kAudioFormatMPEG4CELP(1667591280L), kAudioFormatMPEG4HVXC(1752594531L), kAudioFormatMPEG4TwinVQ(1953986161L), kAudioFormatMACE3(1296122675L), kAudioFormatMACE6(1296122678L), kAudioFormatULaw(1970037111L), kAudioFormatALaw(1634492791L), kAudioFormatQDesign(1363430723L), kAudioFormatQDesign2(1363430706L), kAudioFormatQUALCOMM(1365470320L), kAudioFormatMPEGLayer1(778924081L), kAudioFormatMPEGLayer2(778924082L), kAudioFormatMPEGLayer3(778924083L), kAudioFormatTimeCode(1953066341L), kAudioFormatMIDIStream(1835623529L), kAudioFormatParameterValueStream(1634760307L), kAudioFormatAppleLossless(1634492771L), kAudioFormatMPEG4AAC_HE(1633772392L), kAudioFormatMPEG4AAC_LD(1633772396L), kAudioFormatMPEG4AAC_ELD(1633772389L), kAudioFormatMPEG4AAC_ELD_SBR(1633772390L), kAudioFormatMPEG4AAC_ELD_V2(1633772391L), kAudioFormatMPEG4AAC_HE_V2(1633772400L), kAudioFormatMPEG4AAC_Spatial(1633772403L), kAudioFormatMPEGD_USAC(1970495843L), kAudioFormatAMR(1935764850L), kAudioFormatAMR_WB(1935767394L), kAudioFormatAudible(1096107074L), kAudioFormatiLBC(1768710755L), kAudioFormatDVIIntelIMA(1836253201L), kAudioFormatMicrosoftGSM(1836253233L), kAudioFormatAES3(1634038579L), kAudioFormatEnhancedAC3(1700998451L), kAudioFormatFLAC(1718378851L), kAudioFormatOpus(1869641075L), kAudioFormatAPAC(1634754915L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreAudioTypes_framework_Headers_CoreAudioBaseTypes_h_391_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreAudioTypes_framework_Headers_CoreAudioBaseTypes_h_391_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/CoreAudioTypes.framework/Headers/CoreAudioBaseTypes.h:522:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreAudioTypes_framework_Headers_CoreAudioBaseTypes_h_522_1_(val value: Long) {
+    kAudioFormatFlagIsFloat(1L), kAudioFormatFlagIsBigEndian(2L), kAudioFormatFlagIsSignedInteger(4L), kAudioFormatFlagIsPacked(8L), kAudioFormatFlagIsAlignedHigh(16L), kAudioFormatFlagIsNonInterleaved(32L), kAudioFormatFlagIsNonMixable(64L), kAudioFormatFlagsAreAllClear(-2147483648L), kLinearPCMFormatFlagIsFloat(1L), kLinearPCMFormatFlagIsBigEndian(2L), kLinearPCMFormatFlagIsSignedInteger(4L), kLinearPCMFormatFlagIsPacked(8L), kLinearPCMFormatFlagIsAlignedHigh(16L), kLinearPCMFormatFlagIsNonInterleaved(32L), kLinearPCMFormatFlagIsNonMixable(64L), kLinearPCMFormatFlagsSampleFractionShift(7L), kLinearPCMFormatFlagsSampleFractionMask(8064L), kLinearPCMFormatFlagsAreAllClear(-2147483648L), kAppleLosslessFormatFlag_16BitSourceData(1L), kAppleLosslessFormatFlag_20BitSourceData(2L), kAppleLosslessFormatFlag_24BitSourceData(3L), kAppleLosslessFormatFlag_32BitSourceData(4L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreAudioTypes_framework_Headers_CoreAudioBaseTypes_h_522_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreAudioTypes_framework_Headers_CoreAudioBaseTypes_h_522_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/CoreAudioTypes.framework/Headers/CoreAudioBaseTypes.h:573:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreAudioTypes_framework_Headers_CoreAudioBaseTypes_h_573_1_(val value: Long) {
+    kAudioFormatFlagsNativeEndian(0L),
+    @PlatformAvailability(platform = "all", deprecated = true, message = "The concept of canonical formats is deprecated")
+    kAudioFormatFlagsCanonical(9L),
+    @PlatformAvailability(platform = "all", deprecated = true, message = "The concept of canonical formats is deprecated")
+    kAudioFormatFlagsAudioUnitCanonical(41L),
+    kAudioFormatFlagsNativeFloatPacked(9L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreAudioTypes_framework_Headers_CoreAudioBaseTypes_h_573_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreAudioTypes_framework_Headers_CoreAudioBaseTypes_h_573_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum SMPTETimeType}
+ */
+enum class SMPTETimeType(val value: Long) {
+    kSMPTETimeType24(0L), kSMPTETimeType25(1L), kSMPTETimeType30Drop(2L), kSMPTETimeType30(3L), kSMPTETimeType2997(4L), kSMPTETimeType2997Drop(5L), kSMPTETimeType60(6L), kSMPTETimeType5994(7L), kSMPTETimeType60Drop(8L), kSMPTETimeType5994Drop(9L), kSMPTETimeType50(10L), kSMPTETimeType2398(11L);
+
+    companion object {
+        fun fromValue(v: Long): SMPTETimeType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown SMPTETimeType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/CoreAudioTypes.framework/Headers/CoreAudioBaseTypes.h:974:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreAudioTypes_framework_Headers_CoreAudioBaseTypes_h_974_1_(val value: Long) {
+    kAudioChannelLabel_Unknown(-1L), kAudioChannelLabel_Unused(0L), kAudioChannelLabel_UseCoordinates(100L), kAudioChannelLabel_Left(1L), kAudioChannelLabel_Right(2L), kAudioChannelLabel_Center(3L), kAudioChannelLabel_LFEScreen(4L), kAudioChannelLabel_LeftSurround(5L), kAudioChannelLabel_RightSurround(6L), kAudioChannelLabel_LeftCenter(7L), kAudioChannelLabel_RightCenter(8L), kAudioChannelLabel_CenterSurround(9L), kAudioChannelLabel_LeftSurroundDirect(10L), kAudioChannelLabel_RightSurroundDirect(11L), kAudioChannelLabel_TopCenterSurround(12L), kAudioChannelLabel_VerticalHeightLeft(13L), kAudioChannelLabel_VerticalHeightCenter(14L), kAudioChannelLabel_VerticalHeightRight(15L), kAudioChannelLabel_TopBackLeft(16L), kAudioChannelLabel_TopBackCenter(17L), kAudioChannelLabel_TopBackRight(18L), kAudioChannelLabel_RearSurroundLeft(33L), kAudioChannelLabel_RearSurroundRight(34L), kAudioChannelLabel_LeftWide(35L), kAudioChannelLabel_RightWide(36L), kAudioChannelLabel_LFE2(37L), kAudioChannelLabel_LeftTotal(38L), kAudioChannelLabel_RightTotal(39L), kAudioChannelLabel_HearingImpaired(40L), kAudioChannelLabel_Narration(41L), kAudioChannelLabel_Mono(42L), kAudioChannelLabel_DialogCentricMix(43L), kAudioChannelLabel_CenterSurroundDirect(44L), kAudioChannelLabel_Haptic(45L), kAudioChannelLabel_LeftTopFront(13L), kAudioChannelLabel_CenterTopFront(14L), kAudioChannelLabel_RightTopFront(15L), kAudioChannelLabel_LeftTopMiddle(49L), kAudioChannelLabel_CenterTopMiddle(12L), kAudioChannelLabel_RightTopMiddle(51L), kAudioChannelLabel_LeftTopRear(52L), kAudioChannelLabel_CenterTopRear(53L), kAudioChannelLabel_RightTopRear(54L), kAudioChannelLabel_LeftSideSurround(55L), kAudioChannelLabel_RightSideSurround(56L), kAudioChannelLabel_LeftBottom(57L), kAudioChannelLabel_RightBottom(58L), kAudioChannelLabel_CenterBottom(59L), kAudioChannelLabel_LeftTopSurround(60L), kAudioChannelLabel_RightTopSurround(61L), kAudioChannelLabel_LFE3(62L), kAudioChannelLabel_LeftBackSurround(63L), kAudioChannelLabel_RightBackSurround(64L), kAudioChannelLabel_LeftEdgeOfScreen(65L), kAudioChannelLabel_RightEdgeOfScreen(66L), kAudioChannelLabel_Ambisonic_W(200L), kAudioChannelLabel_Ambisonic_X(201L), kAudioChannelLabel_Ambisonic_Y(202L), kAudioChannelLabel_Ambisonic_Z(203L), kAudioChannelLabel_MS_Mid(204L), kAudioChannelLabel_MS_Side(205L), kAudioChannelLabel_XY_X(206L), kAudioChannelLabel_XY_Y(207L), kAudioChannelLabel_BinauralLeft(208L), kAudioChannelLabel_BinauralRight(209L), kAudioChannelLabel_HeadphonesLeft(301L), kAudioChannelLabel_HeadphonesRight(302L), kAudioChannelLabel_ClickTrack(304L), kAudioChannelLabel_ForeignLanguage(305L), kAudioChannelLabel_Discrete(400L), kAudioChannelLabel_Discrete_0(65536L), kAudioChannelLabel_Discrete_1(65537L), kAudioChannelLabel_Discrete_2(65538L), kAudioChannelLabel_Discrete_3(65539L), kAudioChannelLabel_Discrete_4(65540L), kAudioChannelLabel_Discrete_5(65541L), kAudioChannelLabel_Discrete_6(65542L), kAudioChannelLabel_Discrete_7(65543L), kAudioChannelLabel_Discrete_8(65544L), kAudioChannelLabel_Discrete_9(65545L), kAudioChannelLabel_Discrete_10(65546L), kAudioChannelLabel_Discrete_11(65547L), kAudioChannelLabel_Discrete_12(65548L), kAudioChannelLabel_Discrete_13(65549L), kAudioChannelLabel_Discrete_14(65550L), kAudioChannelLabel_Discrete_15(65551L), kAudioChannelLabel_Discrete_65535(131071L), kAudioChannelLabel_HOA_ACN(500L), kAudioChannelLabel_HOA_ACN_0(131072L), kAudioChannelLabel_HOA_ACN_1(131073L), kAudioChannelLabel_HOA_ACN_2(131074L), kAudioChannelLabel_HOA_ACN_3(131075L), kAudioChannelLabel_HOA_ACN_4(131076L), kAudioChannelLabel_HOA_ACN_5(131077L), kAudioChannelLabel_HOA_ACN_6(131078L), kAudioChannelLabel_HOA_ACN_7(131079L), kAudioChannelLabel_HOA_ACN_8(131080L), kAudioChannelLabel_HOA_ACN_9(131081L), kAudioChannelLabel_HOA_ACN_10(131082L), kAudioChannelLabel_HOA_ACN_11(131083L), kAudioChannelLabel_HOA_ACN_12(131084L), kAudioChannelLabel_HOA_ACN_13(131085L), kAudioChannelLabel_HOA_ACN_14(131086L), kAudioChannelLabel_HOA_ACN_15(131087L), kAudioChannelLabel_HOA_ACN_65024(196096L), kAudioChannelLabel_HOA_SN3D(131072L), kAudioChannelLabel_HOA_N3D(196608L), kAudioChannelLabel_Object(262144L), kAudioChannelLabel_BeginReserved(-268435456L), kAudioChannelLabel_EndReserved(-2L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreAudioTypes_framework_Headers_CoreAudioBaseTypes_h_974_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreAudioTypes_framework_Headers_CoreAudioBaseTypes_h_974_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum AudioChannelCoordinateIndex}
+ */
+enum class AudioChannelCoordinateIndex(val value: Long) {
+    kAudioChannelCoordinates_LeftRight(0L), kAudioChannelCoordinates_BackFront(1L), kAudioChannelCoordinates_DownUp(2L), kAudioChannelCoordinates_Azimuth(0L), kAudioChannelCoordinates_Elevation(1L), kAudioChannelCoordinates_Distance(2L);
+
+    companion object {
+        fun fromValue(v: Long): AudioChannelCoordinateIndex = entries.firstOrNull { it.value == v }
+            ?: error("Unknown AudioChannelCoordinateIndex value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/CoreAudioTypes.framework/Headers/CoreAudioBaseTypes.h:1216:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreAudioTypes_framework_Headers_CoreAudioBaseTypes_h_1216_1_(val value: Long) {
+    kAudioChannelLayoutTag_UseChannelDescriptions(0L), kAudioChannelLayoutTag_UseChannelBitmap(65536L), kAudioChannelLayoutTag_Mono(6553601L), kAudioChannelLayoutTag_Stereo(6619138L), kAudioChannelLayoutTag_StereoHeadphones(6684674L), kAudioChannelLayoutTag_MatrixStereo(6750210L), kAudioChannelLayoutTag_MidSide(6815746L), kAudioChannelLayoutTag_XY(6881282L), kAudioChannelLayoutTag_Binaural(6946818L), kAudioChannelLayoutTag_Ambisonic_B_Format(7012356L), kAudioChannelLayoutTag_Quadraphonic(7077892L), kAudioChannelLayoutTag_Pentagonal(7143429L), kAudioChannelLayoutTag_Hexagonal(7208966L), kAudioChannelLayoutTag_Octagonal(7274504L), kAudioChannelLayoutTag_Cube(7340040L), kAudioChannelLayoutTag_MPEG_1_0(6553601L), kAudioChannelLayoutTag_MPEG_2_0(6619138L), kAudioChannelLayoutTag_MPEG_3_0_A(7405571L), kAudioChannelLayoutTag_MPEG_3_0_B(7471107L), kAudioChannelLayoutTag_MPEG_4_0_A(7536644L), kAudioChannelLayoutTag_MPEG_4_0_B(7602180L), kAudioChannelLayoutTag_MPEG_5_0_A(7667717L), kAudioChannelLayoutTag_MPEG_5_0_B(7733253L), kAudioChannelLayoutTag_MPEG_5_0_C(7798789L), kAudioChannelLayoutTag_MPEG_5_0_D(7864325L), kAudioChannelLayoutTag_MPEG_5_1_A(7929862L), kAudioChannelLayoutTag_MPEG_5_1_B(7995398L), kAudioChannelLayoutTag_MPEG_5_1_C(8060934L), kAudioChannelLayoutTag_MPEG_5_1_D(8126470L), kAudioChannelLayoutTag_MPEG_6_1_A(8192007L), kAudioChannelLayoutTag_MPEG_7_1_A(8257544L), kAudioChannelLayoutTag_MPEG_7_1_B(8323080L), kAudioChannelLayoutTag_MPEG_7_1_C(8388616L), kAudioChannelLayoutTag_Emagic_Default_7_1(8454152L), kAudioChannelLayoutTag_SMPTE_DTV(8519688L), kAudioChannelLayoutTag_ITU_1_0(6553601L), kAudioChannelLayoutTag_ITU_2_0(6619138L), kAudioChannelLayoutTag_ITU_2_1(8585219L), kAudioChannelLayoutTag_ITU_2_2(8650756L), kAudioChannelLayoutTag_ITU_3_0(7405571L), kAudioChannelLayoutTag_ITU_3_1(7536644L), kAudioChannelLayoutTag_ITU_3_2(7667717L), kAudioChannelLayoutTag_ITU_3_2_1(7929862L), kAudioChannelLayoutTag_ITU_3_4_1(8388616L), kAudioChannelLayoutTag_DVD_0(6553601L), kAudioChannelLayoutTag_DVD_1(6619138L), kAudioChannelLayoutTag_DVD_2(8585219L), kAudioChannelLayoutTag_DVD_3(8650756L), kAudioChannelLayoutTag_DVD_4(8716291L), kAudioChannelLayoutTag_DVD_5(8781828L), kAudioChannelLayoutTag_DVD_6(8847365L), kAudioChannelLayoutTag_DVD_7(7405571L), kAudioChannelLayoutTag_DVD_8(7536644L), kAudioChannelLayoutTag_DVD_9(7667717L), kAudioChannelLayoutTag_DVD_10(8912900L), kAudioChannelLayoutTag_DVD_11(8978437L), kAudioChannelLayoutTag_DVD_12(7929862L), kAudioChannelLayoutTag_DVD_13(7536644L), kAudioChannelLayoutTag_DVD_14(7667717L), kAudioChannelLayoutTag_DVD_15(8912900L), kAudioChannelLayoutTag_DVD_16(8978437L), kAudioChannelLayoutTag_DVD_17(7929862L), kAudioChannelLayoutTag_DVD_18(9043973L), kAudioChannelLayoutTag_DVD_19(7733253L), kAudioChannelLayoutTag_DVD_20(7995398L), kAudioChannelLayoutTag_AudioUnit_4(7077892L), kAudioChannelLayoutTag_AudioUnit_5(7143429L), kAudioChannelLayoutTag_AudioUnit_6(7208966L), kAudioChannelLayoutTag_AudioUnit_8(7274504L), kAudioChannelLayoutTag_AudioUnit_5_0(7733253L), kAudioChannelLayoutTag_AudioUnit_6_0(9109510L), kAudioChannelLayoutTag_AudioUnit_7_0(9175047L), kAudioChannelLayoutTag_AudioUnit_7_0_Front(9699335L), kAudioChannelLayoutTag_AudioUnit_5_1(7929862L), kAudioChannelLayoutTag_AudioUnit_6_1(8192007L), kAudioChannelLayoutTag_AudioUnit_7_1(8388616L), kAudioChannelLayoutTag_AudioUnit_7_1_Front(8257544L), kAudioChannelLayoutTag_AAC_3_0(7471107L), kAudioChannelLayoutTag_AAC_Quadraphonic(7077892L), kAudioChannelLayoutTag_AAC_4_0(7602180L), kAudioChannelLayoutTag_AAC_5_0(7864325L), kAudioChannelLayoutTag_AAC_5_1(8126470L), kAudioChannelLayoutTag_AAC_6_0(9240582L), kAudioChannelLayoutTag_AAC_6_1(9306119L), kAudioChannelLayoutTag_AAC_7_0(9371655L), kAudioChannelLayoutTag_AAC_7_1(8323080L), kAudioChannelLayoutTag_AAC_7_1_B(11993096L), kAudioChannelLayoutTag_AAC_7_1_C(12058632L), kAudioChannelLayoutTag_AAC_Octagonal(9437192L), kAudioChannelLayoutTag_TMH_10_2_std(9502736L), kAudioChannelLayoutTag_TMH_10_2_full(9568277L), kAudioChannelLayoutTag_AC3_1_0_1(9764866L), kAudioChannelLayoutTag_AC3_3_0(9830403L), kAudioChannelLayoutTag_AC3_3_1(9895940L), kAudioChannelLayoutTag_AC3_3_0_1(9961476L), kAudioChannelLayoutTag_AC3_2_1_1(10027012L), kAudioChannelLayoutTag_AC3_3_1_1(10092549L), kAudioChannelLayoutTag_EAC_6_0_A(10158086L), kAudioChannelLayoutTag_EAC_7_0_A(10223623L), kAudioChannelLayoutTag_EAC3_6_1_A(10289159L), kAudioChannelLayoutTag_EAC3_6_1_B(10354695L), kAudioChannelLayoutTag_EAC3_6_1_C(10420231L), kAudioChannelLayoutTag_EAC3_7_1_A(10485768L), kAudioChannelLayoutTag_EAC3_7_1_B(10551304L), kAudioChannelLayoutTag_EAC3_7_1_C(10616840L), kAudioChannelLayoutTag_EAC3_7_1_D(10682376L), kAudioChannelLayoutTag_EAC3_7_1_E(10747912L), kAudioChannelLayoutTag_EAC3_7_1_F(10813448L), kAudioChannelLayoutTag_EAC3_7_1_G(10878984L), kAudioChannelLayoutTag_EAC3_7_1_H(10944520L), kAudioChannelLayoutTag_DTS_3_1(11010052L), kAudioChannelLayoutTag_DTS_4_1(11075589L), kAudioChannelLayoutTag_DTS_6_0_A(11141126L), kAudioChannelLayoutTag_DTS_6_0_B(11206662L), kAudioChannelLayoutTag_DTS_6_0_C(11272198L), kAudioChannelLayoutTag_DTS_6_1_A(11337735L), kAudioChannelLayoutTag_DTS_6_1_B(11403271L), kAudioChannelLayoutTag_DTS_6_1_C(11468807L), kAudioChannelLayoutTag_DTS_7_0(11534343L), kAudioChannelLayoutTag_DTS_7_1(11599880L), kAudioChannelLayoutTag_DTS_8_0_A(11665416L), kAudioChannelLayoutTag_DTS_8_0_B(11730952L), kAudioChannelLayoutTag_DTS_8_1_A(11796489L), kAudioChannelLayoutTag_DTS_8_1_B(11862025L), kAudioChannelLayoutTag_DTS_6_1_D(11927559L), kAudioChannelLayoutTag_WAVE_2_1(8716291L), kAudioChannelLayoutTag_WAVE_3_0(7405571L), kAudioChannelLayoutTag_WAVE_4_0_A(8650756L), kAudioChannelLayoutTag_WAVE_4_0_B(12124164L), kAudioChannelLayoutTag_WAVE_5_0_A(7667717L), kAudioChannelLayoutTag_WAVE_5_0_B(12189701L), kAudioChannelLayoutTag_WAVE_5_1_A(7929862L), kAudioChannelLayoutTag_WAVE_5_1_B(12255238L), kAudioChannelLayoutTag_WAVE_6_1(12320775L), kAudioChannelLayoutTag_WAVE_7_1(12386312L), kAudioChannelLayoutTag_HOA_ACN_SN3D(12451840L), kAudioChannelLayoutTag_HOA_ACN_N3D(12517376L), kAudioChannelLayoutTag_Atmos_5_1_2(12713992L), kAudioChannelLayoutTag_Atmos_5_1_4(12779530L), kAudioChannelLayoutTag_Atmos_7_1_2(12845066L), kAudioChannelLayoutTag_Atmos_7_1_4(12582924L), kAudioChannelLayoutTag_Atmos_9_1_6(12648464L), kAudioChannelLayoutTag_Logic_Mono(6553601L), kAudioChannelLayoutTag_Logic_Stereo(6619138L), kAudioChannelLayoutTag_Logic_Quadraphonic(7077892L), kAudioChannelLayoutTag_Logic_4_0_A(7536644L), kAudioChannelLayoutTag_Logic_4_0_B(7602180L), kAudioChannelLayoutTag_Logic_4_0_C(12910596L), kAudioChannelLayoutTag_Logic_5_0_A(7667717L), kAudioChannelLayoutTag_Logic_5_0_B(7733253L), kAudioChannelLayoutTag_Logic_5_0_C(7798789L), kAudioChannelLayoutTag_Logic_5_0_D(7864325L), kAudioChannelLayoutTag_Logic_5_1_A(7929862L), kAudioChannelLayoutTag_Logic_5_1_B(7995398L), kAudioChannelLayoutTag_Logic_5_1_C(8060934L), kAudioChannelLayoutTag_Logic_5_1_D(8126470L), kAudioChannelLayoutTag_Logic_6_0_A(9240582L), kAudioChannelLayoutTag_Logic_6_0_B(12976134L), kAudioChannelLayoutTag_Logic_6_0_C(9109510L), kAudioChannelLayoutTag_Logic_6_1_A(9306119L), kAudioChannelLayoutTag_Logic_6_1_B(13041671L), kAudioChannelLayoutTag_Logic_6_1_C(8192007L), kAudioChannelLayoutTag_Logic_6_1_D(13107207L), kAudioChannelLayoutTag_Logic_7_1_A(8388616L), kAudioChannelLayoutTag_Logic_7_1_B(13172744L), kAudioChannelLayoutTag_Logic_7_1_C(8388616L), kAudioChannelLayoutTag_Logic_7_1_SDDS_A(8257544L), kAudioChannelLayoutTag_Logic_7_1_SDDS_B(8323080L), kAudioChannelLayoutTag_Logic_7_1_SDDS_C(8454152L), kAudioChannelLayoutTag_Logic_Atmos_5_1_2(12713992L), kAudioChannelLayoutTag_Logic_Atmos_5_1_4(12779530L), kAudioChannelLayoutTag_Logic_Atmos_7_1_2(12845066L), kAudioChannelLayoutTag_Logic_Atmos_7_1_4_A(12582924L), kAudioChannelLayoutTag_Logic_Atmos_7_1_4_B(13238284L), kAudioChannelLayoutTag_Logic_Atmos_7_1_6(13303822L), kAudioChannelLayoutTag_DiscreteInOrder(9633792L), kAudioChannelLayoutTag_CICP_1(6553601L), kAudioChannelLayoutTag_CICP_2(6619138L), kAudioChannelLayoutTag_CICP_3(7405571L), kAudioChannelLayoutTag_CICP_4(7536644L), kAudioChannelLayoutTag_CICP_5(7667717L), kAudioChannelLayoutTag_CICP_6(7929862L), kAudioChannelLayoutTag_CICP_7(8323080L), kAudioChannelLayoutTag_CICP_9(8585219L), kAudioChannelLayoutTag_CICP_10(8650756L), kAudioChannelLayoutTag_CICP_11(8192007L), kAudioChannelLayoutTag_CICP_12(8388616L), kAudioChannelLayoutTag_CICP_13(13369368L), kAudioChannelLayoutTag_CICP_14(13434888L), kAudioChannelLayoutTag_CICP_15(13500428L), kAudioChannelLayoutTag_CICP_16(13565962L), kAudioChannelLayoutTag_CICP_17(13631500L), kAudioChannelLayoutTag_CICP_18(13697038L), kAudioChannelLayoutTag_CICP_19(13762572L), kAudioChannelLayoutTag_CICP_20(13828110L), kAudioChannelLayoutTag_Ogg_3_0(9830403L), kAudioChannelLayoutTag_Ogg_4_0(12124164L), kAudioChannelLayoutTag_Ogg_5_0(13893637L), kAudioChannelLayoutTag_Ogg_5_1(13959174L), kAudioChannelLayoutTag_Ogg_6_1(14024711L), kAudioChannelLayoutTag_Ogg_7_1(14090248L), kAudioChannelLayoutTag_MPEG_5_0_E(14155781L), kAudioChannelLayoutTag_MPEG_5_1_E(14221318L), kAudioChannelLayoutTag_MPEG_6_1_B(14286855L), kAudioChannelLayoutTag_MPEG_7_1_D(14352392L), kAudioChannelLayoutTag_BeginReserved(-268435456L), kAudioChannelLayoutTag_EndReserved(-65537L), kAudioChannelLayoutTag_Unknown(-65536L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreAudioTypes_framework_Headers_CoreAudioBaseTypes_h_1216_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreAudioTypes_framework_Headers_CoreAudioBaseTypes_h_1216_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum MPEG4ObjectID}
+ */
+enum class MPEG4ObjectID(val value: Long) {
+    kMPEG4Object_AAC_Main(1L), kMPEG4Object_AAC_LC(2L), kMPEG4Object_AAC_SSR(3L), kMPEG4Object_AAC_LTP(4L), kMPEG4Object_AAC_SBR(5L), kMPEG4Object_AAC_Scalable(6L), kMPEG4Object_TwinVQ(7L), kMPEG4Object_CELP(8L), kMPEG4Object_HVXC(9L);
+
+    companion object {
+        fun fromValue(v: Long): MPEG4ObjectID = entries.firstOrNull { it.value == v }
+            ?: error("Unknown MPEG4ObjectID value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum AVAudioSessionErrorCode}
+ */
+enum class AVAudioSessionErrorCode(val value: Long) {
+    AVAudioSessionErrorCodeNone(0L), AVAudioSessionErrorCodeMediaServicesFailed(1836282486L), AVAudioSessionErrorCodeIsBusy(560030580L), AVAudioSessionErrorCodeIncompatibleCategory(560161140L), AVAudioSessionErrorCodeCannotInterruptOthers(560557684L), AVAudioSessionErrorCodeMissingEntitlement(1701737535L), AVAudioSessionErrorCodeSiriIsRecording(1936290409L), AVAudioSessionErrorCodeCannotStartPlaying(561015905L), AVAudioSessionErrorCodeCannotStartRecording(561145187L), AVAudioSessionErrorCodeBadParam(-50L), AVAudioSessionErrorCodeInsufficientPriority(561017449L), AVAudioSessionErrorCodeResourceNotAvailable(561145203L), AVAudioSessionErrorCodeUnspecified(2003329396L), AVAudioSessionErrorCodeExpiredSession(561210739L), AVAudioSessionErrorCodeSessionNotActive(1768841571L);
+
+    companion object {
+        fun fromValue(v: Long): AVAudioSessionErrorCode = entries.firstOrNull { it.value == v }
+            ?: error("Unknown AVAudioSessionErrorCode value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/CoreAudioTypes.framework/Headers/AudioSessionTypes.h:100:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreAudioTypes_framework_Headers_AudioSessionTypes_h_100_1_(val value: Long) {
+    @PlatformAvailability(platform = "ios", introducedMajor = 7, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 12, deprecatedMinor = 0, deprecatedSubminor = -1)
+    @PlatformAvailability(platform = "macos", unavailable = true)
+    AVAudioSessionErrorInsufficientPriority(561017449L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreAudioTypes_framework_Headers_AudioSessionTypes_h_100_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreAudioTypes_framework_Headers_AudioSessionTypes_h_100_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/CoreMedia.framework/Headers/CMFormatDescription.h:47:1)}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMFormatDescription_h_47_1_(val value: Long) {
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMFormatDescriptionError_InvalidParameter(-12710L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMFormatDescriptionError_AllocationFailed(-12711L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMFormatDescriptionError_ValueNotAvailable(-12718L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMFormatDescription_h_47_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMFormatDescription_h_47_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/CoreMedia.framework/Headers/CMFormatDescription.h:79:1)}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMFormatDescription_h_79_1_(val value: Long) {
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMMediaType_Video(1986618469L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMMediaType_Audio(1936684398L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMMediaType_Muxed(1836415096L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMMediaType_Text(1952807028L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMMediaType_ClosedCaption(1668047728L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMMediaType_Subtitle(1935832172L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMMediaType_TimeCode(1953325924L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMMediaType_Metadata(1835365473L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMMediaType_TaggedBufferGroup(1952606066L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMFormatDescription_h_79_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMFormatDescription_h_79_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/CoreMedia.framework/Headers/CMFormatDescription.h:103:1)}
+ */
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMFormatDescription_h_103_1_(val value: Long) {
+    kCMMediaType_AuxiliaryPicture(1635088502L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMFormatDescription_h_103_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMFormatDescription_h_103_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/CoreMedia.framework/Headers/CMFormatDescription.h:318:1)}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMFormatDescription_h_318_1_(val value: Long) {
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMAudioCodecType_AAC_LCProtected(1885430115L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMAudioCodecType_AAC_AudibleProtected(1633771875L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMFormatDescription_h_318_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMFormatDescription_h_318_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/CoreMedia.framework/Headers/CMFormatDescription.h:482:1)}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMFormatDescription_h_482_1_(val value: Long) {
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMAudioFormatDescriptionMask_StreamBasicDescription(1L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMAudioFormatDescriptionMask_MagicCookie(2L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMAudioFormatDescriptionMask_ChannelLayout(4L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMAudioFormatDescriptionMask_Extensions(8L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMAudioFormatDescriptionMask_All(15L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMFormatDescription_h_482_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMFormatDescription_h_482_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/CoreMedia.framework/Headers/CMFormatDescription.h:562:1)}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMFormatDescription_h_562_1_(val value: Long) {
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMPixelFormat_32ARGB(32L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMPixelFormat_32BGRA(1111970369L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMPixelFormat_24RGB(24L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMPixelFormat_16BE555(16L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMPixelFormat_16BE565(1110783541L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMPixelFormat_16LE555(1278555445L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMPixelFormat_16LE565(1278555701L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMPixelFormat_16LE5551(892679473L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMPixelFormat_422YpCbCr8(846624121L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMPixelFormat_422YpCbCr8_yuvs(2037741171L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMPixelFormat_444YpCbCr8(1983066168L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMPixelFormat_4444YpCbCrA8(1983131704L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMPixelFormat_422YpCbCr16(1983000886L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMPixelFormat_422YpCbCr10(1983000880L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMPixelFormat_444YpCbCr10(1983131952L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMPixelFormat_8IndexedGray_WhiteIsZero(40L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMFormatDescription_h_562_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMFormatDescription_h_562_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/CoreMedia.framework/Headers/CMFormatDescription.h:632:1)}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMFormatDescription_h_632_1_(val value: Long) {
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMVideoCodecType_422YpCbCr8(846624121L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMVideoCodecType_Animation(1919706400L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMVideoCodecType_Cinepak(1668704612L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMVideoCodecType_JPEG(1785750887L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMVideoCodecType_JPEG_OpenDML(1684890161L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMVideoCodecType_JPEG_XL(1786276963L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMVideoCodecType_SorensonVideo(1398165809L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMVideoCodecType_SorensonVideo3(1398165811L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMVideoCodecType_H263(1748121139L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMVideoCodecType_H264(1635148593L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMVideoCodecType_HEVC(1752589105L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMVideoCodecType_HEVCWithAlpha(1836415073L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMVideoCodecType_DolbyVisionHEVC(1685481521L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMVideoCodecType_MPEG4Video(1836070006L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMVideoCodecType_MPEG2Video(1836069494L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMVideoCodecType_MPEG1Video(1836069238L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMVideoCodecType_VP9(1987063865L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMVideoCodecType_DVCNTSC(1685480224L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMVideoCodecType_DVCPAL(1685480304L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMVideoCodecType_DVCProPAL(1685483632L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMVideoCodecType_DVCPro50NTSC(1685468526L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMVideoCodecType_DVCPro50PAL(1685468528L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMVideoCodecType_DVCPROHD720p60(1685481584L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMVideoCodecType_DVCPROHD720p50(1685481585L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMVideoCodecType_DVCPROHD1080i60(1685481526L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMVideoCodecType_DVCPROHD1080i50(1685481525L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMVideoCodecType_DVCPROHD1080p30(1685481523L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMVideoCodecType_DVCPROHD1080p25(1685481522L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMVideoCodecType_AppleProRes4444XQ(1634743416L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMVideoCodecType_AppleProRes4444(1634743400L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMVideoCodecType_AppleProRes422HQ(1634755432L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMVideoCodecType_AppleProRes422(1634755438L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMVideoCodecType_AppleProRes422LT(1634755443L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMVideoCodecType_AppleProRes422Proxy(1634755439L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMVideoCodecType_AppleProResRAW(1634759278L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMVideoCodecType_AppleProResRAWHQ(1634759272L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMVideoCodecType_DisparityHEVC(1684632424L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMVideoCodecType_DepthHEVC(1684369512L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMVideoCodecType_AV1(1635135537L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMFormatDescription_h_632_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMFormatDescription_h_632_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/CoreMedia.framework/Headers/CMFormatDescription.h:830:1)}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMFormatDescription_h_830_1_(val value: Long) {
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMMPEG2VideoProfile_HDV_720p30(1751414321L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMMPEG2VideoProfile_HDV_1080i60(1751414322L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMMPEG2VideoProfile_HDV_1080i50(1751414323L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMMPEG2VideoProfile_HDV_720p24(1751414324L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMMPEG2VideoProfile_HDV_720p25(1751414325L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMMPEG2VideoProfile_HDV_1080p24(1751414326L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMMPEG2VideoProfile_HDV_1080p25(1751414327L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMMPEG2VideoProfile_HDV_1080p30(1751414328L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMMPEG2VideoProfile_HDV_720p60(1751414329L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMMPEG2VideoProfile_HDV_720p50(1751414369L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMMPEG2VideoProfile_XDCAM_HD_1080i60_VBR35(2019849778L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMMPEG2VideoProfile_XDCAM_HD_1080i50_VBR35(2019849779L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMMPEG2VideoProfile_XDCAM_HD_1080p24_VBR35(2019849782L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMMPEG2VideoProfile_XDCAM_HD_1080p25_VBR35(2019849783L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMMPEG2VideoProfile_XDCAM_HD_1080p30_VBR35(2019849784L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMMPEG2VideoProfile_XDCAM_EX_720p24_VBR35(2019849780L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMMPEG2VideoProfile_XDCAM_EX_720p25_VBR35(2019849781L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMMPEG2VideoProfile_XDCAM_EX_720p30_VBR35(2019849777L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMMPEG2VideoProfile_XDCAM_EX_720p50_VBR35(2019849825L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMMPEG2VideoProfile_XDCAM_EX_720p60_VBR35(2019849785L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMMPEG2VideoProfile_XDCAM_EX_1080i60_VBR35(2019849826L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMMPEG2VideoProfile_XDCAM_EX_1080i50_VBR35(2019849827L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMMPEG2VideoProfile_XDCAM_EX_1080p24_VBR35(2019849828L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMMPEG2VideoProfile_XDCAM_EX_1080p25_VBR35(2019849829L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMMPEG2VideoProfile_XDCAM_EX_1080p30_VBR35(2019849830L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMMPEG2VideoProfile_XDCAM_HD422_720p50_CBR50(2019833185L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMMPEG2VideoProfile_XDCAM_HD422_720p60_CBR50(2019833145L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMMPEG2VideoProfile_XDCAM_HD422_1080i60_CBR50(2019833186L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMMPEG2VideoProfile_XDCAM_HD422_1080i50_CBR50(2019833187L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMMPEG2VideoProfile_XDCAM_HD422_1080p24_CBR50(2019833188L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMMPEG2VideoProfile_XDCAM_HD422_1080p25_CBR50(2019833189L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMMPEG2VideoProfile_XDCAM_HD422_1080p30_CBR50(2019833190L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMMPEG2VideoProfile_XDCAM_HD_540p(2019846244L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMMPEG2VideoProfile_XDCAM_HD422_540p(2019846194L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMMPEG2VideoProfile_XDCAM_HD422_720p24_CBR50(2019833140L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMMPEG2VideoProfile_XDCAM_HD422_720p25_CBR50(2019833141L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMMPEG2VideoProfile_XDCAM_HD422_720p30_CBR50(2019833137L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMMPEG2VideoProfile_XF(2019981873L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMFormatDescription_h_830_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMFormatDescription_h_830_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/CoreMedia.framework/Headers/CMFormatDescription.h:1414:1)}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 17, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 17, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMFormatDescription_h_1414_1_(val value: Long) {
+    @PlatformAvailability(platform = "ios", introducedMajor = 17, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 17, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMTaggedBufferGroupFormatType_TaggedBufferGroup(1952606066L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMFormatDescription_h_1414_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMFormatDescription_h_1414_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/CoreMedia.framework/Headers/CMFormatDescription.h:1448:1)}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMFormatDescription_h_1448_1_(val value: Long) {
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMMuxedStreamType_MPEG1System(1836069235L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMMuxedStreamType_MPEG2Transport(1836069492L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMMuxedStreamType_MPEG2Program(1836069488L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMMuxedStreamType_DV(1685463072L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 17, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 17, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 10, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMMuxedStreamType_EmbeddedDeviceScreenRecording(1769173536L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMFormatDescription_h_1448_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMFormatDescription_h_1448_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/CoreMedia.framework/Headers/CMFormatDescription.h:1511:1)}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMFormatDescription_h_1511_1_(val value: Long) {
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMClosedCaptionFormatType_CEA608(1664495672L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMClosedCaptionFormatType_CEA708(1664561208L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMClosedCaptionFormatType_ATSC(1635017571L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMFormatDescription_h_1511_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMFormatDescription_h_1511_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/CoreMedia.framework/Headers/CMFormatDescription.h:1544:1)}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMFormatDescription_h_1544_1_(val value: Long) {
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMTextFormatType_QTText(1952807028L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMTextFormatType_3GText(1954034535L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMFormatDescription_h_1544_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMFormatDescription_h_1544_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/CoreMedia.framework/Headers/CMFormatDescription.h:1572:1)}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMFormatDescription_h_1572_1_(val value: Long) {
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMTextDisplayFlag_scrollIn(32L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMTextDisplayFlag_scrollOut(64L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMTextDisplayFlag_scrollDirectionMask(384L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMTextDisplayFlag_scrollDirection_bottomToTop(0L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMTextDisplayFlag_scrollDirection_rightToLeft(128L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMTextDisplayFlag_scrollDirection_topToBottom(256L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMTextDisplayFlag_scrollDirection_leftToRight(384L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMTextDisplayFlag_continuousKaraoke(2048L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMTextDisplayFlag_writeTextVertically(131072L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMTextDisplayFlag_fillTextRegion(262144L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMTextDisplayFlag_obeySubtitleFormatting(536870912L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMTextDisplayFlag_forcedSubtitlesPresent(1073741824L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMTextDisplayFlag_allSubtitlesForced(-2147483648L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMFormatDescription_h_1572_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMFormatDescription_h_1572_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/CoreMedia.framework/Headers/CMFormatDescription.h:1601:1)}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMFormatDescription_h_1601_1_(val value: Long) {
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMTextJustification_left_top(0L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMTextJustification_centered(1L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMTextJustification_bottom_right(-1L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMFormatDescription_h_1601_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMFormatDescription_h_1601_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/CoreMedia.framework/Headers/CMFormatDescription.h:1780:1)}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMFormatDescription_h_1780_1_(val value: Long) {
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMSubtitleFormatType_3GText(1954034535L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMSubtitleFormatType_WebVTT(2004251764L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMFormatDescription_h_1780_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMFormatDescription_h_1780_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/CoreMedia.framework/Headers/CMFormatDescription.h:1814:1)}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMFormatDescription_h_1814_1_(val value: Long) {
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMTimeCodeFormatType_TimeCode32(1953325924L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMTimeCodeFormatType_TimeCode64(1952658996L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMTimeCodeFormatType_Counter32(1668166450L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMTimeCodeFormatType_Counter64(1668167220L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMFormatDescription_h_1814_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMFormatDescription_h_1814_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/CoreMedia.framework/Headers/CMFormatDescription.h:1835:1)}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMFormatDescription_h_1835_1_(val value: Long) {
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMTimeCodeFlag_DropFrame(1L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMTimeCodeFlag_24HourMax(2L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMTimeCodeFlag_NegTimesOK(4L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMFormatDescription_h_1835_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMFormatDescription_h_1835_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/CoreMedia.framework/Headers/CMFormatDescription.h:1936:1)}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMFormatDescription_h_1936_1_(val value: Long) {
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMMetadataFormatType_ICY(1768126752L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMMetadataFormatType_ID3(1768174368L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMMetadataFormatType_Boxed(1835360888L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMMetadataFormatType_EMSG(1701671783L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMFormatDescription_h_1936_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMFormatDescription_h_1936_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/CoreMedia.framework/Headers/CMSampleBuffer.h:88:1)}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMSampleBuffer_h_88_1_(val value: Long) {
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMSampleBufferError_AllocationFailed(-12730L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMSampleBufferError_RequiredParameterMissing(-12731L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMSampleBufferError_AlreadyHasDataBuffer(-12732L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMSampleBufferError_BufferNotReady(-12733L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMSampleBufferError_SampleIndexOutOfRange(-12734L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMSampleBufferError_BufferHasNoSampleSizes(-12735L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMSampleBufferError_BufferHasNoSampleTimingInfo(-12736L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMSampleBufferError_ArrayTooSmall(-12737L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMSampleBufferError_InvalidEntryCount(-12738L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMSampleBufferError_CannotSubdivide(-12739L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMSampleBufferError_SampleTimingInfoInvalid(-12740L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMSampleBufferError_InvalidMediaTypeForOperation(-12741L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMSampleBufferError_InvalidSampleData(-12742L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMSampleBufferError_InvalidMediaFormat(-12743L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMSampleBufferError_Invalidated(-12744L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMSampleBufferError_DataFailed(-16750L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMSampleBufferError_DataCanceled(-16751L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMSampleBuffer_h_88_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMSampleBuffer_h_88_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/CoreMedia.framework/Headers/CMSampleBuffer.h:118:1)}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMSampleBuffer_h_118_1_(val value: Long) {
+    @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMSampleBufferFlag_AudioBufferList_Assure16ByteAlignment(1L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMSampleBuffer_h_118_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMSampleBuffer_h_118_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/CoreMedia.framework/Headers/CMSync.h:77:1)}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMSync_h_77_1_(val value: Long) {
+    @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMClockError_MissingRequiredParameter(-12745L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMClockError_InvalidParameter(-12746L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMClockError_AllocationFailed(-12747L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMClockError_UnsupportedOperation(-12756L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMSync_h_77_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMSync_h_77_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/CoreMedia.framework/Headers/CMSync.h:90:1)}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMSync_h_90_1_(val value: Long) {
+    @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMTimebaseError_MissingRequiredParameter(-12748L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMTimebaseError_InvalidParameter(-12749L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMTimebaseError_AllocationFailed(-12750L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMTimebaseError_TimerIntervalTooShort(-12751L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMTimebaseError_ReadOnly(-12757L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMSync_h_90_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMSync_h_90_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/System/Library/Frameworks/CoreMedia.framework/Headers/CMSync.h:104:1)}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+enum class enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMSync_h_104_1_(val value: Long) {
+    @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMSyncError_MissingRequiredParameter(-12752L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMSyncError_InvalidParameter(-12753L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMSyncError_AllocationFailed(-12754L),
+    @PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1)
+    @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+    @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+    kCMSyncError_RateMustBeNonZero(-12755L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMSync_h_104_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_Applications_Xcode_app_Contents_Developer_Platforms_MacOSX_platform_Developer_SDKs_MacOSX26_5_sdk_System_Library_Frameworks_CoreMedia_framework_Headers_CMSync_h_104_1_ value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum SCStreamOutputType}
+ */
+@PlatformAvailability(platform = "maccatalyst", introducedMajor = 18, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 3, introducedSubminor = -1)
+@JvmInline
+value class SCStreamOutputType(val rawValue: Long) {
+    companion object {
+        @PlatformAvailability(platform = "maccatalyst", introducedMajor = 18, introducedMinor = 2, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 3, introducedSubminor = -1)
+        val SCStreamOutputTypeScreen = SCStreamOutputType(0L)
+        @PlatformAvailability(platform = "maccatalyst", introducedMajor = 18, introducedMinor = 2, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+        val SCStreamOutputTypeAudio = SCStreamOutputType(1L)
+        @PlatformAvailability(platform = "maccatalyst", introducedMajor = 18, introducedMinor = 2, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        val SCStreamOutputTypeMicrophone = SCStreamOutputType(2L)
+    }
+
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum SCFrameStatus}
+ */
+@PlatformAvailability(platform = "maccatalyst", introducedMajor = 18, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 3, introducedSubminor = -1)
+enum class SCFrameStatus(val value: Long) {
+    @PlatformAvailability(platform = "maccatalyst", introducedMajor = 18, introducedMinor = 2, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 3, introducedSubminor = -1)
+    SCFrameStatusComplete(0L),
+    @PlatformAvailability(platform = "maccatalyst", introducedMajor = 18, introducedMinor = 2, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 3, introducedSubminor = -1)
+    SCFrameStatusIdle(1L),
+    @PlatformAvailability(platform = "maccatalyst", introducedMajor = 18, introducedMinor = 2, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 3, introducedSubminor = -1)
+    SCFrameStatusBlank(2L),
+    @PlatformAvailability(platform = "maccatalyst", introducedMajor = 18, introducedMinor = 2, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 3, introducedSubminor = -1)
+    SCFrameStatusSuspended(3L),
+    @PlatformAvailability(platform = "maccatalyst", introducedMajor = 18, introducedMinor = 2, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 3, introducedSubminor = -1)
+    SCFrameStatusStarted(4L),
+    @PlatformAvailability(platform = "maccatalyst", introducedMajor = 18, introducedMinor = 2, introducedSubminor = -1)
+    @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 3, introducedSubminor = -1)
+    SCFrameStatusStopped(5L);
+
+    companion object {
+        fun fromValue(v: Long): SCFrameStatus = entries.firstOrNull { it.value == v }
+            ?: error("Unknown SCFrameStatus value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum SCPresenterOverlayAlertSetting}
+ */
+@PlatformAvailability(platform = "maccatalyst", introducedMajor = 18, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@JvmInline
+value class SCPresenterOverlayAlertSetting(val rawValue: Long) {
+    companion object {
+        @PlatformAvailability(platform = "maccatalyst", introducedMajor = 18, introducedMinor = 2, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+        val SCPresenterOverlayAlertSettingSystem = SCPresenterOverlayAlertSetting(0L)
+        @PlatformAvailability(platform = "maccatalyst", introducedMajor = 18, introducedMinor = 2, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+        val SCPresenterOverlayAlertSettingNever = SCPresenterOverlayAlertSetting(1L)
+        @PlatformAvailability(platform = "maccatalyst", introducedMajor = 18, introducedMinor = 2, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+        val SCPresenterOverlayAlertSettingAlways = SCPresenterOverlayAlertSetting(2L)
+    }
+
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum SCStreamType}
+ */
+@PlatformAvailability(platform = "macos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 15, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use SCShareableContentStyle instead")
+@JvmInline
+value class SCStreamType(val rawValue: Long) {
+    companion object {
+        @PlatformAvailability(platform = "macos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 15, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use SCShareableContentStyle instead")
+        val SCStreamTypeWindow = SCStreamType(0L)
+        @PlatformAvailability(platform = "macos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1, deprecated = true, deprecatedMajor = 15, deprecatedMinor = 0, deprecatedSubminor = -1, message = "Use SCShareableContentStyle instead")
+        val SCStreamTypeDisplay = SCStreamType(1L)
+    }
+
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum SCCaptureResolutionType}
+ */
+@PlatformAvailability(platform = "maccatalyst", introducedMajor = 18, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 3, introducedSubminor = -1)
+@JvmInline
+value class SCCaptureResolutionType(val rawValue: Long) {
+    companion object {
+        @PlatformAvailability(platform = "maccatalyst", introducedMajor = 18, introducedMinor = 2, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 3, introducedSubminor = -1)
+        val SCCaptureResolutionAutomatic = SCCaptureResolutionType(0L)
+        @PlatformAvailability(platform = "maccatalyst", introducedMajor = 18, introducedMinor = 2, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 3, introducedSubminor = -1)
+        val SCCaptureResolutionBest = SCCaptureResolutionType(1L)
+        @PlatformAvailability(platform = "maccatalyst", introducedMajor = 18, introducedMinor = 2, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 3, introducedSubminor = -1)
+        val SCCaptureResolutionNominal = SCCaptureResolutionType(2L)
+    }
+
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum SCCaptureDynamicRange}
+ */
+@PlatformAvailability(platform = "maccatalyst", introducedMajor = 18, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@JvmInline
+value class SCCaptureDynamicRange(val rawValue: Long) {
+    companion object {
+        @PlatformAvailability(platform = "maccatalyst", introducedMajor = 18, introducedMinor = 2, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        val SCCaptureDynamicRangeSDR = SCCaptureDynamicRange(0L)
+        @PlatformAvailability(platform = "maccatalyst", introducedMajor = 18, introducedMinor = 2, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        val SCCaptureDynamicRangeHDRLocalDisplay = SCCaptureDynamicRange(1L)
+        @PlatformAvailability(platform = "maccatalyst", introducedMajor = 18, introducedMinor = 2, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        val SCCaptureDynamicRangeHDRCanonicalDisplay = SCCaptureDynamicRange(2L)
+    }
+
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum SCStreamConfigurationPreset}
+ */
+@PlatformAvailability(platform = "maccatalyst", introducedMajor = 18, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+@JvmInline
+value class SCStreamConfigurationPreset(val rawValue: Long) {
+    companion object {
+        @PlatformAvailability(platform = "maccatalyst", introducedMajor = 18, introducedMinor = 2, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        val SCStreamConfigurationPresetCaptureHDRStreamLocalDisplay = SCStreamConfigurationPreset(0L)
+        @PlatformAvailability(platform = "maccatalyst", introducedMajor = 18, introducedMinor = 2, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        val SCStreamConfigurationPresetCaptureHDRStreamCanonicalDisplay = SCStreamConfigurationPreset(1L)
+        @PlatformAvailability(platform = "maccatalyst", introducedMajor = 18, introducedMinor = 2, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        val SCStreamConfigurationPresetCaptureHDRScreenshotLocalDisplay = SCStreamConfigurationPreset(2L)
+        @PlatformAvailability(platform = "maccatalyst", introducedMajor = 18, introducedMinor = 2, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+        val SCStreamConfigurationPresetCaptureHDRScreenshotCanonicalDisplay = SCStreamConfigurationPreset(3L)
+        @PlatformAvailability(platform = "maccatalyst", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 26, introducedMinor = 0, introducedSubminor = -1)
+        val SCStreamConfigurationPresetCaptureHDRRecordingPreservedSDRHDR10 = SCStreamConfigurationPreset(4L)
+    }
+
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum SCStreamErrorCode}
+ */
+enum class SCStreamErrorCode(val value: Long) {
+    @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 3, introducedSubminor = -1)
+    SCStreamErrorUserDeclined(-3801L),
+    @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 3, introducedSubminor = -1)
+    SCStreamErrorFailedToStart(-3802L),
+    @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 3, introducedSubminor = -1)
+    SCStreamErrorMissingEntitlements(-3803L),
+    @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 3, introducedSubminor = -1)
+    SCStreamErrorFailedApplicationConnectionInvalid(-3804L),
+    @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 3, introducedSubminor = -1)
+    SCStreamErrorFailedApplicationConnectionInterrupted(-3805L),
+    @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 3, introducedSubminor = -1)
+    SCStreamErrorFailedNoMatchingApplicationContext(-3806L),
+    @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 3, introducedSubminor = -1)
+    SCStreamErrorAttemptToStartStreamState(-3807L),
+    @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 3, introducedSubminor = -1)
+    SCStreamErrorAttemptToStopStreamState(-3808L),
+    @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 3, introducedSubminor = -1)
+    SCStreamErrorAttemptToUpdateFilterState(-3809L),
+    @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 3, introducedSubminor = -1)
+    SCStreamErrorAttemptToConfigState(-3810L),
+    @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 3, introducedSubminor = -1)
+    SCStreamErrorInternalError(-3811L),
+    @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 3, introducedSubminor = -1)
+    SCStreamErrorInvalidParameter(-3812L),
+    @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 3, introducedSubminor = -1)
+    SCStreamErrorNoWindowList(-3813L),
+    @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 3, introducedSubminor = -1)
+    SCStreamErrorNoDisplayList(-3814L),
+    @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 3, introducedSubminor = -1)
+    SCStreamErrorNoCaptureSource(-3815L),
+    @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 3, introducedSubminor = -1)
+    SCStreamErrorRemovingStream(-3816L),
+    @PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 3, introducedSubminor = -1)
+    SCStreamErrorUserStopped(-3817L),
+    @PlatformAvailability(platform = "macos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+    SCStreamErrorFailedToStartAudioCapture(-3818L),
+    @PlatformAvailability(platform = "macos", introducedMajor = 13, introducedMinor = 0, introducedSubminor = -1)
+    SCStreamErrorFailedToStopAudioCapture(-3819L),
+    @PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+    SCStreamErrorFailedToStartMicrophoneCapture(-3820L),
+    @PlatformAvailability(platform = "macos", introducedMajor = 15, introducedMinor = 0, introducedSubminor = -1)
+    SCStreamErrorSystemStoppedStream(-3821L);
+
+    companion object {
+        fun fromValue(v: Long): SCStreamErrorCode = entries.firstOrNull { it.value == v }
+            ?: error("Unknown SCStreamErrorCode value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum SCScreenshotDisplayIntent}
+ */
+@JvmInline
+value class SCScreenshotDisplayIntent(val rawValue: Long) {
+    companion object {
+        val SCScreenshotDisplayIntentCanonical = SCScreenshotDisplayIntent(0L)
+        val SCScreenshotDisplayIntentLocal = SCScreenshotDisplayIntent(1L)
+    }
+
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum SCScreenshotDynamicRange}
+ */
+@JvmInline
+value class SCScreenshotDynamicRange(val rawValue: Long) {
+    companion object {
+        val SCScreenshotDynamicRangeSDR = SCScreenshotDynamicRange(0L)
+        val SCScreenshotDynamicRangeHDR = SCScreenshotDynamicRange(1L)
+        val SCScreenshotDynamicRangeSDRAndHDR = SCScreenshotDynamicRange(2L)
+    }
+
+}
+
+/**
  * {@snippet lang=c : #define kCFCoreFoundationVersionNumber10_0 196.4
  */
 fun kCFCoreFoundationVersionNumber10_0(): Double = 196.4
@@ -38066,3 +40138,18 @@ fun E_FAIL(): Int = (-2147483640).toInt()
  * {@snippet lang=c : #define E_ACCESSDENIED -2147483639
  */
 fun E_ACCESSDENIED(): Int = (-2147483639).toInt()
+
+/**
+ * {@snippet lang=c : #define AVF_DEPLOYING_TO_2022_RELEASES_AND_LATER 1
+ */
+fun AVF_DEPLOYING_TO_2022_RELEASES_AND_LATER(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define AVF_DEPLOYING_TO_2024_RELEASES_AND_LATER 1
+ */
+fun AVF_DEPLOYING_TO_2024_RELEASES_AND_LATER(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define AVF_DEPLOYING_TO_2025_RELEASES_AND_LATER 1
+ */
+fun AVF_DEPLOYING_TO_2025_RELEASES_AND_LATER(): Int = (1).toInt()
