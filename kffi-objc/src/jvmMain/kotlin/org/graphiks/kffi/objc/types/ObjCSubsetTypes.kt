@@ -947,14 +947,19 @@ typealias CFIndex = Long
 typealias CFTypeRef = MemorySegment
 
 /**
+ * {@snippet lang=c : STRUCT __CFString
+ */
+class _CFStringPointer internal constructor(internal val segment: MemorySegment)
+
+/**
  * {@snippet lang=c : typedef (Declared(__CFString))* CFStringRef;}
  */
-typealias CFStringRef = MemorySegment
+typealias CFStringRef = _CFStringPointer
 
 /**
  * {@snippet lang=c : typedef (Declared(__CFString))* CFMutableStringRef;}
  */
-typealias CFMutableStringRef = MemorySegment
+typealias CFMutableStringRef = _CFStringPointer
 
 /**
  * {@snippet lang=c : typedef (Void)* CFPropertyListRef;}
@@ -1909,7 +1914,7 @@ typealias CFMutableDictionaryRef = MemorySegment
 /**
  * {@snippet lang=c : typedef (Declared(__CFString))* CFNotificationName;}
  */
-typealias CFNotificationName = MemorySegment
+typealias CFNotificationName = _CFStringPointer
 
 /**
  * {@snippet lang=c : typedef (Declared(__CFNotificationCenter))* CFNotificationCenterRef;}
@@ -1924,12 +1929,12 @@ typealias CFNotificationCallback = MemorySegment
 /**
  * {@snippet lang=c : typedef (Declared(__CFString))* CFLocaleIdentifier;}
  */
-typealias CFLocaleIdentifier = MemorySegment
+typealias CFLocaleIdentifier = _CFStringPointer
 
 /**
  * {@snippet lang=c : typedef (Declared(__CFString))* CFLocaleKey;}
  */
-typealias CFLocaleKey = MemorySegment
+typealias CFLocaleKey = _CFStringPointer
 
 /**
  * {@snippet lang=c : typedef (Declared(__CFLocale))* CFLocaleRef;}
@@ -1939,7 +1944,7 @@ typealias CFLocaleRef = MemorySegment
 /**
  * {@snippet lang=c : typedef (Declared(__CFString))* CFCalendarIdentifier;}
  */
-typealias CFCalendarIdentifier = MemorySegment
+typealias CFCalendarIdentifier = _CFStringPointer
 
 /**
  * {@snippet lang=c : typedef Double CFTimeInterval;}
@@ -2163,7 +2168,7 @@ typealias CFMutableCharacterSetRef = MemorySegment
 /**
  * {@snippet lang=c : typedef (Declared(__CFString))* CFErrorDomain;}
  */
-typealias CFErrorDomain = MemorySegment
+typealias CFErrorDomain = _CFStringPointer
 
 /**
  * {@snippet lang=c : typedef (Declared(__CFError))* CFErrorRef;}
@@ -2695,7 +2700,7 @@ class CGAffineTransformComponents {
 /**
  * {@snippet lang=c : typedef (Declared(__CFString))* CFDateFormatterKey;}
  */
-typealias CFDateFormatterKey = MemorySegment
+typealias CFDateFormatterKey = _CFStringPointer
 
 /**
  * {@snippet lang=c : typedef (Declared(__CFDateFormatter))* CFDateFormatterRef;}
@@ -2715,7 +2720,7 @@ typealias CFNumberRef = MemorySegment
 /**
  * {@snippet lang=c : typedef (Declared(__CFString))* CFNumberFormatterKey;}
  */
-typealias CFNumberFormatterKey = MemorySegment
+typealias CFNumberFormatterKey = _CFStringPointer
 
 /**
  * {@snippet lang=c : typedef (Declared(__CFNumberFormatter))* CFNumberFormatterRef;}
@@ -2870,7 +2875,7 @@ typealias mach_port_flavor_t = Int
 /**
  * {@snippet lang=c : typedef (Declared(__CFString))* CFRunLoopMode;}
  */
-typealias CFRunLoopMode = MemorySegment
+typealias CFRunLoopMode = _CFStringPointer
 
 /**
  * {@snippet lang=c : STRUCT __CFRunLoop
@@ -3770,7 +3775,7 @@ class CFStreamError {
 /**
  * {@snippet lang=c : typedef (Declared(__CFString))* CFStreamPropertyKey;}
  */
-typealias CFStreamPropertyKey = MemorySegment
+typealias CFStreamPropertyKey = _CFStringPointer
 
 /**
  * {@snippet lang=c : STRUCT CFStreamClientContext
@@ -10545,7 +10550,7 @@ typealias CGPDFContentStreamRef = MemorySegment
 /**
  * {@snippet lang=c : typedef (Declared(__CFString))* CGPDFTagProperty;}
  */
-typealias CGPDFTagProperty = MemorySegment
+typealias CGPDFTagProperty = _CFStringPointer
 
 /**
  * {@snippet lang=c : typedef (Declared(CGPDFOperatorTable))* CGPDFOperatorTableRef;}
@@ -14739,3 +14744,424 @@ class IUnknownVTbl {
     fun Release(segment: MemorySegment, value: MemorySegment) =
         Release_VH.set(segment, 0L, value)
 } // End class
+
+/**
+ * {@snippet lang=c : typedef Long CMItemCount;}
+ */
+typealias CMItemCount = Long
+
+/**
+ * {@snippet lang=c : typedef Long CMItemIndex;}
+ */
+typealias CMItemIndex = Long
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Long CMBaseClassVersion;}
+ */
+typealias CMBaseClassVersion = Long
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Long CMStructVersion;}
+ */
+typealias CMStructVersion = Long
+
+/**
+ * {@snippet lang=c : typedef Int CMPersistentTrackID;}
+ */
+typealias CMPersistentTrackID = Int
+
+/**
+ * {@snippet lang=c : typedef LongLong CMTimeValue;}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+typealias CMTimeValue = Long
+
+/**
+ * {@snippet lang=c : typedef Int CMTimeScale;}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+typealias CMTimeScale = Int
+
+/**
+ * {@snippet lang=c : typedef LongLong CMTimeEpoch;}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+typealias CMTimeEpoch = Long
+
+/**
+ * {@snippet lang=c : STRUCT CMTime
+ */
+class CMTime internal constructor(internal val segment: MemorySegment) {
+    companion object {
+        val layout: GroupLayout = MemoryLayout.structLayout(
+            ValueLayout.JAVA_LONG.withByteAlignment(4L).withName("value"),
+            ValueLayout.JAVA_INT.withByteAlignment(4L).withName("timescale"),
+            ValueLayout.JAVA_INT.withByteAlignment(4L).withName("flags"),
+            ValueLayout.JAVA_LONG.withByteAlignment(4L).withName("epoch")
+        ).withByteAlignment(4L).withName("CMTime")
+
+        val byteSize: Long
+            get() = layout.byteSize()
+
+        fun allocate(allocator: SegmentAllocator): CMTime =
+            CMTime(allocator.allocate(layout))
+
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): CMTimePointer =
+            CMTimePointer(allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout)))
+
+        internal fun asSlice(array: MemorySegment, index: Long): CMTime =
+            CMTime(array.asSlice(byteSize * index, byteSize))
+
+        internal fun reinterpret(addr: MemorySegment): CMTime =
+            CMTime(addr.reinterpret(byteSize))
+
+        internal fun reinterpret(addr: MemorySegment, elementCount: Long): CMTimePointer =
+            CMTimePointer(addr.reinterpret(byteSize * elementCount))
+
+    } // End companion object
+
+    constructor(value: Long, timescale: Int, flags: CMTimeFlags, epoch: Long) : this(Arena.ofAuto().allocate(layout)) {
+        value(value)
+        timescale(timescale)
+        flags(flags)
+        epoch(epoch)
+    }
+
+    private val value_VH: VarHandle = layout.varHandle(groupElement("value"))
+
+    fun value(): Long = value_VH.get(segment, 0L) as Long
+
+    fun value(value: Long) =
+        value_VH.set(segment, 0L, value)
+
+    var value: Long
+        get() = value()
+        set(value) = value(value)
+
+    private val timescale_VH: VarHandle = layout.varHandle(groupElement("timescale"))
+
+    fun timescale(): Int = timescale_VH.get(segment, 0L) as Int
+
+    fun timescale(value: Int) =
+        timescale_VH.set(segment, 0L, value)
+
+    var timescale: Int
+        get() = timescale()
+        set(value) = timescale(value)
+
+    private val flags_VH: VarHandle = layout.varHandle(groupElement("flags"))
+
+    fun flags(): CMTimeFlags = CMTimeFlags(Integer.toUnsignedLong(flags_VH.get(segment, 0L) as Int))
+
+    fun flags(value: CMTimeFlags) =
+        flags_VH.set(segment, 0L, value.rawValue.toInt())
+
+    var flags: CMTimeFlags
+        get() = flags()
+        set(value) = flags(value)
+
+    private val epoch_VH: VarHandle = layout.varHandle(groupElement("epoch"))
+
+    fun epoch(): Long = epoch_VH.get(segment, 0L) as Long
+
+    fun epoch(value: Long) =
+        epoch_VH.set(segment, 0L, value)
+
+    var epoch: Long
+        get() = epoch()
+        set(value) = epoch(value)
+} // End class
+
+class CMTimePointer internal constructor(internal val segment: MemorySegment) {
+    fun pointed(index: Long = 0L): CMTime {
+        val offset = CMTime.byteSize * index
+        val bytes = CMTime.byteSize * (index + 1L)
+        return CMTime(segment.reinterpret(bytes).asSlice(offset, CMTime.byteSize))
+    }
+}
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Int CMAttachmentMode;}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+typealias CMAttachmentMode = Int
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Int CMBlockBufferFlags;}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+typealias CMBlockBufferFlags = Int
+
+/**
+ * {@snippet lang=c : typedef Float AudioSampleType;}
+ */
+@PlatformAvailability(platform = "all", deprecated = true, message = "The concept of canonical formats is deprecated")
+typealias AudioSampleType = Float
+
+/**
+ * {@snippet lang=c : typedef Float AudioUnitSampleType;}
+ */
+@PlatformAvailability(platform = "all", deprecated = true, message = "The concept of canonical formats is deprecated")
+typealias AudioUnitSampleType = Float
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Int AudioFormatID;}
+ */
+typealias AudioFormatID = Int
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Int AudioFormatFlags;}
+ */
+typealias AudioFormatFlags = Int
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Int AudioChannelLabel;}
+ */
+typealias AudioChannelLabel = Int
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Int AudioChannelLayoutTag;}
+ */
+typealias AudioChannelLayoutTag = Int
+
+/**
+ * {@snippet lang=c : typedef Long AVAudioInteger;}
+ */
+typealias AVAudioInteger = Long
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Long AVAudioUInteger;}
+ */
+typealias AVAudioUInteger = Long
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Int AudioSessionID;}
+ */
+typealias AudioSessionID = Int
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Int CMMediaType;}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+typealias CMMediaType = Int
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Int CMAudioCodecType;}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+typealias CMAudioCodecType = Int
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Int CMAudioFormatDescriptionMask;}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+typealias CMAudioFormatDescriptionMask = Int
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Int CMPixelFormatType;}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+typealias CMPixelFormatType = Int
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Int CMVideoCodecType;}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+typealias CMVideoCodecType = Int
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Int CMTaggedBufferGroupFormatType;}
+ */
+typealias CMTaggedBufferGroupFormatType = Int
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Int CMMuxedStreamType;}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+typealias CMMuxedStreamType = Int
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Int CMClosedCaptionFormatType;}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+typealias CMClosedCaptionFormatType = Int
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Int CMTextFormatType;}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+typealias CMTextFormatType = Int
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Int CMTextDisplayFlags;}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+typealias CMTextDisplayFlags = Int
+
+/**
+ * {@snippet lang=c : typedef SIGNED = Char CMTextJustificationValue;}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+typealias CMTextJustificationValue = Byte
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Int CMSubtitleFormatType;}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+typealias CMSubtitleFormatType = Int
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Int CMTimeCodeFormatType;}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+typealias CMTimeCodeFormatType = Int
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Int CMMetadataFormatType;}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+typealias CMMetadataFormatType = Int
+
+/**
+ * {@snippet lang=c : STRUCT opaqueCMSampleBuffer
+ */
+class opaqueCMSampleBufferPointer internal constructor(internal val segment: MemorySegment)
+
+/**
+ * {@snippet lang=c : typedef (Declared(opaqueCMSampleBuffer))* CMSampleBufferRef;}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+typealias CMSampleBufferRef = opaqueCMSampleBufferPointer
+
+/**
+ * {@snippet lang=c : STRUCT OpaqueCMClock
+ */
+class OpaqueCMClockPointer internal constructor(internal val segment: MemorySegment)
+
+/**
+ * {@snippet lang=c : typedef (Declared(OpaqueCMClock))* CMClockRef;}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 8, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+typealias CMClockRef = OpaqueCMClockPointer
+
+/**
+ * {@snippet lang=c : typedef typedef NSString = (Void)* AVVideoCodecType;}
+ */
+typealias AVVideoCodecType = MemorySegment
+
+/**
+ * {@snippet lang=c : typedef typedef NSString = (Void)* AVVideoApertureMode;}
+ */
+typealias AVVideoApertureMode = MemorySegment
+
+/**
+ * {@snippet lang=c : typedef typedef NSString = (Void)* AVMediaType;}
+ */
+typealias AVMediaType = MemorySegment
+
+/**
+ * {@snippet lang=c : typedef typedef NSString = (Void)* AVVideoRange;}
+ */
+typealias AVVideoRange = MemorySegment
+
+/**
+ * {@snippet lang=c : typedef typedef NSString = (Void)* AVMediaCharacteristic;}
+ */
+typealias AVMediaCharacteristic = MemorySegment
+
+/**
+ * {@snippet lang=c : typedef typedef NSString = (Void)* AVFileType;}
+ */
+typealias AVFileType = MemorySegment
+
+/**
+ * {@snippet lang=c : typedef typedef NSString = (Void)* AVFileTypeProfile;}
+ */
+typealias AVFileTypeProfile = MemorySegment
+
+/**
+ * {@snippet lang=c : typedef typedef NSString = (Void)* SCStreamFrameInfo;}
+ */
+@PlatformAvailability(platform = "maccatalyst", introducedMajor = 18, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 12, introducedMinor = 3, introducedSubminor = -1)
+typealias SCStreamFrameInfo = MemorySegment
