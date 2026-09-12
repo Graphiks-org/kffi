@@ -5903,3 +5903,174 @@ value class IOHIDManagerOptions(val rawValue: Long) {
     operator fun plus(o: IOHIDManagerOptions) = IOHIDManagerOptions(rawValue or o.rawValue)
     operator fun contains(o: IOHIDManagerOptions) = (rawValue and o.rawValue) != 0L
 }
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum CMTimeFlags}
+ */
+@PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+@PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+@PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+@JvmInline
+value class CMTimeFlags(val rawValue: Long) {
+    companion object {
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+        val kCMTimeFlags_Valid = CMTimeFlags(1L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+        val kCMTimeFlags_HasBeenRounded = CMTimeFlags(2L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+        val kCMTimeFlags_PositiveInfinity = CMTimeFlags(4L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+        val kCMTimeFlags_NegativeInfinity = CMTimeFlags(8L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+        val kCMTimeFlags_Indefinite = CMTimeFlags(16L)
+        @PlatformAvailability(platform = "ios", introducedMajor = 4, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 10, introducedMinor = 7, introducedSubminor = -1)
+        @PlatformAvailability(platform = "tvos", introducedMajor = 9, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "watchos", introducedMajor = 6, introducedMinor = 0, introducedSubminor = -1)
+        @PlatformAvailability(platform = "xros", introducedMajor = 1, introducedMinor = 0, introducedSubminor = -1)
+        val kCMTimeFlags_ImpliedValueFlagsMask = CMTimeFlags(28L)
+    }
+
+    operator fun plus(o: CMTimeFlags) = CMTimeFlags(rawValue or o.rawValue)
+    operator fun contains(o: CMTimeFlags) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum SMPTETimeFlags}
+ */
+@JvmInline
+value class SMPTETimeFlags(val rawValue: Long) {
+    companion object {
+        val kSMPTETimeUnknown = SMPTETimeFlags(0L)
+        val kSMPTETimeValid = SMPTETimeFlags(1L)
+        val kSMPTETimeRunning = SMPTETimeFlags(2L)
+    }
+
+    operator fun plus(o: SMPTETimeFlags) = SMPTETimeFlags(rawValue or o.rawValue)
+    operator fun contains(o: SMPTETimeFlags) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum AudioTimeStampFlags}
+ */
+@JvmInline
+value class AudioTimeStampFlags(val rawValue: Long) {
+    companion object {
+        val kAudioTimeStampNothingValid = AudioTimeStampFlags(0L)
+        val kAudioTimeStampSampleTimeValid = AudioTimeStampFlags(1L)
+        val kAudioTimeStampHostTimeValid = AudioTimeStampFlags(2L)
+        val kAudioTimeStampRateScalarValid = AudioTimeStampFlags(4L)
+        val kAudioTimeStampWordClockTimeValid = AudioTimeStampFlags(8L)
+        val kAudioTimeStampSMPTETimeValid = AudioTimeStampFlags(16L)
+        val kAudioTimeStampSampleHostTimeValid = AudioTimeStampFlags(3L)
+    }
+
+    operator fun plus(o: AudioTimeStampFlags) = AudioTimeStampFlags(rawValue or o.rawValue)
+    operator fun contains(o: AudioTimeStampFlags) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum AudioChannelBitmap}
+ */
+@JvmInline
+value class AudioChannelBitmap(val rawValue: Long) {
+    companion object {
+        val kAudioChannelBit_Left = AudioChannelBitmap(1L)
+        val kAudioChannelBit_Right = AudioChannelBitmap(2L)
+        val kAudioChannelBit_Center = AudioChannelBitmap(4L)
+        val kAudioChannelBit_LFEScreen = AudioChannelBitmap(8L)
+        val kAudioChannelBit_LeftSurround = AudioChannelBitmap(16L)
+        val kAudioChannelBit_RightSurround = AudioChannelBitmap(32L)
+        val kAudioChannelBit_LeftCenter = AudioChannelBitmap(64L)
+        val kAudioChannelBit_RightCenter = AudioChannelBitmap(128L)
+        val kAudioChannelBit_CenterSurround = AudioChannelBitmap(256L)
+        val kAudioChannelBit_LeftSurroundDirect = AudioChannelBitmap(512L)
+        val kAudioChannelBit_RightSurroundDirect = AudioChannelBitmap(1024L)
+        val kAudioChannelBit_TopCenterSurround = AudioChannelBitmap(2048L)
+        val kAudioChannelBit_VerticalHeightLeft = AudioChannelBitmap(4096L)
+        val kAudioChannelBit_VerticalHeightCenter = AudioChannelBitmap(8192L)
+        val kAudioChannelBit_VerticalHeightRight = AudioChannelBitmap(16384L)
+        val kAudioChannelBit_TopBackLeft = AudioChannelBitmap(32768L)
+        val kAudioChannelBit_TopBackCenter = AudioChannelBitmap(65536L)
+        val kAudioChannelBit_TopBackRight = AudioChannelBitmap(131072L)
+        val kAudioChannelBit_LeftTopFront = AudioChannelBitmap(4096L)
+        val kAudioChannelBit_CenterTopFront = AudioChannelBitmap(8192L)
+        val kAudioChannelBit_RightTopFront = AudioChannelBitmap(16384L)
+        val kAudioChannelBit_LeftTopMiddle = AudioChannelBitmap(2097152L)
+        val kAudioChannelBit_CenterTopMiddle = AudioChannelBitmap(2048L)
+        val kAudioChannelBit_RightTopMiddle = AudioChannelBitmap(8388608L)
+        val kAudioChannelBit_LeftTopRear = AudioChannelBitmap(16777216L)
+        val kAudioChannelBit_CenterTopRear = AudioChannelBitmap(33554432L)
+        val kAudioChannelBit_RightTopRear = AudioChannelBitmap(67108864L)
+    }
+
+    operator fun plus(o: AudioChannelBitmap) = AudioChannelBitmap(rawValue or o.rawValue)
+    operator fun contains(o: AudioChannelBitmap) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum AudioChannelFlags}
+ */
+@JvmInline
+value class AudioChannelFlags(val rawValue: Long) {
+    companion object {
+        val kAudioChannelFlags_AllOff = AudioChannelFlags(0L)
+        val kAudioChannelFlags_RectangularCoordinates = AudioChannelFlags(1L)
+        val kAudioChannelFlags_SphericalCoordinates = AudioChannelFlags(2L)
+        val kAudioChannelFlags_Meters = AudioChannelFlags(4L)
+    }
+
+    operator fun plus(o: AudioChannelFlags) = AudioChannelFlags(rawValue or o.rawValue)
+    operator fun contains(o: AudioChannelFlags) = (rawValue and o.rawValue) != 0L
+}
+
+/**
+ * NS_OPTIONS: {@snippet lang=c : enum SCContentSharingPickerMode}
+ */
+@PlatformAvailability(platform = "maccatalyst", introducedMajor = 18, introducedMinor = 2, introducedSubminor = -1)
+@PlatformAvailability(platform = "macos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+@JvmInline
+value class SCContentSharingPickerMode(val rawValue: Long) {
+    companion object {
+        @PlatformAvailability(platform = "maccatalyst", introducedMajor = 18, introducedMinor = 2, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+        val SCContentSharingPickerModeSingleWindow = SCContentSharingPickerMode(1L)
+        @PlatformAvailability(platform = "maccatalyst", introducedMajor = 18, introducedMinor = 2, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+        val SCContentSharingPickerModeMultipleWindows = SCContentSharingPickerMode(2L)
+        @PlatformAvailability(platform = "maccatalyst", introducedMajor = 18, introducedMinor = 2, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+        val SCContentSharingPickerModeSingleApplication = SCContentSharingPickerMode(4L)
+        @PlatformAvailability(platform = "maccatalyst", introducedMajor = 18, introducedMinor = 2, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+        val SCContentSharingPickerModeMultipleApplications = SCContentSharingPickerMode(8L)
+        @PlatformAvailability(platform = "maccatalyst", introducedMajor = 18, introducedMinor = 2, introducedSubminor = -1)
+        @PlatformAvailability(platform = "macos", introducedMajor = 14, introducedMinor = 0, introducedSubminor = -1)
+        val SCContentSharingPickerModeSingleDisplay = SCContentSharingPickerMode(16L)
+    }
+
+    operator fun plus(o: SCContentSharingPickerMode) = SCContentSharingPickerMode(rawValue or o.rawValue)
+    operator fun contains(o: SCContentSharingPickerMode) = (rawValue and o.rawValue) != 0L
+}
