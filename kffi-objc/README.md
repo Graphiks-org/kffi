@@ -15,6 +15,21 @@ in unrelated legacy IOKit declarations.
 Sources are produced from the macOS SDK by `kextract` and are checked in so the
 module can compile on non-macOS hosts without running the generator.
 
+## Managed HID inventory
+
+`HidManager` observes input-oriented HID devices as detached Kotlin values. Its
+initial `devices` snapshot is established before it emits lifecycle events;
+each `HidDeviceId` is opaque, local to that manager session, and is never a
+native pointer or a persistent hardware identifier. Device metadata is bounded
+to an optional product name and a coarse input kind. HID devices that
+GameController already owns are deliberately suppressed, so a controller is
+not published as both a GameController device and a generic HID input device.
+
+The adapter does not open devices, read raw reports, remap input, inject events,
+or provide output reports. Closing it revokes callback delivery and releases
+the IOKit manager only after its native cancellation handler and admitted
+callbacks are quiescent.
+
 ## Regenerate the bindings
 
 Generation requires macOS, Xcode, Homebrew LLVM, and the initialized `kextract`
