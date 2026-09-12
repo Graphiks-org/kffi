@@ -38,6 +38,7 @@ data class GameControllerDescriptor(
     val productCategory: String? = null,
     val hasPhysicalInputProfile: Boolean = false,
     val profile: GameControllerProfile = GameControllerProfile.Native,
+    val hapticLocalities: Set<GameControllerHapticLocality> = emptySet(),
 )
 
 /** The semantic mapping available from the controller's GameController profile. */
@@ -408,6 +409,7 @@ private class RetainedGameController(
 
     override fun snapshot(): GameControllerSnapshot {
         val nativeProfile = strong.value.physicalInputProfile()
+        val nativeHaptics = strong.value.haptics()
         return GameControllerSnapshot(
             descriptor = GameControllerDescriptor(
                 vendorName = strong.value.vendorName().toNullableString(),
@@ -417,6 +419,11 @@ private class RetainedGameController(
                     GameControllerProfile.Standard
                 } else {
                     GameControllerProfile.Native
+                },
+                hapticLocalities = if (nativeHaptics == MemorySegment.NULL) {
+                    emptySet()
+                } else {
+                    supportedGameControllerHapticLocalities(GCDeviceHaptics(nativeHaptics))
                 },
             ),
             initialPhysicalInputs = if (nativeProfile == MemorySegment.NULL) {

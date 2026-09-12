@@ -59,6 +59,10 @@ class GameControllerMonitorTest {
                 descriptor = GameControllerDescriptor(
                     vendorName = "Standard controller",
                     profile = GameControllerProfile.Standard,
+                    hapticLocalities = setOf(
+                        GameControllerHapticLocality.Default,
+                        GameControllerHapticLocality.LeftHandle,
+                    ),
                 ),
                 initialPhysicalInputs = listOf(initialInput),
             ),
@@ -68,6 +72,13 @@ class GameControllerMonitorTest {
         val controller = monitor.controllers.single()
 
         assertEquals(GameControllerProfile.Standard, controller.descriptor.profile)
+        assertEquals(
+            setOf(
+                GameControllerHapticLocality.Default,
+                GameControllerHapticLocality.LeftHandle,
+            ),
+            controller.descriptor.hapticLocalities,
+        )
         assertEquals(listOf(initialInput), controller.initialPhysicalInputs)
         monitor.close()
     }
