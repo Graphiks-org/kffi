@@ -195,6 +195,9 @@ pointer-free `ScreenCaptureReservation`, including a detached source identity fo
 and window choices. The reservation owns the native selection until `start(...)` transfers it to
 the managed stream owner; closing it first releases that selection without creating an `SCStream`.
 The system picker is resolved under the same macOS 14+ runtime guard.
+If the user dismisses that picker before selecting a source, reservation completion reports the
+distinct `ScreenCaptureReservationResult.Cancelled` result rather than wrapping the decision in a
+native failure.
 
 ## ScreenCaptureKit frame leases
 
