@@ -5,6 +5,7 @@ package org.graphiks.kffi.objc.managed
 import org.graphiks.kffi.objc.GCController
 import org.graphiks.kffi.objc.GCControllerDidConnectNotification
 import org.graphiks.kffi.objc.GCControllerDidDisconnectNotification
+import org.graphiks.kffi.objc.GCDeviceHaptics
 import org.graphiks.kffi.objc.NSArray
 import org.graphiks.kffi.objc.NSNotificationCenter
 import org.graphiks.kffi.objc.ObjCRuntime
@@ -63,6 +64,25 @@ class GameControllerMonitor private constructor(
     /** Immutable snapshot of currently connected controllers. */
     val controllers: List<GameControllerDevice>
         get() = lock.withLock { managedControllers.values.map(ManagedController::device) }
+
+    /**
+     * Creates an explicitly localized haptic engine for one still-connected controller.
+     *
+     * The returned owner is independent from this monitor. Its caller is responsible for
+     * closing it when the device disconnects or its own effect lease ends.
+     */
+    fun createHaptics(
+        id: GameControllerDeviceId,
+        locality: GameControllerHapticLocality,
+    ): Result<GameControllerHaptics> = lock.withLock {
+        if (closed) {
+            return Result.failure(IllegalStateException("GameControllerMonitor is closed"))
+        }
+        managedControllers.values.firstOrNull { it.device.id == id }
+            ?.controller
+            ?.createHaptics(locality)
+            ?: Result.failure(IllegalArgumentException("GameController device $id is not connected"))
+    }
 
     override fun close() {
         val release = lock.withLock {
@@ -244,6 +264,8 @@ internal interface GameControllerMonitorNativeController : AutoCloseable {
     val nativeIdentity: Long
 
     fun snapshot(): GameControllerDescriptor
+
+    fun createHaptics(locality: GameControllerHapticLocality): Result<GameControllerHaptics>
 }
 
 private object GameControllerMonitorNativeRuntime : GameControllerMonitorNative {
@@ -305,6 +327,23 @@ private class RetainedGameController(
         productCategory = strong.value.productCategory().toNullableString(),
         hasPhysicalInputProfile = strong.value.physicalInputProfile() != MemorySegment.NULL,
     )
+
+    override fun createHaptics(
+        locality: GameControllerHapticLocality,
+    ): Result<GameControllerHaptics> = ObjCRuntime.autoreleasePool {
+        val nativeHaptics = strong.value.haptics()
+        if (nativeHaptics == MemorySegment.NULL) {
+            Result.failure(
+                GameControllerHapticsException(
+                    domain = null,
+                    code = null,
+                    message = "The controller does not expose GameController haptics",
+                ),
+            )
+        } else {
+            GameControllerHaptics.create(GCDeviceHaptics(nativeHaptics), locality)
+        }
+    }
 
     override fun close() = strong.close()
 }
