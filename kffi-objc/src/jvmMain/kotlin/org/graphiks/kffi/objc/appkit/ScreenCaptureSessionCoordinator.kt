@@ -61,6 +61,9 @@ sealed interface ScreenCaptureReservationSource {
 sealed interface ScreenCaptureReservationResult {
     data class Reserved(val reservation: ScreenCaptureReservation) : ScreenCaptureReservationResult
 
+    /** The host picker was explicitly dismissed before it selected a source. */
+    data object Cancelled : ScreenCaptureReservationResult
+
     data class Failed(val cause: Throwable) : ScreenCaptureReservationResult
 }
 
@@ -201,7 +204,15 @@ private class ReservationAttempt(
                 true
             }
         }
-        if (accepted) callback(ScreenCaptureReservationResult.Failed(failure))
+        if (accepted) {
+            callback(
+                if (failure is ScreenCapturePickerCancelled) {
+                    ScreenCaptureReservationResult.Cancelled
+                } else {
+                    ScreenCaptureReservationResult.Failed(failure)
+                },
+            )
+        }
     }
 }
 

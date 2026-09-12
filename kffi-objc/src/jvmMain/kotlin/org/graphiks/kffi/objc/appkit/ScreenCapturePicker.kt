@@ -173,7 +173,7 @@ private class ResolvedPickerFilter(
 }
 
 /** Terminal cancellation is distinct from an AppKit/TCC failure for the managed session result. */
-private class ScreenCapturePickerCancelled : IllegalStateException("ScreenCaptureKit host picker was cancelled")
+internal class ScreenCapturePickerCancelled : IllegalStateException("ScreenCaptureKit host picker was cancelled")
 
 /**
  * Native `SCContentSharingPickerObserver` receiver with callback-safe release.

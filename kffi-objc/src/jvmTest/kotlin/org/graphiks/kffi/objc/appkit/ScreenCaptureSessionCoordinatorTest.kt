@@ -8,6 +8,21 @@ import kotlin.test.assertTrue
 
 class ScreenCaptureSessionCoordinatorTest {
     @Test
+    fun reservationReportsPickerCancellationWithoutErasingItsMeaning() {
+        val native = RecordingScreenCaptureRuntime()
+        val results = mutableListOf<ScreenCaptureReservationResult>()
+        ScreenCaptureReservationCoordinator.reserve(
+            native = native,
+            target = ScreenCaptureTarget.HostPicker,
+            callback = results::add,
+        )
+
+        native.completeResolutionFailure(ScreenCapturePickerCancelled())
+
+        assertEquals(ScreenCaptureReservationResult.Cancelled, results.single())
+    }
+
+    @Test
     fun reservationKeepsTheResolvedTargetWithoutStartingCapture() {
         val native = RecordingScreenCaptureRuntime()
         val results = mutableListOf<ScreenCaptureReservationResult>()
@@ -226,6 +241,10 @@ private class RecordingScreenCaptureRuntime(
 
     fun completeResolution(target: ScreenCaptureResolvedTarget = ScreenCaptureResolvedTarget()) {
         resolution?.invoke(Result.success(target))
+    }
+
+    fun completeResolutionFailure(failure: Throwable) {
+        resolution?.invoke(Result.failure(failure))
     }
 }
 
