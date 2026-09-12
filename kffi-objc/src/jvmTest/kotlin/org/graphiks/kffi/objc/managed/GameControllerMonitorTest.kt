@@ -1,5 +1,7 @@
 package org.graphiks.kffi.objc.managed
 
+import org.graphiks.kffi.objc.GCDeviceHaptics
+import java.lang.foreign.MemorySegment
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
@@ -129,6 +131,26 @@ class GameControllerMonitorTest {
         }
     }
 
+    @Test
+    fun monitorCreatesHapticsOnlyForAControllerThatIsStillConnected() {
+        val native = controller(nativeIdentity = 41L, name = "First")
+        val fixture = GameControllerMonitorFixture(initial = listOf(native))
+        val monitor = GameControllerMonitor.create(fixture) { }
+        val id = monitor.controllers.single().id
+
+        val haptics = monitor.createHaptics(id, GameControllerHapticLocality.Default).getOrThrow()
+        assertEquals(1, native.hapticsRequests)
+
+        fixture.disconnect(native.nativeIdentity)
+
+        assertTrue(
+            monitor.createHaptics(id, GameControllerHapticLocality.Default).isFailure,
+        )
+        assertEquals(1, native.hapticsRequests)
+        haptics.close()
+        monitor.close()
+    }
+
     private fun controller(nativeIdentity: Long, name: String): RecordingNativeController =
         RecordingNativeController(
             nativeIdentity,
@@ -177,10 +199,36 @@ private class RecordingNativeController(
 ) : GameControllerMonitorNativeController {
     var closeCount = 0
         private set
+    var hapticsRequests = 0
+        private set
 
     override fun snapshot(): GameControllerDescriptor {
         snapshotFailure?.let { throw it }
         return descriptor
+    }
+
+    override fun createHaptics(
+        locality: GameControllerHapticLocality,
+    ): Result<GameControllerHaptics> {
+        hapticsRequests += 1
+        return GameControllerHaptics.create(
+            deviceHaptics = GCDeviceHaptics(MemorySegment.NULL),
+            locality = locality,
+            factory = GameControllerHapticsFactory { _, _ ->
+                object : GameControllerHapticsSession {
+                    override fun start(): GameControllerHapticsFailure? = null
+
+                    override fun playContinuous(
+                        intensity: Float,
+                        duration: kotlin.time.Duration,
+                    ): GameControllerHapticsFailure? = null
+
+                    override fun stop() = Unit
+
+                    override fun release() = Unit
+                }
+            },
+        )
     }
 
     override fun close() {
