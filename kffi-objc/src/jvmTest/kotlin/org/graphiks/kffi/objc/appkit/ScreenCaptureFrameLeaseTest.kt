@@ -8,8 +8,24 @@ import kotlin.test.assertTrue
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
+import org.junit.jupiter.api.Assumptions.assumeTrue
 
 class ScreenCaptureFrameLeaseTest {
+    @Test
+    fun nativeOutputReceiverCanBeInstalledWhenRuntimeProtocolMetadataIsDeferred() {
+        assumeTrue(
+            System.getProperty("os.name")?.startsWith("Mac OS") == true,
+            "ScreenCaptureKit output receiver tests require macOS",
+        )
+        val stream = RecordingScreenCaptureKitStream()
+        val native = ScreenCaptureKitFrameOutputNative(stream)
+
+        native.attach { }
+        native.release()
+
+        assertEquals(listOf("add"), stream.calls)
+    }
+
     @Test
     fun exposesThePixelBufferWidthWhileTheLeaseIsOpen() {
         val lease = ScreenCaptureFrameLease.from(
@@ -234,6 +250,10 @@ class ScreenCaptureFrameLeaseTest {
 
     @Test
     fun screenCaptureKitOutputUsesTheGeneratedStreamLifecycle() {
+        assumeTrue(
+            System.getProperty("os.name")?.startsWith("Mac OS") == true,
+            "ScreenCaptureKit output lifecycle requires macOS",
+        )
         val stream = RecordingScreenCaptureKitStream()
         val receiver = RecordingScreenCaptureOutputReceiver()
         val native = ScreenCaptureKitFrameOutputNative(
@@ -251,6 +271,10 @@ class ScreenCaptureFrameLeaseTest {
 
     @Test
     fun rejectedScreenCaptureKitOutputClosesTheUnattachedReceiver() {
+        assumeTrue(
+            System.getProperty("os.name")?.startsWith("Mac OS") == true,
+            "ScreenCaptureKit output lifecycle requires macOS",
+        )
         val stream = RecordingScreenCaptureKitStream(addFailure = IllegalStateException("rejected"))
         val receiver = RecordingScreenCaptureOutputReceiver()
         val native = ScreenCaptureKitFrameOutputNative(

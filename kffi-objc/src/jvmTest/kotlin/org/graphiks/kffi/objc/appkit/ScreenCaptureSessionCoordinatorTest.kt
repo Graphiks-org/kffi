@@ -2,8 +2,12 @@
 
 package org.graphiks.kffi.objc.appkit
 
+import java.lang.foreign.MemorySegment
+import java.lang.foreign.ValueLayout
 import java.util.concurrent.atomic.AtomicBoolean
 import org.graphiks.kffi.objc.CMTimeFlags
+import org.graphiks.kffi.objc.ObjCRuntime
+import org.junit.jupiter.api.Assumptions.assumeTrue
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertIs
@@ -11,6 +15,34 @@ import kotlin.test.assertTrue
 import kotlin.time.Duration.Companion.nanoseconds
 
 class ScreenCaptureSessionCoordinatorTest {
+    @Test
+    fun streamDelegateExposesBothProtocolArgumentsToObjectiveC() {
+        assumeTrue(
+            System.getProperty("os.name")?.startsWith("Mac OS") == true,
+            "ScreenCaptureKit delegate ABI tests require macOS",
+        )
+        ScreenCaptureKitFramework.ensureLoaded()
+        val delegate = ScreenCaptureStreamDelegate.create { }
+        try {
+            val signature = ObjCRuntime.msgSend(
+                ValueLayout.ADDRESS,
+                delegate.native,
+                ObjCRuntime.sel("methodSignatureForSelector:"),
+                ObjCRuntime.sel("stream:didStopWithError:"),
+            ) as MemorySegment
+
+            val argumentCount = ObjCRuntime.msgSend(
+                ValueLayout.JAVA_LONG,
+                signature,
+                ObjCRuntime.sel("numberOfArguments"),
+            ) as Long
+
+            assertEquals(4L, argumentCount)
+        } finally {
+            delegate.close()
+        }
+    }
+
     @Test
     fun configurationEncodesTheMinimumFrameIntervalAsAValidCoreMediaTime() {
         val nativeTime = checkNotNull(

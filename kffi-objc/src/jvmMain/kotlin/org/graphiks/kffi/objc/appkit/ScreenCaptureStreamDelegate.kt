@@ -134,12 +134,13 @@ internal class ScreenCaptureStreamDelegate private constructor(
                             allocated,
                             "stream:didStopWithError:",
                             MemorySegment.ofAddress(JvmScreenCaptureStreamDelegateBridge.streamDidStop.rawValue),
-                            "v@:@",
+                            "v@:@@",
                         ),
                     ) { "Objective-C runtime rejected ScreenCaptureKit stream delegate method" }
-                    check(ObjCSubclassing.addProtocol(allocated, "SCStreamDelegate")) {
-                        "ScreenCaptureKit SCStreamDelegate protocol was unavailable"
-                    }
+                    // ScreenCaptureKit can defer registration of its Objective-C protocol metadata
+                    // until a native client declares conformance. Its optional delegate contract is
+                    // selector-based, so conformance is opportunistic rather than an admission gate.
+                    ObjCSubclassing.addProtocol(allocated, "SCStreamDelegate")
                     ObjCSubclassing.registerClass(allocated)
                     allocated
                 }
