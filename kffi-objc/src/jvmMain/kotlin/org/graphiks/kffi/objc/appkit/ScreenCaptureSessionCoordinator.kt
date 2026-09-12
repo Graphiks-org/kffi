@@ -139,6 +139,7 @@ internal interface ScreenCaptureNative {
         target: ScreenCaptureResolvedTarget,
         configuration: ScreenCaptureStreamConfiguration,
         onFrame: (ScreenCaptureFrameLease) -> Unit,
+        onTerminated: (Throwable?) -> Unit,
     ): ScreenCaptureNativeStream
 }
 
@@ -314,7 +315,8 @@ private class ResolvedTargetNative(
         target: ScreenCaptureResolvedTarget,
         configuration: ScreenCaptureStreamConfiguration,
         onFrame: (ScreenCaptureFrameLease) -> Unit,
-    ): ScreenCaptureNativeStream = delegate.open(target, configuration, onFrame)
+        onTerminated: (Throwable?) -> Unit,
+    ): ScreenCaptureNativeStream = delegate.open(target, configuration, onFrame, onTerminated)
 }
 
 /**
@@ -397,8 +399,9 @@ internal class ScreenCaptureSessionCoordinator private constructor(
             return
         }
 
+        val nativeTermination = PendingNativeTermination()
         val created = try {
-            native.open(resolvedTarget, configuration, onFrame)
+            native.open(resolvedTarget, configuration, onFrame, nativeTermination::report)
         } catch (failure: Throwable) {
             resolvedTarget.close()
             failBeforeOpen(failure)
@@ -417,6 +420,9 @@ internal class ScreenCaptureSessionCoordinator private constructor(
             closeCreated.close()
             return
         }
+        nativeTermination.activate { failure -> terminatedByNative(created, failure) }
+        val shouldStart = lock.withLock { stream === created && state == State.STARTING }
+        if (!shouldStart) return
         try {
             created.start { failure -> started(created, failure) }
         } catch (failure: Throwable) {
@@ -466,6 +472,29 @@ internal class ScreenCaptureSessionCoordinator private constructor(
         }
     }
 
+    /** Receives `SCStreamDelegate` termination independently from an explicit stop completion. */
+    private fun terminatedByNative(candidate: ScreenCaptureNativeStream, failure: Throwable?) {
+        val notification = lock.withLock {
+            if (stream !== candidate || state == State.TERMINATED) return
+            state = State.TERMINATED
+            stream = null
+            when {
+                !opened -> NativeTerminationNotification.OpenFailed(
+                    failure ?: IllegalStateException("ScreenCaptureKit stopped before stream startup completed"),
+                )
+
+                else -> NativeTerminationNotification.Stopped(
+                    if (failure == null) ScreenCaptureStopResult.Stopped else ScreenCaptureStopResult.Failed(failure),
+                )
+            }.also { opened = false }
+        }
+        candidate.close()
+        when (notification) {
+            is NativeTerminationNotification.OpenFailed -> onOpened(ScreenCaptureOpenResult.Failed(notification.failure))
+            is NativeTerminationNotification.Stopped -> onStopped(notification.result)
+        }
+    }
+
     private fun failBeforeOpen(failure: Throwable) {
         val shouldNotify = lock.withLock {
             when (state) {
@@ -495,6 +524,12 @@ internal class ScreenCaptureSessionCoordinator private constructor(
 
     private enum class State { RESOLVING, STARTING, ACTIVE, STOPPING, TERMINATED }
 
+    private sealed interface NativeTerminationNotification {
+        data class OpenFailed(val failure: Throwable) : NativeTerminationNotification
+
+        data class Stopped(val result: ScreenCaptureStopResult) : NativeTerminationNotification
+    }
+
     internal companion object {
         fun open(
             native: ScreenCaptureNative,
@@ -511,5 +546,41 @@ internal class ScreenCaptureSessionCoordinator private constructor(
             onOpened,
             onStopped,
         )
+    }
+}
+
+/** Buffers a terminal callback that races with creation of the stream owner. */
+private class PendingNativeTermination {
+    private val lock = ReentrantLock()
+    private var delivered = false
+    private var consumer: ((Throwable?) -> Unit)? = null
+    private var pending: Throwable? = null
+    private var hasPending = false
+
+    fun report(failure: Throwable?) {
+        val target = lock.withLock {
+            if (delivered) return
+            delivered = true
+            consumer ?: run {
+                pending = failure
+                hasPending = true
+                return
+            }
+        }
+        target(failure)
+    }
+
+    fun activate(value: (Throwable?) -> Unit) {
+        val pendingFailure = lock.withLock {
+            check(consumer == null) { "ScreenCaptureKit native termination consumer was installed twice" }
+            consumer = value
+            if (hasPending) {
+                hasPending = false
+                pending
+            } else {
+                return
+            }
+        }
+        value(pendingFailure)
     }
 }

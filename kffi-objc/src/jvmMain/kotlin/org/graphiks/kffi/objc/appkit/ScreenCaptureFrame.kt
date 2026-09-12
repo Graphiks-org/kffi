@@ -310,9 +310,9 @@ private class NativeScreenCaptureOutputReceiver private constructor(
                             "v@:@@q",
                         ),
                     ) { "Objective-C runtime rejected ScreenCaptureKit output method" }
-                    check(ObjCSubclassing.addProtocol(allocated, "SCStreamOutput")) {
-                        "ScreenCaptureKit SCStreamOutput protocol was unavailable"
-                    }
+                    // See ScreenCaptureStreamDelegate: the optional receiver is dispatched by
+                    // selector even when ScreenCaptureKit has deferred protocol registration.
+                    ObjCSubclassing.addProtocol(allocated, "SCStreamOutput")
                     ObjCSubclassing.registerClass(allocated)
                     allocated
                 }

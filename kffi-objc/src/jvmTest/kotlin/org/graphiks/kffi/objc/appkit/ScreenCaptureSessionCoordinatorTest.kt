@@ -2,8 +2,12 @@
 
 package org.graphiks.kffi.objc.appkit
 
+import java.lang.foreign.MemorySegment
+import java.lang.foreign.ValueLayout
 import java.util.concurrent.atomic.AtomicBoolean
 import org.graphiks.kffi.objc.CMTimeFlags
+import org.graphiks.kffi.objc.ObjCRuntime
+import org.junit.jupiter.api.Assumptions.assumeTrue
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertIs
@@ -11,6 +15,34 @@ import kotlin.test.assertTrue
 import kotlin.time.Duration.Companion.nanoseconds
 
 class ScreenCaptureSessionCoordinatorTest {
+    @Test
+    fun streamDelegateExposesBothProtocolArgumentsToObjectiveC() {
+        assumeTrue(
+            System.getProperty("os.name")?.startsWith("Mac OS") == true,
+            "ScreenCaptureKit delegate ABI tests require macOS",
+        )
+        ScreenCaptureKitFramework.ensureLoaded()
+        val delegate = ScreenCaptureStreamDelegate.create { }
+        try {
+            val signature = ObjCRuntime.msgSend(
+                ValueLayout.ADDRESS,
+                delegate.native,
+                ObjCRuntime.sel("methodSignatureForSelector:"),
+                ObjCRuntime.sel("stream:didStopWithError:"),
+            ) as MemorySegment
+
+            val argumentCount = ObjCRuntime.msgSend(
+                ValueLayout.JAVA_LONG,
+                signature,
+                ObjCRuntime.sel("numberOfArguments"),
+            ) as Long
+
+            assertEquals(4L, argumentCount)
+        } finally {
+            delegate.close()
+        }
+    }
+
     @Test
     fun configurationEncodesTheMinimumFrameIntervalAsAValidCoreMediaTime() {
         val nativeTime = checkNotNull(
@@ -182,6 +214,86 @@ class ScreenCaptureSessionCoordinatorTest {
     }
 
     @Test
+    fun nativeTerminationWithoutARequestedStopClosesTheStreamAndReportsItsFailure() {
+        val native = RecordingScreenCaptureRuntime()
+        val opened = mutableListOf<ScreenCaptureOpenResult>()
+        val stopped = mutableListOf<ScreenCaptureStopResult>()
+        ScreenCaptureSessionCoordinator.open(
+            native = native,
+            target = ScreenCaptureTarget.Display(7L),
+            configuration = ScreenCaptureStreamConfiguration(640, 480),
+            onFrame = {},
+            onOpened = opened::add,
+            onStopped = stopped::add,
+        )
+
+        native.completeResolution()
+        native.stream.completeStart(null)
+        assertIs<ScreenCaptureOpenResult.Opened>(opened.single())
+
+        val failure = IllegalStateException("source disappeared")
+        native.stream.completeNativeTermination(failure)
+
+        assertTrue(native.stream.isClosed)
+        assertEquals(listOf<ScreenCaptureStopResult>(ScreenCaptureStopResult.Failed(failure)), stopped)
+        assertEquals(0, native.stream.stopCalls)
+    }
+
+    @Test
+    fun nativeTerminationDuringStreamCreationIsReportedAsAnOpenFailure() {
+        lateinit var native: RecordingScreenCaptureRuntime
+        val failure = IllegalStateException("source disappeared before start")
+        native = RecordingScreenCaptureRuntime(
+            onOpen = { native.stream.completeNativeTermination(failure) },
+        )
+        val opened = mutableListOf<ScreenCaptureOpenResult>()
+        val stopped = mutableListOf<ScreenCaptureStopResult>()
+        ScreenCaptureSessionCoordinator.open(
+            native = native,
+            target = ScreenCaptureTarget.Display(7L),
+            configuration = ScreenCaptureStreamConfiguration(640, 480),
+            onFrame = {},
+            onOpened = opened::add,
+            onStopped = stopped::add,
+        )
+
+        native.completeResolution()
+
+        assertTrue(native.stream.isClosed)
+        assertEquals(0, native.stream.stopCalls)
+        assertEquals(0, native.stream.startCalls)
+        assertEquals(listOf<ScreenCaptureStopResult>(), stopped)
+        assertEquals(1, opened.size)
+        assertEquals(failure, assertIs<ScreenCaptureOpenResult.Failed>(opened.single()).cause)
+    }
+
+    @Test
+    fun nativeDelegateTerminationWinsTheRaceWithARequestedStopWithoutDoubleReporting() {
+        val native = RecordingScreenCaptureRuntime()
+        val opened = mutableListOf<ScreenCaptureOpenResult>()
+        val stopped = mutableListOf<ScreenCaptureStopResult>()
+        ScreenCaptureSessionCoordinator.open(
+            native = native,
+            target = ScreenCaptureTarget.Display(7L),
+            configuration = ScreenCaptureStreamConfiguration(640, 480),
+            onFrame = {},
+            onOpened = opened::add,
+            onStopped = stopped::add,
+        )
+
+        native.completeResolution()
+        native.stream.completeStart(null)
+        val session = assertIs<ScreenCaptureOpenResult.Opened>(opened.single()).session
+
+        session.close()
+        native.stream.completeNativeTermination(null)
+        native.stream.completeStop(null)
+
+        assertTrue(native.stream.isClosed)
+        assertEquals(listOf<ScreenCaptureStopResult>(ScreenCaptureStopResult.Stopped), stopped)
+    }
+
+    @Test
     fun closeWhileStartingWaitsForStopAndDoesNotReportTheLateStartFailure() {
         val native = RecordingScreenCaptureRuntime()
         val opened = mutableListOf<ScreenCaptureOpenResult>()
@@ -252,8 +364,10 @@ private class RecordingScreenCaptureRuntime(
         target: ScreenCaptureResolvedTarget,
         configuration: ScreenCaptureStreamConfiguration,
         onFrame: (ScreenCaptureFrameLease) -> Unit,
+        onTerminated: (Throwable?) -> Unit,
     ): ScreenCaptureNativeStream {
         openCalls += 1
+        stream.termination = onTerminated
         onOpen?.invoke()
         openFailure?.let { throw it }
         return stream
@@ -279,10 +393,13 @@ private class ClosingResolvedTarget : ScreenCaptureResolvedTarget() {
 private class RecordingScreenCaptureNativeStream : ScreenCaptureNativeStream {
     private var start: ((Throwable?) -> Unit)? = null
     private var stop: ((Throwable?) -> Unit)? = null
+    var termination: ((Throwable?) -> Unit)? = null
+    var startCalls = 0
     var stopCalls = 0
     var isClosed = false
 
     override fun start(completion: (Throwable?) -> Unit) {
+        startCalls += 1
         start = completion
     }
 
@@ -301,5 +418,9 @@ private class RecordingScreenCaptureNativeStream : ScreenCaptureNativeStream {
 
     fun completeStop(failure: Throwable?) {
         stop?.invoke(failure)
+    }
+
+    fun completeNativeTermination(failure: Throwable?) {
+        termination?.invoke(failure)
     }
 }
