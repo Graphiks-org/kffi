@@ -38,6 +38,8 @@ internal fun interface ObjCManagedBlockSetter {
 class ObjCManagedBlock<R> internal constructor(
     internal val setter: ObjCManagedBlockSetter,
     private val registration: CallbackRegistration<ManagedObjCBlockCallback>,
+    /** Native block pointer for one-shot framework completion handlers within this module. */
+    internal val nativeBlock: MemorySegment,
 ) : AutoCloseable {
     private val closeLock = ReentrantLock()
 
@@ -175,7 +177,7 @@ class ObjCManagedBlock<R> internal constructor(
                         ObjCManagedBlockDispatch.NativeRoute(token, binding),
                     ),
                 )
-                return ObjCManagedBlock<Unit>(setter, registration).also { owner ->
+                return ObjCManagedBlock<Unit>(setter, registration, block).also { owner ->
                     try {
                         setter.set(block)
                     } catch (failure: Throwable) {
