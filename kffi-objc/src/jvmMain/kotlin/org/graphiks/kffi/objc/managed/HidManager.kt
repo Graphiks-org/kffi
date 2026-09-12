@@ -7,11 +7,18 @@ package org.graphiks.kffi.objc.managed
 
 import org.graphiks.kffi.CallbackRuntime
 import org.graphiks.kffi.objc.CFRelease
+import org.graphiks.kffi.objc.CFNumberGetValue
+import org.graphiks.kffi.objc.CFNumberType
+import org.graphiks.kffi.objc.CFSetGetCount
+import org.graphiks.kffi.objc.CFSetGetValues
+import org.graphiks.kffi.objc.CFStringCreateWithCString
+import org.graphiks.kffi.objc.CFStringGetCString
 import org.graphiks.kffi.objc.GCController
-import org.graphiks.kffi.objc.IOHIDDeviceConformsTo
+import org.graphiks.kffi.objc.IOHIDDeviceGetProperty
 import org.graphiks.kffi.objc.IOHIDDeviceGetService
 import org.graphiks.kffi.objc.IOHIDManagerActivate
 import org.graphiks.kffi.objc.IOHIDManagerCancel
+import org.graphiks.kffi.objc.IOHIDManagerCopyDevices
 import org.graphiks.kffi.objc.IOHIDManagerCreate
 import org.graphiks.kffi.objc.IOHIDManagerRegisterDeviceMatchingCallback
 import org.graphiks.kffi.objc.IOHIDManagerRegisterDeviceRemovalCallback
@@ -29,25 +36,66 @@ import java.lang.foreign.SymbolLookup
 import java.lang.foreign.ValueLayout
 import java.lang.invoke.MethodHandles
 import java.lang.invoke.MethodType
+import java.util.ArrayDeque
+import java.util.LinkedHashMap
 import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.atomic.AtomicBoolean
 import java.util.concurrent.atomic.AtomicLong
+import java.util.concurrent.atomic.AtomicReference
 import java.util.concurrent.locks.ReentrantLock
 import kotlin.concurrent.withLock
 
+/** Opaque identity allocated by one [HidManager] for the duration of its session. */
+@JvmInline
+value class HidDeviceId internal constructor(internal val value: Long)
+
+/** A detached classification of an HID input device. */
+enum class HidDeviceKind { Keyboard, Mouse, Touchscreen, Touchpad, Pen, Other }
+
+/** Detached, bounded metadata read from a HID device before it enters the managed inventory. */
+data class HidDeviceDescriptor(
+    val name: String?,
+    val kind: HidDeviceKind,
+)
+
+/** Pointer-free HID device projection owned by one [HidManager]. */
+data class HidDevice(
+    val id: HidDeviceId,
+    val descriptor: HidDeviceDescriptor,
+)
+
+/** Lifecycle event emitted after [HidManager.devices] has been updated. */
+sealed interface HidDeviceLifecycleEvent {
+    data class Connected(val device: HidDevice) : HidDeviceLifecycleEvent
+    data class Disconnected(val id: HidDeviceId) : HidDeviceLifecycleEvent
+}
+
+/** Internal native projection, deliberately never exposed by [HidManager]. */
+internal data class HidManagerNativeDevice(
+    val nativeIdentity: Long,
+    val descriptor: HidDeviceDescriptor,
+)
+
 /**
- * Owns asynchronous IOHID discovery for gamepads not already managed by GameController.
+ * Owns asynchronous IOHID discovery for input devices not already managed by GameController.
  *
- * [close] cancels native delivery before revoking managed callback admission. [isQuiescent]
- * becomes true only after IOKit has delivered its cancel handler, every admitted callback has
- * returned, and the manager plus dispatch queue have been released.
+ * Initial enumeration is completed before lifecycle delivery is enabled to consumers. [close]
+ * cancels native delivery before revoking managed callback admission. [isQuiescent] becomes true
+ * only after IOKit has delivered its cancel handler, every admitted callback has returned, and
+ * the manager plus dispatch queue have been released.
  */
 class HidManager private constructor(
     private val callback: ManagedCFunction,
+    private val onLifecycle: (HidDeviceLifecycleEvent) -> Unit,
 ) : AutoCloseable {
     private val lock = ReentrantLock()
+    private val managedDevices = LinkedHashMap<Long, HidDevice>()
+    private val pending = ArrayDeque<HidDeviceEvent>()
+    private val unpublishedInitialNativeIds = mutableSetOf<Long>()
+    private val nextId = AtomicLong(1L)
     private lateinit var nativeSession: HidManagerNativeSession
     private var attached = false
+    private var initializing = true
     private var closed = false
     private var cancellationDelivered = false
     private var callbackQuiescent = false
@@ -60,6 +108,10 @@ class HidManager private constructor(
 
     val isQuiescent: Boolean
         get() = lock.withLock { quiescent }
+
+    /** Immutable snapshot of every currently connected HID input device. */
+    val devices: List<HidDevice>
+        get() = lock.withLock { managedDevices.values.toList() }
 
     override fun close() {
         val session = lock.withLock {
@@ -89,6 +141,84 @@ class HidManager private constructor(
             nativeSession = session
             attached = true
         }
+    }
+
+    private fun initialize() {
+        val initial = nativeSession.initialDevices()
+        val lifecycleEvents = lock.withLock {
+            initial.forEach(::connectInitial)
+            initializing = false
+            buildList {
+                while (pending.isNotEmpty()) {
+                    lifecycle(pending.removeFirst(), suppressUnpublishedInitialDisconnect = true)?.let(::add)
+                }
+            }
+                .also { unpublishedInitialNativeIds.clear() }
+        }
+        lifecycleEvents.forEach(onLifecycle)
+    }
+
+    private fun nativeLifecycle(event: HidDeviceEvent) {
+        val lifecycle = lock.withLock {
+            if (closed) return
+            if (initializing) {
+                pending += event
+                return
+            }
+            lifecycle(event)
+        }
+        lifecycle?.let(onLifecycle)
+    }
+
+    private fun deliver(event: HidDeviceEvent) {
+        val lifecycle = lock.withLock {
+            if (closed) return
+            lifecycle(event)
+        }
+        lifecycle?.let(onLifecycle)
+    }
+
+    private fun lifecycle(
+        event: HidDeviceEvent,
+        suppressUnpublishedInitialDisconnect: Boolean = false,
+    ): HidDeviceLifecycleEvent? = when {
+        event.connected -> connect(event.registryId)
+        else -> disconnect(
+            nativeIdentity = event.registryId,
+            suppressNotification = suppressUnpublishedInitialDisconnect &&
+                unpublishedInitialNativeIds.remove(event.registryId),
+        )
+    }
+
+    private fun connectInitial(device: HidManagerNativeDevice) {
+        if (managedDevices.containsKey(device.nativeIdentity)) return
+        managedDevices[device.nativeIdentity] = HidDevice(
+            id = nextDeviceId(),
+            descriptor = device.descriptor,
+        )
+        unpublishedInitialNativeIds += device.nativeIdentity
+    }
+
+    private fun connect(nativeIdentity: Long): HidDeviceLifecycleEvent? {
+        if (managedDevices.containsKey(nativeIdentity)) return null
+        val native = nativeSession.device(nativeIdentity) ?: return null
+        val device = HidDevice(id = nextDeviceId(), descriptor = native.descriptor)
+        managedDevices[nativeIdentity] = device
+        return HidDeviceLifecycleEvent.Connected(device)
+    }
+
+    private fun disconnect(
+        nativeIdentity: Long,
+        suppressNotification: Boolean = false,
+    ): HidDeviceLifecycleEvent? {
+        val device = managedDevices.remove(nativeIdentity) ?: return null
+        return HidDeviceLifecycleEvent.Disconnected(device.id).takeUnless { suppressNotification }
+    }
+
+    private fun nextDeviceId(): HidDeviceId {
+        val value = nextId.getAndIncrement()
+        check(value != 0L) { "HID device identity space exhausted" }
+        return HidDeviceId(value)
     }
 
     private fun nativeCancellationDelivered() {
@@ -124,15 +254,17 @@ class HidManager private constructor(
     }
 
     companion object {
-        fun create(handler: HidDeviceLifecycleHandler): HidManager =
-            create(IOKitHidManagerNative, handler)
+        fun create(
+            onLifecycle: (HidDeviceLifecycleEvent) -> Unit,
+        ): HidManager = create(IOKitHidManagerNative, onLifecycle)
 
         internal fun create(
             native: HidManagerNative,
-            handler: HidDeviceLifecycleHandler,
+            onLifecycle: (HidDeviceLifecycleEvent) -> Unit,
         ): HidManager {
-            val callback = ManagedCFunctions.hidDeviceLifecycle(handler)
-            val owner = HidManager(callback)
+            lateinit var owner: HidManager
+            val callback = ManagedCFunctions.hidDeviceLifecycle { event -> owner.nativeLifecycle(event) }
+            owner = HidManager(callback, onLifecycle)
             try {
                 owner.attach(
                     native.create(
@@ -140,6 +272,7 @@ class HidManager private constructor(
                         owner::nativeCancellationDelivered,
                     ),
                 )
+                owner.initialize()
                 return owner
             } catch (failure: Throwable) {
                 try {
@@ -161,6 +294,10 @@ internal interface HidManagerNative {
 }
 
 internal interface HidManagerNativeSession {
+    fun initialDevices(): List<HidManagerNativeDevice>
+
+    fun device(nativeIdentity: Long): HidManagerNativeDevice?
+
     fun cancel()
 
     fun release()
@@ -168,25 +305,26 @@ internal interface HidManagerNativeSession {
 
 /** Pointer-free policy boundary used before immutable HID events enter managed callbacks. */
 internal class HidDeviceDeliveryPolicy(
-    private val isGamepad: (Long) -> Boolean,
+    private val snapshot: (Long) -> HidManagerNativeDevice?,
     private val isSupportedByGameController: (Long) -> Boolean,
-    private val registryId: (Long) -> Long?,
+    private val nativeIdentity: (Long) -> Long?,
 ) {
     private val suppressedRegistryIds = ConcurrentHashMap.newKeySet<Long>()
 
-    fun snapshot(device: Long, connected: Boolean): Long? {
-        if (!isGamepad(device)) return null
-        val id = registryId(device) ?: return null
-        if (connected) {
-            if (isSupportedByGameController(device)) {
-                suppressedRegistryIds += id
-                return null
-            }
-            suppressedRegistryIds.remove(id)
-            return id
+    fun connected(device: Long): HidManagerNativeDevice? {
+        val candidate = snapshot(device) ?: return null
+        if (isSupportedByGameController(device)) {
+            suppressedRegistryIds += candidate.nativeIdentity
+            return null
         }
-        if (suppressedRegistryIds.remove(id)) return null
-        return if (isSupportedByGameController(device)) null else id
+        suppressedRegistryIds.remove(candidate.nativeIdentity)
+        return candidate
+    }
+
+    fun disconnected(device: Long): Long? {
+        val identity = nativeIdentity(device) ?: return null
+        if (suppressedRegistryIds.remove(identity)) return null
+        return identity
     }
 }
 
@@ -246,6 +384,18 @@ private class IOKitHidManagerSession(
         if (cancelled.compareAndSet(false, true)) IOHIDManagerCancel(manager)
     }
 
+    override fun initialDevices(): List<HidManagerNativeDevice> = HidDispatchQueue.sync(queue) {
+        val devices = IOHIDManagerCopyDevices(manager)
+        if (devices == MemorySegment.NULL) return@sync emptyList()
+        try {
+            callbackRoute.initialDevices(devices)
+        } finally {
+            CFRelease(devices)
+        }
+    }
+
+    override fun device(nativeIdentity: Long): HidManagerNativeDevice? = callbackRoute.device(nativeIdentity)
+
     override fun release() {
         if (!released.compareAndSet(false, true)) return
         var failure: Throwable? = null
@@ -266,11 +416,15 @@ private class HidDeviceCallbackRoute(
     override fun close() {
         if (closed.compareAndSet(false, true)) closeAction()
     }
+
+    fun initialDevices(devices: MemorySegment): List<HidManagerNativeDevice> =
+        HidDeviceCallbackRuntime.initialDevices(context, devices)
+
+    fun device(nativeIdentity: Long): HidManagerNativeDevice? =
+        HidDeviceCallbackRuntime.device(context, nativeIdentity)
 }
 
 private object HidDeviceCallbackRuntime {
-    private const val GENERIC_DESKTOP_USAGE_PAGE = 0x01
-    private const val GAMEPAD_USAGE = 0x05
     private val arena = Arena.global()
     private val linker = Linker.nativeLinker()
     private val nextToken = AtomicLong(1L)
@@ -301,12 +455,36 @@ private object HidDeviceCallbackRuntime {
         if (result != 0 || context == MemorySegment.NULL || device == MemorySegment.NULL) return
         val registration = registrations[context.address()] ?: return
         try {
-            val registryId = registration.snapshot(device.address(), connected) ?: return
+            val registryId = registration.update(device.address(), connected) ?: return
             registration.deliver(registryId, connected)
         } catch (failure: Throwable) {
             CallbackRuntime.reportUnroutedFailure(failure)
         }
     }
+
+    fun initialDevices(context: MemorySegment, devices: MemorySegment): List<HidManagerNativeDevice> {
+        val registration = registrations[context.address()] ?: return emptyList()
+        val count = CFSetGetCount(devices)
+        if (count <= 0L) return emptyList()
+        check(count <= Int.MAX_VALUE) { "HID device inventory exceeds JVM collection capacity" }
+        return Arena.ofConfined().use { arena ->
+            val values = arena.allocate(ValueLayout.ADDRESS, count)
+            CFSetGetValues(devices, values)
+            buildList {
+                repeat(count.toInt()) { index ->
+                    val device = values.get(
+                        ValueLayout.ADDRESS,
+                        index.toLong() * ValueLayout.ADDRESS.byteSize(),
+                    )
+                    if (device != MemorySegment.NULL) registration.initial(device.address())?.let(::add)
+                }
+            }.distinctBy(HidManagerNativeDevice::nativeIdentity)
+                .sortedBy(HidManagerNativeDevice::nativeIdentity)
+        }
+    }
+
+    fun device(context: MemorySegment, nativeIdentity: Long): HidManagerNativeDevice? =
+        registrations[context.address()]?.device(nativeIdentity)
 
     private fun callback(method: String): MemorySegment = linker.upcallStub(
         MethodHandles.lookup().findStatic(
@@ -319,15 +497,9 @@ private object HidDeviceCallbackRuntime {
     )
 
     private fun deliveryPolicy() = HidDeviceDeliveryPolicy(
-        isGamepad = { device ->
-            IOHIDDeviceConformsTo(
-                MemorySegment.ofAddress(device),
-                GENERIC_DESKTOP_USAGE_PAGE,
-                GAMEPAD_USAGE,
-            ).toInt() != 0
-        },
+        snapshot = { device -> HidDeviceMetadata.snapshot(MemorySegment.ofAddress(device), ::registryId) },
         isSupportedByGameController = ::isSupportedByGameController,
-        registryId = ::registryId,
+        nativeIdentity = ::registryId,
     )
 
     private fun isSupportedByGameController(device: Long): Boolean {
@@ -360,9 +532,21 @@ private object HidDeviceCallbackRuntime {
     ) {
         private val connected = callbackHandle(callbacks.connected)
         private val disconnected = callbackHandle(callbacks.disconnected)
+        private val devices = ConcurrentHashMap<Long, HidManagerNativeDevice>()
 
-        fun snapshot(device: Long, isConnected: Boolean): Long? =
-            deliveryPolicy.snapshot(device, isConnected)
+        fun update(device: Long, isConnected: Boolean): Long? = if (isConnected) {
+            deliveryPolicy.connected(device)?.also { snapshot ->
+                devices[snapshot.nativeIdentity] = snapshot
+            }?.nativeIdentity
+        } else {
+            deliveryPolicy.disconnected(device)?.also(devices::remove)
+        }
+
+        fun initial(device: Long): HidManagerNativeDevice? = deliveryPolicy.connected(device)?.also {
+            devices[it.nativeIdentity] = it
+        }
+
+        fun device(nativeIdentity: Long): HidManagerNativeDevice? = devices[nativeIdentity]
 
         fun deliver(registryId: Long, isConnected: Boolean) {
             val callback = if (isConnected) connected else disconnected
@@ -404,6 +588,98 @@ private object HidDeviceCallbacks {
         device: MemorySegment,
     ) {
         HidDeviceCallbackRuntime.deliver(context, result, device, connected = false)
+    }
+}
+
+private object HidDeviceMetadata {
+    private const val GENERIC_DESKTOP_USAGE_PAGE = 0x01
+    private const val KEYBOARD_USAGE_PAGE = 0x07
+    private const val BUTTON_USAGE_PAGE = 0x09
+    private const val CONSUMER_USAGE_PAGE = 0x0C
+    private const val DIGITIZER_USAGE_PAGE = 0x0D
+
+    fun snapshot(
+        device: MemorySegment,
+        nativeIdentity: (Long) -> Long?,
+    ): HidManagerNativeDevice? {
+        val identity = nativeIdentity(device.address()) ?: return null
+        val usagePage = numberProperty(device, "PrimaryUsagePage") ?: return null
+        val usage = numberProperty(device, "PrimaryUsage") ?: return null
+        val kind = kind(usagePage, usage) ?: return null
+        return HidManagerNativeDevice(
+            nativeIdentity = identity,
+            descriptor = HidDeviceDescriptor(
+                name = stringProperty(device, "Product"),
+                kind = kind,
+            ),
+        )
+    }
+
+    private fun kind(usagePage: Int, usage: Int): HidDeviceKind? = when (usagePage) {
+        GENERIC_DESKTOP_USAGE_PAGE -> when (usage) {
+            0x01, 0x02 -> HidDeviceKind.Mouse
+            0x04, 0x05 -> HidDeviceKind.Other
+            0x06, 0x07 -> HidDeviceKind.Keyboard
+            else -> HidDeviceKind.Other
+        }
+
+        KEYBOARD_USAGE_PAGE -> HidDeviceKind.Keyboard
+        DIGITIZER_USAGE_PAGE -> when (usage) {
+            0x02 -> HidDeviceKind.Pen
+            0x04 -> HidDeviceKind.Touchscreen
+            0x05 -> HidDeviceKind.Touchpad
+            else -> HidDeviceKind.Other
+        }
+
+        BUTTON_USAGE_PAGE,
+        CONSUMER_USAGE_PAGE,
+        -> HidDeviceKind.Other
+
+        else -> null
+    }
+
+    private fun numberProperty(device: MemorySegment, key: String): Int? = Arena.ofConfined().use { arena ->
+        withCfString(arena, key) { propertyKey ->
+            val property = IOHIDDeviceGetProperty(device, propertyKey)
+            if (property == MemorySegment.NULL) return@withCfString null
+            val value = arena.allocate(ValueLayout.JAVA_INT)
+            if (CFNumberGetValue(property, CFNumberType.kCFNumberSInt32Type, value).toInt() == 0) {
+                null
+            } else {
+                value.get(ValueLayout.JAVA_INT, 0L)
+            }
+        }
+    }
+
+    private fun stringProperty(device: MemorySegment, key: String): String? = Arena.ofConfined().use { arena ->
+        withCfString(arena, key) { propertyKey ->
+            val property = IOHIDDeviceGetProperty(device, propertyKey)
+            if (property == MemorySegment.NULL) return@withCfString null
+            val bytes = arena.allocate(1_024L)
+            if (CFStringGetCString(property, bytes, 1_024L, 0x08000100).toInt() == 0) {
+                null
+            } else {
+                bytes.getString(0L)
+            }
+        }
+    }
+
+    private inline fun <T> withCfString(
+        arena: Arena,
+        value: String,
+        action: (MemorySegment) -> T,
+    ): T {
+        val string = CFStringCreateWithCString(
+            MemorySegment.NULL,
+            arena.allocateFrom(value),
+            0x08000100,
+        )
+        check(string != MemorySegment.NULL) { "Could not create CoreFoundation string for HID property $value" }
+        return try {
+            action(string)
+        } finally {
+            CFRelease(string)
+        }
     }
 }
 
@@ -512,6 +788,10 @@ private object HidDispatchQueue {
         symbols.find("dispatch_release").orElseThrow(),
         FunctionDescriptor.ofVoid(ValueLayout.ADDRESS),
     )
+    private val sync = linker.downcallHandle(
+        symbols.find("dispatch_sync").orElseThrow(),
+        FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS),
+    )
     private val label = arena.allocateFrom("org.graphiks.kffi.hid-manager")
 
     fun create(): MemorySegment {
@@ -522,6 +802,21 @@ private object HidDispatchQueue {
 
     fun release(queue: MemorySegment) {
         release.invokeExact(queue)
+    }
+
+    fun <T> sync(queue: MemorySegment, action: () -> T): T {
+        val result = AtomicReference<Result<T>>()
+        val block = HidCancelBlockRuntime.create {
+            result.set(runCatching(action))
+        }
+        try {
+            sync.invokeExact(queue, block.block)
+            return requireNotNull(result.get()) {
+                "dispatch_sync returned without executing the HID inventory block"
+            }.getOrThrow()
+        } finally {
+            block.close()
+        }
     }
 }
 
