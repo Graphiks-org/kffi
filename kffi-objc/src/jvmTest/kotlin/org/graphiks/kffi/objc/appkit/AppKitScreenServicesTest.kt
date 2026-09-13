@@ -89,8 +89,8 @@ class AppKitScreenServicesTest {
             val bounds = AppKitDisplayServices.bounds(screen.displayId)
             val scale = screen.backingScaleFactor
 
-            assertEquals(bounds.width, display.pixelWidth.toDouble())
-            assertEquals(bounds.height, display.pixelHeight.toDouble())
+            assertEquals(bounds.width, display.pointWidth.toDouble())
+            assertEquals(bounds.height, display.pointHeight.toDouble())
             assertEquals(bounds.width, screen.frame.width)
             assertEquals(bounds.height, screen.frame.height)
             assertTrue(scale > 0.0)

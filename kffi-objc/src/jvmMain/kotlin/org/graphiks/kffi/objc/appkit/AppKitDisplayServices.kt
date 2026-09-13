@@ -33,11 +33,11 @@ import kotlin.concurrent.withLock
 /**
  * Immutable display data detached from CoreGraphics storage.
  *
- * [pixelWidth] and [pixelHeight] are copied from `CGDisplayPixelsWide` and
- * `CGDisplayPixelsHigh`. Those CoreGraphics accessors predate Retina displays: their legacy
- * names are misleading and the values they return are **not** framebuffer pixels. On a HiDPI
- * display they report the display's size in the global display coordinate space, in points,
- * exactly like `CGDisplayBounds` and `NSScreen.frame`.
+ * [pointWidth] and [pointHeight] are copied from `CGDisplayPixelsWide` and
+ * `CGDisplayPixelsHigh`. Those CoreGraphics accessors predate Retina displays, and the values
+ * they return are **not** framebuffer pixels: on a HiDPI display they report the display's size
+ * in the global display coordinate space, in points, exactly like `CGDisplayBounds` and
+ * `NSScreen.frame`. The fields are named after the unit they actually carry.
  *
  * The framebuffer size of the display is carried by [CGDisplayModeSnapshot.pixelWidth] of the
  * current mode returned by [AppKitDisplayServices.currentMode]. On a 2x display that value is
@@ -48,8 +48,8 @@ import kotlin.concurrent.withLock
  */
 data class CGDisplaySnapshot(
     val id: Int,
-    val pixelWidth: Long,
-    val pixelHeight: Long,
+    val pointWidth: Long,
+    val pointHeight: Long,
 )
 
 /**
@@ -236,8 +236,8 @@ object AppKitDisplayServices {
         native.activeDisplays().map { displayId ->
             CGDisplaySnapshot(
                 id = displayId,
-                pixelWidth = native.pixelWidth(displayId),
-                pixelHeight = native.pixelHeight(displayId),
+                pointWidth = native.pointWidth(displayId),
+                pointHeight = native.pointHeight(displayId),
             )
         }
 
@@ -477,8 +477,8 @@ object AppKitDisplayServices {
 
 internal interface AppKitDisplayNative {
     fun activeDisplays(): IntArray
-    fun pixelWidth(displayId: Int): Long
-    fun pixelHeight(displayId: Int): Long
+    fun pointWidth(displayId: Int): Long
+    fun pointHeight(displayId: Int): Long
     fun bounds(displayId: Int): CGDisplayBoundsSnapshot
     fun copyDisplayMode(displayId: Int): Long
     fun copyAllDisplayModes(displayId: Int): Long
@@ -524,9 +524,9 @@ private object CoreGraphicsDisplayNative : AppKitDisplayNative {
 
     // Legacy CoreGraphics accessors. On HiDPI hardware they return the display size in the
     // global display coordinate space, not the framebuffer size. See [CGDisplaySnapshot].
-    override fun pixelWidth(displayId: Int): Long = CGDisplayPixelsWide(displayId)
+    override fun pointWidth(displayId: Int): Long = CGDisplayPixelsWide(displayId)
 
-    override fun pixelHeight(displayId: Int): Long = CGDisplayPixelsHigh(displayId)
+    override fun pointHeight(displayId: Int): Long = CGDisplayPixelsHigh(displayId)
 
     override fun bounds(displayId: Int): CGDisplayBoundsSnapshot = Arena.ofConfined().use { arena ->
         val bounds = CGDisplayBoundsTyped(arena, displayId)
