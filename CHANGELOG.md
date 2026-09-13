@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- `CGDisplaySnapshot.pixelWidth` and `pixelHeight` are renamed to `pointWidth` and `pointHeight`.
+  The underlying `CGDisplayPixelsWide`/`CGDisplayPixelsHigh` accessors predate Retina displays and
+  report the display size in the global display coordinate space in points, never framebuffer
+  pixels; the framebuffer size remains available as the current display mode's pixel size.
+
 ### Fixed
 - Objective-C methods returning aggregates larger than two eightbytes now work on
   x86_64 macOS, where Panama rejected the heap-backed struct-return buffer with
