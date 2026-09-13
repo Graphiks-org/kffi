@@ -10,6 +10,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Fixed
+- Objective-C methods returning aggregates larger than two eightbytes now work on
+  x86_64 macOS, where Panama rejected the heap-backed struct-return buffer with
+  "Heap segment not allowed"; the struct storage is now allocated natively.
 - Managed ScreenCaptureKit source resolution now closes a resolved native token
   when cancellation wins its completion race.
 - Generated Objective-C global lookups now load `AppKit.framework`, allowing

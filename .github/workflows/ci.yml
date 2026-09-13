@@ -99,7 +99,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ macos-latest, ubuntu-latest, windows-latest ]
+        os: [ macos-latest, macos-26-intel, ubuntu-latest, windows-latest ]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v5
@@ -113,8 +113,8 @@ jobs:
         uses: actions/cache@v5
         with:
           path: ~/.gradle/caches
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle.kts') }}
-          restore-keys: ${{ runner.os }}-gradle
+          key: ${{ matrix.os }}-gradle-${{ hashFiles('**/*.gradle.kts') }}
+          restore-keys: ${{ matrix.os }}-gradle
       - name: Set up Android SDK and NDK
         uses: ./.github/actions/setup-android
       - name: Activate MSVC
@@ -140,7 +140,7 @@ jobs:
           path: kffi-win32/build/win32-integration/**
           if-no-files-found: warn
       - name: Compile Apple Native callback token codecs
-        if: matrix.os == 'macos-latest'
+        if: startsWith(matrix.os, 'macos')
         run: >-
           ./gradlew
           :kffi:compileKotlinIosX64 :kffi:compileKotlinIosArm64 :kffi:compileKotlinIosSimulatorArm64
@@ -154,7 +154,7 @@ jobs:
         if: matrix.os == 'windows-latest'
         run: ./gradlew :kffi:compileKotlinMingwX64
       - name: Run macOS Native tests
-        if: matrix.os == 'macos-latest'
+        if: startsWith(matrix.os, 'macos')
         run: |
           if [[ "$(uname -m)" == "arm64" ]]; then
             ./gradlew :kffi:macosArm64Test
