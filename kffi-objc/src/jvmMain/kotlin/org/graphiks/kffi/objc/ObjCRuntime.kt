@@ -184,15 +184,18 @@ object ObjCRuntime {
      * Sends a method returning a struct by value through the ABI-selected entry point.
      *
      * Panama requires a [GroupLayout] in the [FunctionDescriptor] for struct-returning calls and
-     * inserts a [SegmentAllocator] as the first argument to the downcall handle.  The struct bytes
-     * are written into heap-backed storage allocated here and returned as a [MemorySegment].
+     * inserts a [SegmentAllocator] as the first argument to the downcall handle. The struct bytes
+     * are written into native storage allocated here and returned as a [MemorySegment].
      *
      * On x86-64 [objcStructReturnUsesStret] selects [objc_msgSend_stret] only for memory-class
      * aggregates. Register-class structs and all ARM64 structs use regular [objc_msgSend].
      *
-     * Important: the allocator must be backed by a [DoubleArray] (8-byte aligned) rather than a
-     * [ByteArray] to satisfy Panama's alignment constraints for `double`-containing structs such
-     * as [NSRect].
+     * Important: the storage must be a native segment, not heap-backed. A memory-class aggregate
+     * (for example [NSRect], four `double`s, on x86-64) is returned through a hidden pointer that
+     * the native callee writes to, and Panama rejects a heap segment for that argument with
+     * "Heap segment not allowed". [Arena.ofAuto] keeps the buffer reachable until the caller has
+     * copied the struct out, exactly like the previous GC-managed `DoubleArray`, and honours the
+     * return layout alignment for `double`-containing structs such as [NSRect] and [NSPoint].
      */
     fun msgSendStruct(returnLayout: GroupLayout, receiver: MemorySegment, selector: MemorySegment, vararg args: Any): MemorySegment {
         val addr = if (objcStructReturnUsesStret(returnLayout, ARCH)) {
@@ -204,12 +207,11 @@ object ObjCRuntime {
         val baseLayouts = arrayOf<MemoryLayout>(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
         val desc = FunctionDescriptor.of(returnLayout, *baseLayouts, *argLayouts)
         val handle = linker.downcallHandle(addr, desc)
-        // Allocate struct-return storage. DoubleArray guarantees 8-byte alignment so that
-        // structs containing `double` fields (NSRect, NSPoint, …) pass Panama's alignment check.
-        val byteSize = returnLayout.byteSize().toInt()
-        val heapDoubles = DoubleArray((byteSize + 7) / Double.SIZE_BYTES)
-        val heapSeg = MemorySegment.ofArray(heapDoubles).asSlice(0, byteSize.toLong())
-        val allocator = SegmentAllocator.prefixAllocator(heapSeg)
+        // Native struct-return storage. A memory-class aggregate is returned through a pointer
+        // the native callee writes to, so a heap-backed segment is rejected by Panama; a native
+        // arena also satisfies the layout alignment for `double`-containing structs.
+        val storage = Arena.ofAuto().allocate(returnLayout.byteSize(), returnLayout.byteAlignment())
+        val allocator = SegmentAllocator.prefixAllocator(storage)
         val unwrapped = args.map { unwrap(it) }.toTypedArray()
         // Panama inserts the allocator as the implicit first argument for GroupLayout returns.
         return handle.invokeWithArguments(allocator, receiver, selector, *unwrapped) as MemorySegment
