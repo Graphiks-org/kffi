@@ -457,9 +457,9 @@ private class LeaseDisplayNative(
 
     override fun activeDisplays(): IntArray = intArrayOf(DISPLAY_ID)
 
-    override fun pixelWidth(displayId: Int): Long = 1920
+    override fun pointWidth(displayId: Int): Long = 1920
 
-    override fun pixelHeight(displayId: Int): Long = 1080
+    override fun pointHeight(displayId: Int): Long = 1080
 
     override fun bounds(displayId: Int): CGDisplayBoundsSnapshot =
         CGDisplayBoundsSnapshot(0.0, 0.0, 1920.0, 1080.0)

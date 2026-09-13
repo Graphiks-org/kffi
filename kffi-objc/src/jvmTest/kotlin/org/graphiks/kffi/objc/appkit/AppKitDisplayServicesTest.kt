@@ -16,7 +16,7 @@ class AppKitDisplayServicesTest {
         val snapshots = AppKitDisplayServices.enumerate()
 
         assertTrue(snapshots.isNotEmpty())
-        assertTrue(snapshots.all { it.pixelWidth > 0 && it.pixelHeight > 0 })
+        assertTrue(snapshots.all { it.pointWidth > 0 && it.pointHeight > 0 })
         val first = snapshots.first()
         val bounds = AppKitDisplayServices.bounds(first.id)
         assertTrue(bounds.width > 0 && bounds.height > 0)
@@ -261,12 +261,12 @@ private class RecordingDisplayNative(
         return activeDisplays.copyOf()
     }
 
-    override fun pixelWidth(displayId: Int): Long {
+    override fun pointWidth(displayId: Int): Long {
         calls += "wide:$displayId"
         return requireNotNull(pixels[displayId]).first
     }
 
-    override fun pixelHeight(displayId: Int): Long {
+    override fun pointHeight(displayId: Int): Long {
         calls += "high:$displayId"
         return requireNotNull(pixels[displayId]).second
     }

@@ -30,14 +30,37 @@ import java.lang.foreign.ValueLayout
 import java.util.concurrent.locks.ReentrantLock
 import kotlin.concurrent.withLock
 
-/** Immutable display data detached from CoreGraphics storage. */
+/**
+ * Immutable display data detached from CoreGraphics storage.
+ *
+ * [pointWidth] and [pointHeight] are copied from `CGDisplayPixelsWide` and
+ * `CGDisplayPixelsHigh`. Those CoreGraphics accessors predate Retina displays, and the values
+ * they return are **not** framebuffer pixels: on a HiDPI display they report the display's size
+ * in the global display coordinate space, in points, exactly like `CGDisplayBounds` and
+ * `NSScreen.frame`. The fields are named after the unit they actually carry.
+ *
+ * The framebuffer size of the display is carried by [CGDisplayModeSnapshot.pixelWidth] of the
+ * current mode returned by [AppKitDisplayServices.currentMode]. On a 2x display that value is
+ * twice the one reported here, and the ratio is the display's `backingScaleFactor`.
+ *
+ * Never derive a global desktop coordinate by multiplying these values by the backing scale:
+ * global desktop coordinates are published as they are. See [CGDisplayBoundsSnapshot].
+ */
 data class CGDisplaySnapshot(
     val id: Int,
-    val pixelWidth: Long,
-    val pixelHeight: Long,
+    val pointWidth: Long,
+    val pointHeight: Long,
 )
 
-/** Immutable coordinates detached from the `CGRect` returned by CoreGraphics. */
+/**
+ * Immutable coordinates detached from the `CGRect` returned by CoreGraphics.
+ *
+ * These values live in the global display coordinate space, whose origin is the top-left corner
+ * of the main display and whose units are points. They are the same rectangle as the AppKit
+ * frame reported by [AppKitScreenSnapshot.frame], and they are already the canonical value: a
+ * caller must never multiply or divide them by the backing scale, because on mixed-scale
+ * desktops no single global pixel space exists.
+ */
 data class CGDisplayBoundsSnapshot(
     val x: Double,
     val y: Double,
@@ -49,7 +72,9 @@ data class CGDisplayBoundsSnapshot(
 data class CGDisplayModeSnapshot(
     /** Stable I/O display-mode identity, normalized to a non-negative [Long]. */
     val modeIdentity: Long,
+    /** Framebuffer width in pixels of this mode, from `CGDisplayModeGetPixelWidth`. */
     val pixelWidth: Long,
+    /** Framebuffer height in pixels of this mode, from `CGDisplayModeGetPixelHeight`. */
     val pixelHeight: Long,
     /** Null when CoreGraphics reports a non-positive or non-finite refresh rate. */
     val refreshRateHz: Double?,
@@ -211,8 +236,8 @@ object AppKitDisplayServices {
         native.activeDisplays().map { displayId ->
             CGDisplaySnapshot(
                 id = displayId,
-                pixelWidth = native.pixelWidth(displayId),
-                pixelHeight = native.pixelHeight(displayId),
+                pointWidth = native.pointWidth(displayId),
+                pointHeight = native.pointHeight(displayId),
             )
         }
 
@@ -452,8 +477,8 @@ object AppKitDisplayServices {
 
 internal interface AppKitDisplayNative {
     fun activeDisplays(): IntArray
-    fun pixelWidth(displayId: Int): Long
-    fun pixelHeight(displayId: Int): Long
+    fun pointWidth(displayId: Int): Long
+    fun pointHeight(displayId: Int): Long
     fun bounds(displayId: Int): CGDisplayBoundsSnapshot
     fun copyDisplayMode(displayId: Int): Long
     fun copyAllDisplayModes(displayId: Int): Long
@@ -497,9 +522,11 @@ private object CoreGraphicsDisplayNative : AppKitDisplayNative {
         }
     }
 
-    override fun pixelWidth(displayId: Int): Long = CGDisplayPixelsWide(displayId)
+    // Legacy CoreGraphics accessors. On HiDPI hardware they return the display size in the
+    // global display coordinate space, not the framebuffer size. See [CGDisplaySnapshot].
+    override fun pointWidth(displayId: Int): Long = CGDisplayPixelsWide(displayId)
 
-    override fun pixelHeight(displayId: Int): Long = CGDisplayPixelsHigh(displayId)
+    override fun pointHeight(displayId: Int): Long = CGDisplayPixelsHigh(displayId)
 
     override fun bounds(displayId: Int): CGDisplayBoundsSnapshot = Arena.ofConfined().use { arena ->
         val bounds = CGDisplayBoundsTyped(arena, displayId)

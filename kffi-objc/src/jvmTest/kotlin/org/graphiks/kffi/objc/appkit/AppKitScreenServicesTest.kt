@@ -67,6 +67,44 @@ class AppKitScreenServicesTest {
         assertTrue(screens.count(AppKitScreenSnapshot::isPrimary) == 1)
         assertTrue(screens.all { it.backingScaleFactor > 0.0 && it.frame.width > 0.0 && it.visibleFrame.width > 0.0 })
     }
+
+    /**
+     * Locks the point/pixel split of the CoreGraphics display APIs on real hardware, including
+     * the Retina branch. `CGDisplayPixelsWide`/`High` and `CGDisplayBounds` describe the global
+     * desktop rectangle in points, while only the current display mode carries the framebuffer
+     * size. Deriving global coordinates as `frame x backingScaleFactor` therefore only holds on
+     * a 1x display; this test fails on a HiDPI host if that model ever comes back.
+     */
+    @Test
+    fun desktopBoundsStayPointSizedWhileTheCurrentModeCarriesFramebufferPixelsOnMacOs26() {
+        assumeTrue(System.getProperty("os.name").contains("Mac", ignoreCase = true))
+        assumeTrue((System.getProperty("os.version").substringBefore('.').toIntOrNull() ?: 0) >= 26)
+
+        val screens = AppKitScreenServices.snapshots()
+        val displays = AppKitDisplayServices.enumerate().associateBy(CGDisplaySnapshot::id)
+
+        assertTrue(screens.isNotEmpty())
+        screens.forEach { screen ->
+            val display = checkNotNull(displays[screen.displayId])
+            val bounds = AppKitDisplayServices.bounds(screen.displayId)
+            val scale = screen.backingScaleFactor
+
+            assertEquals(bounds.width, display.pointWidth.toDouble())
+            assertEquals(bounds.height, display.pointHeight.toDouble())
+            assertEquals(bounds.width, screen.frame.width)
+            assertEquals(bounds.height, screen.frame.height)
+            assertTrue(scale > 0.0)
+
+            AppKitDisplayServices.currentMode(screen.displayId).use { mode ->
+                assertEquals(bounds.width * scale, mode.pixelWidth.toDouble())
+                assertEquals(bounds.height * scale, mode.pixelHeight.toDouble())
+                if (scale > 1.0) {
+                    assertTrue(mode.pixelWidth > bounds.width)
+                    assertTrue(mode.pixelHeight > bounds.height)
+                }
+            }
+        }
+    }
 }
 
 private class RecordingScreenNative(
