@@ -6,6 +6,8 @@ runs:
   steps:
     - name: Install Android command-line tools
       uses: android-actions/setup-android@v4
+      with:
+        packages: platform-tools
 
     - name: Locate sdkmanager
       id: sdkmanager
