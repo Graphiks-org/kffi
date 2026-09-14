@@ -178,7 +178,7 @@ class AppKitDisplayServicesTest {
     }
 
     @Test
-    fun allModesAcceptsAUniqueZeroIoModeIdentityAndRejectsDuplicateIdentities() {
+    fun allModesCollapsesEquivalentDuplicateIoIdentitiesButRejectsConflicts() {
         val zeroIdentity = RecordingDisplayNative(
             allModes = listOf(
                 0x100L to (1920L to 1080L),
@@ -200,11 +200,23 @@ class AppKitDisplayServicesTest {
             ),
             modeIdentities = mapOf(0x300L to 0, 0x400L to 0),
         )
+        val equivalentIdentity = RecordingDisplayNative(
+            allModes = listOf(
+                0x500L to (1920L to 1080L),
+                0x600L to (1920L to 1080L),
+            ),
+            modeIdentities = mapOf(0x500L to 0x8000_1000.toInt(), 0x600L to 0x8000_1000.toInt()),
+        )
 
         val inventory = AppKitDisplayServices.allModes(17, zeroIdentity)
+        val collapsedInventory = AppKitDisplayServices.allModes(17, equivalentIdentity)
 
         assertEquals(listOf(0L, 91L), inventory.map(CGDisplayModeSnapshot::modeIdentity))
         assertTrue(inventory.all { it.modeIdentity >= 0L })
+        assertEquals(
+            listOf(CGDisplayModeSnapshot(2_147_487_744L, 1920L, 1080L, 60.0, 0L)),
+            collapsedInventory,
+        )
         assertFailsWith<IllegalStateException> {
             AppKitDisplayServices.allModes(17, duplicateIdentity)
         }
@@ -212,6 +224,7 @@ class AppKitDisplayServicesTest {
             AppKitDisplayServices.allModes(17, duplicateZeroIdentity)
         }
         assertEquals(listOf("release:48879"), zeroIdentity.calls.filter { it.startsWith("release:") })
+        assertEquals(listOf("release:48879"), equivalentIdentity.calls.filter { it.startsWith("release:") })
         assertEquals(listOf("release:48879"), duplicateIdentity.calls.filter { it.startsWith("release:") })
         assertEquals(listOf("release:48879"), duplicateZeroIdentity.calls.filter { it.startsWith("release:") })
     }

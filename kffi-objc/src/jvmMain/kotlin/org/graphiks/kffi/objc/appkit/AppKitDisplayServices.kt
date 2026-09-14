@@ -263,7 +263,14 @@ object AppKitDisplayServices {
         }
     }
 
-    /** Returns every currently known mode as detached data and releases the CoreFoundation array. */
+    /**
+     * Returns detached snapshots for every uniquely identifiable current mode and releases the
+     * CoreFoundation array.
+     *
+     * CoreGraphics may expose equivalent entries with the same I/O identity. Such entries are
+     * coalesced when every detached field matches; conflicting metadata for one identity fails
+     * explicitly because it cannot be represented by this pointer-free API.
+     */
     fun allModes(displayId: Int): List<CGDisplayModeSnapshot> = allModes(displayId, CoreGraphicsDisplayNative)
 
     internal fun allModes(displayId: Int, native: AppKitDisplayNative): List<CGDisplayModeSnapshot> {
@@ -274,25 +281,28 @@ object AppKitDisplayServices {
             check(count >= 0L && count <= Int.MAX_VALUE) {
                 "CGDisplayCopyAllDisplayModes returned invalid count $count for display $displayId"
             }
-            val identities = HashSet<Long>(count.toInt())
-            List(count.toInt()) { ordinal ->
+            val snapshotsByIdentity = LinkedHashMap<Long, CGDisplayModeSnapshot>(count.toInt())
+            repeat(count.toInt()) { ordinal ->
                 val mode = native.modeAt(modes, ordinal.toLong())
                 check(mode != 0L) { "CGDisplayCopyAllDisplayModes returned null mode $ordinal for display $displayId" }
                 val modeIdentity = native.modeIdentity(mode)
                 check(modeIdentity >= 0L) {
                     "CGDisplayModeGetIODisplayModeID returned invalid identity for mode $ordinal on display $displayId"
                 }
-                check(identities.add(modeIdentity)) {
-                    "CGDisplayCopyAllDisplayModes returned duplicate mode identity $modeIdentity for display $displayId"
-                }
-                CGDisplayModeSnapshot(
+                val snapshot = CGDisplayModeSnapshot(
                     modeIdentity = modeIdentity,
                     pixelWidth = native.modePixelWidth(mode),
                     pixelHeight = native.modePixelHeight(mode),
                     refreshRateHz = native.modeRefreshRate(mode).takeIf { it.isFinite() && it > 0.0 },
                     ioFlags = native.modeIoFlags(mode),
                 )
+                val previous = snapshotsByIdentity.putIfAbsent(modeIdentity, snapshot)
+                check(previous == null || previous == snapshot) {
+                    "CGDisplayCopyAllDisplayModes returned conflicting metadata for shared mode identity " +
+                        "$modeIdentity on display $displayId"
+                }
             }
+            snapshotsByIdentity.values
                 .sortedWith(
                     compareBy<CGDisplayModeSnapshot>(CGDisplayModeSnapshot::pixelWidth)
                         .thenBy(CGDisplayModeSnapshot::pixelHeight)
@@ -305,7 +315,12 @@ object AppKitDisplayServices {
         }
     }
 
-    /** Captures [displayId] and installs the mode identified by [modeIdentity]. */
+    /**
+     * Captures [displayId] and installs the mode identified by [modeIdentity].
+     *
+     * The identity must resolve to one native mode, or to CoreFoundation-equal duplicates;
+     * ambiguous duplicates fail before the display is captured.
+     */
     fun openExclusiveLease(
         displayId: Int,
         modeIdentity: Long,
@@ -361,7 +376,6 @@ object AppKitDisplayServices {
                     check(count >= 0L && count <= Int.MAX_VALUE) {
                         "CGDisplayCopyAllDisplayModes returned invalid count $count for display $displayId"
                     }
-                    val identities = HashSet<Long>(count.toInt())
                     var target = 0L
                     repeat(count.toInt()) { ordinal ->
                         val candidate = native.modeAt(modes, ordinal.toLong())
@@ -372,14 +386,24 @@ object AppKitDisplayServices {
                         check(candidateIdentity >= 0L) {
                             "CGDisplayModeGetIODisplayModeID returned invalid identity for mode $ordinal on display $displayId"
                         }
-                        check(identities.add(candidateIdentity)) {
-                            "CGDisplayCopyAllDisplayModes returned duplicate mode identity " +
-                                "$candidateIdentity for display $displayId"
+                        if (candidateIdentity != modeIdentity) return@repeat
+                        if (target == 0L) {
+                            target = candidate
+                        } else if (!native.modesEqual(target, candidate)) {
+                            failExclusiveOperation(
+                                ExclusiveDisplayNativeOperation.ResolveTargetMode,
+                                "Display mode identity $modeIdentity is ambiguous for display $displayId",
+                            )
                         }
-                        if (candidateIdentity == modeIdentity) target = candidate
                     }
                     check(target != 0L) {
                         "Display mode identity $modeIdentity is unavailable for display $displayId"
+                    }
+                    if (initialModeIdentity == modeIdentity && !native.modesEqual(initialMode, target)) {
+                        failExclusiveOperation(
+                            ExclusiveDisplayNativeOperation.ResolveTargetMode,
+                            "Display mode identity $modeIdentity does not identify the current mode for display $displayId",
+                        )
                     }
                     native.retain(target)
                     targetMode = target
