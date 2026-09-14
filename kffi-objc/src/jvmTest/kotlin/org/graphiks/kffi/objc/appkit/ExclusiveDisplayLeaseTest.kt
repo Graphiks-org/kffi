@@ -175,6 +175,69 @@ class ExclusiveDisplayLeaseTest {
     }
 
     @Test
+    fun duplicateNonTargetIdentitiesDoNotBlockAUniqueRequestedTarget() {
+        val native = LeaseDisplayNative(
+            modeList = listOf(INITIAL_MODE, DUPLICATE_MODE, TARGET_MODE),
+        )
+
+        val opened = assertIs<ExclusiveDisplayLeaseOpenResult.Opened>(
+            AppKitDisplayServices.openExclusiveLease(DISPLAY_ID, TARGET_IDENTITY, native),
+        )
+
+        assertTrue(opened.lease.release().failures.isEmpty())
+        assertEquals(0, native.ownedReferenceCount)
+    }
+
+    @Test
+    fun equivalentTargetIdentityDuplicatesResolveOneNativeMode() {
+        val native = LeaseDisplayNative(
+            modeList = listOf(TARGET_MODE, IMPOSTOR_MODE),
+            equivalentModePairs = setOf(TARGET_MODE to IMPOSTOR_MODE),
+        )
+
+        val opened = assertIs<ExclusiveDisplayLeaseOpenResult.Opened>(
+            AppKitDisplayServices.openExclusiveLease(DISPLAY_ID, TARGET_IDENTITY, native),
+        )
+
+        assertEquals(ExclusiveDisplayTerminal.Captured(TARGET_IDENTITY), opened.lease.readback().terminal)
+        assertTrue(opened.lease.release().failures.isEmpty())
+        assertEquals(0, native.ownedReferenceCount)
+    }
+
+    @Test
+    fun conflictingTargetIdentityDuplicatesFailBeforeCaptureWithoutLeakingReferences() {
+        val native = LeaseDisplayNative(
+            modeList = listOf(TARGET_MODE, IMPOSTOR_MODE),
+        )
+
+        val failed = assertIs<ExclusiveDisplayLeaseOpenResult.FailedBeforeCapture>(
+            AppKitDisplayServices.openExclusiveLease(DISPLAY_ID, TARGET_IDENTITY, native),
+        )
+
+        assertEquals(ExclusiveDisplayNativeOperation.ResolveTargetMode, failed.failure.operation)
+        assertFalse(native.captureRetained)
+        assertFalse(native.calls.any { it.startsWith("capture:") || it.startsWith("setMode:") })
+        assertEquals(0, native.ownedReferenceCount)
+    }
+
+    @Test
+    fun initialModeWithTheRequestedIdentityButDifferentNativeValueFailsBeforeCapture() {
+        val native = LeaseDisplayNative(
+            initialModeIdentity = TARGET_IDENTITY,
+            modeList = listOf(TARGET_MODE),
+        )
+
+        val failed = assertIs<ExclusiveDisplayLeaseOpenResult.FailedBeforeCapture>(
+            AppKitDisplayServices.openExclusiveLease(DISPLAY_ID, TARGET_IDENTITY, native),
+        )
+
+        assertEquals(ExclusiveDisplayNativeOperation.ResolveTargetMode, failed.failure.operation)
+        assertFalse(native.captureRetained)
+        assertFalse(native.calls.any { it.startsWith("capture:") || it.startsWith("setMode:") })
+        assertEquals(0, native.ownedReferenceCount)
+    }
+
+    @Test
     fun modeArrayReleaseFailureAfterTargetRetainStillReleasesOwnedModes() {
         val native = LeaseDisplayNative().apply {
             failNext("release:$MODE_ARRAY", "array release failed")
@@ -438,6 +501,8 @@ class ExclusiveDisplayLeaseTest {
 private class LeaseDisplayNative(
     private val initialModeIdentity: Long = INITIAL_IDENTITY,
     private val targetModeIdentity: Long = TARGET_IDENTITY,
+    private val modeList: List<Long> = listOf(INITIAL_MODE, TARGET_MODE),
+    private val equivalentModePairs: Set<Pair<Long, Long>> = emptySet(),
 ) : AppKitDisplayNative {
     val calls = mutableListOf<String>()
     private val ownedReferences = mutableMapOf<Long, Int>()
@@ -479,12 +544,12 @@ private class LeaseDisplayNative(
 
     override fun modeCount(modes: Long): Long {
         calls += "count:$modes"
-        return 2
+        return modeList.size.toLong()
     }
 
     override fun modeAt(modes: Long, index: Long): Long {
         calls += "modeAt:$modes:$index"
-        return if (index == 0L) INITIAL_MODE else TARGET_MODE
+        return modeList[index.toInt()]
     }
 
     override fun modePixelWidth(mode: Long): Long = 1920
@@ -498,7 +563,7 @@ private class LeaseDisplayNative(
     override fun modeIdentity(mode: Long): Long {
         calls += "modeIdentity:$mode"
         return when (mode) {
-            INITIAL_MODE -> initialModeIdentity
+            INITIAL_MODE, DUPLICATE_MODE -> initialModeIdentity
             TARGET_MODE, IMPOSTOR_MODE -> targetModeIdentity
             else -> 0
         }
@@ -507,7 +572,9 @@ private class LeaseDisplayNative(
     override fun modesEqual(first: Long, second: Long): Boolean {
         calls += "equal:$first:$second"
         fail("equal:$first:$second")
-        return first == second
+        return first == second ||
+            (first to second) in equivalentModePairs ||
+            (second to first) in equivalentModePairs
     }
 
     override fun retain(mode: Long) {
@@ -560,6 +627,7 @@ private const val DISPLAY_ID = 17
 private const val INITIAL_MODE = 0x100L
 private const val TARGET_MODE = 0x200L
 private const val IMPOSTOR_MODE = 0x300L
+private const val DUPLICATE_MODE = 0x400L
 private const val MODE_ARRAY = 0xA11L
 private const val INITIAL_IDENTITY = 0x111L
 private const val TARGET_IDENTITY = 0x222L
