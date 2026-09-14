@@ -25,6 +25,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `NSWorkspaceAccessibilityDisplayOptionsDidChangeNotification` to resolve on macOS.
 
 ### Added
+- Optional JVM-only `kffi-coretext` module with source-byte font creation, explicit native
+  reference release, raw CoreText metrics, detached affine matrices and bounded Darwin reads.
 - Optional ScreenCaptureKit minimum frame intervals encoded as valid nanosecond CoreMedia times,
   preserving caller-requested pacing in the managed stream configuration.
 - A distinct ScreenCaptureKit reservation cancellation result for a host picker dismissed before
