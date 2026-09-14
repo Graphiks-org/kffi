@@ -31,15 +31,6 @@ public class CoreText {
     private val getGlyphCount = symbols.address("CTFontGetGlyphCount")
     private val getMatrix = symbols.address("CTFontGetMatrix")
 
-    init {
-        engine.registerStructLayout(
-            matrixName, 48, 8,
-            listOf("a", "b", "c", "d", "tx", "ty").mapIndexed { index, name ->
-                JvmDowncallEngine.StructField(name, JvmDowncallEngine.FieldKind.FLOAT64, index * 8L)
-            },
-        )
-    }
-
     /**
      * Copies [length] bytes from a borrowed readable buffer into an owned CFData.
      * The buffer must remain valid during this call; it may close after return.
@@ -105,12 +96,19 @@ public class CoreText {
 
     private companion object {
         const val matrixName = "org.graphiks.kffi.coretext.CGAffineTransform"
-        val frameworks by lazy {
+        val frameworks by lazy(LazyThreadSafetyMode.SYNCHRONIZED) {
             AppleNativeSymbols(listOf(
                 "/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation",
                 "/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics",
                 "/System/Library/Frameworks/CoreText.framework/CoreText",
-            ))
+            )).also {
+                JvmDowncallEngine.registerStructLayout(
+                    matrixName, 48, 8,
+                    listOf("a", "b", "c", "d", "tx", "ty").mapIndexed { index, name ->
+                        JvmDowncallEngine.StructField(name, JvmDowncallEngine.FieldKind.FLOAT64, index * 8L)
+                    },
+                )
+            }
         }
     }
 }
