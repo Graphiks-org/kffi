@@ -9,7 +9,7 @@ for a system HarfBuzz installation.
 
 The package is intentionally hybrid. All targets report HarfBuzz `14.3.0` and
 use the same JVM adapter configuration, while each target records its own
-source provenance and binary digest in `ShapingBackendIdentity`.
+source provenance and binary digest in `HarfBuzzBindingIdentity`.
 
 | Platform | Origin | Source revision | Embedded library SHA-256 |
 | --- | --- | --- | --- |
