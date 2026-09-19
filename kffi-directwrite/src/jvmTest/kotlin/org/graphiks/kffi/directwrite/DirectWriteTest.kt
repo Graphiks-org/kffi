@@ -10,25 +10,17 @@ class DirectWriteTest {
     fun systemFontsAreDiscovered() {
         val fonts = DirectWrite().systemFonts()
 
-        val existingPaths = fonts.map { it.filePath }.filter { it.isNotBlank() && File(it).isFile }
-        println("DWDBG fonts=${fonts.size} nonBlankPaths=${fonts.count { it.filePath.isNotBlank() }} existing=$existingPaths.size")
-        fonts.take(5).forEach {
-            println("DWDBG family=[${it.family}] face=[${it.faceName}] ps=[${it.postScriptName}] pathLen=${it.filePath.length} path=[${it.filePath}] exists=${File(it.filePath).exists()}")
-        }
-
         assertTrue(fonts.isNotEmpty(), "the DirectWrite system collection must report at least one face")
         assertTrue(fonts.all { it.family.isNotBlank() }, "every face must carry a family name")
         assertTrue(fonts.all { it.weight > 0 }, "every face must carry a numeric weight")
 
-        // A reference key is not guaranteed to be a filesystem path, so assert that
-        // the collection yields real font files rather than that every key resolves.
-        val reportedPaths = fonts.map { it.filePath }.filter { it.isNotBlank() }.distinct()
+        val existingPaths = fonts.map { it.filePath }.filter { it.isNotBlank() && File(it).isFile }
         assertTrue(
             existingPaths.any { path ->
                 path.endsWith(".ttf", true) || path.endsWith(".ttc", true) || path.endsWith(".otf", true)
             },
             "at least one reported file path must be an existing TrueType/OpenType file; " +
-                "reported sample: ${reportedPaths.take(5)}",
+                "reported sample: ${fonts.map { it.filePath }.filter { it.isNotBlank() }.distinct().take(5)}",
         )
         assertTrue(
             existingPaths.size >= 10,

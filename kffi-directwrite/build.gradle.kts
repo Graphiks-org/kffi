@@ -25,8 +25,4 @@ tasks.withType<Test>().configureEach {
     useJUnitPlatform()
     jvmArgs("--enable-native-access=ALL-UNNAMED")
     onlyIf("DirectWrite is a Windows system library") { System.getProperty("os.name").startsWith("Windows") }
-    testLogging {
-        showStandardStreams = true
-        exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
-    }
 }

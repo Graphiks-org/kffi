@@ -215,20 +215,86 @@ public class DirectWrite {
                 val keyAddress = keyOut.get(ValueLayout.ADDRESS, 0L).address()
                 val size = sizeOut.get(ValueLayout.JAVA_INT, 0L)
                 if (keyAddress == 0L || size <= 0) return ""
-                val bytes = ByteArray(size)
-                MemorySegment.ofAddress(keyAddress)
-                    .reinterpret(size.toLong())
-                    .asByteBuffer()
-                    .get(bytes)
-                if (debugKeys.getAndIncrement() < 2) {
-                    println("DWKEY size=$size hex=${bytes.joinToString("") { "%02x".format(it) }}")
-                }
-                return String(bytes, Charsets.UTF_16LE).trimEnd('\u0000')
+                val key = MemorySegment.ofAddress(keyAddress).reinterpret(size.toLong())
+                return resolveLocalPath(arena, file, key, size)
             } finally {
                 file.release()
             }
         } finally {
             face.release()
+        }
+    }
+
+    /**
+     * Resolves a full file path from an opaque font file reference key.
+     *
+     * The system collection's keys are not paths — they encode identifiers and a
+     * file name — so the local font file loader expands them through
+     * `GetFilePathFromKey`. A key the loader cannot expand (a non-local loader)
+     * yields an empty path.
+     */
+    private fun resolveLocalPath(arena: Arena, file: ComObject, key: MemorySegment, keySize: Int): String {
+        val loaderOut = arena.allocate(ValueLayout.ADDRESS)
+        checkHr(
+            file.hresult(ID_WRITE_FONT_FILE_GET_LOADER, listOf(JvmDowncallEngine.AbiType.Pointer), loaderOut),
+            "IDWriteFontFile::GetLoader",
+        )
+        val loader = ComObject(loaderOut.get(ValueLayout.ADDRESS, 0L).address())
+        try {
+            val iid = arena.allocate(IID_BYTES)
+            iid.asByteBuffer().put(IID_ID_WRITE_LOCAL_FONT_FILE_LOADER)
+            val localOut = arena.allocate(ValueLayout.ADDRESS)
+            val query = loader.hresult(
+                QUERY_INTERFACE,
+                listOf(JvmDowncallEngine.AbiType.Pointer, JvmDowncallEngine.AbiType.Pointer),
+                iid,
+                localOut,
+            )
+            val localAddress = localOut.get(ValueLayout.ADDRESS, 0L).address()
+            if (query < 0 || localAddress == 0L) return ""
+            val local = ComObject(localAddress)
+            try {
+                val lengthOut = arena.allocate(ValueLayout.JAVA_INT)
+                checkHr(
+                    local.hresult(
+                        LOCAL_LOADER_GET_FILE_PATH_LENGTH_FROM_KEY,
+                        listOf(
+                            JvmDowncallEngine.AbiType.Pointer,
+                            JvmDowncallEngine.AbiType.I32,
+                            JvmDowncallEngine.AbiType.Pointer,
+                        ),
+                        key,
+                        keySize,
+                        lengthOut,
+                    ),
+                    "IDWriteLocalFontFileLoader::GetFilePathLengthFromKey",
+                )
+                val length = lengthOut.get(ValueLayout.JAVA_INT, 0L)
+                if (length <= 0) return ""
+                val capacity = length + 1
+                val buffer = arena.allocate(capacity.toLong() * CHAR_BYTES)
+                checkHr(
+                    local.hresult(
+                        LOCAL_LOADER_GET_FILE_PATH_FROM_KEY,
+                        listOf(
+                            JvmDowncallEngine.AbiType.Pointer,
+                            JvmDowncallEngine.AbiType.I32,
+                            JvmDowncallEngine.AbiType.Pointer,
+                            JvmDowncallEngine.AbiType.I32,
+                        ),
+                        key,
+                        keySize,
+                        buffer,
+                        capacity,
+                    ),
+                    "IDWriteLocalFontFileLoader::GetFilePathFromKey",
+                )
+                return buffer.getString(0L, Charsets.UTF_16LE)
+            } finally {
+                local.release()
+            }
+        } finally {
+            loader.release()
         }
     }
 
@@ -328,13 +394,16 @@ public class DirectWrite {
         const val ID_WRITE_FONT_CREATE_FONT_FACE = 13
         const val ID_WRITE_FONT_FACE_GET_FILES = 4
         const val ID_WRITE_FONT_FILE_GET_REFERENCE_KEY = 3
+        const val ID_WRITE_FONT_FILE_GET_LOADER = 4
+        const val QUERY_INTERFACE = 0
+        const val LOCAL_LOADER_GET_FILE_PATH_LENGTH_FROM_KEY = 4
+        const val LOCAL_LOADER_GET_FILE_PATH_FROM_KEY = 5
         const val ID_WRITE_LOCALIZED_STRINGS_GET_COUNT = 3
         const val ID_WRITE_LOCALIZED_STRINGS_GET_STRING_LENGTH = 7
         const val ID_WRITE_LOCALIZED_STRINGS_GET_STRING = 8
 
         const val FACTORY_TYPE_SHARED = 0
         const val INFORMATIONAL_STRING_POSTSCRIPT_NAME = 17
-        val debugKeys = java.util.concurrent.atomic.AtomicInteger()
         const val CHAR_BYTES = 2L
         const val IID_BYTES = 16L
 
@@ -344,6 +413,14 @@ public class DirectWrite {
             0x38, 0xD8.toByte(),
             0x5B, 0x4B,
             0xA2.toByte(), 0xE8.toByte(), 0x1A, 0xDC.toByte(), 0x7D, 0x93.toByte(), 0xDB.toByte(), 0x48,
+        )
+
+        /** `IID_IDWriteLocalFontFileLoader` = {b2d9f3ec-c9fe-4a11-a2ec-d86208f7c0a2}, little-endian. */
+        val IID_ID_WRITE_LOCAL_FONT_FILE_LOADER = byteArrayOf(
+            0xEC.toByte(), 0xF3.toByte(), 0xD9.toByte(), 0xB2.toByte(),
+            0xFE.toByte(), 0xC9.toByte(),
+            0x11, 0x4A,
+            0xA2.toByte(), 0xEC.toByte(), 0xD8.toByte(), 0x62, 0x08, 0xF7.toByte(), 0xC0.toByte(), 0xA2.toByte(),
         )
     }
 }
