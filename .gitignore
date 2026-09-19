@@ -35,3 +35,7 @@ gradle-app.setting
 
 # Git worktrees
 /.worktrees/
+
+# kffi-harfbuzz embeds its audited native binaries as resources; see the module NOTICE.md.
+!kffi-harfbuzz/src/jvmMain/resources/**/*.so
+!kffi-harfbuzz/src/jvmMain/resources/**/*.dylib
