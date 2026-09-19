@@ -145,7 +145,18 @@ internal class HarfBuzzNativeLoader private constructor(
     )
 
     companion object {
-        fun load(platform: HarfBuzzPlatform = HarfBuzzPlatform.detect()): HarfBuzzNativeLoader {
+        private val cache: MutableMap<HarfBuzzPlatform, HarfBuzzNativeLoader> = mutableMapOf()
+
+        /**
+         * Returns the shared loader for [platform], loading it once on first use.
+         *
+         * The same loader — and therefore the same loaded library scope and symbol handles — is
+         * reused for the process lifetime. Failures are not cached, so a later call retries.
+         */
+        fun load(platform: HarfBuzzPlatform = HarfBuzzPlatform.detect()): HarfBuzzNativeLoader =
+            synchronized(cache) { cache.getOrPut(platform) { loadUncached(platform) } }
+
+        private fun loadUncached(platform: HarfBuzzPlatform): HarfBuzzNativeLoader {
             if (ValueLayout.ADDRESS.byteSize() != 8L) throw HarfBuzzBindingException(
                 HarfBuzzBindingFailure.UNSUPPORTED_PLATFORM,
                 "HarfBuzz bindings require 64-bit pointers.",

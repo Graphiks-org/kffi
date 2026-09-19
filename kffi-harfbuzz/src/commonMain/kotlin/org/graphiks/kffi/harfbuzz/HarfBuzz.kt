@@ -20,7 +20,7 @@ public expect class HarfBuzz private constructor() {
      */
     public fun createBlob(bytes: ByteArray): HarfBuzzBlob
 
-    /** Creates an owned shaping buffer. */
+    /** Creates an owned shaping buffer. Throws [HarfBuzzBindingException] if the native buffer cannot be created. */
     public fun createBuffer(): HarfBuzzBuffer
 
     /** Parses a script identifier through HarfBuzz. */
@@ -35,7 +35,14 @@ public expect class HarfBuzz private constructor() {
     }
 }
 
-/** An owned HarfBuzz blob retaining a copy of the source bytes. */
+/**
+ * An owned HarfBuzz blob retaining a copy of the source bytes.
+ *
+ * A blob may create several faces and each face may create several fonts; every child must be
+ * closed before its parent so the retained bytes can be freed. [close] is idempotent, but it is
+ * not synchronised across threads — do not close a blob concurrently with creating or closing
+ * its descendants.
+ */
 public expect class HarfBuzzBlob : AutoCloseable {
     /** Creates an owned face over [faceIndex]; throws [HarfBuzzBindingException] on failure. */
     public fun createFace(faceIndex: Int): HarfBuzzFace
@@ -44,7 +51,12 @@ public expect class HarfBuzzBlob : AutoCloseable {
     override fun close()
 }
 
-/** An owned HarfBuzz face, retaining the blob it was created from. */
+/**
+ * An owned HarfBuzz face, retaining the blob it was created from.
+ *
+ * A face may create several fonts, all of which must be closed before the face. [close] is
+ * idempotent, but it is not synchronised across threads.
+ */
 public expect class HarfBuzzFace : AutoCloseable {
     /** The face units-per-em. */
     public fun unitsPerEm(): Int
@@ -59,7 +71,11 @@ public expect class HarfBuzzFace : AutoCloseable {
     override fun close()
 }
 
-/** An owned HarfBuzz font, retaining the face it was created from. */
+/**
+ * An owned HarfBuzz font, retaining the face it was created from.
+ *
+ * [close] is idempotent, but it is not synchronised across threads.
+ */
 public expect class HarfBuzzFont : AutoCloseable {
     /** Selects the OpenType font functions. */
     public fun useOpenTypeFunctions()

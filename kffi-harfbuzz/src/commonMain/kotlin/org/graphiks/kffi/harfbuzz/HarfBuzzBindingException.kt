@@ -15,6 +15,8 @@ public enum class HarfBuzzBindingFailure {
     RESOURCE_CORRUPT,
     /** The native library could not be loaded, including restricted native access. */
     LIBRARY_LOAD,
+    /** A native call failed after the library was loaded successfully. */
+    NATIVE_OPERATION,
     /** A required native symbol could not be resolved. */
     SYMBOL_RESOLUTION,
     /** The loaded library does not report the version the binding was built against. */

@@ -29,7 +29,14 @@ public actual class HarfBuzz private actual constructor() {
     )
 
     public actual fun parseScript(value: String): HarfBuzzScript = Arena.ofConfined().use { arena ->
-        int(operations.scriptFromString, arena.allocateFrom(value), -1)
+        val script = int(operations.scriptFromString, arena.allocateFrom(value), -1)
+        if (script == HB_SCRIPT_INVALID) {
+            throw HarfBuzzBindingException(
+                HarfBuzzBindingFailure.NATIVE_OPERATION,
+                "HarfBuzz could not parse the script identifier: $value",
+                cause = null,
+            )
+        }
         HarfBuzzScript(value)
     }
 
@@ -37,7 +44,7 @@ public actual class HarfBuzz private actual constructor() {
         val language = address(operations.languageFromString, arena.allocateFrom(value), -1)
         if (language == MemorySegment.NULL) {
             throw HarfBuzzBindingException(
-                HarfBuzzBindingFailure.LIBRARY_LOAD,
+                HarfBuzzBindingFailure.NATIVE_OPERATION,
                 "HarfBuzz could not parse the language identifier: $value",
                 cause = null,
             )
@@ -53,8 +60,12 @@ public actual class HarfBuzz private actual constructor() {
 /**
  * An owned native blob copying [bytes] into a dedicated shared arena.
  *
- * The arena and native blob live until [close]. Creating a face transfers ownership to the
- * returned [HarfBuzzFace], which closes the blob when the face is released.
+ * The arena and native blob live until [close] and back every face and font created from this
+ * blob. A blob may create several faces and each face may create several fonts; [close] defers
+ * destruction until the last live descendant has been released, so every child must be closed
+ * before its parent to free the arena. Close is idempotent, but `close` is not synchronised
+ * across threads: closing a blob concurrently with creating or closing its descendants is a
+ * data race.
  */
 public actual class HarfBuzzBlob internal constructor(
     private val operations: HarfBuzzOperations,
@@ -62,12 +73,13 @@ public actual class HarfBuzzBlob internal constructor(
 ) : AutoCloseable {
     private val arena: Arena = Arena.ofShared()
     private var closed: Boolean = false
+    private var descendants: Int = 0
     private val blob: MemorySegment
 
     init {
-        val copiedBytes = arena.allocate(bytes.size.toLong(), 1)
-        copiedBytes.copyFrom(MemorySegment.ofArray(bytes))
         blob = try {
+            val copiedBytes = arena.allocate(bytes.size.toLong(), 1)
+            copiedBytes.copyFrom(MemorySegment.ofArray(bytes))
             requireNativeHandle(
                 address(
                     operations.blobCreate,
@@ -86,22 +98,57 @@ public actual class HarfBuzzBlob internal constructor(
     }
 
     public actual fun createFace(faceIndex: Int): HarfBuzzFace {
-        val face = requireNativeHandle(address(operations.faceCreate, blob, faceIndex), "face")
+        check(!closed) { "The HarfBuzz blob is closed." }
+        addDescendant()
+        val face = try {
+            requireNativeHandle(address(operations.faceCreate, blob, faceIndex), "face")
+        } catch (error: Throwable) {
+            releaseDescendant()
+            throw error
+        }
         return HarfBuzzFace(operations, this, face)
+    }
+
+    /** Registers a live face or font that retains this blob's arena. */
+    internal fun addDescendant() {
+        descendants += 1
+    }
+
+    /** Releases one descendant, destroying the blob and arena once the last live one is gone. */
+    internal fun releaseDescendant() {
+        check(descendants > 0) { "The HarfBuzz blob has no live descendant to release." }
+        descendants -= 1
+        if (closed && descendants == 0) destroy()
     }
 
     public actual override fun close() {
         if (closed) return
         closed = true
-        callVoid(operations.blobDestroy, blob)
-        arena.close()
+        if (descendants == 0) destroy()
+    }
+
+    private fun destroy() {
+        var failure: Throwable? = null
+        try {
+            callVoid(operations.blobDestroy, blob)
+        } catch (error: Throwable) {
+            failure = error
+        }
+        try {
+            arena.close()
+        } catch (error: Throwable) {
+            if (failure == null) failure = error else failure.addSuppressed(error)
+        }
+        failure?.let { throw it }
     }
 }
 
 /**
  * An owned native face retaining the [HarfBuzzBlob] whose memory backs it.
  *
- * Releasing the face destroys the native face first, then releases the retained blob.
+ * A face may create several fonts. Releasing the face releases only its own reference to the
+ * blob; the blob's arena is not freed until every font created here is also closed. Close is
+ * idempotent, but `close` is not synchronised across threads.
  */
 public actual class HarfBuzzFace internal constructor(
     private val operations: HarfBuzzOperations,
@@ -117,26 +164,34 @@ public actual class HarfBuzzFace internal constructor(
     }
 
     public actual fun createFont(): HarfBuzzFont {
-        val font = requireNativeHandle(address(operations.fontCreate, face), "font")
-        return HarfBuzzFont(operations, this, font)
+        check(!closed) { "The HarfBuzz face is closed." }
+        blob.addDescendant()
+        val font = try {
+            requireNativeHandle(address(operations.fontCreate, face), "font")
+        } catch (error: Throwable) {
+            blob.releaseDescendant()
+            throw error
+        }
+        return HarfBuzzFont(operations, blob, font)
     }
 
     public actual override fun close() {
         if (closed) return
         closed = true
         callVoid(operations.faceDestroy, face)
-        blob.close()
+        blob.releaseDescendant()
     }
 }
 
 /**
- * An owned native font retaining the [HarfBuzzFace] it was created from.
+ * An owned native font retaining the [HarfBuzzBlob] that backs its face.
  *
- * Releasing the font destroys the native font first, then releases the retained face.
+ * Releasing the font destroys the native font first, then releases its own reference to the
+ * blob. Close is idempotent, but `close` is not synchronised across threads.
  */
 public actual class HarfBuzzFont internal constructor(
     private val operations: HarfBuzzOperations,
-    private val face: HarfBuzzFace,
+    private val blob: HarfBuzzBlob,
     internal val nativeFont: MemorySegment,
 ) : AutoCloseable {
     private var closed: Boolean = false
@@ -187,7 +242,7 @@ public actual class HarfBuzzFont internal constructor(
         if (closed) return
         closed = true
         callVoid(operations.fontDestroy, nativeFont)
-        face.close()
+        blob.releaseDescendant()
     }
 }
 
@@ -215,11 +270,15 @@ public actual class HarfBuzzBuffer internal constructor(
 
     public actual fun setLanguage(language: HarfBuzzLanguage) {
         Arena.ofConfined().use { arena ->
-            callVoid(
-                operations.bufferSetLanguage,
-                buffer,
-                address(operations.languageFromString, arena.allocateFrom(language.value), -1),
-            )
+            val nativeLanguage = address(operations.languageFromString, arena.allocateFrom(language.value), -1)
+            if (nativeLanguage == MemorySegment.NULL) {
+                throw HarfBuzzBindingException(
+                    HarfBuzzBindingFailure.NATIVE_OPERATION,
+                    "HarfBuzz could not parse the language identifier: ${language.value}",
+                    cause = null,
+                )
+            }
+            callVoid(operations.bufferSetLanguage, buffer, nativeLanguage)
         }
     }
 
@@ -471,7 +530,7 @@ private fun callVoid(handle: MethodHandle, vararg arguments: Any?) {
 private fun requireNativeHandle(handle: MemorySegment, label: String): MemorySegment =
     if (handle == MemorySegment.NULL) {
         throw HarfBuzzBindingException(
-            HarfBuzzBindingFailure.LIBRARY_LOAD,
+            HarfBuzzBindingFailure.NATIVE_OPERATION,
             "HarfBuzz could not create a native $label.",
             cause = null,
         )
@@ -480,6 +539,8 @@ private fun requireNativeHandle(handle: MemorySegment, label: String): MemorySeg
     }
 
 private const val HB_MEMORY_MODE_READONLY: Int = 1
+/** `HB_SCRIPT_INVALID`, returned by HarfBuzz when a script tag cannot be parsed. */
+private const val HB_SCRIPT_INVALID: Int = 0
 private const val HB_DIRECTION_LTR: Int = 4
 private const val HB_DIRECTION_RTL: Int = 5
 private const val HB_DIRECTION_TTB: Int = 6
