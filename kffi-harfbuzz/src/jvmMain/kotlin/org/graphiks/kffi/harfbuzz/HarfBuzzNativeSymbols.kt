@@ -19,8 +19,15 @@ internal const val HARFBUZZ_VERSION: String = "14.3.0"
 /** The published kffi-harfbuzz version, mirrored from the module version. */
 internal const val KFFI_HARFBUZZ_VERSION: String = "1.0.0-SNAPSHOT"
 
+/**
+ * The runtime platform as reported by the JVM, used to select the bundled HarfBuzz binary.
+ *
+ * [osName] and [architecture] are raw system property values; matching is case-insensitive
+ * and delegated to [harfBuzzNativeTargetFor].
+ */
 internal data class HarfBuzzPlatform(val osName: String, val architecture: String) {
     companion object {
+        /** Reads the platform from `os.name`/`os.arch`, defaulting to empty strings when absent. */
         fun detect(): HarfBuzzPlatform = HarfBuzzPlatform(
             System.getProperty("os.name").orEmpty(),
             System.getProperty("os.arch").orEmpty(),
@@ -28,6 +35,17 @@ internal data class HarfBuzzPlatform(val osName: String, val architecture: Strin
     }
 }
 
+/**
+ * A bundled HarfBuzz binary and the provenance needed to verify and describe it.
+ *
+ * @property operatingSystem normalized OS (`linux`, `macos`).
+ * @property architecture normalized architecture (`x64`, `arm64`).
+ * @property resourcePath classpath resource location of the binary inside the artifact.
+ * @property fileName file name used when materializing the binary on disk.
+ * @property nativeSourceRevision upstream HarfBuzz source revision the binary was built from.
+ * @property librarySha256 expected SHA-256 of the binary, verified before load.
+ * @property buildChainIdentity toolchain identity of the binary build.
+ */
 internal data class HarfBuzzNativeTarget(
     val operatingSystem: String,
     val architecture: String,
@@ -37,10 +55,17 @@ internal data class HarfBuzzNativeTarget(
     val librarySha256: String,
     val buildChainIdentity: String,
 ) {
+    /** The Maven coordinate and classifier under which this embedded artifact is published. */
     val artifactId: String
         get() = "org.graphiks:kffi-harfbuzz-jvm:$KFFI_HARFBUZZ_VERSION:$operatingSystem-$architecture/$fileName"
 }
 
+/**
+ * Resolves the bundled binary for [platform], accepting the common aliases for OS and
+ * architecture (`amd64`/`x86_64`, `aarch64`/`arm64`, `mac os x`).
+ *
+ * Returns `null` for any unsupported or unrecognized combination.
+ */
 internal fun harfBuzzNativeTargetFor(platform: HarfBuzzPlatform): HarfBuzzNativeTarget? = when (
     platform.osName.lowercase() to platform.architecture.lowercase()
 ) {
@@ -75,7 +100,12 @@ internal fun harfBuzzNativeTargetFor(platform: HarfBuzzPlatform): HarfBuzzNative
     else -> null
 }
 
-/** Loads, verifies and materializes the bundled HarfBuzz library, then resolves its symbols. */
+/**
+ * Loads, verifies and materializes the bundled HarfBuzz library, then resolves its symbols.
+ *
+ * The library [scope] intentionally remains alive for the process lifetime (it is never closed on
+ * success), mirroring `AppleNativeSymbols`: downcall handles resolved from it stay valid.
+ */
 internal class HarfBuzzNativeLoader private constructor(
     val target: HarfBuzzNativeTarget,
     private val scope: Arena,
@@ -83,15 +113,20 @@ internal class HarfBuzzNativeLoader private constructor(
 ) {
     private val linker: Linker = Linker.nativeLinker()
 
+    /** Resolves the named HarfBuzz symbol to a downcall handle using [descriptor]. */
     fun handle(name: String, descriptor: FunctionDescriptor): MethodHandle =
         linker.downcallHandle(
             lookup.find(name).orElseThrow { symbolFailure(name) },
             descriptor,
         )
 
-    fun versionString(): String =
+    /** The version string reported by `hb_version_string`, resolved once and cached. */
+    fun versionString(): String = reportedVersion
+
+    private val reportedVersion: String by lazy(LazyThreadSafetyMode.SYNCHRONIZED) {
         address(handle("hb_version_string", FunctionDescriptor.of(ValueLayout.ADDRESS)))
             .reinterpret(MAX_VERSION_BYTES).getString(0)
+    }
 
     val identity: HarfBuzzBindingIdentity by lazy {
         HarfBuzzBindingIdentity(
@@ -111,6 +146,10 @@ internal class HarfBuzzNativeLoader private constructor(
 
     companion object {
         fun load(platform: HarfBuzzPlatform = HarfBuzzPlatform.detect()): HarfBuzzNativeLoader {
+            if (ValueLayout.ADDRESS.byteSize() != 8L) throw HarfBuzzBindingException(
+                HarfBuzzBindingFailure.UNSUPPORTED_PLATFORM,
+                "HarfBuzz bindings require 64-bit pointers.",
+            )
             val target = harfBuzzNativeTargetFor(platform) ?: throw HarfBuzzBindingException(
                 HarfBuzzBindingFailure.UNSUPPORTED_PLATFORM,
                 "HarfBuzz bindings support only Linux or macOS on x64 or arm64; received " +
@@ -128,7 +167,18 @@ internal class HarfBuzzNativeLoader private constructor(
                     "The bundled HarfBuzz resource failed its SHA-256 verification.",
                 )
             }
-            val path = materialize(target, bytes)
+            val path = try {
+                materialize(target, bytes)
+            } catch (error: HarfBuzzBindingException) {
+                throw error
+            } catch (error: Throwable) {
+                throw HarfBuzzBindingException(
+                    HarfBuzzBindingFailure.LIBRARY_LOAD,
+                    "The bundled HarfBuzz library could not be materialized: " +
+                        (error.message ?: error::class.simpleName),
+                    error,
+                )
+            }
             val scope = Arena.ofShared()
             val lookup = try {
                 SymbolLookup.libraryLookup(path, scope)
@@ -144,9 +194,14 @@ internal class HarfBuzzNativeLoader private constructor(
             val loader = HarfBuzzNativeLoader(target, scope, lookup)
             val reported = try {
                 loader.versionString()
-            } catch (error: HarfBuzzBindingException) {
+            } catch (error: Throwable) {
                 scope.close()
-                throw error
+                throw if (error is HarfBuzzBindingException) error else HarfBuzzBindingException(
+                    HarfBuzzBindingFailure.LIBRARY_LOAD,
+                    "The bundled HarfBuzz library could not be initialised: " +
+                        (error.message ?: error::class.simpleName),
+                    error,
+                )
             }
             if (reported != HARFBUZZ_VERSION) {
                 scope.close()
@@ -176,26 +231,24 @@ internal class HarfBuzzNativeLoader private constructor(
             } finally {
                 Files.deleteIfExists(temporary)
             }
-            check(Files.readAllBytes(destination).sha256Hex() == target.librarySha256) {
-                "The extracted HarfBuzz library did not preserve its verified digest."
-            }
+            val extracted = Files.readAllBytes(destination)
+            if (extracted.sha256Hex() != target.librarySha256) throw HarfBuzzBindingException(
+                HarfBuzzBindingFailure.RESOURCE_CORRUPT,
+                "The extracted HarfBuzz library did not preserve its verified digest.",
+            )
             return destination
         }
     }
 }
 
+/** Invokes a downcall [handle] and narrows its result to a native address. */
 internal fun address(handle: MethodHandle, vararg arguments: Any?): MemorySegment =
     handle.invokeWithArguments(*arguments) as MemorySegment
 
-internal fun int(handle: MethodHandle, vararg arguments: Any?): Int =
-    handle.invokeWithArguments(*arguments) as Int
-
-internal fun callVoid(handle: MethodHandle, vararg arguments: Any?) {
-    handle.invokeWithArguments(*arguments)
-}
-
+/** Lowercase hexadecimal SHA-256 digest of this byte array. */
 internal fun ByteArray.sha256Hex(): String = MessageDigest.getInstance("SHA-256")
     .digest(this)
     .joinToString(separator = "") { byte -> "%02x".format(byte) }
 
+/** Upper bound, in bytes, for the NUL-terminated `hb_version_string` result buffer. */
 internal const val MAX_VERSION_BYTES: Long = 32L
