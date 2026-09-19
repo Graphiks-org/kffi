@@ -25,6 +25,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `NSWorkspaceAccessibilityDisplayOptionsDidChangeNotification` to resolve on macOS.
 
 ### Added
+- JVM macOS `CoreTextFontCatalog` enumerates the CoreText activated registry:
+  available family names (`CTFontManagerCopyAvailableFontFamilyNames`) and one
+  descriptor per font via `CTFontCollectionCreateFromAvailableFonts` /
+  `CTFontCollectionCreateMatchingFontDescriptors`, exposing family, style,
+  PostScript name and registered file path. Every owned CoreFoundation reference
+  is released before returning; no native reference escapes.
 - Optional JVM-only `kffi-coretext` module with source-byte font creation, explicit native
   reference release, raw CoreText metrics, detached affine matrices and bounded Darwin reads.
 - Optional JVM-only `kffi-harfbuzz` module with typed HarfBuzz owners (blob, face, font, buffer),
