@@ -9,11 +9,12 @@ kotlin {
     jvm {
         compilerOptions {
             jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_25)
+            freeCompilerArgs.add("-Xexpect-actual-classes")
         }
     }
     sourceSets {
         jvmMain.dependencies {
-            api(project(":kffi"))
+            implementation(project(":kffi"))
         }
         jvmTest.dependencies {
             implementation(kotlin("test"))

@@ -37,7 +37,7 @@ public actual class HarfBuzz private actual constructor() {
                 cause = null,
             )
         }
-        HarfBuzzScript(value)
+        HarfBuzzScript(canonicalScriptTag(script))
     }
 
     public actual fun parseLanguage(value: String): HarfBuzzLanguage = Arena.ofConfined().use { arena ->
@@ -49,7 +49,11 @@ public actual class HarfBuzz private actual constructor() {
                 cause = null,
             )
         }
-        HarfBuzzLanguage(value)
+        HarfBuzzLanguage(
+            address(operations.languageToString, language)
+                .reinterpret(MAX_LANGUAGE_BYTES)
+                .getString(0),
+        )
     }
 
     public actual companion object {
@@ -98,7 +102,7 @@ public actual class HarfBuzzBlob internal constructor(
     }
 
     public actual fun createFace(faceIndex: Int): HarfBuzzFace {
-        check(!closed) { "The HarfBuzz blob is closed." }
+        requireOpen()
         addDescendant()
         val face = try {
             requireNativeHandle(address(operations.faceCreate, blob, faceIndex), "face")
@@ -107,6 +111,10 @@ public actual class HarfBuzzBlob internal constructor(
             throw error
         }
         return HarfBuzzFace(operations, this, face)
+    }
+
+    private fun requireOpen() {
+        check(!closed) { "This HarfBuzz blob has been closed." }
     }
 
     /** Registers a live face or font that retains this blob's arena. */
@@ -157,14 +165,18 @@ public actual class HarfBuzzFace internal constructor(
 ) : AutoCloseable {
     private var closed: Boolean = false
 
-    public actual fun unitsPerEm(): Int = int(operations.faceGetUpem, face)
+    public actual fun unitsPerEm(): Int {
+        requireOpen()
+        return int(operations.faceGetUpem, face)
+    }
 
     public actual fun makeImmutable() {
+        requireOpen()
         callVoid(operations.faceMakeImmutable, face)
     }
 
     public actual fun createFont(): HarfBuzzFont {
-        check(!closed) { "The HarfBuzz face is closed." }
+        requireOpen()
         blob.addDescendant()
         val font = try {
             requireNativeHandle(address(operations.fontCreate, face), "font")
@@ -175,11 +187,18 @@ public actual class HarfBuzzFace internal constructor(
         return HarfBuzzFont(operations, blob, font)
     }
 
+    private fun requireOpen() {
+        check(!closed) { "This HarfBuzz face has been closed." }
+    }
+
     public actual override fun close() {
         if (closed) return
         closed = true
-        callVoid(operations.faceDestroy, face)
-        blob.releaseDescendant()
+        try {
+            callVoid(operations.faceDestroy, face)
+        } finally {
+            blob.releaseDescendant()
+        }
     }
 }
 
@@ -192,57 +211,72 @@ public actual class HarfBuzzFace internal constructor(
 public actual class HarfBuzzFont internal constructor(
     private val operations: HarfBuzzOperations,
     private val blob: HarfBuzzBlob,
-    internal val nativeFont: MemorySegment,
+    @get:JvmSynthetic internal val nativeFont: MemorySegment,
 ) : AutoCloseable {
     private var closed: Boolean = false
 
     public actual fun useOpenTypeFunctions() {
+        requireOpen()
         callVoid(operations.otFontSetFuncs, nativeFont)
     }
 
     public actual fun setScale(x: Int, y: Int) {
+        requireOpen()
         callVoid(operations.fontSetScale, nativeFont, x, y)
     }
 
     public actual fun makeImmutable() {
+        requireOpen()
         callVoid(operations.fontMakeImmutable, nativeFont)
     }
 
-    public actual fun glyphHorizontalAdvance(glyphId: Int): Int =
-        int(operations.fontGetGlyphHorizontalAdvance, nativeFont, glyphId)
+    public actual fun glyphHorizontalAdvance(glyphId: Int): Int {
+        requireOpen()
+        return int(operations.fontGetGlyphHorizontalAdvance, nativeFont, glyphId)
+    }
 
     public actual fun ligatureCarets(
         direction: HarfBuzzDirection,
         glyphId: Int,
         offset: Int,
         maxCount: Int,
-    ): HarfBuzzLigatureCarets = Arena.ofConfined().use { arena ->
-        val count = arena.allocateFrom(ValueLayout.JAVA_INT, maxCount)
-        val positions = arena.allocate(ValueLayout.JAVA_INT, maxCount.toLong())
-        val totalCount = int(
-            operations.ligatureCarets,
-            nativeFont,
-            direction.toNativeDirection(),
-            glyphId,
-            offset,
-            count,
-            positions,
-        )
-        val copiedCount = count.get(ValueLayout.JAVA_INT, 0).coerceIn(0, maxCount)
-        HarfBuzzLigatureCarets(
-            totalCount = totalCount,
-            copiedCount = copiedCount,
-            positions = IntArray(copiedCount) { index ->
-                positions.getAtIndex(ValueLayout.JAVA_INT, index.toLong())
-            },
-        )
+    ): HarfBuzzLigatureCarets {
+        requireOpen()
+        return Arena.ofConfined().use { arena ->
+            val count = arena.allocateFrom(ValueLayout.JAVA_INT, maxCount)
+            val positions = arena.allocate(ValueLayout.JAVA_INT, maxCount.toLong())
+            val totalCount = int(
+                operations.ligatureCarets,
+                nativeFont,
+                direction.toNativeDirection(),
+                glyphId,
+                offset,
+                count,
+                positions,
+            )
+            val copiedCount = count.get(ValueLayout.JAVA_INT, 0).coerceIn(0, maxCount)
+            HarfBuzzLigatureCarets(
+                totalCount = totalCount,
+                copiedCount = copiedCount,
+                positions = IntArray(copiedCount) { index ->
+                    positions.getAtIndex(ValueLayout.JAVA_INT, index.toLong())
+                },
+            )
+        }
+    }
+
+    private fun requireOpen() {
+        check(!closed) { "This HarfBuzz font has been closed." }
     }
 
     public actual override fun close() {
         if (closed) return
         closed = true
-        callVoid(operations.fontDestroy, nativeFont)
-        blob.releaseDescendant()
+        try {
+            callVoid(operations.fontDestroy, nativeFont)
+        } finally {
+            blob.releaseDescendant()
+        }
     }
 }
 
@@ -259,16 +293,19 @@ public actual class HarfBuzzBuffer internal constructor(
     private var closed: Boolean = false
 
     public actual fun setDirection(direction: HarfBuzzDirection) {
+        requireOpen()
         callVoid(operations.bufferSetDirection, buffer, direction.toNativeDirection())
     }
 
     public actual fun setScript(script: HarfBuzzScript) {
+        requireOpen()
         Arena.ofConfined().use { arena ->
             callVoid(operations.bufferSetScript, buffer, int(operations.scriptFromString, arena.allocateFrom(script.value), -1))
         }
     }
 
     public actual fun setLanguage(language: HarfBuzzLanguage) {
+        requireOpen()
         Arena.ofConfined().use { arena ->
             val nativeLanguage = address(operations.languageFromString, arena.allocateFrom(language.value), -1)
             if (nativeLanguage == MemorySegment.NULL) {
@@ -283,6 +320,7 @@ public actual class HarfBuzzBuffer internal constructor(
     }
 
     public actual fun setClusterLevel(level: HarfBuzzClusterLevel) {
+        requireOpen()
         val nativeLevel = when (level) {
             HarfBuzzClusterLevel.MONOTONE_GRAPHEMES -> 0
             HarfBuzzClusterLevel.MONOTONE_CHARACTERS -> 1
@@ -292,6 +330,7 @@ public actual class HarfBuzzBuffer internal constructor(
     }
 
     public actual fun setFlags(flags: HarfBuzzBufferFlags) {
+        requireOpen()
         var nativeFlags = 0
         if (flags.beginningOfText) nativeFlags = nativeFlags or HB_BUFFER_FLAG_BOT
         if (flags.endOfText) nativeFlags = nativeFlags or HB_BUFFER_FLAG_EOT
@@ -300,6 +339,7 @@ public actual class HarfBuzzBuffer internal constructor(
     }
 
     public actual fun addUtf32(codePoints: IntArray, itemOffset: Int, itemLength: Int) {
+        requireOpen()
         Arena.ofConfined().use { arena ->
             val text = arena.allocate(ValueLayout.JAVA_INT, codePoints.size.toLong())
             for (index in codePoints.indices) {
@@ -309,8 +349,9 @@ public actual class HarfBuzzBuffer internal constructor(
         }
     }
 
-    public actual fun shape(font: HarfBuzzFont, features: List<HarfBuzzFeature>): Boolean =
-        Arena.ofConfined().use { arena ->
+    public actual fun shape(font: HarfBuzzFont, features: List<HarfBuzzFeature>): Boolean {
+        requireOpen()
+        return Arena.ofConfined().use { arena ->
             val featureArray = if (features.isEmpty()) {
                 MemorySegment.NULL
             } else {
@@ -339,10 +380,15 @@ public actual class HarfBuzzBuffer internal constructor(
                 shapers,
             ) != 0
         }
+    }
 
-    public actual fun glyphCount(): Int = int(operations.bufferGetLength, buffer)
+    public actual fun glyphCount(): Int {
+        requireOpen()
+        return int(operations.bufferGetLength, buffer)
+    }
 
     public actual fun glyphInfos(): List<HarfBuzzGlyphInfo> {
+        requireOpen()
         val count = glyphCount()
         if (count == 0) return emptyList()
         val infos = address(operations.bufferGetGlyphInfos, buffer, MemorySegment.NULL)
@@ -362,6 +408,7 @@ public actual class HarfBuzzBuffer internal constructor(
     }
 
     public actual fun glyphPositions(): List<HarfBuzzGlyphPosition> {
+        requireOpen()
         val count = glyphCount()
         if (count == 0) return emptyList()
         val positions = address(operations.bufferGetGlyphPositions, buffer, MemorySegment.NULL)
@@ -375,6 +422,10 @@ public actual class HarfBuzzBuffer internal constructor(
                 yOffset = positions.get(ValueLayout.JAVA_INT, offset + 12),
             )
         }
+    }
+
+    private fun requireOpen() {
+        check(!closed) { "This HarfBuzz buffer has been closed." }
     }
 
     public actual override fun close() {
@@ -460,6 +511,10 @@ internal class HarfBuzzOperations(loader: HarfBuzzNativeLoader) {
         "hb_language_from_string",
         FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT),
     )
+    val languageToString: MethodHandle = loader.handle(
+        "hb_language_to_string",
+        FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS),
+    )
     val scriptFromString: MethodHandle = loader.handle(
         "hb_script_from_string",
         FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT),
@@ -538,6 +593,18 @@ private fun requireNativeHandle(handle: MemorySegment, label: String): MemorySeg
         handle
     }
 
+/**
+ * Decodes the four ASCII characters HarfBuzz packs into an `hb_script_t` tag.
+ *
+ * HarfBuzz stores the ISO 15924 tag big-endian, the same order [HarfBuzzTag.rawValue] produces.
+ */
+private fun canonicalScriptTag(script: Int): String = buildString(4) {
+    append(((script ushr 24) and 0xff).toChar())
+    append(((script ushr 16) and 0xff).toChar())
+    append(((script ushr 8) and 0xff).toChar())
+    append((script and 0xff).toChar())
+}
+
 private const val HB_MEMORY_MODE_READONLY: Int = 1
 /** `HB_SCRIPT_INVALID`, returned by HarfBuzz when a script tag cannot be parsed. */
 private const val HB_SCRIPT_INVALID: Int = 0
@@ -552,3 +619,5 @@ private const val HB_GLYPH_FLAG_UNSAFE_TO_CONCAT: Int = 0x00000002
 private const val FEATURE_BYTES: Long = 16L
 private const val GLYPH_INFO_BYTES: Long = 20L
 private const val GLYPH_POSITION_BYTES: Long = 20L
+/** Upper bound, in bytes, for the NUL-terminated `hb_language_to_string` result buffer. */
+private const val MAX_LANGUAGE_BYTES: Long = 256L

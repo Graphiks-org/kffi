@@ -52,10 +52,11 @@ public enum class HarfBuzzClusterLevel {
 /**
  * A parsed HarfBuzz OpenType script, in its ISO 15924 string form.
  *
- * Use the binding to parse a script identifier; parsing delegates to HarfBuzz.
+ * Use the binding to parse a script identifier; parsing delegates to HarfBuzz and [value]
+ * holds the canonical tag HarfBuzz reports for that identifier.
  */
 public class HarfBuzzScript internal constructor(
-    /** The ISO 15924 script identifier. */
+    /** The ISO 15924 script identifier in HarfBuzz's canonical form. */
     public val value: String,
 ) {
     override fun equals(other: Any?): Boolean = other is HarfBuzzScript && other.value == value
@@ -66,10 +67,11 @@ public class HarfBuzzScript internal constructor(
 /**
  * A parsed HarfBuzz language, in its BCP 47 string form.
  *
- * Use the binding to parse a language identifier; parsing delegates to HarfBuzz.
+ * Use the binding to parse a language identifier; parsing delegates to HarfBuzz and [value]
+ * holds the canonical identifier HarfBuzz reports for that input.
  */
 public class HarfBuzzLanguage internal constructor(
-    /** The BCP 47 language identifier. */
+    /** The BCP 47 language identifier in HarfBuzz's canonical form. */
     public val value: String,
 ) {
     override fun equals(other: Any?): Boolean = other is HarfBuzzLanguage && other.value == value

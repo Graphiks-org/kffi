@@ -94,4 +94,26 @@ class HarfBuzzConsumerProbe {
             assertEquals(listOf(269, 537), carets.positions.toList())
         }
     }
+
+    @Test
+    fun disablingLigaturesThroughFeaturesChangesTheOutput() {
+        val hb = HarfBuzz.open()
+        hb.prepare("/fonts/dejavu/DejaVuSans.ttf", 2048).use { prepared ->
+            val buffer = hb.createBuffer()
+            try {
+                buffer.setDirection(HarfBuzzDirection.LEFT_TO_RIGHT)
+                buffer.setScript(hb.parseScript("Latn"))
+                buffer.setLanguage(hb.parseLanguage("en"))
+                buffer.setClusterLevel(HarfBuzzClusterLevel.MONOTONE_CHARACTERS)
+                val codePoints = "fi".codePoints().toArray()
+                buffer.addUtf32(codePoints, 0, codePoints.size)
+                assertTrue(buffer.shape(prepared.font, listOf(HarfBuzzFeature(HarfBuzzTag.of("liga"), 0))))
+                assertEquals(listOf(73, 76), buffer.glyphInfos().map { it.glyphId })
+                assertEquals(listOf(0, 1), buffer.glyphInfos().map { it.cluster })
+                assertEquals(listOf(721, 569), buffer.glyphPositions().map { it.xAdvance })
+            } finally {
+                buffer.close()
+            }
+        }
+    }
 }
