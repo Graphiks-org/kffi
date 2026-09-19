@@ -27,9 +27,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Optional JVM-only `kffi-fontconfig` module that enumerates the fonts Fontconfig
   reports for the active configuration: `listFonts()` loads the configuration with
-  `FcInitLoadConfigAndFonts`, lists it with `FcFontList`, and reads `FC_FAMILY`,
-  `FC_STYLE`, `FC_FILE` and `FC_POSTSCRIPT_NAME` per pattern. Every native pattern
-  set and configuration is destroyed before returning; no native reference escapes.
+  `FcInitLoadConfigAndFonts`, reads the system set with `FcConfigGetFonts`, and
+  reads `FC_FAMILY`, `FC_STYLE`, `FC_FILE` and `FC_POSTSCRIPT_NAME` per pattern.
+  The loaded configuration is destroyed before returning; no native reference
+  escapes.
 - JVM macOS `CoreTextFontCatalog` enumerates the CoreText activated registry:
   available family names (`CTFontManagerCopyAvailableFontFamilyNames`) and one
   descriptor per font via `CTFontCollectionCreateFromAvailableFonts` /

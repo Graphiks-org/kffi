@@ -49,10 +49,10 @@ public data class FontConfigFont(
  * and configuration is destroyed before returning. Nothing native escapes and no
  * pattern is retained.
  *
- * This enumerates the configured font set (`FcFontList` over the loaded
- * configuration), not a conventional directory listing, so fonts reachable only
- * through Fontconfig rules are included and duplicate files are matched as
- * Fontconfig reports them.
+ * This enumerates the configured system font set (`FcConfigGetFonts` over the
+ * loaded configuration), not a conventional directory listing, so fonts
+ * reachable only through Fontconfig rules are included and duplicate files are
+ * matched as Fontconfig reports them.
  */
 public class FontConfig {
     private val native = FontConfigNativeSymbols.load()
@@ -68,15 +68,12 @@ public class FontConfig {
         if (config == 0L) return emptyList()
         try {
             val fontSet = (
-                native.fontList.invoke(MemorySegment.ofAddress(config), MemorySegment.NULL, MemorySegment.NULL)
+                native.configGetFonts.invoke(MemorySegment.ofAddress(config), FONT_CONFIG_SET_SYSTEM)
                     as MemorySegment
                 ).address()
             if (fontSet == 0L) return emptyList()
-            try {
-                return readFontSet(fontSet)
-            } finally {
-                native.fontSetDestroy.invoke(MemorySegment.ofAddress(fontSet))
-            }
+            // The system font set is owned by the configuration; FcConfigDestroy releases it.
+            return readFontSet(fontSet)
         } finally {
             native.configDestroy.invoke(MemorySegment.ofAddress(config))
         }
@@ -126,6 +123,7 @@ public class FontConfig {
 
     private companion object {
         const val FONT_CONFIG_RESULT_MATCH = 0
+        const val FONT_CONFIG_SET_SYSTEM = 0
         const val MAX_STRING_BYTES = 4096L
         const val FONT_SET_BYTES = 16L
         const val FONT_SET_FONTS_OFFSET = 8L
@@ -140,9 +138,8 @@ public class FontConfig {
  */
 internal class FontConfigNativeSymbols private constructor(
     val initConfigAndFonts: MethodHandle,
-    val fontList: MethodHandle,
+    val configGetFonts: MethodHandle,
     val patternGetString: MethodHandle,
-    val fontSetDestroy: MethodHandle,
     val configDestroy: MethodHandle,
 ) {
     companion object {
@@ -180,9 +177,9 @@ internal class FontConfigNativeSymbols private constructor(
                         "FcInitLoadConfigAndFonts",
                         FunctionDescriptor.of(ValueLayout.ADDRESS),
                     ),
-                    fontList = handle(
-                        "FcFontList",
-                        FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS),
+                    configGetFonts = handle(
+                        "FcConfigGetFonts",
+                        FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT),
                     ),
                     patternGetString = handle(
                         "FcPatternGetString",
@@ -194,7 +191,6 @@ internal class FontConfigNativeSymbols private constructor(
                             ValueLayout.ADDRESS,
                         ),
                     ),
-                    fontSetDestroy = handle("FcFontSetDestroy", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)),
                     configDestroy = handle("FcConfigDestroy", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)),
                 )
             } catch (failure: Throwable) {
