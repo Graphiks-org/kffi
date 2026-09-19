@@ -13,17 +13,22 @@ class DirectWriteTest {
         assertTrue(fonts.isNotEmpty(), "the DirectWrite system collection must report at least one face")
         assertTrue(fonts.all { it.family.isNotBlank() }, "every face must carry a family name")
         assertTrue(fonts.all { it.weight > 0 }, "every face must carry a numeric weight")
+
+        // A reference key is not guaranteed to be a filesystem path, so assert that
+        // the collection yields real font files rather than that every key resolves.
+        val existingPaths = fonts.map { it.filePath }.filter { it.isNotBlank() && File(it).isFile }
+        val reportedPaths = fonts.map { it.filePath }.filter { it.isNotBlank() }.distinct()
         assertTrue(
-            fonts.all { it.filePath.isBlank() || File(it.filePath).isFile },
-            "every reported file path must exist on disk",
+            existingPaths.any { path ->
+                path.endsWith(".ttf", true) || path.endsWith(".ttc", true) || path.endsWith(".otf", true)
+            },
+            "at least one reported file path must be an existing TrueType/OpenType file; " +
+                "reported sample: ${reportedPaths.take(5)}",
         )
         assertTrue(
-            fonts.any { it.filePath.isNotBlank() && it.filePath.endsWith(".ttf", true) || it.filePath.endsWith(".ttc", true) },
-            "at least one TrueType face must be reported",
+            existingPaths.size >= 10,
+            "the system collection must report many existing font files (found ${existingPaths.size})",
         )
-        assertTrue(
-            fonts.any { it.postScriptName.isNotBlank() },
-            "at least one face must carry a PostScript name",
-        )
+        assertTrue(fonts.any { it.postScriptName.isNotBlank() }, "at least one face must carry a PostScript name")
     }
 }
