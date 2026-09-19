@@ -31,6 +31,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   reads `FC_FAMILY`, `FC_STYLE`, `FC_FILE` and `FC_POSTSCRIPT_NAME` per pattern.
   The loaded configuration is destroyed before returning; no native reference
   escapes.
+- Optional JVM-only `kffi-directwrite` module that enumerates the DirectWrite
+  system font collection on Windows: `systemFonts()` creates the shared factory
+  with `DWriteCreateFactory`, walks `IDWriteFontCollection` and returns family,
+  face, PostScript name, file path and numeric weight/stretch/style per face.
+  COM interfaces are dispatched through a small vtable helper over the downcall
+  engine and every acquired reference is released before returning; no native
+  reference escapes.
 - JVM macOS `CoreTextFontCatalog` enumerates the CoreText activated registry:
   available family names (`CTFontManagerCopyAvailableFontFamilyNames`) and one
   descriptor per font via `CTFontCollectionCreateFromAvailableFonts` /
