@@ -220,6 +220,9 @@ public class DirectWrite {
                     .reinterpret(size.toLong())
                     .asByteBuffer()
                     .get(bytes)
+                if (debugKeys.getAndIncrement() < 2) {
+                    println("DWKEY size=$size hex=${bytes.joinToString("") { "%02x".format(it) }}")
+                }
                 return String(bytes, Charsets.UTF_16LE).trimEnd('\u0000')
             } finally {
                 file.release()
@@ -331,6 +334,7 @@ public class DirectWrite {
 
         const val FACTORY_TYPE_SHARED = 0
         const val INFORMATIONAL_STRING_POSTSCRIPT_NAME = 17
+        val debugKeys = java.util.concurrent.atomic.AtomicInteger()
         const val CHAR_BYTES = 2L
         const val IID_BYTES = 16L
 
