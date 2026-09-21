@@ -194,4 +194,4 @@ jobs:
           profile: pixel_7_pro
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           disable-animations: true
-          script: ./gradlew :kffi:connectedAndroidDeviceTest
+          script: ./gradlew --no-parallel :kffi:connectedAndroidDeviceTest :kffi-harfbuzz:connectedAndroidDeviceTest

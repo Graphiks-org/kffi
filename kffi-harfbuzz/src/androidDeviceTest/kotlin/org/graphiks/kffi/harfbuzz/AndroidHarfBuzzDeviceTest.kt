@@ -1,5 +1,6 @@
 package org.graphiks.kffi.harfbuzz
 
+import android.os.Build
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -63,15 +64,22 @@ class AndroidHarfBuzzDeviceTest {
 
     @Test
     fun identityDescribesTheAndroidArtifact() {
+        // The suite runs on the CI x86_64 emulator and on arm64 devices, so derive the expected
+        // ABI from the device itself, using the same normalization the loader applies.
+        val abi = Build.SUPPORTED_ABIS.first()
+        val architecture = when (abi) {
+            "arm64-v8a" -> "arm64"
+            "x86_64" -> "x64"
+            else -> abi
+        }
         val identity = HarfBuzz.open().bindingIdentity
         assertEquals("android", identity.operatingSystem)
-        // CI runs the documented x86_64 emulator; Build.SUPPORTED_ABIS[0] normalizes to x64.
-        assertEquals("x64", identity.architecture)
+        assertEquals(architecture, identity.architecture)
         assertEquals("14.3.0", identity.engineVersion)
         assertEquals("4c2aa804671d7276e8a0eb95da07202ead05c843", identity.upstreamSourceRevision)
         assertTrue(identity.buildChainIdentity.contains("ndk-30.0.15729638"))
         assertTrue(identity.artifactId.startsWith("org.graphiks:kffi-harfbuzz-android:"))
-        assertTrue(identity.artifactId.contains("x86_64/libharfbuzz.so"))
+        assertTrue(identity.artifactId.contains("$abi/libharfbuzz.so"))
         // The digest is observed best-effort: a 64-hex value, or empty when the packaging hides it.
         assertTrue(identity.artifactSha256.isEmpty() || identity.artifactSha256.matches(Regex("[0-9a-f]{64}")))
     }
