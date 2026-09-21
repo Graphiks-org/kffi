@@ -8,10 +8,14 @@ kotlin {
     jvmToolchain(25)
     explicitApi()
 
+    // Both the JVM and Android actual classes are declared as expect/actual classes.
+    compilerOptions {
+        freeCompilerArgs.add("-Xexpect-actual-classes")
+    }
+
     jvm {
         compilerOptions {
             jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_25)
-            freeCompilerArgs.add("-Xexpect-actual-classes")
         }
     }
 
