@@ -25,8 +25,8 @@ kotlin {
 tasks.withType<Test>().configureEach {
     useJUnitPlatform()
     jvmArgs("--enable-native-access=ALL-UNNAMED")
-    onlyIf("HarfBuzz supports macOS and Linux") {
-        System.getProperty("os.name").startsWith("Mac") ||
-            System.getProperty("os.name").startsWith("Linux")
+    onlyIf("HarfBuzz supports Linux, macOS and Windows") {
+        val os = System.getProperty("os.name")
+        os.startsWith("Mac") || os.startsWith("Linux") || os.startsWith("Windows")
     }
 }

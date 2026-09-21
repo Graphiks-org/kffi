@@ -17,6 +17,7 @@ source provenance and binary digest in `HarfBuzzBindingIdentity`.
 | Linux arm64 | `org.lwjgl:lwjgl-harfbuzz:3.4.3:natives-linux-arm64` (artifact SHA-256 `47362b77683f5126946498ea7456c1a0b129791d585cc9f74b2c4d069ca099da`) | `9f2f03173b7fee860cc00d999857d09fa4a362e2` | `b1c7c67034297763e0ce46f3749c4da33a4bb4064929868446cb5a3d81dc26bc` |
 | macOS x64 | HarfBuzz release source archive `harfbuzz-14.3.0.tar.xz` (SHA-256 `16070d77cfc4ba1f1e7327e83bf9b3f55898081cabdb94e56a33e04fc8874eae`) | `4c2aa804671d7276e8a0eb95da07202ead05c843` | `9d1ee85a217d781f91c00627248c8f9611058796f49aaf146dc88c1a1439776c` |
 | macOS arm64 | HarfBuzz release source archive `harfbuzz-14.3.0.tar.xz` (SHA-256 `16070d77cfc4ba1f1e7327e83bf9b3f55898081cabdb94e56a33e04fc8874eae`) | `4c2aa804671d7276e8a0eb95da07202ead05c843` | `504948a7301dc70b1bf9c2f8dc02171c7b7bf35b14d4d5590a8af2a813d73e22` |
+| Windows x64 | `org.lwjgl:lwjgl-harfbuzz:3.4.3:natives-windows` (artifact SHA-256 `eeda0c22381193adfd4c17e5d01007f427edbe25d5420677e130364c5f2d9eb5`) | `9f2f03173b7fee860cc00d999857d09fa4a362e2` | `40214afd46cb9e657ebccf88fde2a0e1fa298751c43121c9bdc06f94fdeab9ca` |
 
 The macOS release tag is `14.3.0` (`07d67dc1d1675fc175e17eade0f2144dd958e977`),
 whose target commit is `4c2aa804671d7276e8a0eb95da07202ead05c843`.
@@ -52,8 +53,11 @@ The macOS dependency allowlist is exactly `@rpath/libharfbuzz.dylib` and
 `/usr/lib/libSystem.B.dylib`. The Linux resource allowlists contain only the
 platform C runtime, math runtime, pthread runtime where applicable, and the
 dynamic loader. The binaries and their provenance were audited when these
-resources were captured. The module's JVM tests run on macOS and Linux, and
-the four embedded library digests are recorded in the provenance matrix above.
+resources were captured. The module's JVM tests run on macOS, Linux and Windows,
+and the five embedded library digests are recorded in the provenance matrix above.
+The Windows resource allowlist contains only `harfbuzz.dll`, whose imports are the
+Windows system libraries `DWrite.dll`, `GDI32.dll`, `KERNEL32.dll`, `RPCRT4.dll`,
+`USER32.dll` and `USP10.dll`; no additional native redistribution is required.
 
 ## Fixed adapter configuration
 

@@ -61,43 +61,63 @@ internal data class HarfBuzzNativeTarget(
 }
 
 /**
- * Resolves the bundled binary for [platform], accepting the common aliases for OS and
- * architecture (`amd64`/`x86_64`, `aarch64`/`arm64`, `mac os x`).
+ * Resolves the bundled binary for [platform], normalizing the OS and architecture reported by
+ * the JVM (`amd64`/`x86_64`, `aarch64`/`arm64`, `mac os x`, `windows server ...`).
  *
  * Returns `null` for any unsupported or unrecognized combination.
  */
 internal fun harfBuzzNativeTargetFor(platform: HarfBuzzPlatform): HarfBuzzNativeTarget? = when (
-    platform.osName.lowercase() to platform.architecture.lowercase()
+    normalizedOperatingSystem(platform.osName) to normalizedArchitecture(platform.architecture)
 ) {
-    "linux" to "amd64", "linux" to "x86_64" -> HarfBuzzNativeTarget(
+    "linux" to "x64" -> HarfBuzzNativeTarget(
         "linux", "x64",
         "/kffi/harfbuzz/linux/x64/libharfbuzz.so", "libharfbuzz.so",
         "9f2f03173b7fee860cc00d999857d09fa4a362e2",
         "9a5e3576912c2f8c8b2533d4a264fec1eac9667adfd64f7e71e80179ba118614",
         "lwjgl-harfbuzz-3.4.3",
     )
-    "linux" to "aarch64", "linux" to "arm64" -> HarfBuzzNativeTarget(
+    "linux" to "arm64" -> HarfBuzzNativeTarget(
         "linux", "arm64",
         "/kffi/harfbuzz/linux/arm64/libharfbuzz.so", "libharfbuzz.so",
         "9f2f03173b7fee860cc00d999857d09fa4a362e2",
         "b1c7c67034297763e0ce46f3749c4da33a4bb4064929868446cb5a3d81dc26bc",
         "lwjgl-harfbuzz-3.4.3",
     )
-    "mac os x" to "x86_64", "mac os x" to "amd64" -> HarfBuzzNativeTarget(
+    "macos" to "x64" -> HarfBuzzNativeTarget(
         "macos", "x64",
         "/kffi/harfbuzz/macos/x64/libharfbuzz.dylib", "libharfbuzz.dylib",
         "4c2aa804671d7276e8a0eb95da07202ead05c843",
         "9d1ee85a217d781f91c00627248c8f9611058796f49aaf146dc88c1a1439776c",
         "cmake-4.4.3;appleclang-21.0.0;macos-sdk-26.5;deployment-target-11.0",
     )
-    "mac os x" to "aarch64", "mac os x" to "arm64" -> HarfBuzzNativeTarget(
+    "macos" to "arm64" -> HarfBuzzNativeTarget(
         "macos", "arm64",
         "/kffi/harfbuzz/macos/arm64/libharfbuzz.dylib", "libharfbuzz.dylib",
         "4c2aa804671d7276e8a0eb95da07202ead05c843",
         "504948a7301dc70b1bf9c2f8dc02171c7b7bf35b14d4d5590a8af2a813d73e22",
         "cmake-4.4.3;appleclang-21.0.0;macos-sdk-26.5;deployment-target-11.0",
     )
+    "windows" to "x64" -> HarfBuzzNativeTarget(
+        "windows", "x64",
+        "/kffi/harfbuzz/windows/x64/libharfbuzz.dll", "libharfbuzz.dll",
+        "9f2f03173b7fee860cc00d999857d09fa4a362e2",
+        "40214afd46cb9e657ebccf88fde2a0e1fa298751c43121c9bdc06f94fdeab9ca",
+        "lwjgl-harfbuzz-3.4.3",
+    )
     else -> null
+}
+
+private fun normalizedOperatingSystem(osName: String): String = when {
+    osName.startsWith("Mac", ignoreCase = true) -> "macos"
+    osName.startsWith("Linux", ignoreCase = true) -> "linux"
+    osName.startsWith("Windows", ignoreCase = true) -> "windows"
+    else -> osName.lowercase()
+}
+
+private fun normalizedArchitecture(architecture: String): String = when (architecture.lowercase()) {
+    "amd64", "x86_64" -> "x64"
+    "aarch64", "arm64" -> "arm64"
+    else -> architecture.lowercase()
 }
 
 /**
@@ -163,7 +183,7 @@ internal class HarfBuzzNativeLoader private constructor(
             )
             val target = harfBuzzNativeTargetFor(platform) ?: throw HarfBuzzBindingException(
                 HarfBuzzBindingFailure.UNSUPPORTED_PLATFORM,
-                "HarfBuzz bindings support only Linux or macOS on x64 or arm64; received " +
+                "HarfBuzz bindings support only Linux, macOS or Windows on x64 or arm64; received " +
                     "${platform.osName}/${platform.architecture}.",
             )
             val bytes = HarfBuzzNativeLoader::class.java.getResourceAsStream(target.resourcePath)
