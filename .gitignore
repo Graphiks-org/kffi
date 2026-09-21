@@ -39,3 +39,4 @@ gradle-app.setting
 # kffi-harfbuzz embeds its audited native binaries as resources; see the module NOTICE.md.
 !kffi-harfbuzz/src/jvmMain/resources/**/*.so
 !kffi-harfbuzz/src/jvmMain/resources/**/*.dylib
+!kffi-harfbuzz/src/jvmMain/resources/**/*.dll
