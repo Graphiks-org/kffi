@@ -1,23 +1,58 @@
 plugins {
     `kotlin-multiplatform`
+    id("com.android.kotlin.multiplatform.library")
     id("ygdrasil.conventions.kmp-publish")
 }
 
 kotlin {
     jvmToolchain(25)
     explicitApi()
+
     jvm {
         compilerOptions {
             jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_25)
             freeCompilerArgs.add("-Xexpect-actual-classes")
         }
     }
+
+    android {
+        namespace = "org.graphiks.kffi.harfbuzz"
+        compileSdk = 36
+        minSdk = 28
+        packaging {
+            jniLibs {
+                useLegacyPackaging = true
+            }
+        }
+        compilerOptions {
+            jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
+        }
+        withDeviceTest {
+            instrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        }
+    }
+
     sourceSets {
         jvmMain.dependencies {
             implementation(project(":kffi"))
         }
         jvmTest.dependencies {
             implementation(kotlin("test"))
+        }
+
+        val androidMain by getting {
+            dependencies {
+                implementation(project(":kffi"))
+                implementation(project(":kffi-harfbuzz-android-native"))
+            }
+        }
+
+        val androidDeviceTest by getting {
+            dependencies {
+                implementation(libs.androidx.test.ext.junit)
+                implementation(libs.androidx.test.runner)
+                implementation(kotlin("test"))
+            }
         }
     }
 }
