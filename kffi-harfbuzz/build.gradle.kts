@@ -36,8 +36,43 @@ kotlin {
         }
     }
 
-    iosArm64()
-    iosSimulatorArm64()
+    val iosArm64Target = iosArm64()
+    val iosSimulatorArm64Target = iosSimulatorArm64()
+
+    // -----------------------------------------------------------------------
+    // Static HarfBuzz cinterop for iOS.
+    //
+    // The archive (libharfbuzz.a) and public headers are produced by the sibling
+    // :kffi-harfbuzz-ios-native module. That module is included *after*
+    // :kffi-harfbuzz in settings.gradle.kts, so it is not guaranteed to be
+    // evaluated when this script is configured: reading its `extra[...]`
+    // properties here would resolve to null. Instead we derive the well-known
+    // paths from its build directory (available pre-evaluation) and depend on
+    // the producing aggregate task by task path (also evaluation-order safe).
+    //
+    // The cinterop static-library search path is passed via `-libraryPath`;
+    // the archive name itself is declared in the .def as `staticLibraries`.
+    // -----------------------------------------------------------------------
+    val iosNativeBuildDirectory = project(":kffi-harfbuzz-ios-native").layout.buildDirectory
+    listOf(
+        iosArm64Target to "iphoneos",
+        iosSimulatorArm64Target to "iphonesimulator",
+    ).forEach { (target, sdk) ->
+        val includeDirectory = iosNativeBuildDirectory.dir("harfbuzz/$sdk/include/harfbuzz").get().asFile
+        val libraryDirectory = iosNativeBuildDirectory.dir("harfbuzz/$sdk/lib").get().asFile
+        val interop = target.compilations.getByName("main").cinterops.create("harfbuzz") {
+            defFile(project.file("src/nativeInterop/cinterop/harfbuzz.def"))
+            // The umbrella header lives beside the .def; the pinned HarfBuzz
+            // headers (hb.h, hb-ot.h) live in the staged include directory.
+            includeDirs(project.file("src/nativeInterop/cinterop"), includeDirectory)
+            extraOpts("-libraryPath", libraryDirectory.absolutePath)
+        }
+        tasks.named(interop.interopProcessingTaskName) {
+            // String task path: no cross-project project()/tasks.named() at
+            // configuration time, so this cannot race module evaluation.
+            dependsOn(":kffi-harfbuzz-ios-native:buildHarfBuzzIos")
+        }
+    }
 
     sourceSets {
         jvmMain.dependencies {

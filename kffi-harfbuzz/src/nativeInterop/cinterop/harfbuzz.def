@@ -1,0 +1,3 @@
+headers = harfbuzz.h
+package = harfbuzz
+staticLibraries = libharfbuzz.a
