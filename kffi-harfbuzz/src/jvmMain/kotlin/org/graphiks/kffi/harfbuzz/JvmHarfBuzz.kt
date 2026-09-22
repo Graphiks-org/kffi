@@ -277,6 +277,26 @@ public actual class HarfBuzzFont internal constructor(
         return int(operations.fontGetGlyphVerticalAdvance, nativeFont, glyphId)
     }
 
+    public actual fun glyphExtents(glyphId: Int): HarfBuzzGlyphExtents {
+        requireOpen()
+        return Arena.ofConfined().use { arena ->
+            val extents = arena.allocate(EXTENTS_BYTES, ValueLayout.JAVA_INT.byteAlignment())
+            if (int(operations.fontGetGlyphExtents, nativeFont, glyphId, extents) == 0) {
+                throw HarfBuzzBindingException(
+                    HarfBuzzBindingFailure.NATIVE_OPERATION,
+                    "HarfBuzz reported no glyph extents for glyph $glyphId.",
+                    cause = null,
+                )
+            }
+            HarfBuzzGlyphExtents(
+                xBearing = extents.get(ValueLayout.JAVA_INT, 0),
+                yBearing = extents.get(ValueLayout.JAVA_INT, 4),
+                width = extents.get(ValueLayout.JAVA_INT, 8),
+                height = extents.get(ValueLayout.JAVA_INT, 12),
+            )
+        }
+    }
+
     public actual fun ligatureCarets(
         direction: HarfBuzzDirection,
         glyphId: Int,
@@ -602,6 +622,15 @@ internal class HarfBuzzOperations(loader: HarfBuzzNativeLoader) {
         "hb_font_get_glyph_v_advance",
         FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT),
     )
+    val fontGetGlyphExtents: MethodHandle = loader.handle(
+        "hb_font_get_glyph_extents",
+        FunctionDescriptor.of(
+            ValueLayout.JAVA_INT,
+            ValueLayout.ADDRESS,
+            ValueLayout.JAVA_INT,
+            ValueLayout.ADDRESS,
+        ),
+    )
     val ligatureCarets: MethodHandle = loader.handle(
         "hb_ot_layout_get_ligature_carets",
         FunctionDescriptor.of(
@@ -672,6 +701,7 @@ private const val HB_GLYPH_FLAG_UNSAFE_TO_BREAK: Int = 0x00000001
 private const val HB_GLYPH_FLAG_UNSAFE_TO_CONCAT: Int = 0x00000002
 private const val FEATURE_BYTES: Long = 16L
 private const val VARIATION_BYTES: Long = 8L
+private const val EXTENTS_BYTES: Long = 16L
 private const val GLYPH_INFO_BYTES: Long = 20L
 private const val GLYPH_POSITION_BYTES: Long = 20L
 /** Upper bound, in bytes, for the NUL-terminated `hb_language_to_string` result buffer. */

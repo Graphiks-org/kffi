@@ -248,6 +248,11 @@ public actual class HarfBuzzFont internal constructor(
         return NativeEngine.callI2PI(operations.fontGetGlyphVerticalAdvance, nativeFont, glyphId).toInt()
     }
 
+    public actual fun glyphExtents(glyphId: Int): HarfBuzzGlyphExtents {
+        requireOpen()
+        return operations.getGlyphExtents(nativeFont, glyphId)
+    }
+
     public actual fun ligatureCarets(
         direction: HarfBuzzDirection,
         glyphId: Int,
@@ -425,6 +430,7 @@ internal class HarfBuzzOperations(private val handle: Long) {
     val glyphInfoGetGlyphFlags: Long = symbol("hb_glyph_info_get_glyph_flags")
     val fontGetGlyphHorizontalAdvance: Long = symbol("hb_font_get_glyph_h_advance")
     val fontGetGlyphVerticalAdvance: Long = symbol("hb_font_get_glyph_v_advance")
+    val fontGetGlyphExtents: Long = symbol("hb_font_get_glyph_extents")
     val ligatureCarets: Long = symbol("hb_ot_layout_get_ligature_carets")
     val versionStringFn: Long = symbol("hb_version_string")
 
@@ -620,6 +626,29 @@ internal class HarfBuzzOperations(private val handle: Long) {
             positions = IntArray(copiedCount) { index -> positions.readInt((index.toLong() * INT_BYTES).toULong()) },
         )
     }
+
+    fun getGlyphExtents(font: Long, glyphId: Int): HarfBuzzGlyphExtents = memoryScope { scope ->
+        val extents = scope.allocateBuffer(EXTENTS_BYTES)
+        val arguments = HarfBuzzCall(scope)
+            .pointer(font)
+            .int(glyphId)
+            .pointer(extents.handler.rawValue)
+        val out = scope.allocateBuffer(OUT_BYTES)
+        NativeEngine.callGeneric(fontGetGlyphExtents, 3, "u32:p,u32,p", arguments.address, out.handler.rawValue)
+        if (out.readInt() == 0) {
+            throw HarfBuzzBindingException(
+                HarfBuzzBindingFailure.NATIVE_OPERATION,
+                "HarfBuzz reported no glyph extents for glyph $glyphId.",
+                cause = null,
+            )
+        }
+        HarfBuzzGlyphExtents(
+            xBearing = extents.readInt(0uL),
+            yBearing = extents.readInt(INT_BYTES.toULong()),
+            width = extents.readInt((2L * INT_BYTES).toULong()),
+            height = extents.readInt((3L * INT_BYTES).toULong()),
+        )
+    }
 }
 
 /**
@@ -743,6 +772,7 @@ private const val VARIATION_BYTES: Long = 8L
 private const val GLYPH_INFO_BYTES: Long = 20L
 private const val GLYPH_POSITION_BYTES: Long = 20L
 private const val OUT_BYTES: ULong = 8uL
+private const val EXTENTS_BYTES: ULong = 16uL
 
 /** Upper bound, in bytes, for the NUL-terminated `hb_version_string` result buffer. */
 private const val MAX_VERSION_BYTES: Int = 32

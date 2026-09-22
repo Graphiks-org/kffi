@@ -26,6 +26,7 @@ import harfbuzz.hb_face_make_immutable
 import harfbuzz.hb_feature_t
 import harfbuzz.hb_font_create
 import harfbuzz.hb_font_destroy
+import harfbuzz.hb_font_get_glyph_extents
 import harfbuzz.hb_font_get_glyph_h_advance
 import harfbuzz.hb_font_get_glyph_v_advance
 import harfbuzz.hb_font_make_immutable
@@ -33,6 +34,7 @@ import harfbuzz.hb_font_set_scale
 import harfbuzz.hb_font_set_var_coords_normalized
 import harfbuzz.hb_font_set_variations
 import harfbuzz.hb_variation_t
+import harfbuzz.hb_glyph_extents_t
 import harfbuzz.hb_glyph_info_get_glyph_flags
 import harfbuzz.hb_language_from_string
 import harfbuzz.hb_language_to_string
@@ -298,6 +300,26 @@ public actual class HarfBuzzFont internal constructor(
     public actual fun glyphVerticalAdvance(glyphId: Int): Int {
         requireOpen()
         return hb_font_get_glyph_v_advance(nativeFont, glyphId.toUInt())
+    }
+
+    public actual fun glyphExtents(glyphId: Int): HarfBuzzGlyphExtents {
+        requireOpen()
+        return memScoped {
+            val extents = alloc<hb_glyph_extents_t>()
+            if (hb_font_get_glyph_extents(nativeFont, glyphId.toUInt(), extents.ptr) == 0) {
+                throw HarfBuzzBindingException(
+                    HarfBuzzBindingFailure.NATIVE_OPERATION,
+                    "HarfBuzz reported no glyph extents for glyph $glyphId.",
+                    cause = null,
+                )
+            }
+            HarfBuzzGlyphExtents(
+                xBearing = extents.x_bearing,
+                yBearing = extents.y_bearing,
+                width = extents.width,
+                height = extents.height,
+            )
+        }
     }
 
     public actual fun ligatureCarets(

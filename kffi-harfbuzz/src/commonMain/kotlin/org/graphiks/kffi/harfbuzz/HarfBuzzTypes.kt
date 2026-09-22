@@ -158,6 +158,25 @@ public data class HarfBuzzGlyphPosition(
 )
 
 /**
+ * The glyph ink extents HarfBuzz reports for one glyph, in the font's current scale.
+ *
+ * The fields follow HarfBuzz's y-down convention: [yBearing] measures from the origin down to the
+ * top of the ink box, so [height] is negative for the usual downward box. A glyph with no outline,
+ * such as `space` or the `.notdef` glyph, reports all four fields as zero.
+ *
+ * @property xBearing the horizontal distance from the origin to the left edge of the ink box.
+ * @property yBearing the vertical distance from the origin to the top edge of the ink box.
+ * @property width the ink box width, normally positive.
+ * @property height the ink box height, normally negative because the y axis points down.
+ */
+public data class HarfBuzzGlyphExtents(
+    val xBearing: Int,
+    val yBearing: Int,
+    val width: Int,
+    val height: Int,
+)
+
+/**
  * The raw result of a GDEF ligature-caret query.
  *
  * [totalCount] is the native return value and [copiedCount] is the in/out count after the
