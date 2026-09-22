@@ -61,13 +61,19 @@ class IosHarfBuzzTest {
         assertEquals("arm64", identity.architecture)
         assertEquals("14.3.0", identity.engineVersion)
         assertEquals("4c2aa804671d7276e8a0eb95da07202ead05c843", identity.upstreamSourceRevision)
-        // The digest is generated at build time from the archive actually linked, and is
-        // toolchain- and build-path-dependent: the same source rebuilt on another machine or
-        // CI runner produces a different sha, so a pinned literal would only pass on the
-        // machine that produced it. Compare against the generated constant the binding reads
-        // instead; the per-release reference digest is published in
-        // kffi-harfbuzz-ios-native/NOTICE.md. Still assert the shape so a malformed or empty
-        // generated value cannot slip through.
+        // What this guards: (1) the identity wiring — the build-time generated `actual`
+        // constants actually reach the published `HarfBuzzBindingIdentity`; (2) the 64-hex
+        // shape, so a malformed or empty generated digest cannot pass; (3) the slice selector
+        // — the generated SDK name (`iphonesimulator`) is carried through the artifact id and
+        // the build-chain string.
+        //
+        // It does NOT prove the built archive matches the NOTICE'd reference:
+        // `iosHarfBuzzArtifactSha256` is the very constant this equality compares against, so
+        // on its own the assertion is tautological. Drift between the archive actually linked
+        // and the reference digest in `kffi-harfbuzz-ios-native/NOTICE.md` is a publish-time
+        // check (the seal + digest tasks), not one this test can make — the digest is
+        // toolchain- and build-path-dependent, so a pinned literal here would only pass on the
+        // machine that produced it.
         assertTrue(identity.artifactSha256.matches(Regex("[0-9a-f]{64}")))
         assertEquals(iosHarfBuzzArtifactSha256, identity.artifactSha256)
         assertTrue(identity.artifactId.startsWith("org.graphiks:kffi-harfbuzz-iossimulatorarm64:"))
@@ -86,8 +92,12 @@ class IosHarfBuzzTest {
             assertEquals(36, infos.first().glyphId)
             val positions = buffer.glyphPositions()
             assertEquals(1, positions.size)
-            // DejaVu Sans: glyph 36 ('A'), 1401 font units at UPEM 2048. Frozen oracle in
-            // the JVM `HarfBuzzConsumerProbe` ("AVATAR").
+            // DejaVu Sans: glyph 36 ('A'), 1401 font units at UPEM 2048. The literal is the
+            // frozen "AVATAR" oracle from the JVM `HarfBuzzConsumerProbe`, which was produced
+            // by the external `hb-shape` tool at HarfBuzz 14.4.0; this iOS slice links the
+            // pinned 14.3.0 archive instead. The values agree across the two revisions here,
+            // but they are not the same revision, so this is a value-conformance check rather
+            // than a same-revision equivalence proof.
             assertEquals(1401, positions.first().xAdvance)
         }
     }
