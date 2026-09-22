@@ -83,11 +83,41 @@ public expect class HarfBuzzFont : AutoCloseable {
     /** Sets the font scale in font units. */
     public fun setScale(x: Int, y: Int)
 
+    /**
+     * Sets the normalized variation coordinates, one per variation axis in face order.
+     *
+     * Each value is scaled by 16384 (HarfBuzz's 2.14 fixed-point encoding), so a coordinate in
+     * normalized user space must be passed as `(value * 16384).toInt()`. An empty array clears the
+     * coordinates and is safe.
+     *
+     * Like [setScale] this is a no-op on an immutable font and must be called before
+     * [makeImmutable].
+     */
+    public fun setVarCoordsNormalized(coords: IntArray)
+
+    /**
+     * Sets the OpenType variation-axis values, matched to the axes by tag.
+     *
+     * An empty list clears the variation settings and is safe.
+     *
+     * Like [setScale] this is a no-op on an immutable font and must be called before
+     * [makeImmutable].
+     */
+    public fun setVariations(variations: List<HarfBuzzVariation>)
+
     /** Makes the font immutable, as required before shaping. */
     public fun makeImmutable()
 
     /** Returns the horizontal advance of [glyphId] in the current scale. */
     public fun glyphHorizontalAdvance(glyphId: Int): Int
+
+    /**
+     * Returns the vertical advance of [glyphId] in the current scale.
+     *
+     * The value follows HarfBuzz's y-down vertical convention: for the usual downward advance it
+     * is the negated `vmtx` advance and therefore negative.
+     */
+    public fun glyphVerticalAdvance(glyphId: Int): Int
 
     /**
      * Queries up to [maxCount] GDEF ligature caret positions for [glyphId].
