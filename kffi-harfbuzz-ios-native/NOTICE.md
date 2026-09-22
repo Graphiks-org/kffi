@@ -18,7 +18,7 @@ Introspection, Uniscribe, DirectWrite) is disabled.
 | Build system | Xcode 26.6 (17F113), CMake 4.4.3, `Unix Makefiles` |
 | C/C++ compiler | Apple clang 21.0.0 (`clang-2100.1.1.101`) |
 | iOS SDK | 26.5 (`iphoneos` + `iphonesimulator`) |
-| iOS deployment target | 13.0 |
+| iOS deployment target | 15.0 |
 | Gradle | 9.7.0 |
 | Slices | `iosArm64` (device, arm64), `iosSimulatorArm64` (simulator, arm64) |
 
@@ -28,8 +28,8 @@ Each slice is a single-architecture archive — **not** a fat/universal binary.
 
 | Slice | Path | SHA-256 |
 | --- | --- | --- |
-| device | `build/harfbuzz/iphoneos/lib/libharfbuzz.a` | `76d1beace0a0530d4c51992ce2a835ecc2c55722fe3cb215915bf98f4704aacb` |
-| simulator | `build/harfbuzz/iphonesimulator/lib/libharfbuzz.a` | `d190f1a654cd306b804a10a29d7501a068a89a4a9b321866ee64d5da4841ec09` |
+| device | `build/harfbuzz/iphoneos/lib/libharfbuzz.a` | `d3393c61a7276578f203e6b7115d2ea549311d5d0be0d302963652c70e0a18b7` |
+| simulator | `build/harfbuzz/iphonesimulator/lib/libharfbuzz.a` | `f3c5e805c72362362e1b8f467dbd4f27ba07fb4f1f68619858c76de662764cb2` |
 
 CMake archives with `ar qc` followed by `ranlib`; `ranlib` stamps the
 `__.SYMDEF` index with the wall-clock time, which makes otherwise byte-identical

@@ -50,7 +50,7 @@ val sealTaskNames = iosSlices.map { (suffix, sdk) ->
             "-DCMAKE_SYSTEM_NAME=iOS",
             "-DCMAKE_OSX_ARCHITECTURES=arm64",
             "-DCMAKE_OSX_SYSROOT=$sdk",
-            "-DCMAKE_OSX_DEPLOYMENT_TARGET=13.0",
+            "-DCMAKE_OSX_DEPLOYMENT_TARGET=15.0",
             "-DCMAKE_BUILD_TYPE=Release",
             "-DCMAKE_INSTALL_PREFIX=${stageRoot.absolutePath}",
         )
