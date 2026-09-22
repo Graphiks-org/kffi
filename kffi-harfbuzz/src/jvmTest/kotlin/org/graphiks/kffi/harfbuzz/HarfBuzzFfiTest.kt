@@ -140,6 +140,36 @@ class HarfBuzzFfiTest {
         assertEquals(baseline, empty)
     }
 
+    @Test
+    fun glyphExtentsReportOutlineAndRejectUnresolvedGlyphs() {
+        val hb = HarfBuzz.open()
+        val blob = hb.createBlob(fontBytes())
+        try {
+            val face = blob.createFace(0)
+            val font = face.createFont()
+            try {
+                font.useOpenTypeFunctions()
+                val upem = face.unitsPerEm()
+                font.setScale(upem, upem)
+                face.makeImmutable()
+                font.makeImmutable()
+                // DejaVu Sans glyph 36 is 'A': a real outline with positive width and negative height.
+                val a = font.glyphExtents(36)
+                assertTrue(a.width > 0)
+                assertTrue(a.height < 0)
+                // Glyph 3 (space) has no outline; HarfBuzz reports an all-zero box, not a failure.
+                assertEquals(HarfBuzzGlyphExtents(0, 0, 0, 0), font.glyphExtents(3))
+                // A glyph id the font cannot resolve surfaces the native false as a binding failure.
+                assertFailsWith<HarfBuzzBindingException> { font.glyphExtents(999999) }
+            } finally {
+                font.close()
+                face.close()
+            }
+        } finally {
+            blob.close()
+        }
+    }
+
     private fun advances(hb: HarfBuzz, configure: (HarfBuzzFont) -> Unit): List<Int> {
         val blob = hb.createBlob(fontBytes())
         try {

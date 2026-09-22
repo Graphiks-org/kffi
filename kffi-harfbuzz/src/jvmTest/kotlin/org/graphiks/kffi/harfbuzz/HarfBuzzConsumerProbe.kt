@@ -166,4 +166,31 @@ class HarfBuzzConsumerProbe {
             assertEquals(800, prepared.font.glyphHorizontalAdvance(2))
         }
     }
+
+    @Test
+    fun variableFontExtentsMatchTheFrozenOracle() {
+        val hb = HarfBuzz.open()
+        val resource = "/fonts/kffi-var/KffiVar.ttf"
+        // KffiVar's `A` (glyph 2) is a triangle whose base tracks the advance, so the ink box moves
+        // with `wght` even though only the advance is in HVAR. The width varies 400 / 300 / 600.
+        hb.prepare(resource, 1000).use { prepared ->
+            assertEquals(HarfBuzzGlyphExtents(100, 700, 400, -700), prepared.font.glyphExtents(2))
+        }
+        hb.prepare(resource, 1000) { font ->
+            font.setVarCoordsNormalized(intArrayOf(-16384))
+        }.use { prepared ->
+            assertEquals(HarfBuzzGlyphExtents(100, 700, 300, -700), prepared.font.glyphExtents(2))
+        }
+        hb.prepare(resource, 1000) { font ->
+            font.setVarCoordsNormalized(intArrayOf(16384))
+        }.use { prepared ->
+            assertEquals(HarfBuzzGlyphExtents(100, 700, 600, -700), prepared.font.glyphExtents(2))
+        }
+        // The user-space axis setter reaches the same varied ink box.
+        hb.prepare(resource, 1000) { font ->
+            font.setVariations(listOf(HarfBuzzVariation(HarfBuzzTag.of("wght"), 900f)))
+        }.use { prepared ->
+            assertEquals(HarfBuzzGlyphExtents(100, 700, 600, -700), prepared.font.glyphExtents(2))
+        }
+    }
 }

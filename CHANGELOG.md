@@ -53,6 +53,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   values and `setVarCoordsNormalized` applies 2.14 fixed-point coordinates before the font is made
   immutable, and `glyphVerticalAdvance` reads the negated `vmtx` advance. Proven against a
   project-generated variable test font whose expected metrics were frozen with external `hb-shape`.
+- `kffi-harfbuzz` glyph ink extents: `HarfBuzzFont.glyphExtents` reads `hb_glyph_extents_t`
+  (`x`/`y` bearing, width, height) in the current scale and raises `HarfBuzzBindingException` when
+  HarfBuzz reports none for the glyph. Proven on the project-generated variable font, whose `A`
+  ink-box width varies 400/300/600 across the `wght` axis, with expected values frozen by external
+  `hb-shape` and cross-checked against the bundled library.
 - Optional ScreenCaptureKit minimum frame intervals encoded as valid nanosecond CoreMedia times,
   preserving caller-requested pacing in the managed stream configuration.
 - A distinct ScreenCaptureKit reservation cancellation result for a host picker dismissed before

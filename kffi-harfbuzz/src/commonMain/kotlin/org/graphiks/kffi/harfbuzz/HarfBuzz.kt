@@ -120,6 +120,16 @@ public expect class HarfBuzzFont : AutoCloseable {
     public fun glyphVerticalAdvance(glyphId: Int): Int
 
     /**
+     * Returns the ink extents of [glyphId] in the current scale.
+     *
+     * The four fields follow HarfBuzz's y-down convention: [HarfBuzzGlyphExtents.yBearing] measures
+     * to the top of the ink box and [HarfBuzzGlyphExtents.height] is normally negative. A glyph
+     * without outline extents reports zeros.
+     * Throws [HarfBuzzBindingException] if HarfBuzz reports no extents for [glyphId].
+     */
+    public fun glyphExtents(glyphId: Int): HarfBuzzGlyphExtents
+
+    /**
      * Queries up to [maxCount] GDEF ligature caret positions for [glyphId].
      * Throws [HarfBuzzBindingException] if the native query fails.
      */

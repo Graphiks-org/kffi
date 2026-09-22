@@ -170,6 +170,50 @@ class AndroidHarfBuzzDeviceTest {
         })
     }
 
+    @Test
+    fun extentsMatchTheFrozenOracleOnTheVariableFixture() {
+        val harfbuzz = HarfBuzz.open()
+        // KffiVar's `A` (glyph 2) is a triangle whose base tracks the advance, so the ink box moves
+        // with `wght` even though only the advance is in HVAR: width 400 / 300 / 600.
+        assertEquals(HarfBuzzGlyphExtents(100, 700, 400, -700), variedExtents(harfbuzz) {})
+        assertEquals(HarfBuzzGlyphExtents(100, 700, 300, -700), variedExtents(harfbuzz) { font ->
+            font.setVarCoordsNormalized(intArrayOf(-16384))
+        })
+        assertEquals(HarfBuzzGlyphExtents(100, 700, 600, -700), variedExtents(harfbuzz) { font ->
+            font.setVarCoordsNormalized(intArrayOf(16384))
+        })
+        // The user-space axis setter reaches the same varied ink box.
+        assertEquals(HarfBuzzGlyphExtents(100, 700, 600, -700), variedExtents(harfbuzz) { font ->
+            font.setVariations(listOf(HarfBuzzVariation(HarfBuzzTag.of("wght"), 900f)))
+        })
+    }
+
+    /**
+     * Applies [configure] to a fresh KffiVar font and returns the frozen ink extents of `A` (glyph
+     * `2`). Mirrors the JVM `HarfBuzzConsumerProbe` oracle.
+     */
+    private fun variedExtents(harfbuzz: HarfBuzz, configure: (HarfBuzzFont) -> Unit): HarfBuzzGlyphExtents {
+        val blob = harfbuzz.createBlob(variableFontBytes())
+        try {
+            val face = blob.createFace(0)
+            val font = face.createFont()
+            try {
+                font.useOpenTypeFunctions()
+                val upem = face.unitsPerEm()
+                font.setScale(upem, upem)
+                configure(font)
+                face.makeImmutable()
+                font.makeImmutable()
+                return font.glyphExtents(2)
+            } finally {
+                font.close()
+                face.close()
+            }
+        } finally {
+            blob.close()
+        }
+    }
+
     /**
      * Applies [configure] to a fresh KffiVar font, checks the frozen vertical advance, and returns
      * the horizontal advance of `A` (glyph `2`). Mirrors the JVM `HarfBuzzConsumerProbe` oracle.
