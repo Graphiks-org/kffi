@@ -35,8 +35,11 @@ val iosDigestTasks = listOf(
         val archiveFile = archive.get().asFile
         inputs.file(archiveFile)
         outputs.dir(generatedDirectory)
+        // Sealing this slice's archive is the producer of the `.a` digest. Depend on the
+        // per-slice seal task rather than the `buildHarfBuzzIos` aggregate, so generating the
+        // device digest does not build the simulator slice (and vice versa).
         // String task path: no cross-project evaluation at configuration time.
-        dependsOn(":kffi-harfbuzz-ios-native:buildHarfBuzzIos")
+        dependsOn(":kffi-harfbuzz-ios-native:sealHarfBuzzIos$suffix")
         doLast {
             val digest = MessageDigest.getInstance("SHA-256")
                 .digest(archiveFile.readBytes())
@@ -51,6 +54,8 @@ val iosDigestTasks = listOf(
                     appendLine("internal actual val iosHarfBuzzArtifactId: String = \"$artifactId\"")
                     appendLine()
                     appendLine("internal actual val iosHarfBuzzArtifactSha256: String = \"$digest\"")
+                    appendLine()
+                    appendLine("internal actual val iosHarfBuzzIosSdkName: String = \"$sdk\"")
                 },
             )
         }

@@ -13,15 +13,27 @@ internal const val HARFBUZZ_IOS_OPERATING_SYSTEM: String = "ios"
 internal const val HARFBUZZ_IOS_ARCHITECTURE: String = "arm64"
 
 /**
+ * The SDK label of the embedded archive for the current slice.
+ *
+ * Generated at build time from the staged slice path the digest task already resolves: `iphoneos`
+ * for the device slice, `iphonesimulator` for the simulator slice. It is what makes
+ * [HARFBUZZ_IOS_BUILD_CHAIN] name the SDK the slice actually links against.
+ */
+internal expect val iosHarfBuzzIosSdkName: String
+
+/**
  * The toolchain identity of the embedded static archive.
  *
- * Every component is recorded by the `:kffi-harfbuzz-ios-native` build: Xcode 26.6 (17F113),
- * CMake 4.4.3, Apple clang 21.0.0, iOS SDK 26.5 and a deployment target of 15.0 are the pinned
- * values in `CMakeLists.txt` and the module `NOTICE.md`. A change to any of them changes the
- * archive digest, so the identity and the digest always describe the same build.
+ * This is hand-maintained from the A2 `NOTICE.md`, matching the Android build-chain convention:
+ * Xcode 26.6 (17F113), CMake 4.4.3, Apple clang 21.0.0, the per-slice iOS SDK 26.5
+ * ([iosHarfBuzzIosSdkName]) and a deployment target of 15.0. Unlike the archive digest — which is
+ * generated at build time from the staged `libharfbuzz.a` and therefore always describes the
+ * embedded archive — this string is not derived from the build: it must be updated by hand when the
+ * `:kffi-harfbuzz-ios-native` toolchain changes, and on a different toolchain it can diverge from
+ * the digest of the archive actually linked.
  */
-internal const val HARFBUZZ_IOS_BUILD_CHAIN: String =
-    "cmake-4.4.3;xcode-26.6;appleclang-21.0.0;iphoneos-sdk-26.5;deployment-target-15.0"
+internal val HARFBUZZ_IOS_BUILD_CHAIN: String
+    get() = "cmake-4.4.3;xcode-26.6;appleclang-21.0.0;$iosHarfBuzzIosSdkName-sdk-26.5;deployment-target-15.0"
 
 /**
  * The Maven coordinate of the embedded archive for the current slice.

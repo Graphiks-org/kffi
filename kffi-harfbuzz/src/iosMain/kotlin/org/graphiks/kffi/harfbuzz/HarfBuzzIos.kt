@@ -6,7 +6,7 @@ import cnames.structs.hb_blob_t
 import cnames.structs.hb_buffer_t
 import cnames.structs.hb_face_t
 import cnames.structs.hb_font_t
-import harfbuzz.hb_blob_create
+import harfbuzz.hb_blob_create_or_fail
 import harfbuzz.hb_blob_destroy
 import harfbuzz.hb_buffer_add_utf32
 import harfbuzz.hb_buffer_create
@@ -130,7 +130,7 @@ public actual class HarfBuzz private actual constructor() {
  * so every child must be closed before its parent. Close is idempotent, but it is not synchronised
  * across threads.
  *
- * The cinterop `hb_blob_create` binding disables string conversion (`noStringConversion` in
+ * The cinterop `hb_blob_create_or_fail` binding disables string conversion (`noStringConversion` in
  * `harfbuzz.def`), so its `const char* data` parameter is a raw pointer and can carry arbitrary
  * font bytes losslessly.
  */
@@ -399,18 +399,22 @@ private fun harfBuzzVersionString(): String {
  *
  * `HB_MEMORY_MODE_DUPLICATE` makes HarfBuzz duplicate the pinned bytes during the call, so the
  * returned blob stays valid after this function returns and the source array can be collected.
- * HarfBuzz returns its empty blob for a zero-length input, so an empty array needs no pointer.
+ * `hb_blob_create_or_fail` returns `null` when that duplicate cannot be allocated, which
+ * [requireNativeHandle] maps to [HarfBuzzBindingFailure.NATIVE_OPERATION]; the non-failing
+ * `hb_blob_create` would instead hand back a non-null empty blob and silently drop the font. A
+ * zero-length input yields a freshly allocated empty blob (never the shared singleton and never
+ * `null`), so an empty array needs no pointer but still gets a blob.
  */
 private fun createMemoryBlob(bytes: ByteArray): CPointer<hb_blob_t> {
     if (bytes.isEmpty()) {
         return requireNativeHandle(
-            hb_blob_create(null, 0u, hb_memory_mode_t.HB_MEMORY_MODE_DUPLICATE, null, null),
+            hb_blob_create_or_fail(null, 0u, hb_memory_mode_t.HB_MEMORY_MODE_DUPLICATE, null, null),
             "blob",
         )
     }
     return bytes.usePinned { pinned ->
         requireNativeHandle(
-            hb_blob_create(
+            hb_blob_create_or_fail(
                 pinned.addressOf(0),
                 bytes.size.toUInt(),
                 hb_memory_mode_t.HB_MEMORY_MODE_DUPLICATE,
