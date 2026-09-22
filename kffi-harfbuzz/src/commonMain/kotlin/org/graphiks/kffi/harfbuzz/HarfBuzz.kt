@@ -111,7 +111,12 @@ public expect class HarfBuzzFont : AutoCloseable {
     /** Returns the horizontal advance of [glyphId] in the current scale. */
     public fun glyphHorizontalAdvance(glyphId: Int): Int
 
-    /** Returns the vertical advance of [glyphId] in the current scale. */
+    /**
+     * Returns the vertical advance of [glyphId] in the current scale.
+     *
+     * The value follows HarfBuzz's y-down vertical convention: for the usual downward advance it
+     * is the negated `vmtx` advance and therefore negative.
+     */
     public fun glyphVerticalAdvance(glyphId: Int): Int
 
     /**
