@@ -121,4 +121,30 @@ class AndroidHarfBuzzDeviceTest {
             }
         }
     }
+
+    @Test
+    fun variationSettersAreSafeOnTheNonVariableFixture() {
+        val harfbuzz = HarfBuzz.open()
+        val blob = harfbuzz.createBlob(fontBytes())
+        val face = blob.createFace(0)
+        val font = face.createFont()
+        try {
+            font.useOpenTypeFunctions()
+            val upem = face.unitsPerEm()
+            font.setScale(upem, upem)
+            // DejaVuSans has no fvar/gvar, so these are accepted no-ops; empty input must be safe.
+            font.setVarCoordsNormalized(intArrayOf(-16384, 0))
+            font.setVariations(listOf(HarfBuzzVariation(HarfBuzzTag.of("wght"), 700f)))
+            font.setVarCoordsNormalized(IntArray(0))
+            font.setVariations(emptyList())
+            face.makeImmutable()
+            font.makeImmutable()
+            assertTrue(font.glyphHorizontalAdvance(36) > 0)
+            font.glyphVerticalAdvance(36)
+        } finally {
+            font.close()
+            face.close()
+            blob.close()
+        }
+    }
 }

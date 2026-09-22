@@ -23,13 +23,19 @@ class HarfBuzzConsumerProbe {
         }
     }
 
-    private fun HarfBuzz.prepare(resource: String, scale: Int): Prepared {
+    private fun HarfBuzz.prepare(
+        resource: String,
+        scale: Int,
+        configure: (HarfBuzzFont) -> Unit = {},
+    ): Prepared {
         val blob = createBlob(fontBytes(resource))
         try {
             val face = blob.createFace(0)
             val font = face.createFont()
             font.useOpenTypeFunctions()
             font.setScale(scale, scale)
+            // Variation setters are no-ops on an immutable font, so they run before makeImmutable.
+            configure(font)
             face.makeImmutable()
             font.makeImmutable()
             return Prepared(blob, font)
@@ -114,6 +120,45 @@ class HarfBuzzConsumerProbe {
             } finally {
                 buffer.close()
             }
+        }
+    }
+
+    @Test
+    fun variableFontVariationsMatchTheFrozenOracle() {
+        val hb = HarfBuzz.open()
+        val resource = "/fonts/kffi-var/KffiVar.ttf"
+        hb.prepare(resource, 1000).use { prepared ->
+            assertEquals(600, prepared.font.glyphHorizontalAdvance(2))
+            assertEquals(-1300, prepared.font.glyphVerticalAdvance(2))
+        }
+        hb.prepare(resource, 1000) { font ->
+            font.setVariations(listOf(HarfBuzzVariation(HarfBuzzTag.of("wght"), 100f)))
+        }.use { prepared ->
+            assertEquals(500, prepared.font.glyphHorizontalAdvance(2))
+            // The vertical axis does not vary, so the VVAR deltas are zero.
+            assertEquals(-1300, prepared.font.glyphVerticalAdvance(2))
+        }
+        hb.prepare(resource, 1000) { font ->
+            font.setVariations(listOf(HarfBuzzVariation(HarfBuzzTag.of("wght"), 900f)))
+        }.use { prepared ->
+            assertEquals(800, prepared.font.glyphHorizontalAdvance(2))
+        }
+    }
+
+    @Test
+    fun variableFontNormalizedCoordsMatchTheFrozenOracle() {
+        val hb = HarfBuzz.open()
+        val resource = "/fonts/kffi-var/KffiVar.ttf"
+        // wght 100 normalizes to -1.0 (-16384 in HarfBuzz's 2.14 fixed point); 900 normalizes to +16384.
+        hb.prepare(resource, 1000) { font ->
+            font.setVarCoordsNormalized(intArrayOf(-16384))
+        }.use { prepared ->
+            assertEquals(500, prepared.font.glyphHorizontalAdvance(2))
+        }
+        hb.prepare(resource, 1000) { font ->
+            font.setVarCoordsNormalized(intArrayOf(16384))
+        }.use { prepared ->
+            assertEquals(800, prepared.font.glyphHorizontalAdvance(2))
         }
     }
 }
