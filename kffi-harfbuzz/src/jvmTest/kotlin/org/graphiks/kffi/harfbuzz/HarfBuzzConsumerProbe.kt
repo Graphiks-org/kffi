@@ -16,9 +16,14 @@ class HarfBuzzConsumerProbe {
     private fun fontBytes(resource: String): ByteArray =
         javaClass.getResourceAsStream(resource)!!.use { it.readBytes() }
 
-    private class Prepared(val blob: HarfBuzzBlob, val font: HarfBuzzFont) : AutoCloseable {
+    private class Prepared(
+        val blob: HarfBuzzBlob,
+        val face: HarfBuzzFace,
+        val font: HarfBuzzFont,
+    ) : AutoCloseable {
         override fun close() {
             font.close()
+            face.close()
             blob.close()
         }
     }
@@ -38,7 +43,7 @@ class HarfBuzzConsumerProbe {
             configure(font)
             face.makeImmutable()
             font.makeImmutable()
-            return Prepared(blob, font)
+            return Prepared(blob, face, font)
         } catch (error: Throwable) {
             blob.close()
             throw error
