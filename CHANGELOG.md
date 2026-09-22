@@ -49,6 +49,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Optional JVM-only `kffi-harfbuzz` module with typed HarfBuzz owners (blob, face, font, buffer),
   explicit safe release, shaping, glyph flags, advances and GDEF ligature carets, with the audited
   macOS/Linux x64+arm64 binaries embedded and hash-verified.
+- `kffi-harfbuzz` variable-font support: `HarfBuzzFont.setVariations` applies user-space axis
+  values and `setVarCoordsNormalized` applies 2.14 fixed-point coordinates before the font is made
+  immutable, and `glyphVerticalAdvance` reads the negated `vmtx` advance. Proven against a
+  project-generated variable test font whose expected metrics were frozen with external `hb-shape`.
 - Optional ScreenCaptureKit minimum frame intervals encoded as valid nanosecond CoreMedia times,
   preserving caller-requested pacing in the managed stream configuration.
 - A distinct ScreenCaptureKit reservation cancellation result for a host picker dismissed before

@@ -1,10 +1,10 @@
 # HarfBuzz C bindings
 
-`kffi-harfbuzz` is an optional JVM 25 module for macOS and Linux on arm64 and
-x86_64. It depends on `kffi`. Constructing `HarfBuzz` loads and verifies the
-bundled HarfBuzz library for the current platform; it never searches for a
-system HarfBuzz installation. Enable native access with
-`--enable-native-access=ALL-UNNAMED`.
+`kffi-harfbuzz` is an optional multiplatform module: JVM 25 for macOS and
+Linux on arm64 and x86_64, plus Android. It depends on `kffi`. Constructing
+`HarfBuzz` loads and verifies the bundled HarfBuzz library for the current
+platform; it never searches for a system HarfBuzz installation. Enable native
+access with `--enable-native-access=ALL-UNNAMED` on the JVM.
 
 ```kotlin
 dependencies {
@@ -39,7 +39,10 @@ calls. Configure a buffer with `setDirection`, `setScript` (parsed through
 `HarfBuzz.parseScript`), `setLanguage` (through `HarfBuzz.parseLanguage`),
 `setClusterLevel`, `setFlags` and `addUtf32`, then call `shape(font, features)`.
 Read the result with `glyphCount`, `glyphInfos` and `glyphPositions`, and query
-`glyphHorizontalAdvance` and `ligatureCarets` on the font.
+`glyphHorizontalAdvance`, `glyphVerticalAdvance` and `ligatureCarets` on the
+font. To vary a variable font, call `setVariations` (user-space axis values) or
+`setVarCoordsNormalized` (2.14 fixed-point coordinates) before `makeImmutable`;
+like `setScale`, both are no-ops on an immutable font.
 
 ## Verification
 
