@@ -195,3 +195,29 @@ jobs:
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           disable-animations: true
           script: ./gradlew --no-parallel :kffi:connectedAndroidDeviceTest :kffi-harfbuzz:connectedAndroidDeviceTest
+
+  ios-harfbuzz-simulator:
+    name: iOS HarfBuzz (simulator)
+    # arm64: the binding only declares iosArm64 + iosSimulatorArm64 (there is no
+    # iosX64 target), so the simulator test must run on an Apple Silicon runner.
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v5
+      - name: Set up JDK
+        uses: actions/setup-java@v5
+        with:
+          distribution: 'temurin'
+          java-version: 25
+          cache: 'gradle'
+      # :kffi-harfbuzz applies the Android KMP library plugin, so AGP resolves an
+      # SDK during configuration even though this job only runs an iOS test. Match
+      # the other KMP-on-macOS jobs and provision it via the shared composite.
+      - name: Set up Android SDK and NDK
+        uses: ./.github/actions/setup-android
+      - name: Grant execute permission
+        run: chmod +x gradlew
+      # The cinterop task dependsOn :kffi-harfbuzz-ios-native:buildHarfBuzzIos
+      # (A2), which cross-builds and seals the pinned static archive with the
+      # Xcode/CMake toolchain preinstalled on the runner.
+      - name: Run iOS HarfBuzz simulator test
+        run: ./gradlew :kffi-harfbuzz:iosSimulatorArm64Test

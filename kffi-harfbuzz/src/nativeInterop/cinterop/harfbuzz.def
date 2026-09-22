@@ -1,0 +1,9 @@
+headers = harfbuzz.h
+package = harfbuzz
+staticLibraries = libharfbuzz.a
+
+# hb_blob_create carries arbitrary font bytes in its `const char* data`. The default
+# cinterop conversion maps `char*` to kotlin.String, which Kotlin/Native UTF-8-encodes and
+# cannot round-trip binary data. Disabling the conversion keeps `data` a raw pointer so the
+# bytes can be passed without staging them through a file.
+noStringConversion = hb_blob_create hb_blob_create_or_fail
