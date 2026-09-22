@@ -27,8 +27,12 @@ import harfbuzz.hb_feature_t
 import harfbuzz.hb_font_create
 import harfbuzz.hb_font_destroy
 import harfbuzz.hb_font_get_glyph_h_advance
+import harfbuzz.hb_font_get_glyph_v_advance
 import harfbuzz.hb_font_make_immutable
 import harfbuzz.hb_font_set_scale
+import harfbuzz.hb_font_set_var_coords_normalized
+import harfbuzz.hb_font_set_variations
+import harfbuzz.hb_variation_t
 import harfbuzz.hb_glyph_info_get_glyph_flags
 import harfbuzz.hb_language_from_string
 import harfbuzz.hb_language_to_string
@@ -254,6 +258,33 @@ public actual class HarfBuzzFont internal constructor(
         hb_font_set_scale(nativeFont, x, y)
     }
 
+    public actual fun setVarCoordsNormalized(coords: IntArray) {
+        requireOpen()
+        if (coords.isEmpty()) {
+            hb_font_set_var_coords_normalized(nativeFont, null, 0u)
+            return
+        }
+        coords.usePinned { pinned ->
+            hb_font_set_var_coords_normalized(nativeFont, pinned.addressOf(0), coords.size.toUInt())
+        }
+    }
+
+    public actual fun setVariations(variations: List<HarfBuzzVariation>) {
+        requireOpen()
+        if (variations.isEmpty()) {
+            hb_font_set_variations(nativeFont, null, 0u)
+            return
+        }
+        memScoped {
+            val array = allocArray<hb_variation_t>(variations.size)
+            variations.forEachIndexed { index, variation ->
+                array[index].tag = variation.tag.rawValue().toUInt()
+                array[index].value = variation.value
+            }
+            hb_font_set_variations(nativeFont, array, variations.size.toUInt())
+        }
+    }
+
     public actual fun makeImmutable() {
         requireOpen()
         hb_font_make_immutable(nativeFont)
@@ -262,6 +293,11 @@ public actual class HarfBuzzFont internal constructor(
     public actual fun glyphHorizontalAdvance(glyphId: Int): Int {
         requireOpen()
         return hb_font_get_glyph_h_advance(nativeFont, glyphId.toUInt())
+    }
+
+    public actual fun glyphVerticalAdvance(glyphId: Int): Int {
+        requireOpen()
+        return hb_font_get_glyph_v_advance(nativeFont, glyphId.toUInt())
     }
 
     public actual fun ligatureCarets(
