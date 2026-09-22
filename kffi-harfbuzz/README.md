@@ -39,8 +39,10 @@ calls. Configure a buffer with `setDirection`, `setScript` (parsed through
 `HarfBuzz.parseScript`), `setLanguage` (through `HarfBuzz.parseLanguage`),
 `setClusterLevel`, `setFlags` and `addUtf32`, then call `shape(font, features)`.
 Read the result with `glyphCount`, `glyphInfos` and `glyphPositions`, and query
-`glyphHorizontalAdvance`, `glyphVerticalAdvance` and `ligatureCarets` on the
-font. To vary a variable font, call `setVariations` (user-space axis values) or
+`glyphHorizontalAdvance`, `glyphVerticalAdvance`, `glyphExtents` and
+`ligatureCarets` on the font. `glyphExtents` returns the ink box (`x`/`y` bearing,
+width, height) in the current scale and fails when HarfBuzz reports none for the
+glyph. To vary a variable font, call `setVariations` (user-space axis values) or
 `setVarCoordsNormalized` (2.14 fixed-point coordinates) before `makeImmutable`;
 like `setScale`, both are no-ops on an immutable font.
 
