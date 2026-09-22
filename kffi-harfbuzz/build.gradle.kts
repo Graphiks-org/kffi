@@ -36,6 +36,9 @@ kotlin {
         }
     }
 
+    iosArm64()
+    iosSimulatorArm64()
+
     sourceSets {
         jvmMain.dependencies {
             implementation(project(":kffi"))
@@ -49,6 +52,10 @@ kotlin {
                 implementation(project(":kffi"))
                 implementation(project(":kffi-harfbuzz-android-native"))
             }
+        }
+
+        iosMain.dependencies {
+            implementation(project(":kffi"))
         }
 
         val androidDeviceTest by getting {
