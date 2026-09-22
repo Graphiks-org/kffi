@@ -225,6 +225,43 @@ public actual class HarfBuzzFont internal constructor(
         callVoid(operations.fontSetScale, nativeFont, x, y)
     }
 
+    public actual fun setVarCoordsNormalized(coords: IntArray) {
+        requireOpen()
+        Arena.ofConfined().use { arena ->
+            val values = if (coords.isEmpty()) {
+                MemorySegment.NULL
+            } else {
+                val segment = arena.allocate(ValueLayout.JAVA_INT, coords.size.toLong())
+                for (index in coords.indices) {
+                    segment.setAtIndex(ValueLayout.JAVA_INT, index.toLong(), coords[index])
+                }
+                segment
+            }
+            callVoid(operations.fontSetVarCoordsNormalized, nativeFont, values, coords.size)
+        }
+    }
+
+    public actual fun setVariations(variations: List<HarfBuzzVariation>) {
+        requireOpen()
+        Arena.ofConfined().use { arena ->
+            val values = if (variations.isEmpty()) {
+                MemorySegment.NULL
+            } else {
+                val segment = arena.allocate(
+                    VARIATION_BYTES * variations.size,
+                    ValueLayout.JAVA_INT.byteAlignment(),
+                )
+                variations.forEachIndexed { index, variation ->
+                    val offset = index.toLong() * VARIATION_BYTES
+                    segment.set(ValueLayout.JAVA_INT, offset, variation.tag.rawValue())
+                    segment.set(ValueLayout.JAVA_FLOAT, offset + 4, variation.value)
+                }
+                segment
+            }
+            callVoid(operations.fontSetVariations, nativeFont, values, variations.size)
+        }
+    }
+
     public actual fun makeImmutable() {
         requireOpen()
         callVoid(operations.fontMakeImmutable, nativeFont)
@@ -233,6 +270,11 @@ public actual class HarfBuzzFont internal constructor(
     public actual fun glyphHorizontalAdvance(glyphId: Int): Int {
         requireOpen()
         return int(operations.fontGetGlyphHorizontalAdvance, nativeFont, glyphId)
+    }
+
+    public actual fun glyphVerticalAdvance(glyphId: Int): Int {
+        requireOpen()
+        return int(operations.fontGetGlyphVerticalAdvance, nativeFont, glyphId)
     }
 
     public actual fun ligatureCarets(
@@ -474,6 +516,14 @@ internal class HarfBuzzOperations(loader: HarfBuzzNativeLoader) {
         "hb_font_set_scale",
         FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT),
     )
+    val fontSetVarCoordsNormalized: MethodHandle = loader.handle(
+        "hb_font_set_var_coords_normalized",
+        FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT),
+    )
+    val fontSetVariations: MethodHandle = loader.handle(
+        "hb_font_set_variations",
+        FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT),
+    )
     val bufferCreate: MethodHandle =
         loader.handle("hb_buffer_create", FunctionDescriptor.of(ValueLayout.ADDRESS))
     val bufferDestroy: MethodHandle = loader.handle("hb_buffer_destroy", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS))
@@ -548,6 +598,10 @@ internal class HarfBuzzOperations(loader: HarfBuzzNativeLoader) {
         "hb_font_get_glyph_h_advance",
         FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT),
     )
+    val fontGetGlyphVerticalAdvance: MethodHandle = loader.handle(
+        "hb_font_get_glyph_v_advance",
+        FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT),
+    )
     val ligatureCarets: MethodHandle = loader.handle(
         "hb_ot_layout_get_ligature_carets",
         FunctionDescriptor.of(
@@ -617,6 +671,7 @@ private const val HB_BUFFER_FLAG_PRODUCE_UNSAFE_TO_CONCAT: Int = 0x00000040
 private const val HB_GLYPH_FLAG_UNSAFE_TO_BREAK: Int = 0x00000001
 private const val HB_GLYPH_FLAG_UNSAFE_TO_CONCAT: Int = 0x00000002
 private const val FEATURE_BYTES: Long = 16L
+private const val VARIATION_BYTES: Long = 8L
 private const val GLYPH_INFO_BYTES: Long = 20L
 private const val GLYPH_POSITION_BYTES: Long = 20L
 /** Upper bound, in bytes, for the NUL-terminated `hb_language_to_string` result buffer. */

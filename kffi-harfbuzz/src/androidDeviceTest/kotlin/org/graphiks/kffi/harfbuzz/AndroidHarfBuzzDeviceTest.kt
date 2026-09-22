@@ -22,6 +22,9 @@ class AndroidHarfBuzzDeviceTest {
     private fun fontBytes(): ByteArray =
         javaClass.getResourceAsStream("/fonts/dejavu/DejaVuSans.ttf")!!.use { it.readBytes() }
 
+    private fun variableFontBytes(): ByteArray =
+        javaClass.getResourceAsStream("/fonts/kffi-var/KffiVar.ttf")!!.use { it.readBytes() }
+
     /** Shapes [text] with [features] and runs [block] before the owners are closed. */
     private fun withShapedFont(
         text: String,
@@ -119,6 +122,79 @@ class AndroidHarfBuzzDeviceTest {
             assertFailsWith<IllegalArgumentException> {
                 font.ligatureCarets(HarfBuzzDirection.LEFT_TO_RIGHT, glyphId, 0, -1)
             }
+        }
+    }
+
+    @Test
+    fun variationSettersAreSafeOnTheNonVariableFixture() {
+        val harfbuzz = HarfBuzz.open()
+        val blob = harfbuzz.createBlob(fontBytes())
+        val face = blob.createFace(0)
+        val font = face.createFont()
+        try {
+            font.useOpenTypeFunctions()
+            val upem = face.unitsPerEm()
+            font.setScale(upem, upem)
+            // DejaVuSans has no fvar/gvar, so these are accepted no-ops; empty input must be safe.
+            font.setVarCoordsNormalized(intArrayOf(-16384, 0))
+            font.setVariations(listOf(HarfBuzzVariation(HarfBuzzTag.of("wght"), 700f)))
+            font.setVarCoordsNormalized(IntArray(0))
+            font.setVariations(emptyList())
+            face.makeImmutable()
+            font.makeImmutable()
+            assertTrue(font.glyphHorizontalAdvance(36) > 0)
+            font.glyphVerticalAdvance(36)
+        } finally {
+            font.close()
+            face.close()
+            blob.close()
+        }
+    }
+
+    @Test
+    fun variationsMatchTheFrozenOracleOnTheVariableFixture() {
+        val harfbuzz = HarfBuzz.open()
+        // wght=100 and 900 normalize to -16384 and +16384 in HarfBuzz's 2.14 fixed point.
+        assertEquals(500, variedHorizontalAdvance(harfbuzz) { font ->
+            font.setVarCoordsNormalized(intArrayOf(-16384))
+        })
+        assertEquals(800, variedHorizontalAdvance(harfbuzz) { font ->
+            font.setVarCoordsNormalized(intArrayOf(16384))
+        })
+        // The user-space axis setters reach the same frozen metrics.
+        assertEquals(500, variedHorizontalAdvance(harfbuzz) { font ->
+            font.setVariations(listOf(HarfBuzzVariation(HarfBuzzTag.of("wght"), 100f)))
+        })
+        assertEquals(800, variedHorizontalAdvance(harfbuzz) { font ->
+            font.setVariations(listOf(HarfBuzzVariation(HarfBuzzTag.of("wght"), 900f)))
+        })
+    }
+
+    /**
+     * Applies [configure] to a fresh KffiVar font, checks the frozen vertical advance, and returns
+     * the horizontal advance of `A` (glyph `2`). Mirrors the JVM `HarfBuzzConsumerProbe` oracle.
+     */
+    private fun variedHorizontalAdvance(harfbuzz: HarfBuzz, configure: (HarfBuzzFont) -> Unit): Int {
+        val blob = harfbuzz.createBlob(variableFontBytes())
+        try {
+            val face = blob.createFace(0)
+            val font = face.createFont()
+            try {
+                font.useOpenTypeFunctions()
+                val upem = face.unitsPerEm()
+                font.setScale(upem, upem)
+                configure(font)
+                face.makeImmutable()
+                font.makeImmutable()
+                // The vertical axis does not vary, so every coordinate reports the same -1300.
+                assertEquals(-1300, font.glyphVerticalAdvance(2))
+                return font.glyphHorizontalAdvance(2)
+            } finally {
+                font.close()
+                face.close()
+            }
+        } finally {
+            blob.close()
         }
     }
 }

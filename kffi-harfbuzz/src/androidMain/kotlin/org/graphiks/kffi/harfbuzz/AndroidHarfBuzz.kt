@@ -223,6 +223,16 @@ public actual class HarfBuzzFont internal constructor(
         operations.setScale(nativeFont, x, y)
     }
 
+    public actual fun setVarCoordsNormalized(coords: IntArray) {
+        requireOpen()
+        operations.setVarCoordsNormalized(nativeFont, coords)
+    }
+
+    public actual fun setVariations(variations: List<HarfBuzzVariation>) {
+        requireOpen()
+        operations.setVariations(nativeFont, variations)
+    }
+
     public actual fun makeImmutable() {
         requireOpen()
         NativeEngine.callV1P(operations.fontMakeImmutable, nativeFont)
@@ -231,6 +241,11 @@ public actual class HarfBuzzFont internal constructor(
     public actual fun glyphHorizontalAdvance(glyphId: Int): Int {
         requireOpen()
         return NativeEngine.callI2PI(operations.fontGetGlyphHorizontalAdvance, nativeFont, glyphId).toInt()
+    }
+
+    public actual fun glyphVerticalAdvance(glyphId: Int): Int {
+        requireOpen()
+        return NativeEngine.callI2PI(operations.fontGetGlyphVerticalAdvance, nativeFont, glyphId).toInt()
     }
 
     public actual fun ligatureCarets(
@@ -390,6 +405,8 @@ internal class HarfBuzzOperations(private val handle: Long) {
     val fontMakeImmutable: Long = symbol("hb_font_make_immutable")
     val otFontSetFuncs: Long = symbol("hb_ot_font_set_funcs")
     val fontSetScale: Long = symbol("hb_font_set_scale")
+    val fontSetVarCoordsNormalized: Long = symbol("hb_font_set_var_coords_normalized")
+    val fontSetVariations: Long = symbol("hb_font_set_variations")
     val bufferCreate: Long = symbol("hb_buffer_create")
     val bufferDestroy: Long = symbol("hb_buffer_destroy")
     val bufferSetDirection: Long = symbol("hb_buffer_set_direction")
@@ -407,6 +424,7 @@ internal class HarfBuzzOperations(private val handle: Long) {
     val bufferGetGlyphPositions: Long = symbol("hb_buffer_get_glyph_positions")
     val glyphInfoGetGlyphFlags: Long = symbol("hb_glyph_info_get_glyph_flags")
     val fontGetGlyphHorizontalAdvance: Long = symbol("hb_font_get_glyph_h_advance")
+    val fontGetGlyphVerticalAdvance: Long = symbol("hb_font_get_glyph_v_advance")
     val ligatureCarets: Long = symbol("hb_ot_layout_get_ligature_carets")
     val versionStringFn: Long = symbol("hb_version_string")
 
@@ -434,6 +452,44 @@ internal class HarfBuzzOperations(private val handle: Long) {
         memoryScope { scope ->
             val arguments = HarfBuzzCall(scope).pointer(font).int(x).int(y)
             NativeEngine.callGeneric(fontSetScale, 3, "v:p,i32,i32", arguments.address, 0L)
+        }
+    }
+
+    fun setVarCoordsNormalized(font: Long, coords: IntArray) {
+        memoryScope { scope ->
+            val coordsAddress = if (coords.isEmpty()) {
+                0L
+            } else {
+                val values = scope.allocateBuffer((coords.size.toLong() * INT_BYTES).toULong())
+                values.writeInts(coords)
+                values.handler.rawValue
+            }
+            val arguments = HarfBuzzCall(scope)
+                .pointer(font)
+                .pointer(coordsAddress)
+                .int(coords.size)
+            NativeEngine.callGeneric(fontSetVarCoordsNormalized, 3, "v:p,p,u32", arguments.address, 0L)
+        }
+    }
+
+    fun setVariations(font: Long, variations: List<HarfBuzzVariation>) {
+        memoryScope { scope ->
+            val variationsAddress = if (variations.isEmpty()) {
+                0L
+            } else {
+                val segment = scope.allocateBuffer((VARIATION_BYTES * variations.size).toULong())
+                variations.forEachIndexed { index, variation ->
+                    val offset = index.toLong() * VARIATION_BYTES
+                    segment.writeInt(variation.tag.rawValue(), offset.toULong())
+                    segment.writeFloat(variation.value, (offset + 4).toULong())
+                }
+                segment.handler.rawValue
+            }
+            val arguments = HarfBuzzCall(scope)
+                .pointer(font)
+                .pointer(variationsAddress)
+                .int(variations.size)
+            NativeEngine.callGeneric(fontSetVariations, 3, "v:p,p,u32", arguments.address, 0L)
         }
     }
 
@@ -683,6 +739,7 @@ private const val POINTER_BYTES: Long = 8L
 private const val INT_ALIGNMENT: Long = 4L
 private const val POINTER_ALIGNMENT: Long = 8L
 private const val FEATURE_BYTES: Long = 16L
+private const val VARIATION_BYTES: Long = 8L
 private const val GLYPH_INFO_BYTES: Long = 20L
 private const val GLYPH_POSITION_BYTES: Long = 20L
 private const val OUT_BYTES: ULong = 8uL

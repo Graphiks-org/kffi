@@ -108,6 +108,17 @@ public data class HarfBuzzFeature(
 )
 
 /**
+ * One OpenType variation-axis assignment.
+ *
+ * @property tag the four-byte axis tag, such as `wght` or `wdth`.
+ * @property value the axis value in user-space units, as declared by the font's `fvar` table.
+ */
+public data class HarfBuzzVariation(
+    val tag: HarfBuzzTag,
+    val value: Float,
+)
+
+/**
  * A glyph flag pair computed by HarfBuzz for one glyph.
  *
  * @property unsafeToBreak the glyph must not be separated from its cluster by a line break.

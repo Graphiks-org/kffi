@@ -114,4 +114,52 @@ class HarfBuzzFfiTest {
         val failure = assertFailsWith<HarfBuzzBindingException> { hb.parseScript("") }
         assertEquals(HarfBuzzBindingFailure.NATIVE_OPERATION, failure.failure)
     }
+
+    @Test
+    fun variationSettersAreNoOpsOnTheNonVariableFixture() {
+        val hb = HarfBuzz.open()
+        val baseline = advances(hb) {}
+        val configured = advances(hb) { font ->
+            font.setVarCoordsNormalized(intArrayOf(-16384, 0))
+            font.setVariations(listOf(HarfBuzzVariation(HarfBuzzTag.of("wght"), 700f)))
+        }
+        // DejaVuSans has no fvar/gvar, so the setters leave every advance unchanged. This proves
+        // the calls are accepted and safe, not that they vary anything.
+        assertEquals(baseline, configured)
+    }
+
+    @Test
+    fun emptyVariationInputIsSafeAndEquivalentToNoSetters() {
+        val hb = HarfBuzz.open()
+        val baseline = advances(hb) {}
+        val empty = advances(hb) { font ->
+            font.setVarCoordsNormalized(IntArray(0))
+            font.setVariations(emptyList())
+        }
+        // Empty input passes a NULL pointer with length zero and must not crash or change metrics.
+        assertEquals(baseline, empty)
+    }
+
+    private fun advances(hb: HarfBuzz, configure: (HarfBuzzFont) -> Unit): List<Int> {
+        val blob = hb.createBlob(fontBytes())
+        try {
+            val face = blob.createFace(0)
+            val font = face.createFont()
+            try {
+                font.useOpenTypeFunctions()
+                val upem = face.unitsPerEm()
+                font.setScale(upem, upem)
+                configure(font)
+                face.makeImmutable()
+                font.makeImmutable()
+                return (0..40).map { font.glyphHorizontalAdvance(it) } +
+                    (0..40).map { font.glyphVerticalAdvance(it) }
+            } finally {
+                font.close()
+                face.close()
+            }
+        } finally {
+            blob.close()
+        }
+    }
 }
