@@ -55,6 +55,28 @@ from the checked-in HarfBuzz `14.3.0` source
 magnitude `-1300` is visible as the `ttb` y-advance in the `hb-shape` output
 above, cross-checking the sign and value against an independent tool.
 
+The glyph ink extents reported by `hb_font_get_glyph_extents` were produced by
+the same external `hb-shape (HarfBuzz) 14.4.0`, with `--show-extents`:
+
+```sh
+hb-shape --no-glyph-names --font-size=1000 --show-extents KffiVar.ttf 'A'
+hb-shape --no-glyph-names --font-size=1000 --show-extents --variations=wght=100 KffiVar.ttf 'A'
+hb-shape --no-glyph-names --font-size=1000 --show-extents --variations=wght=900 KffiVar.ttf 'A'
+```
+
+```text
+default:        [2=0+600<100,700,400,-700>]
+wght=100:       [2=0+500<100,700,300,-700>]
+wght=900:       [2=0+800<100,700,600,-700>]
+```
+
+`A` is a triangle whose base tracks the advance, so the ink box moves with the
+axis even though only the advance is in `HVAR`: its width is `400`, `300` and
+`600`, with a constant `x`/`y` bearing of `100`/`700` and height `-700`. The
+expectation was cross-checked with Python `ctypes` against the bundled HarfBuzz
+`14.3.0` `libharfbuzz.dylib`, which returned the same four `int32` fields at each
+location.
+
 The tests call the Kotlin binding once and compare its results with these
 frozen literals; they never invoke `hb-shape` at runtime and never use the
 binding under test as its own oracle.
