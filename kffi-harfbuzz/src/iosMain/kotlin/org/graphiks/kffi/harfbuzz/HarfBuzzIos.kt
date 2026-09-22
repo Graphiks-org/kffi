@@ -6,7 +6,7 @@ import cnames.structs.hb_blob_t
 import cnames.structs.hb_buffer_t
 import cnames.structs.hb_face_t
 import cnames.structs.hb_font_t
-import harfbuzz.hb_blob_create_from_file_or_fail
+import harfbuzz.hb_blob_create
 import harfbuzz.hb_blob_destroy
 import harfbuzz.hb_buffer_add_utf32
 import harfbuzz.hb_buffer_create
@@ -32,6 +32,7 @@ import harfbuzz.hb_font_set_scale
 import harfbuzz.hb_glyph_info_get_glyph_flags
 import harfbuzz.hb_language_from_string
 import harfbuzz.hb_language_to_string
+import harfbuzz.hb_memory_mode_t
 import harfbuzz.hb_ot_font_set_funcs
 import harfbuzz.hb_ot_layout_get_ligature_carets
 import harfbuzz.hb_script_from_string
@@ -56,11 +57,6 @@ import kotlinx.cinterop.set
 import kotlinx.cinterop.toKString
 import kotlinx.cinterop.usePinned
 import kotlinx.cinterop.value
-import platform.posix.close
-import platform.posix.getenv
-import platform.posix.mkstemp
-import platform.posix.unlink
-import platform.posix.write
 
 /**
  * The iOS entry point of the statically linked HarfBuzz library.
@@ -125,17 +121,18 @@ public actual class HarfBuzz private actual constructor() {
 }
 
 /**
- * An owned native blob retaining the source bytes.
+ * An owned native blob retaining a private copy of the source bytes.
  *
- * The blob is a reference-counted `hb_blob_t` backed by an unlinked temporary file that HarfBuzz
- * memory-maps; the mapping outlives the file and is released by `hb_blob_destroy`. A blob may
- * create several faces and each face several fonts; [close] defers destruction until the last live
- * descendant has been released, so every child must be closed before its parent. Close is
- * idempotent, but it is not synchronised across threads.
+ * The blob is a reference-counted `hb_blob_t` that owns a duplicate of the font bytes
+ * (`HB_MEMORY_MODE_DUPLICATE`); the copy is released by `hb_blob_destroy`, so the original Kotlin
+ * array may be collected as soon as the blob is created. A blob may create several faces and each
+ * face several fonts; [close] defers destruction until the last live descendant has been released,
+ * so every child must be closed before its parent. Close is idempotent, but it is not synchronised
+ * across threads.
  *
- * The cinterop `hb_blob_create` binding maps its `const char* data` parameter to `kotlin.String`,
- * which cannot carry arbitrary font bytes losslessly, so the bytes are staged through a temporary
- * file and HarfBuzz's memory-mapped file blob instead.
+ * The cinterop `hb_blob_create` binding disables string conversion (`noStringConversion` in
+ * `harfbuzz.def`), so its `const char* data` parameter is a raw pointer and can carry arbitrary
+ * font bytes losslessly.
  */
 public actual class HarfBuzzBlob internal constructor(bytes: ByteArray) : AutoCloseable {
     private var closed: Boolean = false
@@ -143,7 +140,7 @@ public actual class HarfBuzzBlob internal constructor(bytes: ByteArray) : AutoCl
     private val blob: CPointer<hb_blob_t>
 
     init {
-        blob = requireNativeHandle(createMemoryMappedBlob(bytes), "blob")
+        blob = requireNativeHandle(createMemoryBlob(bytes), "blob")
     }
 
     public actual fun createFace(faceIndex: Int): HarfBuzzFace {
@@ -398,61 +395,31 @@ private fun harfBuzzVersionString(): String {
 }
 
 /**
- * Stages [bytes] in an unlinked temporary file and returns the memory-mapped blob HarfBuzz opens
- * over it. HarfBuzz memory-maps the file before it is removed, so the mapping stays valid for the
- * blob's lifetime and no path has to be retained.
+ * Copies [bytes] into a native blob HarfBuzz owns.
+ *
+ * `HB_MEMORY_MODE_DUPLICATE` makes HarfBuzz duplicate the pinned bytes during the call, so the
+ * returned blob stays valid after this function returns and the source array can be collected.
+ * HarfBuzz returns its empty blob for a zero-length input, so an empty array needs no pointer.
  */
-private fun createMemoryMappedBlob(bytes: ByteArray): CPointer<hb_blob_t> = memScoped {
-    val template = "${temporaryDirectory()}/kffi-harfbuzz-XXXXXX"
-    val templatePointer = template.cstr.getPointer(this)
-    val descriptor = mkstemp(templatePointer)
-    if (descriptor < 0) {
-        throw HarfBuzzBindingException(
-            HarfBuzzBindingFailure.NATIVE_OPERATION,
-            "HarfBuzz could not create a temporary file for the blob.",
-            cause = null,
+private fun createMemoryBlob(bytes: ByteArray): CPointer<hb_blob_t> {
+    if (bytes.isEmpty()) {
+        return requireNativeHandle(
+            hb_blob_create(null, 0u, hb_memory_mode_t.HB_MEMORY_MODE_DUPLICATE, null, null),
+            "blob",
         )
     }
-    try {
-        try {
-            writeBytes(descriptor, bytes)
-        } finally {
-            close(descriptor)
-        }
-        return hb_blob_create_from_file_or_fail(templatePointer.toKString())
-            ?: throw HarfBuzzBindingException(
-                HarfBuzzBindingFailure.NATIVE_OPERATION,
-                "HarfBuzz could not create a native blob.",
-                cause = null,
-            )
-    } finally {
-        unlink(templatePointer.toKString())
+    return bytes.usePinned { pinned ->
+        requireNativeHandle(
+            hb_blob_create(
+                pinned.addressOf(0),
+                bytes.size.toUInt(),
+                hb_memory_mode_t.HB_MEMORY_MODE_DUPLICATE,
+                null,
+                null,
+            ),
+            "blob",
+        )
     }
-}
-
-/** Writes every byte of [bytes] to [descriptor], retrying on short writes. */
-private fun writeBytes(descriptor: Int, bytes: ByteArray) {
-    if (bytes.isEmpty()) return
-    bytes.usePinned { pinned ->
-        var written = 0
-        while (written < bytes.size) {
-            val count = write(descriptor, pinned.addressOf(written), (bytes.size - written).toULong())
-            if (count <= 0L) {
-                throw HarfBuzzBindingException(
-                    HarfBuzzBindingFailure.NATIVE_OPERATION,
-                    "HarfBuzz could not stage the blob bytes in a temporary file.",
-                    cause = null,
-                )
-            }
-            written += count.toInt()
-        }
-    }
-}
-
-/** The process temporary directory, or `/tmp` when the environment does not provide one. */
-private fun temporaryDirectory(): String {
-    val configured = getenv("TMPDIR")?.toKString()
-    return if (configured.isNullOrEmpty()) "/tmp" else configured.trimEnd('/')
 }
 
 /** Adds UTF-32 [codePoints] to [buffer] through `hb_buffer_add_utf32`. */
