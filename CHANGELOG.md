@@ -46,7 +46,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   is released before returning; no native reference escapes.
 - Optional JVM-only `kffi-coretext` module with source-byte font creation, explicit native
   reference release, raw CoreText metrics, detached affine matrices and bounded Darwin reads.
-- Optional JVM-only `kffi-harfbuzz` module with typed HarfBuzz owners (blob, face, font, buffer),
+- Optional `kffi-harfbuzz` module with typed HarfBuzz owners (blob, face, font, buffer),
   explicit safe release, shaping, glyph flags, advances and GDEF ligature carets, with the audited
   macOS/Linux x64+arm64 binaries embedded and hash-verified.
 - `kffi-harfbuzz` variable-font support: `HarfBuzzFont.setVariations` applies user-space axis
