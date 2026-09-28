@@ -51,7 +51,13 @@ val fetchHarfBuzzWasmSource by tasks.registering(Exec::class) {
  * either Kotlin/JS or Kotlin/Wasm. `MODULARIZE` + `EXPORT_ES6` give an ES module
  * whose default export is an async factory — the async instantiation the web
  * binding surfaces through an explicit initializer.
+ *
+ * The compiler is resolved from `KFFI_EMXX` when set: on CI the Emscripten
+ * toolchain must stay off `PATH`, because its `cmake` directory would otherwise
+ * shadow the Xcode `cmake` the iOS native module invokes through `xcrun`.
  */
+val emscriptenCompiler = System.getenv("KFFI_EMXX")?.takeIf { it.isNotBlank() } ?: "em++"
+
 val buildHarfBuzzWasm by tasks.registering(Exec::class) {
     group = "harfbuzz"
     description = "Compiles HarfBuzz into one WebAssembly module with its JS glue."
@@ -66,7 +72,7 @@ val buildHarfBuzzWasm by tasks.registering(Exec::class) {
     outputs.file(out.resolve("hb.mjs"))
     doFirst { out.mkdirs() }
     commandLine(
-        "em++",
+        emscriptenCompiler,
         "-std=c++17", "-O3", "-fno-exceptions", "-fno-rtti", "-DHB_NO_MT",
         "-I", src.resolve("src").absolutePath,
         src.resolve("src/harfbuzz.cc").absolutePath,
@@ -74,7 +80,7 @@ val buildHarfBuzzWasm by tasks.registering(Exec::class) {
         "-sMODULARIZE=1", "-sEXPORT_ES6=1", "-sENVIRONMENT=node,web",
         "-sALLOW_MEMORY_GROWTH=1", "-sSINGLE_FILE=1", "-sNO_EXIT_RUNTIME=1",
         "-sEXPORTED_FUNCTIONS=@" + exportsFile.absolutePath,
-        "-sEXPORTED_RUNTIME_METHODS=ccall,cwrap,HEAPU8,HEAPU32,HEAP32",
+        "-sEXPORTED_RUNTIME_METHODS=ccall,cwrap,HEAPU8,HEAPU32,HEAP32,HEAPF32",
     )
 }
 
