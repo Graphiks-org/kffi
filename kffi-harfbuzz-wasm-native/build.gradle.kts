@@ -82,6 +82,13 @@ val fetchHarfBuzzWasmSource by tasks.registering(FetchHarfBuzzSourceTask::class)
  */
 val emscriptenCompiler = System.getenv("KFFI_EMXX")?.takeIf { it.isNotBlank() } ?: "em++"
 
+/**
+ * Windows emsdk ships its compiler shims as `.bat` files, which `CreateProcess`
+ * cannot start directly; running them through `cmd /c` lets the shell apply
+ * `PATHEXT` and find `em++.bat`.
+ */
+val isWindowsHost = System.getProperty("os.name").startsWith("Windows", ignoreCase = true)
+
 val buildHarfBuzzWasm by tasks.registering(Exec::class) {
     group = "harfbuzz"
     description = "Compiles HarfBuzz into one WebAssembly module with its JS glue."
@@ -95,16 +102,18 @@ val buildHarfBuzzWasm by tasks.registering(Exec::class) {
     ).withPropertyName("harfbuzzSources")
     outputs.file(out.resolve("hb.mjs"))
     doFirst { out.mkdirs() }
+    val compilerCommand = if (isWindowsHost) listOf("cmd", "/c", emscriptenCompiler) else listOf(emscriptenCompiler)
     commandLine(
-        emscriptenCompiler,
-        "-std=c++17", "-O3", "-fno-exceptions", "-fno-rtti", "-DHB_NO_MT",
-        "-I", src.resolve("src").absolutePath,
-        src.resolve("src/harfbuzz.cc").absolutePath,
-        "-o", out.resolve("hb.mjs").absolutePath,
-        "-sMODULARIZE=1", "-sEXPORT_ES6=1", "-sENVIRONMENT=node,web",
-        "-sALLOW_MEMORY_GROWTH=1", "-sSINGLE_FILE=1", "-sNO_EXIT_RUNTIME=1",
-        "-sEXPORTED_FUNCTIONS=@" + exportsFile.absolutePath,
-        "-sEXPORTED_RUNTIME_METHODS=ccall,cwrap,HEAPU8,HEAPU32,HEAP32,HEAPF32",
+        compilerCommand + listOf(
+            "-std=c++17", "-O3", "-fno-exceptions", "-fno-rtti", "-DHB_NO_MT",
+            "-I", src.resolve("src").absolutePath,
+            src.resolve("src/harfbuzz.cc").absolutePath,
+            "-o", out.resolve("hb.mjs").absolutePath,
+            "-sMODULARIZE=1", "-sEXPORT_ES6=1", "-sENVIRONMENT=node,web",
+            "-sALLOW_MEMORY_GROWTH=1", "-sSINGLE_FILE=1", "-sNO_EXIT_RUNTIME=1",
+            "-sEXPORTED_FUNCTIONS=@" + exportsFile.absolutePath,
+            "-sEXPORTED_RUNTIME_METHODS=ccall,cwrap,HEAPU8,HEAPU32,HEAP32,HEAPF32",
+        ),
     )
 }
 
