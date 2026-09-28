@@ -146,6 +146,32 @@ export function hbBufferSetDirection(buffer, direction) {
     requireModule().ccall('hb_buffer_set_direction', null, ['number', 'number'], [buffer, direction]);
 }
 
+export function hbBufferSetScript(buffer, script) {
+    requireModule().ccall('hb_buffer_set_script', null, ['number', 'number'], [buffer, script]);
+}
+
+export function hbBufferSetLanguage(buffer, languagePointer) {
+    requireModule().ccall('hb_buffer_set_language', null, ['number', 'number'], [buffer, languagePointer]);
+}
+
+export function hbBufferSetClusterLevel(buffer, level) {
+    requireModule().ccall('hb_buffer_set_cluster_level', null, ['number', 'number'], [buffer, level]);
+}
+
+export function hbBufferSetFlags(buffer, flags) {
+    requireModule().ccall('hb_buffer_set_flags', null, ['number', 'number'], [buffer, flags]);
+}
+
+/** Writes a signed 32-bit value into the module heap at `pointer + index * 4`. */
+export function hbWriteInt32(pointer, index, value) {
+    requireModule().HEAP32[(pointer >> 2) + index] = value;
+}
+
+/** Writes a 32-bit float into the module heap at `pointer + index * 4`. */
+export function hbWriteFloat(pointer, index, value) {
+    requireModule().HEAPF32[(pointer >> 2) + index] = value;
+}
+
 export function hbShape(font, buffer) {
     requireModule().ccall('hb_shape', null, ['number', 'number', 'number', 'number'], [font, buffer, 0, 0]);
 }
@@ -175,6 +201,16 @@ export function hbBufferGlyphXAdvance(buffer, index) {
 export function hbBufferGlyphYAdvance(buffer, index) {
     const positions = requireModule()._hb_buffer_get_glyph_positions(buffer, 0);
     return requireModule().HEAP32[(positions >> 2) + index * GLYPH_STRIDE_WORDS + 1];
+}
+
+export function hbBufferGlyphXOffset(buffer, index) {
+    const positions = requireModule()._hb_buffer_get_glyph_positions(buffer, 0);
+    return requireModule().HEAP32[(positions >> 2) + index * GLYPH_STRIDE_WORDS + 2];
+}
+
+export function hbBufferGlyphYOffset(buffer, index) {
+    const positions = requireModule()._hb_buffer_get_glyph_positions(buffer, 0);
+    return requireModule().HEAP32[(positions >> 2) + index * GLYPH_STRIDE_WORDS + 3];
 }
 
 /** The `hb_glyph_info_get_glyph_flags` bits for one glyph. */
@@ -222,11 +258,11 @@ export function hbFontGlyphExtents(font, glyphId, outPointer) {
 }
 
 /** Queries GDEF ligature carets, writing the copied count to `countPointer` and positions to `positionsPointer`. */
-export function hbLigatureCarets(font, direction, glyphId, offset, maxCount, countPointer, positionsPointer) {
+export function hbLigatureCarets(font, direction, glyphId, offset, countPointer, positionsPointer) {
     return requireModule().ccall(
         'hb_ot_layout_get_ligature_carets', 'number',
-        ['number', 'number', 'number', 'number', 'number', 'number', 'number'],
-        [font, direction, glyphId, offset, maxCount, countPointer, positionsPointer],
+        ['number', 'number', 'number', 'number', 'number', 'number'],
+        [font, direction, glyphId, offset, countPointer, positionsPointer],
     );
 }
 
