@@ -43,7 +43,7 @@ val sealTaskNames = iosSlices.map { (suffix, sdk) ->
         inputs.file(cmakeLists)
         outputs.file(File(buildRoot, "CMakeCache.txt"))
         commandLine(
-            "xcrun", "cmake",
+            "cmake",
             "-S", cppSourceDir.asFile.absolutePath,
             "-B", buildRoot.absolutePath,
             "-G", "Unix Makefiles",
@@ -61,7 +61,7 @@ val sealTaskNames = iosSlices.map { (suffix, sdk) ->
         description = "Compiles and archives static HarfBuzz for iOS ($sdk)."
         dependsOn(configure)
         commandLine(
-            "xcrun", "cmake", "--build", buildRoot.absolutePath,
+            "cmake", "--build", buildRoot.absolutePath,
             "--target", "harfbuzz", "--config", "Release",
         )
     }
@@ -72,7 +72,7 @@ val sealTaskNames = iosSlices.map { (suffix, sdk) ->
         dependsOn(build)
         // Always restage so the staged archive can never lag the build tree.
         outputs.upToDateWhen { false }
-        commandLine("xcrun", "cmake", "--install", buildRoot.absolutePath)
+        commandLine("cmake", "--install", buildRoot.absolutePath)
     }
 
     // CMake archives with `ar qc` then `ranlib`; `ranlib` stamps the __.SYMDEF
