@@ -411,7 +411,7 @@ public actual class HarfBuzzBuffer internal constructor(
         val pointer = allocateWords(codePoints.size)
         try {
             codePoints.forEachIndexed { index, value -> hbWriteInt32(pointer, index, value) }
-            hbBufferAddUtf32(buffer, pointer, itemOffset, itemLength)
+            hbBufferAddUtf32(buffer, pointer, codePoints.size, itemOffset, itemLength)
         } finally {
             hbFree(pointer)
         }

@@ -130,11 +130,11 @@ export function hbBufferDestroy(buffer) {
     requireModule()._hb_buffer_destroy(buffer);
 }
 
-export function hbBufferAddUtf32(buffer, pointer, itemOffset, itemLength) {
+export function hbBufferAddUtf32(buffer, pointer, textLength, itemOffset, itemLength) {
     requireModule().ccall(
         'hb_buffer_add_utf32', null,
         ['number', 'number', 'number', 'number', 'number'],
-        [buffer, pointer, itemLength, itemOffset, itemLength],
+        [buffer, pointer, textLength, itemOffset, itemLength],
     );
 }
 

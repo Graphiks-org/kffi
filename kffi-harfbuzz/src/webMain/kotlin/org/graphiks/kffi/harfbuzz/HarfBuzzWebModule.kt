@@ -78,7 +78,7 @@ internal external fun hbBufferSetClusterLevel(buffer: Int, level: Int)
 
 internal external fun hbBufferSetFlags(buffer: Int, flags: Int)
 
-internal external fun hbBufferAddUtf32(buffer: Int, pointer: Int, itemOffset: Int, itemLength: Int)
+internal external fun hbBufferAddUtf32(buffer: Int, pointer: Int, textLength: Int, itemOffset: Int, itemLength: Int)
 
 internal external fun hbBufferGuessSegmentProperties(buffer: Int)
 
