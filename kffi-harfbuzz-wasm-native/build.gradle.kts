@@ -1,4 +1,6 @@
 import java.security.MessageDigest
+import javax.inject.Inject
+import org.gradle.process.ExecOperations
 
 plugins {
     // Intentionally plugin-less: this module only drives an Emscripten cross-build
@@ -15,32 +17,54 @@ val harfBuzzVersion = "14.3.0"
 
 val sourceRoot = layout.buildDirectory.dir("harfbuzz-src")
 val outputRoot = layout.buildDirectory.dir("harfbuzz/wasm")
-val sourceDir = sourceRoot.get().asFile.also { it.mkdirs() }
 
 /**
- * Fetches the pinned HarfBuzz revision into the build directory. The whole fetch is
- * one shell invocation so the working directory exists before git is called.
+ * Fetches the pinned HarfBuzz revision into the build directory.
+ *
+ * The git commands run through [ExecOperations] rather than a shell: on a Windows
+ * runner `bash` is the WSL launcher, which has no distribution installed, so a
+ * `bash -c` script would fail there.
  */
-val fetchHarfBuzzWasmSource by tasks.registering(Exec::class) {
+abstract class FetchHarfBuzzSourceTask @Inject constructor(
+    private val execOperations: ExecOperations,
+) : DefaultTask() {
+    @get:Input
+    abstract val revision: Property<String>
+
+    @get:Internal
+    abstract val sourceDirectory: DirectoryProperty
+
+    @get:OutputFile
+    abstract val marker: RegularFileProperty
+
+    @TaskAction
+    fun fetch() {
+        val directory = sourceDirectory.get().asFile.apply { mkdirs() }
+        val markerFile = marker.get().asFile
+        if (markerFile.isFile && markerFile.readText().trim() == revision.get()) return
+        if (!File(directory, ".git").isDirectory) {
+            exec { commandLine("git", "init", "--quiet") }
+            exec { commandLine("git", "remote", "add", "origin", "https://github.com/harfbuzz/harfbuzz.git") }
+        }
+        exec { commandLine("git", "fetch", "--quiet", "--depth", "1", "origin", revision.get()) }
+        exec { commandLine("git", "checkout", "--quiet", "--detach", "FETCH_HEAD") }
+        markerFile.writeText(revision.get())
+    }
+
+    private fun exec(configure: org.gradle.process.ExecSpec.() -> Unit) {
+        execOperations.exec {
+            workingDir = sourceDirectory.get().asFile
+            configure()
+        }
+    }
+}
+
+val fetchHarfBuzzWasmSource by tasks.registering(FetchHarfBuzzSourceTask::class) {
     group = "harfbuzz"
     description = "Fetches the pinned HarfBuzz revision for the WebAssembly build."
-    workingDir = sourceDir
-    val marker = sourceDir.resolve(".revision")
-    outputs.file(marker)
-    outputs.upToDateWhen { marker.isFile && marker.readText() == harfBuzzRevision }
-    commandLine(
-        "bash", "-c",
-        """
-        set -euo pipefail
-        if [ ! -d .git ]; then
-          git init --quiet
-          git remote add origin https://github.com/harfbuzz/harfbuzz.git
-        fi
-        git fetch --quiet --depth 1 origin $harfBuzzRevision
-        git checkout --quiet --detach FETCH_HEAD
-        printf '%s' '$harfBuzzRevision' > .revision
-        """.trimIndent(),
-    )
+    revision.set(harfBuzzRevision)
+    sourceDirectory.set(sourceRoot)
+    marker.set(sourceRoot.map { it.file(".revision") })
 }
 
 /**
@@ -54,7 +78,7 @@ val fetchHarfBuzzWasmSource by tasks.registering(Exec::class) {
  *
  * The compiler is resolved from `KFFI_EMXX` when set: on CI the Emscripten
  * toolchain must stay off `PATH`, because its `cmake` directory would otherwise
- * shadow the Xcode `cmake` the iOS native module invokes through `xcrun`.
+ * shadow the Xcode `cmake` the iOS native module invokes.
  */
 val emscriptenCompiler = System.getenv("KFFI_EMXX")?.takeIf { it.isNotBlank() } ?: "em++"
 
@@ -62,7 +86,7 @@ val buildHarfBuzzWasm by tasks.registering(Exec::class) {
     group = "harfbuzz"
     description = "Compiles HarfBuzz into one WebAssembly module with its JS glue."
     dependsOn(fetchHarfBuzzWasmSource)
-    val src = sourceDir
+    val src = sourceRoot.get().asFile
     val out = outputRoot.get().asFile
     val exportsFile = layout.projectDirectory.file("src/main/js/hb-exports.json").asFile
     inputs.file(exportsFile)
