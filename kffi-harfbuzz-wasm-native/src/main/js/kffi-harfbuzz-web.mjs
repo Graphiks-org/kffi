@@ -155,6 +155,7 @@ export function hbBufferLength(buffer) {
 }
 
 const GLYPH_STRIDE_WORDS = 5;
+const GLYPH_STRIDE_BYTES = 20;
 
 export function hbBufferGlyphId(buffer, index) {
     const infos = requireModule()._hb_buffer_get_glyph_infos(buffer, 0);
@@ -174,4 +175,87 @@ export function hbBufferGlyphXAdvance(buffer, index) {
 export function hbBufferGlyphYAdvance(buffer, index) {
     const positions = requireModule()._hb_buffer_get_glyph_positions(buffer, 0);
     return requireModule().HEAP32[(positions >> 2) + index * GLYPH_STRIDE_WORDS + 1];
+}
+
+/** The `hb_glyph_info_get_glyph_flags` bits for one glyph. */
+export function hbBufferGlyphFlags(buffer, index) {
+    const infos = requireModule()._hb_buffer_get_glyph_infos(buffer, 0);
+    return requireModule().ccall(
+        'hb_glyph_info_get_glyph_flags', 'number', ['number'],
+        [infos + index * GLYPH_STRIDE_BYTES],
+    );
+}
+
+/** Shapes with an explicit feature array already written at `featuresPointer` (16 bytes each). */
+export function hbShapeFull(font, buffer, featuresPointer, featureCount) {
+    const module = requireModule();
+    // The "ot" shaper list: hb_shape_full must be told to use the OpenType shaper only.
+    const shapers = module._malloc(8);
+    const ot = module._malloc(3);
+    module.HEAPU8.set(new Uint8Array([0x6f, 0x74, 0x00]), ot);
+    module.HEAPU32[shapers >> 2] = ot;
+    module.HEAPU32[(shapers >> 2) + 1] = 0;
+    const accepted = module.ccall(
+        'hb_shape_full', 'number',
+        ['number', 'number', 'number', 'number', 'number'],
+        [font, buffer, featuresPointer, featureCount, shapers],
+    );
+    module._free(ot);
+    module._free(shapers);
+    return accepted;
+}
+
+/** Sets OpenType variation-axis values already written at `variationsPointer` (8 bytes each). */
+export function hbFontSetVariations(font, variationsPointer, count) {
+    requireModule().ccall(
+        'hb_font_set_variations', null, ['number', 'number', 'number'],
+        [font, variationsPointer, count],
+    );
+}
+
+/** Writes the glyph extents of `glyphId` into the 16-byte `outPointer`; returns whether it succeeded. */
+export function hbFontGlyphExtents(font, glyphId, outPointer) {
+    return requireModule().ccall(
+        'hb_font_get_glyph_extents', 'number', ['number', 'number', 'number'],
+        [font, glyphId, outPointer],
+    );
+}
+
+/** Queries GDEF ligature carets, writing the copied count to `countPointer` and positions to `positionsPointer`. */
+export function hbLigatureCarets(font, direction, glyphId, offset, maxCount, countPointer, positionsPointer) {
+    return requireModule().ccall(
+        'hb_ot_layout_get_ligature_carets', 'number',
+        ['number', 'number', 'number', 'number', 'number', 'number', 'number'],
+        [font, direction, glyphId, offset, maxCount, countPointer, positionsPointer],
+    );
+}
+
+/** Parses an ISO 15924 script from a NUL-terminated string at `pointer`. */
+export function hbScriptFromString(pointer) {
+    return requireModule().ccall('hb_script_from_string', 'number', ['number', 'number'], [pointer, -1]);
+}
+
+/** The raw ISO 15924 tag bits of a script value. */
+export function hbScriptToIso15924Tag(script) {
+    return requireModule().ccall('hb_script_to_iso15924_tag', 'number', ['number'], [script]);
+}
+
+/** Parses a language from a NUL-terminated string at `pointer`; returns the language pointer. */
+export function hbLanguageFromString(pointer) {
+    return requireModule().ccall('hb_language_from_string', 'number', ['number', 'number'], [pointer, -1]);
+}
+
+/** The canonical BCP 47 string HarfBuzz reports for a language pointer. */
+export function hbLanguageToString(languagePointer) {
+    return requireModule().ccall('hb_language_to_string', 'string', ['number'], [languagePointer]);
+}
+
+/** Reads a signed 32-bit value from the module heap. */
+export function hbReadInt32(pointer) {
+    return requireModule().HEAP32[pointer >> 2];
+}
+
+/** Reads an unsigned 32-bit value from the module heap. */
+export function hbReadUInt32(pointer) {
+    return requireModule().HEAPU32[pointer >> 2];
 }
