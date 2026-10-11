@@ -18,11 +18,12 @@ import org.graphiks.kffi.wayland.wlDisplayDisconnect
 import org.graphiks.kffi.wayland.wlDisplayDispatchPending
 import org.graphiks.kffi.wayland.wlDisplayFlush
 import org.graphiks.kffi.wayland.wlDisplayGetFd
-import org.graphiks.kffi.wayland.wlDisplayGetRegistry
 import org.graphiks.kffi.wayland.wlDisplayPrepareRead
 import org.graphiks.kffi.wayland.wlDisplayReadEvents
 import org.graphiks.kffi.wayland.wlDisplayRoundtrip
-import org.graphiks.kffi.wayland.wlRegistryAddListener
+import org.graphiks.kffi.wayland.wlProxyAddListener
+import org.graphiks.kffi.wayland.wlProxyGetVersion
+import org.graphiks.kffi.wayland.wlProxyMarshalNewId
 import org.graphiks.kffi.wayland.wlRegistryInterface
 
 /** Issue d'un poll display+wake de [WaylandClient.pollForEvents]. */
@@ -50,7 +51,19 @@ public class WaylandClient private constructor(
     private val registryListeners = ArrayList<WaylandRegistryListener>()
     private val lock = Any()
 
-    private val registryProxy: MemorySegment = requireHandle(wlDisplayGetRegistry).invoke(display) as MemorySegment
+    // `wl_display_get_registry` est un static inline des en-têtes : aucun
+    // symbole n'existe dans libwayland-client — la requête part par le marshal
+    // générique (opcode 1, interface wl_registry), comme partout ailleurs ici.
+    private val registryProxy: MemorySegment = createRegistryProxy(display)
+
+    private fun createRegistryProxy(display: MemorySegment): MemorySegment {
+        val marshalNewId = requireHandle(wlProxyMarshalNewId)
+        val registryInterface = requireNotNull(wlRegistryInterface) {
+            "required libwayland symbol 'wl_registry_interface' is unavailable"
+        }
+        val version = requireHandle(wlProxyGetVersion).invoke(display) as Int
+        return marshalNewId.invoke(display, 1, registryInterface, version, 0, MemorySegment.NULL) as MemorySegment
+    }
 
     /** Point d'entrée managé du `wl_registry` de cette connexion. */
     public val registry: WaylandRegistry by lazy {
@@ -271,10 +284,9 @@ public class WaylandRegistry internal constructor(
         val listenerStruct = arena.allocate(pointerSize * 2L, ValueLayout.ADDRESS.byteAlignment())
         listenerStruct.set(ValueLayout.ADDRESS, 0, globalStub)
         listenerStruct.set(ValueLayout.ADDRESS, pointerSize.toLong(), removeStub)
-        val addHandle = requireHandle(org.graphiks.kffi.wayland.wlRegistryAddListener)
-        val registryInterface = requireNotNull(org.graphiks.kffi.wayland.wlRegistryInterface) {
-            "required libwayland symbol 'wl_registry_interface' is unavailable"
-        }
+        // `wl_registry_add_listener` est un static inline : on passe par le
+        // symbole réel `wl_proxy_add_listener`.
+        val addHandle = requireHandle(wlProxyAddListener)
         val rc = addHandle.invoke(registryProxy, listenerStruct, MemorySegment.NULL) as Int
         check(rc == 0) { "wl_registry_add_listener failed with rc=$rc" }
         synchronized(lock) { listeners.add(listener) }
