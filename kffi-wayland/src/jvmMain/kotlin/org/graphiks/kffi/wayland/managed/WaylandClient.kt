@@ -9,6 +9,9 @@ import java.lang.invoke.MethodHandle
 import java.lang.invoke.MethodHandles
 import java.lang.invoke.MethodType
 import java.util.concurrent.atomic.AtomicBoolean
+import org.graphiks.kffi.posix.LinuxErrno
+import org.graphiks.kffi.posix.PollFd
+import org.graphiks.kffi.wayland.invokeNativePoll
 import org.graphiks.kffi.wayland.wlDisplayCancelRead
 import org.graphiks.kffi.wayland.wlDisplayConnect
 import org.graphiks.kffi.wayland.wlDisplayDisconnect
@@ -21,6 +24,9 @@ import org.graphiks.kffi.wayland.wlDisplayReadEvents
 import org.graphiks.kffi.wayland.wlDisplayRoundtrip
 import org.graphiks.kffi.wayland.wlRegistryAddListener
 import org.graphiks.kffi.wayland.wlRegistryInterface
+
+/** Issue d'un poll display+wake de [WaylandClient.pollForEvents]. */
+public enum class WaylandPollOutcome { DisplayReady, WakeOnly, Interrupted, Failed }
 
 /**
  * Client Wayland managé : facade typée au-dessus de `libwayland-client`.
@@ -103,6 +109,46 @@ public class WaylandClient private constructor(
 
     /** Une primitive de lecture/dispatch/roundtrip a renvoyé une erreur display. */
     public fun hasError(): Boolean = errorSeen.get()
+
+    /**
+     * Poll bloquant sur le fd display (+ `POLLOUT` si [watchWrite]) et le fd
+     * de wake fourni par le consommateur (ex. `PosixWakeup` de `kffi-posix`).
+     * KFFI construit le tableau `struct pollfd` ; timeout infini ; `EINTR`
+     * revient comme [WaylandPollOutcome.Interrupted] sans consommer la
+     * lecture préparée.
+     */
+    public fun pollForEvents(wakeFd: Int, watchWrite: Boolean): WaylandPollOutcome {
+        if (closed.get() || wakeFd < 0) {
+            return WaylandPollOutcome.Failed
+        }
+        val arena = Arena.ofConfined()
+        try {
+            val descriptors = PollFd.allocate(arena, 2)
+            val displayEvents: Short =
+                if (watchWrite) (PollFd.POLLIN + PollFd.POLLWRNORM).toShort() else PollFd.POLLIN
+            PollFd.set(descriptors, 0, fileDescriptor, displayEvents)
+            PollFd.set(descriptors, 1, wakeFd, PollFd.POLLIN)
+            val result = invokeNativePoll(descriptors, 2, -1)
+            if (result.value < 0) {
+                return if (result.errno == LinuxErrno.EINTR) {
+                    WaylandPollOutcome.Interrupted
+                } else {
+                    WaylandPollOutcome.Failed
+                }
+            }
+            val displayReady = PollFd.revents(descriptors, 0) != 0.toShort()
+            val wakeReady = PollFd.revents(descriptors, 1) != 0.toShort()
+            return when {
+                wakeReady -> WaylandPollOutcome.WakeOnly
+                displayReady -> WaylandPollOutcome.DisplayReady
+                else -> WaylandPollOutcome.Interrupted
+            }
+        } catch (_: Throwable) {
+            return WaylandPollOutcome.Failed
+        } finally {
+            arena.close()
+        }
+    }
 
     /** Fermeture idempotente : quiescence des listeners, puis déconnexion, puis arène. */
     override fun close() {
