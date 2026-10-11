@@ -52,6 +52,7 @@ tasks.register<Test>("waylandIntegrationTest") {
     useJUnitPlatform()
     filter {
         includeTestsMatching("org.graphiks.kffi.wayland.WaylandIntegrationTest")
+        includeTestsMatching("org.graphiks.kffi.wayland.WaylandClientIntegrationTest")
     }
 
     systemProperty(
