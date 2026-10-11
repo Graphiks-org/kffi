@@ -7,7 +7,7 @@ import org.graphiks.kffi.x11.generated.CWOverrideRedirect
 import org.graphiks.kffi.x11.generated.Expose
 import org.graphiks.kffi.x11.generated.ExposureMask
 import org.graphiks.kffi.x11.generated.IsViewable
-import org.graphiks.kffi.x11.generated.KffiXEventStorage
+import org.graphiks.kffi.x11.generated.XEventStorage
 import org.graphiks.kffi.x11.generated.SelectionNotify
 import org.graphiks.kffi.x11.generated.StructureNotifyMask
 import org.graphiks.kffi.x11.generated.XAllocNamedColor
@@ -35,6 +35,10 @@ import org.graphiks.kffi.x11.generated.XFreeGC
 import org.graphiks.kffi.x11.generated.XGetImage
 import org.graphiks.kffi.x11.generated.XGetWindowAttributes
 import org.graphiks.kffi.x11.generated.XImage
+import org.graphiks.kffi.x11.generated.XInitThreads
+import org.graphiks.kffi.x11.generated.XMapRaised
+import org.graphiks.kffi.x11.generated.XMoveResizeWindow
+import org.graphiks.kffi.x11.generated.XSetErrorHandler
 import org.graphiks.kffi.x11.generated.XIMPreeditNothing
 import org.graphiks.kffi.x11.generated.XIMStatusNothing
 import org.graphiks.kffi.x11.generated.XInternAtom
@@ -116,6 +120,117 @@ private data class CaptureStatuses(
 )
 
 class X11IntegrationTest {
+    companion object {
+        init {
+            // XInitThreads must precede every other Xlib call in this test JVM.
+            if (System.getProperty("os.name").lowercase().contains("linux") &&
+                System.getenv("KFFI_X11_INTEGRATION") == "1"
+            ) {
+                check(XInitThreads() != 0) { "XInitThreads failed" }
+            }
+        }
+    }
+
+    @Test
+    fun acceptsSuccessiveDisplayConnections() {
+        assumeTrue(System.getenv("KFFI_X11_INTEGRATION") == "1")
+        Arena.ofConfined().use { arena ->
+            val displayName = arena.allocateFrom(requireIntegrationEnvironment().displayName)
+            repeat(1000) { index ->
+                val display = XOpenDisplay(displayName)
+                assertNativePointer(display, "XOpenDisplay connection ${index + 1}")
+                XCloseDisplay(display)
+            }
+        }
+    }
+
+    @Test
+    fun mapsRaisesAndMovesResizesWindow() {
+        assumeTrue(System.getenv("KFFI_X11_INTEGRATION") == "1")
+        Arena.ofConfined().use { arena ->
+            val display = XOpenDisplay(arena.allocateFrom(requireIntegrationEnvironment().displayName))
+            assertNativePointer(display, "XOpenDisplay")
+            var window = 0L
+            var sibling = 0L
+            try {
+                val root = XDefaultRootWindow(display)
+                window = XCreateSimpleWindow(display, root, 0, 0, 32, 24, 0, 0, 0)
+                sibling = XCreateSimpleWindow(display, root, 0, 0, 32, 24, 0, 0, 0)
+                XMapWindow(display, sibling)
+                XMapRaised(display, window)
+                XMoveResizeWindow(display, window, 17, 23, 80, 56)
+                XSync(display, 0)
+
+                val attributes = XWindowAttributes.allocate(arena)
+                assertTrue(XGetWindowAttributes(display, window, attributes) != 0)
+                val fields = XWindowAttributes()
+                assertEquals(IsViewable(), fields.map_state(attributes))
+                assertEquals(17, fields.x(attributes))
+                assertEquals(23, fields.y(attributes))
+                assertEquals(80, fields.width(attributes))
+                assertEquals(56, fields.height(attributes))
+
+                val rootReturn = arena.allocate(ValueLayout.JAVA_LONG)
+                val parentReturn = arena.allocate(ValueLayout.JAVA_LONG)
+                val childrenReturn = arena.allocate(ValueLayout.ADDRESS)
+                val countReturn = arena.allocate(ValueLayout.JAVA_INT)
+                assertTrue(org.graphiks.kffi.x11.generated.XQueryTree(
+                    display, root, rootReturn, parentReturn, childrenReturn, countReturn,
+                ) != 0)
+                val children = childrenReturn.get(ValueLayout.ADDRESS, 0)
+                try {
+                    val count = countReturn.get(ValueLayout.JAVA_INT, 0)
+                    assertTrue(count >= 2)
+                    // XQueryTree returns children in bottom-to-top stacking order.
+                    assertEquals(window, children.reinterpret(count * 8L).getAtIndex(ValueLayout.JAVA_LONG, count - 1L))
+                } finally {
+                    org.graphiks.kffi.x11.generated.XFree(children)
+                }
+            } finally {
+                if (sibling != 0L) XDestroyWindow(display, sibling)
+                if (window != 0L) XDestroyWindow(display, window)
+                XCloseDisplay(display)
+            }
+        }
+    }
+
+    @Test
+    fun errorHandlerReceivesBadWindowAndRestoresPreviousHandler() {
+        assumeTrue(System.getenv("KFFI_X11_INTEGRATION") == "1")
+        Arena.ofConfined().use { arena ->
+            val display = XOpenDisplay(arena.allocateFrom(requireIntegrationEnvironment().displayName))
+            assertNativePointer(display, "XOpenDisplay")
+            val recorder = X11ErrorRecorder()
+            val callback = recorder.stub(arena)
+            val previous = XSetErrorHandler(callback)
+            try {
+                val window = XCreateSimpleWindow(display, XDefaultRootWindow(display), 0, 0, 16, 16, 0, 0, 0)
+                XDestroyWindow(display, window)
+                XSync(display, 0)
+                assertTrue(recorder.events.isEmpty())
+                // Deliberately submit an invalid request to exercise the real C upcall.
+                XDestroyWindow(display, window)
+                XSync(display, 0)
+                recorder.failure?.let { throw AssertionError("XErrorEvent decoding failed", it) }
+                val event = recorder.events.single()
+                assertEquals(display.address(), event.display)
+                assertEquals(display.address(), event.callbackDisplay)
+                assertEquals(0, event.type)
+                assertEquals(window, event.resource)
+                assertTrue(event.serial > 0)
+                assertEquals(3, event.code) // BadWindow
+                assertEquals(4, event.request) // DestroyWindow
+                assertEquals(0, event.minor)
+            } finally {
+                try {
+                    XCloseDisplay(display)
+                } finally {
+                    assertEquals(callback.address(), XSetErrorHandler(previous).address())
+                }
+            }
+        }
+    }
+
     @Test
     fun createsMapsProcessesAndCapturesWindow() {
         assumeTrue(
@@ -141,13 +256,13 @@ class X11IntegrationTest {
         appendLog(clientLog, "DISPLAY=${environment.displayName}\n")
 
         Arena.ofConfined().use { arena ->
-            val eventStorage = KffiXEventStorage()
+            val eventStorage = XEventStorage()
             val clientMessageBinding = XClientMessageEvent()
             val selectionEventBinding = XSelectionEvent()
             val imageBinding = XImage()
             val setWindowAttributesBinding = XSetWindowAttributes()
             val windowAttributesBinding = XWindowAttributes()
-            val event = KffiXEventStorage.allocate(arena)
+            val event = XEventStorage.allocate(arena)
             val displayName = arena.allocateFrom(environment.displayName)
             var display = MemorySegment.NULL
             var window = 0L
@@ -523,7 +638,7 @@ private fun verifySyntheticEvents(
     display: MemorySegment,
     window: Long,
     event: MemorySegment,
-    eventStorage: KffiXEventStorage,
+    eventStorage: XEventStorage,
     clientMessageBinding: XClientMessageEvent,
     selectionEventBinding: XSelectionEvent,
     arena: Arena,
@@ -606,7 +721,7 @@ private fun requireExecutable(name: String) {
 private fun waitForEvents(
     display: MemorySegment,
     event: MemorySegment,
-    eventStorage: KffiXEventStorage,
+    eventStorage: XEventStorage,
     clientLog: Path,
 ): ObservedEvents {
     val deadline = System.nanoTime() + TimeUnit.MILLISECONDS.toNanos(EVENT_TIMEOUT_MILLIS)
