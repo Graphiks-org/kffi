@@ -11,16 +11,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - `:kffi-win32` exposes `IsWindow` and `FindWindowExW` for validating native window handles and finding child windows.
+- `kffi-x11` exposes generated `XInitThreads`, `XMapRaised`, `XMoveResizeWindow`, and `XSetErrorHandler` bindings, plus ABI-checked `XErrorEvent` storage and field accessors for native X11 error callbacks.
 - `:kffi` gains `tvosArm64` and `tvosSimulatorArm64` targets, so native libraries can be bound to tvOS the same way as iOS and macOS.
 - `:kffi-harfbuzz` gains `js` and `wasmJs` targets: the pinned HarfBuzz 14.3.0 revision is compiled to WebAssembly by the new `:kffi-harfbuzz-wasm-native` module, an authored JS surface wraps the Emscripten module, and the Kotlin bindings reproduce the JVM shaping output bit for bit under Node. The web runtime is embedded in the published klibs.
 
 ### Changed
+- X11 storage types drop the redundant `Kffi` prefix (for example, `XEventStorage` and `XErrorEventStorage`); the native-name aliases such as `XImage` and `XErrorEvent` remain available.
 - `CGDisplaySnapshot.pixelWidth` and `pixelHeight` are renamed to `pointWidth` and `pointHeight`.
   The underlying `CGDisplayPixelsWide`/`CGDisplayPixelsHigh` accessors predate Retina displays and
   report the display size in the global display coordinate space in points, never framebuffer
   pixels; the framebuffer size remains available as the current display mode's pixel size.
 
 ### Fixed
+- The X11 integration runner keeps Xvfb alive without resetting between clients, avoiding intermittent `XOpenDisplay` failures between tests.
 - Objective-C methods returning aggregates larger than two eightbytes now work on
   x86_64 macOS, where Panama rejected the heap-backed struct-return buffer with
   "Heap segment not allowed"; the struct storage is now allocated natively.
