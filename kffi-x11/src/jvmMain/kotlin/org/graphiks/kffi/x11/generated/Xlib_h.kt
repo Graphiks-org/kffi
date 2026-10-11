@@ -1872,6 +1872,25 @@ fun XResourceManagerString(arg0: MemorySegment): MemorySegment {
 }
 
 /**
+ * {@snippet lang=c : XInitThreads Int()
+ */
+private val XInitThreads_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT)
+private val XInitThreads_ADDR: MemorySegment = LOOKUP.find("XInitThreads").orElseThrow()
+private val XInitThreads_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XInitThreads_ADDR, XInitThreads_DESC)
+
+fun XInitThreads(): Int {
+    try {
+        return XInitThreads_HANDLE.invokeExact() as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
  * {@snippet lang=c : XRootWindow UNSIGNED = Long((typedef Display = Declared(_XDisplay))*,Int)
  */
 private val XRootWindow_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
@@ -1919,6 +1938,25 @@ private val XDefaultVisual_HANDLE: MethodHandle = Linker.nativeLinker().downcall
 fun XDefaultVisual(arg0: MemorySegment, arg1: Int): MemorySegment {
     try {
         return XDefaultVisual_HANDLE.invokeExact(arg0, arg1) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : XSetErrorHandler (Int((Declared(_XDisplay))*,(Declared(XErrorEvent))*))*((Int((Declared(_XDisplay))*,(Declared(XErrorEvent))*))*)
+ */
+private val XSetErrorHandler_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private val XSetErrorHandler_ADDR: MemorySegment = LOOKUP.find("XSetErrorHandler").orElseThrow()
+private val XSetErrorHandler_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XSetErrorHandler_ADDR, XSetErrorHandler_DESC)
+
+fun XSetErrorHandler(arg0: MemorySegment): MemorySegment {
+    try {
+        return XSetErrorHandler_HANDLE.invokeExact(arg0) as MemorySegment
     } catch (ex: Error) {
         throw ex
     } catch (ex: RuntimeException) {
@@ -2898,6 +2936,25 @@ fun XLookupColor(arg0: MemorySegment, arg1: Long, arg2: MemorySegment, arg3: Mem
 }
 
 /**
+ * {@snippet lang=c : XMapRaised Int((typedef Display = Declared(_XDisplay))*,UNSIGNED = Long)
+ */
+private val XMapRaised_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
+private val XMapRaised_ADDR: MemorySegment = LOOKUP.find("XMapRaised").orElseThrow()
+private val XMapRaised_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XMapRaised_ADDR, XMapRaised_DESC)
+
+fun XMapRaised(arg0: MemorySegment, arg1: Long): Int {
+    try {
+        return XMapRaised_HANDLE.invokeExact(arg0, arg1) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
  * {@snippet lang=c : XMapWindow Int((typedef Display = Declared(_XDisplay))*,UNSIGNED = Long)
  */
 private val XMapWindow_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
@@ -2907,6 +2964,25 @@ private val XMapWindow_HANDLE: MethodHandle = Linker.nativeLinker().downcallHand
 fun XMapWindow(arg0: MemorySegment, arg1: Long): Int {
     try {
         return XMapWindow_HANDLE.invokeExact(arg0, arg1) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : XMoveResizeWindow Int((typedef Display = Declared(_XDisplay))*,UNSIGNED = Long,Int,Int,UNSIGNED = Int,UNSIGNED = Int)
+ */
+private val XMoveResizeWindow_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
+private val XMoveResizeWindow_ADDR: MemorySegment = LOOKUP.find("XMoveResizeWindow").orElseThrow()
+private val XMoveResizeWindow_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(XMoveResizeWindow_ADDR, XMoveResizeWindow_DESC)
+
+fun XMoveResizeWindow(arg0: MemorySegment, arg1: Long, arg2: Int, arg3: Int, arg4: Int, arg5: Int): Int {
+    try {
+        return XMoveResizeWindow_HANDLE.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5) as Int
     } catch (ex: Error) {
         throw ex
     } catch (ex: RuntimeException) {
@@ -4424,6 +4500,165 @@ class XShmSegmentInfoCompat {
 
     fun padding_after_read_only(segment: MemorySegment, value: Int) =
         padding_after_read_only_VH.set(segment, 0L, value)
+} // End class
+
+/**
+ * {@snippet lang=c : STRUCT KffiXErrorEventStorage
+ */
+class KffiXErrorEventStorage {
+    companion object {
+        val layout: GroupLayout = MemoryLayout.structLayout(
+            ValueLayout.JAVA_INT.withName("type"),
+            ValueLayout.JAVA_INT.withName("padding_after_type"),
+            ValueLayout.ADDRESS.withName("display"),
+            ValueLayout.JAVA_LONG.withName("resourceid"),
+            ValueLayout.JAVA_LONG.withName("serial"),
+            ValueLayout.JAVA_BYTE.withName("error_code"),
+            ValueLayout.JAVA_BYTE.withName("request_code"),
+            ValueLayout.JAVA_BYTE.withName("minor_code"),
+            ValueLayout.JAVA_BYTE.withName("padding0"),
+            ValueLayout.JAVA_BYTE.withName("padding1"),
+            ValueLayout.JAVA_BYTE.withName("padding2"),
+            ValueLayout.JAVA_BYTE.withName("padding3"),
+            ValueLayout.JAVA_BYTE.withName("padding4")
+        ).withName("KffiXErrorEventStorage")
+
+        val byteSize: Long
+            get() = layout.byteSize()
+
+        fun allocate(allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(layout)
+
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout))
+
+        fun asSlice(array: MemorySegment, index: Long): MemorySegment =
+            array.asSlice(byteSize * index)
+
+        fun reinterpret(addr: MemorySegment): MemorySegment =
+            addr.reinterpret(byteSize)
+
+        fun reinterpret(addr: MemorySegment, elementCount: Long): MemorySegment =
+            addr.reinterpret(byteSize * elementCount)
+
+    } // End companion object
+
+    val type_VH: VarHandle = layout.varHandle(groupElement("type"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun type(segment: MemorySegment): Int =
+        type_VH.get(segment, 0L) as Int
+
+    fun type(segment: MemorySegment, value: Int) =
+        type_VH.set(segment, 0L, value)
+
+    val padding_after_type_VH: VarHandle = layout.varHandle(groupElement("padding_after_type"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun padding_after_type(segment: MemorySegment): Int =
+        padding_after_type_VH.get(segment, 0L) as Int
+
+    fun padding_after_type(segment: MemorySegment, value: Int) =
+        padding_after_type_VH.set(segment, 0L, value)
+
+    val display_VH: VarHandle = layout.varHandle(groupElement("display"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun display(segment: MemorySegment): MemorySegment =
+        display_VH.get(segment, 0L) as MemorySegment
+
+    fun display(segment: MemorySegment, value: MemorySegment) =
+        display_VH.set(segment, 0L, value)
+
+    val resourceid_VH: VarHandle = layout.varHandle(groupElement("resourceid"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun resourceid(segment: MemorySegment): Long =
+        resourceid_VH.get(segment, 0L) as Long
+
+    fun resourceid(segment: MemorySegment, value: Long) =
+        resourceid_VH.set(segment, 0L, value)
+
+    val serial_VH: VarHandle = layout.varHandle(groupElement("serial"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun serial(segment: MemorySegment): Long =
+        serial_VH.get(segment, 0L) as Long
+
+    fun serial(segment: MemorySegment, value: Long) =
+        serial_VH.set(segment, 0L, value)
+
+    val error_code_VH: VarHandle = layout.varHandle(groupElement("error_code"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun error_code(segment: MemorySegment): Byte =
+        error_code_VH.get(segment, 0L) as Byte
+
+    fun error_code(segment: MemorySegment, value: Byte) =
+        error_code_VH.set(segment, 0L, value)
+
+    val request_code_VH: VarHandle = layout.varHandle(groupElement("request_code"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun request_code(segment: MemorySegment): Byte =
+        request_code_VH.get(segment, 0L) as Byte
+
+    fun request_code(segment: MemorySegment, value: Byte) =
+        request_code_VH.set(segment, 0L, value)
+
+    val minor_code_VH: VarHandle = layout.varHandle(groupElement("minor_code"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun minor_code(segment: MemorySegment): Byte =
+        minor_code_VH.get(segment, 0L) as Byte
+
+    fun minor_code(segment: MemorySegment, value: Byte) =
+        minor_code_VH.set(segment, 0L, value)
+
+    val padding0_VH: VarHandle = layout.varHandle(groupElement("padding0"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun padding0(segment: MemorySegment): Byte =
+        padding0_VH.get(segment, 0L) as Byte
+
+    fun padding0(segment: MemorySegment, value: Byte) =
+        padding0_VH.set(segment, 0L, value)
+
+    val padding1_VH: VarHandle = layout.varHandle(groupElement("padding1"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun padding1(segment: MemorySegment): Byte =
+        padding1_VH.get(segment, 0L) as Byte
+
+    fun padding1(segment: MemorySegment, value: Byte) =
+        padding1_VH.set(segment, 0L, value)
+
+    val padding2_VH: VarHandle = layout.varHandle(groupElement("padding2"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun padding2(segment: MemorySegment): Byte =
+        padding2_VH.get(segment, 0L) as Byte
+
+    fun padding2(segment: MemorySegment, value: Byte) =
+        padding2_VH.set(segment, 0L, value)
+
+    val padding3_VH: VarHandle = layout.varHandle(groupElement("padding3"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun padding3(segment: MemorySegment): Byte =
+        padding3_VH.get(segment, 0L) as Byte
+
+    fun padding3(segment: MemorySegment, value: Byte) =
+        padding3_VH.set(segment, 0L, value)
+
+    val padding4_VH: VarHandle = layout.varHandle(groupElement("padding4"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun padding4(segment: MemorySegment): Byte =
+        padding4_VH.get(segment, 0L) as Byte
+
+    fun padding4(segment: MemorySegment, value: Byte) =
+        padding4_VH.set(segment, 0L, value)
 } // End class
 
 /**

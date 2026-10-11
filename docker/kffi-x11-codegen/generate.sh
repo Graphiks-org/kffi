@@ -45,6 +45,7 @@ KEXTRACT="$KEXTRACT_DIR/build/kextract/bin/kextract"
 "$KEXTRACT" --help >/dev/null 2>&1
 
 functions=(
+    XInitThreads XMapRaised XMoveResizeWindow XSetErrorHandler
     XOpenDisplay XConnectionNumber XCloseDisplay XCreateSimpleWindow XSelectInput
     XDestroyWindow XFlush XPending XNextEvent XStoreName XInternAtom XSetWMProtocols
     XMapWindow XRaiseWindow XSendEvent XResizeWindow XMoveWindow XIconifyWindow
@@ -87,7 +88,7 @@ typedefs=(
 )
 structs=(
     XRectangle XPoint XSegment XArc XColor
-    KffiXImageStorage KffiXWindowAttributesStorage
+    KffiXImageStorage KffiXWindowAttributesStorage KffiXErrorEventStorage
     KffiXClientMessageEventStorage KffiXSelectionEventStorage
     KffiXSetWindowAttributesStorage KffiXIMCallbackStorage KffiXIMTextStorage
     KffiXIMPreeditStateNotifyCallbackStructStorage
@@ -112,6 +113,7 @@ args+=(
     --include-struct XShmSegmentInfoCompat --include-typedef XShmSegmentInfoCompat
     --include-typedef KffiXImageStorage
     --include-typedef KffiXWindowAttributesStorage
+    --include-typedef KffiXErrorEventStorage
     --include-typedef KffiXClientMessageEventStorage
     --include-typedef KffiXSelectionEventStorage
     --include-typedef KffiXSetWindowAttributesStorage

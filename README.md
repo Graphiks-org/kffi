@@ -186,6 +186,17 @@ and image transfer entry points. Native records such as `XColor`, `XPoint`,
 records remain `MemorySegment` pointers where their nested ABI is not safely
 laid out by the pinned generator.
 
+Window hosting also exposes `XInitThreads`, `XMapRaised`, and
+`XMoveResizeWindow`. Call `XInitThreads` before any other Xlib call when using
+Xlib from multiple threads, including before AWT opens a display.
+`XSetErrorHandler` accepts a native callback pointer and returns the previous
+process-global handler. Its callback has signature `int(Display*, XErrorEvent*)`;
+keep the callback arena alive until the handler is replaced, never throw through
+the C callback, and restore the previous handler before closing the arena.
+The generated `XErrorEvent` alias supplies LP64 storage and accessors for all
+native fields, with size, alignment, and field offsets checked against the C
+headers. Callback event memory is borrowed: copy needed fields during the call.
+
 The bindings are generated with the pinned
 [`kextract`](https://github.com/klang-toolkit/kextract) revision
 `9252fb417ea91dae882a6a9e9d06ab672c50adc3`. The Docker base image is pinned

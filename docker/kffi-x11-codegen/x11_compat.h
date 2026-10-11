@@ -43,6 +43,22 @@ typedef struct XShmSegmentInfoCompat {
  * safe Kotlin layouts and accessors without trying to generate nested Xlib
  * implementation details.
  */
+typedef struct KffiXErrorEventStorage {
+    int type;
+    int padding_after_type;
+    void *display;
+    unsigned long resourceid;
+    unsigned long serial;
+    unsigned char error_code;
+    unsigned char request_code;
+    unsigned char minor_code;
+    unsigned char padding0;
+    unsigned char padding1;
+    unsigned char padding2;
+    unsigned char padding3;
+    unsigned char padding4;
+} KffiXErrorEventStorage;
+
 typedef struct KffiXImageStorage {
     int width;
     int height;
@@ -210,6 +226,20 @@ _Static_assert(
     offsetof(XShmSegmentInfo, readOnly) == offsetof(XShmSegmentInfoCompat, readOnly),
     "XShmSegmentInfo readOnly offset mismatch"
 );
+
+_Static_assert(sizeof(XErrorEvent) == sizeof(KffiXErrorEventStorage), "XErrorEvent size mismatch");
+_Static_assert(_Alignof(XErrorEvent) == _Alignof(KffiXErrorEventStorage), "XErrorEvent alignment mismatch");
+#define KFFI_CHECK_ERROR_EVENT_FIELD(field) \
+    _Static_assert(offsetof(XErrorEvent, field) == offsetof(KffiXErrorEventStorage, field), \
+                   "XErrorEvent " #field " offset mismatch")
+KFFI_CHECK_ERROR_EVENT_FIELD(type);
+KFFI_CHECK_ERROR_EVENT_FIELD(display);
+KFFI_CHECK_ERROR_EVENT_FIELD(resourceid);
+KFFI_CHECK_ERROR_EVENT_FIELD(serial);
+KFFI_CHECK_ERROR_EVENT_FIELD(error_code);
+KFFI_CHECK_ERROR_EVENT_FIELD(request_code);
+KFFI_CHECK_ERROR_EVENT_FIELD(minor_code);
+#undef KFFI_CHECK_ERROR_EVENT_FIELD
 
 _Static_assert(sizeof(XImage) == sizeof(KffiXImageStorage), "XImage size mismatch");
 _Static_assert(_Alignof(XImage) == _Alignof(KffiXImageStorage), "XImage alignment mismatch");
