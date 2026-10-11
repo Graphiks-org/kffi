@@ -70,7 +70,9 @@ if [[ -S "$DISPLAY_SOCKET" ]]; then
 fi
 
 : >"$XVFB_LOG"
-Xvfb "$XVFB_DISPLAY" -screen 0 640x480x24 -nolisten tcp >"$XVFB_LOG" 2>&1 &
+# Each test owns its display connection. A reset after the last client closes
+# can race the next XOpenDisplay; retain one server generation for the suite.
+Xvfb "$XVFB_DISPLAY" -screen 0 640x480x24 -nolisten tcp -noreset >"$XVFB_LOG" 2>&1 &
 XVFB_PID=$!
 
 for ((attempt = 0; attempt < 150; attempt++)); do

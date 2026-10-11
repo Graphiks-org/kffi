@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   pixels; the framebuffer size remains available as the current display mode's pixel size.
 
 ### Fixed
+- The X11 integration runner keeps Xvfb alive without resetting between clients, avoiding intermittent `XOpenDisplay` failures between tests.
 - Objective-C methods returning aggregates larger than two eightbytes now work on
   x86_64 macOS, where Panama rejected the heap-backed struct-return buffer with
   "Heap segment not allowed"; the struct storage is now allocated natively.

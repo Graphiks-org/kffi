@@ -132,6 +132,19 @@ class X11IntegrationTest {
     }
 
     @Test
+    fun acceptsSuccessiveDisplayConnections() {
+        assumeTrue(System.getenv("KFFI_X11_INTEGRATION") == "1")
+        Arena.ofConfined().use { arena ->
+            val displayName = arena.allocateFrom(requireIntegrationEnvironment().displayName)
+            repeat(1000) { index ->
+                val display = XOpenDisplay(displayName)
+                assertNativePointer(display, "XOpenDisplay connection ${index + 1}")
+                XCloseDisplay(display)
+            }
+        }
+    }
+
+    @Test
     fun mapsRaisesAndMovesResizesWindow() {
         assumeTrue(System.getenv("KFFI_X11_INTEGRATION") == "1")
         Arena.ofConfined().use { arena ->
