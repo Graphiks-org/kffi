@@ -88,11 +88,11 @@ typedefs=(
 )
 structs=(
     XRectangle XPoint XSegment XArc XColor
-    KffiXImageStorage KffiXWindowAttributesStorage KffiXErrorEventStorage
-    KffiXClientMessageEventStorage KffiXSelectionEventStorage
-    KffiXSetWindowAttributesStorage KffiXIMCallbackStorage KffiXIMTextStorage
-    KffiXIMPreeditStateNotifyCallbackStructStorage
-    KffiXIMPreeditDrawCallbackStructStorage
+    XImageStorage XWindowAttributesStorage XErrorEventStorage
+    XClientMessageEventStorage XSelectionEventStorage
+    XSetWindowAttributesStorage XIMCallbackStorage XIMTextStorage
+    XIMPreeditStateNotifyCallbackStructStorage
+    XIMPreeditDrawCallbackStructStorage
 )
 
 args=(
@@ -109,18 +109,18 @@ for constant in "${constants[@]}"; do args+=(--include-constant "$constant"); do
 for typedef in "${typedefs[@]}"; do args+=(--include-typedef "$typedef"); done
 for struct in "${structs[@]}"; do args+=(--include-struct "$struct"); done
 args+=(
-    --include-union KffiXEventStorage --include-typedef KffiXEventStorage
+    --include-union XEventStorage --include-typedef XEventStorage
     --include-struct XShmSegmentInfoCompat --include-typedef XShmSegmentInfoCompat
-    --include-typedef KffiXImageStorage
-    --include-typedef KffiXWindowAttributesStorage
-    --include-typedef KffiXErrorEventStorage
-    --include-typedef KffiXClientMessageEventStorage
-    --include-typedef KffiXSelectionEventStorage
-    --include-typedef KffiXSetWindowAttributesStorage
-    --include-typedef KffiXIMCallbackStorage
-    --include-typedef KffiXIMTextStorage
-    --include-typedef KffiXIMPreeditStateNotifyCallbackStructStorage
-    --include-typedef KffiXIMPreeditDrawCallbackStructStorage
+    --include-typedef XImageStorage
+    --include-typedef XWindowAttributesStorage
+    --include-typedef XErrorEventStorage
+    --include-typedef XClientMessageEventStorage
+    --include-typedef XSelectionEventStorage
+    --include-typedef XSetWindowAttributesStorage
+    --include-typedef XIMCallbackStorage
+    --include-typedef XIMTextStorage
+    --include-typedef XIMPreeditStateNotifyCallbackStructStorage
+    --include-typedef XIMPreeditDrawCallbackStructStorage
 )
 
 constant_args=(

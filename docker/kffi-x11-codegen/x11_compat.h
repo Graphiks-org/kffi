@@ -17,10 +17,10 @@ int XDestroyImage(XImage *);
  * that ABI buffer to kextract without traversing XEvent's non-generatable
  * nested Xlib records.
  */
-typedef union KffiXEventStorage {
+typedef union XEventStorage {
     int type;
     long pad[24];
-} KffiXEventStorage;
+} XEventStorage;
 
 /*
  * XShmSegmentInfo is LP64-aligned by the C compiler. Give kextract named
@@ -43,7 +43,7 @@ typedef struct XShmSegmentInfoCompat {
  * safe Kotlin layouts and accessors without trying to generate nested Xlib
  * implementation details.
  */
-typedef struct KffiXErrorEventStorage {
+typedef struct XErrorEventStorage {
     int type;
     int padding_after_type;
     void *display;
@@ -57,9 +57,9 @@ typedef struct KffiXErrorEventStorage {
     unsigned char padding2;
     unsigned char padding3;
     unsigned char padding4;
-} KffiXErrorEventStorage;
+} XErrorEventStorage;
 
-typedef struct KffiXImageStorage {
+typedef struct XImageStorage {
     int width;
     int height;
     int xoffset;
@@ -83,9 +83,9 @@ typedef struct KffiXImageStorage {
     void *put_pixel;
     void *sub_image;
     void *add_pixel;
-} KffiXImageStorage;
+} XImageStorage;
 
-typedef struct KffiXWindowAttributesStorage {
+typedef struct XWindowAttributesStorage {
     int x;
     int y;
     int width;
@@ -111,9 +111,9 @@ typedef struct KffiXWindowAttributesStorage {
     int override_redirect;
     int padding_after_override_redirect;
     void *screen;
-} KffiXWindowAttributesStorage;
+} XWindowAttributesStorage;
 
-typedef struct KffiXClientMessageEventStorage {
+typedef struct XClientMessageEventStorage {
     int type;
     int padding_after_type;
     unsigned long serial;
@@ -129,9 +129,9 @@ typedef struct KffiXClientMessageEventStorage {
     long data_l2;
     long data_l3;
     long data_l4;
-} KffiXClientMessageEventStorage;
+} XClientMessageEventStorage;
 
-typedef struct KffiXSelectionEventStorage {
+typedef struct XSelectionEventStorage {
     int type;
     int padding_after_type;
     unsigned long serial;
@@ -143,9 +143,9 @@ typedef struct KffiXSelectionEventStorage {
     unsigned long target;
     unsigned long property;
     unsigned long time;
-} KffiXSelectionEventStorage;
+} XSelectionEventStorage;
 
-typedef struct KffiXSetWindowAttributesStorage {
+typedef struct XSetWindowAttributesStorage {
     unsigned long background_pixmap;
     unsigned long background_pixel;
     unsigned long border_pixmap;
@@ -164,14 +164,14 @@ typedef struct KffiXSetWindowAttributesStorage {
     int padding_after_override_redirect;
     unsigned long colormap;
     unsigned long cursor;
-} KffiXSetWindowAttributesStorage;
+} XSetWindowAttributesStorage;
 
-typedef struct KffiXIMCallbackStorage {
+typedef struct XIMCallbackStorage {
     void *client_data;
     void *callback;
-} KffiXIMCallbackStorage;
+} XIMCallbackStorage;
 
-typedef struct KffiXIMTextStorage {
+typedef struct XIMTextStorage {
     unsigned short length;
     char padding_after_length_0;
     char padding_after_length_1;
@@ -183,25 +183,25 @@ typedef struct KffiXIMTextStorage {
     int encoding_is_wchar;
     int padding_before_string;
     void *string_ptr;
-} KffiXIMTextStorage;
+} XIMTextStorage;
 
-typedef struct KffiXIMPreeditStateNotifyCallbackStructStorage {
+typedef struct XIMPreeditStateNotifyCallbackStructStorage {
     unsigned long state;
-} KffiXIMPreeditStateNotifyCallbackStructStorage;
+} XIMPreeditStateNotifyCallbackStructStorage;
 
-typedef struct KffiXIMPreeditDrawCallbackStructStorage {
+typedef struct XIMPreeditDrawCallbackStructStorage {
     int caret;
     int chg_first;
     int chg_length;
     int padding_before_text;
     void *text;
-} KffiXIMPreeditDrawCallbackStructStorage;
+} XIMPreeditDrawCallbackStructStorage;
 
 /* Validate the storage-only declarations here, where the native headers are
  * authoritative. These assertions run in the pinned Linux codegen image. */
 _Static_assert(sizeof(long) == 8, "Kffi X11 compatibility shims require LP64 long");
-_Static_assert(sizeof(XEvent) == sizeof(KffiXEventStorage), "XEvent size mismatch");
-_Static_assert(_Alignof(XEvent) == _Alignof(KffiXEventStorage), "XEvent alignment mismatch");
+_Static_assert(sizeof(XEvent) == sizeof(XEventStorage), "XEvent size mismatch");
+_Static_assert(_Alignof(XEvent) == _Alignof(XEventStorage), "XEvent alignment mismatch");
 _Static_assert(
     sizeof(XShmSegmentInfo) == sizeof(XShmSegmentInfoCompat),
     "XShmSegmentInfo size mismatch"
@@ -227,10 +227,10 @@ _Static_assert(
     "XShmSegmentInfo readOnly offset mismatch"
 );
 
-_Static_assert(sizeof(XErrorEvent) == sizeof(KffiXErrorEventStorage), "XErrorEvent size mismatch");
-_Static_assert(_Alignof(XErrorEvent) == _Alignof(KffiXErrorEventStorage), "XErrorEvent alignment mismatch");
+_Static_assert(sizeof(XErrorEvent) == sizeof(XErrorEventStorage), "XErrorEvent size mismatch");
+_Static_assert(_Alignof(XErrorEvent) == _Alignof(XErrorEventStorage), "XErrorEvent alignment mismatch");
 #define KFFI_CHECK_ERROR_EVENT_FIELD(field) \
-    _Static_assert(offsetof(XErrorEvent, field) == offsetof(KffiXErrorEventStorage, field), \
+    _Static_assert(offsetof(XErrorEvent, field) == offsetof(XErrorEventStorage, field), \
                    "XErrorEvent " #field " offset mismatch")
 KFFI_CHECK_ERROR_EVENT_FIELD(type);
 KFFI_CHECK_ERROR_EVENT_FIELD(display);
@@ -241,133 +241,133 @@ KFFI_CHECK_ERROR_EVENT_FIELD(request_code);
 KFFI_CHECK_ERROR_EVENT_FIELD(minor_code);
 #undef KFFI_CHECK_ERROR_EVENT_FIELD
 
-_Static_assert(sizeof(XImage) == sizeof(KffiXImageStorage), "XImage size mismatch");
-_Static_assert(_Alignof(XImage) == _Alignof(KffiXImageStorage), "XImage alignment mismatch");
-_Static_assert(offsetof(XImage, data) == offsetof(KffiXImageStorage, data), "XImage data offset mismatch");
+_Static_assert(sizeof(XImage) == sizeof(XImageStorage), "XImage size mismatch");
+_Static_assert(_Alignof(XImage) == _Alignof(XImageStorage), "XImage alignment mismatch");
+_Static_assert(offsetof(XImage, data) == offsetof(XImageStorage, data), "XImage data offset mismatch");
 _Static_assert(
-    offsetof(XImage, bytes_per_line) == offsetof(KffiXImageStorage, bytes_per_line),
+    offsetof(XImage, bytes_per_line) == offsetof(XImageStorage, bytes_per_line),
     "XImage bytes_per_line offset mismatch"
 );
 _Static_assert(
-    offsetof(XImage, bits_per_pixel) == offsetof(KffiXImageStorage, bits_per_pixel),
+    offsetof(XImage, bits_per_pixel) == offsetof(XImageStorage, bits_per_pixel),
     "XImage bits_per_pixel offset mismatch"
 );
-_Static_assert(offsetof(XImage, f) == offsetof(KffiXImageStorage, create_image), "XImage function table offset mismatch");
+_Static_assert(offsetof(XImage, f) == offsetof(XImageStorage, create_image), "XImage function table offset mismatch");
 
 _Static_assert(
-    sizeof(XWindowAttributes) == sizeof(KffiXWindowAttributesStorage),
+    sizeof(XWindowAttributes) == sizeof(XWindowAttributesStorage),
     "XWindowAttributes size mismatch"
 );
 _Static_assert(
-    _Alignof(XWindowAttributes) == _Alignof(KffiXWindowAttributesStorage),
+    _Alignof(XWindowAttributes) == _Alignof(XWindowAttributesStorage),
     "XWindowAttributes alignment mismatch"
 );
 _Static_assert(
-    offsetof(XWindowAttributes, map_state) == offsetof(KffiXWindowAttributesStorage, map_state),
+    offsetof(XWindowAttributes, map_state) == offsetof(XWindowAttributesStorage, map_state),
     "XWindowAttributes map_state offset mismatch"
 );
 _Static_assert(
-    offsetof(XWindowAttributes, override_redirect) == offsetof(KffiXWindowAttributesStorage, override_redirect),
+    offsetof(XWindowAttributes, override_redirect) == offsetof(XWindowAttributesStorage, override_redirect),
     "XWindowAttributes override_redirect offset mismatch"
 );
 
 _Static_assert(
-    sizeof(XClientMessageEvent) == sizeof(KffiXClientMessageEventStorage),
+    sizeof(XClientMessageEvent) == sizeof(XClientMessageEventStorage),
     "XClientMessageEvent size mismatch"
 );
 _Static_assert(
-    _Alignof(XClientMessageEvent) == _Alignof(KffiXClientMessageEventStorage),
+    _Alignof(XClientMessageEvent) == _Alignof(XClientMessageEventStorage),
     "XClientMessageEvent alignment mismatch"
 );
 _Static_assert(
-    offsetof(XClientMessageEvent, window) == offsetof(KffiXClientMessageEventStorage, window),
+    offsetof(XClientMessageEvent, window) == offsetof(XClientMessageEventStorage, window),
     "XClientMessageEvent window offset mismatch"
 );
 _Static_assert(
-    offsetof(XClientMessageEvent, data) == offsetof(KffiXClientMessageEventStorage, data_l0),
+    offsetof(XClientMessageEvent, data) == offsetof(XClientMessageEventStorage, data_l0),
     "XClientMessageEvent data offset mismatch"
 );
 _Static_assert(
     sizeof(((XClientMessageEvent *)0)->data) ==
-        sizeof(KffiXClientMessageEventStorage) - offsetof(KffiXClientMessageEventStorage, data_l0),
+        sizeof(XClientMessageEventStorage) - offsetof(XClientMessageEventStorage, data_l0),
     "XClientMessageEvent data size mismatch"
 );
 
 _Static_assert(
-    sizeof(XSelectionEvent) == sizeof(KffiXSelectionEventStorage),
+    sizeof(XSelectionEvent) == sizeof(XSelectionEventStorage),
     "XSelectionEvent size mismatch"
 );
 _Static_assert(
-    _Alignof(XSelectionEvent) == _Alignof(KffiXSelectionEventStorage),
+    _Alignof(XSelectionEvent) == _Alignof(XSelectionEventStorage),
     "XSelectionEvent alignment mismatch"
 );
 _Static_assert(
-    offsetof(XSelectionEvent, requestor) == offsetof(KffiXSelectionEventStorage, requestor),
+    offsetof(XSelectionEvent, requestor) == offsetof(XSelectionEventStorage, requestor),
     "XSelectionEvent requestor offset mismatch"
 );
 
 _Static_assert(
-    sizeof(XSetWindowAttributes) == sizeof(KffiXSetWindowAttributesStorage),
+    sizeof(XSetWindowAttributes) == sizeof(XSetWindowAttributesStorage),
     "XSetWindowAttributes size mismatch"
 );
 _Static_assert(
-    _Alignof(XSetWindowAttributes) == _Alignof(KffiXSetWindowAttributesStorage),
+    _Alignof(XSetWindowAttributes) == _Alignof(XSetWindowAttributesStorage),
     "XSetWindowAttributes alignment mismatch"
 );
 _Static_assert(
     offsetof(XSetWindowAttributes, override_redirect) ==
-        offsetof(KffiXSetWindowAttributesStorage, override_redirect),
+        offsetof(XSetWindowAttributesStorage, override_redirect),
     "XSetWindowAttributes override_redirect offset mismatch"
 );
 
-_Static_assert(sizeof(XIMCallback) == sizeof(KffiXIMCallbackStorage), "XIMCallback size mismatch");
-_Static_assert(_Alignof(XIMCallback) == _Alignof(KffiXIMCallbackStorage), "XIMCallback alignment mismatch");
+_Static_assert(sizeof(XIMCallback) == sizeof(XIMCallbackStorage), "XIMCallback size mismatch");
+_Static_assert(_Alignof(XIMCallback) == _Alignof(XIMCallbackStorage), "XIMCallback alignment mismatch");
 _Static_assert(
-    offsetof(XIMCallback, client_data) == offsetof(KffiXIMCallbackStorage, client_data),
+    offsetof(XIMCallback, client_data) == offsetof(XIMCallbackStorage, client_data),
     "XIMCallback client_data offset mismatch"
 );
 _Static_assert(
-    offsetof(XIMCallback, callback) == offsetof(KffiXIMCallbackStorage, callback),
+    offsetof(XIMCallback, callback) == offsetof(XIMCallbackStorage, callback),
     "XIMCallback callback offset mismatch"
 );
 
-_Static_assert(sizeof(XIMText) == sizeof(KffiXIMTextStorage), "XIMText size mismatch");
-_Static_assert(_Alignof(XIMText) == _Alignof(KffiXIMTextStorage), "XIMText alignment mismatch");
+_Static_assert(sizeof(XIMText) == sizeof(XIMTextStorage), "XIMText size mismatch");
+_Static_assert(_Alignof(XIMText) == _Alignof(XIMTextStorage), "XIMText alignment mismatch");
 _Static_assert(
-    offsetof(XIMText, feedback) == offsetof(KffiXIMTextStorage, feedback),
+    offsetof(XIMText, feedback) == offsetof(XIMTextStorage, feedback),
     "XIMText feedback offset mismatch"
 );
 _Static_assert(
-    offsetof(XIMText, encoding_is_wchar) == offsetof(KffiXIMTextStorage, encoding_is_wchar),
+    offsetof(XIMText, encoding_is_wchar) == offsetof(XIMTextStorage, encoding_is_wchar),
     "XIMText encoding_is_wchar offset mismatch"
 );
 _Static_assert(
-    offsetof(XIMText, string) == offsetof(KffiXIMTextStorage, string_ptr),
+    offsetof(XIMText, string) == offsetof(XIMTextStorage, string_ptr),
     "XIMText string offset mismatch"
 );
 
 _Static_assert(
     sizeof(XIMPreeditStateNotifyCallbackStruct) ==
-        sizeof(KffiXIMPreeditStateNotifyCallbackStructStorage),
+        sizeof(XIMPreeditStateNotifyCallbackStructStorage),
     "XIMPreeditStateNotifyCallbackStruct size mismatch"
 );
 _Static_assert(
     offsetof(XIMPreeditStateNotifyCallbackStruct, state) ==
-        offsetof(KffiXIMPreeditStateNotifyCallbackStructStorage, state),
+        offsetof(XIMPreeditStateNotifyCallbackStructStorage, state),
     "XIMPreeditStateNotifyCallbackStruct state offset mismatch"
 );
 
 _Static_assert(
-    sizeof(XIMPreeditDrawCallbackStruct) == sizeof(KffiXIMPreeditDrawCallbackStructStorage),
+    sizeof(XIMPreeditDrawCallbackStruct) == sizeof(XIMPreeditDrawCallbackStructStorage),
     "XIMPreeditDrawCallbackStruct size mismatch"
 );
 _Static_assert(
-    _Alignof(XIMPreeditDrawCallbackStruct) == _Alignof(KffiXIMPreeditDrawCallbackStructStorage),
+    _Alignof(XIMPreeditDrawCallbackStruct) == _Alignof(XIMPreeditDrawCallbackStructStorage),
     "XIMPreeditDrawCallbackStruct alignment mismatch"
 );
 _Static_assert(
     offsetof(XIMPreeditDrawCallbackStruct, text) ==
-        offsetof(KffiXIMPreeditDrawCallbackStructStorage, text),
+        offsetof(XIMPreeditDrawCallbackStructStorage, text),
     "XIMPreeditDrawCallbackStruct text offset mismatch"
 );
 

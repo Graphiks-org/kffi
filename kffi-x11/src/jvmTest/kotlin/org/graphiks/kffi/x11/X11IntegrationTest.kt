@@ -7,7 +7,7 @@ import org.graphiks.kffi.x11.generated.CWOverrideRedirect
 import org.graphiks.kffi.x11.generated.Expose
 import org.graphiks.kffi.x11.generated.ExposureMask
 import org.graphiks.kffi.x11.generated.IsViewable
-import org.graphiks.kffi.x11.generated.KffiXEventStorage
+import org.graphiks.kffi.x11.generated.XEventStorage
 import org.graphiks.kffi.x11.generated.SelectionNotify
 import org.graphiks.kffi.x11.generated.StructureNotifyMask
 import org.graphiks.kffi.x11.generated.XAllocNamedColor
@@ -256,13 +256,13 @@ class X11IntegrationTest {
         appendLog(clientLog, "DISPLAY=${environment.displayName}\n")
 
         Arena.ofConfined().use { arena ->
-            val eventStorage = KffiXEventStorage()
+            val eventStorage = XEventStorage()
             val clientMessageBinding = XClientMessageEvent()
             val selectionEventBinding = XSelectionEvent()
             val imageBinding = XImage()
             val setWindowAttributesBinding = XSetWindowAttributes()
             val windowAttributesBinding = XWindowAttributes()
-            val event = KffiXEventStorage.allocate(arena)
+            val event = XEventStorage.allocate(arena)
             val displayName = arena.allocateFrom(environment.displayName)
             var display = MemorySegment.NULL
             var window = 0L
@@ -638,7 +638,7 @@ private fun verifySyntheticEvents(
     display: MemorySegment,
     window: Long,
     event: MemorySegment,
-    eventStorage: KffiXEventStorage,
+    eventStorage: XEventStorage,
     clientMessageBinding: XClientMessageEvent,
     selectionEventBinding: XSelectionEvent,
     arena: Arena,
@@ -721,7 +721,7 @@ private fun requireExecutable(name: String) {
 private fun waitForEvents(
     display: MemorySegment,
     event: MemorySegment,
-    eventStorage: KffiXEventStorage,
+    eventStorage: XEventStorage,
     clientLog: Path,
 ): ObservedEvents {
     val deadline = System.nanoTime() + TimeUnit.MILLISECONDS.toNanos(EVENT_TIMEOUT_MILLIS)

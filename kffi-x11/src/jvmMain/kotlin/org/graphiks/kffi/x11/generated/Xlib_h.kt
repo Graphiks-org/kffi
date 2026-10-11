@@ -4368,17 +4368,17 @@ fun XDestroyImage(arg0: MemorySegment): Int {
 
 /**
  * WARNING: This was originally a C union. Fields overlap in memory!
- * {@snippet lang=c : UNION KffiXEventStorage
+ * {@snippet lang=c : UNION XEventStorage
  */
 /**
- * {@snippet lang=c : UNION KffiXEventStorage
+ * {@snippet lang=c : UNION XEventStorage
  */
-class KffiXEventStorage {
+class XEventStorage {
     companion object {
         val layout: GroupLayout = MemoryLayout.unionLayout(
             ValueLayout.JAVA_INT.withName("type"),
             MemoryLayout.sequenceLayout(24, ValueLayout.JAVA_LONG).withName("pad")
-        ).withName("KffiXEventStorage")
+        ).withName("XEventStorage")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -4503,9 +4503,9 @@ class XShmSegmentInfoCompat {
 } // End class
 
 /**
- * {@snippet lang=c : STRUCT KffiXErrorEventStorage
+ * {@snippet lang=c : STRUCT XErrorEventStorage
  */
-class KffiXErrorEventStorage {
+class XErrorEventStorage {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
             ValueLayout.JAVA_INT.withName("type"),
@@ -4521,7 +4521,7 @@ class KffiXErrorEventStorage {
             ValueLayout.JAVA_BYTE.withName("padding2"),
             ValueLayout.JAVA_BYTE.withName("padding3"),
             ValueLayout.JAVA_BYTE.withName("padding4")
-        ).withName("KffiXErrorEventStorage")
+        ).withName("XErrorEventStorage")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -4662,9 +4662,9 @@ class KffiXErrorEventStorage {
 } // End class
 
 /**
- * {@snippet lang=c : STRUCT KffiXImageStorage
+ * {@snippet lang=c : STRUCT XImageStorage
  */
-class KffiXImageStorage {
+class XImageStorage {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
             ValueLayout.JAVA_INT.withName("width"),
@@ -4690,7 +4690,7 @@ class KffiXImageStorage {
             ValueLayout.ADDRESS.withName("put_pixel"),
             ValueLayout.ADDRESS.withName("sub_image"),
             ValueLayout.ADDRESS.withName("add_pixel")
-        ).withName("KffiXImageStorage")
+        ).withName("XImageStorage")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -4921,9 +4921,9 @@ class KffiXImageStorage {
 } // End class
 
 /**
- * {@snippet lang=c : STRUCT KffiXWindowAttributesStorage
+ * {@snippet lang=c : STRUCT XWindowAttributesStorage
  */
-class KffiXWindowAttributesStorage {
+class XWindowAttributesStorage {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
             ValueLayout.JAVA_INT.withName("x"),
@@ -4951,7 +4951,7 @@ class KffiXWindowAttributesStorage {
             ValueLayout.JAVA_INT.withName("override_redirect"),
             ValueLayout.JAVA_INT.withName("padding_after_override_redirect"),
             ValueLayout.ADDRESS.withName("screen")
-        ).withName("KffiXWindowAttributesStorage")
+        ).withName("XWindowAttributesStorage")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -5200,9 +5200,9 @@ class KffiXWindowAttributesStorage {
 } // End class
 
 /**
- * {@snippet lang=c : STRUCT KffiXClientMessageEventStorage
+ * {@snippet lang=c : STRUCT XClientMessageEventStorage
  */
-class KffiXClientMessageEventStorage {
+class XClientMessageEventStorage {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
             ValueLayout.JAVA_INT.withName("type"),
@@ -5220,7 +5220,7 @@ class KffiXClientMessageEventStorage {
             ValueLayout.JAVA_LONG.withName("data_l2"),
             ValueLayout.JAVA_LONG.withName("data_l3"),
             ValueLayout.JAVA_LONG.withName("data_l4")
-        ).withName("KffiXClientMessageEventStorage")
+        ).withName("XClientMessageEventStorage")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -5379,9 +5379,9 @@ class KffiXClientMessageEventStorage {
 } // End class
 
 /**
- * {@snippet lang=c : STRUCT KffiXSelectionEventStorage
+ * {@snippet lang=c : STRUCT XSelectionEventStorage
  */
-class KffiXSelectionEventStorage {
+class XSelectionEventStorage {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
             ValueLayout.JAVA_INT.withName("type"),
@@ -5395,7 +5395,7 @@ class KffiXSelectionEventStorage {
             ValueLayout.JAVA_LONG.withName("target"),
             ValueLayout.JAVA_LONG.withName("property"),
             ValueLayout.JAVA_LONG.withName("time")
-        ).withName("KffiXSelectionEventStorage")
+        ).withName("XSelectionEventStorage")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -5518,9 +5518,9 @@ class KffiXSelectionEventStorage {
 } // End class
 
 /**
- * {@snippet lang=c : STRUCT KffiXSetWindowAttributesStorage
+ * {@snippet lang=c : STRUCT XSetWindowAttributesStorage
  */
-class KffiXSetWindowAttributesStorage {
+class XSetWindowAttributesStorage {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
             ValueLayout.JAVA_LONG.withName("background_pixmap"),
@@ -5541,7 +5541,7 @@ class KffiXSetWindowAttributesStorage {
             ValueLayout.JAVA_INT.withName("padding_after_override_redirect"),
             ValueLayout.JAVA_LONG.withName("colormap"),
             ValueLayout.JAVA_LONG.withName("cursor")
-        ).withName("KffiXSetWindowAttributesStorage")
+        ).withName("XSetWindowAttributesStorage")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -5727,14 +5727,14 @@ class KffiXSetWindowAttributesStorage {
 } // End class
 
 /**
- * {@snippet lang=c : STRUCT KffiXIMCallbackStorage
+ * {@snippet lang=c : STRUCT XIMCallbackStorage
  */
-class KffiXIMCallbackStorage {
+class XIMCallbackStorage {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
             ValueLayout.ADDRESS.withName("client_data"),
             ValueLayout.ADDRESS.withName("callback")
-        ).withName("KffiXIMCallbackStorage")
+        ).withName("XIMCallbackStorage")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -5776,9 +5776,9 @@ class KffiXIMCallbackStorage {
 } // End class
 
 /**
- * {@snippet lang=c : STRUCT KffiXIMTextStorage
+ * {@snippet lang=c : STRUCT XIMTextStorage
  */
-class KffiXIMTextStorage {
+class XIMTextStorage {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
             ValueLayout.JAVA_SHORT.withName("length"),
@@ -5792,7 +5792,7 @@ class KffiXIMTextStorage {
             ValueLayout.JAVA_INT.withName("encoding_is_wchar"),
             ValueLayout.JAVA_INT.withName("padding_before_string"),
             ValueLayout.ADDRESS.withName("string_ptr")
-        ).withName("KffiXIMTextStorage")
+        ).withName("XIMTextStorage")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -5915,13 +5915,13 @@ class KffiXIMTextStorage {
 } // End class
 
 /**
- * {@snippet lang=c : STRUCT KffiXIMPreeditStateNotifyCallbackStructStorage
+ * {@snippet lang=c : STRUCT XIMPreeditStateNotifyCallbackStructStorage
  */
-class KffiXIMPreeditStateNotifyCallbackStructStorage {
+class XIMPreeditStateNotifyCallbackStructStorage {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
             ValueLayout.JAVA_LONG.withName("state")
-        ).withName("KffiXIMPreeditStateNotifyCallbackStructStorage")
+        ).withName("XIMPreeditStateNotifyCallbackStructStorage")
 
         val byteSize: Long
             get() = layout.byteSize()
@@ -5954,9 +5954,9 @@ class KffiXIMPreeditStateNotifyCallbackStructStorage {
 } // End class
 
 /**
- * {@snippet lang=c : STRUCT KffiXIMPreeditDrawCallbackStructStorage
+ * {@snippet lang=c : STRUCT XIMPreeditDrawCallbackStructStorage
  */
-class KffiXIMPreeditDrawCallbackStructStorage {
+class XIMPreeditDrawCallbackStructStorage {
     companion object {
         val layout: GroupLayout = MemoryLayout.structLayout(
             ValueLayout.JAVA_INT.withName("caret"),
@@ -5964,7 +5964,7 @@ class KffiXIMPreeditDrawCallbackStructStorage {
             ValueLayout.JAVA_INT.withName("chg_length"),
             ValueLayout.JAVA_INT.withName("padding_before_text"),
             ValueLayout.ADDRESS.withName("text")
-        ).withName("KffiXIMPreeditDrawCallbackStructStorage")
+        ).withName("XIMPreeditDrawCallbackStructStorage")
 
         val byteSize: Long
             get() = layout.byteSize()

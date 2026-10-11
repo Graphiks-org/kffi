@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `:kffi-harfbuzz` gains `js` and `wasmJs` targets: the pinned HarfBuzz 14.3.0 revision is compiled to WebAssembly by the new `:kffi-harfbuzz-wasm-native` module, an authored JS surface wraps the Emscripten module, and the Kotlin bindings reproduce the JVM shaping output bit for bit under Node. The web runtime is embedded in the published klibs.
 
 ### Changed
+- X11 storage types drop the redundant `Kffi` prefix (for example, `XEventStorage` and `XErrorEventStorage`); the native-name aliases such as `XImage` and `XErrorEvent` remain available.
 - `CGDisplaySnapshot.pixelWidth` and `pixelHeight` are renamed to `pointWidth` and `pointHeight`.
   The underlying `CGDisplayPixelsWide`/`CGDisplayPixelsHigh` accessors predate Retina displays and
   report the display size in the global display coordinate space in points, never framebuffer

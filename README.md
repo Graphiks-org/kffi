@@ -261,7 +261,7 @@ The pinned generator cannot safely emit layouts for Xlib records with nested
 declarations or LP64 padding. `XEvent`, `XImage`, `XWindowAttributes`,
 `XWMHints`, `XGC`, and `XShmSegmentInfo` therefore remain generated
 `MemorySegment` pointer APIs without raw record accessors. The generator's
-`KffiXEventStorage` (192-byte event storage) and `XShmSegmentInfoCompat`
+`XEventStorage` (192-byte event storage) and `XShmSegmentInfoCompat`
 (32-byte LP64-padded storage) declarations are compatibility shims only; they
 do not replace the native records passed to Xlib. The generator validates those
 shim sizes, alignments, and native offsets with C `_Static_assert` checks.
