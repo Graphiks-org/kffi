@@ -50,7 +50,7 @@ class WaylandClientIntegrationTest {
             assertTrue(globals.containsKey("wl_compositor"), "globals were $globals")
             assertTrue(globals.containsKey("xdg_wm_base"), "globals were $globals")
             assertFalse(failures.isNotEmpty())
-            // révocation : plus aucune invocation consommateur, close idempotent
+            // revocation: no more consumer invocations, idempotent close
             assertTrue(listener.revoke())
             assertFalse(listener.revoke())
             listener.close()
