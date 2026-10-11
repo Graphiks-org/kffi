@@ -16,10 +16,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `:kffi-harfbuzz` gains `js` and `wasmJs` targets: the pinned HarfBuzz 14.3.0 revision is compiled to WebAssembly by the new `:kffi-harfbuzz-wasm-native` module, an authored JS surface wraps the Emscripten module, and the Kotlin bindings reproduce the JVM shaping output bit for bit under Node. The web runtime is embedded in the published klibs.
 - Managed Wayland binding (`kffi-wayland.managed`): a typed `WaylandClient`
   facade (connect, registry, roundtrip, dispatch, prepared read/cancel, flush,
-  idempotent close owning all native segments and upcall arenas) and a
-  revocable `wl_registry` globals listener with quiescence after revoke,
-  immediate payload copy, and consumer exceptions routed to a configured
-  reporter instead of crossing the native upcall.
+  typed two-fd `pollForEvents` with captured errno, idempotent close owning
+  all native segments and upcall arenas) and a revocable `wl_registry`
+  globals listener with quiescence after revoke, immediate payload copy, and
+  consumer exceptions routed to a configured reporter instead of crossing the
+  native upcall. The registry is created through the generic
+  `wl_proxy_marshal_flags` marshal and listeners are installed through the
+  real `wl_proxy_add_listener`: `wl_display_get_registry`,
+  `wl_registry_add_listener` and `wl_registry_bind` are `static inline`
+  helpers whose symbols exist in no distribution of libwayland-client (the
+  dead downcalls in `Wayland_h.kt` are now flagged as such).
 
 ### Changed
 - X11 storage types drop the redundant `Kffi` prefix (for example, `XEventStorage` and `XErrorEventStorage`); the native-name aliases such as `XImage` and `XErrorEvent` remain available.
