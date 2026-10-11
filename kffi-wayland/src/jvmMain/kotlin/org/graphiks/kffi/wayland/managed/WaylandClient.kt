@@ -26,18 +26,18 @@ import org.graphiks.kffi.wayland.wlProxyGetVersion
 import org.graphiks.kffi.wayland.wlProxyMarshalNewId
 import org.graphiks.kffi.wayland.wlRegistryInterface
 
-/** Issue d'un poll display+wake de [WaylandClient.pollForEvents]. */
+/** Outcome of a display+wake poll issued by [WaylandClient.pollForEvents]. */
 public enum class WaylandPollOutcome { DisplayReady, WakeOnly, Interrupted, Failed }
 
 /**
- * Client Wayland managé : facade typée au-dessus de `libwayland-client`.
- * KFFI possède tous les segments natifs, stubs d'upcall et structs de
- * listeners ; le consommateur ne manipule aucun `MemorySegment` de protocole.
+ * Managed Wayland client: a typed facade over `libwayland-client`. KFFI owns
+ * every native segment, upcall stub and listener struct; the consumer never
+ * touches a protocol `MemorySegment`.
  *
- * Cycle de vie : [connect] → (registry, pompe) → [close] idempotent. La
- * fermeture révoque d'abord les listeners (quiescence : plus aucune lambda
- * consommateur n'est invoquée après le retour), annule une lecture préparée,
- * déconnecte le display, puis libère l'arène d'upcalls.
+ * Lifecycle: [connect] → (registry, pump) → idempotent [close]. Closing first
+ * revokes the listeners (quiescence: no consumer lambda is invoked after the
+ * call returns), cancels a prepared read, disconnects the display, then frees
+ * the upcall arena.
  */
 public class WaylandClient private constructor(
     private val display: MemorySegment,
@@ -65,7 +65,7 @@ public class WaylandClient private constructor(
         return marshalNewId.invoke(display, 1, registryInterface, version, 0, MemorySegment.NULL) as MemorySegment
     }
 
-    /** Point d'entrée managé du `wl_registry` de cette connexion. */
+    /** Managed entry point to this connection's `wl_registry`. */
     public val registry: WaylandRegistry by lazy {
         WaylandRegistry(registryProxy, arena, registryListeners, lock)
     }
@@ -124,11 +124,11 @@ public class WaylandClient private constructor(
     public fun hasError(): Boolean = errorSeen.get()
 
     /**
-     * Poll bloquant sur le fd display (+ `POLLOUT` si [watchWrite]) et le fd
-     * de wake fourni par le consommateur (ex. `PosixWakeup` de `kffi-posix`).
-     * KFFI construit le tableau `struct pollfd` ; timeout infini ; `EINTR`
-     * revient comme [WaylandPollOutcome.Interrupted] sans consommer la
-     * lecture préparée.
+     * Blocking poll over the display fd (plus `POLLOUT` when [watchWrite]) and
+     * the consumer-provided wake fd (e.g. `PosixWakeup` from `kffi-posix`). KFFI
+     * builds the `struct pollfd` array; the timeout is infinite; `EINTR` comes
+     * back as [WaylandPollOutcome.Interrupted] without consuming the prepared
+     * read.
      */
     public fun pollForEvents(wakeFd: Int, watchWrite: Boolean): WaylandPollOutcome {
         if (closed.get() || wakeFd < 0) {
@@ -163,7 +163,7 @@ public class WaylandClient private constructor(
         }
     }
 
-    /** Fermeture idempotente : quiescence des listeners, puis déconnexion, puis arène. */
+    /** Idempotent close: listener quiescence, then disconnect, then arena. */
     override fun close() {
         if (!closed.compareAndSet(false, true)) {
             return
@@ -229,11 +229,11 @@ public class WaylandClient private constructor(
 }
 
 /**
- * Listener managé du `wl_registry` : owner révocable. Après un retour `true`
- * de [revoke], plus aucune nouvelle invocation des lambdas consommateur n'a
- * lieu ; les payloads (chaîne d'interface) sont copiés avant le retour de
- * l'upcall ; les exceptions Kotlin des lambdas sont isolées et routées vers
- * le reporter fourni à l'installation, jamais déroulées à travers l'upcall.
+ * Managed `wl_registry` listener: a revocable owner. Once [revoke] returns
+ * `true`, no consumer lambda is invoked again; payloads (the interface string)
+ * are copied before the upcall returns; Kotlin exceptions thrown by the
+ * lambdas are isolated and routed to the reporter supplied at installation,
+ * never unwound across the native upcall.
  */
 public class WaylandRegistryListener internal constructor(
     private val revoked: AtomicBoolean,
@@ -248,7 +248,7 @@ public class WaylandRegistryListener internal constructor(
     }
 }
 
-/** Facade managée du `wl_registry` d'un [WaylandClient]. */
+/** Managed facade over a [WaylandClient]'s `wl_registry`. */
 public class WaylandRegistry internal constructor(
     private val registryProxy: MemorySegment,
     private val arena: Arena,
@@ -257,8 +257,8 @@ public class WaylandRegistry internal constructor(
 ) {
 
     /**
-     * Installe un listener globals révocable. L'arène et les stubs appartiennent
-     * au client : ils vivent jusqu'à [WaylandClient.close].
+     * Installs a revocable globals listener. The arena and stubs belong to the
+     * client and live until [WaylandClient.close].
      */
     public fun addGlobalsListener(
         onGlobal: (name: Int, interfaceName: String, version: Int) -> Unit,
@@ -284,8 +284,8 @@ public class WaylandRegistry internal constructor(
         val listenerStruct = arena.allocate(pointerSize * 2L, ValueLayout.ADDRESS.byteAlignment())
         listenerStruct.set(ValueLayout.ADDRESS, 0, globalStub)
         listenerStruct.set(ValueLayout.ADDRESS, pointerSize.toLong(), removeStub)
-        // `wl_registry_add_listener` est un static inline : on passe par le
-        // symbole réel `wl_proxy_add_listener`.
+        // `wl_registry_add_listener` is a static inline helper: go through the
+        // real `wl_proxy_add_listener` symbol.
         val addHandle = requireHandle(wlProxyAddListener)
         val rc = addHandle.invoke(registryProxy, listenerStruct, MemorySegment.NULL) as Int
         check(rc == 0) { "wl_registry_add_listener failed with rc=$rc" }
@@ -325,7 +325,7 @@ public class WaylandRegistry internal constructor(
                 return
             }
             try {
-                // copie immédiate : la chaîne C n'est valide que pendant l'upcall
+                // copy immediately: the C string is only valid inside the upcall
                 onGlobal(name, interfaceName.reinterpret(512).getString(0), version)
             } catch (throwable: Throwable) {
                 runCatching { onFailure(throwable) }

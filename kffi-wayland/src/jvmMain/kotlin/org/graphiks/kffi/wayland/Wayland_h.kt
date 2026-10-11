@@ -180,10 +180,10 @@ val wlDisplayFlush: MethodHandle? by lazy {
     )
 }
 
-// ATTENTION : `wl_display_get_registry` est un static inline des en-têtes
-// wayland-client — ce symbole n'existe dans aucune distribution de
-// libwayland-client ; le handle vaut donc toujours null. Passer par le
-// marshal générique (`wlProxyMarshalNewId` + `wlRegistryInterface`).
+// WARNING: `wl_display_get_registry` is a static inline helper in the
+// wayland-client headers — the symbol exists in no distribution of
+// libwayland-client, so this handle is always null. Go through the generic
+// marshal instead (`wlProxyMarshalNewId` + `wlRegistryInterface`).
 val wlDisplayGetRegistry: MethodHandle? by lazy {
     libWaylandClient.downcall("wl_display_get_registry",
         FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS))

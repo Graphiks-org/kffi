@@ -11,10 +11,10 @@ import kotlin.test.assertNotNull
 import kotlin.test.assertTrue
 
 /**
- * Preuves d'intégration de la facade managée [WaylandClient] contre un
- * compositor réel. Contrat identique à [WaylandIntegrationTest] : le runner
- * démarre le compositor et fournit `WAYLAND_DISPLAY`/`XDG_RUNTIME_DIR` avant
- * d'invoquer cette classe (tâche `waylandIntegrationTest`).
+ * Integration proofs for the managed [WaylandClient] facade against a real
+ * compositor. Same contract as [WaylandIntegrationTest]: the runner starts the
+ * compositor and exports `WAYLAND_DISPLAY`/`XDG_RUNTIME_DIR` before invoking
+ * this class (the `waylandIntegrationTest` task).
  */
 class WaylandClientIntegrationTest {
 
