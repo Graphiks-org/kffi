@@ -3,6 +3,7 @@ dllMap:
     functions:
       - RegisterClassExW
       - CreateWindowExW
+      - FindWindowExW
       - GetDC
       - ReleaseDC
       - FillRect
@@ -42,6 +43,7 @@ dllMap:
       - GetWindowLongPtrW
       - IsZoomed
       - IsIconic
+      - IsWindow
       - IsWindowVisible
       - GetWindowTextW
       - SetWindowPos
