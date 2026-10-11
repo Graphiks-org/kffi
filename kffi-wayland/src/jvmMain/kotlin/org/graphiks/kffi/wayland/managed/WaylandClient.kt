@@ -51,9 +51,9 @@ public class WaylandClient private constructor(
     private val registryListeners = ArrayList<WaylandRegistryListener>()
     private val lock = Any()
 
-    // `wl_display_get_registry` est un static inline des en-têtes : aucun
-    // symbole n'existe dans libwayland-client — la requête part par le marshal
-    // générique (opcode 1, interface wl_registry), comme partout ailleurs ici.
+    // `wl_display_get_registry` is a static inline header helper: no such
+    // symbol exists in libwayland-client — the request goes through the
+    // generic marshal (opcode 1, wl_registry interface), like everywhere else.
     private val registryProxy: MemorySegment = createRegistryProxy(display)
 
     private fun createRegistryProxy(display: MemorySegment): MemorySegment {
@@ -70,15 +70,15 @@ public class WaylandClient private constructor(
         WaylandRegistry(registryProxy, arena, registryListeners, lock)
     }
 
-    /** Roundtrip bloquant ; `false` = erreur display constatée. */
+    /** Blocking roundtrip; `false` = a display error was observed. */
     public fun roundtrip(): Boolean = expectOk(wlDisplayRoundtrip)
 
-    /** Vide les événements déjà reçus ; `false` = erreur display constatée. */
+    /** Dispatches already-received events; `false` = a display error was observed. */
     public fun dispatchPending(): Boolean = expectOk(wlDisplayDispatchPending)
 
     /**
-     * `wl_display_prepare_read` : 0 = lecture préparée, -1 = file non vide
-     * (appeler [dispatchPending]) ou erreur display ([hasError]).
+     * `wl_display_prepare_read`: 0 = read prepared, -1 = queue not empty
+     * (call [dispatchPending]) or a display error ([hasError]).
      */
     public fun prepareRead(): Int {
         if (closed.get()) {
@@ -92,14 +92,14 @@ public class WaylandClient private constructor(
         return rc
     }
 
-    /** Termine une lecture préparée ; `false` = erreur display constatée. */
+    /** Completes a prepared read; `false` = a display error was observed. */
     public fun readEvents(): Boolean {
         val ok = expectOk(wlDisplayReadEvents)
         prepared.set(false)
         return ok
     }
 
-    /** Annule une lecture préparée (chemin d'arrêt, réveil applicatif) ; idempotent. */
+    /** Cancels a prepared read (stop path, application wake); idempotent. */
     public fun cancelRead() {
         if (prepared.compareAndSet(true, false)) {
             wlDisplayCancelRead?.let { handle -> handle.invoke(display) }
@@ -107,10 +107,10 @@ public class WaylandClient private constructor(
     }
 
     /**
-     * `wl_display_flush` : rc brut libwayland (0 = file vide, 1 = envoyé,
-     * -1 = erreur ou EAGAIN — l'appelant surveille alors l'écriture ; un
-     * flush en échec ne pose pas [hasError], la perte de connexion est
-     * constatée par la primitive suivante).
+     * `wl_display_flush`: raw libwayland return code (0 = queue empty, 1 =
+     * sent, -1 = error or EAGAIN — the caller then watches writability; a
+     * failed flush does not raise [hasError], connection loss is observed by
+     * the next primitive).
      */
     public fun flush(): Int {
         if (closed.get()) {
@@ -120,7 +120,7 @@ public class WaylandClient private constructor(
         return handle.invoke(display) as Int
     }
 
-    /** Une primitive de lecture/dispatch/roundtrip a renvoyé une erreur display. */
+    /** A read/dispatch/roundtrip primitive returned a display error. */
     public fun hasError(): Boolean = errorSeen.get()
 
     /**
@@ -178,9 +178,9 @@ public class WaylandClient private constructor(
 
     public companion object {
         /**
-         * Connecte par nom de socket (`null` = défaut libwayland ; un chemin
-         * absolu est accepté). Renvoie `null` si la librairie est indisponible
-         * ou si le compositor refuse la connexion.
+         * Connects by socket name (`null` = libwayland default; an absolute
+         * path is accepted). Returns `null` when the library is unavailable
+         * or the compositor refuses the connection.
          */
         public fun connect(socketName: String? = null): WaylandClient? {
             val arena = Arena.ofShared()

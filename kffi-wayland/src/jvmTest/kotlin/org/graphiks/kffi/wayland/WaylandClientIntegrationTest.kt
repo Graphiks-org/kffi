@@ -62,7 +62,7 @@ class WaylandClientIntegrationTest {
     @Test
     fun connectWithUnknownSocketNameReturnsNull() {
         requireCompositorEnvironment()
-        // nom jamais publié par le runner : la connexion échoue proprement
+        // a name the runner never publishes: the connection fails cleanly
         assertNotEquals(System.getenv("WAYLAND_DISPLAY"), "kadre-definitely-absent-socket")
         assertEquals(null, WaylandClient.connect("kadre-definitely-absent-socket"))
     }
@@ -81,7 +81,7 @@ class WaylandClientIntegrationTest {
             val sawGlobalsBeforeRevoke = deliveries.get()
             assertTrue(listener.revoke())
             deliveries.set(false)
-            // un roundtrip supplémentaire ne redélivre rien au listener révoqué
+            // a further roundtrip delivers nothing to the revoked listener
             assertTrue(it.roundtrip())
             assertFalse(deliveries.get())
             assertTrue(sawGlobalsBeforeRevoke || it.hasError().not())
