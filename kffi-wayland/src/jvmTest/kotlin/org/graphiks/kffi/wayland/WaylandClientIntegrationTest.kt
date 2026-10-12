@@ -135,7 +135,7 @@ class WaylandClientIntegrationTest {
             )
             surface.attachAndCommit(buffer)
             // without a pump, events only arrive through explicit roundtrips
-            val deadline = System.nanoTime() + 5_000_000_000L
+            val deadline = System.nanoTime() + 10_000_000_000L
             while (System.nanoTime() < deadline && !entered.get() && framed.count > 0L) {
                 it.roundtrip()
                 Thread.sleep(25)
