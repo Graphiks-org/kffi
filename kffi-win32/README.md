@@ -19,6 +19,14 @@ The checked-in Kotlin package is
 `org.graphiks.kffi.win32.generated`. The source is generated code; handwritten
 Win32 wrappers and higher-level window abstractions belong in a separate layer.
 
+## Managed layer
+
+`org.graphiks.kffi.win32.managed` holds the handwritten revocable owners built
+on the generated bindings: `Win32Structs` (WNDCLASSEXW/MSG Win64 layouts),
+`Win32ManagedFunctions.wndProc` (revocable WNDPROC registration with
+quiescence), and `Win32ControlWindow` (never-shown control window). The
+generated package stays untouched; all FFI remains in KFFI.
+
 ## Generate on Windows
 
 Generation requires:
