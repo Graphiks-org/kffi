@@ -27,7 +27,7 @@ public object Win32WndProcBridge {
         JvmUpcallEngine.allocateTrampoline(
             dispatcherClass = Win32WndProcBridge::class.java,
             dispatchMethod = "dispatchWndProc",
-            dispatchSig = "(JJIJJ)J",
+            dispatchSig = "(JIJJJ)J",
         )
     }
 
