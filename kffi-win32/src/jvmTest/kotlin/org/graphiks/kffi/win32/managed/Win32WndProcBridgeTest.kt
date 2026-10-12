@@ -14,7 +14,7 @@ class Win32WndProcBridgeTest {
         val route = Win32WndProcRoute { _, _, _, _ -> seen.incrementAndGet().toLong(); 42L }
         val close = Win32WndProcBridge.install(route)
         try {
-            // ABI WNDPROC réelle : quatre arguments, pas d'userdata natif.
+            // Real WNDPROC ABI: four arguments, no native userdata.
             assertEquals(42L, Win32WndProcBridge.dispatchWndProc(7L, 0x8001, 1L, 2L))
             assertEquals(1, seen.get())
         } finally {

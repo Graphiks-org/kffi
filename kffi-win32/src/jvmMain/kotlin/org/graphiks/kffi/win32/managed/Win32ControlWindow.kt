@@ -28,7 +28,7 @@ public class Win32ControlWindow private constructor(
     public companion object {
         public const val TEST_MESSAGE: Int = 0x8001 // WM_APP + 1
         private const val CLASS_NAME: String = "KadreWin32ControlWindow"
-        private const val WS_POPUP: Int = -0x80000000 // 0x80000000, cf. test d'intégration existant
+        private const val WS_POPUP: Int = -0x80000000 // 0x80000000, cf. the existing integration test
         private const val PM_REMOVE: Int = 0x1
 
         public fun isSupported(): Boolean =
@@ -62,13 +62,13 @@ public class Win32ControlWindow private constructor(
                 Win32Structs.wndClassExW.setLpfnWndProc(clazz, function.callback.rawValue)
                 Win32Structs.wndClassExW.setHInstance(clazz, GetModuleHandleW(MemorySegment.NULL).address())
                 Win32Structs.wndClassExW.setLpszClassName(clazz, name.address())
-                // ERROR_CLASS_ALREADY_EXISTS (1410) toléré : la classe est réutilisée.
+                // ERROR_CLASS_ALREADY_EXISTS (1410) is tolerated: the class is reused.
                 RegisterClassExW(clazz)
                 val window = CreateWindowExW(
                     0,
                     name,
                     name,
-                    WS_POPUP, // jamais affiché : aucune ShowWindow
+                    WS_POPUP, // never shown: no ShowWindow call
                     0,
                     0,
                     0,
@@ -131,8 +131,8 @@ public class Win32ControlWindow private constructor(
         if (hwnd != 0L && IsWindow(MemorySegment.ofAddress(hwnd)) != 0) {
             DestroyWindow(MemorySegment.ofAddress(hwnd))
         }
-        // La registration gère révocation + quiescence : aucun support natif
-        // n'est libéré avant la fin des livraisons en cours (décisions D2).
+        // The registration owns revocation + quiescence: no native support is
+        // released before in-flight deliveries have returned.
         function.close()
     }
 }

@@ -20,7 +20,7 @@ class Win32ManagedFunctionsTest {
             function.close()
         }
         assertTrue(function.isQuiescent)
-        // Après fermeture : aucune livraison (révocation avant libération).
+        // After close: no delivery (revocation before release).
         function.routeForTest(9L, 0x8001, 5L, 6L)
         assertEquals(1, count.get())
     }

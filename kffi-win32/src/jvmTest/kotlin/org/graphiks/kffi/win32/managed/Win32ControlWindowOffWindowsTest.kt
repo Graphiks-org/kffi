@@ -8,8 +8,8 @@ class Win32ControlWindowOffWindowsTest {
     @Test
     fun unsupportedPlatformFailsBeforeAnyNativeCall() {
         if (Win32ControlWindow.isSupported()) {
-            // Sur Windows, ce scénario portable n'a pas de sens : la preuve
-            // Windows réelle vit dans Win32ControlWindowIntegrationTest.
+            // On Windows this portable scenario is meaningless: the real
+            // Windows proof lives in Win32ControlWindowIntegrationTest.
             return
         }
         assertFalse(Win32ControlWindow.isSupported())
