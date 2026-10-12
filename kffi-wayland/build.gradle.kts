@@ -35,6 +35,11 @@ tasks.withType<Test>().configureEach {
         useJUnitPlatform()
     }
     jvmArgs("--enable-native-access=ALL-UNNAMED")
+    testLogging {
+        events("failed")
+        exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
+        showStandardStreams = true
+    }
 }
 
 val jvmTestTask = tasks.named<Test>("jvmTest")
