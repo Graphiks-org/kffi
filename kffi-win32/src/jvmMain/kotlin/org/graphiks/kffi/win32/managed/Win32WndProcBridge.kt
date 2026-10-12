@@ -6,9 +6,15 @@ import org.graphiks.kffi.CallbackRuntime
 import org.graphiks.kffi.CallbackRuntimeApi
 import org.graphiks.kffi.NativeAddress
 import org.graphiks.kffi.engine.JvmUpcallEngine
-import java.util.concurrent.ConcurrentHashMap
+import java.util.concurrent.atomic.AtomicReference
 
-/** Loader-neutral route invoked by the process-lifetime Win32 WndProc trampoline. */
+/**
+ * Loader-neutral route invoked by the process-lifetime Win32 WndProc
+ * trampoline. The native WNDPROC ABI carries exactly four arguments
+ * (HWND, UINT, WPARAM, LPARAM) — no userdata travels through the native
+ * call, so this bridge owns ONE live route and the token routing happens
+ * inside the route closure.
+ */
 @CallbackRuntimeApi
 public fun interface Win32WndProcRoute {
     public fun dispatchWndProc(hwnd: Long, message: Int, wParam: Long, lParam: Long): Long
@@ -16,32 +22,32 @@ public fun interface Win32WndProcRoute {
 
 /**
  * Parent-loader owner for the Win32 WndProc trampoline, mirroring
- * `JvmManagedCFunctionBridge`. The trampoline is process-lifetime; per-userdata
- * routes are installed and removed with quiescence by their registrations.
+ * `JvmManagedCFunctionBridge`. The trampoline is process-lifetime; the single
+ * live route is installed by its registration and removed at quiescence.
  */
 @CallbackRuntimeApi
 public object Win32WndProcBridge {
-    private val routes = ConcurrentHashMap<Long, Win32WndProcRoute>()
+    private val route = AtomicReference<Win32WndProcRoute?>(null)
 
     public val wndProc: NativeAddress by lazy {
         JvmUpcallEngine.allocateTrampoline(
             dispatcherClass = Win32WndProcBridge::class.java,
             dispatchMethod = "dispatchWndProc",
-            dispatchSig = "(JIJJJ)J",
+            dispatchSig = "(JIJJ)J",
         )
     }
 
-    public fun install(userdata: Long, route: Win32WndProcRoute): AutoCloseable {
-        require(userdata != 0L) { "Win32 WndProc userdata must not be null" }
-        check(routes.putIfAbsent(userdata, route) == null) {
-            "A Win32 WndProc route already exists for userdata $userdata"
+    /** Installs the single live route; a second live install is rejected. */
+    public fun install(newRoute: Win32WndProcRoute): AutoCloseable {
+        check(route.compareAndSet(null, newRoute)) {
+            "A Win32 WndProc route is already installed"
         }
-        return AutoCloseable { routes.remove(userdata, route) }
+        return AutoCloseable { route.compareAndSet(newRoute, null) }
     }
 
     @JvmStatic
-    public fun dispatchWndProc(hwnd: Long, message: Int, wParam: Long, lParam: Long, userdata: Long): Long =
-        contain(0L) { routes[userdata]?.dispatchWndProc(hwnd, message, wParam, lParam) ?: 0L }
+    public fun dispatchWndProc(hwnd: Long, message: Int, wParam: Long, lParam: Long): Long =
+        contain(0L) { route.get()?.dispatchWndProc(hwnd, message, wParam, lParam) ?: 0L }
 
     private inline fun <R> contain(fallback: R, block: () -> R): R = try {
         block()

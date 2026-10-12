@@ -38,11 +38,14 @@ public object Win32ManagedFunctions {
         }
         val state = WndProcState(registration)
         try {
+            // Le token ne voyage PAS dans l'ABI WNDPROC native (4 arguments) :
+            // la route unique le capture et route via dispatchSafely.
+            val tokenForRoute = token
             state.attach(
-                Win32WndProcBridge.install(token.rawValue) { hwnd, message, wParam, lParam ->
+                Win32WndProcBridge.install { hwnd, message, wParam, lParam ->
                     CallbackRuntime.dispatchSafely(
                         WndProcCallback.type,
-                        token,
+                        tokenForRoute,
                         0L,
                     ) { callback -> callback.handler.onMessage(hwnd, message, wParam, lParam) }
                 },
@@ -118,7 +121,9 @@ private class WndProcOwner(
     override fun onQuiescent(action: () -> Unit) = state.onQuiescent(action)
 
     internal fun route(hwnd: Long, message: Int, wParam: Long, lParam: Long): Long =
-        Win32WndProcBridge.dispatchWndProc(hwnd, message, wParam, lParam, token.rawValue)
+        // Ré-entrée du chemin natif réel : la route unique est déjà installée,
+        // le dispatch passe par elle (le token est capturé dans sa closure).
+        Win32WndProcBridge.dispatchWndProc(hwnd, message, wParam, lParam)
 
     override fun close() {
         closeLock.withLock { state.close() }

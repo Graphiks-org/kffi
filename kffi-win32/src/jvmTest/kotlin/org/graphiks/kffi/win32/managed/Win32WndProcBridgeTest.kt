@@ -9,12 +9,13 @@ import kotlin.test.assertFailsWith
 
 class Win32WndProcBridgeTest {
     @Test
-    fun installRoutesDispatchByUserdata() {
+    fun installRoutesDispatchToTheLiveRoute() {
         val seen = AtomicInteger(0)
         val route = Win32WndProcRoute { _, _, _, _ -> seen.incrementAndGet().toLong(); 42L }
-        val close = Win32WndProcBridge.install(101L, route)
+        val close = Win32WndProcBridge.install(route)
         try {
-            assertEquals(42L, Win32WndProcBridge.dispatchWndProc(7L, 0x8001, 1L, 2L, 101L))
+            // ABI WNDPROC réelle : quatre arguments, pas d'userdata natif.
+            assertEquals(42L, Win32WndProcBridge.dispatchWndProc(7L, 0x8001, 1L, 2L))
             assertEquals(1, seen.get())
         } finally {
             close.close()
@@ -23,17 +24,17 @@ class Win32WndProcBridgeTest {
 
     @Test
     fun removedRouteFallsBackWithoutThrowing() {
-        val close = Win32WndProcBridge.install(102L, Win32WndProcRoute { _, _, _, _ -> 1L })
+        val close = Win32WndProcBridge.install(Win32WndProcRoute { _, _, _, _ -> 1L })
         close.close()
-        assertEquals(0L, Win32WndProcBridge.dispatchWndProc(7L, 0x8001, 1L, 2L, 102L))
+        assertEquals(0L, Win32WndProcBridge.dispatchWndProc(7L, 0x8001, 1L, 2L))
     }
 
     @Test
-    fun duplicateUserdataIsRejected() {
-        val close = Win32WndProcBridge.install(103L, Win32WndProcRoute { _, _, _, _ -> 0L })
+    fun secondLiveInstallIsRejected() {
+        val close = Win32WndProcBridge.install(Win32WndProcRoute { _, _, _, _ -> 0L })
         try {
             assertFailsWith<IllegalStateException> {
-                Win32WndProcBridge.install(103L, Win32WndProcRoute { _, _, _, _ -> 0L })
+                Win32WndProcBridge.install(Win32WndProcRoute { _, _, _, _ -> 0L })
             }
         } finally {
             close.close()
@@ -41,13 +42,22 @@ class Win32WndProcBridgeTest {
     }
 
     @Test
-    fun exceptionInRouteIsContainedAndReturnsFallback() {
-        val close = Win32WndProcBridge.install(
-            104L,
-            Win32WndProcRoute { _, _, _, _ -> error("boom") },
-        )
+    fun reinstallAfterCloseIsAccepted() {
+        val first = Win32WndProcBridge.install(Win32WndProcRoute { _, _, _, _ -> 0L })
+        first.close()
+        val second = Win32WndProcBridge.install(Win32WndProcRoute { _, _, _, _ -> 5L })
         try {
-            assertEquals(0L, Win32WndProcBridge.dispatchWndProc(7L, 0x8001, 1L, 2L, 104L))
+            assertEquals(5L, Win32WndProcBridge.dispatchWndProc(7L, 0x8001, 1L, 2L))
+        } finally {
+            second.close()
+        }
+    }
+
+    @Test
+    fun exceptionInRouteIsContainedAndReturnsFallback() {
+        val close = Win32WndProcBridge.install(Win32WndProcRoute { _, _, _, _ -> error("boom") })
+        try {
+            assertEquals(0L, Win32WndProcBridge.dispatchWndProc(7L, 0x8001, 1L, 2L))
         } finally {
             close.close()
         }
