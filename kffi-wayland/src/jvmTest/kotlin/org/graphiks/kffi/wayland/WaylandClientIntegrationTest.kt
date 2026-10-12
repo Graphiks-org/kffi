@@ -151,7 +151,7 @@ class WaylandClientIntegrationTest {
             // proof of mapping = the presentation frame; the missing enter is
             // tracked as a kffi diagnostic (see #116 discussion)
             assertTrue(
-                framed.count == 0L || entered.get(),
+                framed.count > 0L,
                 "surface did not map: serials=$configureSerials hasError=${it.hasError()} " +
                     "entered=${entered.get()} framed=${framed.count > 0L}",
             )
