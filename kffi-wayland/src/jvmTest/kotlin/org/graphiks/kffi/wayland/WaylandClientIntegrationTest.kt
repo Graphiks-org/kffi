@@ -120,8 +120,9 @@ class WaylandClientIntegrationTest {
             toplevel.setTitle("kffi-managed-window")
             toplevel.setAppId("org.graphiks.kffi.test")
             // handshake: initial commit without a buffer, then wait for configure
+            // (dispatching explicitly: without a pump, events only arrive through roundtrips)
             surface.commit()
-            assertTrue(configureSerials.awaitFirst(5_000))
+            assertTrue(configureSerials.awaitFirst(it, 10_000))
             val buffer = it.createShmBuffer(64, 64)
             val pixels = buffer.content()
             for (index in 0 until 64 * 64) {
@@ -153,10 +154,14 @@ class WaylandClientIntegrationTest {
         }
     }
 
-    private fun kotlin.collections.MutableList<Int>.awaitFirst(timeoutMillis: Long): Boolean {
+    private fun kotlin.collections.MutableList<Int>.awaitFirst(
+        client: org.graphiks.kffi.wayland.managed.WaylandClient,
+        timeoutMillis: Long,
+    ): Boolean {
         val deadline = System.nanoTime() + timeoutMillis * 1_000_000L
         while (isEmpty()) {
             if (System.nanoTime() > deadline) return false
+            client.roundtrip()
             Thread.sleep(25)
         }
         return true
