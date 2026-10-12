@@ -129,6 +129,8 @@ class WaylandClientIntegrationTest {
             surface.commit()
             assertTrue(configureSerials.awaitFirst(it, 10_000))
             val buffer = it.createShmBuffer(64, 64)
+            val released = java.util.concurrent.CountDownLatch(1)
+            buffer.addReleaseListener(onRelease = { released.countDown() })
             val pixels = buffer.content()
             for (index in 0 until 64 * 64) {
                 pixels.set(java.lang.foreign.ValueLayout.JAVA_INT, index.toLong() * 4, 0xFF3366AA.toInt())
