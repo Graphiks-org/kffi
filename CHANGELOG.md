@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `WaylandClient.displayProxyAddress`: the native `wl_display` pointer address
   for external renderer integrations, valid until the client is closed.
 - `:kffi-win32` exposes `IsWindow` and `FindWindowExW` for validating native window handles and finding child windows.
+- `kffi-win32.managed`: a handwritten managed layer over the generated Win32 bindings — WNDCLASSEXW/MSG Win64 ABI layouts, a process-lifetime WNDPROC trampoline bridge with per-userdata routes, a revocable WNDPROC registration built on the callback runtime (quiescence after close, exceptions contained at the native boundary), and a never-shown control window with idempotent close. The module now depends on the `kffi` core.
 - `kffi-x11` exposes generated `XInitThreads`, `XMapRaised`, `XMoveResizeWindow`, and `XSetErrorHandler` bindings, plus ABI-checked `XErrorEvent` storage and field accessors for native X11 error callbacks.
 - `:kffi` gains `tvosArm64` and `tvosSimulatorArm64` targets, so native libraries can be bound to tvOS the same way as iOS and macOS.
 - `:kffi-harfbuzz` gains `js` and `wasmJs` targets: the pinned HarfBuzz 14.3.0 revision is compiled to WebAssembly by the new `:kffi-harfbuzz-wasm-native` module, an authored JS surface wraps the Emscripten module, and the Kotlin bindings reproduce the JVM shaping output bit for bit under Node. The web runtime is embedded in the published klibs.
