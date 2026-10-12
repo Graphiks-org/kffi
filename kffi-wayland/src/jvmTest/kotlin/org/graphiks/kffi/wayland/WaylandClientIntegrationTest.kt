@@ -101,9 +101,11 @@ class WaylandClientIntegrationTest {
             val configureSerials: kotlin.collections.MutableList<Int> = java.util.Collections.synchronizedList(ArrayList<Int>())
             val entered = java.util.concurrent.atomic.AtomicBoolean(false)
             val closed = java.util.concurrent.atomic.AtomicBoolean(false)
+            val configureStates = java.util.Collections.synchronizedList(ArrayList<List<Int>>())
             toplevel.addEventsListener(
                 onConfigure = { _, _, states ->
-                    assertTrue(states.isNotEmpty())
+                    // le configure initial porte un tableau d'états vide : légal
+                    configureStates.add(states)
                 },
                 onClose = { closed.set(true) },
                 onFailure = { },
