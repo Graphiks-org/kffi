@@ -26,6 +26,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `wl_registry_add_listener` and `wl_registry_bind` are `static inline`
   helpers whose symbols exist in no distribution of libwayland-client (the
   dead downcalls in `Wayland_h.kt` are now flagged as such).
+- Managed Wayland windowing (`kffi-wayland.managed`): typed `WaylandSurface`
+  (commit, attach with full buffer damage, one-shot frame callbacks,
+  enter/leave observers), `WaylandXdgSurface` (per-serial configure
+  observation and acknowledgement), `WaylandToplevel` (title/app id,
+  configure size and copied states array, close event) and managed
+  shm-backed ARGB8888 buffers with release observers, with multi-consumer
+  listener dispatch and deterministic teardown. All protocol requests go
+  through the generic `wl_proxy_marshal_flags` marshal, and
+  `wl_registry.bind` passes the interface name as a real string pointer.
 
 ### Changed
 - X11 storage types drop the redundant `Kffi` prefix (for example, `XEventStorage` and `XErrorEventStorage`); the native-name aliases such as `XImage` and `XErrorEvent` remain available.

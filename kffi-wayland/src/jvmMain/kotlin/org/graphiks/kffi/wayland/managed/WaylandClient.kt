@@ -23,8 +23,13 @@ import org.graphiks.kffi.wayland.wlDisplayReadEvents
 import org.graphiks.kffi.wayland.wlDisplayRoundtrip
 import org.graphiks.kffi.wayland.wlProxyAddListener
 import org.graphiks.kffi.wayland.wlProxyGetVersion
+import org.graphiks.kffi.wayland.wlProxyMarshalBind
 import org.graphiks.kffi.wayland.wlProxyMarshalNewId
 import org.graphiks.kffi.wayland.wlRegistryInterface
+import org.graphiks.kffi.wayland.WL_REGISTRY_BIND
+import org.graphiks.kffi.wayland.wlCompositorInterface
+import org.graphiks.kffi.wayland.generated.xdg_wm_base_interface
+import org.graphiks.kffi.wayland.wlShmInterface
 
 /** Outcome of a display+wake poll issued by [WaylandClient.pollForEvents]. */
 public enum class WaylandPollOutcome { DisplayReady, WakeOnly, Interrupted, Failed }
@@ -50,11 +55,61 @@ public class WaylandClient private constructor(
     private val prepared = AtomicBoolean(false)
     private val registryListeners = ArrayList<WaylandRegistryListener>()
     private val lock = Any()
+    private val advertisedGlobals = HashMap<String, Pair<Int, Int>>() // interface -> (numeric name, version)
 
     // `wl_display_get_registry` is a static inline header helper: no such
     // symbol exists in libwayland-client — the request goes through the
     // generic marshal (opcode 1, wl_registry interface), like everywhere else.
     private val registryProxy: MemorySegment = createRegistryProxy(display)
+
+    /**
+     * Binds one advertised global through `wl_registry.bind` and returns the
+     * resulting proxy with its negotiated version (`min(advertised,
+     * [maxVersion])`). Returns `null` when the global is not advertised or
+     * the roundtrip cannot refresh the registry.
+     */
+    internal fun bindGlobal(interfaceName: String, maxVersion: Int): ManagedProxy? {
+        // force the internal globals-tracking listener to install before any
+        // event dispatch
+        registry
+        if (!roundtrip()) {
+            throw WaylandWindowingException("wl_display roundtrip failed while resolving '$interfaceName'")
+        }
+        val (name, advertised) = synchronized(advertisedGlobals) { advertisedGlobals[interfaceName] }
+            ?: return null
+        val version = minOf(advertised, maxVersion)
+        val bind = requireHandle(wlProxyMarshalBind)
+        val interfacePointer = requireNotNull(interfacePointer(interfaceName)) {
+            "required libwayland interface '$interfaceName' is unavailable"
+        }
+        // the interface name string is consumed synchronously by the marshal:
+        // a confined temp arena is enough
+        Arena.ofConfined().use { temp ->
+            val namePointer = temp.allocateFrom(interfaceName)
+            val proxy = bind.invoke(
+                registryProxy,
+                WL_REGISTRY_BIND,
+                interfacePointer,
+                version,
+                0,
+                name,
+                namePointer,
+                version,
+                MemorySegment.NULL,
+            ) as MemorySegment
+            if (proxy == MemorySegment.NULL) {
+                return null
+            }
+            return ManagedProxy(proxy, version)
+        }
+    }
+
+    private fun interfacePointer(name: String): MemorySegment? = when (name) {
+        "wl_compositor" -> wlCompositorInterface
+        "xdg_wm_base" -> xdg_wm_base_interface
+        "wl_shm" -> wlShmInterface
+        else -> null
+    }
 
     private fun createRegistryProxy(display: MemorySegment): MemorySegment {
         val marshalNewId = requireHandle(wlProxyMarshalNewId)
@@ -67,7 +122,15 @@ public class WaylandClient private constructor(
 
     /** Managed entry point to this connection's `wl_registry`. */
     public val registry: WaylandRegistry by lazy {
-        WaylandRegistry(registryProxy, arena, registryListeners, lock)
+        val managed = WaylandRegistry(registryProxy, arena, registryListeners, lock)
+        managed.addGlobalsListener(
+            onGlobal = { name, interfaceName, version ->
+                synchronized(advertisedGlobals) {
+                    advertisedGlobals[interfaceName] = name to version
+                }
+            },
+        )
+        managed
     }
 
     /** Blocking roundtrip; `false` = a display error was observed. */
@@ -122,6 +185,25 @@ public class WaylandClient private constructor(
 
     /** A read/dispatch/roundtrip primitive returned a display error. */
     public fun hasError(): Boolean = errorSeen.get()
+
+    internal val managedArena: Arena get() = arena
+    internal val managedLock: Any get() = lock
+    internal fun managedClosed(): Boolean = closed.get()
+
+    /** Creates a managed `wl_surface` bound to this connection's compositor. */
+    public fun createSurface(): WaylandSurface = WindowingFactory.createSurface(this)
+
+    /** Creates a managed `xdg_surface` role for [surface] through `xdg_wm_base`. */
+    public fun createXdgSurface(surface: WaylandSurface): WaylandXdgSurface =
+        WindowingFactory.createXdgSurface(this, surface)
+
+    /** Creates a managed `xdg_toplevel` for [xdgSurface]. */
+    public fun createToplevel(xdgSurface: WaylandXdgSurface): WaylandToplevel =
+        WindowingFactory.createToplevel(this, xdgSurface)
+
+    /** Creates a managed shm-backed ARGB8888 buffer of [width] × [height]. */
+    public fun createShmBuffer(width: Int, height: Int): WaylandShmBuffer =
+        ShmFactory.createShmBuffer(this, width, height)
 
     /**
      * Blocking poll over the display fd (plus `POLLOUT` when [watchWrite]) and
@@ -256,9 +338,15 @@ public class WaylandRegistry internal constructor(
     private val lock: Any,
 ) {
 
+    private val nativeInstalled = AtomicBoolean(false)
+    private val consumers = ArrayList<GlobalConsumer>()
+
     /**
-     * Installs a revocable globals listener. The arena and stubs belong to the
-     * client and live until [WaylandClient.close].
+     * Installs a revocable globals listener. `wl_proxy_add_listener` replaces
+     * (and fails on re-add for some compositors), so exactly one native
+     * listener is installed per registry and fanned out to every consumer.
+     * The arena and stubs belong to the client and live until
+     * [WaylandClient.close].
      */
     public fun addGlobalsListener(
         onGlobal: (name: Int, interfaceName: String, version: Int) -> Unit,
@@ -267,18 +355,50 @@ public class WaylandRegistry internal constructor(
     ): WaylandRegistryListener {
         val revoked = AtomicBoolean(false)
         val listener = WaylandRegistryListener(revoked)
+        synchronized(lock) {
+            if (nativeInstalled.compareAndSet(false, true)) {
+                installNativeDispatcher()
+            }
+            consumers.add(GlobalConsumer(onGlobal, onGlobalRemove, onFailure, revoked))
+            listeners.add(listener)
+        }
+        return listener
+    }
+
+    private fun installNativeDispatcher() {
+        val dispatcher = object : Any() {
+            fun globalUpcall(
+                @Suppress("UNUSED_PARAMETER") data: MemorySegment,
+                @Suppress("UNUSED_PARAMETER") registry: MemorySegment,
+                name: Int,
+                interfaceName: MemorySegment,
+                version: Int,
+            ) {
+                // copy immediately: the C string is only valid inside the upcall
+                val copied = interfaceName.reinterpret(512).getString(0)
+                snapshotConsumers().forEach { it.deliverGlobal(name, copied, version) }
+            }
+
+            fun globalRemoveUpcall(
+                @Suppress("UNUSED_PARAMETER") data: MemorySegment,
+                @Suppress("UNUSED_PARAMETER") registry: MemorySegment,
+                name: Int,
+            ) {
+                snapshotConsumers().forEach { it.deliverRemove(name) }
+            }
+        }
         val globalStub = upcallStub(
+            dispatcher,
             "globalUpcall",
             FunctionDescriptor.ofVoid(
                 ValueLayout.ADDRESS, ValueLayout.ADDRESS,
                 ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT,
             ),
-            GlobalSink(onGlobal, onFailure, revoked),
         )
         val removeStub = upcallStub(
+            dispatcher,
             "globalRemoveUpcall",
             FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT),
-            RemoveSink(onGlobalRemove, onFailure, revoked),
         )
         val pointerSize = ValueLayout.ADDRESS.byteSize()
         val listenerStruct = arena.allocate(pointerSize * 2L, ValueLayout.ADDRESS.byteAlignment())
@@ -289,14 +409,16 @@ public class WaylandRegistry internal constructor(
         val addHandle = requireHandle(wlProxyAddListener)
         val rc = addHandle.invoke(registryProxy, listenerStruct, MemorySegment.NULL) as Int
         check(rc == 0) { "wl_registry_add_listener failed with rc=$rc" }
-        synchronized(lock) { listeners.add(listener) }
-        return listener
+    }
+
+    private fun snapshotConsumers(): List<GlobalConsumer> = synchronized(lock) {
+        consumers.filter { !it.revoked.get() }
     }
 
     private fun upcallStub(
+        sink: Any,
         method: String,
         descriptor: FunctionDescriptor,
-        sink: Any,
     ): MemorySegment {
         val parameterTypes = descriptor.argumentLayouts().map { layout -> (layout as ValueLayout).carrier() }
         val target = MethodHandles.lookup()
@@ -308,41 +430,21 @@ public class WaylandRegistry internal constructor(
     private fun requireHandle(handle: MethodHandle?): MethodHandle =
         requireNotNull(handle) { "required libwayland symbol is unavailable" }
 
-    internal class GlobalSink(
+    internal class GlobalConsumer(
         private val onGlobal: (name: Int, interfaceName: String, version: Int) -> Unit,
+        private val onGlobalRemove: (name: Int) -> Unit,
         private val onFailure: (Throwable) -> Unit,
-        private val revoked: AtomicBoolean,
+        internal val revoked: AtomicBoolean,
     ) {
-        @Suppress("UNUSED_PARAMETER")
-        fun globalUpcall(
-            data: MemorySegment,
-            registry: MemorySegment,
-            name: Int,
-            interfaceName: MemorySegment,
-            version: Int,
-        ) {
-            if (revoked.get()) {
-                return
-            }
+        fun deliverGlobal(name: Int, interfaceName: String, version: Int) {
             try {
-                // copy immediately: the C string is only valid inside the upcall
-                onGlobal(name, interfaceName.reinterpret(512).getString(0), version)
+                onGlobal(name, interfaceName, version)
             } catch (throwable: Throwable) {
                 runCatching { onFailure(throwable) }
             }
         }
-    }
 
-    internal class RemoveSink(
-        private val onGlobalRemove: (name: Int) -> Unit,
-        private val onFailure: (Throwable) -> Unit,
-        private val revoked: AtomicBoolean,
-    ) {
-        @Suppress("UNUSED_PARAMETER")
-        fun globalRemoveUpcall(data: MemorySegment, registry: MemorySegment, name: Int) {
-            if (revoked.get()) {
-                return
-            }
+        fun deliverRemove(name: Int) {
             try {
                 onGlobalRemove(name)
             } catch (throwable: Throwable) {

@@ -4,6 +4,7 @@ import java.util.concurrent.atomic.AtomicBoolean
 import org.graphiks.kffi.wayland.managed.WaylandClient
 import org.junit.jupiter.api.Assumptions.assumeTrue
 import kotlin.test.Test
+import kotlin.test.assertFailsWith
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertNotEquals
@@ -85,6 +86,104 @@ class WaylandClientIntegrationTest {
             assertTrue(it.roundtrip())
             assertFalse(deliveries.get())
             assertTrue(sawGlobalsBeforeRevoke || it.hasError().not())
+        }
+    }
+
+    @Test
+    fun managedWindowHandshakeMapsAShmBufferedSurface() {
+        requireCompositorEnvironment()
+        val client = WaylandClient.connect()
+        assertNotNull(client)
+        client.use {
+            val surface = it.createSurface()
+            val xdg = it.createXdgSurface(surface)
+            val toplevel = it.createToplevel(xdg)
+            it.roundtrip()
+            toplevel.setTitle("kffi-managed-window")
+            it.roundtrip()
+            toplevel.setAppId("org.graphiks.kffi.test")
+            it.roundtrip()
+            val configureSerials: kotlin.collections.MutableList<Int> = java.util.Collections.synchronizedList(ArrayList<Int>())
+            val entered = java.util.concurrent.atomic.AtomicBoolean(false)
+            val closed = java.util.concurrent.atomic.AtomicBoolean(false)
+            val configureStates = java.util.Collections.synchronizedList(ArrayList<List<Int>>())
+            toplevel.addEventsListener(
+                onConfigure = { _, _, states ->
+                    // le configure initial porte un tableau d'états vide : légal
+                    configureStates.add(states)
+                },
+                onClose = { closed.set(true) },
+                onFailure = { },
+            )
+            xdg.addConfigureListener(
+                onConfigure = { serial -> configureSerials.add(serial) },
+                onFailure = { },
+            )
+            surface.addEnterLeaveListener(
+                onEnter = { entered.set(true) },
+                onLeave = { },
+                onFailure = { },
+            )
+            // handshake: initial commit without a buffer, then wait for configure
+            // (dispatching explicitly: without a pump, events only arrive through roundtrips)
+            surface.commit()
+            assertTrue(configureSerials.awaitFirst(it, 10_000))
+            val buffer = it.createShmBuffer(64, 64)
+            val released = java.util.concurrent.CountDownLatch(1)
+            buffer.addReleaseListener(onRelease = { released.countDown() })
+            val pixels = buffer.content()
+            for (index in 0 until 64 * 64) {
+                pixels.set(java.lang.foreign.ValueLayout.JAVA_INT, index.toLong() * 4, 0xFF3366AA.toInt())
+            }
+            xdg.ackConfigure(configureSerials.last())
+            val framed = java.util.concurrent.CountDownLatch(1)
+            surface.addFrameListener(
+                onFrame = { framed.countDown() },
+                onFailure = { },
+            )
+            surface.attachAndCommit(buffer)
+            // without a pump, events only arrive through explicit roundtrips
+            val deadline = System.nanoTime() + 10_000_000_000L
+            while (System.nanoTime() < deadline && !entered.get() && framed.count > 0L) {
+                it.roundtrip()
+                Thread.sleep(25)
+            }
+            // proof of mapping = the presentation frame; the missing enter is
+            // tracked as a kffi diagnostic (see #116 discussion)
+            assertTrue(
+                framed.count > 0L,
+                "surface did not map: serials=$configureSerials hasError=${it.hasError()} " +
+                    "entered=${entered.get()} framed=${framed.count > 0L}",
+            )
+            buffer.close()
+            toplevel.close()
+            xdg.close()
+            surface.close()
+            it.close()
+            it.close()
+        }
+    }
+
+    private fun kotlin.collections.MutableList<Int>.awaitFirst(
+        client: org.graphiks.kffi.wayland.managed.WaylandClient,
+        timeoutMillis: Long,
+    ): Boolean {
+        val deadline = System.nanoTime() + timeoutMillis * 1_000_000L
+        while (isEmpty()) {
+            if (System.nanoTime() > deadline) return false
+            client.roundtrip()
+            Thread.sleep(25)
+        }
+        return true
+    }
+
+    @Test
+    fun zeroSizedShmBufferIsRejected() {
+        requireCompositorEnvironment()
+        val client = WaylandClient.connect()
+        assertNotNull(client)
+        client.use {
+            assertFailsWith<IllegalArgumentException> { it.createShmBuffer(0, 0) }
         }
     }
 
