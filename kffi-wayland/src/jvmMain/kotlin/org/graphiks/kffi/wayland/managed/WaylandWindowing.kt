@@ -77,7 +77,7 @@ internal object WindowingFactory {
     fun createXdgSurface(client: WaylandClient, surface: WaylandSurface): WaylandXdgSurface {
         val wmBase = client.bindGlobal("xdg_wm_base", maxVersion = 2)
             ?: throw WaylandWindowingException("xdg_wm_base is not advertised by the compositor")
-        installWmBasePong(wmBase)
+        installWmBasePong(wmBase, client.managedArena)
         // get_xdg_surface carries the wl_surface as an object argument
         val getXdgSurface = WindowingFactory.requireHandle(
             org.graphiks.kffi.wayland.wlProxyMarshalFlagsGetXdgSurface,
@@ -105,17 +105,15 @@ internal object WindowingFactory {
         return WaylandToplevel(client, client.managedArena, toplevel, client.managedLock)
     }
 
-    private fun installWmBasePong(wmBase: ManagedProxy) {
-        val revoked = AtomicBoolean(false)
+    private fun installWmBasePong(wmBase: ManagedProxy, arena: Arena) {
         val pong = requireHandle(wlProxyMarshalFlagsUint, "wl_proxy_marshal_flags")
         val sink = object : Any() {
+            // the reply goes to the REAL wm_base proxy: the upcall `data`
+            // argument is the registered (null) consumer data, never a proxy
             @Suppress("UNUSED_PARAMETER")
             fun pingUpcall(data: MemorySegment, wmBaseSegment: MemorySegment, serial: Int) {
-                if (revoked.get()) {
-                    return
-                }
                 try {
-                    pong.invoke(wmBaseSegment, XDG_WM_BASE_PONG, MemorySegment.NULL, wmBase.version, 0, serial)
+                    pong.invoke(wmBase.proxy, XDG_WM_BASE_PONG, MemorySegment.NULL, wmBase.version, 0, serial)
                 } catch (_: Throwable) {
                 }
             }
@@ -127,13 +125,11 @@ internal object WindowingFactory {
                     sink,
                     "pingUpcall",
                     FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT),
-                    wmBaseProxyArena(),
+                    arena,
                 ),
             ),
         )
     }
-
-    private fun wmBaseProxyArena(): Arena = Arena.ofShared()
 
     private fun newId(proxy: MemorySegment, opcode: Int, interfacePointer: MemorySegment, version: Int): MemorySegment {
         val marshal = requireHandle(wlProxyMarshalNewId, "wl_proxy_marshal_flags")
