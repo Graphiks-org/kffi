@@ -101,6 +101,8 @@ internal object ShmFactory {
             closeFd(fd)
             throw WaylandWindowingException("mmap failed for a $width x $height buffer")
         }
+        // FFM cannot know the mapping size: expose exactly the pool bytes
+        val mapped = mapping.reinterpret(byteSize.toLong())
         val poolAddress = org.graphiks.kffi.wayland.createShmPool(shm.proxy.address(), fd, byteSize)
         if (poolAddress == 0L) {
             munmap(mapping, byteSize)
@@ -122,7 +124,7 @@ internal object ShmFactory {
             poolProxy = poolProxy,
             width = width,
             height = height,
-            mapping = mapping,
+            mapping = mapped,
             byteSize = byteSize,
             fd = fd,
             lock = client.managedLock,
