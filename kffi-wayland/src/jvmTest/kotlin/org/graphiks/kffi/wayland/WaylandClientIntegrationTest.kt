@@ -98,6 +98,11 @@ class WaylandClientIntegrationTest {
             val surface = it.createSurface()
             val xdg = it.createXdgSurface(surface)
             val toplevel = it.createToplevel(xdg)
+            it.roundtrip()
+            toplevel.setTitle("kffi-managed-window")
+            it.roundtrip()
+            toplevel.setAppId("org.graphiks.kffi.test")
+            it.roundtrip()
             val configureSerials: kotlin.collections.MutableList<Int> = java.util.Collections.synchronizedList(ArrayList<Int>())
             val entered = java.util.concurrent.atomic.AtomicBoolean(false)
             val closed = java.util.concurrent.atomic.AtomicBoolean(false)
@@ -119,8 +124,6 @@ class WaylandClientIntegrationTest {
                 onLeave = { },
                 onFailure = { },
             )
-            toplevel.setTitle("kffi-managed-window")
-            toplevel.setAppId("org.graphiks.kffi.test")
             // handshake: initial commit without a buffer, then wait for configure
             // (dispatching explicitly: without a pump, events only arrive through roundtrips)
             surface.commit()
@@ -145,7 +148,7 @@ class WaylandClientIntegrationTest {
             }
             assertTrue(
                 entered.get() || framed.count == 0L,
-                "M2DEBUG surface did not map: serials=$configureSerials hasError=${it.hasError()} entered=${entered.get()} framed=${framed.count}",
+                "surface did not map: serials=$configureSerials hasError=${it.hasError()} entered=${entered.get()} framed=${framed.count}",
             )
             buffer.close()
             toplevel.close()

@@ -28,6 +28,7 @@ import org.graphiks.kffi.wayland.wlProxyMarshalFlagsObjectTwoInt
 import org.graphiks.kffi.wayland.wlProxyMarshalFlagsString
 import org.graphiks.kffi.wayland.wlProxyMarshalFlagsUint
 import org.graphiks.kffi.wayland.wlProxyMarshalFlagsVoid
+import org.graphiks.kffi.wayland.wlProxyMarshalFlagsGetXdgSurface
 import org.graphiks.kffi.wayland.wlProxyMarshalNewId
 import org.graphiks.kffi.wayland.wlSurfaceInterface
 import org.graphiks.kffi.wayland.generated.xdg_surface_interface
@@ -77,12 +78,20 @@ internal object WindowingFactory {
         val wmBase = client.bindGlobal("xdg_wm_base", maxVersion = 2)
             ?: throw WaylandWindowingException("xdg_wm_base is not advertised by the compositor")
         installWmBasePong(wmBase)
-        val xdgSurface = newId(
-            proxy = wmBase.proxy,
-            opcode = XDG_WM_BASE_GET_XDG_SURFACE,
-            interfacePointer = requireInterface(xdg_surface_interface, "xdg_surface_interface"),
-            version = wmBase.version,
+        // get_xdg_surface carries the wl_surface as an object argument
+        val getXdgSurface = WindowingFactory.requireHandle(
+            org.graphiks.kffi.wayland.wlProxyMarshalFlagsGetXdgSurface,
+            "wl_proxy_marshal_flags",
         )
+        val xdgSurface = getXdgSurface.invoke(
+            wmBase.proxy,
+            XDG_WM_BASE_GET_XDG_SURFACE,
+            requireInterface(xdg_surface_interface, "xdg_surface_interface"),
+            wmBase.version,
+            0,
+            MemorySegment.NULL,
+            surface.proxy,
+        ) as MemorySegment
         return WaylandXdgSurface(client.managedArena, xdgSurface, surface, client.managedLock)
     }
 
