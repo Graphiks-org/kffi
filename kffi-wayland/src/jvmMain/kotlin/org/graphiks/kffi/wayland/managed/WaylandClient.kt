@@ -120,6 +120,14 @@ public class WaylandClient private constructor(
         return marshalNewId.invoke(display, 1, registryInterface, version, 0, MemorySegment.NULL) as MemorySegment
     }
 
+    /**
+     * Address of the native `wl_display` pointer, for consumers that must hand
+     * the display to external renderers (EGL/Vulkan platforms) alongside a
+     * surface address. Valid until [close].
+     */
+    public val displayProxyAddress: Long
+        get() = display.address()
+
     /** Managed entry point to this connection's `wl_registry`. */
     public val registry: WaylandRegistry by lazy {
         val managed = WaylandRegistry(registryProxy, arena, registryListeners, lock)
