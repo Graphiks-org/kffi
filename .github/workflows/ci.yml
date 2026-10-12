@@ -39,7 +39,9 @@ jobs:
         uses: actions/upload-artifact@v6
         with:
           name: wayland-integration
-          path: kffi-wayland/build/wayland-integration/**
+          path: |
+            kffi-wayland/build/wayland-integration/**
+            kffi-wayland/build/test-results/waylandIntegrationTest/**
           if-no-files-found: warn
 
   x11-integration:
