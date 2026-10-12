@@ -15,6 +15,9 @@ kotlin {
     }
 
     sourceSets {
+        jvmMain.dependencies {
+            api(project(":kffi"))
+        }
         jvmTest.dependencies {
             implementation(kotlin("test"))
         }
@@ -49,6 +52,7 @@ tasks.register<Test>("win32IntegrationTest") {
     useJUnitPlatform()
     filter {
         includeTestsMatching("org.graphiks.kffi.win32.Win32WindowIntegrationTest")
+        includeTestsMatching("org.graphiks.kffi.win32.managed.Win32ControlWindowIntegrationTest")
     }
 
     systemProperty(
