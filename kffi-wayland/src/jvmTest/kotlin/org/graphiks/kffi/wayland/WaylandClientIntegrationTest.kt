@@ -1,5 +1,6 @@
 package org.graphiks.kffi.wayland
 
+import java.util.concurrent.CopyOnWriteArrayList
 import java.util.concurrent.atomic.AtomicBoolean
 import org.graphiks.kffi.wayland.managed.WaylandClient
 import org.junit.jupiter.api.Assumptions.assumeTrue
