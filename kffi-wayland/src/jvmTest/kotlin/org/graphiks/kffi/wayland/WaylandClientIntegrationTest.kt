@@ -214,6 +214,7 @@ class WaylandClientIntegrationTest {
             probe("after-wake-drain")
             wake.close()
             probe("after-wake-close")
+            reproLog("PROBE fds-before-second: " + fdSnapshot())
             val second = it.createShmBuffer(32, 32)
             probe("after-second-pool")
             assertNotNull(second, "the pool marshal is corrupted after the wakeup syscalls")
