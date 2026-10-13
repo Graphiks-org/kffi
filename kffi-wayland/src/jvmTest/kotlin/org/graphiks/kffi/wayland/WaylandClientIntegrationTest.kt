@@ -34,6 +34,15 @@ class WaylandClientIntegrationTest {
         )
     }
 
+    private fun fdSnapshot(): String {
+        val dir = java.io.File("/proc/self/fd")
+        val entries = dir.listFiles()?.mapNotNull { entry ->
+            val target = runCatching { java.nio.file.Files.readSymbolicLink(entry.toPath()).toString() }.getOrDefault("?")
+            "${entry.name}->${target.substringAfterLast('/')}"
+        }?.sortedBy { it.toIntOrNull() ?: 0 } ?: emptyList()
+        return entries.joinToString(",")
+    }
+
     private fun reproLog(line: String) {
         val dir = System.getenv("KFFI_WAYLAND_ARTIFACT_DIR")
         val sink = if (dir != null) {
@@ -53,6 +62,7 @@ class WaylandClientIntegrationTest {
         client.use {
             // bisect (b): a wakeup burst on a client that never created a
             // pool — if this dies too, the burst alone is the trigger
+            reproLog("BURST fds-before displayFd=${it.fileDescriptor}: ${fdSnapshot()}")
             val wake = org.graphiks.kffi.posix.PosixWakeup.open()
             reproLog("BURST wakeRead=${wake.readFd} displayFd=${it.fileDescriptor} hasError=${it.hasError()}")
             wake.signal()
@@ -60,7 +70,9 @@ class WaylandClientIntegrationTest {
             wake.drain()
             reproLog("BURST after-drain hasError=${it.hasError()}")
             wake.close()
-            reproLog("BURST after-close hasError=${it.hasError()}")
+            reproLog("BURST after-close displayFdAlive=${java.nio.file.Files.exists(java.nio.file.Path.of("/proc/self/fd/" + it.fileDescriptor))} hasError=${it.hasError()}")
+            reproLog("BURST fds-after: ${fdSnapshot()}")
+            reproLog("BURST fds-before-pool2: ${fdSnapshot()}")
             val buffer = it.createShmBuffer(32, 32)
             reproLog("BURST pool2 hasError=${it.hasError()}")
             assertNotNull(buffer, "the burst alone kills the pool marshal")
