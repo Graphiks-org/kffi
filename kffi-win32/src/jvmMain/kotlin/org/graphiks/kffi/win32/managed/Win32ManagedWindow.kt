@@ -35,6 +35,9 @@ public class Win32ManagedWindow private constructor(
         private const val SW_SHOW: Int = 5
         private const val SW_HIDE: Int = 0
         public const val WM_CLOSE: Int = 0x0010
+        internal const val WM_CREATE: Int = 0x0001
+        internal const val WM_NCCREATE: Int = 0x0081
+        internal const val WM_NCCALCSIZE: Int = 0x0083
 
         public fun open(title: String, handler: Win32WndProcHandler): Win32ManagedWindow {
             check(isSupported()) {
@@ -42,10 +45,16 @@ public class Win32ManagedWindow private constructor(
                     System.getProperty("os.name") + ") is unsupported — no native library was loaded."
             }
             init()
-            // Every message is delivered to the consumer handler; unhandled
-            // messages fall through to the native default behavior.
+            // Creation-critical messages bypass the consumer: returning 0 for
+            // WM_NCCREATE aborts CreateWindowExW. Everything else reaches the
+            // consumer handler, which owns the close decision and delegates
+            // unhandled messages back to the native default behavior.
             val function = Win32ManagedFunctions.wndProc { hwnd, message, wParam, lParam ->
-                handler.onMessage(hwnd, message, wParam, lParam)
+                when (message) {
+                    WM_NCCREATE, WM_NCCALCSIZE, WM_CREATE ->
+                        DefWindowProcW(MemorySegment.ofAddress(hwnd), message, wParam, lParam)
+                    else -> handler.onMessage(hwnd, message, wParam, lParam)
+                }
             }
             try {
                 val hwnd = createWindow(function, title)
