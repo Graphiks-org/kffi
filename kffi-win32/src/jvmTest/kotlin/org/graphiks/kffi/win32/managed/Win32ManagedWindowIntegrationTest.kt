@@ -30,16 +30,19 @@ class Win32ManagedWindowIntegrationTest {
 
         init()
         val closes = CopyOnWriteArrayList<String>()
+        val seen = CopyOnWriteArrayList<String>()
         // Every non-close message must reach DefWindowProcW with its ORIGINAL
         // wParam/lParam: WM_NCCREATE carries the CREATESTRUCT pointer in lParam
         // and zeroes abort window creation.
         // `second` refuses its WM_CLOSE (record + return 0, no DefWindowProcW):
         // the consumer owns the close decision, so the window stays alive.
         val first = Win32ManagedWindow.open("kadre-p2-first") { hwnd, message, wParam, lParam ->
+            seen.add("first:$message")
             if (message == Win32ManagedWindow.WM_CLOSE) closes.add("close:$hwnd")
             DefWindowProc(hwnd, message, wParam, lParam)
         }
         val second = Win32ManagedWindow.open("kadre-p2-second") { hwnd, message, wParam, lParam ->
+            seen.add("second:$message")
             if (message == Win32ManagedWindow.WM_CLOSE) {
                 closes.add("refused:$hwnd")
                 0L
@@ -78,6 +81,9 @@ class Win32ManagedWindowIntegrationTest {
             runCatching { second.close() }
             runCatching { third.close() }
         }
+        java.io.File("kffi-win32/build/win32-integration/seen.txt").writeText(
+            "closes=$closes\nseen=${seen.joinToString(separator = ",")}\n",
+        )
         assertTrue(closes.contains("close:") || closes.contains("refused:"), "WM_CLOSE must reach handlers")
     }
 
