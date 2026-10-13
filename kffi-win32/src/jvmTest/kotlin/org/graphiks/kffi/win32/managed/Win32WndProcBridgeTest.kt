@@ -9,45 +9,58 @@ import kotlin.test.assertFailsWith
 
 class Win32WndProcBridgeTest {
     @Test
-    fun installRoutesDispatchToTheLiveRoute() {
+    fun messagesDuringCreationRouteThroughTheThreadSlot() {
         val seen = AtomicInteger(0)
-        val route = Win32WndProcRoute { _, _, _, _ -> seen.incrementAndGet().toLong(); 42L }
-        val close = Win32WndProcBridge.install(route)
+        val creation = Win32WndProcBridge.beginCreation { _, _, _, _ ->
+            seen.incrementAndGet().toLong(); 7L
+        }
         try {
-            // Real WNDPROC ABI: four arguments, no native userdata.
-            assertEquals(42L, Win32WndProcBridge.dispatchWndProc(7L, 0x8001, 1L, 2L))
+            assertEquals(7L, Win32WndProcBridge.dispatchWndProc(9L, 0x0081, 0L, 0L))
             assertEquals(1, seen.get())
         } finally {
-            close.close()
+            creation.close()
         }
+        // Après endCreation, plus aucun routage par le slot.
+        assertEquals(0L, Win32WndProcBridge.dispatchWndProc(9L, 0x0081, 0L, 0L))
     }
 
     @Test
-    fun removedRouteFallsBackWithoutThrowing() {
-        val close = Win32WndProcBridge.install(Win32WndProcRoute { _, _, _, _ -> 1L })
-        close.close()
-        assertEquals(0L, Win32WndProcBridge.dispatchWndProc(7L, 0x8001, 1L, 2L))
-    }
-
-    @Test
-    fun secondLiveInstallIsRejected() {
-        val close = Win32WndProcBridge.install(Win32WndProcRoute { _, _, _, _ -> 0L })
+    fun registeredHwndRoutesToItsOwnRoute() {
+        val first = AtomicInteger(0)
+        val second = AtomicInteger(0)
+        val close1 = Win32WndProcBridge.registerRoute(100L) { _, _, _, _ ->
+            first.incrementAndGet().toLong(); 1L
+        }
+        val close2 = Win32WndProcBridge.registerRoute(200L) { _, _, _, _ ->
+            second.incrementAndGet().toLong(); 2L
+        }
         try {
-            assertFailsWith<IllegalStateException> {
-                Win32WndProcBridge.install(Win32WndProcRoute { _, _, _, _ -> 0L })
-            }
+            assertEquals(1L, Win32WndProcBridge.dispatchWndProc(100L, 0x8001, 0L, 0L))
+            assertEquals(2L, Win32WndProcBridge.dispatchWndProc(200L, 0x8001, 0L, 0L))
+            assertEquals(1, first.get())
+            assertEquals(1, second.get())
         } finally {
-            close.close()
+            close1.close()
+            close2.close()
         }
+        assertEquals(0L, Win32WndProcBridge.dispatchWndProc(100L, 0x8001, 0L, 0L))
     }
 
     @Test
-    fun reinstallAfterCloseIsAccepted() {
-        val first = Win32WndProcBridge.install(Win32WndProcRoute { _, _, _, _ -> 0L })
+    fun removedHwndReRegisteredToANewRouteDeliversToTheNewOwner() {
+        val old = AtomicInteger(0)
+        val current = AtomicInteger(0)
+        val first = Win32WndProcBridge.registerRoute(300L) { _, _, _, _ ->
+            old.incrementAndGet().toLong(); 0L
+        }
         first.close()
-        val second = Win32WndProcBridge.install(Win32WndProcRoute { _, _, _, _ -> 5L })
+        val second = Win32WndProcBridge.registerRoute(300L) { _, _, _, _ ->
+            current.incrementAndGet().toLong(); 9L
+        }
         try {
-            assertEquals(5L, Win32WndProcBridge.dispatchWndProc(7L, 0x8001, 1L, 2L))
+            assertEquals(9L, Win32WndProcBridge.dispatchWndProc(300L, 0x8001, 0L, 0L))
+            assertEquals(0, old.get())
+            assertEquals(1, current.get())
         } finally {
             second.close()
         }
@@ -55,9 +68,21 @@ class Win32WndProcBridgeTest {
 
     @Test
     fun exceptionInRouteIsContainedAndReturnsFallback() {
-        val close = Win32WndProcBridge.install(Win32WndProcRoute { _, _, _, _ -> error("boom") })
+        val close = Win32WndProcBridge.registerRoute(400L) { _, _, _, _ -> error("boom") }
         try {
-            assertEquals(0L, Win32WndProcBridge.dispatchWndProc(7L, 0x8001, 1L, 2L))
+            assertEquals(0L, Win32WndProcBridge.dispatchWndProc(400L, 0x8001, 0L, 0L))
+        } finally {
+            close.close()
+        }
+    }
+
+    @Test
+    fun doubleRegistrationOfSameHwndIsRejected() {
+        val close = Win32WndProcBridge.registerRoute(500L) { _, _, _, _ -> 0L }
+        try {
+            assertFailsWith<IllegalStateException> {
+                Win32WndProcBridge.registerRoute(500L) { _, _, _, _ -> 0L }
+            }
         } finally {
             close.close()
         }

@@ -24,7 +24,9 @@ Win32 wrappers and higher-level window abstractions belong in a separate layer.
 `org.graphiks.kffi.win32.managed` holds the handwritten revocable owners built
 on the generated bindings: `Win32Structs` (WNDCLASSEXW/MSG Win64 layouts),
 `Win32ManagedFunctions.wndProc` (revocable WNDPROC registration with
-quiescence), and `Win32ControlWindow` (never-shown control window). The
+quiescence), `Win32ControlWindow` (never-shown control window), and
+`Win32ManagedWindow` (managed top-level window; the handler owns the
+`WM_CLOSE` decision). The
 generated package stays untouched; all FFI remains in KFFI.
 
 ## Generate on Windows
