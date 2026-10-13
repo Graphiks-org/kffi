@@ -368,7 +368,7 @@ fun createShmBuffer(shmPtr: Long, poolPtr: Long, offset: Int, width: Int, height
             args.set(ValueLayout.JAVA_INT, 32, stride)
             args.set(ValueLayout.JAVA_INT, 40, format)
             (marshalArrayFlags.invokeExact(
-                MemorySegment.ofAddress(poolPtr), 1, bufferIface, 1, 0, args,
+                MemorySegment.ofAddress(poolPtr), 0, bufferIface, 1, 0, args,
             ) as MemorySegment).address()
         }
     } catch (_: Throwable) { 0L }
