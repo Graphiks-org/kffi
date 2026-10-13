@@ -34,6 +34,17 @@ class WaylandClientIntegrationTest {
         )
     }
 
+    private fun reproLog(line: String) {
+        val dir = System.getenv("KFFI_WAYLAND_ARTIFACT_DIR")
+        val sink = if (dir != null) {
+            java.io.File(dir, "repro.log")
+        } else {
+            null
+        }
+        sink?.appendText(line + "\n")
+        println(line)
+    }
+
     @Test
     fun burstAloneOnAFreshClientKillsNothing() {
         requireCompositorEnvironment()
@@ -42,17 +53,19 @@ class WaylandClientIntegrationTest {
         client.use {
             // bisect (b): a wakeup burst on a client that never created a
             // pool — if this dies too, the burst alone is the trigger
-            probe-style@ kotlin.run {
-                val wake = org.graphiks.kffi.posix.PosixWakeup.open()
-                println("BURST-PROBE wakeRead=${wake.readFd} displayFd=${it.fileDescriptor}")
-                wake.signal()
-                wake.drain()
-                wake.close()
-            }
-            println("BURST-PROBE hasError=${it.hasError()}")
+            val wake = org.graphiks.kffi.posix.PosixWakeup.open()
+            reproLog("BURST wakeRead=${wake.readFd} displayFd=${it.fileDescriptor} hasError=${it.hasError()}")
+            wake.signal()
+            reproLog("BURST after-signal hasError=${it.hasError()}")
+            wake.drain()
+            reproLog("BURST after-drain hasError=${it.hasError()}")
+            wake.close()
+            reproLog("BURST after-close hasError=${it.hasError()}")
             val buffer = it.createShmBuffer(32, 32)
+            reproLog("BURST pool2 hasError=${it.hasError()}")
             assertNotNull(buffer, "the burst alone kills the pool marshal")
             assertTrue(it.roundtrip())
+            reproLog("BURST final roundtrip ok")
             buffer.close()
         }
     }
@@ -68,7 +81,7 @@ class WaylandClientIntegrationTest {
             // of wakeup calls corrupted the file descriptor of the next wayland
             // marshal carrying one (its dup failed and poisoned the connection).
             fun probe(label: String) {
-                println("PROBE $label hasError=${it.hasError()} displayFd=${it.fileDescriptor}")
+                reproLog("PROBE $label hasError=${it.hasError()} displayFd=${it.fileDescriptor}")
             }
             val first = it.createShmBuffer(64, 64)
             assertNotNull(first)
