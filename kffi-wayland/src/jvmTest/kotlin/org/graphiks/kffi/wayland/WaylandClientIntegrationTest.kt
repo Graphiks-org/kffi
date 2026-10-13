@@ -44,14 +44,25 @@ class WaylandClientIntegrationTest {
             // the codebase: before the downcall handles were cached, a burst
             // of wakeup calls corrupted the file descriptor of the next wayland
             // marshal carrying one (its dup failed and poisoned the connection).
+            fun probe(label: String) {
+                println("PROBE $label hasError=${it.hasError()} displayFd=${it.fileDescriptor}")
+            }
             val first = it.createShmBuffer(64, 64)
             assertNotNull(first)
+            probe("after-first-pool")
             first.close()
+            probe("after-first-pool-close")
             val wake = org.graphiks.kffi.posix.PosixWakeup.open()
+            println("PROBE wake fds read=${wake.readFd}")
+            probe("after-wake-open")
             wake.signal()
+            probe("after-wake-signal")
             wake.drain()
+            probe("after-wake-drain")
             wake.close()
+            probe("after-wake-close")
             val second = it.createShmBuffer(32, 32)
+            probe("after-second-pool")
             assertNotNull(second, "the pool marshal is corrupted after the wakeup syscalls")
             assertTrue(it.roundtrip())
             second.close()
