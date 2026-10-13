@@ -35,6 +35,22 @@ class WaylandClientIntegrationTest {
     }
 
     @Test
+    fun twoPoolsWithoutAnyWakeup() {
+        requireCompositorEnvironment()
+        val client = WaylandClient.connect()
+        assertNotNull(client)
+        client.use {
+            val one = it.createShmBuffer(64, 64)
+            assertNotNull(one)
+            val two = it.createShmBuffer(32, 32)
+            assertNotNull(two, "the second pool fails without any wakeup")
+            assertTrue(it.roundtrip())
+            one.close()
+            two.close()
+        }
+    }
+
+    @Test
     fun twoLivePoolsSurviveAWakeupBurst() {
         requireCompositorEnvironment()
         val client = WaylandClient.connect()
