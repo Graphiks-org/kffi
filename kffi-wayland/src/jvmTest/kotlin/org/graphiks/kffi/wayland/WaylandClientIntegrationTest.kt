@@ -82,6 +82,91 @@ class WaylandClientIntegrationTest {
         }
     }
 
+    private fun waitConfigure(
+        client: WaylandClient,
+        serials: CopyOnWriteArrayList<Int>,
+    ) {
+        val deadline = System.nanoTime() + 10_000_000_000L
+        while (serials.isEmpty() && System.nanoTime() < deadline) {
+            client.roundtrip()
+            Thread.sleep(25)
+        }
+    }
+
+    @Test
+    fun twoPoolsWithoutAnyWakeup() {
+        requireCompositorEnvironment()
+        val client = WaylandClient.connect()
+        assertNotNull(client)
+        client.use {
+            val one = it.createShmBuffer(64, 64)
+            assertNotNull(one)
+            reproLog("TWOPOOLS one ok")
+            val two = it.createShmBuffer(32, 32)
+            reproLog("TWOPOOLS two hasError=${it.hasError()}")
+            assertNotNull(two, "the second pool alone fails without any wakeup")
+            assertTrue(it.roundtrip())
+            reproLog("TWOPOOLS final ok")
+            one.close()
+            two.close()
+        }
+    }
+
+    @Test
+    fun windowedHandshakeThenPool() {
+        requireCompositorEnvironment()
+        val client = WaylandClient.connect()
+        assertNotNull(client)
+        client.use {
+            val surface = it.createSurface()
+            val xdg = it.createXdgSurface(surface)
+            val toplevel = it.createToplevel(xdg)
+            val serials = CopyOnWriteArrayList<Int>()
+            xdg.addConfigureListener(onConfigure = { serials.add(it) }, onFailure = {})
+            surface.commit()
+            waitConfigure(client, serials)
+            reproLog("WINDOWED configure=$serials hasError=${it.hasError()}")
+            val buffer = it.createShmBuffer(64, 64)
+            reproLog("WINDOWED pool hasError=${it.hasError()}")
+            assertNotNull(buffer, "the pool fails right after a windowed handshake")
+            assertTrue(it.roundtrip())
+            reproLog("WINDOWED final ok")
+            buffer.close()
+            toplevel.close()
+            xdg.close()
+            surface.close()
+        }
+    }
+
+    @Test
+    fun wakeBeforeWindowedHandshakeThenPool() {
+        requireCompositorEnvironment()
+        val client = WaylandClient.connect()
+        assertNotNull(client)
+        client.use {
+            val wake = org.graphiks.kffi.posix.PosixWakeup.open()
+            reproLog("WAKEFIRST wake open read=${wake.readFd}")
+            val surface = it.createSurface()
+            val xdg = it.createXdgSurface(surface)
+            val toplevel = it.createToplevel(xdg)
+            val serials = CopyOnWriteArrayList<Int>()
+            xdg.addConfigureListener(onConfigure = { serials.add(it) }, onFailure = {})
+            surface.commit()
+            waitConfigure(client, serials)
+            reproLog("WAKEFIRST configure=$serials hasError=${it.hasError()}")
+            val buffer = it.createShmBuffer(64, 64)
+            reproLog("WAKEFIRST pool hasError=${it.hasError()}")
+            assertNotNull(buffer, "the pool fails in the wake-first windowed order")
+            assertTrue(it.roundtrip())
+            reproLog("WAKEFIRST final ok")
+            buffer.close()
+            toplevel.close()
+            xdg.close()
+            surface.close()
+            wake.close()
+        }
+    }
+
     @Test
     fun managedPoolSurvivesTheWakeupSyscalls() {
         requireCompositorEnvironment()
