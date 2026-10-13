@@ -50,8 +50,11 @@ class WaylandClientIntegrationTest {
             val first = it.createShmBuffer(64, 64)
             assertNotNull(first)
             probe("after-first-pool")
-            first.close()
-            probe("after-first-pool-close")
+            // bisect (a): the first pool's teardown is suspended — if the
+            // second pool then survives, the trigger lives in the teardown
+            // (wl_proxy_destroy / munmap / closeFd), not in the burst
+            // first.close()
+            probe("after-first-pool-close-skipped")
             val wake = org.graphiks.kffi.posix.PosixWakeup.open()
             println("PROBE wake fds read=${wake.readFd}")
             probe("after-wake-open")
