@@ -35,6 +35,29 @@ class WaylandClientIntegrationTest {
     }
 
     @Test
+    fun burstAloneOnAFreshClientKillsNothing() {
+        requireCompositorEnvironment()
+        val client = WaylandClient.connect()
+        assertNotNull(client)
+        client.use {
+            // bisect (b): a wakeup burst on a client that never created a
+            // pool — if this dies too, the burst alone is the trigger
+            probe-style@ kotlin.run {
+                val wake = org.graphiks.kffi.posix.PosixWakeup.open()
+                println("BURST-PROBE wakeRead=${wake.readFd} displayFd=${it.fileDescriptor}")
+                wake.signal()
+                wake.drain()
+                wake.close()
+            }
+            println("BURST-PROBE hasError=${it.hasError()}")
+            val buffer = it.createShmBuffer(32, 32)
+            assertNotNull(buffer, "the burst alone kills the pool marshal")
+            assertTrue(it.roundtrip())
+            buffer.close()
+        }
+    }
+
+    @Test
     fun managedPoolSurvivesTheWakeupSyscalls() {
         requireCompositorEnvironment()
         val client = WaylandClient.connect()
