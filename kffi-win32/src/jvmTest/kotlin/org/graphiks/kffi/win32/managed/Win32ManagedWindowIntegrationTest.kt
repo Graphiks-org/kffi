@@ -25,17 +25,20 @@ class Win32ManagedWindowIntegrationTest {
 
         init()
         val closes = CopyOnWriteArrayList<String>()
-        val first = Win32ManagedWindow.open("kadre-p2-first") { hwnd, message, _, _ ->
+        // Every non-close message must reach DefWindowProcW with its ORIGINAL
+        // wParam/lParam: WM_NCCREATE carries the CREATESTRUCT pointer in lParam
+        // and zeroes abort window creation.
+        val first = Win32ManagedWindow.open("kadre-p2-first") { hwnd, message, wParam, lParam ->
             if (message == Win32ManagedWindow.WM_CLOSE) closes.add("close:$hwnd")
-            DefWindowProc(hwnd, message)
+            DefWindowProc(hwnd, message, wParam, lParam)
         }
-        val second = Win32ManagedWindow.open("kadre-p2-second") { hwnd, message, _, _ ->
+        val second = Win32ManagedWindow.open("kadre-p2-second") { hwnd, message, wParam, lParam ->
             if (message == Win32ManagedWindow.WM_CLOSE) closes.add("close:$hwnd")
-            DefWindowProc(hwnd, message)
+            DefWindowProc(hwnd, message, wParam, lParam)
         }
-        val third = Win32ManagedWindow.open("kadre-p2-third") { hwnd, message, _, _ ->
+        val third = Win32ManagedWindow.open("kadre-p2-third") { hwnd, message, wParam, lParam ->
             if (message == Win32ManagedWindow.WM_CLOSE) closes.add("close:$hwnd")
-            DefWindowProc(hwnd, message)
+            DefWindowProc(hwnd, message, wParam, lParam)
         }
         try {
             assertTrue(first.hwnd != second.hwnd && second.hwnd != third.hwnd)
@@ -63,6 +66,6 @@ class Win32ManagedWindowIntegrationTest {
         assertTrue(closes.contains("close:${second.hwnd}"), "WM_CLOSE must reach the handler")
     }
 
-    private fun DefWindowProc(hwnd: Long, message: Int): Long =
-        org.graphiks.kffi.win32.generated.DefWindowProcW(MemorySegment.ofAddress(hwnd), message, 0L, 0L)
+    private fun DefWindowProc(hwnd: Long, message: Int, wParam: Long, lParam: Long): Long =
+        org.graphiks.kffi.win32.generated.DefWindowProcW(MemorySegment.ofAddress(hwnd), message, wParam, lParam)
 }
