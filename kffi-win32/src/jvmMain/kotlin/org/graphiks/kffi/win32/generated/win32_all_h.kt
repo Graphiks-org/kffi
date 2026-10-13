@@ -26,7 +26,7 @@ private var _DLL_USER32_DLL: SymbolLookup? = null
 
 private fun _lookup(symbol: String): SymbolLookup {
     return when (symbol) {
-        "RegisterClassExW", "CreateWindowExW", "FindWindowExW", "GetDC", "ReleaseDC", "FillRect", "ShowWindow", "UpdateWindow", "DestroyWindow", "DefWindowProcW", "SetWindowTextW", "PostQuitMessage", "GetKeyState", "PeekMessageW", "GetMessageW", "TranslateMessage", "DispatchMessageW", "MsgWaitForMultipleObjectsEx", "LoadCursorW", "SetProcessDpiAwarenessContext", "GetDpiForWindow", "TrackMouseEvent", "RegisterTouchWindow", "GetTouchInputInfo", "CloseTouchInputHandle", "GetGestureInfo", "CloseGestureInfoHandle", "ScreenToClient", "ClientToScreen", "GetCursorPos", "GetSystemMenu", "TrackPopupMenu", "EnableMenuItem", "SetMenuDefaultItem", "ReleaseCapture", "EnableWindow", "GetClientRect", "GetWindowRect", "SetWindowLongPtrW", "GetWindowLongPtrW", "IsZoomed", "IsIconic", "IsWindow", "IsWindowVisible", "GetWindowTextW", "SetWindowPos", "GetForegroundWindow", "SetForegroundWindow", "MapVirtualKeyW", "SendInput", "SetCursorPos", "SetCursor", "ShowCursor", "ClipCursor", "PostMessageW", "SendMessageW", "CreateIcon", "DestroyIcon" -> _DLL_USER32_DLL ?: SymbolLookup.loaderLookup()
+        "RegisterClassExW", "CreateWindowExW", "FindWindowExW", "GetDC", "ReleaseDC", "FillRect", "ShowWindow", "UpdateWindow", "DestroyWindow", "DefWindowProcW", "SetWindowTextW", "PostQuitMessage", "GetKeyState", "PeekMessageW", "GetMessageW", "TranslateMessage", "DispatchMessageW", "MsgWaitForMultipleObjectsEx", "LoadCursorW", "SetProcessDpiAwarenessContext", "GetDpiForWindow", "InvalidateRect", "ValidateRect", "TrackMouseEvent", "RegisterTouchWindow", "GetTouchInputInfo", "CloseTouchInputHandle", "GetGestureInfo", "CloseGestureInfoHandle", "ScreenToClient", "ClientToScreen", "GetCursorPos", "GetSystemMenu", "TrackPopupMenu", "EnableMenuItem", "SetMenuDefaultItem", "ReleaseCapture", "EnableWindow", "GetClientRect", "GetWindowRect", "SetWindowLongPtrW", "GetWindowLongPtrW", "IsZoomed", "IsIconic", "IsWindow", "IsWindowVisible", "GetWindowTextW", "SetWindowPos", "GetForegroundWindow", "SetForegroundWindow", "MapVirtualKeyW", "SendInput", "SetCursorPos", "SetCursor", "ShowCursor", "ClipCursor", "PostMessageW", "SendMessageW", "CreateIcon", "DestroyIcon" -> _DLL_USER32_DLL ?: SymbolLookup.loaderLookup()
         "GetCurrentThreadId", "GetModuleHandleW", "SetLastError", "GetLastError" -> _DLL_KERNEL32_DLL ?: SymbolLookup.loaderLookup()
         "CreateRectRgn", "CreateCompatibleDC", "CreateCompatibleBitmap", "CreateSolidBrush", "SelectObject", "BitBlt", "GetDIBits", "DeleteDC", "DeleteObject" -> _DLL_GDI32_DLL ?: SymbolLookup.loaderLookup()
         "DwmSetWindowAttribute", "DwmEnableBlurBehindWindow", "DwmExtendFrameIntoClientArea" -> _DLL_DWMAPI_DLL ?: SymbolLookup.loaderLookup()
@@ -2408,6 +2408,26 @@ fun CreateWindowExW(arg0: Int, arg1: MemorySegment, arg2: MemorySegment, arg3: I
 }
 
 /**
+ * {@snippet lang=c : IsWindow typedef BOOL = Int(typedef HWND = (Declared(HWND__))*)
+ */
+private val IsWindow_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private var IsWindow_HANDLE: MethodHandle? = null
+
+fun IsWindow(arg0: MemorySegment): Int {
+    check(_initialized) { "Win32 IsWindow called before init()" }
+    val _handle = IsWindow_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
  * {@snippet lang=c : DestroyWindow typedef BOOL = Int(typedef HWND = (Declared(HWND__))*)
  */
 private val DestroyWindow_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
@@ -2458,26 +2478,6 @@ fun SetWindowPos(arg0: MemorySegment, arg1: MemorySegment, arg2: Int, arg3: Int,
     val _handle = SetWindowPos_HANDLE ?: return 0
     try {
         return _handle.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5, arg6) as Int
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        return 0
-    }
-}
-
-/**
- * {@snippet lang=c : IsWindow typedef BOOL = Int(typedef HWND = (Declared(HWND__))*)
- */
-private val IsWindow_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
-private var IsWindow_HANDLE: MethodHandle? = null
-
-fun IsWindow(arg0: MemorySegment): Int {
-    check(_initialized) { "Win32 IsWindow called before init()" }
-    val _handle = IsWindow_HANDLE ?: return 0
-    try {
-        return _handle.invokeExact(arg0) as Int
     } catch (ex: Error) {
         throw ex
     } catch (ex: RuntimeException) {
@@ -3010,6 +3010,46 @@ fun ReleaseDC(arg0: MemorySegment, arg1: MemorySegment): Int {
 }
 
 /**
+ * {@snippet lang=c : InvalidateRect typedef BOOL = Int(typedef HWND = (Declared(HWND__))*,(typedef RECT = Declared(tagRECT))*,typedef BOOL = Int)
+ */
+private val InvalidateRect_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
+private var InvalidateRect_HANDLE: MethodHandle? = null
+
+fun InvalidateRect(arg0: MemorySegment, arg1: MemorySegment, arg2: Int): Int {
+    check(_initialized) { "Win32 InvalidateRect called before init()" }
+    val _handle = InvalidateRect_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0, arg1, arg2) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
+ * {@snippet lang=c : ValidateRect typedef BOOL = Int(typedef HWND = (Declared(HWND__))*,(typedef RECT = Declared(tagRECT))*)
+ */
+private val ValidateRect_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private var ValidateRect_HANDLE: MethodHandle? = null
+
+fun ValidateRect(arg0: MemorySegment, arg1: MemorySegment): Int {
+    check(_initialized) { "Win32 ValidateRect called before init()" }
+    val _handle = ValidateRect_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0, arg1) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
  * {@snippet lang=c : SetWindowTextW typedef BOOL = Int(typedef HWND = (Declared(HWND__))*,typedef LPCWSTR = (Int)*)
  */
 private val SetWindowTextW_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
@@ -3286,6 +3326,26 @@ fun SetWindowLongPtrW(arg0: MemorySegment, arg1: Int, arg2: Long): Long {
         throw ex
     } catch (ex: Throwable) {
         return 0L
+    }
+}
+
+/**
+ * {@snippet lang=c : FindWindowExW typedef HWND = (Declared(HWND__))*(typedef HWND = (Declared(HWND__))*,typedef HWND = (Declared(HWND__))*,typedef LPCWSTR = (Int)*,typedef LPCWSTR = (Int)*)
+ */
+private val FindWindowExW_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private var FindWindowExW_HANDLE: MethodHandle? = null
+
+fun FindWindowExW(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: MemorySegment): MemorySegment {
+    check(_initialized) { "Win32 FindWindowExW called before init()" }
+    val _handle = FindWindowExW_HANDLE ?: return MemorySegment.NULL
+    try {
+        return _handle.invokeExact(arg0, arg1, arg2, arg3) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return MemorySegment.NULL
     }
 }
 
@@ -4707,26 +4767,6 @@ enum class DWM_TAB_WINDOW_REQUIREMENTS(val value: Long) {
 
 
 /**
- * {@snippet lang=c : FindWindowExW typedef HWND = (Declared(HWND__))*(typedef HWND = (Declared(HWND__))*,typedef HWND = (Declared(HWND__))*,typedef LPCWSTR = (const UNSIGNED = Short)*,typedef LPCWSTR = (const UNSIGNED = Short)*)
- */
-private val FindWindowExW_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
-private var FindWindowExW_HANDLE: MethodHandle? = null
-
-fun FindWindowExW(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: MemorySegment): MemorySegment {
-    check(_initialized) { "Win32 FindWindowExW called before init()" }
-    val _handle = FindWindowExW_HANDLE ?: return MemorySegment.NULL
-    try {
-        return _handle.invokeExact(arg0, arg1, arg2, arg3) as MemorySegment
-    } catch (ex: Error) {
-        throw ex
-    } catch (ex: RuntimeException) {
-        throw ex
-    } catch (ex: Throwable) {
-        return MemorySegment.NULL
-    }
-}
-
-/**
  * Initializes all Win32 bindings.
  * Must be called before any binding function on Windows.
  * Safe to call on non-Windows (no-op, all symbols stay null).
@@ -4778,12 +4818,11 @@ fun init() {
     PostQuitMessage_HANDLE = _lookup("PostQuitMessage").find("PostQuitMessage").map { Linker.nativeLinker().downcallHandle(it, PostQuitMessage_DESC) }.orElse(null)
     RegisterClassExW_HANDLE = _lookup("RegisterClassExW").find("RegisterClassExW").map { Linker.nativeLinker().downcallHandle(it, RegisterClassExW_DESC) }.orElse(null)
     CreateWindowExW_HANDLE = _lookup("CreateWindowExW").find("CreateWindowExW").map { Linker.nativeLinker().downcallHandle(it, CreateWindowExW_DESC) }.orElse(null)
-    FindWindowExW_HANDLE = _lookup("FindWindowExW").find("FindWindowExW").map { Linker.nativeLinker().downcallHandle(it, FindWindowExW_DESC) }.orElse(null)
+    IsWindow_HANDLE = _lookup("IsWindow").find("IsWindow").map { Linker.nativeLinker().downcallHandle(it, IsWindow_DESC) }.orElse(null)
     DestroyWindow_HANDLE = _lookup("DestroyWindow").find("DestroyWindow").map { Linker.nativeLinker().downcallHandle(it, DestroyWindow_DESC) }.orElse(null)
     ShowWindow_HANDLE = _lookup("ShowWindow").find("ShowWindow").map { Linker.nativeLinker().downcallHandle(it, ShowWindow_DESC) }.orElse(null)
     SetWindowPos_HANDLE = _lookup("SetWindowPos").find("SetWindowPos").map { Linker.nativeLinker().downcallHandle(it, SetWindowPos_DESC) }.orElse(null)
     IsWindowVisible_HANDLE = _lookup("IsWindowVisible").find("IsWindowVisible").map { Linker.nativeLinker().downcallHandle(it, IsWindowVisible_DESC) }.orElse(null)
-    IsWindow_HANDLE = _lookup("IsWindow").find("IsWindow").map { Linker.nativeLinker().downcallHandle(it, IsWindow_DESC) }.orElse(null)
     IsIconic_HANDLE = _lookup("IsIconic").find("IsIconic").map { Linker.nativeLinker().downcallHandle(it, IsIconic_DESC) }.orElse(null)
     IsZoomed_HANDLE = _lookup("IsZoomed").find("IsZoomed").map { Linker.nativeLinker().downcallHandle(it, IsZoomed_DESC) }.orElse(null)
     GetKeyState_HANDLE = _lookup("GetKeyState").find("GetKeyState").map { Linker.nativeLinker().downcallHandle(it, GetKeyState_DESC) }.orElse(null)
@@ -4804,6 +4843,8 @@ fun init() {
     SetForegroundWindow_HANDLE = _lookup("SetForegroundWindow").find("SetForegroundWindow").map { Linker.nativeLinker().downcallHandle(it, SetForegroundWindow_DESC) }.orElse(null)
     GetDC_HANDLE = _lookup("GetDC").find("GetDC").map { Linker.nativeLinker().downcallHandle(it, GetDC_DESC) }.orElse(null)
     ReleaseDC_HANDLE = _lookup("ReleaseDC").find("ReleaseDC").map { Linker.nativeLinker().downcallHandle(it, ReleaseDC_DESC) }.orElse(null)
+    InvalidateRect_HANDLE = _lookup("InvalidateRect").find("InvalidateRect").map { Linker.nativeLinker().downcallHandle(it, InvalidateRect_DESC) }.orElse(null)
+    ValidateRect_HANDLE = _lookup("ValidateRect").find("ValidateRect").map { Linker.nativeLinker().downcallHandle(it, ValidateRect_DESC) }.orElse(null)
     SetWindowTextW_HANDLE = _lookup("SetWindowTextW").find("SetWindowTextW").map { Linker.nativeLinker().downcallHandle(it, SetWindowTextW_DESC) }.orElse(null)
     GetWindowTextW_HANDLE = _lookup("GetWindowTextW").find("GetWindowTextW").map { Linker.nativeLinker().downcallHandle(it, GetWindowTextW_DESC) }.orElse(null)
     GetClientRect_HANDLE = _lookup("GetClientRect").find("GetClientRect").map { Linker.nativeLinker().downcallHandle(it, GetClientRect_DESC) }.orElse(null)
@@ -4818,6 +4859,7 @@ fun init() {
     FillRect_HANDLE = _lookup("FillRect").find("FillRect").map { Linker.nativeLinker().downcallHandle(it, FillRect_DESC) }.orElse(null)
     GetWindowLongPtrW_HANDLE = _lookup("GetWindowLongPtrW").find("GetWindowLongPtrW").map { Linker.nativeLinker().downcallHandle(it, GetWindowLongPtrW_DESC) }.orElse(null)
     SetWindowLongPtrW_HANDLE = _lookup("SetWindowLongPtrW").find("SetWindowLongPtrW").map { Linker.nativeLinker().downcallHandle(it, SetWindowLongPtrW_DESC) }.orElse(null)
+    FindWindowExW_HANDLE = _lookup("FindWindowExW").find("FindWindowExW").map { Linker.nativeLinker().downcallHandle(it, FindWindowExW_DESC) }.orElse(null)
     LoadCursorW_HANDLE = _lookup("LoadCursorW").find("LoadCursorW").map { Linker.nativeLinker().downcallHandle(it, LoadCursorW_DESC) }.orElse(null)
     CreateIcon_HANDLE = _lookup("CreateIcon").find("CreateIcon").map { Linker.nativeLinker().downcallHandle(it, CreateIcon_DESC) }.orElse(null)
     DestroyIcon_HANDLE = _lookup("DestroyIcon").find("DestroyIcon").map { Linker.nativeLinker().downcallHandle(it, DestroyIcon_DESC) }.orElse(null)
