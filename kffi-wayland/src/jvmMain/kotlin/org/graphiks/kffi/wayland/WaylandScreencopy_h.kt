@@ -371,9 +371,14 @@ fun createShmPool(shmPtr: Long, fd: Int, size: Int): Long {
         // downcall corrupts the 'h' argument (an unrelated fd value reached
         // libwayland, failing its dup and poisoning the connection).
         Arena.ofConfined().use { arena ->
-            val args = arena.allocate(ValueLayout.ADDRESS, 2)
-            args.set(ValueLayout.JAVA_INT, 0, fd)
-            args.set(ValueLayout.JAVA_INT, 8, size)
+            // the array spans the FULL "nhi" signature: args[0] is the new_id
+            // slot (filled by libwayland, ignored on input), args[1] the fd,
+            // args[2] the size — writing fd at index 0 made libwayland read
+            // the size as the descriptor, whose dup failed and poisoned the
+            // connection
+            val args = arena.allocate(ValueLayout.ADDRESS, 3)
+            args.set(ValueLayout.JAVA_INT, 8, fd)
+            args.set(ValueLayout.JAVA_INT, 16, size)
             (marshalArrayFlags.invokeExact(
                 MemorySegment.ofAddress(shmPtr), 0, poolIface, 1, 0, args,
             ) as MemorySegment).address()
