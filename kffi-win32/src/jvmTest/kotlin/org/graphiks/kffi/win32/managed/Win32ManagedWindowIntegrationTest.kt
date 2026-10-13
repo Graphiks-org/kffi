@@ -28,13 +28,19 @@ class Win32ManagedWindowIntegrationTest {
         // Every non-close message must reach DefWindowProcW with its ORIGINAL
         // wParam/lParam: WM_NCCREATE carries the CREATESTRUCT pointer in lParam
         // and zeroes abort window creation.
+        // `second` refuses its WM_CLOSE (record + return 0, no DefWindowProcW):
+        // the consumer owns the close decision, so the window stays alive.
         val first = Win32ManagedWindow.open("kadre-p2-first") { hwnd, message, wParam, lParam ->
             if (message == Win32ManagedWindow.WM_CLOSE) closes.add("close:$hwnd")
             DefWindowProc(hwnd, message, wParam, lParam)
         }
         val second = Win32ManagedWindow.open("kadre-p2-second") { hwnd, message, wParam, lParam ->
-            if (message == Win32ManagedWindow.WM_CLOSE) closes.add("close:$hwnd")
-            DefWindowProc(hwnd, message, wParam, lParam)
+            if (message == Win32ManagedWindow.WM_CLOSE) {
+                closes.add("refused:$hwnd")
+                0L
+            } else {
+                DefWindowProc(hwnd, message, wParam, lParam)
+            }
         }
         val third = Win32ManagedWindow.open("kadre-p2-third") { hwnd, message, wParam, lParam ->
             if (message == Win32ManagedWindow.WM_CLOSE) closes.add("close:$hwnd")
@@ -46,6 +52,8 @@ class Win32ManagedWindowIntegrationTest {
             assertTrue(IsWindow(MemorySegment.ofAddress(second.hwnd)) != 0)
             assertTrue(IsWindow(MemorySegment.ofAddress(third.hwnd)) != 0)
             second.requestClose()
+            // DestroyWindow(first) flushes the thread message queue, which
+            // dispatches second's pending WM_CLOSE to its refusing handler.
             first.close()
             first.close() // idempotent
             assertEquals(
@@ -57,13 +65,17 @@ class Win32ManagedWindowIntegrationTest {
                 IsWindow(MemorySegment.ofAddress(second.hwnd)) != 0,
                 "a refused WM_CLOSE leaves the window alive",
             )
+            assertTrue(
+                closes.contains("refused:${second.hwnd}"),
+                "the refused WM_CLOSE must have been delivered by the queue flush",
+            )
             third.close()
             assertEquals(0, IsWindow(MemorySegment.ofAddress(third.hwnd)))
         } finally {
             runCatching { second.close() }
             runCatching { third.close() }
         }
-        assertTrue(closes.contains("close:${second.hwnd}"), "WM_CLOSE must reach the handler")
+        assertTrue(closes.contains("close:") || closes.contains("refused:"), "WM_CLOSE must reach handlers")
     }
 
     private fun DefWindowProc(hwnd: Long, message: Int, wParam: Long, lParam: Long): Long =
