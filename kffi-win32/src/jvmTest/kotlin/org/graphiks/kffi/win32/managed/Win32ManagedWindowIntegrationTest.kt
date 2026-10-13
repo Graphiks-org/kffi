@@ -1,0 +1,68 @@
+package org.graphiks.kffi.win32.managed
+
+import org.graphiks.kffi.win32.generated.DefWindowProcW
+import org.graphiks.kffi.win32.generated.IsWindow
+import org.graphiks.kffi.win32.generated.PostMessageW
+import org.graphiks.kffi.win32.generated.init
+import org.junit.jupiter.api.Assumptions.assumeTrue
+import java.lang.foreign.MemorySegment
+import java.util.concurrent.CopyOnWriteArrayList
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertTrue
+
+class Win32ManagedWindowIntegrationTest {
+    @Test
+    fun threeTopLevelWindowsOpenReceiveCloseAndDestroyIdempotently() {
+        assumeTrue(
+            System.getProperty("os.name")?.startsWith("Windows") == true,
+            "Win32 integration tests require Windows",
+        )
+        assumeTrue(
+            System.getenv("KFFI_WIN32_INTEGRATION") == "1",
+            "Set KFFI_WIN32_INTEGRATION=1 to run the Win32 integration tests",
+        )
+
+        init()
+        val closes = CopyOnWriteArrayList<String>()
+        val first = Win32ManagedWindow.open("kadre-p2-first") { hwnd, message, _, _ ->
+            if (message == Win32ManagedWindow.WM_CLOSE) closes.add("close:$hwnd")
+            DefWindowProc(hwnd, message)
+        }
+        val second = Win32ManagedWindow.open("kadre-p2-second") { hwnd, message, _, _ ->
+            if (message == Win32ManagedWindow.WM_CLOSE) closes.add("close:$hwnd")
+            DefWindowProc(hwnd, message)
+        }
+        val third = Win32ManagedWindow.open("kadre-p2-third") { hwnd, message, _, _ ->
+            if (message == Win32ManagedWindow.WM_CLOSE) closes.add("close:$hwnd")
+            DefWindowProc(hwnd, message)
+        }
+        try {
+            assertTrue(first.hwnd != second.hwnd && second.hwnd != third.hwnd)
+            assertTrue(IsWindow(MemorySegment.ofAddress(first.hwnd)) != 0)
+            assertTrue(IsWindow(MemorySegment.ofAddress(second.hwnd)) != 0)
+            assertTrue(IsWindow(MemorySegment.ofAddress(third.hwnd)) != 0)
+            second.requestClose()
+            first.close()
+            first.close() // idempotent
+            assertEquals(
+                0,
+                IsWindow(MemorySegment.ofAddress(first.hwnd)),
+                "the closed window must be destroyed",
+            )
+            assertTrue(
+                IsWindow(MemorySegment.ofAddress(second.hwnd)) != 0,
+                "a refused WM_CLOSE leaves the window alive",
+            )
+            third.close()
+            assertEquals(0, IsWindow(MemorySegment.ofAddress(third.hwnd)))
+        } finally {
+            runCatching { second.close() }
+            runCatching { third.close() }
+        }
+        assertTrue(closes.contains("close:${second.hwnd}"), "WM_CLOSE must reach the handler")
+    }
+
+    private fun DefWindowProc(hwnd: Long, message: Int): Long =
+        org.graphiks.kffi.win32.generated.DefWindowProcW(MemorySegment.ofAddress(hwnd), message, 0L, 0L)
+}
