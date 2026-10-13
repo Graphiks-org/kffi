@@ -35,6 +35,30 @@ class WaylandClientIntegrationTest {
     }
 
     @Test
+    fun managedPoolSurvivesTheWakeupSyscalls() {
+        requireCompositorEnvironment()
+        val client = WaylandClient.connect()
+        assertNotNull(client)
+        client.use {
+            // The wakeup syscalls are the densest transient-FFM-stub churn in
+            // the codebase: before the downcall handles were cached, a burst
+            // of wakeup calls corrupted the file descriptor of the next wayland
+            // marshal carrying one (its dup failed and poisoned the connection).
+            val first = it.createShmBuffer(64, 64)
+            assertNotNull(first)
+            first.close()
+            val wake = org.graphiks.kffi.posix.PosixWakeup.open()
+            wake.signal()
+            wake.drain()
+            wake.close()
+            val second = it.createShmBuffer(32, 32)
+            assertNotNull(second, "the pool marshal is corrupted after the wakeup syscalls")
+            assertTrue(it.roundtrip())
+            second.close()
+        }
+    }
+
+    @Test
     fun managedClientConnectsAndCollectsRegistryGlobals() {
         requireCompositorEnvironment()
         val client = WaylandClient.connect()

@@ -15,6 +15,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   variadic `wl_proxy_marshal_flags` downcall can deliver a corrupted fd
   argument (libwayland reads the byte size instead of the descriptor), which
   fails its dup and poisons the connection.
+- `kffi-posix`: the wakeup downcall handles are cached per (symbol,
+  descriptor, options) instead of being rebuilt for every call. The per-call
+  stub churn destabilised the JVM's FFM runtime — after a burst of wakeup
+  syscalls, an unrelated later downcall received a corrupted argument
+  (observed as a wayland pool fd failing its dup).
 
 ### Added
 - `WaylandClient.displayProxyAddress`: the native `wl_display` pointer address
