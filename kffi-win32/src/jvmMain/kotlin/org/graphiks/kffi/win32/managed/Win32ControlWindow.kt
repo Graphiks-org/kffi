@@ -1,14 +1,16 @@
+@file:OptIn(org.graphiks.kffi.CallbackRuntimeApi::class)
+
 package org.graphiks.kffi.win32.managed
 
 import org.graphiks.kffi.win32.generated.CreateWindowExW
 import org.graphiks.kffi.win32.generated.DefWindowProcW
 import org.graphiks.kffi.win32.generated.DestroyWindow
+import org.graphiks.kffi.win32.generated.PeekMessageW
+import org.graphiks.kffi.win32.generated.TranslateMessage
 import org.graphiks.kffi.win32.generated.DispatchMessageW
 import org.graphiks.kffi.win32.generated.GetModuleHandleW
 import org.graphiks.kffi.win32.generated.IsWindow
-import org.graphiks.kffi.win32.generated.PeekMessageW
 import org.graphiks.kffi.win32.generated.RegisterClassExW
-import org.graphiks.kffi.win32.generated.TranslateMessage
 import org.graphiks.kffi.win32.generated.init
 import java.lang.foreign.Arena
 import java.lang.foreign.MemorySegment
@@ -24,6 +26,7 @@ import kotlin.concurrent.withLock
 public class Win32ControlWindow private constructor(
     public val hwnd: Long,
     private val function: Win32WndProcFunction,
+    private val routeRegistration: AutoCloseable,
 ) : AutoCloseable {
     public companion object {
         public const val TEST_MESSAGE: Int = 0x8001 // WM_APP + 1
@@ -46,12 +49,15 @@ public class Win32ControlWindow private constructor(
             }
             try {
                 val hwnd = createControlWindow(function)
-                return Win32ControlWindow(hwnd, function)
+                return Win32ControlWindow(hwnd, function, hwndRouteHandle(function, hwnd))
             } catch (failure: Throwable) {
                 runCatching { function.close() }
                 throw failure
             }
         }
+
+        internal fun hwndRouteHandle(function: Win32WndProcFunction, hwnd: Long): AutoCloseable =
+            Win32WndProcBridge.registerRoute(hwnd, function.route)
 
         private fun createControlWindow(function: Win32WndProcFunction): Long {
             Arena.ofConfined().use { arena ->
@@ -64,23 +70,28 @@ public class Win32ControlWindow private constructor(
                 Win32Structs.wndClassExW.setLpszClassName(clazz, name.address())
                 // ERROR_CLASS_ALREADY_EXISTS (1410) is tolerated: the class is reused.
                 RegisterClassExW(clazz)
-                val window = CreateWindowExW(
-                    0,
-                    name,
-                    name,
-                    WS_POPUP, // never shown: no ShowWindow call
-                    0,
-                    0,
-                    0,
-                    0,
-                    MemorySegment.NULL,
-                    MemorySegment.NULL,
-                    MemorySegment.NULL,
-                    MemorySegment.NULL,
-                )
-                val hwnd = window.address()
-                check(hwnd != 0L) { "CreateWindowExW failed for the Kadre control window" }
-                return hwnd
+                val creation = Win32WndProcBridge.beginCreation(function.route)
+                try {
+                    val window = CreateWindowExW(
+                        0,
+                        name,
+                        name,
+                        WS_POPUP, // never shown: no ShowWindow call
+                        0,
+                        0,
+                        0,
+                        0,
+                        MemorySegment.NULL,
+                        MemorySegment.NULL,
+                        MemorySegment.NULL,
+                        MemorySegment.NULL,
+                    )
+                    val hwnd = window.address()
+                    check(hwnd != 0L) { "CreateWindowExW failed for the Kadre control window" }
+                    return hwnd
+                } finally {
+                    creation.close()
+                }
             }
         }
 
@@ -128,6 +139,9 @@ public class Win32ControlWindow private constructor(
             if (closed) return
             closed = true
         }
+        // The hwnd->route association is removed BEFORE the native destroy:
+        // a reused address never routes to a revoked owner (phase 0 D2).
+        routeRegistration.close()
         if (hwnd != 0L && IsWindow(MemorySegment.ofAddress(hwnd)) != 0) {
             DestroyWindow(MemorySegment.ofAddress(hwnd))
         }
@@ -135,4 +149,7 @@ public class Win32ControlWindow private constructor(
         // released before in-flight deliveries have returned.
         function.close()
     }
+
+    internal fun wndProcFallback(hwnd: Long, message: Int, wParam: Long, lParam: Long): Long =
+        DefWindowProcW(MemorySegment.ofAddress(hwnd), message, wParam, lParam)
 }

@@ -22,6 +22,8 @@ dllMap:
       - LoadCursorW
       - SetProcessDpiAwarenessContext
       - GetDpiForWindow
+      - InvalidateRect
+      - ValidateRect
       - TrackMouseEvent
       - RegisterTouchWindow
       - GetTouchInputInfo
