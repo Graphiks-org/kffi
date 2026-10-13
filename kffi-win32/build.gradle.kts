@@ -34,6 +34,11 @@ tasks.withType<Test>().configureEach {
     if (name == "jvmTest") {
         useJUnitPlatform()
     }
+    testLogging {
+        events("failed")
+        exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
+        showStandardStreams = true
+    }
     jvmArgs("--enable-native-access=ALL-UNNAMED")
 }
 

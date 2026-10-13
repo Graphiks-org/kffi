@@ -81,10 +81,12 @@ class Win32ManagedWindowIntegrationTest {
             runCatching { second.close() }
             runCatching { third.close() }
         }
-        val seenFile = java.nio.file.Paths.get("kffi-win32/build/win32-integration/seen.txt")
-        java.nio.file.Files.createDirectories(seenFile.parent)
+        val seenDirectory = java.nio.file.Paths.get(
+            System.getProperty("kffi.win32.defaultArtifactDir", "build/win32-integration"),
+        )
+        java.nio.file.Files.createDirectories(seenDirectory)
         java.nio.file.Files.writeString(
-            seenFile,
+            seenDirectory.resolve("seen.txt"),
             "closes=$closes\nseen=${seen.joinToString(separator = ",")}\n",
         )
         assertTrue(
