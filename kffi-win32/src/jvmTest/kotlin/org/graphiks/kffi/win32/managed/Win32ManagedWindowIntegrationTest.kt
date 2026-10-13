@@ -90,7 +90,7 @@ class Win32ManagedWindowIntegrationTest {
             "closes=$closes\nseen=${seen.joinToString(separator = ",")}\n",
         )
         assertTrue(
-            closes.contains("close:") || closes.contains("refused:"),
+            closes.any { it.startsWith("close:") } || closes.any { it.startsWith("refused:") },
             "WM_CLOSE must reach handlers: closes=$closes seen=${seen.joinToString(separator = ",")}",
         )
     }
