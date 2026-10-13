@@ -352,13 +352,25 @@ fun proxyDestroy(proxy: Long) {
 }
 
 fun createShmBuffer(shmPtr: Long, poolPtr: Long, offset: Int, width: Int, height: Int, stride: Int, format: Int): Long {
-    val createBuffer = wlShmPoolCreateBuffer ?: return 0L
+    val marshalArrayFlags = wlProxyMarshalArrayFlags ?: return 0L
     val bufferIface = wlBufferInterface ?: return 0L
     return try {
-        (createBuffer.invokeExact(
-            MemorySegment.ofAddress(poolPtr), 0, bufferIface, 1, 0,
-            offset, width, height, stride, format, MemorySegment.NULL,
-        ) as MemorySegment).address()
+        // create_buffer's signature is "5uuuuu": args[0] is the new_id slot
+        // (filled by libwayland, ignored on input), then offset, width,
+        // height, stride, format. The variadic wl_proxy_marshal_flags
+        // downcall drops the first variadic argument on some JVMs, so every
+        // marshal carrying user data goes through the fixed-arity array.
+        Arena.ofConfined().use { arena ->
+            val args = arena.allocate(ValueLayout.ADDRESS, 6)
+            args.set(ValueLayout.JAVA_INT, 8, offset)
+            args.set(ValueLayout.JAVA_INT, 16, width)
+            args.set(ValueLayout.JAVA_INT, 24, height)
+            args.set(ValueLayout.JAVA_INT, 32, stride)
+            args.set(ValueLayout.JAVA_INT, 40, format)
+            (marshalArrayFlags.invokeExact(
+                MemorySegment.ofAddress(poolPtr), 1, bufferIface, 1, 0, args,
+            ) as MemorySegment).address()
+        }
     } catch (_: Throwable) { 0L }
 }
 
