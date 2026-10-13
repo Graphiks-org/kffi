@@ -81,10 +81,16 @@ class Win32ManagedWindowIntegrationTest {
             runCatching { second.close() }
             runCatching { third.close() }
         }
-        java.io.File("kffi-win32/build/win32-integration/seen.txt").writeText(
+        val seenFile = java.nio.file.Paths.get("kffi-win32/build/win32-integration/seen.txt")
+        java.nio.file.Files.createDirectories(seenFile.parent)
+        java.nio.file.Files.writeString(
+            seenFile,
             "closes=$closes\nseen=${seen.joinToString(separator = ",")}\n",
         )
-        assertTrue(closes.contains("close:") || closes.contains("refused:"), "WM_CLOSE must reach handlers")
+        assertTrue(
+            closes.contains("close:") || closes.contains("refused:"),
+            "WM_CLOSE must reach handlers: closes=$closes seen=${seen.joinToString(separator = ",")}",
+        )
     }
 
     private fun DefWindowProc(hwnd: Long, message: Int, wParam: Long, lParam: Long): Long =
