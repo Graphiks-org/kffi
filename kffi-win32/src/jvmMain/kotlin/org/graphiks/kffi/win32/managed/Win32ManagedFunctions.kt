@@ -17,9 +17,15 @@ public fun interface Win32WndProcHandler {
     public fun onMessage(hwnd: Long, message: Int, wParam: Long, lParam: Long): Long
 }
 
-/** Revocable owner for one managed WNDPROC registration. Close is idempotent. */
+/**
+ * Revocable owner for one managed WNDPROC registration. Close is idempotent.
+ * The callback is the process-lifetime bridge trampoline; binding it to a
+ * specific window is the window owner's job (`beginCreation` +
+ * `registerRoute` on [Win32WndProcBridge]).
+ */
 public interface Win32WndProcFunction : AutoCloseable {
     public val callback: NativeAddress
+    public val route: Win32WndProcRoute
     public val isQuiescent: Boolean
     public fun onQuiescent(action: () -> Unit)
 }
@@ -37,30 +43,18 @@ public object Win32ManagedFunctions {
             "Win32 WndProc registration did not allocate routing userdata"
         }
         val state = WndProcState(registration)
-        try {
-            // The token does NOT travel through the native WNDPROC ABI (four
-            // arguments): the single route captures it and dispatches via
-            // dispatchSafely.
-            val tokenForRoute = token
-            state.attach(
-                Win32WndProcBridge.install { hwnd, message, wParam, lParam ->
-                    CallbackRuntime.dispatchSafely(
-                        WndProcCallback.type,
-                        tokenForRoute,
-                        0L,
-                    ) { callback -> callback.handler.onMessage(hwnd, message, wParam, lParam) }
-                },
-            )
-            registration.onQuiescent(state::detach)
-            return WndProcOwner(state, token)
-        } catch (failure: Throwable) {
-            try {
-                registration.close()
-            } catch (closeFailure: Throwable) {
-                failure.addSuppressed(closeFailure)
-            }
-            throw failure
+        // The route captures the token: delivery happens through
+        // dispatchSafely whether it is invoked from the bridge table or from
+        // a window's creation slot.
+        val route = Win32WndProcRoute { hwnd, message, wParam, lParam ->
+            CallbackRuntime.dispatchSafely(
+                WndProcCallback.type,
+                token,
+                0L,
+            ) { callback -> callback.handler.onMessage(hwnd, message, wParam, lParam) }
         }
+        registration.onQuiescent(state::detach)
+        return WndProcOwner(state, token, route)
     }
 }
 
@@ -79,15 +73,10 @@ private class WndProcState(
     registration: CallbackRegistration<out Callback>,
 ) {
     private val registration = AtomicReference<CallbackRegistration<out Callback>?>(registration)
-    private val nativeRoute = AtomicReference<AutoCloseable?>(null)
 
     @Volatile
     var isQuiescent: Boolean = false
         private set
-
-    fun attach(route: AutoCloseable) {
-        check(nativeRoute.compareAndSet(null, route)) { "Win32 WndProc route is already attached" }
-    }
 
     fun close() {
         registration.get()?.close()
@@ -99,32 +88,33 @@ private class WndProcState(
     }
 
     fun detach() {
-        try {
-            nativeRoute.getAndSet(null)?.close()
-        } finally {
-            registration.set(null)
-            isQuiescent = true
-        }
+        registration.set(null)
+        isQuiescent = true
     }
 }
 
 private class WndProcOwner(
     private val state: WndProcState,
     private val token: NativeAddress,
+    private val deliveryRoute: Win32WndProcRoute,
 ) : Win32WndProcFunction {
     private val closeLock = ReentrantLock()
 
     override val callback: NativeAddress
         get() = Win32WndProcBridge.wndProc
+    override val route: Win32WndProcRoute
+        get() = deliveryRoute
     override val isQuiescent: Boolean
         get() = state.isQuiescent
 
     override fun onQuiescent(action: () -> Unit) = state.onQuiescent(action)
 
-    internal fun route(hwnd: Long, message: Int, wParam: Long, lParam: Long): Long =
-        // Re-enters the real native path: the single route is already
-        // installed and dispatches through it (the token lives in its closure).
-        Win32WndProcBridge.dispatchWndProc(hwnd, message, wParam, lParam)
+    internal fun dispatchForTest(hwnd: Long, message: Int, wParam: Long, lParam: Long): Long =
+        CallbackRuntime.dispatchSafely(
+            WndProcCallback.type,
+            token,
+            0L,
+        ) { callback -> callback.handler.onMessage(hwnd, message, wParam, lParam) }
 
     override fun close() {
         closeLock.withLock { state.close() }
@@ -132,4 +122,4 @@ private class WndProcOwner(
 }
 
 internal fun Win32WndProcFunction.routeForTest(hwnd: Long, message: Int, wParam: Long, lParam: Long): Long =
-    (this as WndProcOwner).route(hwnd, message, wParam, lParam)
+    (this as WndProcOwner).dispatchForTest(hwnd, message, wParam, lParam)

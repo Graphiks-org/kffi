@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   fails its dup and poisons the connection.
 
 ### Added
+- `kffi-win32.managed` routes window messages to N windows: `Win32WndProcBridge` resolves a per-thread creation slot (messages arriving inside `CreateWindowExW`) and a permanent hwnd table, removed before destroy so a reused address never reaches a revoked owner; `Win32ManagedFunctions.wndProc` exposes the revocable delivery route and windows own the binding. New `Win32ManagedWindow`: a managed top-level window whose handler owns the `WM_CLOSE` decision.
 - `WaylandClient.displayProxyAddress`: the native `wl_display` pointer address
   for external renderer integrations, valid until the client is closed.
 - `:kffi-win32` exposes `IsWindow` and `FindWindowExW` for validating native window handles and finding child windows.

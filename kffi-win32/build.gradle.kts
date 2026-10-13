@@ -34,6 +34,11 @@ tasks.withType<Test>().configureEach {
     if (name == "jvmTest") {
         useJUnitPlatform()
     }
+    testLogging {
+        events("failed")
+        exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
+        showStandardStreams = true
+    }
     jvmArgs("--enable-native-access=ALL-UNNAMED")
 }
 
@@ -53,6 +58,7 @@ tasks.register<Test>("win32IntegrationTest") {
     filter {
         includeTestsMatching("org.graphiks.kffi.win32.Win32WindowIntegrationTest")
         includeTestsMatching("org.graphiks.kffi.win32.managed.Win32ControlWindowIntegrationTest")
+        includeTestsMatching("org.graphiks.kffi.win32.managed.Win32ManagedWindowIntegrationTest")
     }
 
     systemProperty(
