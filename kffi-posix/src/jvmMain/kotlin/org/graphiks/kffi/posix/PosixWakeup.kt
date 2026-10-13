@@ -341,6 +341,19 @@ internal object NativePosixSyscalls : PosixSyscalls {
     private val captureLayout = Linker.Option.captureStateLayout()
     private val errnoOffset = captureLayout.byteOffset(groupElement("errno"))
 
+    // Downcall handles are cached per (symbol, descriptor, options): creating
+    // a fresh executable stub for every syscall destabilises the JVM's FFM
+    // runtime — after a burst of stub creations, a later unrelated downcall
+    // (a wayland marshal carrying a file descriptor) receives a corrupted
+    // argument. Mirrors LinuxNativeCalls' handle cache.
+    private val handles = java.util.concurrent.ConcurrentHashMap<DowncallKey, java.lang.invoke.MethodHandle>()
+
+    private data class DowncallKey(
+        val symbolAddress: Long,
+        val descriptor: FunctionDescriptor,
+        val options: List<Linker.Option>,
+    )
+
     override fun eventFd(
         symbol: MemorySegment,
         initialValue: Int,
@@ -467,7 +480,10 @@ internal object NativePosixSyscalls : PosixSyscalls {
         vararg options: Linker.Option,
     ): PosixCall<T> = Arena.ofConfined().use { arena ->
         val state = arena.allocate(captureLayout)
-        val handle = linker.downcallHandle(symbol, descriptor, captureErrno, *options)
+        val key = DowncallKey(symbol.address(), descriptor, options.toList())
+        val handle = handles.computeIfAbsent(key) {
+            linker.downcallHandle(symbol, descriptor, captureErrno, *options)
+        }
         @Suppress("UNCHECKED_CAST")
         val value = handle.invokeWithArguments(listOf(state) + arguments) as T
         when {

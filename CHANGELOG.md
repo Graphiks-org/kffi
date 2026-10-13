@@ -15,6 +15,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   variadic `wl_proxy_marshal_flags` downcall can deliver a corrupted fd
   argument (libwayland reads the byte size instead of the descriptor), which
   fails its dup and poisons the connection.
+- `kffi-posix`: the wakeup downcall handles are cached per (symbol,
+  descriptor, options) instead of being rebuilt for every call. The per-call
+  stub churn destabilised the JVM's FFM runtime — after a burst of wakeup
+  syscalls, an unrelated later downcall received a corrupted argument
+  (observed as a wayland pool fd failing its dup).
 
 ### Added
 - `kffi-win32.managed` routes window messages to N windows: `Win32WndProcBridge` resolves a per-thread creation slot (messages arriving inside `CreateWindowExW`) and a permanent hwnd table, removed before destroy so a reused address never reaches a revoked owner; `Win32ManagedFunctions.wndProc` exposes the revocable delivery route and windows own the binding. New `Win32ManagedWindow`: a managed top-level window whose handler owns the `WM_CLOSE` decision.
