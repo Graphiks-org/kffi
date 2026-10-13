@@ -35,6 +35,26 @@ class WaylandClientIntegrationTest {
     }
 
     @Test
+    fun twoLivePoolsSurviveAWakeupBurst() {
+        requireCompositorEnvironment()
+        val client = WaylandClient.connect()
+        assertNotNull(client)
+        client.use {
+            val first = it.createShmBuffer(64, 64)
+            assertNotNull(first)
+            val wake = org.graphiks.kffi.posix.PosixWakeup.open()
+            wake.signal()
+            wake.drain()
+            wake.close()
+            val second = it.createShmBuffer(32, 32)
+            assertNotNull(second, "the pool marshal is corrupted after the wakeup syscalls")
+            assertTrue(it.roundtrip())
+            first.close()
+            second.close()
+        }
+    }
+
+    @Test
     fun managedClientConnectsAndCollectsRegistryGlobals() {
         requireCompositorEnvironment()
         val client = WaylandClient.connect()
