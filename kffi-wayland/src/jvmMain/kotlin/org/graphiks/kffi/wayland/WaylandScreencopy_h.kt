@@ -363,13 +363,21 @@ fun createShmBuffer(shmPtr: Long, poolPtr: Long, offset: Int, width: Int, height
 }
 
 fun createShmPool(shmPtr: Long, fd: Int, size: Int): Long {
-    val createPool = wlShmCreatePool ?: return 0L
+    val marshalArrayFlags = wlProxyMarshalArrayFlags ?: return 0L
     val poolIface = wlShmPoolInterface ?: return 0L
     return try {
-        (createPool.invokeExact(
-            MemorySegment.ofAddress(shmPtr), 0, poolIface, 1, 0,
-            fd, size, MemorySegment.NULL,
-        ) as MemorySegment).address()
+        // The fd rides in a wl_argument array through the fixed-arity
+        // wl_proxy_marshal_array_flags: the variadic wl_proxy_marshal_flags
+        // downcall corrupts the 'h' argument (an unrelated fd value reached
+        // libwayland, failing its dup and poisoning the connection).
+        Arena.ofConfined().use { arena ->
+            val args = arena.allocate(ValueLayout.ADDRESS, 2)
+            args.set(ValueLayout.JAVA_INT, 0, fd)
+            args.set(ValueLayout.JAVA_INT, 8, size)
+            (marshalArrayFlags.invokeExact(
+                MemorySegment.ofAddress(shmPtr), 0, poolIface, 1, 0, args,
+            ) as MemorySegment).address()
+        }
     } catch (_: Throwable) { 0L }
 }
 

@@ -463,6 +463,18 @@ val wlShmCreatePool: MethodHandle? by lazy {
         ))
 }
 
+val wlProxyMarshalArrayFlags: MethodHandle? by lazy {
+    libWaylandClient.downcall("wl_proxy_marshal_array_flags",
+        FunctionDescriptor.of(ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS,
+            ValueLayout.JAVA_INT,
+            ValueLayout.ADDRESS,
+            ValueLayout.JAVA_INT,
+            ValueLayout.JAVA_INT,
+            ValueLayout.ADDRESS,
+        ))
+}
+
 val wlShmPoolCreateBuffer: MethodHandle? by lazy {
     // wl_shm_pool.create_buffer args: offset, width, height, stride, format —
     // the trailing NULL is the conventional argument-list terminator

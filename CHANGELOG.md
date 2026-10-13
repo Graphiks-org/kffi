@@ -9,6 +9,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- `wl_shm.create_pool` is marshaled through the fixed-arity
+  `wl_proxy_marshal_array_flags` with an explicit `wl_argument` array: the
+  variadic `wl_proxy_marshal_flags` downcall can deliver a corrupted fd
+  argument (libwayland reads the byte size instead of the descriptor), which
+  fails its dup and poisons the connection.
+
 ### Added
 - `WaylandClient.displayProxyAddress`: the native `wl_display` pointer address
   for external renderer integrations, valid until the client is closed.
