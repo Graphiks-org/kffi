@@ -185,10 +185,6 @@ class WaylandClientIntegrationTest {
     }
 
     @Test
-    @org.junit.jupiter.api.Disabled(
-        "bisect in progress: the poisoned display state crashes the test JVM and " +
-            "destroys the evidence; re-enable for an interactive runner session",
-    )
     fun managedPoolSurvivesTheWakeupSyscalls() {
         requireCompositorEnvironment()
         val client = WaylandClient.connect()
