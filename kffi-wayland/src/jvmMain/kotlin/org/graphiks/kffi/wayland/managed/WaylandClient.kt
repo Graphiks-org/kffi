@@ -12,6 +12,7 @@ import java.util.concurrent.atomic.AtomicBoolean
 import org.graphiks.kffi.posix.LinuxErrno
 import org.graphiks.kffi.posix.PollFd
 import org.graphiks.kffi.wayland.invokeNativePoll
+import org.graphiks.kffi.wayland.wlOutputInterface
 import org.graphiks.kffi.wayland.wlDisplayCancelRead
 import org.graphiks.kffi.wayland.wlDisplayConnect
 import org.graphiks.kffi.wayland.wlDisplayDisconnect
@@ -68,6 +69,16 @@ public class WaylandClient private constructor(
      * [maxVersion])`). Returns `null` when the global is not advertised or
      * the roundtrip cannot refresh the registry.
      */
+    /**
+     * Binds one advertised `wl_output` global and wraps it in the managed
+     * [WaylandOutput] facade (native listener installed lazily at the first
+     * consumer). The global [name] comes from the registry globals listener.
+     */
+    public fun bindOutput(name: Int, maxVersion: Int = 4): WaylandOutput? {
+        val proxy = bindByGlobalName(name, "wl_output", maxVersion) ?: return null
+        return WaylandOutput(proxy.proxy, managedArena, managedLock)
+    }
+
     internal fun bindGlobal(interfaceName: String, maxVersion: Int): ManagedProxy? {
         // force the internal globals-tracking listener to install before any
         // event dispatch
@@ -77,7 +88,10 @@ public class WaylandClient private constructor(
         }
         val (name, advertised) = synchronized(advertisedGlobals) { advertisedGlobals[interfaceName] }
             ?: return null
-        val version = minOf(advertised, maxVersion)
+        return bindByGlobalName(name, interfaceName, minOf(advertised, maxVersion))
+    }
+
+    private fun bindByGlobalName(name: Int, interfaceName: String, version: Int): ManagedProxy? {
         val bind = requireHandle(wlProxyMarshalBind)
         val interfacePointer = requireNotNull(interfacePointer(interfaceName)) {
             "required libwayland interface '$interfaceName' is unavailable"
@@ -108,6 +122,7 @@ public class WaylandClient private constructor(
         "wl_compositor" -> wlCompositorInterface
         "xdg_wm_base" -> xdg_wm_base_interface
         "wl_shm" -> wlShmInterface
+        "wl_output" -> wlOutputInterface
         else -> null
     }
 

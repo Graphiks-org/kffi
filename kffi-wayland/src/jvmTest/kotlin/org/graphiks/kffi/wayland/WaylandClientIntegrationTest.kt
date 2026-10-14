@@ -71,6 +71,50 @@ class WaylandClientIntegrationTest {
     }
 
     @Test
+<<<<<<< HEAD
+=======
+    fun managedOutputBindsAndDeliversStateAtDone() {
+        requireCompositorEnvironment()
+        val client = WaylandClient.connect()
+        assertNotNull(client)
+        client.use {
+            // the consumer must be registered BEFORE the first dispatch: the
+            // registry burst is announced once and libwayland discards events
+            // for a proxy without a listener
+            var outputName: Int? = null
+            it.registry.addGlobalsListener(
+                onGlobal = { name, interfaceName, _ ->
+                    if (interfaceName == "wl_output" && outputName == null) outputName = name
+                },
+            )
+            assertTrue(it.roundtrip())
+            assertNotNull(outputName, "the compositor advertises no wl_output")
+            val output = it.bindOutput(outputName!!)
+            assertNotNull(output)
+            output.use { out ->
+                var states = 0
+                var last: org.graphiks.kffi.wayland.managed.WaylandOutputState? = null
+                out.addListener(
+                    onState = { state ->
+                        states += 1
+                        last = state
+                    },
+                )
+                // outputs deliver their full state at bind; one roundtrip
+                // suffices for sway to dispatch geometry/mode/scale + done
+                assertTrue(it.roundtrip())
+                assertTrue(states >= 1, "no output state delivered at done")
+                val state = last!!
+                assertTrue(state.scale >= 1, "scale must be >= 1")
+                assertTrue(state.modes.isNotEmpty(), "modes must not be empty")
+                assertTrue(state.currentModeIndex >= 0, "no current mode")
+                assertTrue(state.name != null, "wl_output.name requires v4")
+            }
+        }
+    }
+
+    @Test
+>>>>>>> feat/wayland-output-scale-redraw
     fun managedClientConnectsAndCollectsRegistryGlobals() {
         requireCompositorEnvironment()
         val client = WaylandClient.connect()
