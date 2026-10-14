@@ -682,10 +682,6 @@ fun wlSurfaceDamage(
     } catch (_: Throwable) { }
 }
 
-private val pollCaptureErrno = Linker.Option.captureCallState("errno")
-private val pollCaptureLayout = Linker.Option.captureStateLayout()
-private val pollErrnoOffset = pollCaptureLayout.byteOffset(groupElement("errno"))
-
 private val nativePoll: MethodHandle? by lazy {
     PosixSymbols.find("poll")?.let { symbol ->
         linker.downcallHandle(
@@ -696,35 +692,39 @@ private val nativePoll: MethodHandle? by lazy {
                 ValueLayout.JAVA_LONG,
                 ValueLayout.JAVA_INT,
             ),
-            pollCaptureErrno,
         )
     }
+}
+
+private val waylandErrnoLocation: MethodHandle? by lazy {
+    PosixSymbols.find("__errno_location")?.let { symbol ->
+        linker.downcallHandle(
+            symbol,
+            FunctionDescriptor.of(ValueLayout.ADDRESS),
+        )
+    }
+}
+
+// errno is read through __errno_location() instead of a captureCallState
+// stub: the capture-state stubs were observed to corrupt the argument
+// passing of later unrelated downcalls on some environments.
+fun invokeNativePoll(
+    pollFds: MemorySegment,
+    count: Long,
+    timeoutMs: Int,
+): WaylandNativePollResult {
+    val poll = nativePoll ?: error("required POSIX symbol 'poll' is unavailable")
+    val location = waylandErrnoLocation ?: error("required POSIX symbol '__errno_location' is unavailable")
+    val rc = poll.invokeExact(pollFds, count, timeoutMs) as Int
+    if (rc >= 0) return WaylandNativePollResult(rc, null)
+    val errno = (location.invokeExact() as MemorySegment).get(ValueLayout.JAVA_INT, 0L)
+    return WaylandNativePollResult(rc, errno)
 }
 
 data class WaylandNativePollResult(
     val value: Int,
     val errno: Int?,
 )
-
-/** Invokes POSIX poll(2) with the platform-sized nfds_t and captures errno atomically. */
-fun invokeNativePoll(
-    pollFds: MemorySegment,
-    count: Long,
-    timeoutMs: Int,
-): WaylandNativePollResult = Arena.ofConfined().use { arena ->
-    val poll = nativePoll
-        ?: error("required POSIX symbol 'poll' is unavailable")
-    val callState = arena.allocate(pollCaptureLayout)
-    val result = poll.invokeExact(callState, pollFds, count, timeoutMs) as Int
-    WaylandNativePollResult(
-        value = result,
-        errno = if (result < 0) {
-            callState.get(ValueLayout.JAVA_INT, pollErrnoOffset)
-        } else {
-            null
-        },
-    )
-}
 
 val nativeEventfd: MethodHandle? by lazy {
     posixDowncall("eventfd", FunctionDescriptor.of(
