@@ -72,7 +72,7 @@ class WaylandClientIntegrationTest {
 
     @Test
     fun managedOutputBindsAndDeliversStateAtDone() {
-        println("MANAGED-OUTPUT-TEST-STARTED")
+        requireCompositorEnvironment()
         val client = WaylandClient.connect()
         assertNotNull(client)
         client.use {
