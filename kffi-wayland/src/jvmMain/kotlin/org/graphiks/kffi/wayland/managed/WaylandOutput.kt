@@ -277,7 +277,13 @@ internal object WaylandClientAccess {
     fun outputRelease(proxy: MemorySegment) {
         val release = org.graphiks.kffi.wayland.wlOutputRelease ?: return
         try {
-            release.invokeExact(proxy) as Unit
+            release.invokeExact(
+                proxy,
+                0,
+                MemorySegment.NULL,
+                0,
+                0,
+            ) as MemorySegment
         } catch (_: Throwable) {
         }
     }

@@ -71,8 +71,6 @@ class WaylandClientIntegrationTest {
     }
 
     @Test
-<<<<<<< HEAD
-=======
     fun managedOutputBindsAndDeliversStateAtDone() {
         requireCompositorEnvironment()
         val client = WaylandClient.connect()
@@ -114,7 +112,6 @@ class WaylandClientIntegrationTest {
     }
 
     @Test
->>>>>>> feat/wayland-output-scale-redraw
     fun managedClientConnectsAndCollectsRegistryGlobals() {
         requireCompositorEnvironment()
         val client = WaylandClient.connect()
