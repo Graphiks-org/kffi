@@ -15,6 +15,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   variadic `wl_proxy_marshal_flags` downcall can deliver a corrupted fd
   argument (libwayland reads the byte size instead of the descriptor), which
   fails its dup and poisons the connection.
+- `wl_shm_pool.create_buffer` moves to the same fixed-arity array marshal
+  (opcode 0, arguments at their signature indices): on several JVM
+  environments the variadic downcall drops or shifts its variadic
+  arguments, which made the server reject the buffer request.
+- The wakeup syscalls and `nativePoll` read errno through
+  `__errno_location()` instead of capture-state stubs.
 - `kffi-posix`: the wakeup downcall handles are cached per (symbol,
   descriptor, options) instead of being rebuilt for every call. The per-call
   stub churn destabilised the JVM's FFM runtime — after a burst of wakeup

@@ -3,7 +3,6 @@ package org.graphiks.kffi.posix
 import java.lang.foreign.Arena
 import java.lang.foreign.FunctionDescriptor
 import java.lang.foreign.Linker
-import java.lang.foreign.MemoryLayout.PathElement.groupElement
 import java.lang.foreign.MemorySegment
 import java.lang.foreign.ValueLayout
 import java.nio.ByteBuffer
@@ -337,10 +336,26 @@ internal interface PosixSyscalls {
 
 internal object NativePosixSyscalls : PosixSyscalls {
     private val linker = Linker.nativeLinker()
-    private val captureErrno = Linker.Option.captureCallState("errno")
-    private val captureLayout = Linker.Option.captureStateLayout()
-    private val errnoOffset = captureLayout.byteOffset(groupElement("errno"))
 
+    // errno is read through __errno_location() instead of a captureCallState
+    // stub: the capture-state downcall stubs were observed to destabilise the
+    // JVM's FFM argument passing in some environments — a later unrelated
+    // downcall received a corrupted argument (a wayland pool fd read as the
+    // buffer size by libwayland). The location downcall has no arguments and
+    // no capture option; nothing but the plain libc symbol runs in the stub.
+    private val errnoLocation: java.lang.invoke.MethodHandle? by lazy {
+        PosixSymbols.find("__errno_location")?.let { symbol ->
+            linker.downcallHandle(
+                symbol,
+                FunctionDescriptor.of(ValueLayout.ADDRESS),
+            )
+        }
+    }
+
+    private fun capturedErrno(): Int? {
+        val location = errnoLocation ?: return null
+        return (location.invokeExact() as MemorySegment).get(ValueLayout.JAVA_INT, 0L)
+    }
     // Downcall handles are cached per (symbol, descriptor, options): creating
     // a fresh executable stub for every syscall destabilises the JVM's FFM
     // runtime — after a burst of stub creations, a later unrelated downcall
@@ -478,17 +493,16 @@ internal object NativePosixSyscalls : PosixSyscalls {
         descriptor: FunctionDescriptor,
         arguments: List<Any>,
         vararg options: Linker.Option,
-    ): PosixCall<T> = Arena.ofConfined().use { arena ->
-        val state = arena.allocate(captureLayout)
+    ): PosixCall<T> {
         val key = DowncallKey(symbol.address(), descriptor, options.toList())
         val handle = handles.computeIfAbsent(key) {
-            linker.downcallHandle(symbol, descriptor, captureErrno, *options)
+            linker.downcallHandle(symbol, descriptor, *options)
         }
         @Suppress("UNCHECKED_CAST")
-        val value = handle.invokeWithArguments(listOf(state) + arguments) as T
-        when {
-            value is Int && value < 0 -> PosixCall.failure(state.get(ValueLayout.JAVA_INT, errnoOffset))
-            value is Long && value < 0L -> PosixCall.failure(state.get(ValueLayout.JAVA_INT, errnoOffset))
+        val value = handle.invokeWithArguments(arguments) as T
+        return when {
+            value is Int && value < 0 -> PosixCall.failure(capturedErrno() ?: 0)
+            value is Long && value < 0L -> PosixCall.failure(capturedErrno() ?: 0)
             else -> PosixCall.success(value)
         }
     }
