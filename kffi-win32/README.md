@@ -99,3 +99,36 @@ compile the module with:
 
 The Windows SDK and the generated bindings are not available on macOS or Linux;
 the generator script therefore refuses to run on those hosts.
+
+## Managed keyboard and pointer reads
+
+`Win32Keyboard.read(virtualKey, lParam)` copies a key packet, the queue thread's
+keyboard state and its current layout. Read it before `TranslateMessage` for
+that packet. The returned Kotlin snapshot owns no foreign memory.
+`Win32Keyboard.translate` accepts a copied 256-byte keyboard state and uses
+`ToUnicodeEx` with flag `0x4`, preserving the kernel dead-key buffer. Dead keys
+are marked explicitly; these observations do not implement a text-input/IME
+session. Shortcut control characters are retried with Control/Alt neutralized;
+printable AltGr output is preserved.
+
+`Win32Pointer.trackLeave(hwnd)` arms `WM_MOUSELEAVE`, and `cancelLeave` cancels
+it before the window is destroyed. Re-arm tracking on the next entry.
+`screenToClient` returns signed coordinates. `wheelSettings` reads the native
+vertical-line and horizontal-character increments; null means page scrolling,
+and zero means a disabled axis. Its temporary native buffers stay inside KFFI.
+
+`Win32InputIntegrationTest` exercises these calls against a real window and
+the active thread layout when `KFFI_WIN32_INTEGRATION=1`. It does not change
+the user's keyboard layout or inject hardware input. Non-US/AltGr and physical
+dead-key entry still require tests with the corresponding layout and keyboard.
+
+For a paired Windows JVM consumer, run `scripts/publish-win32-local.ps1`.
+It tests and builds the two JVM jars and publishes them with Maven POM aliases as
+`1.0.0-win32-phase4-local-SNAPSHOT` (override with `-Version`). The isolated
+publication avoids configuring Android/NDK and Dokka on a Windows-only host.
+It contains no multiplatform metadata or documentation artifacts and is not a
+production release verification. Use a distinct `-local-SNAPSHOT` version and
+explicitly opt the consumer into Maven local.
+The local coordinates label a test alias: `Kffi.VERSION` retains the normal
+build version (`1.0.0-SNAPSHOT` by default, override with `-BuildVersion`),
+whose existing runtime-version test must pass before publication.
