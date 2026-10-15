@@ -26,7 +26,7 @@ private var _DLL_USER32_DLL: SymbolLookup? = null
 
 private fun _lookup(symbol: String): SymbolLookup {
     return when (symbol) {
-        "RegisterClassExW", "CreateWindowExW", "FindWindowExW", "GetDC", "ReleaseDC", "FillRect", "ShowWindow", "UpdateWindow", "DestroyWindow", "DefWindowProcW", "SetWindowTextW", "PostQuitMessage", "GetKeyState", "PeekMessageW", "GetMessageW", "TranslateMessage", "DispatchMessageW", "MsgWaitForMultipleObjectsEx", "LoadCursorW", "SetProcessDpiAwarenessContext", "GetDpiForWindow", "InvalidateRect", "ValidateRect", "TrackMouseEvent", "RegisterTouchWindow", "GetTouchInputInfo", "CloseTouchInputHandle", "GetGestureInfo", "CloseGestureInfoHandle", "ScreenToClient", "ClientToScreen", "GetCursorPos", "GetSystemMenu", "TrackPopupMenu", "EnableMenuItem", "SetMenuDefaultItem", "ReleaseCapture", "EnableWindow", "GetClientRect", "GetWindowRect", "SetWindowLongPtrW", "GetWindowLongPtrW", "IsZoomed", "IsIconic", "IsWindow", "IsWindowVisible", "GetWindowTextW", "SetWindowPos", "GetForegroundWindow", "SetForegroundWindow", "MapVirtualKeyW", "SendInput", "SetCursorPos", "SetCursor", "ShowCursor", "ClipCursor", "PostMessageW", "SendMessageW", "CreateIcon", "DestroyIcon" -> _DLL_USER32_DLL ?: SymbolLookup.loaderLookup()
+        "RegisterClassExW", "CreateWindowExW", "FindWindowExW", "GetDC", "ReleaseDC", "FillRect", "ShowWindow", "UpdateWindow", "DestroyWindow", "DefWindowProcW", "SetWindowTextW", "PostQuitMessage", "GetKeyState", "GetKeyboardState", "GetKeyboardLayout", "MapVirtualKeyExW", "ToUnicodeEx", "SystemParametersInfoW", "PeekMessageW", "GetMessageW", "TranslateMessage", "DispatchMessageW", "MsgWaitForMultipleObjectsEx", "LoadCursorW", "SetProcessDpiAwarenessContext", "GetDpiForWindow", "InvalidateRect", "ValidateRect", "TrackMouseEvent", "RegisterTouchWindow", "GetTouchInputInfo", "CloseTouchInputHandle", "GetGestureInfo", "CloseGestureInfoHandle", "ScreenToClient", "ClientToScreen", "GetCursorPos", "GetSystemMenu", "TrackPopupMenu", "EnableMenuItem", "SetMenuDefaultItem", "ReleaseCapture", "EnableWindow", "GetClientRect", "GetWindowRect", "SetWindowLongPtrW", "GetWindowLongPtrW", "IsZoomed", "IsIconic", "IsWindow", "IsWindowVisible", "GetWindowTextW", "SetWindowPos", "GetForegroundWindow", "SetForegroundWindow", "MapVirtualKeyW", "SendInput", "SetCursorPos", "SetCursor", "ShowCursor", "ClipCursor", "PostMessageW", "SendMessageW", "CreateIcon", "DestroyIcon" -> _DLL_USER32_DLL ?: SymbolLookup.loaderLookup()
         "GetCurrentThreadId", "GetModuleHandleW", "SetLastError", "GetLastError" -> _DLL_KERNEL32_DLL ?: SymbolLookup.loaderLookup()
         "CreateRectRgn", "CreateCompatibleDC", "CreateCompatibleBitmap", "CreateSolidBrush", "SelectObject", "BitBlt", "GetDIBits", "DeleteDC", "DeleteObject" -> _DLL_GDI32_DLL ?: SymbolLookup.loaderLookup()
         "DwmSetWindowAttribute", "DwmEnableBlurBehindWindow", "DwmExtendFrameIntoClientArea" -> _DLL_DWMAPI_DLL ?: SymbolLookup.loaderLookup()
@@ -2188,6 +2188,46 @@ fun SelectObject(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
 typealias COLOR16 = Short
 
 /**
+ * {@snippet lang=c : ToUnicodeEx Int(typedef UINT = UNSIGNED = Int,typedef UINT = UNSIGNED = Int,(typedef BYTE = UNSIGNED = Char)*,typedef LPWSTR = (Int)*,Int,typedef UINT = UNSIGNED = Int,typedef HKL = (Declared(HKL__))*)
+ */
+private val ToUnicodeEx_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private var ToUnicodeEx_HANDLE: MethodHandle? = null
+
+fun ToUnicodeEx(arg0: Int, arg1: Int, arg2: MemorySegment, arg3: MemorySegment, arg4: Int, arg5: Int, arg6: MemorySegment): Int {
+    check(_initialized) { "Win32 ToUnicodeEx called before init()" }
+    val _handle = ToUnicodeEx_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5, arg6) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
+ * {@snippet lang=c : GetKeyboardLayout typedef HKL = (Declared(HKL__))*(typedef DWORD = UNSIGNED = Long)
+ */
+private val GetKeyboardLayout_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
+private var GetKeyboardLayout_HANDLE: MethodHandle? = null
+
+fun GetKeyboardLayout(arg0: Int): MemorySegment {
+    check(_initialized) { "Win32 GetKeyboardLayout called before init()" }
+    val _handle = GetKeyboardLayout_HANDLE ?: return MemorySegment.NULL
+    try {
+        return _handle.invokeExact(arg0) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return MemorySegment.NULL
+    }
+}
+
+/**
  * {@snippet lang=c : TrackMouseEvent typedef BOOL = Int(typedef LPTRACKMOUSEEVENT = (Declared(tagTRACKMOUSEEVENT))*)
  */
 private val TrackMouseEvent_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
@@ -2592,6 +2632,26 @@ fun GetKeyState(arg0: Int): Short {
 }
 
 /**
+ * {@snippet lang=c : GetKeyboardState typedef BOOL = Int(typedef PBYTE = (UNSIGNED = Char)*)
+ */
+private val GetKeyboardState_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private var GetKeyboardState_HANDLE: MethodHandle? = null
+
+fun GetKeyboardState(arg0: MemorySegment): Int {
+    check(_initialized) { "Win32 GetKeyboardState called before init()" }
+    val _handle = GetKeyboardState_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
  * {@snippet lang=c : SendInput typedef UINT = UNSIGNED = Int(typedef UINT = UNSIGNED = Int,typedef LPINPUT = (Declared(tagINPUT))*,Int)
  */
 private val SendInput_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
@@ -2760,6 +2820,26 @@ fun MapVirtualKeyW(arg0: Int, arg1: Int): Int {
     val _handle = MapVirtualKeyW_HANDLE ?: return 0
     try {
         return _handle.invokeExact(arg0, arg1) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
+ * {@snippet lang=c : MapVirtualKeyExW typedef UINT = UNSIGNED = Int(typedef UINT = UNSIGNED = Int,typedef UINT = UNSIGNED = Int,typedef HKL = (Declared(HKL__))*)
+ */
+private val MapVirtualKeyExW_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private var MapVirtualKeyExW_HANDLE: MethodHandle? = null
+
+fun MapVirtualKeyExW(arg0: Int, arg1: Int, arg2: MemorySegment): Int {
+    check(_initialized) { "Win32 MapVirtualKeyExW called before init()" }
+    val _handle = MapVirtualKeyExW_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0, arg1, arg2) as Int
     } catch (ex: Error) {
         throw ex
     } catch (ex: RuntimeException) {
@@ -3435,6 +3515,26 @@ enum class tagHANDEDNESS(val value: Long) {
     companion object {
         fun fromValue(v: Long): tagHANDEDNESS = entries.firstOrNull { it.value == v }
             ?: error("Unknown tagHANDEDNESS value: $v")
+    }
+}
+
+/**
+ * {@snippet lang=c : SystemParametersInfoW typedef BOOL = Int(typedef UINT = UNSIGNED = Int,typedef UINT = UNSIGNED = Int,typedef PVOID = (Void)*,typedef UINT = UNSIGNED = Int)
+ */
+private val SystemParametersInfoW_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
+private var SystemParametersInfoW_HANDLE: MethodHandle? = null
+
+fun SystemParametersInfoW(arg0: Int, arg1: Int, arg2: MemorySegment, arg3: Int): Int {
+    check(_initialized) { "Win32 SystemParametersInfoW called before init()" }
+    val _handle = SystemParametersInfoW_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0, arg1, arg2, arg3) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
     }
 }
 
@@ -4807,6 +4907,8 @@ fun init() {
     DeleteObject_HANDLE = _lookup("DeleteObject").find("DeleteObject").map { Linker.nativeLinker().downcallHandle(it, DeleteObject_DESC) }.orElse(null)
     GetDIBits_HANDLE = _lookup("GetDIBits").find("GetDIBits").map { Linker.nativeLinker().downcallHandle(it, GetDIBits_DESC) }.orElse(null)
     SelectObject_HANDLE = _lookup("SelectObject").find("SelectObject").map { Linker.nativeLinker().downcallHandle(it, SelectObject_DESC) }.orElse(null)
+    ToUnicodeEx_HANDLE = _lookup("ToUnicodeEx").find("ToUnicodeEx").map { Linker.nativeLinker().downcallHandle(it, ToUnicodeEx_DESC) }.orElse(null)
+    GetKeyboardLayout_HANDLE = _lookup("GetKeyboardLayout").find("GetKeyboardLayout").map { Linker.nativeLinker().downcallHandle(it, GetKeyboardLayout_DESC) }.orElse(null)
     TrackMouseEvent_HANDLE = _lookup("TrackMouseEvent").find("TrackMouseEvent").map { Linker.nativeLinker().downcallHandle(it, TrackMouseEvent_DESC) }.orElse(null)
     GetMessageW_HANDLE = _lookup("GetMessageW").find("GetMessageW").map { Linker.nativeLinker().downcallHandle(it, GetMessageW_DESC) }.orElse(null)
     TranslateMessage_HANDLE = _lookup("TranslateMessage").find("TranslateMessage").map { Linker.nativeLinker().downcallHandle(it, TranslateMessage_DESC) }.orElse(null)
@@ -4826,11 +4928,13 @@ fun init() {
     IsIconic_HANDLE = _lookup("IsIconic").find("IsIconic").map { Linker.nativeLinker().downcallHandle(it, IsIconic_DESC) }.orElse(null)
     IsZoomed_HANDLE = _lookup("IsZoomed").find("IsZoomed").map { Linker.nativeLinker().downcallHandle(it, IsZoomed_DESC) }.orElse(null)
     GetKeyState_HANDLE = _lookup("GetKeyState").find("GetKeyState").map { Linker.nativeLinker().downcallHandle(it, GetKeyState_DESC) }.orElse(null)
+    GetKeyboardState_HANDLE = _lookup("GetKeyboardState").find("GetKeyboardState").map { Linker.nativeLinker().downcallHandle(it, GetKeyboardState_DESC) }.orElse(null)
     SendInput_HANDLE = _lookup("SendInput").find("SendInput").map { Linker.nativeLinker().downcallHandle(it, SendInput_DESC) }.orElse(null)
     GetTouchInputInfo_HANDLE = _lookup("GetTouchInputInfo").find("GetTouchInputInfo").map { Linker.nativeLinker().downcallHandle(it, GetTouchInputInfo_DESC) }.orElse(null)
     CloseTouchInputHandle_HANDLE = _lookup("CloseTouchInputHandle").find("CloseTouchInputHandle").map { Linker.nativeLinker().downcallHandle(it, CloseTouchInputHandle_DESC) }.orElse(null)
     RegisterTouchWindow_HANDLE = _lookup("RegisterTouchWindow").find("RegisterTouchWindow").map { Linker.nativeLinker().downcallHandle(it, RegisterTouchWindow_DESC) }.orElse(null)
     MapVirtualKeyW_HANDLE = _lookup("MapVirtualKeyW").find("MapVirtualKeyW").map { Linker.nativeLinker().downcallHandle(it, MapVirtualKeyW_DESC) }.orElse(null)
+    MapVirtualKeyExW_HANDLE = _lookup("MapVirtualKeyExW").find("MapVirtualKeyExW").map { Linker.nativeLinker().downcallHandle(it, MapVirtualKeyExW_DESC) }.orElse(null)
     ReleaseCapture_HANDLE = _lookup("ReleaseCapture").find("ReleaseCapture").map { Linker.nativeLinker().downcallHandle(it, ReleaseCapture_DESC) }.orElse(null)
     MsgWaitForMultipleObjectsEx_HANDLE = _lookup("MsgWaitForMultipleObjectsEx").find("MsgWaitForMultipleObjectsEx").map { Linker.nativeLinker().downcallHandle(it, MsgWaitForMultipleObjectsEx_DESC) }.orElse(null)
     EnableWindow_HANDLE = _lookup("EnableWindow").find("EnableWindow").map { Linker.nativeLinker().downcallHandle(it, EnableWindow_DESC) }.orElse(null)
@@ -4863,6 +4967,7 @@ fun init() {
     LoadCursorW_HANDLE = _lookup("LoadCursorW").find("LoadCursorW").map { Linker.nativeLinker().downcallHandle(it, LoadCursorW_DESC) }.orElse(null)
     CreateIcon_HANDLE = _lookup("CreateIcon").find("CreateIcon").map { Linker.nativeLinker().downcallHandle(it, CreateIcon_DESC) }.orElse(null)
     DestroyIcon_HANDLE = _lookup("DestroyIcon").find("DestroyIcon").map { Linker.nativeLinker().downcallHandle(it, DestroyIcon_DESC) }.orElse(null)
+    SystemParametersInfoW_HANDLE = _lookup("SystemParametersInfoW").find("SystemParametersInfoW").map { Linker.nativeLinker().downcallHandle(it, SystemParametersInfoW_DESC) }.orElse(null)
     GetDpiForWindow_HANDLE = _lookup("GetDpiForWindow").find("GetDpiForWindow").map { Linker.nativeLinker().downcallHandle(it, GetDpiForWindow_DESC) }.orElse(null)
     SetProcessDpiAwarenessContext_HANDLE = _lookup("SetProcessDpiAwarenessContext").find("SetProcessDpiAwarenessContext").map { Linker.nativeLinker().downcallHandle(it, SetProcessDpiAwarenessContext_DESC) }.orElse(null)
     GetGestureInfo_HANDLE = _lookup("GetGestureInfo").find("GetGestureInfo").map { Linker.nativeLinker().downcallHandle(it, GetGestureInfo_DESC) }.orElse(null)
