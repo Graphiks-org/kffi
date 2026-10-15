@@ -70,5 +70,14 @@ dllMap:
       - SendMessageW
       - CreateIcon
       - DestroyIcon
+      - FlashWindowEx
+      - CreateIconIndirect
+      - DestroyCursor
+      - GetCursor
+      - GetCapture
+      - GetClipCursor
+      - GetSystemMetrics
+      - GetWindowDisplayAffinity
+      - SetWindowDisplayAffinity
     structs: []
     constants: []

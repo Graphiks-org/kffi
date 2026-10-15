@@ -10,5 +10,7 @@ dllMap:
       - GetDIBits
       - DeleteDC
       - DeleteObject
+      - CreateBitmap
+      - CreateDIBSection
     structs: []
     constants: []

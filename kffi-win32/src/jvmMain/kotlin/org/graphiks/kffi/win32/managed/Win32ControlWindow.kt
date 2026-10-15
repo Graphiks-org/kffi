@@ -30,6 +30,8 @@ public class Win32ControlWindow private constructor(
 ) : AutoCloseable {
     public companion object {
         public const val TEST_MESSAGE: Int = 0x8001 // WM_APP + 1
+        /** Owner-command wake dispatched by native nested loops as well as the outer pump. */
+        public const val COMMAND_MESSAGE: Int = 0x8002 // WM_APP + 2
         private const val CLASS_NAME: String = "KadreWin32ControlWindow"
         private const val WS_POPUP: Int = -0x80000000 // 0x80000000, cf. the existing integration test
         private const val PM_REMOVE: Int = 0x1
@@ -44,7 +46,7 @@ public class Win32ControlWindow private constructor(
             }
             init()
             val function = Win32ManagedFunctions.wndProc { hwnd, message, wParam, lParam ->
-                if (message == TEST_MESSAGE) handler.onMessage(hwnd, message, wParam, lParam)
+                if (message == TEST_MESSAGE || message == COMMAND_MESSAGE) handler.onMessage(hwnd, message, wParam, lParam)
                 else DefWindowProcW(MemorySegment.ofAddress(hwnd), message, wParam, lParam)
             }
             try {

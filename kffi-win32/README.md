@@ -122,7 +122,7 @@ the active thread layout when `KFFI_WIN32_INTEGRATION=1`. It does not change
 the user's keyboard layout or inject hardware input. Non-US/AltGr and physical
 dead-key entry still require tests with the corresponding layout and keyboard.
 
-For a paired Windows JVM consumer, run `scripts/publish-win32-local.ps1`.
+For local Windows JVM development, run `scripts/publish-win32-local.ps1`.
 It tests and builds the two JVM jars and publishes them with Maven POM aliases as
 `1.0.0-win32-phase4-local-SNAPSHOT` (override with `-Version`). The isolated
 publication avoids configuring Android/NDK and Dokka on a Windows-only host.
@@ -134,6 +134,30 @@ build version (`1.0.0-SNAPSHOT` by default, override with `-BuildVersion`),
 whose existing runtime-version test must pass before publication.
 
 ## Checked window properties
+
+The native window API adds `Win32WindowOperations`, `Win32OwnedImage` and
+`Win32PointerConfinement`. Operations stay on the HWND owner thread. Flashing
+does not activate a window; FlashWindowEx's previous-state result is not an error
+BOOL. Topmost levels and icon slots are read back. RGBA8 owned images use copied
+premultiplied BGRA DIBs: icons at most 256x256, cursors at most 128x128. Release
+an image only after removing it from the window; shared system cursors are never
+owned. Closing an active custom cursor first restores the default system cursor.
+
+Confinement is a process-brokered ClipCursor lease for the foreground HWND's
+client rectangle intersected with the visible virtual desktop. A fully off-screen
+client cannot acquire confinement. Acquisition refuses an existing foreign clip. Release
+only clears the rectangle still observed as owned; an observable foreign
+replacement withdraws ownership without clearing it. This is not raw pointer
+lock or a SetCapture substitute. Call update on geometry changes and release on
+focus loss/hide/cancel/teardown. Identical writes by unrelated components cannot
+be distinguished by Windows readback; cooperation is required for that case.
+
+Content protection means the exact `WDA_MONITOR` flag plus checked native
+readback, covering supported Windows capture paths while DWM composes the
+desktop. It is not a security boundary or a promise about every capture tool.
+`showSystemMenu` and `beginMoveResize` enter real User32 nested loops; the host
+must keep routing control-window messages. A move/resize needs a same-callback
+pointer authority supplied by its caller. No keyboard or pointer input is forged.
 
 `Win32WindowProperties` copies title, signed physical bounds, client size,
 styles, DPI and visibility/minimize/maximize flags from a live window.
@@ -150,5 +174,4 @@ target style without modifying the window. Validate client and track-limit
 dimensions including their frame before storing a constraint or invoking setters.
 
 `Win32WindowPropertiesIntegrationTest` proves the native calls with
-`KFFI_WIN32_INTEGRATION=1`. To test a paired consumer before publication:
-`./scripts/publish-win32-local.ps1 -Version 1.0.0-win32-phase5-local-SNAPSHOT`.
+`KFFI_WIN32_INTEGRATION=1`. The local development publisher packages the tested JVM artifacts.

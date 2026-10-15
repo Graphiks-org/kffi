@@ -26,9 +26,9 @@ private var _DLL_USER32_DLL: SymbolLookup? = null
 
 private fun _lookup(symbol: String): SymbolLookup {
     return when (symbol) {
-        "RegisterClassExW", "CreateWindowExW", "FindWindowExW", "GetDC", "ReleaseDC", "FillRect", "ShowWindow", "UpdateWindow", "DestroyWindow", "DefWindowProcW", "SetWindowTextW", "PostQuitMessage", "GetKeyState", "GetKeyboardState", "GetKeyboardLayout", "MapVirtualKeyExW", "ToUnicodeEx", "SystemParametersInfoW", "PeekMessageW", "GetMessageW", "TranslateMessage", "DispatchMessageW", "MsgWaitForMultipleObjectsEx", "LoadCursorW", "SetProcessDpiAwarenessContext", "GetDpiForWindow", "InvalidateRect", "ValidateRect", "TrackMouseEvent", "RegisterTouchWindow", "GetTouchInputInfo", "CloseTouchInputHandle", "GetGestureInfo", "CloseGestureInfoHandle", "ScreenToClient", "ClientToScreen", "GetCursorPos", "GetSystemMenu", "TrackPopupMenu", "EnableMenuItem", "SetMenuDefaultItem", "ReleaseCapture", "EnableWindow", "GetClientRect", "GetWindowRect", "AdjustWindowRectExForDpi", "MonitorFromWindow", "GetMonitorInfoW", "SetWindowLongPtrW", "GetWindowLongPtrW", "IsZoomed", "IsIconic", "IsWindow", "IsWindowVisible", "GetWindowTextW", "GetWindowTextLengthW", "SetWindowPos", "GetForegroundWindow", "SetForegroundWindow", "MapVirtualKeyW", "SendInput", "SetCursorPos", "SetCursor", "ShowCursor", "ClipCursor", "PostMessageW", "SendMessageW", "CreateIcon", "DestroyIcon" -> _DLL_USER32_DLL ?: SymbolLookup.loaderLookup()
+        "RegisterClassExW", "CreateWindowExW", "FindWindowExW", "GetDC", "ReleaseDC", "FillRect", "ShowWindow", "UpdateWindow", "DestroyWindow", "DefWindowProcW", "SetWindowTextW", "PostQuitMessage", "GetKeyState", "GetKeyboardState", "GetKeyboardLayout", "MapVirtualKeyExW", "ToUnicodeEx", "SystemParametersInfoW", "PeekMessageW", "GetMessageW", "TranslateMessage", "DispatchMessageW", "MsgWaitForMultipleObjectsEx", "LoadCursorW", "SetProcessDpiAwarenessContext", "GetDpiForWindow", "InvalidateRect", "ValidateRect", "TrackMouseEvent", "RegisterTouchWindow", "GetTouchInputInfo", "CloseTouchInputHandle", "GetGestureInfo", "CloseGestureInfoHandle", "ScreenToClient", "ClientToScreen", "GetCursorPos", "GetSystemMenu", "TrackPopupMenu", "EnableMenuItem", "SetMenuDefaultItem", "ReleaseCapture", "EnableWindow", "GetClientRect", "GetWindowRect", "AdjustWindowRectExForDpi", "MonitorFromWindow", "GetMonitorInfoW", "SetWindowLongPtrW", "GetWindowLongPtrW", "IsZoomed", "IsIconic", "IsWindow", "IsWindowVisible", "GetWindowTextW", "GetWindowTextLengthW", "SetWindowPos", "GetForegroundWindow", "SetForegroundWindow", "MapVirtualKeyW", "SendInput", "SetCursorPos", "SetCursor", "ShowCursor", "ClipCursor", "PostMessageW", "SendMessageW", "CreateIcon", "DestroyIcon", "FlashWindowEx", "CreateIconIndirect", "DestroyCursor", "GetCursor", "GetCapture", "GetClipCursor", "GetSystemMetrics", "GetWindowDisplayAffinity", "SetWindowDisplayAffinity" -> _DLL_USER32_DLL ?: SymbolLookup.loaderLookup()
         "GetCurrentThreadId", "GetModuleHandleW", "SetLastError", "GetLastError" -> _DLL_KERNEL32_DLL ?: SymbolLookup.loaderLookup()
-        "CreateRectRgn", "CreateCompatibleDC", "CreateCompatibleBitmap", "CreateSolidBrush", "SelectObject", "BitBlt", "GetDIBits", "DeleteDC", "DeleteObject" -> _DLL_GDI32_DLL ?: SymbolLookup.loaderLookup()
+        "CreateRectRgn", "CreateCompatibleDC", "CreateCompatibleBitmap", "CreateSolidBrush", "SelectObject", "BitBlt", "GetDIBits", "DeleteDC", "DeleteObject", "CreateBitmap", "CreateDIBSection" -> _DLL_GDI32_DLL ?: SymbolLookup.loaderLookup()
         "DwmSetWindowAttribute", "DwmEnableBlurBehindWindow", "DwmExtendFrameIntoClientArea" -> _DLL_DWMAPI_DLL ?: SymbolLookup.loaderLookup()
         else -> SymbolLookup.loaderLookup()
     }
@@ -2023,6 +2023,26 @@ fun BitBlt(arg0: MemorySegment, arg1: Int, arg2: Int, arg3: Int, arg4: Int, arg5
 }
 
 /**
+ * {@snippet lang=c : CreateBitmap typedef HBITMAP = (Declared(HBITMAP__))*(Int,Int,typedef UINT = UNSIGNED = Int,typedef UINT = UNSIGNED = Int,(Void)*)
+ */
+private val CreateBitmap_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private var CreateBitmap_HANDLE: MethodHandle? = null
+
+fun CreateBitmap(arg0: Int, arg1: Int, arg2: Int, arg3: Int, arg4: MemorySegment): MemorySegment {
+    check(_initialized) { "Win32 CreateBitmap called before init()" }
+    val _handle = CreateBitmap_HANDLE ?: return MemorySegment.NULL
+    try {
+        return _handle.invokeExact(arg0, arg1, arg2, arg3, arg4) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return MemorySegment.NULL
+    }
+}
+
+/**
  * {@snippet lang=c : CreateCompatibleBitmap typedef HBITMAP = (Declared(HBITMAP__))*(typedef HDC = (Declared(HDC__))*,Int,Int)
  */
 private val CreateCompatibleBitmap_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
@@ -2186,6 +2206,26 @@ fun SelectObject(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
  * {@snippet lang=c : typedef UNSIGNED = Short COLOR16;}
  */
 typealias COLOR16 = Short
+
+/**
+ * {@snippet lang=c : CreateDIBSection typedef HBITMAP = (Declared(HBITMAP__))*(typedef HDC = (Declared(HDC__))*,(typedef BITMAPINFO = Declared(tagBITMAPINFO))*,typedef UINT = UNSIGNED = Int,((Void)*)*,typedef HANDLE = (Void)*,typedef DWORD = UNSIGNED = Long)
+ */
+private val CreateDIBSection_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
+private var CreateDIBSection_HANDLE: MethodHandle? = null
+
+fun CreateDIBSection(arg0: MemorySegment, arg1: MemorySegment, arg2: Int, arg3: MemorySegment, arg4: MemorySegment, arg5: Int): MemorySegment {
+    check(_initialized) { "Win32 CreateDIBSection called before init()" }
+    val _handle = CreateDIBSection_HANDLE ?: return MemorySegment.NULL
+    try {
+        return _handle.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return MemorySegment.NULL
+    }
+}
 
 /**
  * {@snippet lang=c : ToUnicodeEx Int(typedef UINT = UNSIGNED = Int,typedef UINT = UNSIGNED = Int,(typedef BYTE = UNSIGNED = Char)*,typedef LPWSTR = (Int)*,Int,typedef UINT = UNSIGNED = Int,typedef HKL = (Declared(HKL__))*)
@@ -2508,6 +2548,26 @@ fun ShowWindow(arg0: MemorySegment, arg1: Int): Int {
 }
 
 /**
+ * {@snippet lang=c : FlashWindowEx typedef BOOL = Int(typedef PFLASHWINFO = (Declared(FLASHWINFO))*)
+ */
+private val FlashWindowEx_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private var FlashWindowEx_HANDLE: MethodHandle? = null
+
+fun FlashWindowEx(arg0: MemorySegment): Int {
+    check(_initialized) { "Win32 FlashWindowEx called before init()" }
+    val _handle = FlashWindowEx_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
  * {@snippet lang=c : SetWindowPos typedef BOOL = Int(typedef HWND = (Declared(HWND__))*,typedef HWND = (Declared(HWND__))*,Int,Int,Int,Int,typedef UINT = UNSIGNED = Int)
  */
 private val SetWindowPos_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
@@ -2518,6 +2578,46 @@ fun SetWindowPos(arg0: MemorySegment, arg1: MemorySegment, arg2: Int, arg3: Int,
     val _handle = SetWindowPos_HANDLE ?: return 0
     try {
         return _handle.invokeExact(arg0, arg1, arg2, arg3, arg4, arg5, arg6) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
+ * {@snippet lang=c : GetWindowDisplayAffinity typedef BOOL = Int(typedef HWND = (Declared(HWND__))*,(typedef DWORD = UNSIGNED = Long)*)
+ */
+private val GetWindowDisplayAffinity_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private var GetWindowDisplayAffinity_HANDLE: MethodHandle? = null
+
+fun GetWindowDisplayAffinity(arg0: MemorySegment, arg1: MemorySegment): Int {
+    check(_initialized) { "Win32 GetWindowDisplayAffinity called before init()" }
+    val _handle = GetWindowDisplayAffinity_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0, arg1) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
+ * {@snippet lang=c : SetWindowDisplayAffinity typedef BOOL = Int(typedef HWND = (Declared(HWND__))*,typedef DWORD = UNSIGNED = Long)
+ */
+private val SetWindowDisplayAffinity_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
+private var SetWindowDisplayAffinity_HANDLE: MethodHandle? = null
+
+fun SetWindowDisplayAffinity(arg0: MemorySegment, arg1: Int): Int {
+    check(_initialized) { "Win32 SetWindowDisplayAffinity called before init()" }
+    val _handle = SetWindowDisplayAffinity_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0, arg1) as Int
     } catch (ex: Error) {
         throw ex
     } catch (ex: RuntimeException) {
@@ -2850,6 +2950,26 @@ fun MapVirtualKeyExW(arg0: Int, arg1: Int, arg2: MemorySegment): Int {
 }
 
 /**
+ * {@snippet lang=c : GetCapture typedef HWND = (Declared(HWND__))*()
+ */
+private val GetCapture_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS)
+private var GetCapture_HANDLE: MethodHandle? = null
+
+fun GetCapture(): MemorySegment {
+    check(_initialized) { "Win32 GetCapture called before init()" }
+    val _handle = GetCapture_HANDLE ?: return MemorySegment.NULL
+    try {
+        return _handle.invokeExact() as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return MemorySegment.NULL
+    }
+}
+
+/**
  * {@snippet lang=c : ReleaseCapture typedef BOOL = Int()
  */
 private val ReleaseCapture_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT)
@@ -2900,6 +3020,26 @@ fun EnableWindow(arg0: MemorySegment, arg1: Int): Int {
     val _handle = EnableWindow_HANDLE ?: return 0
     try {
         return _handle.invokeExact(arg0, arg1) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
+ * {@snippet lang=c : GetSystemMetrics Int(Int)
+ */
+private val GetSystemMetrics_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
+private var GetSystemMetrics_HANDLE: MethodHandle? = null
+
+fun GetSystemMetrics(arg0: Int): Int {
+    check(_initialized) { "Win32 GetSystemMetrics called before init()" }
+    val _handle = GetSystemMetrics_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0) as Int
     } catch (ex: Error) {
         throw ex
     } catch (ex: RuntimeException) {
@@ -3330,6 +3470,46 @@ fun GetCursorPos(arg0: MemorySegment): Int {
 }
 
 /**
+ * {@snippet lang=c : GetClipCursor typedef BOOL = Int(typedef LPRECT = (Declared(tagRECT))*)
+ */
+private val GetClipCursor_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private var GetClipCursor_HANDLE: MethodHandle? = null
+
+fun GetClipCursor(arg0: MemorySegment): Int {
+    check(_initialized) { "Win32 GetClipCursor called before init()" }
+    val _handle = GetClipCursor_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
+ * {@snippet lang=c : GetCursor typedef HCURSOR = (Declared(HICON__))*()
+ */
+private val GetCursor_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS)
+private var GetCursor_HANDLE: MethodHandle? = null
+
+fun GetCursor(): MemorySegment {
+    check(_initialized) { "Win32 GetCursor called before init()" }
+    val _handle = GetCursor_HANDLE ?: return MemorySegment.NULL
+    try {
+        return _handle.invokeExact() as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return MemorySegment.NULL
+    }
+}
+
+/**
  * {@snippet lang=c : ClientToScreen typedef BOOL = Int(typedef HWND = (Declared(HWND__))*,typedef LPPOINT = (Declared(tagPOINT))*)
  */
 private val ClientToScreen_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
@@ -3490,6 +3670,26 @@ fun LoadCursorW(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
 }
 
 /**
+ * {@snippet lang=c : DestroyCursor typedef BOOL = Int(typedef HCURSOR = (Declared(HICON__))*)
+ */
+private val DestroyCursor_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private var DestroyCursor_HANDLE: MethodHandle? = null
+
+fun DestroyCursor(arg0: MemorySegment): Int {
+    check(_initialized) { "Win32 DestroyCursor called before init()" }
+    val _handle = DestroyCursor_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
  * {@snippet lang=c : CreateIcon typedef HICON = (Declared(HICON__))*(typedef HINSTANCE = (Declared(HINSTANCE__))*,Int,Int,typedef BYTE = UNSIGNED = Char,typedef BYTE = UNSIGNED = Char,(typedef BYTE = UNSIGNED = Char)*,(typedef BYTE = UNSIGNED = Char)*)
  */
 private val CreateIcon_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
@@ -3526,6 +3726,26 @@ fun DestroyIcon(arg0: MemorySegment): Int {
         throw ex
     } catch (ex: Throwable) {
         return 0
+    }
+}
+
+/**
+ * {@snippet lang=c : CreateIconIndirect typedef HICON = (Declared(HICON__))*(typedef PICONINFO = (Declared(_ICONINFO))*)
+ */
+private val CreateIconIndirect_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private var CreateIconIndirect_HANDLE: MethodHandle? = null
+
+fun CreateIconIndirect(arg0: MemorySegment): MemorySegment {
+    check(_initialized) { "Win32 CreateIconIndirect called before init()" }
+    val _handle = CreateIconIndirect_HANDLE ?: return MemorySegment.NULL
+    try {
+        return _handle.invokeExact(arg0) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return MemorySegment.NULL
     }
 }
 
@@ -4979,6 +5199,7 @@ fun init() {
     GetCurrentThreadId_HANDLE = _lookup("GetCurrentThreadId").find("GetCurrentThreadId").map { Linker.nativeLinker().downcallHandle(it, GetCurrentThreadId_DESC) }.orElse(null)
     GetModuleHandleW_HANDLE = _lookup("GetModuleHandleW").find("GetModuleHandleW").map { Linker.nativeLinker().downcallHandle(it, GetModuleHandleW_DESC) }.orElse(null)
     BitBlt_HANDLE = _lookup("BitBlt").find("BitBlt").map { Linker.nativeLinker().downcallHandle(it, BitBlt_DESC) }.orElse(null)
+    CreateBitmap_HANDLE = _lookup("CreateBitmap").find("CreateBitmap").map { Linker.nativeLinker().downcallHandle(it, CreateBitmap_DESC) }.orElse(null)
     CreateCompatibleBitmap_HANDLE = _lookup("CreateCompatibleBitmap").find("CreateCompatibleBitmap").map { Linker.nativeLinker().downcallHandle(it, CreateCompatibleBitmap_DESC) }.orElse(null)
     CreateCompatibleDC_HANDLE = _lookup("CreateCompatibleDC").find("CreateCompatibleDC").map { Linker.nativeLinker().downcallHandle(it, CreateCompatibleDC_DESC) }.orElse(null)
     CreateRectRgn_HANDLE = _lookup("CreateRectRgn").find("CreateRectRgn").map { Linker.nativeLinker().downcallHandle(it, CreateRectRgn_DESC) }.orElse(null)
@@ -4987,6 +5208,7 @@ fun init() {
     DeleteObject_HANDLE = _lookup("DeleteObject").find("DeleteObject").map { Linker.nativeLinker().downcallHandle(it, DeleteObject_DESC) }.orElse(null)
     GetDIBits_HANDLE = _lookup("GetDIBits").find("GetDIBits").map { Linker.nativeLinker().downcallHandle(it, GetDIBits_DESC) }.orElse(null)
     SelectObject_HANDLE = _lookup("SelectObject").find("SelectObject").map { Linker.nativeLinker().downcallHandle(it, SelectObject_DESC) }.orElse(null)
+    CreateDIBSection_HANDLE = _lookup("CreateDIBSection").find("CreateDIBSection").map { Linker.nativeLinker().downcallHandle(it, CreateDIBSection_DESC) }.orElse(null)
     ToUnicodeEx_HANDLE = _lookup("ToUnicodeEx").find("ToUnicodeEx").map { Linker.nativeLinker().downcallHandle(it, ToUnicodeEx_DESC) }.orElse(null)
     GetKeyboardLayout_HANDLE = _lookup("GetKeyboardLayout").find("GetKeyboardLayout").map { Linker.nativeLinker().downcallHandle(it, GetKeyboardLayout_DESC) }.orElse(null)
     TrackMouseEvent_HANDLE = _lookup("TrackMouseEvent").find("TrackMouseEvent").map { Linker.nativeLinker().downcallHandle(it, TrackMouseEvent_DESC) }.orElse(null)
@@ -5003,7 +5225,10 @@ fun init() {
     IsWindow_HANDLE = _lookup("IsWindow").find("IsWindow").map { Linker.nativeLinker().downcallHandle(it, IsWindow_DESC) }.orElse(null)
     DestroyWindow_HANDLE = _lookup("DestroyWindow").find("DestroyWindow").map { Linker.nativeLinker().downcallHandle(it, DestroyWindow_DESC) }.orElse(null)
     ShowWindow_HANDLE = _lookup("ShowWindow").find("ShowWindow").map { Linker.nativeLinker().downcallHandle(it, ShowWindow_DESC) }.orElse(null)
+    FlashWindowEx_HANDLE = _lookup("FlashWindowEx").find("FlashWindowEx").map { Linker.nativeLinker().downcallHandle(it, FlashWindowEx_DESC) }.orElse(null)
     SetWindowPos_HANDLE = _lookup("SetWindowPos").find("SetWindowPos").map { Linker.nativeLinker().downcallHandle(it, SetWindowPos_DESC) }.orElse(null)
+    GetWindowDisplayAffinity_HANDLE = _lookup("GetWindowDisplayAffinity").find("GetWindowDisplayAffinity").map { Linker.nativeLinker().downcallHandle(it, GetWindowDisplayAffinity_DESC) }.orElse(null)
+    SetWindowDisplayAffinity_HANDLE = _lookup("SetWindowDisplayAffinity").find("SetWindowDisplayAffinity").map { Linker.nativeLinker().downcallHandle(it, SetWindowDisplayAffinity_DESC) }.orElse(null)
     IsWindowVisible_HANDLE = _lookup("IsWindowVisible").find("IsWindowVisible").map { Linker.nativeLinker().downcallHandle(it, IsWindowVisible_DESC) }.orElse(null)
     IsIconic_HANDLE = _lookup("IsIconic").find("IsIconic").map { Linker.nativeLinker().downcallHandle(it, IsIconic_DESC) }.orElse(null)
     IsZoomed_HANDLE = _lookup("IsZoomed").find("IsZoomed").map { Linker.nativeLinker().downcallHandle(it, IsZoomed_DESC) }.orElse(null)
@@ -5015,9 +5240,11 @@ fun init() {
     RegisterTouchWindow_HANDLE = _lookup("RegisterTouchWindow").find("RegisterTouchWindow").map { Linker.nativeLinker().downcallHandle(it, RegisterTouchWindow_DESC) }.orElse(null)
     MapVirtualKeyW_HANDLE = _lookup("MapVirtualKeyW").find("MapVirtualKeyW").map { Linker.nativeLinker().downcallHandle(it, MapVirtualKeyW_DESC) }.orElse(null)
     MapVirtualKeyExW_HANDLE = _lookup("MapVirtualKeyExW").find("MapVirtualKeyExW").map { Linker.nativeLinker().downcallHandle(it, MapVirtualKeyExW_DESC) }.orElse(null)
+    GetCapture_HANDLE = _lookup("GetCapture").find("GetCapture").map { Linker.nativeLinker().downcallHandle(it, GetCapture_DESC) }.orElse(null)
     ReleaseCapture_HANDLE = _lookup("ReleaseCapture").find("ReleaseCapture").map { Linker.nativeLinker().downcallHandle(it, ReleaseCapture_DESC) }.orElse(null)
     MsgWaitForMultipleObjectsEx_HANDLE = _lookup("MsgWaitForMultipleObjectsEx").find("MsgWaitForMultipleObjectsEx").map { Linker.nativeLinker().downcallHandle(it, MsgWaitForMultipleObjectsEx_DESC) }.orElse(null)
     EnableWindow_HANDLE = _lookup("EnableWindow").find("EnableWindow").map { Linker.nativeLinker().downcallHandle(it, EnableWindow_DESC) }.orElse(null)
+    GetSystemMetrics_HANDLE = _lookup("GetSystemMetrics").find("GetSystemMetrics").map { Linker.nativeLinker().downcallHandle(it, GetSystemMetrics_DESC) }.orElse(null)
     GetSystemMenu_HANDLE = _lookup("GetSystemMenu").find("GetSystemMenu").map { Linker.nativeLinker().downcallHandle(it, GetSystemMenu_DESC) }.orElse(null)
     EnableMenuItem_HANDLE = _lookup("EnableMenuItem").find("EnableMenuItem").map { Linker.nativeLinker().downcallHandle(it, EnableMenuItem_DESC) }.orElse(null)
     TrackPopupMenu_HANDLE = _lookup("TrackPopupMenu").find("TrackPopupMenu").map { Linker.nativeLinker().downcallHandle(it, TrackPopupMenu_DESC) }.orElse(null)
@@ -5039,6 +5266,8 @@ fun init() {
     SetCursorPos_HANDLE = _lookup("SetCursorPos").find("SetCursorPos").map { Linker.nativeLinker().downcallHandle(it, SetCursorPos_DESC) }.orElse(null)
     SetCursor_HANDLE = _lookup("SetCursor").find("SetCursor").map { Linker.nativeLinker().downcallHandle(it, SetCursor_DESC) }.orElse(null)
     GetCursorPos_HANDLE = _lookup("GetCursorPos").find("GetCursorPos").map { Linker.nativeLinker().downcallHandle(it, GetCursorPos_DESC) }.orElse(null)
+    GetClipCursor_HANDLE = _lookup("GetClipCursor").find("GetClipCursor").map { Linker.nativeLinker().downcallHandle(it, GetClipCursor_DESC) }.orElse(null)
+    GetCursor_HANDLE = _lookup("GetCursor").find("GetCursor").map { Linker.nativeLinker().downcallHandle(it, GetCursor_DESC) }.orElse(null)
     ClientToScreen_HANDLE = _lookup("ClientToScreen").find("ClientToScreen").map { Linker.nativeLinker().downcallHandle(it, ClientToScreen_DESC) }.orElse(null)
     ScreenToClient_HANDLE = _lookup("ScreenToClient").find("ScreenToClient").map { Linker.nativeLinker().downcallHandle(it, ScreenToClient_DESC) }.orElse(null)
     ClipCursor_HANDLE = _lookup("ClipCursor").find("ClipCursor").map { Linker.nativeLinker().downcallHandle(it, ClipCursor_DESC) }.orElse(null)
@@ -5047,8 +5276,10 @@ fun init() {
     SetWindowLongPtrW_HANDLE = _lookup("SetWindowLongPtrW").find("SetWindowLongPtrW").map { Linker.nativeLinker().downcallHandle(it, SetWindowLongPtrW_DESC) }.orElse(null)
     FindWindowExW_HANDLE = _lookup("FindWindowExW").find("FindWindowExW").map { Linker.nativeLinker().downcallHandle(it, FindWindowExW_DESC) }.orElse(null)
     LoadCursorW_HANDLE = _lookup("LoadCursorW").find("LoadCursorW").map { Linker.nativeLinker().downcallHandle(it, LoadCursorW_DESC) }.orElse(null)
+    DestroyCursor_HANDLE = _lookup("DestroyCursor").find("DestroyCursor").map { Linker.nativeLinker().downcallHandle(it, DestroyCursor_DESC) }.orElse(null)
     CreateIcon_HANDLE = _lookup("CreateIcon").find("CreateIcon").map { Linker.nativeLinker().downcallHandle(it, CreateIcon_DESC) }.orElse(null)
     DestroyIcon_HANDLE = _lookup("DestroyIcon").find("DestroyIcon").map { Linker.nativeLinker().downcallHandle(it, DestroyIcon_DESC) }.orElse(null)
+    CreateIconIndirect_HANDLE = _lookup("CreateIconIndirect").find("CreateIconIndirect").map { Linker.nativeLinker().downcallHandle(it, CreateIconIndirect_DESC) }.orElse(null)
     SystemParametersInfoW_HANDLE = _lookup("SystemParametersInfoW").find("SystemParametersInfoW").map { Linker.nativeLinker().downcallHandle(it, SystemParametersInfoW_DESC) }.orElse(null)
     MonitorFromWindow_HANDLE = _lookup("MonitorFromWindow").find("MonitorFromWindow").map { Linker.nativeLinker().downcallHandle(it, MonitorFromWindow_DESC) }.orElse(null)
     GetMonitorInfoW_HANDLE = _lookup("GetMonitorInfoW").find("GetMonitorInfoW").map { Linker.nativeLinker().downcallHandle(it, GetMonitorInfoW_DESC) }.orElse(null)
