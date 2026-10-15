@@ -22,6 +22,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - The wakeup syscalls and `nativePoll` read errno through
   `__errno_location()` instead of capture-state stubs.
 - Managed `wl_output` bindings (`WaylandOutput`): bind an advertised output
+  global and deliver its accumulated state at every `done` batching point
+  (geometry, modes, scale, name, description payloads copied in the upcall);
+  teardown via `wl_output.release` with the full five-parameter marshal.
+  Details: bind an advertised output
   global, copy geometry/mode/scale/name payloads inside the upcalls and
   deliver the accumulated state at every `done` batching point; teardown
   through `wl_output.release` with its full five-parameter marshal.
