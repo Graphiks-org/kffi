@@ -46,6 +46,9 @@ dllMap:
       - EnableWindow
       - GetClientRect
       - GetWindowRect
+      - AdjustWindowRectExForDpi
+      - MonitorFromWindow
+      - GetMonitorInfoW
       - SetWindowLongPtrW
       - GetWindowLongPtrW
       - IsZoomed
@@ -53,6 +56,7 @@ dllMap:
       - IsWindow
       - IsWindowVisible
       - GetWindowTextW
+      - GetWindowTextLengthW
       - SetWindowPos
       - GetForegroundWindow
       - SetForegroundWindow

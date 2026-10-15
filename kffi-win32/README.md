@@ -132,3 +132,20 @@ explicitly opt the consumer into Maven local.
 The local coordinates label a test alias: `Kffi.VERSION` retains the normal
 build version (`1.0.0-SNAPSHOT` by default, override with `-BuildVersion`),
 whose existing runtime-version test must pass before publication.
+
+## Checked window properties
+
+`Win32WindowProperties` copies title, signed physical bounds, client size,
+styles, DPI and visibility/minimize/maximize flags from a live window.
+`setTitle`, `setStyle` and `setBounds` validate native errors; style changes
+require `setBounds(..., frameChanged = true)` to refresh the frame.
+`outerSize` converts client pixels using the actual style and window DPI,
+and `monitorBounds` reads the nearest monitor. `applyTrackLimits` is only
+valid during `WM_GETMINMAXINFO`, after native default initialization. It
+constrains user resizing; it cannot constrain arbitrary foreign setters.
+Call these on the HWND owner thread. No native buffer escapes the call.
+The API requires Windows 10 version 1607 or newer, as does its DPI primitive.
+
+`Win32WindowPropertiesIntegrationTest` proves the native calls with
+`KFFI_WIN32_INTEGRATION=1`. To test a paired consumer before publication:
+`./scripts/publish-win32-local.ps1 -Version 1.0.0-win32-phase5-local-SNAPSHOT`.
