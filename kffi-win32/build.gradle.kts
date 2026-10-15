@@ -59,6 +59,7 @@ tasks.register<Test>("win32IntegrationTest") {
         includeTestsMatching("org.graphiks.kffi.win32.Win32WindowIntegrationTest")
         includeTestsMatching("org.graphiks.kffi.win32.managed.Win32ControlWindowIntegrationTest")
         includeTestsMatching("org.graphiks.kffi.win32.managed.Win32ManagedWindowIntegrationTest")
+        includeTestsMatching("org.graphiks.kffi.win32.managed.Win32InputIntegrationTest")
     }
 
     systemProperty(

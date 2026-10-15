@@ -14,6 +14,11 @@ dllMap:
       - SetWindowTextW
       - PostQuitMessage
       - GetKeyState
+      - GetKeyboardState
+      - GetKeyboardLayout
+      - MapVirtualKeyExW
+      - ToUnicodeEx
+      - SystemParametersInfoW
       - PeekMessageW
       - GetMessageW
       - TranslateMessage

@@ -28,6 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   (observed as a wayland pool fd failing its dup).
 
 ### Added
+- `kffi-win32.managed.Win32Keyboard` copies key packets and keyboard state and translates logical characters without changing the Windows dead-key buffer. `Win32Pointer` owns mouse-leave tracking, signed screen/client conversion and wheel-settings buffers. The generated User32 allowlist includes their five missing input functions.
 - `:kffi-win32` allowlists `InvalidateRect` and `ValidateRect` and regenerates the bindings: the phase 3 surface contract of the Win32 backend needs invalidation requests and the bounded paint drain.
 - `kffi-win32.managed` routes window messages to N windows: `Win32WndProcBridge` resolves a per-thread creation slot (messages arriving inside `CreateWindowExW`) and a permanent hwnd table, removed before destroy so a reused address never reaches a revoked owner; `Win32ManagedFunctions.wndProc` exposes the revocable delivery route and windows own the binding. New `Win32ManagedWindow`: a managed top-level window whose handler owns the `WM_CLOSE` decision.
 - `WaylandClient.displayProxyAddress`: the native `wl_display` pointer address
