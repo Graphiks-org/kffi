@@ -200,6 +200,21 @@ val wlProxyDestroy: MethodHandle? by lazy {
         FunctionDescriptor.ofVoid(ValueLayout.ADDRESS))
 }
 
+val wlOutputRelease: MethodHandle? by lazy {
+    // wl_output.release: opcode 0, no varargs — wl_proxy_marshal_flags still
+    // takes its five named parameters (proxy, opcode, interface, version,
+    // flags); the interface is NULL for destructor requests
+    libWaylandClient.downcall("wl_proxy_marshal_flags",
+        FunctionDescriptor.of(
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS,
+            ValueLayout.JAVA_INT,
+            ValueLayout.ADDRESS,
+            ValueLayout.JAVA_INT,
+            ValueLayout.JAVA_INT,
+        ))
+}
+
 val wlProxyAddListener: MethodHandle? by lazy {
     libWaylandClient.downcall("wl_proxy_add_listener",
         FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS))
