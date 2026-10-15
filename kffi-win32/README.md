@@ -144,7 +144,8 @@ an image only after removing it from the window; shared system cursors are never
 owned. Closing an active custom cursor first restores the default system cursor.
 
 Confinement is a process-brokered ClipCursor lease for the foreground HWND's
-actual client rectangle. Acquisition refuses an existing foreign clip. Release
+client rectangle intersected with the visible virtual desktop. A fully off-screen
+client cannot acquire confinement. Acquisition refuses an existing foreign clip. Release
 only clears the rectangle still observed as owned; an observable foreign
 replacement withdraws ownership without clearing it. This is not raw pointer
 lock or a SetCapture substitute. Call update on geometry changes and release on

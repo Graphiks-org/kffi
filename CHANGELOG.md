@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Complete Win32 phase-5 primitives: checked topmost levels, window-owned flashing,
+- Managed Win32 window primitives: checked topmost levels, window-owned flashing,
   native system menu/move/resize, WDA_MONITOR display-affinity readback, owned
   RGBA8 icons/cursors, and foreground confinement with foreign-clip preservation.
 - Checked Win32 window property snapshots, title/style/bounds operations,
@@ -18,6 +18,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   Native layouts remain confined to the managed Win32 module.
 
 ### Fixed
+- Intersect pointer confinement with the visible virtual desktop and register
+  clip ownership before readback, so off-screen normalization or readback failure
+  cannot leave a successful native write outside the release path.
 - `wl_shm.create_pool` is marshaled through the fixed-arity
   `wl_proxy_marshal_array_flags` with an explicit `wl_argument` array: the
   variadic `wl_proxy_marshal_flags` downcall can deliver a corrupted fd

@@ -8,7 +8,7 @@ import java.lang.foreign.ValueLayout
 import kotlin.test.*
 
 class Win32AdvancedWindowIntegrationTest {
-    @BeforeTest fun nativeGate() { assumeTrue(System.getProperty("os.name").startsWith("Windows")); assumeTrue(System.getenv("KFFI_WIN32_INTEGRATION") == "1") }
+    @BeforeTest fun nativeGate() { assumeTrue(System.getProperty("os.name").startsWith("Windows")); assumeTrue(System.getenv("KFFI_WIN32_INTEGRATION") == "1"); init() }
     private fun window() = Win32ManagedWindow.open("advanced native") { h, m, w, l -> DefWindowProcW(MemorySegment.ofAddress(h), m, w, l) }
 
     @Test fun controlCommandWakeReachesItsCallbackWithoutTheOuterPump() {
@@ -92,6 +92,20 @@ class Win32AdvancedWindowIntegrationTest {
                 } finally { setNativeClip(original) }
             }
         }
+    }
+    @Test fun offscreenClientConfinementUsesTheNativeDesktopIntersection() {
+        val desktop = Win32WindowRect(GetSystemMetrics(76), GetSystemMetrics(77), GetSystemMetrics(78), GetSystemMetrics(79))
+        val requested = Win32WindowRect(desktop.x - 40, desktop.y - 40, 140, 140)
+        val expected = Win32WindowRect(desktop.x, desktop.y, 100, 100)
+        assertEquals(expected, Win32PointerConfinement.visibleClientRect(requested, desktop))
+        assertNull(Win32PointerConfinement.visibleClientRect(Win32WindowRect(desktop.x - 40, desktop.y - 40, 20, 20), desktop))
+        val original = Win32PointerConfinement.currentClip()
+        try {
+            setNativeClip(requested)
+            assertEquals(expected, Win32PointerConfinement.currentClip(), "User32 clips off-screen coordinates to the desktop")
+            setNativeClip(checkNotNull(Win32PointerConfinement.visibleClientRect(requested, desktop)))
+            assertEquals(expected, Win32PointerConfinement.currentClip())
+        } finally { setNativeClip(original) }
     }
     private fun setNativeClip(rect: Win32WindowRect) { Arena.ofConfined().use { arena ->
         val value = arena.allocate(16, 4)
