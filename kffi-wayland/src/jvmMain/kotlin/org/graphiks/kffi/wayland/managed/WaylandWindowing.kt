@@ -16,6 +16,7 @@ import org.graphiks.kffi.wayland.XDG_TOPLEVEL_SET_TITLE
 import org.graphiks.kffi.wayland.WL_COMPOSITOR_CREATE_SURFACE
 import org.graphiks.kffi.wayland.WL_SURFACE_ATTACH
 import org.graphiks.kffi.wayland.WL_SURFACE_COMMIT
+import org.graphiks.kffi.wayland.WL_SURFACE_SET_BUFFER_SCALE
 import org.graphiks.kffi.wayland.WL_SURFACE_DAMAGE_BUFFER
 import org.graphiks.kffi.wayland.WL_SURFACE_FRAME
 import org.graphiks.kffi.wayland.generated.wl_callback_interface
@@ -187,6 +188,16 @@ public class WaylandSurface internal constructor(
 
     public val proxyAddress: Long
         get() = proxy.address()
+
+    /**
+     * `wl_surface.set_buffer_scale` (v6+): the compositor scales the buffer
+     * contents by [factor] on the outputs it lands on. Ignored (silently)
+     * by servers where the surface negotiated below v6.
+     */
+    public fun setBufferScale(factor: Int) {
+        val uint = WindowingFactory.requireHandle(wlProxyMarshalFlagsUint, "wl_proxy_marshal_flags")
+        uint.invoke(proxy, WL_SURFACE_SET_BUFFER_SCALE, MemorySegment.NULL, proxyVersion(), 0, factor) as Int
+    }
 
     /** `wl_surface.commit` — publishes the current pending state. */
     public fun commit() {
