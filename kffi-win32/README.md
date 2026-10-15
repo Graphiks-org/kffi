@@ -121,3 +121,11 @@ and zero means a disabled axis. Its temporary native buffers stay inside KFFI.
 the active thread layout when `KFFI_WIN32_INTEGRATION=1`. It does not change
 the user's keyboard layout or inject hardware input. Non-US/AltGr and physical
 dead-key entry still require tests with the corresponding layout and keyboard.
+
+For a paired Windows JVM consumer, run `scripts/publish-win32-local.ps1`.
+It builds the two JVM jars and publishes them with Maven POM aliases as
+`1.0.0-win32-phase4-local-SNAPSHOT` (override with `-Version`). The isolated
+publication avoids configuring Android/NDK and Dokka on a Windows-only host.
+It contains no multiplatform metadata or documentation artifacts and is not a
+production release verification. Use a distinct `-local-SNAPSHOT` version and
+explicitly opt the consumer into Maven local.
