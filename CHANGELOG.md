@@ -9,6 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Checked Win32 window property snapshots, title/style/bounds operations,
+  per-window DPI frame conversion, monitor bounds and native track limits.
+  Native layouts remain confined to the managed Win32 module.
+
 ### Fixed
 - `wl_shm.create_pool` is marshaled through the fixed-arity
   `wl_proxy_marshal_array_flags` with an explicit `wl_argument` array: the

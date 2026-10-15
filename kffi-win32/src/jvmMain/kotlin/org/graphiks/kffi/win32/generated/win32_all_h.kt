@@ -26,7 +26,7 @@ private var _DLL_USER32_DLL: SymbolLookup? = null
 
 private fun _lookup(symbol: String): SymbolLookup {
     return when (symbol) {
-        "RegisterClassExW", "CreateWindowExW", "FindWindowExW", "GetDC", "ReleaseDC", "FillRect", "ShowWindow", "UpdateWindow", "DestroyWindow", "DefWindowProcW", "SetWindowTextW", "PostQuitMessage", "GetKeyState", "GetKeyboardState", "GetKeyboardLayout", "MapVirtualKeyExW", "ToUnicodeEx", "SystemParametersInfoW", "PeekMessageW", "GetMessageW", "TranslateMessage", "DispatchMessageW", "MsgWaitForMultipleObjectsEx", "LoadCursorW", "SetProcessDpiAwarenessContext", "GetDpiForWindow", "InvalidateRect", "ValidateRect", "TrackMouseEvent", "RegisterTouchWindow", "GetTouchInputInfo", "CloseTouchInputHandle", "GetGestureInfo", "CloseGestureInfoHandle", "ScreenToClient", "ClientToScreen", "GetCursorPos", "GetSystemMenu", "TrackPopupMenu", "EnableMenuItem", "SetMenuDefaultItem", "ReleaseCapture", "EnableWindow", "GetClientRect", "GetWindowRect", "SetWindowLongPtrW", "GetWindowLongPtrW", "IsZoomed", "IsIconic", "IsWindow", "IsWindowVisible", "GetWindowTextW", "SetWindowPos", "GetForegroundWindow", "SetForegroundWindow", "MapVirtualKeyW", "SendInput", "SetCursorPos", "SetCursor", "ShowCursor", "ClipCursor", "PostMessageW", "SendMessageW", "CreateIcon", "DestroyIcon" -> _DLL_USER32_DLL ?: SymbolLookup.loaderLookup()
+        "RegisterClassExW", "CreateWindowExW", "FindWindowExW", "GetDC", "ReleaseDC", "FillRect", "ShowWindow", "UpdateWindow", "DestroyWindow", "DefWindowProcW", "SetWindowTextW", "PostQuitMessage", "GetKeyState", "GetKeyboardState", "GetKeyboardLayout", "MapVirtualKeyExW", "ToUnicodeEx", "SystemParametersInfoW", "PeekMessageW", "GetMessageW", "TranslateMessage", "DispatchMessageW", "MsgWaitForMultipleObjectsEx", "LoadCursorW", "SetProcessDpiAwarenessContext", "GetDpiForWindow", "InvalidateRect", "ValidateRect", "TrackMouseEvent", "RegisterTouchWindow", "GetTouchInputInfo", "CloseTouchInputHandle", "GetGestureInfo", "CloseGestureInfoHandle", "ScreenToClient", "ClientToScreen", "GetCursorPos", "GetSystemMenu", "TrackPopupMenu", "EnableMenuItem", "SetMenuDefaultItem", "ReleaseCapture", "EnableWindow", "GetClientRect", "GetWindowRect", "AdjustWindowRectExForDpi", "MonitorFromWindow", "GetMonitorInfoW", "SetWindowLongPtrW", "GetWindowLongPtrW", "IsZoomed", "IsIconic", "IsWindow", "IsWindowVisible", "GetWindowTextW", "GetWindowTextLengthW", "SetWindowPos", "GetForegroundWindow", "SetForegroundWindow", "MapVirtualKeyW", "SendInput", "SetCursorPos", "SetCursor", "ShowCursor", "ClipCursor", "PostMessageW", "SendMessageW", "CreateIcon", "DestroyIcon" -> _DLL_USER32_DLL ?: SymbolLookup.loaderLookup()
         "GetCurrentThreadId", "GetModuleHandleW", "SetLastError", "GetLastError" -> _DLL_KERNEL32_DLL ?: SymbolLookup.loaderLookup()
         "CreateRectRgn", "CreateCompatibleDC", "CreateCompatibleBitmap", "CreateSolidBrush", "SelectObject", "BitBlt", "GetDIBits", "DeleteDC", "DeleteObject" -> _DLL_GDI32_DLL ?: SymbolLookup.loaderLookup()
         "DwmSetWindowAttribute", "DwmEnableBlurBehindWindow", "DwmExtendFrameIntoClientArea" -> _DLL_DWMAPI_DLL ?: SymbolLookup.loaderLookup()
@@ -3170,6 +3170,26 @@ fun GetWindowTextW(arg0: MemorySegment, arg1: MemorySegment, arg2: Int): Int {
 }
 
 /**
+ * {@snippet lang=c : GetWindowTextLengthW Int(typedef HWND = (Declared(HWND__))*)
+ */
+private val GetWindowTextLengthW_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private var GetWindowTextLengthW_HANDLE: MethodHandle? = null
+
+fun GetWindowTextLengthW(arg0: MemorySegment): Int {
+    check(_initialized) { "Win32 GetWindowTextLengthW called before init()" }
+    val _handle = GetWindowTextLengthW_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
  * {@snippet lang=c : GetClientRect typedef BOOL = Int(typedef HWND = (Declared(HWND__))*,typedef LPRECT = (Declared(tagRECT))*)
  */
 private val GetClientRect_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
@@ -3200,6 +3220,26 @@ fun GetWindowRect(arg0: MemorySegment, arg1: MemorySegment): Int {
     val _handle = GetWindowRect_HANDLE ?: return 0
     try {
         return _handle.invokeExact(arg0, arg1) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
+ * {@snippet lang=c : AdjustWindowRectExForDpi typedef BOOL = Int(typedef LPRECT = (Declared(tagRECT))*,typedef DWORD = UNSIGNED = Long,typedef BOOL = Int,typedef DWORD = UNSIGNED = Long,typedef UINT = UNSIGNED = Int)
+ */
+private val AdjustWindowRectExForDpi_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
+private var AdjustWindowRectExForDpi_HANDLE: MethodHandle? = null
+
+fun AdjustWindowRectExForDpi(arg0: MemorySegment, arg1: Int, arg2: Int, arg3: Int, arg4: Int): Int {
+    check(_initialized) { "Win32 AdjustWindowRectExForDpi called before init()" }
+    val _handle = AdjustWindowRectExForDpi_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0, arg1, arg2, arg3, arg4) as Int
     } catch (ex: Error) {
         throw ex
     } catch (ex: RuntimeException) {
@@ -3529,6 +3569,46 @@ fun SystemParametersInfoW(arg0: Int, arg1: Int, arg2: MemorySegment, arg3: Int):
     val _handle = SystemParametersInfoW_HANDLE ?: return 0
     try {
         return _handle.invokeExact(arg0, arg1, arg2, arg3) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
+ * {@snippet lang=c : MonitorFromWindow typedef HMONITOR = (Declared(HMONITOR__))*(typedef HWND = (Declared(HWND__))*,typedef DWORD = UNSIGNED = Long)
+ */
+private val MonitorFromWindow_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
+private var MonitorFromWindow_HANDLE: MethodHandle? = null
+
+fun MonitorFromWindow(arg0: MemorySegment, arg1: Int): MemorySegment {
+    check(_initialized) { "Win32 MonitorFromWindow called before init()" }
+    val _handle = MonitorFromWindow_HANDLE ?: return MemorySegment.NULL
+    try {
+        return _handle.invokeExact(arg0, arg1) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return MemorySegment.NULL
+    }
+}
+
+/**
+ * {@snippet lang=c : GetMonitorInfoW typedef BOOL = Int(typedef HMONITOR = (Declared(HMONITOR__))*,typedef LPMONITORINFO = (Declared(tagMONITORINFO))*)
+ */
+private val GetMonitorInfoW_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private var GetMonitorInfoW_HANDLE: MethodHandle? = null
+
+fun GetMonitorInfoW(arg0: MemorySegment, arg1: MemorySegment): Int {
+    check(_initialized) { "Win32 GetMonitorInfoW called before init()" }
+    val _handle = GetMonitorInfoW_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0, arg1) as Int
     } catch (ex: Error) {
         throw ex
     } catch (ex: RuntimeException) {
@@ -4951,8 +5031,10 @@ fun init() {
     ValidateRect_HANDLE = _lookup("ValidateRect").find("ValidateRect").map { Linker.nativeLinker().downcallHandle(it, ValidateRect_DESC) }.orElse(null)
     SetWindowTextW_HANDLE = _lookup("SetWindowTextW").find("SetWindowTextW").map { Linker.nativeLinker().downcallHandle(it, SetWindowTextW_DESC) }.orElse(null)
     GetWindowTextW_HANDLE = _lookup("GetWindowTextW").find("GetWindowTextW").map { Linker.nativeLinker().downcallHandle(it, GetWindowTextW_DESC) }.orElse(null)
+    GetWindowTextLengthW_HANDLE = _lookup("GetWindowTextLengthW").find("GetWindowTextLengthW").map { Linker.nativeLinker().downcallHandle(it, GetWindowTextLengthW_DESC) }.orElse(null)
     GetClientRect_HANDLE = _lookup("GetClientRect").find("GetClientRect").map { Linker.nativeLinker().downcallHandle(it, GetClientRect_DESC) }.orElse(null)
     GetWindowRect_HANDLE = _lookup("GetWindowRect").find("GetWindowRect").map { Linker.nativeLinker().downcallHandle(it, GetWindowRect_DESC) }.orElse(null)
+    AdjustWindowRectExForDpi_HANDLE = _lookup("AdjustWindowRectExForDpi").find("AdjustWindowRectExForDpi").map { Linker.nativeLinker().downcallHandle(it, AdjustWindowRectExForDpi_DESC) }.orElse(null)
     ShowCursor_HANDLE = _lookup("ShowCursor").find("ShowCursor").map { Linker.nativeLinker().downcallHandle(it, ShowCursor_DESC) }.orElse(null)
     SetCursorPos_HANDLE = _lookup("SetCursorPos").find("SetCursorPos").map { Linker.nativeLinker().downcallHandle(it, SetCursorPos_DESC) }.orElse(null)
     SetCursor_HANDLE = _lookup("SetCursor").find("SetCursor").map { Linker.nativeLinker().downcallHandle(it, SetCursor_DESC) }.orElse(null)
@@ -4968,6 +5050,8 @@ fun init() {
     CreateIcon_HANDLE = _lookup("CreateIcon").find("CreateIcon").map { Linker.nativeLinker().downcallHandle(it, CreateIcon_DESC) }.orElse(null)
     DestroyIcon_HANDLE = _lookup("DestroyIcon").find("DestroyIcon").map { Linker.nativeLinker().downcallHandle(it, DestroyIcon_DESC) }.orElse(null)
     SystemParametersInfoW_HANDLE = _lookup("SystemParametersInfoW").find("SystemParametersInfoW").map { Linker.nativeLinker().downcallHandle(it, SystemParametersInfoW_DESC) }.orElse(null)
+    MonitorFromWindow_HANDLE = _lookup("MonitorFromWindow").find("MonitorFromWindow").map { Linker.nativeLinker().downcallHandle(it, MonitorFromWindow_DESC) }.orElse(null)
+    GetMonitorInfoW_HANDLE = _lookup("GetMonitorInfoW").find("GetMonitorInfoW").map { Linker.nativeLinker().downcallHandle(it, GetMonitorInfoW_DESC) }.orElse(null)
     GetDpiForWindow_HANDLE = _lookup("GetDpiForWindow").find("GetDpiForWindow").map { Linker.nativeLinker().downcallHandle(it, GetDpiForWindow_DESC) }.orElse(null)
     SetProcessDpiAwarenessContext_HANDLE = _lookup("SetProcessDpiAwarenessContext").find("SetProcessDpiAwarenessContext").map { Linker.nativeLinker().downcallHandle(it, SetProcessDpiAwarenessContext_DESC) }.orElse(null)
     GetGestureInfo_HANDLE = _lookup("GetGestureInfo").find("GetGestureInfo").map { Linker.nativeLinker().downcallHandle(it, GetGestureInfo_DESC) }.orElse(null)
