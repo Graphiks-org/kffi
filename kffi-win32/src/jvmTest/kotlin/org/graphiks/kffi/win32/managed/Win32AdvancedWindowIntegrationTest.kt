@@ -11,6 +11,15 @@ class Win32AdvancedWindowIntegrationTest {
     @BeforeTest fun nativeGate() { assumeTrue(System.getProperty("os.name").startsWith("Windows")); assumeTrue(System.getenv("KFFI_WIN32_INTEGRATION") == "1") }
     private fun window() = Win32ManagedWindow.open("advanced native") { h, m, w, l -> DefWindowProcW(MemorySegment.ofAddress(h), m, w, l) }
 
+    @Test fun controlCommandWakeReachesItsCallbackWithoutTheOuterPump() {
+        var observed = false
+        Win32ControlWindow.open { _, message, _, _ -> if (message == 0x8002) observed = true; 0L }.use { control ->
+            assertTrue(PostMessageW(MemorySegment.ofAddress(control.hwnd), 0x8002, 0, 0) != 0)
+            repeat(32) { control.pollOne(1) }
+            assertTrue(observed, "nested User32 loops dispatch command wake directly to WndProc")
+        }
+    }
+
     @Test fun topmostAndAttentionUseTheNativeWindowWithoutActivationSimulation() {
         window().use { window ->
             Win32WindowOperations.setTopmost(window.hwnd, true)
@@ -60,6 +69,15 @@ class Win32AdvancedWindowIntegrationTest {
                 if (GetForegroundWindow().address() == window.hwnd) {
                     assertTrue(owner.acquire())
                     assertTrue(owner.isActive())
+                    val owned = Win32PointerConfinement.currentClip()
+                    val replacement = Win32WindowRect(owned.x + 2, owned.y + 2, owned.width - 4, owned.height - 4)
+                    setNativeClip(replacement)
+                    try {
+                        assertFalse(owner.isActive())
+                        owner.release()
+                        assertEquals(replacement, Win32PointerConfinement.currentClip())
+                    } finally { assertTrue(ClipCursor(MemorySegment.NULL) != 0) }
+                    assertTrue(owner.acquire())
                     owner.release()
                     assertFalse(owner.isActive())
                 } else assertFalse(owner.acquire(), "unfocused acquisition must refuse")
