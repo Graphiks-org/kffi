@@ -10,6 +10,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Complete Win32 phase-5 primitives: checked topmost levels, window-owned flashing,
+  native system menu/move/resize, WDA_MONITOR display-affinity readback, owned
+  RGBA8 icons/cursors, and foreground confinement with foreign-clip preservation.
 - Checked Win32 window property snapshots, title/style/bounds operations,
   per-window DPI frame conversion, monitor bounds and native track limits.
   Native layouts remain confined to the managed Win32 module.
