@@ -59,4 +59,14 @@ class Win32WindowPropertiesIntegrationTest {
             assertFailsWith<IllegalArgumentException> { Win32WindowProperties.setTitle(window.hwnd, "embedded\u0000nul") }
         }
     }
+
+    @Test fun targetStyleCanBePreflightedWithoutChangingTheNativeWindow() {
+        Win32ManagedWindow.open("style preflight") { h, m, w, l -> DefWindowProcW(MemorySegment.ofAddress(h), m, w, l) }.use { window ->
+            val before = Win32WindowProperties.read(window.hwnd)
+            assertFailsWith<IllegalArgumentException> { Win32WindowProperties.outerSize(window.hwnd, Int.MAX_VALUE, 1000, before.style) }
+            val borderless = before.style and 0x00cf0000.inv()
+            assertEquals(Win32WindowSize(200, 150), Win32WindowProperties.outerSize(window.hwnd, 200, 150, borderless))
+            assertEquals(before.style, Win32WindowProperties.read(window.hwnd).style)
+        }
+    }
 }

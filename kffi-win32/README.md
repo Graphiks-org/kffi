@@ -145,6 +145,9 @@ valid during `WM_GETMINMAXINFO`, after native default initialization. It
 constrains user resizing; it cannot constrain arbitrary foreign setters.
 Call these on the HWND owner thread. No native buffer escapes the call.
 The API requires Windows 10 version 1607 or newer, as does its DPI primitive.
+The four-argument `outerSize(hwnd, width, height, style)` also preflights a
+target style without modifying the window. Validate client and track-limit
+dimensions including their frame before storing a constraint or invoking setters.
 
 `Win32WindowPropertiesIntegrationTest` proves the native calls with
 `KFFI_WIN32_INTEGRATION=1`. To test a paired consumer before publication:

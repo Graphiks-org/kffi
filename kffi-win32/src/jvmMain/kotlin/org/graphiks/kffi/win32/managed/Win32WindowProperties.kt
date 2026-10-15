@@ -80,7 +80,11 @@ public object Win32WindowProperties {
     }
 
     /** Converts a positive physical client size using the actual style and per-window DPI. */
-    public fun outerSize(hwnd: Long, width: Int, height: Int): Win32WindowSize {
+    public fun outerSize(hwnd: Long, width: Int, height: Int): Win32WindowSize =
+        outerSize(hwnd, width, height, readStyle(live(hwnd), -16))
+
+    /** Preflights a target style at the current window DPI without changing native styles. */
+    public fun outerSize(hwnd: Long, width: Int, height: Int, style: Int): Win32WindowSize {
         require(width > 0 && height > 0) { "client size must be positive" }
         val h = live(hwnd)
         return Arena.ofConfined().use { arena ->
@@ -89,7 +93,7 @@ public object Win32WindowProperties {
             rect.set(ValueLayout.JAVA_INT, 12, height)
             val dpi = GetDpiForWindow(h)
             check(dpi > 0) { "GetDpiForWindow returned zero" }
-            checked(AdjustWindowRectExForDpi(rect, readStyle(h, -16), 0, readStyle(h, -20), dpi), "AdjustWindowRectExForDpi")
+            checked(AdjustWindowRectExForDpi(rect, style, 0, readStyle(h, -20), dpi), "AdjustWindowRectExForDpi")
             val outer = decodeRect(rect)
             require(outer.width > 0 && outer.height > 0) { "outer size overflows Windows LONG" }
             Win32WindowSize(outer.width, outer.height)
