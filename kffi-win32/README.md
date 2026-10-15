@@ -122,7 +122,7 @@ the active thread layout when `KFFI_WIN32_INTEGRATION=1`. It does not change
 the user's keyboard layout or inject hardware input. Non-US/AltGr and physical
 dead-key entry still require tests with the corresponding layout and keyboard.
 
-For a paired Windows JVM consumer, run `scripts/publish-win32-local.ps1`.
+For local Windows JVM development, run `scripts/publish-win32-local.ps1`.
 It tests and builds the two JVM jars and publishes them with Maven POM aliases as
 `1.0.0-win32-phase4-local-SNAPSHOT` (override with `-Version`). The isolated
 publication avoids configuring Android/NDK and Dokka on a Windows-only host.
@@ -135,7 +135,7 @@ whose existing runtime-version test must pass before publication.
 
 ## Checked window properties
 
-The phase-5 completion API adds `Win32WindowOperations`, `Win32OwnedImage` and
+The native window API adds `Win32WindowOperations`, `Win32OwnedImage` and
 `Win32PointerConfinement`. Operations stay on the HWND owner thread. Flashing
 does not activate a window; FlashWindowEx's previous-state result is not an error
 BOOL. Topmost levels and icon slots are read back. RGBA8 owned images use copied
@@ -158,9 +158,6 @@ desktop. It is not a security boundary or a promise about every capture tool.
 must keep routing control-window messages. A move/resize needs a same-callback
 pointer authority supplied by its caller. No keyboard or pointer input is forged.
 
-For the completed paired consumer, publish with
-`./scripts/publish-win32-local.ps1 -Version 1.0.0-win32-phase5-complete-local-SNAPSHOT`.
-
 `Win32WindowProperties` copies title, signed physical bounds, client size,
 styles, DPI and visibility/minimize/maximize flags from a live window.
 `setTitle`, `setStyle` and `setBounds` validate native errors; style changes
@@ -176,5 +173,4 @@ target style without modifying the window. Validate client and track-limit
 dimensions including their frame before storing a constraint or invoking setters.
 
 `Win32WindowPropertiesIntegrationTest` proves the native calls with
-`KFFI_WIN32_INTEGRATION=1`. To test a paired consumer before publication:
-`./scripts/publish-win32-local.ps1 -Version 1.0.0-win32-phase5-local-SNAPSHOT`.
+`KFFI_WIN32_INTEGRATION=1`. The local development publisher packages the tested JVM artifacts.
