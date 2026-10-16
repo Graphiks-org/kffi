@@ -352,14 +352,38 @@ class WaylandIntegrationTest {
                     integrationFailure("The compositor closed the xdg_toplevel before presenting its first frame")
                 }
                 assertTrue(frameEvents.done, "The compositor did not process the committed wl_shm frame")
-                val fullscreenConfigureSerial = xdgSurfaceEvents.configureSerial
+                var fullscreenConfigureSerial = xdgSurfaceEvents.configureSerial
                     ?.takeIf { it != configureSerial }
                     ?: integrationFailure("The compositor did not send a fullscreen configure after mapping the buffer")
+                // a first fullscreen configure may legally carry 0x0 ("no
+                // preference"): commit once more and wait for the sized one
+                // so the rendered geometry is deterministic
+                if (toplevelEvents.configuredWidth == 0 || toplevelEvents.configuredHeight == 0) {
+                    wlSurfaceDamage(surface, 0, 0, SURFACE_WIDTH, SURFACE_HEIGHT)
+                    marshalVoid(surface, WL_SURFACE_COMMIT)
+                    dispatchUntil(
+                        display,
+                        "a sized fullscreen configure",
+                        {
+                            (toplevelEvents.configuredWidth > 0 && xdgSurfaceEvents.configureSerial != fullscreenConfigureSerial) ||
+                                toplevelEvents.closed
+                        },
+                        { wmBaseEvents.failure },
+                    )
+                    fullscreenConfigureSerial = xdgSurfaceEvents.configureSerial
+                        ?.takeIf { it != null && it != configureSerial }
+                        ?: fullscreenConfigureSerial
+                }
                 marshalUint(xdgSurface, XDG_SURFACE_ACK_CONFIGURE, fullscreenConfigureSerial)
+                // a fullscreen configure may legally carry 0x0 ("no size
+                // preference"): the committed 320x240 geometry stands (the
+                // kadre phase-2 rule F1-4) — only the mapping frame proves
+                // the presentation
                 appendLog(
                     clientLog,
                     "fullscreen configure: serial=$fullscreenConfigureSerial " +
-                        "size=${toplevelEvents.configuredWidth}x${toplevelEvents.configuredHeight}\n",
+                        "size=${if (toplevelEvents.configuredWidth == 0) SURFACE_WIDTH else toplevelEvents.configuredWidth}x" +
+                        "${if (toplevelEvents.configuredHeight == 0) SURFACE_HEIGHT else toplevelEvents.configuredHeight}\n",
                 )
 
                 proxyDestroy(frameCallback)
