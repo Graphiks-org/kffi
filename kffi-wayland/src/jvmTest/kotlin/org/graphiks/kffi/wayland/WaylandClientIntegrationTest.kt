@@ -70,6 +70,139 @@ class WaylandClientIntegrationTest {
         }
     }
 
+    @org.junit.jupiter.api.Disabled(
+        "injection oracle pending: the seat capability path is proven at the wire " +
+            "(virtual pointer attaches, capabilities(POINTER) arrives, the gated get_pointer goes out, " +
+            "sway reports the device and keyboard focus) but sway headless never notifies pointer " +
+            "focus to the client through either injection path (zwlr virtual pointer events, " +
+            "swaymsg cursor move/press) — re-enable once the oracle uses a compositor that " +
+            "delivers, or uinput",
+    )
+    @Test
+    fun managedSeatDeliversCapabilitiesPointerAndKeyboardEvents() {
+        requireCompositorEnvironment()
+        val client = WaylandClient.connect()
+        assertNotNull(client)
+        client.use {
+            var seatName: Int? = null
+            it.registry.addGlobalsListener(
+                onGlobal = { name, interfaceName, _ ->
+                    if (interfaceName == "wl_seat" && seatName == null) seatName = name
+                },
+            )
+            assertTrue(it.roundtrip())
+            assertNotNull(seatName, "the compositor advertises no wl_seat")
+
+            val seat = it.bindSeat(seatName!!)
+            assertNotNull(seat)
+            seat.use { boundSeat ->
+                var capabilities = 0
+                val pointerEvents = ArrayList<org.graphiks.kffi.wayland.managed.WaylandPointerEvent>()
+                boundSeat.addSeatListener(onCapabilities = { capabilities = it })
+                boundSeat.addPointerListener { event -> pointerEvents.add(event) }
+                boundSeat.addKeyboardListener { event -> }
+                // map a surface first: pointer enter needs a surface under
+                // the cursor, the injection would have nothing to deliver to.
+                // The mapping recipe mirrors the handshake proof exactly —
+                // including the intermediate roundtrips after each step.
+                val surface = it.createSurface()
+                val xdg = it.createXdgSurface(surface)
+                val toplevel = it.createToplevel(xdg)
+                client.roundtrip()
+                toplevel.setTitle("kffi-seat-injection")
+                client.roundtrip()
+                toplevel.setAppId("org.graphiks.kffi.wayland.seat")
+                client.roundtrip()
+                val serials = java.util.Collections.synchronizedList(ArrayList<Int>())
+                val entered = java.util.concurrent.atomic.AtomicBoolean(false)
+                toplevel.addEventsListener(
+                    onConfigure = { _, _, _ -> },
+                    onClose = {},
+                    onFailure = {},
+                )
+                xdg.addConfigureListener(onConfigure = { serial -> serials.add(serial) }, onFailure = {})
+                surface.addEnterLeaveListener(
+                    onEnter = { entered.set(true) },
+                    onLeave = {},
+                    onFailure = {},
+                )
+                surface.commit()
+                assertTrue(serials.awaitFirst(client, 10_000), "surface never configured")
+                val buffer = it.createShmBuffer(64, 64)
+                val released = java.util.concurrent.CountDownLatch(1)
+                buffer.addReleaseListener(onRelease = { released.countDown() })
+                val pixels = buffer.content()
+                for (index in 0 until 64 * 64) {
+                    pixels.set(java.lang.foreign.ValueLayout.JAVA_INT, index.toLong() * 4, 0xFF3366AA.toInt())
+                }
+                xdg.ackConfigure(serials.last())
+                val framed = java.util.concurrent.CountDownLatch(1)
+                surface.addFrameListener(onFrame = { framed.countDown() }, onFailure = {})
+                surface.attachAndCommit(buffer)
+                val mapped = System.nanoTime() + 10_000_000_000L
+                while (System.nanoTime() < mapped && !entered.get() && framed.count > 0L) {
+                    client.roundtrip()
+                    Thread.sleep(25)
+                }
+                assertTrue(
+                    framed.count == 0L,
+                    "surface never presented a frame (serials=${serials.size} caps=$capabilities " +
+                        "hasError=${client.hasError()} pointerEvents=${pointerEvents.size})",
+                )
+
+                // a headless seat starts with no capability: the harness
+                // attaches virtual devices, the capabilities event arrives,
+                // the gated get_pointer/get_keyboard requests go out, and the
+                // injected motion/button events flow back to this client
+                assertTrue(client.roundtrip())
+
+                // virtual pointer injection via the authored harness
+                val pointerManager = client.bindVirtualPointerManager()
+                assertNotNull(pointerManager, "sway does not expose zwlr_virtual_pointer_manager_v1")
+                val virtualPointer = client.createVirtualPointer(pointerManager, boundSeat)
+                assertNotNull(virtualPointer)
+
+                val deadline = System.nanoTime() + 10_000_000_000L
+                while (System.nanoTime() < deadline &&
+                    capabilities and org.graphiks.kffi.wayland.managed.WaylandSeatCapabilities.POINTER == 0
+                ) {
+                    client.roundtrip()
+                }
+                assertTrue(
+                    capabilities and org.graphiks.kffi.wayland.managed.WaylandSeatCapabilities.POINTER != 0,
+                    "the virtual pointer never granted the pointer capability",
+                )
+
+                // compositor-side injection: swaymsg drives the seat cursor
+                // (the roadmap oracle — the production mapper is never its
+                // own oracle); the virtual pointer only granted the capability
+                swaymsg("seat", "seat0", "cursor", "move", "320", "240")
+                swaymsg("seat", "seat0", "cursor", "press", "button1")
+                client.roundtrip()
+                swaymsg("seat", "seat0", "cursor", "release", "button1")
+                client.roundtrip()
+                client.roundtrip()
+
+                assertTrue(
+                    pointerEvents.any { event -> event.kind == org.graphiks.kffi.wayland.managed.WaylandPointerEvent.Kind.Enter },
+                    "no pointer enter after injection (${pointerEvents.size} events)",
+                )
+                assertTrue(
+                    pointerEvents.any { event -> event.kind == org.graphiks.kffi.wayland.managed.WaylandPointerEvent.Kind.Button },
+                    "no pointer button after injection",
+                )
+                assertTrue(
+                    pointerEvents.any { event -> event.kind == org.graphiks.kffi.wayland.managed.WaylandPointerEvent.Kind.Frame },
+                    "no pointer frame after injection",
+                )
+                buffer.close()
+                toplevel.close()
+                xdg.close()
+                surface.close()
+            }
+        }
+    }
+
     @Test
     fun managedOutputBindsAndDeliversStateAtDone() {
         requireCompositorEnvironment()
@@ -225,12 +358,12 @@ class WaylandClientIntegrationTest {
                 it.roundtrip()
                 Thread.sleep(25)
             }
-            // proof of mapping = the presentation frame; the missing enter is
-            // tracked as a kffi diagnostic (see #116 discussion)
+            // proof of mapping = the presentation frame fired; the missing
+            // enter is tracked as a kffi diagnostic (see #116 discussion)
             assertTrue(
-                framed.count > 0L,
+                framed.count == 0L,
                 "surface did not map: serials=$configureSerials hasError=${it.hasError()} " +
-                    "entered=${entered.get()} framed=${framed.count > 0L}",
+                    "entered=${entered.get()} framed=${framed.count == 0L}",
             )
             buffer.close()
             toplevel.close()
@@ -239,6 +372,19 @@ class WaylandClientIntegrationTest {
             it.close()
             it.close()
         }
+    }
+
+    /** Runs a swaymsg command against the compositor IPC socket. */
+    private fun swaymsg(vararg command: String) {
+        val runtime = System.getenv("XDG_RUNTIME_DIR") ?: return
+        val socket = java.io.File(runtime).listFiles()
+            ?.filter { it.name.startsWith("sway-ipc") }
+            ?.maxByOrNull { it.lastModified() }
+            ?: return
+        val process = ProcessBuilder("swaymsg", "-s", socket.absolutePath, *command)
+            .redirectErrorStream(true)
+            .start()
+        process.waitFor(5, java.util.concurrent.TimeUnit.SECONDS)
     }
 
     private fun kotlin.collections.MutableList<Int>.awaitFirst(
