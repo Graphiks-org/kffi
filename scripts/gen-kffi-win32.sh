@@ -163,6 +163,7 @@ rm -rf -- "$STAGING"
 mkdir -p "$STAGING"
 
 ALL_FUNCTIONS=()
+ALL_STRUCTS=()
 for dll in "${DLLS[@]}"; do
     yaml="$GENERATION_DIR/${dll}.yaml"
     if [[ ! -f "$yaml" ]]; then
@@ -174,6 +175,13 @@ for dll in "${DLLS[@]}"; do
     done < <(sed -n '/^    functions:/,/^    structs:/{
         /^    functions:/d
         /^    structs:/d
+        /^      - /{s/^      - //; p}
+    }' "$yaml")
+    while IFS= read -r structure; do
+        ALL_STRUCTS+=("$structure")
+    done < <(sed -n '/^    structs:/,/^    constants:/{
+        /^    structs:/d
+        /^    constants:/d
         /^      - /{s/^      - //; p}
     }' "$yaml")
 done
@@ -201,6 +209,9 @@ KEXTRACT_ARGS=(
 )
 for function in "${ALL_FUNCTIONS[@]}"; do
     KEXTRACT_ARGS+=(--include-function "$function")
+done
+for structure in "${ALL_STRUCTS[@]}"; do
+    KEXTRACT_ARGS+=(--include-struct "$structure")
 done
 KEXTRACT_ARGS+=(
     "${SDK_ARGS[@]}"

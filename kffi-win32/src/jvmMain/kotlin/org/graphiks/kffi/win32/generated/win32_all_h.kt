@@ -27,7 +27,7 @@ private var _DLL_USER32_DLL: SymbolLookup? = null
 
 private fun _lookup(symbol: String): SymbolLookup {
     return when (symbol) {
-        "RegisterClassExW", "CreateWindowExW", "FindWindowExW", "GetDC", "ReleaseDC", "FillRect", "ShowWindow", "UpdateWindow", "DestroyWindow", "DefWindowProcW", "SetWindowTextW", "PostQuitMessage", "GetKeyState", "GetKeyboardState", "GetKeyboardLayout", "MapVirtualKeyExW", "ToUnicodeEx", "SystemParametersInfoW", "PeekMessageW", "GetMessageW", "TranslateMessage", "DispatchMessageW", "MsgWaitForMultipleObjectsEx", "LoadCursorW", "SetProcessDpiAwarenessContext", "GetDpiForWindow", "InvalidateRect", "ValidateRect", "TrackMouseEvent", "RegisterTouchWindow", "GetTouchInputInfo", "CloseTouchInputHandle", "GetGestureInfo", "CloseGestureInfoHandle", "ScreenToClient", "ClientToScreen", "GetCursorPos", "GetSystemMenu", "TrackPopupMenu", "EnableMenuItem", "SetMenuDefaultItem", "ReleaseCapture", "EnableWindow", "GetClientRect", "GetWindowRect", "AdjustWindowRectExForDpi", "MonitorFromWindow", "GetMonitorInfoW", "SetWindowLongPtrW", "GetWindowLongPtrW", "IsZoomed", "IsIconic", "IsWindow", "IsWindowVisible", "GetWindowTextW", "GetWindowTextLengthW", "SetWindowPos", "GetForegroundWindow", "SetForegroundWindow", "MapVirtualKeyW", "SendInput", "SetCursorPos", "SetCursor", "ShowCursor", "ClipCursor", "PostMessageW", "SendMessageW", "CreateIcon", "DestroyIcon", "FlashWindowEx", "CreateIconIndirect", "DestroyCursor", "GetCursor", "GetCapture", "GetClipCursor", "GetSystemMetrics", "GetWindowDisplayAffinity", "SetWindowDisplayAffinity", "GetWindowThreadProcessId", "GetFocus" -> _DLL_USER32_DLL ?: SymbolLookup.loaderLookup()
+        "RegisterClassExW", "CreateWindowExW", "FindWindowExW", "GetDC", "ReleaseDC", "FillRect", "ShowWindow", "UpdateWindow", "DestroyWindow", "DefWindowProcW", "SetWindowTextW", "PostQuitMessage", "GetKeyState", "GetKeyboardState", "GetKeyboardLayout", "MapVirtualKeyExW", "ToUnicodeEx", "SystemParametersInfoW", "PeekMessageW", "GetMessageW", "TranslateMessage", "DispatchMessageW", "MsgWaitForMultipleObjectsEx", "LoadCursorW", "SetProcessDpiAwarenessContext", "GetDpiForWindow", "InvalidateRect", "ValidateRect", "TrackMouseEvent", "RegisterTouchWindow", "GetTouchInputInfo", "CloseTouchInputHandle", "GetGestureInfo", "CloseGestureInfoHandle", "ScreenToClient", "ClientToScreen", "GetCursorPos", "GetSystemMenu", "TrackPopupMenu", "EnableMenuItem", "SetMenuDefaultItem", "ReleaseCapture", "EnableWindow", "GetClientRect", "GetWindowRect", "AdjustWindowRectExForDpi", "MonitorFromWindow", "GetMonitorInfoW", "SetWindowLongPtrW", "GetWindowLongPtrW", "IsZoomed", "IsIconic", "IsWindow", "IsWindowVisible", "GetWindowTextW", "GetWindowTextLengthW", "SetWindowPos", "GetForegroundWindow", "SetForegroundWindow", "MapVirtualKeyW", "SendInput", "SetCursorPos", "SetCursor", "ShowCursor", "ClipCursor", "PostMessageW", "SendMessageW", "CreateIcon", "DestroyIcon", "FlashWindowEx", "CreateIconIndirect", "DestroyCursor", "GetCursor", "GetCapture", "GetClipCursor", "GetSystemMetrics", "GetWindowDisplayAffinity", "SetWindowDisplayAffinity", "GetWindowThreadProcessId", "GetFocus", "GetPointerType", "GetPointerInfo", "GetPointerTouchInfo", "GetPointerPenInfo", "GetPointerFrameInfoHistory", "GetPointerFrameTouchInfoHistory", "GetPointerFramePenInfoHistory", "GetMessageExtraInfo", "InitializeTouchInjection", "InjectTouchInput", "WindowFromPoint" -> _DLL_USER32_DLL ?: SymbolLookup.loaderLookup()
         "GetCurrentThreadId", "GetModuleHandleW", "SetLastError", "GetLastError" -> _DLL_KERNEL32_DLL ?: SymbolLookup.loaderLookup()
         "CreateRectRgn", "CreateCompatibleDC", "CreateCompatibleBitmap", "CreateSolidBrush", "SelectObject", "BitBlt", "GetDIBits", "DeleteDC", "DeleteObject", "CreateBitmap", "CreateDIBSection" -> _DLL_GDI32_DLL ?: SymbolLookup.loaderLookup()
         "DwmSetWindowAttribute", "DwmEnableBlurBehindWindow", "DwmExtendFrameIntoClientArea" -> _DLL_DWMAPI_DLL ?: SymbolLookup.loaderLookup()
@@ -1415,6 +1415,55 @@ typealias HFILE = Int
 typealias COLORREF = Int
 
 /**
+ * {@snippet lang=c : STRUCT tagPOINT
+ */
+class tagPOINT {
+    companion object {
+        val layout: GroupLayout = MemoryLayout.structLayout(
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("x"),
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("y")
+        ).withByteAlignment(4L).withName("tagPOINT")
+
+        val byteSize: Long
+            get() = layout.byteSize()
+
+        fun allocate(allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(layout)
+
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout))
+
+        fun asSlice(array: MemorySegment, index: Long): MemorySegment =
+            array.asSlice(byteSize * index)
+
+        fun reinterpret(addr: MemorySegment): MemorySegment =
+            addr.reinterpret(byteSize)
+
+        fun reinterpret(addr: MemorySegment, elementCount: Long): MemorySegment =
+            addr.reinterpret(byteSize * elementCount)
+
+    } // End companion object
+
+    val x_VH: VarHandle = layout.varHandle(groupElement("x"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun x(segment: MemorySegment): Int =
+        x_VH.get(segment, 0L) as Int
+
+    fun x(segment: MemorySegment, value: Int) =
+        x_VH.set(segment, 0L, value)
+
+    val y_VH: VarHandle = layout.varHandle(groupElement("y"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun y(segment: MemorySegment): Int =
+        y_VH.get(segment, 0L) as Int
+
+    fun y(segment: MemorySegment, value: Int) =
+        y_VH.set(segment, 0L, value)
+} // End class
+
+/**
  * NS_ENUM: {@snippet lang=c : enum DPI_AWARENESS}
  */
 enum class DPI_AWARENESS(val value: Long) {
@@ -2370,6 +2419,26 @@ fun PeekMessageW(arg0: MemorySegment, arg1: MemorySegment, arg2: Int, arg3: Int,
 }
 
 /**
+ * {@snippet lang=c : GetMessageExtraInfo typedef LPARAM = LongLong()
+ */
+private val GetMessageExtraInfo_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG)
+private var GetMessageExtraInfo_HANDLE: MethodHandle? = null
+
+fun GetMessageExtraInfo(): Long {
+    check(_initialized) { "Win32 GetMessageExtraInfo called before init()" }
+    val _handle = GetMessageExtraInfo_HANDLE ?: return 0L
+    try {
+        return _handle.invokeExact() as Long
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0L
+    }
+}
+
+/**
  * {@snippet lang=c : SendMessageW typedef LRESULT = LongLong(typedef HWND = (Declared(HWND__))*,typedef UINT = UNSIGNED = Int,typedef WPARAM = UNSIGNED = LongLong,typedef LPARAM = LongLong)
  */
 private val SendMessageW_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG)
@@ -2916,6 +2985,186 @@ enum class POINTER_FEEDBACK_MODE(val value: Long) {
     companion object {
         fun fromValue(v: Long): POINTER_FEEDBACK_MODE = entries.firstOrNull { it.value == v }
             ?: error("Unknown POINTER_FEEDBACK_MODE value: $v")
+    }
+}
+
+/**
+ * {@snippet lang=c : InitializeTouchInjection typedef BOOL = Int(typedef UINT32 = UNSIGNED = Int,typedef DWORD = UNSIGNED = Long)
+ */
+private val InitializeTouchInjection_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
+private var InitializeTouchInjection_HANDLE: MethodHandle? = null
+
+fun InitializeTouchInjection(arg0: Int, arg1: Int): Int {
+    check(_initialized) { "Win32 InitializeTouchInjection called before init()" }
+    val _handle = InitializeTouchInjection_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0, arg1) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
+ * {@snippet lang=c : InjectTouchInput typedef BOOL = Int(typedef UINT32 = UNSIGNED = Int,(typedef POINTER_TOUCH_INFO = Declared(tagPOINTER_TOUCH_INFO))*)
+ */
+private val InjectTouchInput_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private var InjectTouchInput_HANDLE: MethodHandle? = null
+
+fun InjectTouchInput(arg0: Int, arg1: MemorySegment): Int {
+    check(_initialized) { "Win32 InjectTouchInput called before init()" }
+    val _handle = InjectTouchInput_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0, arg1) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
+ * {@snippet lang=c : GetPointerType typedef BOOL = Int(typedef UINT32 = UNSIGNED = Int,(typedef POINTER_INPUT_TYPE = UNSIGNED = Long)*)
+ */
+private val GetPointerType_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private var GetPointerType_HANDLE: MethodHandle? = null
+
+fun GetPointerType(arg0: Int, arg1: MemorySegment): Int {
+    check(_initialized) { "Win32 GetPointerType called before init()" }
+    val _handle = GetPointerType_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0, arg1) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
+ * {@snippet lang=c : GetPointerInfo typedef BOOL = Int(typedef UINT32 = UNSIGNED = Int,(typedef POINTER_INFO = Declared(tagPOINTER_INFO))*)
+ */
+private val GetPointerInfo_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private var GetPointerInfo_HANDLE: MethodHandle? = null
+
+fun GetPointerInfo(arg0: Int, arg1: MemorySegment): Int {
+    check(_initialized) { "Win32 GetPointerInfo called before init()" }
+    val _handle = GetPointerInfo_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0, arg1) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
+ * {@snippet lang=c : GetPointerFrameInfoHistory typedef BOOL = Int(typedef UINT32 = UNSIGNED = Int,(typedef UINT32 = UNSIGNED = Int)*,(typedef UINT32 = UNSIGNED = Int)*,(typedef POINTER_INFO = Declared(tagPOINTER_INFO))*)
+ */
+private val GetPointerFrameInfoHistory_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private var GetPointerFrameInfoHistory_HANDLE: MethodHandle? = null
+
+fun GetPointerFrameInfoHistory(arg0: Int, arg1: MemorySegment, arg2: MemorySegment, arg3: MemorySegment): Int {
+    check(_initialized) { "Win32 GetPointerFrameInfoHistory called before init()" }
+    val _handle = GetPointerFrameInfoHistory_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0, arg1, arg2, arg3) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
+ * {@snippet lang=c : GetPointerTouchInfo typedef BOOL = Int(typedef UINT32 = UNSIGNED = Int,(typedef POINTER_TOUCH_INFO = Declared(tagPOINTER_TOUCH_INFO))*)
+ */
+private val GetPointerTouchInfo_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private var GetPointerTouchInfo_HANDLE: MethodHandle? = null
+
+fun GetPointerTouchInfo(arg0: Int, arg1: MemorySegment): Int {
+    check(_initialized) { "Win32 GetPointerTouchInfo called before init()" }
+    val _handle = GetPointerTouchInfo_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0, arg1) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
+ * {@snippet lang=c : GetPointerFrameTouchInfoHistory typedef BOOL = Int(typedef UINT32 = UNSIGNED = Int,(typedef UINT32 = UNSIGNED = Int)*,(typedef UINT32 = UNSIGNED = Int)*,(typedef POINTER_TOUCH_INFO = Declared(tagPOINTER_TOUCH_INFO))*)
+ */
+private val GetPointerFrameTouchInfoHistory_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private var GetPointerFrameTouchInfoHistory_HANDLE: MethodHandle? = null
+
+fun GetPointerFrameTouchInfoHistory(arg0: Int, arg1: MemorySegment, arg2: MemorySegment, arg3: MemorySegment): Int {
+    check(_initialized) { "Win32 GetPointerFrameTouchInfoHistory called before init()" }
+    val _handle = GetPointerFrameTouchInfoHistory_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0, arg1, arg2, arg3) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
+ * {@snippet lang=c : GetPointerPenInfo typedef BOOL = Int(typedef UINT32 = UNSIGNED = Int,(typedef POINTER_PEN_INFO = Declared(tagPOINTER_PEN_INFO))*)
+ */
+private val GetPointerPenInfo_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private var GetPointerPenInfo_HANDLE: MethodHandle? = null
+
+fun GetPointerPenInfo(arg0: Int, arg1: MemorySegment): Int {
+    check(_initialized) { "Win32 GetPointerPenInfo called before init()" }
+    val _handle = GetPointerPenInfo_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0, arg1) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
+ * {@snippet lang=c : GetPointerFramePenInfoHistory typedef BOOL = Int(typedef UINT32 = UNSIGNED = Int,(typedef UINT32 = UNSIGNED = Int)*,(typedef UINT32 = UNSIGNED = Int)*,(typedef POINTER_PEN_INFO = Declared(tagPOINTER_PEN_INFO))*)
+ */
+private val GetPointerFramePenInfoHistory_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private var GetPointerFramePenInfoHistory_HANDLE: MethodHandle? = null
+
+fun GetPointerFramePenInfoHistory(arg0: Int, arg1: MemorySegment, arg2: MemorySegment, arg3: MemorySegment): Int {
+    check(_initialized) { "Win32 GetPointerFramePenInfoHistory called before init()" }
+    val _handle = GetPointerFramePenInfoHistory_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0, arg1, arg2, arg3) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
     }
 }
 
@@ -3568,6 +3817,26 @@ fun ScreenToClient(arg0: MemorySegment, arg1: MemorySegment): Int {
         throw ex
     } catch (ex: Throwable) {
         return 0
+    }
+}
+
+/**
+ * {@snippet lang=c : WindowFromPoint typedef HWND = (Declared(HWND__))*(typedef POINT = Declared(tagPOINT))
+ */
+private val WindowFromPoint_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, tagPOINT.layout)
+private var WindowFromPoint_HANDLE: MethodHandle? = null
+
+fun WindowFromPoint(arg0: MemorySegment): MemorySegment {
+    check(_initialized) { "Win32 WindowFromPoint called before init()" }
+    val _handle = WindowFromPoint_HANDLE ?: return MemorySegment.NULL
+    try {
+        return _handle.invokeExact(arg0) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return MemorySegment.NULL
     }
 }
 
@@ -6587,6 +6856,7 @@ fun init() {
     TranslateMessage_HANDLE = _lookup("TranslateMessage").find("TranslateMessage").map { Linker.nativeLinker().downcallHandle(it, TranslateMessage_DESC) }.orElse(null)
     DispatchMessageW_HANDLE = _lookup("DispatchMessageW").find("DispatchMessageW").map { Linker.nativeLinker().downcallHandle(it, DispatchMessageW_DESC) }.orElse(null)
     PeekMessageW_HANDLE = _lookup("PeekMessageW").find("PeekMessageW").map { Linker.nativeLinker().downcallHandle(it, PeekMessageW_DESC) }.orElse(null)
+    GetMessageExtraInfo_HANDLE = _lookup("GetMessageExtraInfo").find("GetMessageExtraInfo").map { Linker.nativeLinker().downcallHandle(it, GetMessageExtraInfo_DESC) }.orElse(null)
     SendMessageW_HANDLE = _lookup("SendMessageW").find("SendMessageW").map { Linker.nativeLinker().downcallHandle(it, SendMessageW_DESC) }.orElse(null)
     PostMessageW_HANDLE = _lookup("PostMessageW").find("PostMessageW").map { Linker.nativeLinker().downcallHandle(it, PostMessageW_DESC) }.orElse(null)
     DefWindowProcW_HANDLE = _lookup("DefWindowProcW").find("DefWindowProcW").map { Linker.nativeLinker().downcallHandle(it, DefWindowProcW_DESC) }.orElse(null)
@@ -6610,6 +6880,15 @@ fun init() {
     GetTouchInputInfo_HANDLE = _lookup("GetTouchInputInfo").find("GetTouchInputInfo").map { Linker.nativeLinker().downcallHandle(it, GetTouchInputInfo_DESC) }.orElse(null)
     CloseTouchInputHandle_HANDLE = _lookup("CloseTouchInputHandle").find("CloseTouchInputHandle").map { Linker.nativeLinker().downcallHandle(it, CloseTouchInputHandle_DESC) }.orElse(null)
     RegisterTouchWindow_HANDLE = _lookup("RegisterTouchWindow").find("RegisterTouchWindow").map { Linker.nativeLinker().downcallHandle(it, RegisterTouchWindow_DESC) }.orElse(null)
+    InitializeTouchInjection_HANDLE = _lookup("InitializeTouchInjection").find("InitializeTouchInjection").map { Linker.nativeLinker().downcallHandle(it, InitializeTouchInjection_DESC) }.orElse(null)
+    InjectTouchInput_HANDLE = _lookup("InjectTouchInput").find("InjectTouchInput").map { Linker.nativeLinker().downcallHandle(it, InjectTouchInput_DESC) }.orElse(null)
+    GetPointerType_HANDLE = _lookup("GetPointerType").find("GetPointerType").map { Linker.nativeLinker().downcallHandle(it, GetPointerType_DESC) }.orElse(null)
+    GetPointerInfo_HANDLE = _lookup("GetPointerInfo").find("GetPointerInfo").map { Linker.nativeLinker().downcallHandle(it, GetPointerInfo_DESC) }.orElse(null)
+    GetPointerFrameInfoHistory_HANDLE = _lookup("GetPointerFrameInfoHistory").find("GetPointerFrameInfoHistory").map { Linker.nativeLinker().downcallHandle(it, GetPointerFrameInfoHistory_DESC) }.orElse(null)
+    GetPointerTouchInfo_HANDLE = _lookup("GetPointerTouchInfo").find("GetPointerTouchInfo").map { Linker.nativeLinker().downcallHandle(it, GetPointerTouchInfo_DESC) }.orElse(null)
+    GetPointerFrameTouchInfoHistory_HANDLE = _lookup("GetPointerFrameTouchInfoHistory").find("GetPointerFrameTouchInfoHistory").map { Linker.nativeLinker().downcallHandle(it, GetPointerFrameTouchInfoHistory_DESC) }.orElse(null)
+    GetPointerPenInfo_HANDLE = _lookup("GetPointerPenInfo").find("GetPointerPenInfo").map { Linker.nativeLinker().downcallHandle(it, GetPointerPenInfo_DESC) }.orElse(null)
+    GetPointerFramePenInfoHistory_HANDLE = _lookup("GetPointerFramePenInfoHistory").find("GetPointerFramePenInfoHistory").map { Linker.nativeLinker().downcallHandle(it, GetPointerFramePenInfoHistory_DESC) }.orElse(null)
     MapVirtualKeyW_HANDLE = _lookup("MapVirtualKeyW").find("MapVirtualKeyW").map { Linker.nativeLinker().downcallHandle(it, MapVirtualKeyW_DESC) }.orElse(null)
     MapVirtualKeyExW_HANDLE = _lookup("MapVirtualKeyExW").find("MapVirtualKeyExW").map { Linker.nativeLinker().downcallHandle(it, MapVirtualKeyExW_DESC) }.orElse(null)
     GetCapture_HANDLE = _lookup("GetCapture").find("GetCapture").map { Linker.nativeLinker().downcallHandle(it, GetCapture_DESC) }.orElse(null)
@@ -6642,6 +6921,7 @@ fun init() {
     GetCursor_HANDLE = _lookup("GetCursor").find("GetCursor").map { Linker.nativeLinker().downcallHandle(it, GetCursor_DESC) }.orElse(null)
     ClientToScreen_HANDLE = _lookup("ClientToScreen").find("ClientToScreen").map { Linker.nativeLinker().downcallHandle(it, ClientToScreen_DESC) }.orElse(null)
     ScreenToClient_HANDLE = _lookup("ScreenToClient").find("ScreenToClient").map { Linker.nativeLinker().downcallHandle(it, ScreenToClient_DESC) }.orElse(null)
+    WindowFromPoint_HANDLE = _lookup("WindowFromPoint").find("WindowFromPoint").map { Linker.nativeLinker().downcallHandle(it, WindowFromPoint_DESC) }.orElse(null)
     ClipCursor_HANDLE = _lookup("ClipCursor").find("ClipCursor").map { Linker.nativeLinker().downcallHandle(it, ClipCursor_DESC) }.orElse(null)
     FillRect_HANDLE = _lookup("FillRect").find("FillRect").map { Linker.nativeLinker().downcallHandle(it, FillRect_DESC) }.orElse(null)
     GetWindowLongPtrW_HANDLE = _lookup("GetWindowLongPtrW").find("GetWindowLongPtrW").map { Linker.nativeLinker().downcallHandle(it, GetWindowLongPtrW_DESC) }.orElse(null)
