@@ -35,6 +35,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   deliver the accumulated state at every `done` batching point; teardown
   through `wl_output.release` with its full five-parameter marshal.
 - `wl_surface.set_buffer_scale` exposed on the managed surface (opcode 8).
+- Managed `wl_seat` bindings (`WaylandSeat`): capability-gated
+  `get_pointer`/`get_keyboard` sub-objects, full v9 pointer event set with
+  `wl_fixed` decoded from int32, raw keyboard events (keymap descriptor,
+  enter with the pressed-keys array copied, leave, key, modifiers,
+  repeat_info), and an injection harness over the authored
+  `zwlr_virtual_pointer`/`zwp_virtual_keyboard` interfaces.
+- The frame-listener revocation gate was inverted and silently dropped
+  every live frame callback; the handshake mapping proof now genuinely
+  requires the presentation frame.
 - `kffi-posix`: the wakeup downcall handles are cached per (symbol,
   descriptor, options) instead of being rebuilt for every call. The per-call
   stub churn destabilised the JVM's FFM runtime — after a burst of wakeup
