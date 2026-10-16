@@ -11,7 +11,7 @@
 set -euo pipefail
 
 MODE="generate"
-KEXTRACT_REVISION="14248c87c2e87b3eb2d572435df714278d63450b"
+KEXTRACT_REVISION="e1d922eefb6b65887c6cc4bd98370ad2d7ba8b45"
 WINDOWS_SDK_VERSION="10.0.28000.0"
 
 usage() {
@@ -147,7 +147,7 @@ SDK_ARGS=(
     -A "-isystem" -A "$WINDOWS_SDK_INCLUDE/ucrt"
 )
 
-DLLS=(user32 kernel32 gdi32 dwmapi)
+DLLS=(user32 kernel32 gdi32 dwmapi ole32)
 GENERATION_DIR="$REPO_ROOT/kffi-win32/generation"
 STAGING="$REPO_ROOT/kffi-win32/build/generated"
 OUTPUT_PACKAGE="$REPO_ROOT/kffi-win32/src/jvmMain/kotlin/org/graphiks/kffi/win32/generated"
@@ -188,6 +188,7 @@ cat > "$TMP_HEADER" <<'EOF'
 #define NOMINMAX
 #include <windows.h>
 #include <dwmapi.h>
+#include <objbase.h>
 EOF
 
 echo "→ Regenerating ${#ALL_FUNCTIONS[@]} Win32 functions"

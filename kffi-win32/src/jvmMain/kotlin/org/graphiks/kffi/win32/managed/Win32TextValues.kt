@@ -37,3 +37,14 @@ internal data class Win32TextLockResult(val result: Int, val sessionResult: Int)
 
 /** Numeric native failure only; document contents are never included in diagnostics. */
 public class Win32TextException(public val hresult: Int) : IllegalStateException("Win32 text failure: $hresult")
+
+public enum class Win32TextPurpose { Text, Name, Email, Url, Telephone, Number, Decimal, Password }
+public enum class Win32TextAction { Default, Done, Go, Next, Search, Send }
+public enum class Win32TextCapitalization { None, Sentences, Words, Characters }
+public data class Win32TextConfiguration(
+    public val purpose: Win32TextPurpose,
+    public val action: Win32TextAction,
+    public val capitalization: Win32TextCapitalization,
+    public val autocorrect: Boolean,
+    public val multiline: Boolean,
+)

@@ -79,5 +79,7 @@ dllMap:
       - GetSystemMetrics
       - GetWindowDisplayAffinity
       - SetWindowDisplayAffinity
+      - GetWindowThreadProcessId
+      - GetFocus
     structs: []
     constants: []

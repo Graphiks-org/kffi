@@ -22,6 +22,7 @@ internal class Win32TextDocument(
     private var draining = false
     private var closed = false
     private var pending: LockRequest? = null
+    var beforeWriteUnlock: (() -> Unit)? = null
 
     init {
         try {
@@ -38,6 +39,11 @@ internal class Win32TextDocument(
         if (lock == 0) fail(NO_LOCK)
         return Win32TextSnapshot(viewText, viewSelection, accepted.epoch)
     }
+
+    /** Internal application-side view; COM readers still use [read] under a document lock. */
+    fun peek(): Win32TextSnapshot { checkOpen(); return Win32TextSnapshot(viewText, viewSelection, accepted.epoch) }
+    val canWrite: Boolean get() { checkOpen(); return lock == 0 && !notifying && !awaitingCommit && pending == null }
+    fun drainPendingLocks() { checkOpen(); drain() }
 
     fun requestLock(flags: Int, grant: (Int) -> Int): Win32TextLockResult {
         checkOpen()
@@ -104,7 +110,7 @@ internal class Win32TextDocument(
         dirty = true
     }
 
-    fun apply(snapshot: Win32TextSnapshot) {
+    fun apply(snapshot: Win32TextSnapshot, drainLocks: Boolean = true) {
         checkOpen()
         if (lock != 0 || snapshot.epoch < accepted.epoch) fail(INVALID_ARGUMENT)
         if (snapshot.epoch == accepted.epoch) {
@@ -132,14 +138,14 @@ internal class Win32TextDocument(
         viewSelection = snapshot.selection
         composition = rebased
         awaitingCommit = false
-        if (!notifying) drain()
+        if (drainLocks && !notifying) drain()
     }
 
     private fun grantNow(access: Int, grant: (Int) -> Int): Int {
         lock = access
         dirty = false
         endedComposition = false
-        val result = try { grant(access) }
+        val result = try { grant(access).also { if (!closed && access == READWRITE) beforeWriteUnlock?.invoke() } }
         catch (failure: Throwable) { close(); throw failure }
         finally { lock = 0 }
         if (!closed && dirty) flush()
