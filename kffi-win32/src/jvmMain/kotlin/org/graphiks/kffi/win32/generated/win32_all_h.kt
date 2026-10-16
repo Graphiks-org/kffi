@@ -20,6 +20,7 @@ private object kextract_runtime {
 private var _DLL_DWMAPI_DLL: SymbolLookup? = null
 private var _DLL_GDI32_DLL: SymbolLookup? = null
 private var _DLL_KERNEL32_DLL: SymbolLookup? = null
+private var _DLL_NINPUT_DLL: SymbolLookup? = null
 private var _DLL_OLE32_DLL: SymbolLookup? = null
 private var _DLL_USER32_DLL: SymbolLookup? = null
 
@@ -32,7 +33,50 @@ private fun _lookup(symbol: String): SymbolLookup {
         "CreateRectRgn", "CreateCompatibleDC", "CreateCompatibleBitmap", "CreateSolidBrush", "SelectObject", "BitBlt", "GetDIBits", "DeleteDC", "DeleteObject", "CreateBitmap", "CreateDIBSection" -> _DLL_GDI32_DLL ?: SymbolLookup.loaderLookup()
         "DwmSetWindowAttribute", "DwmEnableBlurBehindWindow", "DwmExtendFrameIntoClientArea" -> _DLL_DWMAPI_DLL ?: SymbolLookup.loaderLookup()
         "CoInitializeEx", "CoUninitialize", "CoCreateInstance", "CoTaskMemAlloc", "CoTaskMemFree" -> _DLL_OLE32_DLL ?: SymbolLookup.loaderLookup()
+        "CreateInteractionContext", "DestroyInteractionContext", "SetInteractionConfigurationInteractionContext", "GetInteractionConfigurationInteractionContext", "SetPropertyInteractionContext", "GetPropertyInteractionContext", "RegisterOutputCallbackInteractionContext", "ProcessPointerFramesInteractionContext", "AddPointerInteractionContext", "RemovePointerInteractionContext", "ResetInteractionContext" -> _DLL_NINPUT_DLL ?: SymbolLookup.loaderLookup()
         else -> SymbolLookup.loaderLookup()
+    }
+}
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = LongLong uintptr_t;}
+ */
+typealias uintptr_t = Long
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = LongLong size_t;}
+ */
+typealias size_t = Long
+
+/**
+ * {@snippet lang=c : typedef LongLong ptrdiff_t;}
+ */
+typealias ptrdiff_t = Long
+
+/**
+ * {@snippet lang=c : typedef LongLong intptr_t;}
+ */
+typealias intptr_t = Long
+
+/**
+ * {@snippet lang=c : typedef Bool __vcrt_bool;}
+ */
+typealias _vcrt_bool = Boolean
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Short wchar_t;}
+ */
+typealias wchar_t = Short
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum _EXCEPTION_DISPOSITION}
+ */
+enum class _EXCEPTION_DISPOSITION(val value: Long) {
+    ExceptionContinueExecution(0L), ExceptionContinueSearch(1L), ExceptionNestedException(2L), ExceptionCollidedUnwind(3L);
+
+    companion object {
+        fun fromValue(v: Long): _EXCEPTION_DISPOSITION = entries.firstOrNull { it.value == v }
+            ?: error("Unknown _EXCEPTION_DISPOSITION value: $v")
     }
 }
 
@@ -87,9 +131,9 @@ typealias INT = Int
 typealias UINT = Int
 
 /**
- * {@snippet lang=c : typedef Int __crt_bool;}
+ * {@snippet lang=c : typedef Bool __crt_bool;}
  */
-typealias _crt_bool = Int
+typealias _crt_bool = Boolean
 
 /**
  * {@snippet lang=c : typedef Int errno_t;}
@@ -127,9 +171,9 @@ typealias time_t = Long
 typealias rsize_t = Long
 
 /**
- * {@snippet lang=c : typedef Int POINTER_64_INT;}
+ * {@snippet lang=c : typedef UNSIGNED = LongLong POINTER_64_INT;}
  */
-typealias POINTER_64_INT = Int
+typealias POINTER_64_INT = Long
 
 /**
  * {@snippet lang=c : typedef SIGNED = Char INT8;}
@@ -377,11 +421,6 @@ typealias DWORDLONG = Long
  * {@snippet lang=c : typedef UNSIGNED = Char BOOLEAN;}
  */
 typealias BOOLEAN = Byte
-
-/**
- * {@snippet lang=c : typedef Int OBJECTID;}
- */
-typealias OBJECTID = Int
 
 /**
  * {@snippet lang=c : typedef UNSIGNED = LongLong KSPIN_LOCK;}
@@ -1776,7 +1815,7 @@ enum class WIN32_MEMORY_PARTITION_INFORMATION_CLASS(val value: Long) {
 }
 
 /**
- * {@snippet lang=c : GetModuleHandleW typedef HMODULE = (Declared(HINSTANCE__))*(typedef LPCWSTR = (Int)*)
+ * {@snippet lang=c : GetModuleHandleW typedef HMODULE = (Declared(HINSTANCE__))*(typedef LPCWSTR = (UNSIGNED = Short)*)
  */
 private val GetModuleHandleW_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
 private var GetModuleHandleW_HANDLE: MethodHandle? = null
@@ -2279,7 +2318,7 @@ fun CreateDIBSection(arg0: MemorySegment, arg1: MemorySegment, arg2: Int, arg3: 
 }
 
 /**
- * {@snippet lang=c : ToUnicodeEx Int(typedef UINT = UNSIGNED = Int,typedef UINT = UNSIGNED = Int,(typedef BYTE = UNSIGNED = Char)*,typedef LPWSTR = (Int)*,Int,typedef UINT = UNSIGNED = Int,typedef HKL = (Declared(HKL__))*)
+ * {@snippet lang=c : ToUnicodeEx Int(typedef UINT = UNSIGNED = Int,typedef UINT = UNSIGNED = Int,(typedef BYTE = UNSIGNED = Char)*,typedef LPWSTR = (UNSIGNED = Short)*,Int,typedef UINT = UNSIGNED = Int,typedef HKL = (Declared(HKL__))*)
  */
 private val ToUnicodeEx_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
 private var ToUnicodeEx_HANDLE: MethodHandle? = null
@@ -2539,7 +2578,7 @@ fun RegisterClassExW(arg0: MemorySegment): Short {
 }
 
 /**
- * {@snippet lang=c : CreateWindowExW typedef HWND = (Declared(HWND__))*(typedef DWORD = UNSIGNED = Long,typedef LPCWSTR = (Int)*,typedef LPCWSTR = (Int)*,typedef DWORD = UNSIGNED = Long,Int,Int,Int,Int,typedef HWND = (Declared(HWND__))*,typedef HMENU = (Declared(HMENU__))*,typedef HINSTANCE = (Declared(HINSTANCE__))*,typedef LPVOID = (Void)*)
+ * {@snippet lang=c : CreateWindowExW typedef HWND = (Declared(HWND__))*(typedef DWORD = UNSIGNED = Long,typedef LPCWSTR = (UNSIGNED = Short)*,typedef LPCWSTR = (UNSIGNED = Short)*,typedef DWORD = UNSIGNED = Long,Int,Int,Int,Int,typedef HWND = (Declared(HWND__))*,typedef HMENU = (Declared(HMENU__))*,typedef HINSTANCE = (Declared(HINSTANCE__))*,typedef LPVOID = (Void)*)
  */
 private val CreateWindowExW_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
 private var CreateWindowExW_HANDLE: MethodHandle? = null
@@ -3541,7 +3580,7 @@ fun ValidateRect(arg0: MemorySegment, arg1: MemorySegment): Int {
 }
 
 /**
- * {@snippet lang=c : SetWindowTextW typedef BOOL = Int(typedef HWND = (Declared(HWND__))*,typedef LPCWSTR = (Int)*)
+ * {@snippet lang=c : SetWindowTextW typedef BOOL = Int(typedef HWND = (Declared(HWND__))*,typedef LPCWSTR = (UNSIGNED = Short)*)
  */
 private val SetWindowTextW_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
 private var SetWindowTextW_HANDLE: MethodHandle? = null
@@ -3561,7 +3600,7 @@ fun SetWindowTextW(arg0: MemorySegment, arg1: MemorySegment): Int {
 }
 
 /**
- * {@snippet lang=c : GetWindowTextW Int(typedef HWND = (Declared(HWND__))*,typedef LPWSTR = (Int)*,Int)
+ * {@snippet lang=c : GetWindowTextW Int(typedef HWND = (Declared(HWND__))*,typedef LPWSTR = (UNSIGNED = Short)*,Int)
  */
 private val GetWindowTextW_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
 private var GetWindowTextW_HANDLE: MethodHandle? = null
@@ -3921,7 +3960,7 @@ fun SetWindowLongPtrW(arg0: MemorySegment, arg1: Int, arg2: Long): Long {
 }
 
 /**
- * {@snippet lang=c : FindWindowExW typedef HWND = (Declared(HWND__))*(typedef HWND = (Declared(HWND__))*,typedef HWND = (Declared(HWND__))*,typedef LPCWSTR = (Int)*,typedef LPCWSTR = (Int)*)
+ * {@snippet lang=c : FindWindowExW typedef HWND = (Declared(HWND__))*(typedef HWND = (Declared(HWND__))*,typedef HWND = (Declared(HWND__))*,typedef LPCWSTR = (UNSIGNED = Short)*,typedef LPCWSTR = (UNSIGNED = Short)*)
  */
 private val FindWindowExW_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
 private var FindWindowExW_HANDLE: MethodHandle? = null
@@ -3961,7 +4000,7 @@ fun GetWindowThreadProcessId(arg0: MemorySegment, arg1: MemorySegment): Int {
 }
 
 /**
- * {@snippet lang=c : LoadCursorW typedef HCURSOR = (Declared(HICON__))*(typedef HINSTANCE = (Declared(HINSTANCE__))*,typedef LPCWSTR = (Int)*)
+ * {@snippet lang=c : LoadCursorW typedef HCURSOR = (Declared(HICON__))*(typedef HINSTANCE = (Declared(HINSTANCE__))*,typedef LPCWSTR = (UNSIGNED = Short)*)
  */
 private val LoadCursorW_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
 private var LoadCursorW_HANDLE: MethodHandle? = null
@@ -4756,16 +4795,6 @@ typealias cs_byte = Byte
 typealias boolean = Byte
 
 /**
- * {@snippet lang=c : typedef UNSIGNED = Short wchar_t;}
- */
-typealias wchar_t = Short
-
-/**
- * {@snippet lang=c : typedef UNSIGNED = LongLong size_t;}
- */
-typealias size_t = Long
-
-/**
  * {@snippet lang=c : typedef UNSIGNED = Long error_status_t;}
  */
 typealias error_status_t = Int
@@ -4872,9 +4901,9 @@ enum class PROXY_PHASE(val value: Long) {
 }
 
 /**
- * {@snippet lang=c : typedef Int OLECHAR;}
+ * {@snippet lang=c : typedef UNSIGNED = Short OLECHAR;}
  */
-typealias OLECHAR = Int
+typealias OLECHAR = Short
 
 /**
  * {@snippet lang=c : typedef Double DOUBLE;}
@@ -5477,11 +5506,6 @@ enum class DWM_TAB_WINDOW_REQUIREMENTS(val value: Long) {
 }
 
 /**
- * {@snippet lang=c : typedef Int ptrdiff_t;}
- */
-typealias ptrdiff_t = Int
-
-/**
  * {@snippet lang=c : typedef Double max_align_t;}
  */
 typealias max_align_t = Double
@@ -5497,11 +5521,6 @@ enum class tagREGCLS(val value: Long) {
             ?: error("Unknown tagREGCLS value: $v")
     }
 }
-
-/**
- * {@snippet lang=c : typedef Int REGCLS;}
- */
-typealias REGCLS = Int
 
 /**
  * NS_ENUM: {@snippet lang=c : enum tagCOINITBASE}
@@ -6800,6 +6819,382 @@ enum class PIDMSI_STATUS_VALUE(val value: Long) {
     }
 }
 
+/**
+ * NS_ENUM: {@snippet lang=c : enum INTERACTION_ID}
+ */
+enum class INTERACTION_ID(val value: Long) {
+    INTERACTION_ID_NONE(0L), INTERACTION_ID_MANIPULATION(1L), INTERACTION_ID_TAP(2L), INTERACTION_ID_SECONDARY_TAP(3L), INTERACTION_ID_HOLD(4L), INTERACTION_ID_DRAG(5L), INTERACTION_ID_CROSS_SLIDE(6L), INTERACTION_ID_MAX(-1L);
+
+    companion object {
+        fun fromValue(v: Long): INTERACTION_ID = entries.firstOrNull { it.value == v }
+            ?: error("Unknown INTERACTION_ID value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum INTERACTION_FLAGS}
+ */
+enum class INTERACTION_FLAGS(val value: Long) {
+    INTERACTION_FLAG_NONE(0L), INTERACTION_FLAG_BEGIN(1L), INTERACTION_FLAG_END(2L), INTERACTION_FLAG_CANCEL(4L), INTERACTION_FLAG_INERTIA(8L), INTERACTION_FLAG_MAX(-1L);
+
+    companion object {
+        fun fromValue(v: Long): INTERACTION_FLAGS = entries.firstOrNull { it.value == v }
+            ?: error("Unknown INTERACTION_FLAGS value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum INTERACTION_CONFIGURATION_FLAGS}
+ */
+enum class INTERACTION_CONFIGURATION_FLAGS(val value: Long) {
+    INTERACTION_CONFIGURATION_FLAG_NONE(0L), INTERACTION_CONFIGURATION_FLAG_MANIPULATION(1L), INTERACTION_CONFIGURATION_FLAG_MANIPULATION_TRANSLATION_X(2L), INTERACTION_CONFIGURATION_FLAG_MANIPULATION_TRANSLATION_Y(4L), INTERACTION_CONFIGURATION_FLAG_MANIPULATION_ROTATION(8L), INTERACTION_CONFIGURATION_FLAG_MANIPULATION_SCALING(16L), INTERACTION_CONFIGURATION_FLAG_MANIPULATION_TRANSLATION_INERTIA(32L), INTERACTION_CONFIGURATION_FLAG_MANIPULATION_ROTATION_INERTIA(64L), INTERACTION_CONFIGURATION_FLAG_MANIPULATION_SCALING_INERTIA(128L), INTERACTION_CONFIGURATION_FLAG_MANIPULATION_RAILS_X(256L), INTERACTION_CONFIGURATION_FLAG_MANIPULATION_RAILS_Y(512L), INTERACTION_CONFIGURATION_FLAG_MANIPULATION_EXACT(1024L), INTERACTION_CONFIGURATION_FLAG_MANIPULATION_MULTIPLE_FINGER_PANNING(2048L), INTERACTION_CONFIGURATION_FLAG_CROSS_SLIDE(1L), INTERACTION_CONFIGURATION_FLAG_CROSS_SLIDE_HORIZONTAL(2L), INTERACTION_CONFIGURATION_FLAG_CROSS_SLIDE_SELECT(4L), INTERACTION_CONFIGURATION_FLAG_CROSS_SLIDE_SPEED_BUMP(8L), INTERACTION_CONFIGURATION_FLAG_CROSS_SLIDE_REARRANGE(16L), INTERACTION_CONFIGURATION_FLAG_CROSS_SLIDE_EXACT(32L), INTERACTION_CONFIGURATION_FLAG_TAP(1L), INTERACTION_CONFIGURATION_FLAG_TAP_DOUBLE(2L), INTERACTION_CONFIGURATION_FLAG_TAP_MULTIPLE_FINGER(4L), INTERACTION_CONFIGURATION_FLAG_SECONDARY_TAP(1L), INTERACTION_CONFIGURATION_FLAG_HOLD(1L), INTERACTION_CONFIGURATION_FLAG_HOLD_MOUSE(2L), INTERACTION_CONFIGURATION_FLAG_HOLD_MULTIPLE_FINGER(4L), INTERACTION_CONFIGURATION_FLAG_DRAG(1L), INTERACTION_CONFIGURATION_FLAG_MAX(-1L);
+
+    companion object {
+        fun fromValue(v: Long): INTERACTION_CONFIGURATION_FLAGS = entries.firstOrNull { it.value == v }
+            ?: error("Unknown INTERACTION_CONFIGURATION_FLAGS value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum INERTIA_PARAMETER}
+ */
+enum class INERTIA_PARAMETER(val value: Long) {
+    INERTIA_PARAMETER_TRANSLATION_DECELERATION(1L), INERTIA_PARAMETER_TRANSLATION_DISPLACEMENT(2L), INERTIA_PARAMETER_ROTATION_DECELERATION(3L), INERTIA_PARAMETER_ROTATION_ANGLE(4L), INERTIA_PARAMETER_EXPANSION_DECELERATION(5L), INERTIA_PARAMETER_EXPANSION_EXPANSION(6L), INERTIA_PARAMETER_MAX(-1L);
+
+    companion object {
+        fun fromValue(v: Long): INERTIA_PARAMETER = entries.firstOrNull { it.value == v }
+            ?: error("Unknown INERTIA_PARAMETER value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum INTERACTION_STATE}
+ */
+enum class INTERACTION_STATE(val value: Long) {
+    INTERACTION_STATE_IDLE(0L), INTERACTION_STATE_IN_INTERACTION(1L), INTERACTION_STATE_POSSIBLE_DOUBLE_TAP(2L), INTERACTION_STATE_MAX(-1L);
+
+    companion object {
+        fun fromValue(v: Long): INTERACTION_STATE = entries.firstOrNull { it.value == v }
+            ?: error("Unknown INTERACTION_STATE value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum INTERACTION_CONTEXT_PROPERTY}
+ */
+enum class INTERACTION_CONTEXT_PROPERTY(val value: Long) {
+    INTERACTION_CONTEXT_PROPERTY_MEASUREMENT_UNITS(1L), INTERACTION_CONTEXT_PROPERTY_INTERACTION_UI_FEEDBACK(2L), INTERACTION_CONTEXT_PROPERTY_FILTER_POINTERS(3L), INTERACTION_CONTEXT_PROPERTY_MAX(-1L);
+
+    companion object {
+        fun fromValue(v: Long): INTERACTION_CONTEXT_PROPERTY = entries.firstOrNull { it.value == v }
+            ?: error("Unknown INTERACTION_CONTEXT_PROPERTY value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum CROSS_SLIDE_THRESHOLD}
+ */
+enum class CROSS_SLIDE_THRESHOLD(val value: Long) {
+    CROSS_SLIDE_THRESHOLD_SELECT_START(0L), CROSS_SLIDE_THRESHOLD_SPEED_BUMP_START(1L), CROSS_SLIDE_THRESHOLD_SPEED_BUMP_END(2L), CROSS_SLIDE_THRESHOLD_REARRANGE_START(3L), CROSS_SLIDE_THRESHOLD_COUNT(4L), CROSS_SLIDE_THRESHOLD_MAX(-1L);
+
+    companion object {
+        fun fromValue(v: Long): CROSS_SLIDE_THRESHOLD = entries.firstOrNull { it.value == v }
+            ?: error("Unknown CROSS_SLIDE_THRESHOLD value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum CROSS_SLIDE_FLAGS}
+ */
+enum class CROSS_SLIDE_FLAGS(val value: Long) {
+    CROSS_SLIDE_FLAGS_NONE(0L), CROSS_SLIDE_FLAGS_SELECT(1L), CROSS_SLIDE_FLAGS_SPEED_BUMP(2L), CROSS_SLIDE_FLAGS_REARRANGE(4L), CROSS_SLIDE_FLAGS_MAX(-1L);
+
+    companion object {
+        fun fromValue(v: Long): CROSS_SLIDE_FLAGS = entries.firstOrNull { it.value == v }
+            ?: error("Unknown CROSS_SLIDE_FLAGS value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum MOUSE_WHEEL_PARAMETER}
+ */
+enum class MOUSE_WHEEL_PARAMETER(val value: Long) {
+    MOUSE_WHEEL_PARAMETER_CHAR_TRANSLATION_X(1L), MOUSE_WHEEL_PARAMETER_CHAR_TRANSLATION_Y(2L), MOUSE_WHEEL_PARAMETER_DELTA_SCALE(3L), MOUSE_WHEEL_PARAMETER_DELTA_ROTATION(4L), MOUSE_WHEEL_PARAMETER_PAGE_TRANSLATION_X(5L), MOUSE_WHEEL_PARAMETER_PAGE_TRANSLATION_Y(6L), MOUSE_WHEEL_PARAMETER_MAX(-1L);
+
+    companion object {
+        fun fromValue(v: Long): MOUSE_WHEEL_PARAMETER = entries.firstOrNull { it.value == v }
+            ?: error("Unknown MOUSE_WHEEL_PARAMETER value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum TAP_PARAMETER}
+ */
+enum class TAP_PARAMETER(val value: Long) {
+    TAP_PARAMETER_MIN_CONTACT_COUNT(0L), TAP_PARAMETER_MAX_CONTACT_COUNT(1L), TAP_PARAMETER_MAX(-1L);
+
+    companion object {
+        fun fromValue(v: Long): TAP_PARAMETER = entries.firstOrNull { it.value == v }
+            ?: error("Unknown TAP_PARAMETER value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum HOLD_PARAMETER}
+ */
+enum class HOLD_PARAMETER(val value: Long) {
+    HOLD_PARAMETER_MIN_CONTACT_COUNT(0L), HOLD_PARAMETER_MAX_CONTACT_COUNT(1L), HOLD_PARAMETER_THRESHOLD_RADIUS(2L), HOLD_PARAMETER_THRESHOLD_START_DELAY(3L), HOLD_PARAMETER_MAX(-1L);
+
+    companion object {
+        fun fromValue(v: Long): HOLD_PARAMETER = entries.firstOrNull { it.value == v }
+            ?: error("Unknown HOLD_PARAMETER value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum TRANSLATION_PARAMETER}
+ */
+enum class TRANSLATION_PARAMETER(val value: Long) {
+    TRANSLATION_PARAMETER_MIN_CONTACT_COUNT(0L), TRANSLATION_PARAMETER_MAX_CONTACT_COUNT(1L), TRANSLATION_PARAMETER_MAX(-1L);
+
+    companion object {
+        fun fromValue(v: Long): TRANSLATION_PARAMETER = entries.firstOrNull { it.value == v }
+            ?: error("Unknown TRANSLATION_PARAMETER value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum MANIPULATION_RAILS_STATE}
+ */
+enum class MANIPULATION_RAILS_STATE(val value: Long) {
+    MANIPULATION_RAILS_STATE_UNDECIDED(0L), MANIPULATION_RAILS_STATE_FREE(1L), MANIPULATION_RAILS_STATE_RAILED(2L), MANIPULATION_RAILS_STATE_MAX(-1L);
+
+    companion object {
+        fun fromValue(v: Long): MANIPULATION_RAILS_STATE = entries.firstOrNull { it.value == v }
+            ?: error("Unknown MANIPULATION_RAILS_STATE value: $v")
+    }
+}
+
+/**
+ * {@snippet lang=c : CreateInteractionContext typedef HRESULT = Long((typedef HINTERACTIONCONTEXT = (Declared(HINTERACTIONCONTEXT__))*)*)
+ */
+private val CreateInteractionContext_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private var CreateInteractionContext_HANDLE: MethodHandle? = null
+
+fun CreateInteractionContext(arg0: MemorySegment): Int {
+    check(_initialized) { "Win32 CreateInteractionContext called before init()" }
+    val _handle = CreateInteractionContext_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
+ * {@snippet lang=c : DestroyInteractionContext typedef HRESULT = Long(typedef HINTERACTIONCONTEXT = (Declared(HINTERACTIONCONTEXT__))*)
+ */
+private val DestroyInteractionContext_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private var DestroyInteractionContext_HANDLE: MethodHandle? = null
+
+fun DestroyInteractionContext(arg0: MemorySegment): Int {
+    check(_initialized) { "Win32 DestroyInteractionContext called before init()" }
+    val _handle = DestroyInteractionContext_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
+ * {@snippet lang=c : RegisterOutputCallbackInteractionContext typedef HRESULT = Long(typedef HINTERACTIONCONTEXT = (Declared(HINTERACTIONCONTEXT__))*,typedef INTERACTION_CONTEXT_OUTPUT_CALLBACK = (Void((Void)*,(Declared(INTERACTION_CONTEXT_OUTPUT))*))*,(Void)*)
+ */
+private val RegisterOutputCallbackInteractionContext_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private var RegisterOutputCallbackInteractionContext_HANDLE: MethodHandle? = null
+
+fun RegisterOutputCallbackInteractionContext(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Int {
+    check(_initialized) { "Win32 RegisterOutputCallbackInteractionContext called before init()" }
+    val _handle = RegisterOutputCallbackInteractionContext_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0, arg1, arg2) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
+ * {@snippet lang=c : SetInteractionConfigurationInteractionContext typedef HRESULT = Long(typedef HINTERACTIONCONTEXT = (Declared(HINTERACTIONCONTEXT__))*,typedef UINT32 = UNSIGNED = Int,(typedef INTERACTION_CONTEXT_CONFIGURATION = Declared(INTERACTION_CONTEXT_CONFIGURATION))*)
+ */
+private val SetInteractionConfigurationInteractionContext_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private var SetInteractionConfigurationInteractionContext_HANDLE: MethodHandle? = null
+
+fun SetInteractionConfigurationInteractionContext(arg0: MemorySegment, arg1: Int, arg2: MemorySegment): Int {
+    check(_initialized) { "Win32 SetInteractionConfigurationInteractionContext called before init()" }
+    val _handle = SetInteractionConfigurationInteractionContext_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0, arg1, arg2) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
+ * {@snippet lang=c : GetInteractionConfigurationInteractionContext typedef HRESULT = Long(typedef HINTERACTIONCONTEXT = (Declared(HINTERACTIONCONTEXT__))*,typedef UINT32 = UNSIGNED = Int,(typedef INTERACTION_CONTEXT_CONFIGURATION = Declared(INTERACTION_CONTEXT_CONFIGURATION))*)
+ */
+private val GetInteractionConfigurationInteractionContext_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private var GetInteractionConfigurationInteractionContext_HANDLE: MethodHandle? = null
+
+fun GetInteractionConfigurationInteractionContext(arg0: MemorySegment, arg1: Int, arg2: MemorySegment): Int {
+    check(_initialized) { "Win32 GetInteractionConfigurationInteractionContext called before init()" }
+    val _handle = GetInteractionConfigurationInteractionContext_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0, arg1, arg2) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
+ * {@snippet lang=c : SetPropertyInteractionContext typedef HRESULT = Long(typedef HINTERACTIONCONTEXT = (Declared(HINTERACTIONCONTEXT__))*,typedef INTERACTION_CONTEXT_PROPERTY = Declared(INTERACTION_CONTEXT_PROPERTY),typedef UINT32 = UNSIGNED = Int)
+ */
+private val SetPropertyInteractionContext_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
+private var SetPropertyInteractionContext_HANDLE: MethodHandle? = null
+
+fun SetPropertyInteractionContext(arg0: MemorySegment, arg1: INTERACTION_CONTEXT_PROPERTY, arg2: Int): Int {
+    check(_initialized) { "Win32 SetPropertyInteractionContext called before init()" }
+    val _handle = SetPropertyInteractionContext_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0, arg1.value.toInt(), arg2) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
+ * {@snippet lang=c : GetPropertyInteractionContext typedef HRESULT = Long(typedef HINTERACTIONCONTEXT = (Declared(HINTERACTIONCONTEXT__))*,typedef INTERACTION_CONTEXT_PROPERTY = Declared(INTERACTION_CONTEXT_PROPERTY),(typedef UINT32 = UNSIGNED = Int)*)
+ */
+private val GetPropertyInteractionContext_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private var GetPropertyInteractionContext_HANDLE: MethodHandle? = null
+
+fun GetPropertyInteractionContext(arg0: MemorySegment, arg1: INTERACTION_CONTEXT_PROPERTY, arg2: MemorySegment): Int {
+    check(_initialized) { "Win32 GetPropertyInteractionContext called before init()" }
+    val _handle = GetPropertyInteractionContext_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0, arg1.value.toInt(), arg2) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
+ * {@snippet lang=c : ResetInteractionContext typedef HRESULT = Long(typedef HINTERACTIONCONTEXT = (Declared(HINTERACTIONCONTEXT__))*)
+ */
+private val ResetInteractionContext_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private var ResetInteractionContext_HANDLE: MethodHandle? = null
+
+fun ResetInteractionContext(arg0: MemorySegment): Int {
+    check(_initialized) { "Win32 ResetInteractionContext called before init()" }
+    val _handle = ResetInteractionContext_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
+ * {@snippet lang=c : AddPointerInteractionContext typedef HRESULT = Long(typedef HINTERACTIONCONTEXT = (Declared(HINTERACTIONCONTEXT__))*,typedef UINT32 = UNSIGNED = Int)
+ */
+private val AddPointerInteractionContext_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
+private var AddPointerInteractionContext_HANDLE: MethodHandle? = null
+
+fun AddPointerInteractionContext(arg0: MemorySegment, arg1: Int): Int {
+    check(_initialized) { "Win32 AddPointerInteractionContext called before init()" }
+    val _handle = AddPointerInteractionContext_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0, arg1) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
+ * {@snippet lang=c : RemovePointerInteractionContext typedef HRESULT = Long(typedef HINTERACTIONCONTEXT = (Declared(HINTERACTIONCONTEXT__))*,typedef UINT32 = UNSIGNED = Int)
+ */
+private val RemovePointerInteractionContext_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
+private var RemovePointerInteractionContext_HANDLE: MethodHandle? = null
+
+fun RemovePointerInteractionContext(arg0: MemorySegment, arg1: Int): Int {
+    check(_initialized) { "Win32 RemovePointerInteractionContext called before init()" }
+    val _handle = RemovePointerInteractionContext_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0, arg1) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
+ * {@snippet lang=c : ProcessPointerFramesInteractionContext typedef HRESULT = Long(typedef HINTERACTIONCONTEXT = (Declared(HINTERACTIONCONTEXT__))*,typedef UINT32 = UNSIGNED = Int,typedef UINT32 = UNSIGNED = Int,(typedef POINTER_INFO = Declared(tagPOINTER_INFO))*)
+ */
+private val ProcessPointerFramesInteractionContext_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private var ProcessPointerFramesInteractionContext_HANDLE: MethodHandle? = null
+
+fun ProcessPointerFramesInteractionContext(arg0: MemorySegment, arg1: Int, arg2: Int, arg3: MemorySegment): Int {
+    check(_initialized) { "Win32 ProcessPointerFramesInteractionContext called before init()" }
+    val _handle = ProcessPointerFramesInteractionContext_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0, arg1, arg2, arg3) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
 
 /**
  * Initializes all Win32 bindings.
@@ -6821,6 +7216,11 @@ fun init() {
     }
     _DLL_KERNEL32_DLL = try {
         SymbolLookup.libraryLookup("Kernel32.dll", Arena.global())
+    } catch (ex: Throwable) {
+        null
+    }
+    _DLL_NINPUT_DLL = try {
+        SymbolLookup.libraryLookup("Ninput.dll", Arena.global())
     } catch (ex: Throwable) {
         null
     }
@@ -6948,6 +7348,17 @@ fun init() {
     CoCreateInstance_HANDLE = _lookup("CoCreateInstance").find("CoCreateInstance").map { Linker.nativeLinker().downcallHandle(it, CoCreateInstance_DESC) }.orElse(null)
     CoTaskMemAlloc_HANDLE = _lookup("CoTaskMemAlloc").find("CoTaskMemAlloc").map { Linker.nativeLinker().downcallHandle(it, CoTaskMemAlloc_DESC) }.orElse(null)
     CoTaskMemFree_HANDLE = _lookup("CoTaskMemFree").find("CoTaskMemFree").map { Linker.nativeLinker().downcallHandle(it, CoTaskMemFree_DESC) }.orElse(null)
+    CreateInteractionContext_HANDLE = _lookup("CreateInteractionContext").find("CreateInteractionContext").map { Linker.nativeLinker().downcallHandle(it, CreateInteractionContext_DESC) }.orElse(null)
+    DestroyInteractionContext_HANDLE = _lookup("DestroyInteractionContext").find("DestroyInteractionContext").map { Linker.nativeLinker().downcallHandle(it, DestroyInteractionContext_DESC) }.orElse(null)
+    RegisterOutputCallbackInteractionContext_HANDLE = _lookup("RegisterOutputCallbackInteractionContext").find("RegisterOutputCallbackInteractionContext").map { Linker.nativeLinker().downcallHandle(it, RegisterOutputCallbackInteractionContext_DESC) }.orElse(null)
+    SetInteractionConfigurationInteractionContext_HANDLE = _lookup("SetInteractionConfigurationInteractionContext").find("SetInteractionConfigurationInteractionContext").map { Linker.nativeLinker().downcallHandle(it, SetInteractionConfigurationInteractionContext_DESC) }.orElse(null)
+    GetInteractionConfigurationInteractionContext_HANDLE = _lookup("GetInteractionConfigurationInteractionContext").find("GetInteractionConfigurationInteractionContext").map { Linker.nativeLinker().downcallHandle(it, GetInteractionConfigurationInteractionContext_DESC) }.orElse(null)
+    SetPropertyInteractionContext_HANDLE = _lookup("SetPropertyInteractionContext").find("SetPropertyInteractionContext").map { Linker.nativeLinker().downcallHandle(it, SetPropertyInteractionContext_DESC) }.orElse(null)
+    GetPropertyInteractionContext_HANDLE = _lookup("GetPropertyInteractionContext").find("GetPropertyInteractionContext").map { Linker.nativeLinker().downcallHandle(it, GetPropertyInteractionContext_DESC) }.orElse(null)
+    ResetInteractionContext_HANDLE = _lookup("ResetInteractionContext").find("ResetInteractionContext").map { Linker.nativeLinker().downcallHandle(it, ResetInteractionContext_DESC) }.orElse(null)
+    AddPointerInteractionContext_HANDLE = _lookup("AddPointerInteractionContext").find("AddPointerInteractionContext").map { Linker.nativeLinker().downcallHandle(it, AddPointerInteractionContext_DESC) }.orElse(null)
+    RemovePointerInteractionContext_HANDLE = _lookup("RemovePointerInteractionContext").find("RemovePointerInteractionContext").map { Linker.nativeLinker().downcallHandle(it, RemovePointerInteractionContext_DESC) }.orElse(null)
+    ProcessPointerFramesInteractionContext_HANDLE = _lookup("ProcessPointerFramesInteractionContext").find("ProcessPointerFramesInteractionContext").map { Linker.nativeLinker().downcallHandle(it, ProcessPointerFramesInteractionContext_DESC) }.orElse(null)
 
     _initialized = true
 }

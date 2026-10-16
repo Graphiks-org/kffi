@@ -31,7 +31,11 @@ class Win32PointerPacketsIntegrationTest {
                     }
                 } catch (problem: Throwable) { failure = problem }
                 0
-            } else DefWindowProcW(MemorySegment.ofAddress(hwnd), message, w, l)
+            } else when (message) {
+                0x249, 0x24a, 0x24c -> 0L
+                0x24b -> 1L
+                else -> DefWindowProcW(MemorySegment.ofAddress(hwnd), message, w, l)
+            }
         }.use { window ->
             val hwnd = MemorySegment.ofAddress(window.hwnd)
             // The injection must hit this HWND even when the test process cannot steal foreground focus.

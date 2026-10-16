@@ -141,13 +141,20 @@ if [[ ! -d "$WINDOWS_SDK_INCLUDE/um" || ! -d "$WINDOWS_SDK_INCLUDE/shared" || ! 
     exit 1
 fi
 
+# The SDK depends on MSVC CRT headers, which are absent from a standalone SDK install.
+# Keep the official, hash-pinned source-only package in ignored build output.
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "$(windows_path "$REPO_ROOT/scripts/prepare-win32-crt.ps1")" \
+    -BuildDirectory "$(windows_path "$REPO_ROOT/kffi-win32/build")"
+CRT_INCLUDE="$(windows_path "$REPO_ROOT/kffi-win32/build/crt-14.44.35220")"
+
 SDK_ARGS=(
     -A "-isystem" -A "$WINDOWS_SDK_INCLUDE/um"
     -A "-isystem" -A "$WINDOWS_SDK_INCLUDE/shared"
     -A "-isystem" -A "$WINDOWS_SDK_INCLUDE/ucrt"
+    -A "-isystem" -A "$CRT_INCLUDE"
 )
 
-DLLS=(user32 kernel32 gdi32 dwmapi ole32)
+DLLS=(user32 kernel32 gdi32 dwmapi ole32 ninput)
 GENERATION_DIR="$REPO_ROOT/kffi-win32/generation"
 STAGING="$REPO_ROOT/kffi-win32/build/generated"
 OUTPUT_PACKAGE="$REPO_ROOT/kffi-win32/src/jvmMain/kotlin/org/graphiks/kffi/win32/generated"
@@ -197,6 +204,7 @@ cat > "$TMP_HEADER" <<'EOF'
 #include <windows.h>
 #include <dwmapi.h>
 #include <objbase.h>
+#include <interactioncontext.h>
 EOF
 
 echo "→ Regenerating ${#ALL_FUNCTIONS[@]} Win32 functions"

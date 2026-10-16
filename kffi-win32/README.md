@@ -14,6 +14,8 @@ input loop:
 - `kernel32.dll`
 - `gdi32.dll`
 - `dwmapi.dll`
+- `ole32.dll`
+- `ninput.dll`
 
 The checked-in Kotlin package is
 `org.graphiks.kffi.win32.generated`. The source is generated code; handwritten
@@ -39,6 +41,24 @@ Generation requires:
 - Windows SDK `10.0.28000.0`, including its `um`, `shared` and `ucrt` include
   trees;
 - the initialized `kextract` submodule.
+
+The generator also downloads the source-only Microsoft CRT Headers package
+`14.44.35220` into ignored build output and checks SHA-256
+`852382a9aa73502b7849c1bcadfb603ba7175c4e8b60e6aba03c7de711d4ece5`.
+This supplies `excpt.h` and the CRT dependencies of the SDK's `float.h`; no
+Visual Studio installation or downloaded executable is run. An internet
+connection is required for the first generation.
+
+Native test input is packaged separately under the JVM classifier
+`native-test-support`. Its controlled touch harness injects genuine Windows
+contacts into an explicitly selected visible test window and pumps its owner
+thread. It is absent from the production jar.
+
+`Win32InteractionContext` submits complete, copied window-owned frames with
+native pointer filtering disabled (read back as zero). Screen-pixel units,
+manipulation flags `0x1f` and tap flags `0x3` are read back before admission;
+inertia is disabled. Optional HWND selection rejects foreign subframes.
+Reset restores both configuration and the native output callback registration.
 
 Windows SDK `10.0.28000.0` is required for reproducible committed output. It
 must be installed at `C:/Program Files (x86)/Windows Kits/10/Include/10.0.28000.0`;

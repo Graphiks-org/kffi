@@ -15,18 +15,25 @@ public object Win32PointerPackets {
             val typeOut = arena.allocate(4, 4)
             if (GetPointerType(pointerId, typeOut) == 0) throw Win32PointerException(GetLastError())
             val type = typeOut.get(ValueLayout.JAVA_INT, 0)
-            val stride = when (type) { 2 -> 144; 3 -> 120; else -> 96 }
             fun history(frames: MemorySegment, pointers: MemorySegment, output: MemorySegment): Int = when (type) {
                 2 -> GetPointerFrameTouchInfoHistory(pointerId, frames, pointers, output)
                 3 -> GetPointerFramePenInfoHistory(pointerId, frames, pointers, output)
                 else -> GetPointerFrameInfoHistory(pointerId, frames, pointers, output)
             }
+            readFrames(type, maxPointers, maxFrames, budget, ::history, ::GetLastError)
+        }
+    }
+
+    internal fun readFrames(type: Int, maxPointers: Int, maxFrames: Int, budget: Win32PayloadBudget,
+        history: (MemorySegment, MemorySegment, MemorySegment) -> Int, lastError: () -> Int): Win32PointerBatch {
+        val stride = when (type) { 2 -> 144; 3 -> 120; else -> 96 }
+        return Arena.ofConfined().use { arena ->
             val framesOut = arena.allocate(4, 4)
             val pointersOut = arena.allocate(4, 4)
             repeat(3) {
                 framesOut.set(ValueLayout.JAVA_INT, 0, 0); pointersOut.set(ValueLayout.JAVA_INT, 0, 0)
                 val probed = history(framesOut, pointersOut, MemorySegment.NULL)
-                val error = if (probed == 0) GetLastError() else 0
+                val error = if (probed == 0) lastError() else 0
                 if (probed == 0 && error != 122) throw Win32PointerException(error)
                 val frames = framesOut.get(ValueLayout.JAVA_INT, 0)
                 val pointers = pointersOut.get(ValueLayout.JAVA_INT, 0)
@@ -34,17 +41,19 @@ public object Win32PointerPackets {
                 val lease = budget.retain(bytes) ?: throw Win32PointerException(8)
                 var transferred = false
                 try {
-                    Arena.ofConfined().use { copyArena ->
+                    Arena.ofConfined().use copy@ { copyArena ->
                         val buffer = copyArena.allocate(pointers.toLong() * frames * stride, 8)
                         val read = history(framesOut, pointersOut, buffer)
-                        val readError = if (read == 0) GetLastError() else 0
+                        val readError = if (read == 0) lastError() else 0
                         if (read == 0) {
-                            if (readError == 122) return@use
+                            if (readError == 122) return@copy
                             throw Win32PointerException(readError)
                         }
                         val actualFrames = framesOut.get(ValueLayout.JAVA_INT, 0)
                         val actualPointers = pointersOut.get(ValueLayout.JAVA_INT, 0)
-                        checkedBytes(actualPointers, actualFrames, stride, pointers, frames)
+                        checkedBytes(actualPointers, actualFrames, stride, maxPointers, maxFrames)
+                        // SDK success may still contain only the most recent rows, with total counts in outputs.
+                        if (actualPointers > pointers || actualFrames > frames) return@copy
                         val result = List(actualFrames) { frame ->
                             val start = frame.toLong() * actualPointers * stride
                             val frameId = buffer.get(ValueLayout.JAVA_INT, start + 8)
@@ -65,11 +74,13 @@ public object Win32PointerPackets {
         }
     }
 
-    /** Windows' MI_WP_SIGNATURE plus its touch-origin bit; ordinary mouse messages do not match. */
+    /** Windows' MI_WP_SIGNATURE identifies pen/touch promotion; ordinary mouse messages do not match. */
     public fun isPromotedMouseMessage(): Boolean {
         requireWin32Input()
-        val extra = GetMessageExtraInfo()
-        return extra and 0xffffff00L == 0xff515700L && extra and 0x80L != 0L
+        return isPromotedSignature(GetMessageExtraInfo())
+    }
+    internal fun isPromotedSignature(extra: Long): Boolean {
+        return extra and 0xffffff00L == 0xff515700L
     }
 
     // Reserve both native scratch and copied scalar payload before allocation, including every history entry.

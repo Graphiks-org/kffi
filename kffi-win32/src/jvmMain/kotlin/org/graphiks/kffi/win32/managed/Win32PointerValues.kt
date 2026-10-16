@@ -1,7 +1,5 @@
 package org.graphiks.kffi.win32.managed
 
-import java.util.concurrent.atomic.AtomicBoolean
-
 /** One copied POINTER_INFO and its own historical optional attributes. All coordinates are screen physical. */
 public data class Win32PointerSample(
     public val id: Int, public val type: Int, public val flags: Int, public val position: Win32Point,
@@ -19,8 +17,17 @@ public data class Win32PointerFrame(public val frameId: Int, public val pointers
 public class Win32PointerBatch internal constructor(
     public val frames: List<Win32PointerFrame>, private val lease: AutoCloseable,
 ) : AutoCloseable {
-    private val closed = AtomicBoolean()
-    internal fun requireOpen() { check(!closed.get()) { "Pointer batch is closed" } }
-    override fun close() { if (closed.compareAndSet(false, true)) lease.close() }
+    private val monitor = Any()
+    private var closed = false
+    private var readers = 0
+    internal fun <T> borrow(block: (List<Win32PointerFrame>) -> T): T {
+        synchronized(monitor) { check(!closed) { "Pointer batch is closed" }; readers++ }
+        try { return block(frames) }
+        finally { if (synchronized(monitor) { readers--; closed && readers == 0 }) lease.close() }
+    }
+    override fun close() {
+        val release = synchronized(monitor) { if (closed) false else { closed = true; readers == 0 } }
+        if (release) lease.close()
+    }
 }
 public class Win32PointerException(public val error: Int) : IllegalStateException("Win32 pointer failure: $error")
