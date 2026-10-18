@@ -44,6 +44,14 @@ class Win32TextServicesIntegrationTest {
         } }
     }
 
+    @Test fun clientCaretCoordinatesRoundTripWithoutNarrowingToMessageWords() {
+        window().use { window ->
+            val expected = Win32Point(1_000_000, -1_000_000)
+            val client = Win32Pointer.screenToClient(window.hwnd, expected.x, expected.y)
+            assertEquals(expected, Win32Pointer.clientToScreen(window.hwnd, client.x, client.y))
+        }
+    }
+
     @Test fun nativeCharactersWaitForWritebackAndDoNotDoubleCommit() {
         window().use { window -> Win32TextServices.open().use { services ->
             val changes = mutableListOf<Win32TextChange>()
