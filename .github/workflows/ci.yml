@@ -149,7 +149,10 @@ jobs:
         uses: actions/upload-artifact@v6
         with:
           name: win32-integration
-          path: kffi-win32/build/win32-integration/**
+            path: |
+              kffi-win32/build/win32-integration/**
+              kffi-win32/build/test-results/win32IntegrationTest/**
+              kffi-win32/build/test-results/jvmTest/**
           if-no-files-found: warn
       - name: Compile Apple Native callback token codecs
         if: startsWith(matrix.os, 'macos')

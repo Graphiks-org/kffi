@@ -17,10 +17,12 @@ class Win32InteractionContextIntegrationTest {
     @Test fun realWindowsRecognizerEmitsManipulationAndDoubleTap() {
         val outputs = mutableListOf<Win32InteractionOutput>()
         val firstFrames = mutableListOf<String>()
+        var lastManipulationFrame: Int? = null
         Win32ManagedWindow.open("interaction-native") { h, m, w, l -> DefWindowProcW(MemorySegment.ofAddress(h), m, w, l) }.use { window ->
             Win32InteractionContext.open(4, onOutput = outputs::add).use { context ->
                 assertEquals(Win32InteractionConfiguration(true, true, true, true, true), context.configuration)
                 Win32InjectedTouchHarness.run(onFrame = { batch ->
+                    lastManipulationFrame = batch.frames.first().frameId
                     if (firstFrames.size < 6) firstFrames += batch.frames.joinToString { f -> "${f.frameId}:" + f.pointers.joinToString { p -> "${p.id}/${p.flags.toUInt().toString(16)}" } }
                     context.process(batch)
                 }) {
@@ -40,11 +42,15 @@ class Win32InteractionContextIntegrationTest {
                 assertTrue(manipulations.all { abs(it.translationX ?: 0.0) < 100.0 && abs(it.translationY ?: 0.0) < 100.0 })
                 assertTrue(outputs.all { it.flags and 8 == 0 }, "Inertia was not configured")
                 context.reset()
-                Win32InjectedTouchHarness.run(onFrame = context::process) {
+                val tapFrames = mutableListOf<String>()
+                Win32InjectedTouchHarness.run(onFrame = { batch ->
+                    if (tapFrames.size < 32) tapFrames += describe(batch)
+                    context.process(batch)
+                }) {
                     frame(Contact(0, 300, 300, DOWN)); frame(Contact(0, 300, 300, UP))
                     frame(Contact(0, 300, 300, DOWN)); frame(Contact(0, 300, 300, UP))
                 }
-                assertTrue(outputs.any { it.interactionId == 2 && it.tapCount == 2 }, "No Windows double tap: $outputs")
+                assertTrue(outputs.any { it.interactionId == 2 && it.tapCount == 2 }, "No Windows double tap: beforeReset=$lastManipulationFrame frames=$tapFrames outputs=$outputs")
             }
         }
     }
@@ -52,18 +58,22 @@ class Win32InteractionContextIntegrationTest {
     @Test fun closeDuringOutputDefersNativeDestruction() {
         lateinit var context: Win32InteractionContext
         var delivered = 0
+        val frames = mutableListOf<String>()
         context = Win32InteractionContext.open(2) {
             delivered++
             context.close()
             assertFalse(context.nativeClosed, "DestroyInteractionContext must wait until native processing returns")
         }
         context.use {
-            Win32InjectedTouchHarness.run(onFrame = { if(!context.nativeClosed) context.process(it) }) {
+            Win32InjectedTouchHarness.run(onFrame = {
+                if (frames.size < 32) frames += describe(it)
+                if(!context.nativeClosed) context.process(it)
+            }) {
                 frame(Contact(0, 100, 100, DOWN))
                 repeat(10) { index -> frame(Contact(0, 120 + index * 20, 100, MOVE)) }
                 frame(Contact(0, 300, 100, UP))
             }
-            assertTrue(delivered > 0, "Native callback was not reached")
+            assertTrue(delivered > 0, "Native callback was not reached: frames=$frames closed=${context.nativeClosed}")
             assertTrue(context.nativeClosed)
         }
     }
@@ -92,6 +102,11 @@ class Win32InteractionContextIntegrationTest {
     }
 
     companion object {
+        private fun describe(batch: Win32PointerBatch) = batch.frames.joinToString { frame ->
+            "frame=${frame.frameId}:" + frame.pointers.joinToString { pointer ->
+                "id=${pointer.id}/flags=${pointer.flags.toUInt().toString(16)}/time=${pointer.time}/qpc=${pointer.performanceCount}/history=${pointer.historyCount}"
+            }
+        }
         private const val DOWN = 0x10006
         private const val MOVE = 0x20006
         private const val UP = 0x40000
