@@ -87,7 +87,9 @@ public class Win32InteractionContext private constructor(
         owner(); check(ready && !closeRequested.get()); check(depth == 0 && callbackDepth == 0)
         ready = false
         try {
-            port.reset(); lastFrame = null; installed = configure()
+            // Windows history can still contain packets already submitted before reset.
+            // Frame IDs belong to the input stream, not to the recognizer instance.
+            port.reset(); installed = configure()
             port.setOutput(::accept, ::fail) // ResetInteractionContext clears the native output registration too.
             ready = true
         }

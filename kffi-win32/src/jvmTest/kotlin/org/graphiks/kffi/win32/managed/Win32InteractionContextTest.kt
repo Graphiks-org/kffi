@@ -68,6 +68,15 @@ class Win32InteractionContextTest {
             context.reset(); assertEquals(2, port.trace.count { it == "output" })
         }
     }
+    @Test fun resetDoesNotReplayHistoricalFramesFromBeforeTheReset() {
+        val port = Port()
+        Win32InteractionContext.open(port, 2, {}).use { context ->
+            batch(frame(2, 1), frame(1, 1)).use(context::process)
+            context.reset()
+            batch(frame(3, 1), frame(2, 1), frame(1, 1)).use(context::process)
+            assertEquals(listOf(listOf(2, 1), listOf(3)), port.processed.map { group -> group.map { it.frameId } })
+        }
+    }
     @Test fun aFrameClosedDuringOutputKeepsItsLeaseUntilProcessingReturns() {
         val port = Port(); var retained = 1
         val batch = Win32PointerBatch(listOf(frame(1, 1)), AutoCloseable { retained-- })
