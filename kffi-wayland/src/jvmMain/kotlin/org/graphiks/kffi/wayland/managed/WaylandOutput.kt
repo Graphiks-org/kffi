@@ -258,6 +258,10 @@ public class WaylandOutput internal constructor(
         check(rc == 0) { "wl_output_add_listener failed with rc=$rc" }
     }
 
+    /** Raw output proxy for fullscreen targeting. */
+    internal val rawProxy: MemorySegment
+        get() = proxy
+
     /** Releases the output with `wl_output.release` (v3+); idempotent. */
     override fun close() {
         if (!closed.compareAndSet(false, true)) {

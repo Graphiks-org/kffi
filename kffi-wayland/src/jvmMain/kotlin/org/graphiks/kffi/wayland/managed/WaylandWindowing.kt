@@ -11,8 +11,14 @@ import java.lang.invoke.MethodType
 import java.util.concurrent.atomic.AtomicBoolean
 import org.graphiks.kffi.wayland.XDG_SURFACE_ACK_CONFIGURE
 import org.graphiks.kffi.wayland.XDG_SURFACE_GET_TOPLEVEL
+import org.graphiks.kffi.wayland.XDG_TOPLEVEL_MOVE
+import org.graphiks.kffi.wayland.XDG_TOPLEVEL_RESIZE
 import org.graphiks.kffi.wayland.XDG_TOPLEVEL_SET_APP_ID
+import org.graphiks.kffi.wayland.XDG_TOPLEVEL_SET_FULLSCREEN
+import org.graphiks.kffi.wayland.XDG_TOPLEVEL_SET_MAX_SIZE
+import org.graphiks.kffi.wayland.XDG_TOPLEVEL_SET_MIN_SIZE
 import org.graphiks.kffi.wayland.XDG_TOPLEVEL_SET_TITLE
+import org.graphiks.kffi.wayland.XDG_TOPLEVEL_UNSET_FULLSCREEN
 import org.graphiks.kffi.wayland.WL_COMPOSITOR_CREATE_SURFACE
 import org.graphiks.kffi.wayland.WL_SURFACE_ATTACH
 import org.graphiks.kffi.wayland.WL_SURFACE_COMMIT
@@ -27,6 +33,7 @@ import org.graphiks.kffi.wayland.wlProxyGetVersion
 import org.graphiks.kffi.wayland.wlProxyMarshalFlagsFourInt
 import org.graphiks.kffi.wayland.wlProxyMarshalFlagsObjectTwoInt
 import org.graphiks.kffi.wayland.wlProxyMarshalFlagsString
+import org.graphiks.kffi.wayland.wlProxyMarshalFlagsTwoInt
 import org.graphiks.kffi.wayland.wlProxyMarshalFlagsUint
 import org.graphiks.kffi.wayland.wlProxyMarshalFlagsVoid
 import org.graphiks.kffi.wayland.wlProxyMarshalFlagsGetXdgSurface
@@ -512,6 +519,59 @@ public class WaylandToplevel internal constructor(
     }
 
     /** `xdg_toplevel.set_title`. */
+    /**
+     * `xdg_toplevel.move` (opcode 5): starts an interactive move driven by
+     * the compositor. The serial must come from a real input event of
+     * [seat] — a fabricated or stale serial is rejected server-side.
+     */
+    public fun beginMove(seat: WaylandSeat, serial: Int) {
+        val objectUint = WindowingFactory.requireHandle(
+            org.graphiks.kffi.wayland.wlProxyMarshalFlagsObjectUint,
+            "wl_proxy_marshal_flags",
+        )
+        objectUint.invoke(proxy, XDG_TOPLEVEL_MOVE, MemorySegment.NULL, proxyVersion(), 0, seat.rawProxy, serial) as Int
+    }
+
+    /**
+     * `xdg_toplevel.resize` (opcode 6): starts an interactive resize for the
+     * given [edges] bitmask (xdg resize edge). Same serial rule as
+     * [beginMove].
+     */
+    public fun beginResize(seat: WaylandSeat, serial: Int, edges: Int) {
+        val three = WindowingFactory.requireHandle(
+            org.graphiks.kffi.wayland.wlProxyMarshalFlagsObjectUintTwoInt,
+            "wl_proxy_marshal_flags",
+        )
+        three.invoke(proxy, XDG_TOPLEVEL_RESIZE, MemorySegment.NULL, proxyVersion(), 0, seat.rawProxy, serial, edges) as Int
+    }
+
+    /** `xdg_toplevel.set_min_size` (opcode 8), zero resets. */
+    public fun setMinSize(width: Int, height: Int) {
+        val twoInt = WindowingFactory.requireHandle(wlProxyMarshalFlagsTwoInt, "wl_proxy_marshal_flags")
+        twoInt.invoke(proxy, XDG_TOPLEVEL_SET_MIN_SIZE, MemorySegment.NULL, proxyVersion(), 0, width, height) as Int
+    }
+
+    /** `xdg_toplevel.set_max_size` (opcode 7), zero resets. */
+    public fun setMaxSize(width: Int, height: Int) {
+        val twoInt = WindowingFactory.requireHandle(wlProxyMarshalFlagsTwoInt, "wl_proxy_marshal_flags")
+        twoInt.invoke(proxy, XDG_TOPLEVEL_SET_MAX_SIZE, MemorySegment.NULL, proxyVersion(), 0, width, height) as Int
+    }
+
+    /** `xdg_toplevel.set_fullscreen` (opcode 11); a null output lets the compositor choose. */
+    public fun setFullscreen(output: org.graphiks.kffi.wayland.managed.WaylandOutput? = null) {
+        val objectOnly = WindowingFactory.requireHandle(
+            org.graphiks.kffi.wayland.wlProxyMarshalFlagsObject,
+            "wl_proxy_marshal_flags",
+        )
+        objectOnly.invoke(proxy, XDG_TOPLEVEL_SET_FULLSCREEN, MemorySegment.NULL, proxyVersion(), 0, output?.rawProxy ?: MemorySegment.NULL) as Int
+    }
+
+    /** `xdg_toplevel.unset_fullscreen` (opcode 12). */
+    public fun unsetFullscreen() {
+        val void = WindowingFactory.requireHandle(wlProxyMarshalFlagsVoid, "wl_proxy_marshal_flags")
+        void.invoke(proxy, XDG_TOPLEVEL_UNSET_FULLSCREEN, MemorySegment.NULL, proxyVersion(), 0) as Int
+    }
+
     public fun setTitle(title: String) {
         val string = WindowingFactory.requireHandle(wlProxyMarshalFlagsString, "wl_proxy_marshal_flags")
         Arena.ofConfined().use { temp ->

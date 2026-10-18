@@ -204,6 +204,57 @@ class WaylandClientIntegrationTest {
     }
 
     @Test
+    fun managedToplevelOperationsRoundTripOnSway() {
+        requireCompositorEnvironment()
+        val client = WaylandClient.connect()
+        assertNotNull(client)
+        client.use {
+            // the seat listener must be registered before the first dispatch:
+            // the registry burst is announced once (phase-4 lesson)
+            var seatName: Int? = null
+            it.registry.addGlobalsListener(
+                onGlobal = { name, interfaceName, _ ->
+                    if (interfaceName == "wl_seat" && seatName == null) seatName = name
+                },
+            )
+            client.roundtrip()
+            val seat = it.bindSeat(seatName!!)
+            assertNotNull(seat)
+            val surface = it.createSurface()
+            val xdg = it.createXdgSurface(surface)
+            val toplevel = it.createToplevel(xdg)
+            val serials = java.util.Collections.synchronizedList(ArrayList<Int>())
+            toplevel.addEventsListener(onConfigure = { _, _, _ -> }, onClose = {}, onFailure = {})
+            xdg.addConfigureListener(onConfigure = { serial -> serials.add(serial) }, onFailure = {})
+            toplevel.setTitle("toplevel-ops")
+            toplevel.setMinSize(120, 90)
+            toplevel.setMaxSize(800, 600)
+            toplevel.setFullscreen()
+            surface.commit()
+            val deadline = System.nanoTime() + 10_000_000_000L
+            while (serials.isEmpty() && System.nanoTime() < deadline) {
+                client.roundtrip()
+                Thread.sleep(25)
+            }
+            assertTrue(serials.isNotEmpty(), "no configure after the toplevel ops")
+            // Serial validation is compositor-dependent: sway accepts a move
+            // with an arbitrary serial once the surface is configured. The
+            // binding-level contract is therefore proven as "the marshal
+            // round-trips without killing the connection"; the eligibility
+            // discipline (only serials from real native callbacks) is
+            // enforced by the consumer, not the protocol here.
+            xdg.ackConfigure(serials.last())
+            client.roundtrip()
+            toplevel.beginMove(seat!!, 0xDEAD)
+            client.roundtrip()
+            assertTrue(!client.hasError(), "the move marshal must round-trip cleanly")
+            toplevel.close()
+            xdg.close()
+            surface.close()
+        }
+    }
+
+    @Test
     fun managedOutputBindsAndDeliversStateAtDone() {
         requireCompositorEnvironment()
         val client = WaylandClient.connect()
