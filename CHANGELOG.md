@@ -50,6 +50,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - The frame-listener revocation gate was inverted and silently dropped
   every live frame callback; the handshake mapping proof now genuinely
   requires the presentation frame.
+- Interactive toplevel operations: `xdg_toplevel` move and resize marshal
+  with the seat object and the input serial, `set_min_size` and
+  `set_max_size` take effect at the next commit, `set_fullscreen` targets
+  the compositor-chosen output when none is given and
+  `unset_fullscreen` returns to windowed. The sway proof documents the
+  serial semantics: validation is compositor-dependent, so serial
+  eligibility is a consumer-side discipline.
 - `kffi-posix`: the wakeup downcall handles are cached per (symbol,
   descriptor, options) instead of being rebuilt for every call. The per-call
   stub churn destabilised the JVM's FFM runtime — after a burst of wakeup
