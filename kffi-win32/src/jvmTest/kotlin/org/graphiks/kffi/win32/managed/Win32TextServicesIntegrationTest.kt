@@ -21,6 +21,29 @@ class Win32TextServicesIntegrationTest {
         assumeTrue(System.getenv("KFFI_WIN32_INTEGRATION") == "1")
     }
 
+    @Test fun closedOwnerDoesNotKeepTheReleasedAcceptedDocument() {
+        window().use { window -> Win32TextServices.open().use { services ->
+            var retained = 0L
+            val budget = Win32PayloadBudget { bytes ->
+                retained += bytes
+                AutoCloseable { retained -= bytes }
+            }
+            val store = services.createStore(window.hwnd, Win32TextSnapshot("initial", Win32TextRange(0, 0), 10),
+                configuration(), Win32TextLimits(1024, 16, 64, budget), { true }, { throw it })
+            store.apply(Win32TextSnapshot("accepted", Win32TextRange(8, 8), 11))
+            store.close()
+            assertTrue(store.nativeClosed)
+            assertEquals(0L, retained)
+            // Closed owners can remain reachable through COM clients. Returning the reservation
+            // is only valid once their owned document reference is empty too.
+            val snapshot = Win32TextStore::class.java.getDeclaredField("accepted").let {
+                it.isAccessible = true
+                it.get(store) as Win32TextSnapshot
+            }
+            assertEquals("", snapshot.text)
+        } }
+    }
+
     @Test fun nativeCharactersWaitForWritebackAndDoNotDoubleCommit() {
         window().use { window -> Win32TextServices.open().use { services ->
             val changes = mutableListOf<Win32TextChange>()

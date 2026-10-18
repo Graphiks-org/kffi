@@ -294,6 +294,7 @@ public class Win32TextStore internal constructor(
             }
         } finally {
             Win32TextComAbi.release(previousFocus); previousFocus = 0
+            accepted = Win32TextSnapshot("", Win32TextRange(0, 0), accepted.epoch)
             beforeActivation.forEach { it.lease.close() }; beforeActivation.clear()
             characters.forEach(::finish); characters.clear()
             highSurrogate?.let(::finish); highSurrogate = null
