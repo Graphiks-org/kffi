@@ -13,6 +13,7 @@ import java.lang.foreign.ValueLayout
 import java.lang.invoke.MethodHandles
 import java.lang.invoke.MethodType
 import java.util.concurrent.atomic.AtomicInteger
+import org.graphiks.kffi.win32.testsupport.Win32TextClient
 import kotlin.test.*
 
 class Win32TextServicesIntegrationTest {
@@ -50,6 +51,25 @@ class Win32TextServicesIntegrationTest {
             val client = Win32Pointer.screenToClient(window.hwnd, expected.x, expected.y)
             assertEquals(expected, Win32Pointer.clientToScreen(window.hwnd, client.x, client.y))
         }
+    }
+
+    @Test fun independentClientUsesRealEditSessionsCompositionAndCaret() {
+        window().use { window -> Win32TextServices.open().use { services ->
+            val changes = mutableListOf<Win32TextChange>()
+            services.createStore(window.hwnd, Win32TextSnapshot("ab", Win32TextRange(1, 1), 10),
+                configuration(), limits(), { changes += it; true }, { throw it }).use { store ->
+                store.activate()
+                Win32TextClient(services, store).use { client ->
+                    client.startComposition("😀")
+                    assertEquals(Win32TextChange.Composition(Win32TextRange(1, 1), "😀", Win32TextRange(2, 2), 10), changes.single())
+                    store.apply(Win32TextSnapshot("a😀b", Win32TextRange(3, 3), 11))
+                    store.updateCursor(Win32WindowRect(100, 200, 2, 20), 11)
+                    assertEquals(Win32WindowRect(100, 200, 2, 20), client.caretRect())
+                    client.endComposition()
+                    assertEquals(Win32TextChange.Composition(null, "", null, 11), changes.last())
+                }
+            }
+        } }
     }
 
     @Test fun nativeCharactersWaitForWritebackAndDoNotDoubleCommit() {

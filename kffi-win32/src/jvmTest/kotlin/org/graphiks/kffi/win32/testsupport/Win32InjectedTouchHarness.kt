@@ -55,6 +55,7 @@ public object Win32InjectedTouchHarness {
     public fun run(maxPointers: Int = 2, onFrame: (Win32PointerBatch) -> Unit, sequence: Emitter.() -> Unit) {
         require(maxPointers in 1..10)
         val failure = AtomicReference<Throwable?>()
+        var forwardFrames = false
         val retained = AtomicLong()
         val budget = Win32PayloadBudget { bytes ->
             val total = retained.addAndGet(bytes)
@@ -63,7 +64,7 @@ public object Win32InjectedTouchHarness {
         }
         Win32ManagedWindow.open("native-touch-fixture") { hwnd, message, w, l ->
             if(message in 0x245..0x247) {
-                try { Win32PointerPackets.read((w and 65535).toInt(), maxPointers, 128, budget).use(onFrame) }
+                try { if (forwardFrames) Win32PointerPackets.read((w and 65535).toInt(), maxPointers, 128, budget).use(onFrame) }
                 catch(problem: Throwable) { failure.compareAndSet(null, problem) }
                 0
             } else when (message) {
@@ -76,18 +77,55 @@ public object Win32InjectedTouchHarness {
             val hwnd = MemorySegment.ofAddress(window.hwnd)
             check(SetWindowPos(hwnd, MemorySegment.NULL, 10, 10, 800, 650, 0x14) != 0)
             window.setVisible(true); Win32WindowOperations.setTopmost(window.hwnd, true)
+            prepareForeground(window.hwnd, maxPointers)
+            forwardFrames = true
             drive(window.hwnd, maxPointers, sequence)
         }
         failure.get()?.let { throw it }
         check(retained.get() == 0L) { "Native touch fixture retained a frame" }
     }
 
-    /** Drives an already-visible, uncovered HWND. Its owner must keep pumping; no handler is replaced. */
+    /** Drives a visible, uncovered HWND after foreground/focus readback. Its owner must keep pumping. */
     public fun drive(targetHwnd: Long, maxPointers: Int = 2, sequence: Emitter.() -> Unit) {
+        driveSequence(targetHwnd, maxPointers, true, sequence)
+    }
+
+    /**
+     * Explicit setup before installing test collectors/handlers. May deliver a DOWN/UP pair to
+     * activate the target when Windows denies a background SetForegroundWindow request.
+     */
+    public fun prepareForeground(targetHwnd: Long, maxPointers: Int = 2) {
+        val hwnd = MemorySegment.ofAddress(targetHwnd)
+        if (GetForegroundWindow().address() == targetHwnd && GetFocus().address() == targetHwnd) return
+        SetForegroundWindow(hwnd)
+        if (GetForegroundWindow().address() != targetHwnd || GetFocus().address() != targetHwnd) {
+            driveSequence(targetHwnd, maxPointers, false) {
+                frame(Contact(0, 0, 0, DOWN)); frame(Contact(0, 0, 0, UP))
+            }
+            SetForegroundWindow(hwnd)
+        }
+        Win32ControlWindow.open { _, _, _, _ -> 0 }.use { pump ->
+            val deadline = System.nanoTime() + 3_000_000_000L
+            while ((GetForegroundWindow().address() != targetHwnd || GetFocus().address() != targetHwnd) &&
+                System.nanoTime() < deadline) pump.pollOne(1)
+        }
+        check(GetForegroundWindow().address() == targetHwnd && GetFocus().address() == targetHwnd) {
+            "Native touch setup could not establish foreground/focus"
+        }
+    }
+
+    private fun driveSequence(targetHwnd: Long, maxPointers: Int, requireForeground: Boolean, sequence: Emitter.() -> Unit) {
         require(maxPointers in 1..10)
         val hwnd = MemorySegment.ofAddress(targetHwnd)
         check(IsWindowVisible(hwnd) != 0) { "Native touch target is not visible" }
             Win32ControlWindow.open { _, _, _, _ -> 0 }.use { pump ->
+                val activated = !requireForeground || GetForegroundWindow().address() == targetHwnd || SetForegroundWindow(hwnd) != 0
+                val focusDeadline = System.nanoTime() + 3_000_000_000L
+                while (requireForeground && (GetForegroundWindow().address() != targetHwnd || GetFocus().address() != targetHwnd) &&
+                    System.nanoTime() < focusDeadline) pump.pollOne(1)
+                check(!requireForeground || (GetForegroundWindow().address() == targetHwnd && GetFocus().address() == targetHwnd)) {
+                    "Native touch foreground prerequisite failed: requested=$activated foregroundMatches=${GetForegroundWindow().address() == targetHwnd} focusMatches=${GetFocus().address() == targetHwnd}"
+                }
                 Arena.ofConfined().use { arena ->
                     val point = arena.allocate(8, 4)
                     point.set(ValueLayout.JAVA_INT, 0, 80); point.set(ValueLayout.JAVA_INT, 4, 80)
