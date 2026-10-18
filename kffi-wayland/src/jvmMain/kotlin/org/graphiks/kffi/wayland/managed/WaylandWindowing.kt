@@ -249,7 +249,7 @@ public class WaylandSurface internal constructor(
                 @Suppress("UNUSED_PARAMETER") callback: MemorySegment,
                 milliseconds: Int,
             ) {
-                if (!revoked.compareAndSet(true, true)) {
+                if (revoked.get()) {
                     return
                 }
                 try {
