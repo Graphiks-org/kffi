@@ -10,6 +10,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Managed Win32 STA text services with a revision-neutral UTF-16 document protocol,
+  ITextStoreACP, composition sinks, input scopes, bounded character delivery and
+  screen caret geometry. Application callbacks are revoked before COM cleanup.
+- Bounded copies of native touch/pen frame history, mask-validated optional pen
+  attributes, promoted-mouse provenance and full client/screen coordinate conversion.
+- Owned Windows Interaction Context with verified screen-pixel configuration,
+  incremental manipulation/double-tap callbacks and quiescent destruction.
+- Separate `native-test-support` JVM classifier for independent TSF edit sessions
+  and controlled native touch injection; no injection API in production artifacts.
 - Managed Win32 window primitives: checked topmost levels, window-owned flashing,
   native system menu/move/resize, WDA_MONITOR display-affinity readback, owned
   RGBA8 icons/cursors, and foreground confinement with foreign-clip preservation.
@@ -18,6 +27,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   Native layouts remain confined to the managed Win32 module.
 
 ### Fixed
+- Preserve pointer-frame deduplication across interaction-context reset; native
+  packet history can still contain frames submitted before the reset.
 - Intersect pointer confinement with the visible virtual desktop and register
   clip ownership before readback, so off-screen normalization or readback failure
   cannot leave a successful native write outside the release path.

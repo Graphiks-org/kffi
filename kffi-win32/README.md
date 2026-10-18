@@ -195,3 +195,54 @@ dimensions including their frame before storing a constraint or invoking setters
 
 `Win32WindowPropertiesIntegrationTest` proves the native calls with
 `KFFI_WIN32_INTEGRATION=1`. The local development publisher packages the tested JVM artifacts.
+
+## Native text, pointer frames and interaction recognition
+
+`Win32TextServices.open()` initializes COM on the HWND's platform STA thread.
+Create a store with an accepted `Win32TextSnapshot`, explicit configuration,
+limits and an application payload-reservation callback. Install the receiving
+application target before calling `activate()`. Changes carry the supplied opaque
+epoch; `apply()` is the application's accepted UTF-16 snapshot. One pending native
+edit waits for application adoption, and later characters/locks stay bounded.
+Post application writeback after a native callback returns: synchronous COM
+callback writeback is rejected with `TS_E_SYNCHRONOUS`.
+
+The managed bridge owns ITextStoreACP, composition/input-scope interfaces and
+all COM references. Keep the owner-thread pump running for worker cleanup.
+`revoke()` immediately gates application delivery; `close()` releases native
+ownership when callbacks are quiescent. Closing a store must precede destruction
+of its HWND. Native Release/Unadvise cleanup remains valid after application
+revocation. Initialization failure reports a numeric HRESULT, including an
+incompatible existing COM apartment, without unbalancing CoUninitialize.
+
+`updateCursor()` takes **screen physical pixels** for the accepted epoch. Only
+the supplied caret range has layout; other ranges return `TS_E_NOLAYOUT`, and
+ACP-from-point does not guess character positions. `Win32Pointer.clientToScreen`
+and `screenToClient` preserve full signed coordinates. Text-purpose scopes and
+enter actions have explicit mappings; capitalization/autocorrect are hints and
+do not promise that an installed IME honors them. Route the TSF key filter before
+TranslateMessage, then route character messages once. IMM compatibility characters
+must not duplicate a TSF commit. No hidden EDIT control or second IMM document is used.
+
+`Win32PointerPackets.read()` must run while the real pointer message is valid.
+It checks frame/pointer products and reserves native plus copied storage before
+allocation. A batch owns its lease until close; recognizer processing borrows it
+through all nested callbacks. Optional pressure/tilt/twist come from the mask of
+each historical sample; invalid values remain absent. Native device/target values
+are scalar provenance, not application identities. Close every batch on every exit.
+
+`Win32InteractionContext.open()` verifies screen-pixel units, manipulation flags
+`0x1f` and tap flags `0x3`. Process complete copied frames in native history order;
+the owner deduplicates frame IDs, including across reset. Output uses incremental
+translation/scale/rotation and native double-tap counts. Reset is an owner-thread,
+nonreentrant operation: defer it until process/output returns. Close from a callback
+revokes immediately and defers destruction until native processing is quiescent.
+Inertia, touchpad pressure and precision-touchpad semantics are not configured.
+
+Native tests use real HWNDs, COM edit sessions, injected touch frames and Ninput
+callbacks. Injection explicitly establishes foreground/focus before measurement;
+a denied prerequisite fails instead of passing by skip. These tests do not certify
+an installed Japanese/Chinese IME, physical pen/eraser hardware or mixed-monitor
+candidate placement. Those require application-level manual reception. The
+`native-test-support` classifier is test-only and is published separately from
+the production jars.
