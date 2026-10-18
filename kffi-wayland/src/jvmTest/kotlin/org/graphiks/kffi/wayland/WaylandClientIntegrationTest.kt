@@ -204,6 +204,48 @@ class WaylandClientIntegrationTest {
     }
 
     @Test
+    fun managedTextInputLifecycleRoundTripsOnSway() {
+        requireCompositorEnvironment()
+        val client = WaylandClient.connect()
+        assertNotNull(client)
+        client.use {
+            var resolvedSeat: Int? = null
+            var managerSeen = false
+            it.registry.addGlobalsListener(
+                onGlobal = { name, interfaceName, _ ->
+                    if (interfaceName == "wl_seat" && resolvedSeat == null) resolvedSeat = name
+                    if (interfaceName == "zwp_text_input_manager_v3") managerSeen = true
+                },
+            )
+            client.roundtrip()
+            assertNotNull(resolvedSeat, "no wl_seat announced")
+            val seat = it.bindSeat(resolvedSeat!!)
+            assertNotNull(seat)
+            assertTrue(managerSeen, "sway does not expose zwp_text_input_manager_v3")
+            if (!managerSeen) {
+                // sway exposes text-input-v3 through the input-method
+                // ecosystem; when absent the factory returns null — the
+                // honest unsupported, never a crash
+                return
+            }
+            val textInput = it.createTextInput(seat!!)
+            assertNotNull(textInput)
+            textInput.use { input ->
+                var events = 0
+                input.addListener { events += 1 }
+                input.enable()
+                input.setContentType(0, 0)
+                input.commit()
+                client.roundtrip()
+                // state requests round-trip: no protocol error, connection
+                // healthy (the enter event needs a focused surface, tracked
+                // as the O3 oracle with the injection residual)
+                assertTrue(!client.hasError(), "the text-input state requests must round-trip cleanly")
+            }
+        }
+    }
+
+    @Test
     fun managedToplevelOperationsRoundTripOnSway() {
         requireCompositorEnvironment()
         val client = WaylandClient.connect()

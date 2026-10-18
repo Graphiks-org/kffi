@@ -16,6 +16,8 @@ import org.graphiks.kffi.wayland.wlKeyboardInterface
 import org.graphiks.kffi.wayland.wlOutputInterface
 import org.graphiks.kffi.wayland.wlPointerInterface
 import org.graphiks.kffi.wayland.wlProxyMarshalArrayFlags
+import org.graphiks.kffi.wayland.zwpTextInputManagerInterfaceV1
+import org.graphiks.kffi.wayland.zwpTextInputInterfaceV1
 import org.graphiks.kffi.wayland.wlSeatInterface
 import org.graphiks.kffi.wayland.wlDisplayCancelRead
 import org.graphiks.kffi.wayland.wlDisplayConnect
@@ -74,6 +76,35 @@ public class WaylandClient private constructor(
      * the roundtrip cannot refresh the registry.
      */
     /**
+     * Binds the zwp_text_input_manager_v3 global and creates one
+     * `zwp_text_input_v3` for [seat] through the fixed-arity array marshal
+     * (wire order: new_id slot then the seat object).
+     */
+    public fun createTextInput(seat: WaylandSeat): WaylandTextInput? {
+        registry
+        if (!roundtrip()) return null
+        val (name, advertised) = synchronized(advertisedGlobals) {
+            advertisedGlobals["zwp_text_input_manager_v3"] ?: return null
+        }
+        val manager = bindWithInterface(
+            name,
+            zwpTextInputManagerInterfaceV1,
+            minOf(advertised, 1),
+            "zwp_text_input_manager_v3",
+        ) ?: return null
+        // get_text_input: new_id + seat — through the array marshal
+        val marshal = requireHandle(wlProxyMarshalArrayFlags)
+        val interfacePointer = zwpTextInputInterfaceV1
+        Arena.ofConfined().use { arena ->
+            val args = arena.allocate(ValueLayout.ADDRESS, 2)
+            args.set(ValueLayout.ADDRESS, 0, MemorySegment.NULL)
+            args.set(ValueLayout.ADDRESS, 8, seat.rawProxy)
+            val proxy = marshal.invoke(manager, 1, interfacePointer, 1, 0, args) as MemorySegment
+            return WaylandTextInput(proxy, managedArena, managedLock)
+        }
+    }
+
+    /**
      * Binds the zwlr_virtual_pointer_manager_v1 global (authored interface:
      * the wlr protocol is not exported by libwayland-client). Returns the
      * raw manager proxy for the injection harness.
@@ -88,6 +119,7 @@ public class WaylandClient private constructor(
             name,
             org.graphiks.kffi.wayland.virtualPointerManagerInterfaceV1,
             minOf(advertised, 2),
+            "zwlr_virtual_pointer_manager_v1",
         )
     }
 
@@ -176,9 +208,13 @@ public class WaylandClient private constructor(
         return bindByGlobalName(name, interfaceName, minOf(advertised, maxVersion))
     }
 
-    private fun bindWithInterface(name: Int, interfacePointer: MemorySegment, version: Int): MemorySegment? {
+    private fun bindWithInterface(
+        name: Int,
+        interfacePointer: MemorySegment,
+        version: Int,
+        interfaceName: String,
+    ): MemorySegment? {
         val bind = requireHandle(wlProxyMarshalBind)
-        val interfaceName = "zwlr_virtual_pointer_manager_v1"
         Arena.ofConfined().use { temp ->
             val namePointer = temp.allocateFrom(interfaceName)
             val proxy = bind.invoke(

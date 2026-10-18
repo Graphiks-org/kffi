@@ -325,6 +325,20 @@ val wlProxyMarshalFlagsTwoInt: MethodHandle? by lazy {
         ))
 }
 
+val wlProxyMarshalFlagsStringTwoInt: MethodHandle? by lazy {
+    libWaylandClient.downcall("wl_proxy_marshal_flags",
+        FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS,
+            ValueLayout.JAVA_INT,
+            ValueLayout.ADDRESS,
+            ValueLayout.JAVA_INT,
+            ValueLayout.JAVA_INT,
+            ValueLayout.ADDRESS,
+            ValueLayout.JAVA_INT,
+            ValueLayout.JAVA_INT,
+        ))
+}
+
 val wlProxyMarshalFlagsFourInt: MethodHandle? by lazy {
     libWaylandClient.downcall("wl_proxy_marshal_flags",
         FunctionDescriptor.ofVoid(
