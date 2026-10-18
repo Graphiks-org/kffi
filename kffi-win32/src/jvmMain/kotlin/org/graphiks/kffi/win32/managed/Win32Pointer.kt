@@ -2,6 +2,7 @@ package org.graphiks.kffi.win32.managed
 
 import org.graphiks.kffi.win32.generated.GetLastError
 import org.graphiks.kffi.win32.generated.ScreenToClient
+import org.graphiks.kffi.win32.generated.ClientToScreen
 import org.graphiks.kffi.win32.generated.SystemParametersInfoW
 import org.graphiks.kffi.win32.generated.TrackMouseEvent
 import java.lang.foreign.Arena
@@ -41,6 +42,19 @@ public object Win32Pointer {
             point.set(ValueLayout.JAVA_INT, 4, y)
             check(ScreenToClient(MemorySegment.ofAddress(hwnd), point) != 0) {
                 "ScreenToClient failed for $hwnd: ${GetLastError()}"
+            }
+            Win32Point(point.get(ValueLayout.JAVA_INT, 0), point.get(ValueLayout.JAVA_INT, 4))
+        }
+    }
+
+    public fun clientToScreen(hwnd: Long, x: Int, y: Int): Win32Point {
+        requireWin32Input()
+        return Arena.ofConfined().use { arena ->
+            val point = arena.allocate(8, 4)
+            point.set(ValueLayout.JAVA_INT, 0, x)
+            point.set(ValueLayout.JAVA_INT, 4, y)
+            check(ClientToScreen(MemorySegment.ofAddress(hwnd), point) != 0) {
+                "ClientToScreen failed: ${GetLastError()}"
             }
             Win32Point(point.get(ValueLayout.JAVA_INT, 0), point.get(ValueLayout.JAVA_INT, 4))
         }

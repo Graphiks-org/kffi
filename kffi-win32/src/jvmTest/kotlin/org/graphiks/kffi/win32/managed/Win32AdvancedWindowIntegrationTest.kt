@@ -26,10 +26,14 @@ class Win32AdvancedWindowIntegrationTest {
             assertTrue(Win32WindowOperations.readTopmost(window.hwnd))
             Win32WindowOperations.setTopmost(window.hwnd, false)
             assertFalse(Win32WindowOperations.readTopmost(window.hwnd))
-            val foreground = GetForegroundWindow().address()
-            for(mode in 0..2) Win32WindowOperations.requestAttention(window.hwnd, mode)
+            ShowWindow(MemorySegment.ofAddress(window.hwnd), 4) // SW_SHOWNOACTIVATE
+            assertNotEquals(window.hwnd, GetForegroundWindow().address())
+            for(mode in 0..2) {
+                Win32WindowOperations.requestAttention(window.hwnd, mode)
+                assertNotEquals(window.hwnd, GetForegroundWindow().address(), "attention must not activate its window")
+            }
             Win32WindowOperations.requestAttention(window.hwnd, 0)
-            assertEquals(foreground, GetForegroundWindow().address())
+            assertNotEquals(window.hwnd, GetForegroundWindow().address())
         }
     }
 

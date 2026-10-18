@@ -1,0 +1,10 @@
+dllMap:
+  "Ole32.dll":
+    functions:
+      - CoInitializeEx
+      - CoUninitialize
+      - CoCreateInstance
+      - CoTaskMemAlloc
+      - CoTaskMemFree
+    structs: []
+    constants: []

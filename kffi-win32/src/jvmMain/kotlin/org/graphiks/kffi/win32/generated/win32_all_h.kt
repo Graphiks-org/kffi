@@ -20,17 +20,63 @@ private object kextract_runtime {
 private var _DLL_DWMAPI_DLL: SymbolLookup? = null
 private var _DLL_GDI32_DLL: SymbolLookup? = null
 private var _DLL_KERNEL32_DLL: SymbolLookup? = null
+private var _DLL_NINPUT_DLL: SymbolLookup? = null
+private var _DLL_OLE32_DLL: SymbolLookup? = null
 private var _DLL_USER32_DLL: SymbolLookup? = null
 
 @Volatile private var _initialized: Boolean = false
 
 private fun _lookup(symbol: String): SymbolLookup {
     return when (symbol) {
-        "RegisterClassExW", "CreateWindowExW", "FindWindowExW", "GetDC", "ReleaseDC", "FillRect", "ShowWindow", "UpdateWindow", "DestroyWindow", "DefWindowProcW", "SetWindowTextW", "PostQuitMessage", "GetKeyState", "GetKeyboardState", "GetKeyboardLayout", "MapVirtualKeyExW", "ToUnicodeEx", "SystemParametersInfoW", "PeekMessageW", "GetMessageW", "TranslateMessage", "DispatchMessageW", "MsgWaitForMultipleObjectsEx", "LoadCursorW", "SetProcessDpiAwarenessContext", "GetDpiForWindow", "InvalidateRect", "ValidateRect", "TrackMouseEvent", "RegisterTouchWindow", "GetTouchInputInfo", "CloseTouchInputHandle", "GetGestureInfo", "CloseGestureInfoHandle", "ScreenToClient", "ClientToScreen", "GetCursorPos", "GetSystemMenu", "TrackPopupMenu", "EnableMenuItem", "SetMenuDefaultItem", "ReleaseCapture", "EnableWindow", "GetClientRect", "GetWindowRect", "AdjustWindowRectExForDpi", "MonitorFromWindow", "GetMonitorInfoW", "SetWindowLongPtrW", "GetWindowLongPtrW", "IsZoomed", "IsIconic", "IsWindow", "IsWindowVisible", "GetWindowTextW", "GetWindowTextLengthW", "SetWindowPos", "GetForegroundWindow", "SetForegroundWindow", "MapVirtualKeyW", "SendInput", "SetCursorPos", "SetCursor", "ShowCursor", "ClipCursor", "PostMessageW", "SendMessageW", "CreateIcon", "DestroyIcon", "FlashWindowEx", "CreateIconIndirect", "DestroyCursor", "GetCursor", "GetCapture", "GetClipCursor", "GetSystemMetrics", "GetWindowDisplayAffinity", "SetWindowDisplayAffinity" -> _DLL_USER32_DLL ?: SymbolLookup.loaderLookup()
+        "RegisterClassExW", "CreateWindowExW", "FindWindowExW", "GetDC", "ReleaseDC", "FillRect", "ShowWindow", "UpdateWindow", "DestroyWindow", "DefWindowProcW", "SetWindowTextW", "PostQuitMessage", "GetKeyState", "GetKeyboardState", "GetKeyboardLayout", "MapVirtualKeyExW", "ToUnicodeEx", "SystemParametersInfoW", "PeekMessageW", "GetMessageW", "TranslateMessage", "DispatchMessageW", "MsgWaitForMultipleObjectsEx", "LoadCursorW", "SetProcessDpiAwarenessContext", "GetDpiForWindow", "InvalidateRect", "ValidateRect", "TrackMouseEvent", "RegisterTouchWindow", "GetTouchInputInfo", "CloseTouchInputHandle", "GetGestureInfo", "CloseGestureInfoHandle", "ScreenToClient", "ClientToScreen", "GetCursorPos", "GetSystemMenu", "TrackPopupMenu", "EnableMenuItem", "SetMenuDefaultItem", "ReleaseCapture", "EnableWindow", "GetClientRect", "GetWindowRect", "AdjustWindowRectExForDpi", "MonitorFromWindow", "GetMonitorInfoW", "SetWindowLongPtrW", "GetWindowLongPtrW", "IsZoomed", "IsIconic", "IsWindow", "IsWindowVisible", "GetWindowTextW", "GetWindowTextLengthW", "SetWindowPos", "GetForegroundWindow", "SetForegroundWindow", "MapVirtualKeyW", "SendInput", "SetCursorPos", "SetCursor", "ShowCursor", "ClipCursor", "PostMessageW", "SendMessageW", "CreateIcon", "DestroyIcon", "FlashWindowEx", "CreateIconIndirect", "DestroyCursor", "GetCursor", "GetCapture", "GetClipCursor", "GetSystemMetrics", "GetWindowDisplayAffinity", "SetWindowDisplayAffinity", "GetWindowThreadProcessId", "GetFocus", "GetPointerType", "GetPointerInfo", "GetPointerTouchInfo", "GetPointerPenInfo", "GetPointerFrameInfoHistory", "GetPointerFrameTouchInfoHistory", "GetPointerFramePenInfoHistory", "GetMessageExtraInfo", "InitializeTouchInjection", "InjectTouchInput", "WindowFromPoint" -> _DLL_USER32_DLL ?: SymbolLookup.loaderLookup()
         "GetCurrentThreadId", "GetModuleHandleW", "SetLastError", "GetLastError" -> _DLL_KERNEL32_DLL ?: SymbolLookup.loaderLookup()
         "CreateRectRgn", "CreateCompatibleDC", "CreateCompatibleBitmap", "CreateSolidBrush", "SelectObject", "BitBlt", "GetDIBits", "DeleteDC", "DeleteObject", "CreateBitmap", "CreateDIBSection" -> _DLL_GDI32_DLL ?: SymbolLookup.loaderLookup()
         "DwmSetWindowAttribute", "DwmEnableBlurBehindWindow", "DwmExtendFrameIntoClientArea" -> _DLL_DWMAPI_DLL ?: SymbolLookup.loaderLookup()
+        "CoInitializeEx", "CoUninitialize", "CoCreateInstance", "CoTaskMemAlloc", "CoTaskMemFree" -> _DLL_OLE32_DLL ?: SymbolLookup.loaderLookup()
+        "CreateInteractionContext", "DestroyInteractionContext", "SetInteractionConfigurationInteractionContext", "GetInteractionConfigurationInteractionContext", "SetPropertyInteractionContext", "GetPropertyInteractionContext", "RegisterOutputCallbackInteractionContext", "ProcessPointerFramesInteractionContext", "AddPointerInteractionContext", "RemovePointerInteractionContext", "ResetInteractionContext" -> _DLL_NINPUT_DLL ?: SymbolLookup.loaderLookup()
         else -> SymbolLookup.loaderLookup()
+    }
+}
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = LongLong uintptr_t;}
+ */
+typealias uintptr_t = Long
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = LongLong size_t;}
+ */
+typealias size_t = Long
+
+/**
+ * {@snippet lang=c : typedef LongLong ptrdiff_t;}
+ */
+typealias ptrdiff_t = Long
+
+/**
+ * {@snippet lang=c : typedef LongLong intptr_t;}
+ */
+typealias intptr_t = Long
+
+/**
+ * {@snippet lang=c : typedef Bool __vcrt_bool;}
+ */
+typealias _vcrt_bool = Boolean
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Short wchar_t;}
+ */
+typealias wchar_t = Short
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum _EXCEPTION_DISPOSITION}
+ */
+enum class _EXCEPTION_DISPOSITION(val value: Long) {
+    ExceptionContinueExecution(0L), ExceptionContinueSearch(1L), ExceptionNestedException(2L), ExceptionCollidedUnwind(3L);
+
+    companion object {
+        fun fromValue(v: Long): _EXCEPTION_DISPOSITION = entries.firstOrNull { it.value == v }
+            ?: error("Unknown _EXCEPTION_DISPOSITION value: $v")
     }
 }
 
@@ -85,9 +131,9 @@ typealias INT = Int
 typealias UINT = Int
 
 /**
- * {@snippet lang=c : typedef Int __crt_bool;}
+ * {@snippet lang=c : typedef Bool __crt_bool;}
  */
-typealias _crt_bool = Int
+typealias _crt_bool = Boolean
 
 /**
  * {@snippet lang=c : typedef Int errno_t;}
@@ -125,9 +171,9 @@ typealias time_t = Long
 typealias rsize_t = Long
 
 /**
- * {@snippet lang=c : typedef Int POINTER_64_INT;}
+ * {@snippet lang=c : typedef UNSIGNED = LongLong POINTER_64_INT;}
  */
-typealias POINTER_64_INT = Int
+typealias POINTER_64_INT = Long
 
 /**
  * {@snippet lang=c : typedef SIGNED = Char INT8;}
@@ -375,11 +421,6 @@ typealias DWORDLONG = Long
  * {@snippet lang=c : typedef UNSIGNED = Char BOOLEAN;}
  */
 typealias BOOLEAN = Byte
-
-/**
- * {@snippet lang=c : typedef Int OBJECTID;}
- */
-typealias OBJECTID = Int
 
 /**
  * {@snippet lang=c : typedef UNSIGNED = LongLong KSPIN_LOCK;}
@@ -1413,6 +1454,55 @@ typealias HFILE = Int
 typealias COLORREF = Int
 
 /**
+ * {@snippet lang=c : STRUCT tagPOINT
+ */
+class tagPOINT {
+    companion object {
+        val layout: GroupLayout = MemoryLayout.structLayout(
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("x"),
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("y")
+        ).withByteAlignment(4L).withName("tagPOINT")
+
+        val byteSize: Long
+            get() = layout.byteSize()
+
+        fun allocate(allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(layout)
+
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout))
+
+        fun asSlice(array: MemorySegment, index: Long): MemorySegment =
+            array.asSlice(byteSize * index)
+
+        fun reinterpret(addr: MemorySegment): MemorySegment =
+            addr.reinterpret(byteSize)
+
+        fun reinterpret(addr: MemorySegment, elementCount: Long): MemorySegment =
+            addr.reinterpret(byteSize * elementCount)
+
+    } // End companion object
+
+    val x_VH: VarHandle = layout.varHandle(groupElement("x"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun x(segment: MemorySegment): Int =
+        x_VH.get(segment, 0L) as Int
+
+    fun x(segment: MemorySegment, value: Int) =
+        x_VH.set(segment, 0L, value)
+
+    val y_VH: VarHandle = layout.varHandle(groupElement("y"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun y(segment: MemorySegment): Int =
+        y_VH.get(segment, 0L) as Int
+
+    fun y(segment: MemorySegment, value: Int) =
+        y_VH.set(segment, 0L, value)
+} // End class
+
+/**
  * NS_ENUM: {@snippet lang=c : enum DPI_AWARENESS}
  */
 enum class DPI_AWARENESS(val value: Long) {
@@ -1725,7 +1815,7 @@ enum class WIN32_MEMORY_PARTITION_INFORMATION_CLASS(val value: Long) {
 }
 
 /**
- * {@snippet lang=c : GetModuleHandleW typedef HMODULE = (Declared(HINSTANCE__))*(typedef LPCWSTR = (Int)*)
+ * {@snippet lang=c : GetModuleHandleW typedef HMODULE = (Declared(HINSTANCE__))*(typedef LPCWSTR = (UNSIGNED = Short)*)
  */
 private val GetModuleHandleW_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
 private var GetModuleHandleW_HANDLE: MethodHandle? = null
@@ -2228,7 +2318,7 @@ fun CreateDIBSection(arg0: MemorySegment, arg1: MemorySegment, arg2: Int, arg3: 
 }
 
 /**
- * {@snippet lang=c : ToUnicodeEx Int(typedef UINT = UNSIGNED = Int,typedef UINT = UNSIGNED = Int,(typedef BYTE = UNSIGNED = Char)*,typedef LPWSTR = (Int)*,Int,typedef UINT = UNSIGNED = Int,typedef HKL = (Declared(HKL__))*)
+ * {@snippet lang=c : ToUnicodeEx Int(typedef UINT = UNSIGNED = Int,typedef UINT = UNSIGNED = Int,(typedef BYTE = UNSIGNED = Char)*,typedef LPWSTR = (UNSIGNED = Short)*,Int,typedef UINT = UNSIGNED = Int,typedef HKL = (Declared(HKL__))*)
  */
 private val ToUnicodeEx_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
 private var ToUnicodeEx_HANDLE: MethodHandle? = null
@@ -2368,6 +2458,26 @@ fun PeekMessageW(arg0: MemorySegment, arg1: MemorySegment, arg2: Int, arg3: Int,
 }
 
 /**
+ * {@snippet lang=c : GetMessageExtraInfo typedef LPARAM = LongLong()
+ */
+private val GetMessageExtraInfo_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG)
+private var GetMessageExtraInfo_HANDLE: MethodHandle? = null
+
+fun GetMessageExtraInfo(): Long {
+    check(_initialized) { "Win32 GetMessageExtraInfo called before init()" }
+    val _handle = GetMessageExtraInfo_HANDLE ?: return 0L
+    try {
+        return _handle.invokeExact() as Long
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0L
+    }
+}
+
+/**
  * {@snippet lang=c : SendMessageW typedef LRESULT = LongLong(typedef HWND = (Declared(HWND__))*,typedef UINT = UNSIGNED = Int,typedef WPARAM = UNSIGNED = LongLong,typedef LPARAM = LongLong)
  */
 private val SendMessageW_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG)
@@ -2468,7 +2578,7 @@ fun RegisterClassExW(arg0: MemorySegment): Short {
 }
 
 /**
- * {@snippet lang=c : CreateWindowExW typedef HWND = (Declared(HWND__))*(typedef DWORD = UNSIGNED = Long,typedef LPCWSTR = (Int)*,typedef LPCWSTR = (Int)*,typedef DWORD = UNSIGNED = Long,Int,Int,Int,Int,typedef HWND = (Declared(HWND__))*,typedef HMENU = (Declared(HMENU__))*,typedef HINSTANCE = (Declared(HINSTANCE__))*,typedef LPVOID = (Void)*)
+ * {@snippet lang=c : CreateWindowExW typedef HWND = (Declared(HWND__))*(typedef DWORD = UNSIGNED = Long,typedef LPCWSTR = (UNSIGNED = Short)*,typedef LPCWSTR = (UNSIGNED = Short)*,typedef DWORD = UNSIGNED = Long,Int,Int,Int,Int,typedef HWND = (Declared(HWND__))*,typedef HMENU = (Declared(HMENU__))*,typedef HINSTANCE = (Declared(HINSTANCE__))*,typedef LPVOID = (Void)*)
  */
 private val CreateWindowExW_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
 private var CreateWindowExW_HANDLE: MethodHandle? = null
@@ -2712,6 +2822,26 @@ enum class DIALOG_DPI_CHANGE_BEHAVIORS(val value: Long) {
 }
 
 /**
+ * {@snippet lang=c : GetFocus typedef HWND = (Declared(HWND__))*()
+ */
+private val GetFocus_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS)
+private var GetFocus_HANDLE: MethodHandle? = null
+
+fun GetFocus(): MemorySegment {
+    check(_initialized) { "Win32 GetFocus called before init()" }
+    val _handle = GetFocus_HANDLE ?: return MemorySegment.NULL
+    try {
+        return _handle.invokeExact() as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return MemorySegment.NULL
+    }
+}
+
+/**
  * {@snippet lang=c : GetKeyState typedef SHORT = Short(Int)
  */
 private val GetKeyState_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_SHORT, ValueLayout.JAVA_INT)
@@ -2894,6 +3024,186 @@ enum class POINTER_FEEDBACK_MODE(val value: Long) {
     companion object {
         fun fromValue(v: Long): POINTER_FEEDBACK_MODE = entries.firstOrNull { it.value == v }
             ?: error("Unknown POINTER_FEEDBACK_MODE value: $v")
+    }
+}
+
+/**
+ * {@snippet lang=c : InitializeTouchInjection typedef BOOL = Int(typedef UINT32 = UNSIGNED = Int,typedef DWORD = UNSIGNED = Long)
+ */
+private val InitializeTouchInjection_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
+private var InitializeTouchInjection_HANDLE: MethodHandle? = null
+
+fun InitializeTouchInjection(arg0: Int, arg1: Int): Int {
+    check(_initialized) { "Win32 InitializeTouchInjection called before init()" }
+    val _handle = InitializeTouchInjection_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0, arg1) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
+ * {@snippet lang=c : InjectTouchInput typedef BOOL = Int(typedef UINT32 = UNSIGNED = Int,(typedef POINTER_TOUCH_INFO = Declared(tagPOINTER_TOUCH_INFO))*)
+ */
+private val InjectTouchInput_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private var InjectTouchInput_HANDLE: MethodHandle? = null
+
+fun InjectTouchInput(arg0: Int, arg1: MemorySegment): Int {
+    check(_initialized) { "Win32 InjectTouchInput called before init()" }
+    val _handle = InjectTouchInput_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0, arg1) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
+ * {@snippet lang=c : GetPointerType typedef BOOL = Int(typedef UINT32 = UNSIGNED = Int,(typedef POINTER_INPUT_TYPE = UNSIGNED = Long)*)
+ */
+private val GetPointerType_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private var GetPointerType_HANDLE: MethodHandle? = null
+
+fun GetPointerType(arg0: Int, arg1: MemorySegment): Int {
+    check(_initialized) { "Win32 GetPointerType called before init()" }
+    val _handle = GetPointerType_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0, arg1) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
+ * {@snippet lang=c : GetPointerInfo typedef BOOL = Int(typedef UINT32 = UNSIGNED = Int,(typedef POINTER_INFO = Declared(tagPOINTER_INFO))*)
+ */
+private val GetPointerInfo_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private var GetPointerInfo_HANDLE: MethodHandle? = null
+
+fun GetPointerInfo(arg0: Int, arg1: MemorySegment): Int {
+    check(_initialized) { "Win32 GetPointerInfo called before init()" }
+    val _handle = GetPointerInfo_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0, arg1) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
+ * {@snippet lang=c : GetPointerFrameInfoHistory typedef BOOL = Int(typedef UINT32 = UNSIGNED = Int,(typedef UINT32 = UNSIGNED = Int)*,(typedef UINT32 = UNSIGNED = Int)*,(typedef POINTER_INFO = Declared(tagPOINTER_INFO))*)
+ */
+private val GetPointerFrameInfoHistory_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private var GetPointerFrameInfoHistory_HANDLE: MethodHandle? = null
+
+fun GetPointerFrameInfoHistory(arg0: Int, arg1: MemorySegment, arg2: MemorySegment, arg3: MemorySegment): Int {
+    check(_initialized) { "Win32 GetPointerFrameInfoHistory called before init()" }
+    val _handle = GetPointerFrameInfoHistory_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0, arg1, arg2, arg3) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
+ * {@snippet lang=c : GetPointerTouchInfo typedef BOOL = Int(typedef UINT32 = UNSIGNED = Int,(typedef POINTER_TOUCH_INFO = Declared(tagPOINTER_TOUCH_INFO))*)
+ */
+private val GetPointerTouchInfo_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private var GetPointerTouchInfo_HANDLE: MethodHandle? = null
+
+fun GetPointerTouchInfo(arg0: Int, arg1: MemorySegment): Int {
+    check(_initialized) { "Win32 GetPointerTouchInfo called before init()" }
+    val _handle = GetPointerTouchInfo_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0, arg1) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
+ * {@snippet lang=c : GetPointerFrameTouchInfoHistory typedef BOOL = Int(typedef UINT32 = UNSIGNED = Int,(typedef UINT32 = UNSIGNED = Int)*,(typedef UINT32 = UNSIGNED = Int)*,(typedef POINTER_TOUCH_INFO = Declared(tagPOINTER_TOUCH_INFO))*)
+ */
+private val GetPointerFrameTouchInfoHistory_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private var GetPointerFrameTouchInfoHistory_HANDLE: MethodHandle? = null
+
+fun GetPointerFrameTouchInfoHistory(arg0: Int, arg1: MemorySegment, arg2: MemorySegment, arg3: MemorySegment): Int {
+    check(_initialized) { "Win32 GetPointerFrameTouchInfoHistory called before init()" }
+    val _handle = GetPointerFrameTouchInfoHistory_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0, arg1, arg2, arg3) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
+ * {@snippet lang=c : GetPointerPenInfo typedef BOOL = Int(typedef UINT32 = UNSIGNED = Int,(typedef POINTER_PEN_INFO = Declared(tagPOINTER_PEN_INFO))*)
+ */
+private val GetPointerPenInfo_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private var GetPointerPenInfo_HANDLE: MethodHandle? = null
+
+fun GetPointerPenInfo(arg0: Int, arg1: MemorySegment): Int {
+    check(_initialized) { "Win32 GetPointerPenInfo called before init()" }
+    val _handle = GetPointerPenInfo_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0, arg1) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
+ * {@snippet lang=c : GetPointerFramePenInfoHistory typedef BOOL = Int(typedef UINT32 = UNSIGNED = Int,(typedef UINT32 = UNSIGNED = Int)*,(typedef UINT32 = UNSIGNED = Int)*,(typedef POINTER_PEN_INFO = Declared(tagPOINTER_PEN_INFO))*)
+ */
+private val GetPointerFramePenInfoHistory_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private var GetPointerFramePenInfoHistory_HANDLE: MethodHandle? = null
+
+fun GetPointerFramePenInfoHistory(arg0: Int, arg1: MemorySegment, arg2: MemorySegment, arg3: MemorySegment): Int {
+    check(_initialized) { "Win32 GetPointerFramePenInfoHistory called before init()" }
+    val _handle = GetPointerFramePenInfoHistory_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0, arg1, arg2, arg3) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
     }
 }
 
@@ -3270,7 +3580,7 @@ fun ValidateRect(arg0: MemorySegment, arg1: MemorySegment): Int {
 }
 
 /**
- * {@snippet lang=c : SetWindowTextW typedef BOOL = Int(typedef HWND = (Declared(HWND__))*,typedef LPCWSTR = (Int)*)
+ * {@snippet lang=c : SetWindowTextW typedef BOOL = Int(typedef HWND = (Declared(HWND__))*,typedef LPCWSTR = (UNSIGNED = Short)*)
  */
 private val SetWindowTextW_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
 private var SetWindowTextW_HANDLE: MethodHandle? = null
@@ -3290,7 +3600,7 @@ fun SetWindowTextW(arg0: MemorySegment, arg1: MemorySegment): Int {
 }
 
 /**
- * {@snippet lang=c : GetWindowTextW Int(typedef HWND = (Declared(HWND__))*,typedef LPWSTR = (Int)*,Int)
+ * {@snippet lang=c : GetWindowTextW Int(typedef HWND = (Declared(HWND__))*,typedef LPWSTR = (UNSIGNED = Short)*,Int)
  */
 private val GetWindowTextW_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
 private var GetWindowTextW_HANDLE: MethodHandle? = null
@@ -3550,6 +3860,26 @@ fun ScreenToClient(arg0: MemorySegment, arg1: MemorySegment): Int {
 }
 
 /**
+ * {@snippet lang=c : WindowFromPoint typedef HWND = (Declared(HWND__))*(typedef POINT = Declared(tagPOINT))
+ */
+private val WindowFromPoint_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, tagPOINT.layout)
+private var WindowFromPoint_HANDLE: MethodHandle? = null
+
+fun WindowFromPoint(arg0: MemorySegment): MemorySegment {
+    check(_initialized) { "Win32 WindowFromPoint called before init()" }
+    val _handle = WindowFromPoint_HANDLE ?: return MemorySegment.NULL
+    try {
+        return _handle.invokeExact(arg0) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return MemorySegment.NULL
+    }
+}
+
+/**
  * {@snippet lang=c : ClipCursor typedef BOOL = Int((typedef RECT = Declared(tagRECT))*)
  */
 private val ClipCursor_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
@@ -3630,7 +3960,7 @@ fun SetWindowLongPtrW(arg0: MemorySegment, arg1: Int, arg2: Long): Long {
 }
 
 /**
- * {@snippet lang=c : FindWindowExW typedef HWND = (Declared(HWND__))*(typedef HWND = (Declared(HWND__))*,typedef HWND = (Declared(HWND__))*,typedef LPCWSTR = (Int)*,typedef LPCWSTR = (Int)*)
+ * {@snippet lang=c : FindWindowExW typedef HWND = (Declared(HWND__))*(typedef HWND = (Declared(HWND__))*,typedef HWND = (Declared(HWND__))*,typedef LPCWSTR = (UNSIGNED = Short)*,typedef LPCWSTR = (UNSIGNED = Short)*)
  */
 private val FindWindowExW_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
 private var FindWindowExW_HANDLE: MethodHandle? = null
@@ -3650,7 +3980,27 @@ fun FindWindowExW(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment,
 }
 
 /**
- * {@snippet lang=c : LoadCursorW typedef HCURSOR = (Declared(HICON__))*(typedef HINSTANCE = (Declared(HINSTANCE__))*,typedef LPCWSTR = (Int)*)
+ * {@snippet lang=c : GetWindowThreadProcessId typedef DWORD = UNSIGNED = Long(typedef HWND = (Declared(HWND__))*,typedef LPDWORD = (UNSIGNED = Long)*)
+ */
+private val GetWindowThreadProcessId_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private var GetWindowThreadProcessId_HANDLE: MethodHandle? = null
+
+fun GetWindowThreadProcessId(arg0: MemorySegment, arg1: MemorySegment): Int {
+    check(_initialized) { "Win32 GetWindowThreadProcessId called before init()" }
+    val _handle = GetWindowThreadProcessId_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0, arg1) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
+ * {@snippet lang=c : LoadCursorW typedef HCURSOR = (Declared(HICON__))*(typedef HINSTANCE = (Declared(HINSTANCE__))*,typedef LPCWSTR = (UNSIGNED = Short)*)
  */
 private val LoadCursorW_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
 private var LoadCursorW_HANDLE: MethodHandle? = null
@@ -4445,16 +4795,6 @@ typealias cs_byte = Byte
 typealias boolean = Byte
 
 /**
- * {@snippet lang=c : typedef UNSIGNED = Short wchar_t;}
- */
-typealias wchar_t = Short
-
-/**
- * {@snippet lang=c : typedef UNSIGNED = LongLong size_t;}
- */
-typealias size_t = Long
-
-/**
  * {@snippet lang=c : typedef UNSIGNED = Long error_status_t;}
  */
 typealias error_status_t = Int
@@ -4561,9 +4901,9 @@ enum class PROXY_PHASE(val value: Long) {
 }
 
 /**
- * {@snippet lang=c : typedef Int OLECHAR;}
+ * {@snippet lang=c : typedef UNSIGNED = Short OLECHAR;}
  */
-typealias OLECHAR = Int
+typealias OLECHAR = Short
 
 /**
  * {@snippet lang=c : typedef Double DOUBLE;}
@@ -5165,6 +5505,1696 @@ enum class DWM_TAB_WINDOW_REQUIREMENTS(val value: Long) {
     }
 }
 
+/**
+ * {@snippet lang=c : typedef Double max_align_t;}
+ */
+typealias max_align_t = Double
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagREGCLS}
+ */
+enum class tagREGCLS(val value: Long) {
+    REGCLS_SINGLEUSE(0L), REGCLS_MULTIPLEUSE(1L), REGCLS_MULTI_SEPARATE(2L), REGCLS_SUSPENDED(4L), REGCLS_SURROGATE(8L), REGCLS_AGILE(16L);
+
+    companion object {
+        fun fromValue(v: Long): tagREGCLS = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagREGCLS value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagCOINITBASE}
+ */
+enum class tagCOINITBASE(val value: Long) {
+    COINITBASE_MULTITHREADED(0L);
+
+    companion object {
+        fun fromValue(v: Long): tagCOINITBASE = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagCOINITBASE value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagACTIVATIONTYPE}
+ */
+enum class tagACTIVATIONTYPE(val value: Long) {
+    ACTIVATIONTYPE_UNCATEGORIZED(0L), ACTIVATIONTYPE_FROM_MONIKER(1L), ACTIVATIONTYPE_FROM_DATA(2L), ACTIVATIONTYPE_FROM_STORAGE(4L), ACTIVATIONTYPE_FROM_STREAM(8L), ACTIVATIONTYPE_FROM_FILE(16L);
+
+    companion object {
+        fun fromValue(v: Long): tagACTIVATIONTYPE = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagACTIVATIONTYPE value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagEXTCONN}
+ */
+enum class tagEXTCONN(val value: Long) {
+    EXTCONN_STRONG(1L), EXTCONN_WEAK(2L), EXTCONN_CALLABLE(4L);
+
+    companion object {
+        fun fromValue(v: Long): tagEXTCONN = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagEXTCONN value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagSTGTY}
+ */
+enum class tagSTGTY(val value: Long) {
+    STGTY_STORAGE(1L), STGTY_STREAM(2L), STGTY_LOCKBYTES(3L), STGTY_PROPERTY(4L);
+
+    companion object {
+        fun fromValue(v: Long): tagSTGTY = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagSTGTY value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagSTREAM_SEEK}
+ */
+enum class tagSTREAM_SEEK(val value: Long) {
+    STREAM_SEEK_SET(0L), STREAM_SEEK_CUR(1L), STREAM_SEEK_END(2L);
+
+    companion object {
+        fun fromValue(v: Long): tagSTREAM_SEEK = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagSTREAM_SEEK value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagLOCKTYPE}
+ */
+enum class tagLOCKTYPE(val value: Long) {
+    LOCK_WRITE(1L), LOCK_EXCLUSIVE(2L), LOCK_ONLYONCE(4L);
+
+    companion object {
+        fun fromValue(v: Long): tagLOCKTYPE = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagLOCKTYPE value: $v")
+    }
+}
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Long RPCOLEDATAREP;}
+ */
+typealias RPCOLEDATAREP = Int
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagEOLE_AUTHENTICATION_CAPABILITIES}
+ */
+enum class tagEOLE_AUTHENTICATION_CAPABILITIES(val value: Long) {
+    EOAC_NONE(0L), EOAC_MUTUAL_AUTH(1L), EOAC_STATIC_CLOAKING(32L), EOAC_DYNAMIC_CLOAKING(64L), EOAC_ANY_AUTHORITY(128L), EOAC_MAKE_FULLSIC(256L), EOAC_DEFAULT(2048L), EOAC_SECURE_REFS(2L), EOAC_ACCESS_CONTROL(4L), EOAC_APPID(8L), EOAC_DYNAMIC(16L), EOAC_REQUIRE_FULLSIC(512L), EOAC_AUTO_IMPERSONATE(1024L), EOAC_DISABLE_AAA(4096L), EOAC_NO_CUSTOM_MARSHAL(8192L), EOAC_RESERVED1(16384L);
+
+    companion object {
+        fun fromValue(v: Long): tagEOLE_AUTHENTICATION_CAPABILITIES = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagEOLE_AUTHENTICATION_CAPABILITIES value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagRPCOPT_PROPERTIES}
+ */
+enum class tagRPCOPT_PROPERTIES(val value: Long) {
+    COMBND_RPCTIMEOUT(1L), COMBND_SERVER_LOCALITY(2L), COMBND_RESERVED1(4L), COMBND_RESERVED2(5L), COMBND_RESERVED3(8L), COMBND_RESERVED4(16L);
+
+    companion object {
+        fun fromValue(v: Long): tagRPCOPT_PROPERTIES = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagRPCOPT_PROPERTIES value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagRPCOPT_SERVER_LOCALITY_VALUES}
+ */
+enum class tagRPCOPT_SERVER_LOCALITY_VALUES(val value: Long) {
+    SERVER_LOCALITY_PROCESS_LOCAL(0L), SERVER_LOCALITY_MACHINE_LOCAL(1L), SERVER_LOCALITY_REMOTE(2L);
+
+    companion object {
+        fun fromValue(v: Long): tagRPCOPT_SERVER_LOCALITY_VALUES = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagRPCOPT_SERVER_LOCALITY_VALUES value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagGLOBALOPT_PROPERTIES}
+ */
+enum class tagGLOBALOPT_PROPERTIES(val value: Long) {
+    COMGLB_EXCEPTION_HANDLING(1L), COMGLB_APPID(2L), COMGLB_RPC_THREADPOOL_SETTING(3L), COMGLB_RO_SETTINGS(4L), COMGLB_UNMARSHALING_POLICY(5L), COMGLB_PROPERTIES_RESERVED1(6L), COMGLB_PROPERTIES_RESERVED2(7L), COMGLB_PROPERTIES_RESERVED3(8L);
+
+    companion object {
+        fun fromValue(v: Long): tagGLOBALOPT_PROPERTIES = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagGLOBALOPT_PROPERTIES value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagGLOBALOPT_EH_VALUES}
+ */
+enum class tagGLOBALOPT_EH_VALUES(val value: Long) {
+    COMGLB_EXCEPTION_HANDLE(0L), COMGLB_EXCEPTION_DONOT_HANDLE_FATAL(1L), COMGLB_EXCEPTION_DONOT_HANDLE(1L), COMGLB_EXCEPTION_DONOT_HANDLE_ANY(2L);
+
+    companion object {
+        fun fromValue(v: Long): tagGLOBALOPT_EH_VALUES = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagGLOBALOPT_EH_VALUES value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagGLOBALOPT_RPCTP_VALUES}
+ */
+enum class tagGLOBALOPT_RPCTP_VALUES(val value: Long) {
+    COMGLB_RPC_THREADPOOL_SETTING_DEFAULT_POOL(0L), COMGLB_RPC_THREADPOOL_SETTING_PRIVATE_POOL(1L);
+
+    companion object {
+        fun fromValue(v: Long): tagGLOBALOPT_RPCTP_VALUES = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagGLOBALOPT_RPCTP_VALUES value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagGLOBALOPT_RO_FLAGS}
+ */
+enum class tagGLOBALOPT_RO_FLAGS(val value: Long) {
+    COMGLB_STA_MODALLOOP_REMOVE_TOUCH_MESSAGES(1L), COMGLB_STA_MODALLOOP_SHARED_QUEUE_REMOVE_INPUT_MESSAGES(2L), COMGLB_STA_MODALLOOP_SHARED_QUEUE_DONOT_REMOVE_INPUT_MESSAGES(4L), COMGLB_FAST_RUNDOWN(8L), COMGLB_RESERVED1(16L), COMGLB_RESERVED2(32L), COMGLB_RESERVED3(64L), COMGLB_STA_MODALLOOP_SHARED_QUEUE_REORDER_POINTER_MESSAGES(128L), COMGLB_RESERVED4(256L), COMGLB_RESERVED5(512L), COMGLB_RESERVED6(1024L);
+
+    companion object {
+        fun fromValue(v: Long): tagGLOBALOPT_RO_FLAGS = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagGLOBALOPT_RO_FLAGS value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagGLOBALOPT_UNMARSHALING_POLICY_VALUES}
+ */
+enum class tagGLOBALOPT_UNMARSHALING_POLICY_VALUES(val value: Long) {
+    COMGLB_UNMARSHALING_POLICY_NORMAL(0L), COMGLB_UNMARSHALING_POLICY_STRONG(1L), COMGLB_UNMARSHALING_POLICY_HYBRID(2L);
+
+    companion object {
+        fun fromValue(v: Long): tagGLOBALOPT_UNMARSHALING_POLICY_VALUES = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagGLOBALOPT_UNMARSHALING_POLICY_VALUES value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagDCOM_CALL_STATE}
+ */
+enum class tagDCOM_CALL_STATE(val value: Long) {
+    DCOM_NONE(0L), DCOM_CALL_COMPLETE(1L), DCOM_CALL_CANCELED(2L);
+
+    companion object {
+        fun fromValue(v: Long): tagDCOM_CALL_STATE = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagDCOM_CALL_STATE value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum _APTTYPEQUALIFIER}
+ */
+enum class _APTTYPEQUALIFIER(val value: Long) {
+    APTTYPEQUALIFIER_NONE(0L), APTTYPEQUALIFIER_IMPLICIT_MTA(1L), APTTYPEQUALIFIER_NA_ON_MTA(2L), APTTYPEQUALIFIER_NA_ON_STA(3L), APTTYPEQUALIFIER_NA_ON_IMPLICIT_MTA(4L), APTTYPEQUALIFIER_NA_ON_MAINSTA(5L), APTTYPEQUALIFIER_APPLICATION_STA(6L), APTTYPEQUALIFIER_RESERVED_1(7L);
+
+    companion object {
+        fun fromValue(v: Long): _APTTYPEQUALIFIER = entries.firstOrNull { it.value == v }
+            ?: error("Unknown _APTTYPEQUALIFIER value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum _APTTYPE}
+ */
+enum class _APTTYPE(val value: Long) {
+    APTTYPE_CURRENT(-1L), APTTYPE_STA(0L), APTTYPE_MTA(1L), APTTYPE_NA(2L), APTTYPE_MAINSTA(3L);
+
+    companion object {
+        fun fromValue(v: Long): _APTTYPE = entries.firstOrNull { it.value == v }
+            ?: error("Unknown _APTTYPE value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum _THDTYPE}
+ */
+enum class _THDTYPE(val value: Long) {
+    THDTYPE_BLOCKMESSAGES(0L), THDTYPE_PROCESSMESSAGES(1L);
+
+    companion object {
+        fun fromValue(v: Long): _THDTYPE = entries.firstOrNull { it.value == v }
+            ?: error("Unknown _THDTYPE value: $v")
+    }
+}
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Long APARTMENTID;}
+ */
+typealias APARTMENTID = Int
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum CO_MARSHALING_CONTEXT_ATTRIBUTES}
+ */
+enum class CO_MARSHALING_CONTEXT_ATTRIBUTES(val value: Long) {
+    CO_MARSHALING_SOURCE_IS_APP_CONTAINER(0L), CO_MARSHALING_CONTEXT_ATTRIBUTE_RESERVED_1(-2147483648L), CO_MARSHALING_CONTEXT_ATTRIBUTE_RESERVED_2(-2147483647L), CO_MARSHALING_CONTEXT_ATTRIBUTE_RESERVED_3(-2147483646L), CO_MARSHALING_CONTEXT_ATTRIBUTE_RESERVED_4(-2147483645L), CO_MARSHALING_CONTEXT_ATTRIBUTE_RESERVED_5(-2147483644L), CO_MARSHALING_CONTEXT_ATTRIBUTE_RESERVED_6(-2147483643L), CO_MARSHALING_CONTEXT_ATTRIBUTE_RESERVED_7(-2147483642L), CO_MARSHALING_CONTEXT_ATTRIBUTE_RESERVED_8(-2147483641L), CO_MARSHALING_CONTEXT_ATTRIBUTE_RESERVED_9(-2147483640L), CO_MARSHALING_CONTEXT_ATTRIBUTE_RESERVED_10(-2147483639L), CO_MARSHALING_CONTEXT_ATTRIBUTE_RESERVED_11(-2147483638L), CO_MARSHALING_CONTEXT_ATTRIBUTE_RESERVED_12(-2147483637L), CO_MARSHALING_CONTEXT_ATTRIBUTE_RESERVED_13(-2147483636L), CO_MARSHALING_CONTEXT_ATTRIBUTE_RESERVED_14(-2147483635L), CO_MARSHALING_CONTEXT_ATTRIBUTE_RESERVED_15(-2147483634L), CO_MARSHALING_CONTEXT_ATTRIBUTE_RESERVED_16(-2147483633L), CO_MARSHALING_CONTEXT_ATTRIBUTE_RESERVED_17(-2147483632L), CO_MARSHALING_CONTEXT_ATTRIBUTE_RESERVED_18(-2147483631L);
+
+    companion object {
+        fun fromValue(v: Long): CO_MARSHALING_CONTEXT_ATTRIBUTES = entries.firstOrNull { it.value == v }
+            ?: error("Unknown CO_MARSHALING_CONTEXT_ATTRIBUTES value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagBIND_FLAGS}
+ */
+enum class tagBIND_FLAGS(val value: Long) {
+    BIND_MAYBOTHERUSER(1L), BIND_JUSTTESTEXISTENCE(2L);
+
+    companion object {
+        fun fromValue(v: Long): tagBIND_FLAGS = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagBIND_FLAGS value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagMKSYS}
+ */
+enum class tagMKSYS(val value: Long) {
+    MKSYS_NONE(0L), MKSYS_GENERICCOMPOSITE(1L), MKSYS_FILEMONIKER(2L), MKSYS_ANTIMONIKER(3L), MKSYS_ITEMMONIKER(4L), MKSYS_POINTERMONIKER(5L), MKSYS_CLASSMONIKER(7L), MKSYS_OBJREFMONIKER(8L), MKSYS_SESSIONMONIKER(9L), MKSYS_LUAMONIKER(10L);
+
+    companion object {
+        fun fromValue(v: Long): tagMKSYS = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagMKSYS value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagMKREDUCE}
+ */
+enum class tagMKREDUCE(val value: Long) {
+    MKRREDUCE_ONE(196608L), MKRREDUCE_TOUSER(131072L), MKRREDUCE_THROUGHUSER(65536L), MKRREDUCE_ALL(0L);
+
+    companion object {
+        fun fromValue(v: Long): tagMKREDUCE = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagMKREDUCE value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagADVF}
+ */
+enum class tagADVF(val value: Long) {
+    ADVF_NODATA(1L), ADVF_PRIMEFIRST(2L), ADVF_ONLYONCE(4L), ADVF_DATAONSTOP(64L), ADVFCACHE_NOHANDLER(8L), ADVFCACHE_FORCEBUILTIN(16L), ADVFCACHE_ONSAVE(32L);
+
+    companion object {
+        fun fromValue(v: Long): tagADVF = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagADVF value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagTYMED}
+ */
+enum class tagTYMED(val value: Long) {
+    TYMED_HGLOBAL(1L), TYMED_FILE(2L), TYMED_ISTREAM(4L), TYMED_ISTORAGE(8L), TYMED_GDI(16L), TYMED_MFPICT(32L), TYMED_ENHMF(64L), TYMED_NULL(0L);
+
+    companion object {
+        fun fromValue(v: Long): tagTYMED = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagTYMED value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagDATADIR}
+ */
+enum class tagDATADIR(val value: Long) {
+    DATADIR_GET(1L), DATADIR_SET(2L);
+
+    companion object {
+        fun fromValue(v: Long): tagDATADIR = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagDATADIR value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagCALLTYPE}
+ */
+enum class tagCALLTYPE(val value: Long) {
+    CALLTYPE_TOPLEVEL(1L), CALLTYPE_NESTED(2L), CALLTYPE_ASYNC(3L), CALLTYPE_TOPLEVEL_CALLPENDING(4L), CALLTYPE_ASYNC_CALLPENDING(5L);
+
+    companion object {
+        fun fromValue(v: Long): tagCALLTYPE = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagCALLTYPE value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagSERVERCALL}
+ */
+enum class tagSERVERCALL(val value: Long) {
+    SERVERCALL_ISHANDLED(0L), SERVERCALL_REJECTED(1L), SERVERCALL_RETRYLATER(2L);
+
+    companion object {
+        fun fromValue(v: Long): tagSERVERCALL = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagSERVERCALL value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagPENDINGTYPE}
+ */
+enum class tagPENDINGTYPE(val value: Long) {
+    PENDINGTYPE_TOPLEVEL(1L), PENDINGTYPE_NESTED(2L);
+
+    companion object {
+        fun fromValue(v: Long): tagPENDINGTYPE = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagPENDINGTYPE value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagPENDINGMSG}
+ */
+enum class tagPENDINGMSG(val value: Long) {
+    PENDINGMSG_CANCELCALL(0L), PENDINGMSG_WAITNOPROCESS(1L), PENDINGMSG_WAITDEFPROCESS(2L);
+
+    companion object {
+        fun fromValue(v: Long): tagPENDINGMSG = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagPENDINGMSG value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagApplicationType}
+ */
+enum class tagApplicationType(val value: Long) {
+    ServerApplication(0L), LibraryApplication(1L);
+
+    companion object {
+        fun fromValue(v: Long): tagApplicationType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagApplicationType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagShutdownType}
+ */
+enum class tagShutdownType(val value: Long) {
+    IdleShutdown(0L), ForcedShutdown(1L);
+
+    companion object {
+        fun fromValue(v: Long): tagShutdownType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagShutdownType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagSF_TYPE}
+ */
+enum class tagSF_TYPE(val value: Long) {
+    SF_ERROR(10L), SF_I1(16L), SF_I2(2L), SF_I4(3L), SF_I8(20L), SF_BSTR(8L), SF_UNKNOWN(13L), SF_DISPATCH(9L), SF_VARIANT(12L), SF_RECORD(36L), SF_HAVEIID(32781L);
+
+    companion object {
+        fun fromValue(v: Long): tagSF_TYPE = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagSF_TYPE value: $v")
+    }
+}
+
+/**
+ * {@snippet lang=c : typedef Long DISPID;}
+ */
+typealias DISPID = Int
+
+/**
+ * {@snippet lang=c : typedef Long MEMBERID;}
+ */
+typealias MEMBERID = Int
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Long HREFTYPE;}
+ */
+typealias HREFTYPE = Int
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagTYPEKIND}
+ */
+enum class tagTYPEKIND(val value: Long) {
+    TKIND_ENUM(0L), TKIND_RECORD(1L), TKIND_MODULE(2L), TKIND_INTERFACE(3L), TKIND_DISPATCH(4L), TKIND_COCLASS(5L), TKIND_ALIAS(6L), TKIND_UNION(7L), TKIND_MAX(8L);
+
+    companion object {
+        fun fromValue(v: Long): tagTYPEKIND = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagTYPEKIND value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagCALLCONV}
+ */
+enum class tagCALLCONV(val value: Long) {
+    CC_FASTCALL(0L), CC_CDECL(1L), CC_MSCPASCAL(2L), CC_PASCAL(2L), CC_MACPASCAL(3L), CC_STDCALL(4L), CC_FPFASTCALL(5L), CC_SYSCALL(6L), CC_MPWCDECL(7L), CC_MPWPASCAL(8L), CC_MAX(9L);
+
+    companion object {
+        fun fromValue(v: Long): tagCALLCONV = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagCALLCONV value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagFUNCKIND}
+ */
+enum class tagFUNCKIND(val value: Long) {
+    FUNC_VIRTUAL(0L), FUNC_PUREVIRTUAL(1L), FUNC_NONVIRTUAL(2L), FUNC_STATIC(3L), FUNC_DISPATCH(4L);
+
+    companion object {
+        fun fromValue(v: Long): tagFUNCKIND = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagFUNCKIND value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagINVOKEKIND}
+ */
+enum class tagINVOKEKIND(val value: Long) {
+    INVOKE_FUNC(1L), INVOKE_PROPERTYGET(2L), INVOKE_PROPERTYPUT(4L), INVOKE_PROPERTYPUTREF(8L);
+
+    companion object {
+        fun fromValue(v: Long): tagINVOKEKIND = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagINVOKEKIND value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagVARKIND}
+ */
+enum class tagVARKIND(val value: Long) {
+    VAR_PERINSTANCE(0L), VAR_STATIC(1L), VAR_CONST(2L), VAR_DISPATCH(3L);
+
+    companion object {
+        fun fromValue(v: Long): tagVARKIND = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagVARKIND value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagTYPEFLAGS}
+ */
+enum class tagTYPEFLAGS(val value: Long) {
+    TYPEFLAG_FAPPOBJECT(1L), TYPEFLAG_FCANCREATE(2L), TYPEFLAG_FLICENSED(4L), TYPEFLAG_FPREDECLID(8L), TYPEFLAG_FHIDDEN(16L), TYPEFLAG_FCONTROL(32L), TYPEFLAG_FDUAL(64L), TYPEFLAG_FNONEXTENSIBLE(128L), TYPEFLAG_FOLEAUTOMATION(256L), TYPEFLAG_FRESTRICTED(512L), TYPEFLAG_FAGGREGATABLE(1024L), TYPEFLAG_FREPLACEABLE(2048L), TYPEFLAG_FDISPATCHABLE(4096L), TYPEFLAG_FREVERSEBIND(8192L), TYPEFLAG_FPROXY(16384L);
+
+    companion object {
+        fun fromValue(v: Long): tagTYPEFLAGS = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagTYPEFLAGS value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagFUNCFLAGS}
+ */
+enum class tagFUNCFLAGS(val value: Long) {
+    FUNCFLAG_FRESTRICTED(1L), FUNCFLAG_FSOURCE(2L), FUNCFLAG_FBINDABLE(4L), FUNCFLAG_FREQUESTEDIT(8L), FUNCFLAG_FDISPLAYBIND(16L), FUNCFLAG_FDEFAULTBIND(32L), FUNCFLAG_FHIDDEN(64L), FUNCFLAG_FUSESGETLASTERROR(128L), FUNCFLAG_FDEFAULTCOLLELEM(256L), FUNCFLAG_FUIDEFAULT(512L), FUNCFLAG_FNONBROWSABLE(1024L), FUNCFLAG_FREPLACEABLE(2048L), FUNCFLAG_FIMMEDIATEBIND(4096L);
+
+    companion object {
+        fun fromValue(v: Long): tagFUNCFLAGS = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagFUNCFLAGS value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagVARFLAGS}
+ */
+enum class tagVARFLAGS(val value: Long) {
+    VARFLAG_FREADONLY(1L), VARFLAG_FSOURCE(2L), VARFLAG_FBINDABLE(4L), VARFLAG_FREQUESTEDIT(8L), VARFLAG_FDISPLAYBIND(16L), VARFLAG_FDEFAULTBIND(32L), VARFLAG_FHIDDEN(64L), VARFLAG_FRESTRICTED(128L), VARFLAG_FDEFAULTCOLLELEM(256L), VARFLAG_FUIDEFAULT(512L), VARFLAG_FNONBROWSABLE(1024L), VARFLAG_FREPLACEABLE(2048L), VARFLAG_FIMMEDIATEBIND(4096L);
+
+    companion object {
+        fun fromValue(v: Long): tagVARFLAGS = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagVARFLAGS value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagDESCKIND}
+ */
+enum class tagDESCKIND(val value: Long) {
+    DESCKIND_NONE(0L), DESCKIND_FUNCDESC(1L), DESCKIND_VARDESC(2L), DESCKIND_TYPECOMP(3L), DESCKIND_IMPLICITAPPOBJ(4L), DESCKIND_MAX(5L);
+
+    companion object {
+        fun fromValue(v: Long): tagDESCKIND = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagDESCKIND value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagSYSKIND}
+ */
+enum class tagSYSKIND(val value: Long) {
+    SYS_WIN16(0L), SYS_WIN32(1L), SYS_MAC(2L), SYS_WIN64(3L);
+
+    companion object {
+        fun fromValue(v: Long): tagSYSKIND = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagSYSKIND value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagLIBFLAGS}
+ */
+enum class tagLIBFLAGS(val value: Long) {
+    LIBFLAG_FRESTRICTED(1L), LIBFLAG_FCONTROL(2L), LIBFLAG_FHIDDEN(4L), LIBFLAG_FHASDISKIMAGE(8L);
+
+    companion object {
+        fun fromValue(v: Long): tagLIBFLAGS = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagLIBFLAGS value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagCHANGEKIND}
+ */
+enum class tagCHANGEKIND(val value: Long) {
+    CHANGEKIND_ADDMEMBER(0L), CHANGEKIND_DELETEMEMBER(1L), CHANGEKIND_SETNAMES(2L), CHANGEKIND_SETDOCUMENTATION(3L), CHANGEKIND_GENERAL(4L), CHANGEKIND_INVALIDATE(5L), CHANGEKIND_CHANGEFAILED(6L), CHANGEKIND_MAX(7L);
+
+    companion object {
+        fun fromValue(v: Long): tagCHANGEKIND = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagCHANGEKIND value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagREGKIND}
+ */
+enum class tagREGKIND(val value: Long) {
+    REGKIND_DEFAULT(0L), REGKIND_REGISTER(1L), REGKIND_NONE(2L);
+
+    companion object {
+        fun fromValue(v: Long): tagREGKIND = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagREGKIND value: $v")
+    }
+}
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Short PROPVAR_PAD1;}
+ */
+typealias PROPVAR_PAD1 = Short
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Short PROPVAR_PAD2;}
+ */
+typealias PROPVAR_PAD2 = Short
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Short PROPVAR_PAD3;}
+ */
+typealias PROPVAR_PAD3 = Short
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Long STGFMT;}
+ */
+typealias STGFMT = Int
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagDISCARDCACHE}
+ */
+enum class tagDISCARDCACHE(val value: Long) {
+    DISCARDCACHE_SAVEIFDIRTY(0L), DISCARDCACHE_NOSAVE(1L);
+
+    companion object {
+        fun fromValue(v: Long): tagDISCARDCACHE = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagDISCARDCACHE value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagOLEGETMONIKER}
+ */
+enum class tagOLEGETMONIKER(val value: Long) {
+    OLEGETMONIKER_ONLYIFTHERE(1L), OLEGETMONIKER_FORCEASSIGN(2L), OLEGETMONIKER_UNASSIGN(3L), OLEGETMONIKER_TEMPFORUSER(4L);
+
+    companion object {
+        fun fromValue(v: Long): tagOLEGETMONIKER = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagOLEGETMONIKER value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagOLEWHICHMK}
+ */
+enum class tagOLEWHICHMK(val value: Long) {
+    OLEWHICHMK_CONTAINER(1L), OLEWHICHMK_OBJREL(2L), OLEWHICHMK_OBJFULL(3L);
+
+    companion object {
+        fun fromValue(v: Long): tagOLEWHICHMK = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagOLEWHICHMK value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagUSERCLASSTYPE}
+ */
+enum class tagUSERCLASSTYPE(val value: Long) {
+    USERCLASSTYPE_FULL(1L), USERCLASSTYPE_SHORT(2L), USERCLASSTYPE_APPNAME(3L);
+
+    companion object {
+        fun fromValue(v: Long): tagUSERCLASSTYPE = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagUSERCLASSTYPE value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagOLEMISC}
+ */
+enum class tagOLEMISC(val value: Long) {
+    OLEMISC_RECOMPOSEONRESIZE(1L), OLEMISC_ONLYICONIC(2L), OLEMISC_INSERTNOTREPLACE(4L), OLEMISC_STATIC(8L), OLEMISC_CANTLINKINSIDE(16L), OLEMISC_CANLINKBYOLE1(32L), OLEMISC_ISLINKOBJECT(64L), OLEMISC_INSIDEOUT(128L), OLEMISC_ACTIVATEWHENVISIBLE(256L), OLEMISC_RENDERINGISDEVICEINDEPENDENT(512L), OLEMISC_INVISIBLEATRUNTIME(1024L), OLEMISC_ALWAYSRUN(2048L), OLEMISC_ACTSLIKEBUTTON(4096L), OLEMISC_ACTSLIKELABEL(8192L), OLEMISC_NOUIACTIVATE(16384L), OLEMISC_ALIGNABLE(32768L), OLEMISC_SIMPLEFRAME(65536L), OLEMISC_SETCLIENTSITEFIRST(131072L), OLEMISC_IMEMODE(262144L), OLEMISC_IGNOREACTIVATEWHENVISIBLE(524288L), OLEMISC_WANTSTOMENUMERGE(1048576L), OLEMISC_SUPPORTSMULTILEVELUNDO(2097152L);
+
+    companion object {
+        fun fromValue(v: Long): tagOLEMISC = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagOLEMISC value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagOLECLOSE}
+ */
+enum class tagOLECLOSE(val value: Long) {
+    OLECLOSE_SAVEIFDIRTY(0L), OLECLOSE_NOSAVE(1L), OLECLOSE_PROMPTSAVE(2L);
+
+    companion object {
+        fun fromValue(v: Long): tagOLECLOSE = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagOLECLOSE value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagOLERENDER}
+ */
+enum class tagOLERENDER(val value: Long) {
+    OLERENDER_NONE(0L), OLERENDER_DRAW(1L), OLERENDER_FORMAT(2L), OLERENDER_ASIS(3L);
+
+    companion object {
+        fun fromValue(v: Long): tagOLERENDER = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagOLERENDER value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagOLEUPDATE}
+ */
+enum class tagOLEUPDATE(val value: Long) {
+    OLEUPDATE_ALWAYS(1L), OLEUPDATE_ONCALL(3L);
+
+    companion object {
+        fun fromValue(v: Long): tagOLEUPDATE = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagOLEUPDATE value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagOLELINKBIND}
+ */
+enum class tagOLELINKBIND(val value: Long) {
+    OLELINKBIND_EVENIFCLASSDIFF(1L);
+
+    companion object {
+        fun fromValue(v: Long): tagOLELINKBIND = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagOLELINKBIND value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagBINDSPEED}
+ */
+enum class tagBINDSPEED(val value: Long) {
+    BINDSPEED_INDEFINITE(1L), BINDSPEED_MODERATE(2L), BINDSPEED_IMMEDIATE(3L);
+
+    companion object {
+        fun fromValue(v: Long): tagBINDSPEED = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagBINDSPEED value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagOLECONTF}
+ */
+enum class tagOLECONTF(val value: Long) {
+    OLECONTF_EMBEDDINGS(1L), OLECONTF_LINKS(2L), OLECONTF_OTHERS(4L), OLECONTF_ONLYUSER(8L), OLECONTF_ONLYIFRUNNING(16L);
+
+    companion object {
+        fun fromValue(v: Long): tagOLECONTF = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagOLECONTF value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagOLEVERBATTRIB}
+ */
+enum class tagOLEVERBATTRIB(val value: Long) {
+    OLEVERBATTRIB_NEVERDIRTIES(1L), OLEVERBATTRIB_ONCONTAINERMENU(2L);
+
+    companion object {
+        fun fromValue(v: Long): tagOLEVERBATTRIB = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagOLEVERBATTRIB value: $v")
+    }
+}
+
+/**
+ * {@snippet lang=c : CoUninitialize Void()
+ */
+private val CoUninitialize_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid()
+private var CoUninitialize_HANDLE: MethodHandle? = null
+
+fun CoUninitialize(): Unit {
+    check(_initialized) { "Win32 CoUninitialize called before init()" }
+    val _handle = CoUninitialize_HANDLE ?: return
+    try {
+        _handle.invokeExact()
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        // ignore — null handle on non-Windows
+    }
+}
+
+/**
+ * {@snippet lang=c : CoInitializeEx typedef HRESULT = Long(typedef LPVOID = (Void)*,typedef DWORD = UNSIGNED = Long)
+ */
+private val CoInitializeEx_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
+private var CoInitializeEx_HANDLE: MethodHandle? = null
+
+fun CoInitializeEx(arg0: MemorySegment, arg1: Int): Int {
+    check(_initialized) { "Win32 CoInitializeEx called before init()" }
+    val _handle = CoInitializeEx_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0, arg1) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagSTDMSHLFLAGS}
+ */
+enum class tagSTDMSHLFLAGS(val value: Long) {
+    SMEXF_SERVER(1L), SMEXF_HANDLER(2L);
+
+    companion object {
+        fun fromValue(v: Long): tagSTDMSHLFLAGS = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagSTDMSHLFLAGS value: $v")
+    }
+}
+
+/**
+ * {@snippet lang=c : CoCreateInstance typedef HRESULT = Long((typedef IID = Declared(_GUID))*,typedef LPUNKNOWN = (Void)*,typedef DWORD = UNSIGNED = Long,(typedef IID = Declared(_GUID))*,(typedef LPVOID = (Void)*)*)
+ */
+private val CoCreateInstance_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private var CoCreateInstance_HANDLE: MethodHandle? = null
+
+fun CoCreateInstance(arg0: MemorySegment, arg1: MemorySegment, arg2: Int, arg3: MemorySegment, arg4: MemorySegment): Int {
+    check(_initialized) { "Win32 CoCreateInstance called before init()" }
+    val _handle = CoCreateInstance_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0, arg1, arg2, arg3, arg4) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagCOWAIT_FLAGS}
+ */
+enum class tagCOWAIT_FLAGS(val value: Long) {
+    COWAIT_DEFAULT(0L), COWAIT_WAITALL(1L), COWAIT_ALERTABLE(2L), COWAIT_INPUTAVAILABLE(4L), COWAIT_DISPATCH_CALLS(8L), COWAIT_DISPATCH_WINDOW_MESSAGES(16L);
+
+    companion object {
+        fun fromValue(v: Long): tagCOWAIT_FLAGS = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagCOWAIT_FLAGS value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum CWMO_FLAGS}
+ */
+enum class CWMO_FLAGS(val value: Long) {
+    CWMO_DEFAULT(0L), CWMO_DISPATCH_CALLS(1L), CWMO_DISPATCH_WINDOW_MESSAGES(2L);
+
+    companion object {
+        fun fromValue(v: Long): CWMO_FLAGS = entries.firstOrNull { it.value == v }
+            ?: error("Unknown CWMO_FLAGS value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum AgileReferenceOptions}
+ */
+enum class AgileReferenceOptions(val value: Long) {
+    AGILEREFERENCE_DEFAULT(0L), AGILEREFERENCE_DELAYEDMARSHAL(1L);
+
+    companion object {
+        fun fromValue(v: Long): AgileReferenceOptions = entries.firstOrNull { it.value == v }
+            ?: error("Unknown AgileReferenceOptions value: $v")
+    }
+}
+
+/**
+ * {@snippet lang=c : CoTaskMemAlloc typedef LPVOID = (Void)*(typedef SIZE_T = UNSIGNED = LongLong)
+ */
+private val CoTaskMemAlloc_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
+private var CoTaskMemAlloc_HANDLE: MethodHandle? = null
+
+fun CoTaskMemAlloc(arg0: Long): MemorySegment {
+    check(_initialized) { "Win32 CoTaskMemAlloc called before init()" }
+    val _handle = CoTaskMemAlloc_HANDLE ?: return MemorySegment.NULL
+    try {
+        return _handle.invokeExact(arg0) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return MemorySegment.NULL
+    }
+}
+
+/**
+ * {@snippet lang=c : CoTaskMemFree Void(typedef LPVOID = (Void)*)
+ */
+private val CoTaskMemFree_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
+private var CoTaskMemFree_HANDLE: MethodHandle? = null
+
+fun CoTaskMemFree(arg0: MemorySegment): Unit {
+    check(_initialized) { "Win32 CoTaskMemFree called before init()" }
+    val _handle = CoTaskMemFree_HANDLE ?: return
+    try {
+        _handle.invokeExact(arg0)
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        // ignore — null handle on non-Windows
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagCOINIT}
+ */
+enum class tagCOINIT(val value: Long) {
+    COINIT_APARTMENTTHREADED(2L), COINIT_MULTITHREADED(0L), COINIT_DISABLE_OLE1DDE(4L), COINIT_SPEED_OVER_MEMORY(8L);
+
+    companion object {
+        fun fromValue(v: Long): tagCOINIT = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagCOINIT value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagCOMSD}
+ */
+enum class tagCOMSD(val value: Long) {
+    SD_LAUNCHPERMISSIONS(0L), SD_ACCESSPERMISSIONS(1L), SD_LAUNCHRESTRICTIONS(2L), SD_ACCESSRESTRICTIONS(3L);
+
+    companion object {
+        fun fromValue(v: Long): tagCOMSD = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagCOMSD value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagDOMNodeType}
+ */
+enum class tagDOMNodeType(val value: Long) {
+    NODE_INVALID(0L), NODE_ELEMENT(1L), NODE_ATTRIBUTE(2L), NODE_TEXT(3L), NODE_CDATA_SECTION(4L), NODE_ENTITY_REFERENCE(5L), NODE_ENTITY(6L), NODE_PROCESSING_INSTRUCTION(7L), NODE_COMMENT(8L), NODE_DOCUMENT(9L), NODE_DOCUMENT_TYPE(10L), NODE_DOCUMENT_FRAGMENT(11L), NODE_NOTATION(12L);
+
+    companion object {
+        fun fromValue(v: Long): tagDOMNodeType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagDOMNodeType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagXMLEMEM_TYPE}
+ */
+enum class tagXMLEMEM_TYPE(val value: Long) {
+    XMLELEMTYPE_ELEMENT(0L), XMLELEMTYPE_TEXT(1L), XMLELEMTYPE_COMMENT(2L), XMLELEMTYPE_DOCUMENT(3L), XMLELEMTYPE_DTD(4L), XMLELEMTYPE_PI(5L), XMLELEMTYPE_OTHER(6L);
+
+    companion object {
+        fun fromValue(v: Long): tagXMLEMEM_TYPE = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagXMLEMEM_TYPE value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum IEObjectType}
+ */
+enum class IEObjectType(val value: Long) {
+    IE_EPM_OBJECT_EVENT(0L), IE_EPM_OBJECT_MUTEX(1L), IE_EPM_OBJECT_SEMAPHORE(2L), IE_EPM_OBJECT_SHARED_MEMORY(3L), IE_EPM_OBJECT_WAITABLE_TIMER(4L), IE_EPM_OBJECT_FILE(5L), IE_EPM_OBJECT_NAMED_PIPE(6L), IE_EPM_OBJECT_REGISTRY(7L);
+
+    companion object {
+        fun fromValue(v: Long): IEObjectType = entries.firstOrNull { it.value == v }
+            ?: error("Unknown IEObjectType value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum __MIDL_IMonikerProp_0001}
+ */
+enum class _MIDL_IMonikerProp_0001(val value: Long) {
+    MIMETYPEPROP(0L), USE_SRC_URL(1L), CLASSIDPROP(2L), TRUSTEDDOWNLOADPROP(3L), POPUPLEVELPROP(4L);
+
+    companion object {
+        fun fromValue(v: Long): _MIDL_IMonikerProp_0001 = entries.firstOrNull { it.value == v }
+            ?: error("Unknown _MIDL_IMonikerProp_0001 value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum __MIDL_IBindStatusCallback_0001}
+ */
+enum class _MIDL_IBindStatusCallback_0001(val value: Long) {
+    BINDVERB_GET(0L), BINDVERB_POST(1L), BINDVERB_PUT(2L), BINDVERB_CUSTOM(3L), BINDVERB_RESERVED1(4L);
+
+    companion object {
+        fun fromValue(v: Long): _MIDL_IBindStatusCallback_0001 = entries.firstOrNull { it.value == v }
+            ?: error("Unknown _MIDL_IBindStatusCallback_0001 value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum __MIDL_IBindStatusCallback_0002}
+ */
+enum class _MIDL_IBindStatusCallback_0002(val value: Long) {
+    BINDINFOF_URLENCODESTGMEDDATA(1L), BINDINFOF_URLENCODEDEXTRAINFO(2L);
+
+    companion object {
+        fun fromValue(v: Long): _MIDL_IBindStatusCallback_0002 = entries.firstOrNull { it.value == v }
+            ?: error("Unknown _MIDL_IBindStatusCallback_0002 value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum __MIDL_IBindStatusCallback_0003}
+ */
+enum class _MIDL_IBindStatusCallback_0003(val value: Long) {
+    BINDF_ASYNCHRONOUS(1L), BINDF_ASYNCSTORAGE(2L), BINDF_NOPROGRESSIVERENDERING(4L), BINDF_OFFLINEOPERATION(8L), BINDF_GETNEWESTVERSION(16L), BINDF_NOWRITECACHE(32L), BINDF_NEEDFILE(64L), BINDF_PULLDATA(128L), BINDF_IGNORESECURITYPROBLEM(256L), BINDF_RESYNCHRONIZE(512L), BINDF_HYPERLINK(1024L), BINDF_NO_UI(2048L), BINDF_SILENTOPERATION(4096L), BINDF_PRAGMA_NO_CACHE(8192L), BINDF_GETCLASSOBJECT(16384L), BINDF_RESERVED_1(32768L), BINDF_FREE_THREADED(65536L), BINDF_DIRECT_READ(131072L), BINDF_FORMS_SUBMIT(262144L), BINDF_GETFROMCACHE_IF_NET_FAIL(524288L), BINDF_FROMURLMON(1048576L), BINDF_FWD_BACK(2097152L), BINDF_PREFERDEFAULTHANDLER(4194304L), BINDF_ENFORCERESTRICTED(8388608L), BINDF_RESERVED_2(-2147483648L), BINDF_RESERVED_3(16777216L), BINDF_RESERVED_4(33554432L), BINDF_RESERVED_5(67108864L), BINDF_RESERVED_6(134217728L), BINDF_RESERVED_7(1073741824L), BINDF_RESERVED_8(536870912L);
+
+    companion object {
+        fun fromValue(v: Long): _MIDL_IBindStatusCallback_0003 = entries.firstOrNull { it.value == v }
+            ?: error("Unknown _MIDL_IBindStatusCallback_0003 value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum __MIDL_IBindStatusCallback_0004}
+ */
+enum class _MIDL_IBindStatusCallback_0004(val value: Long) {
+    URL_ENCODING_NONE(0L), URL_ENCODING_ENABLE_UTF8(268435456L), URL_ENCODING_DISABLE_UTF8(536870912L);
+
+    companion object {
+        fun fromValue(v: Long): _MIDL_IBindStatusCallback_0004 = entries.firstOrNull { it.value == v }
+            ?: error("Unknown _MIDL_IBindStatusCallback_0004 value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum __MIDL_IBindStatusCallback_0005}
+ */
+enum class _MIDL_IBindStatusCallback_0005(val value: Long) {
+    BINDINFO_OPTIONS_WININETFLAG(65536L), BINDINFO_OPTIONS_ENABLE_UTF8(131072L), BINDINFO_OPTIONS_DISABLE_UTF8(262144L), BINDINFO_OPTIONS_USE_IE_ENCODING(524288L), BINDINFO_OPTIONS_BINDTOOBJECT(1048576L), BINDINFO_OPTIONS_SECURITYOPTOUT(2097152L), BINDINFO_OPTIONS_IGNOREMIMETEXTPLAIN(4194304L), BINDINFO_OPTIONS_USEBINDSTRINGCREDS(8388608L), BINDINFO_OPTIONS_IGNOREHTTPHTTPSREDIRECTS(16777216L), BINDINFO_OPTIONS_IGNORE_SSLERRORS_ONCE(33554432L), BINDINFO_WPC_DOWNLOADBLOCKED(134217728L), BINDINFO_WPC_LOGGING_ENABLED(268435456L), BINDINFO_OPTIONS_ALLOWCONNECTDATA(536870912L), BINDINFO_OPTIONS_DISABLEAUTOREDIRECTS(1073741824L), BINDINFO_OPTIONS_SHDOCVW_NAVIGATE(-2147483648L);
+
+    companion object {
+        fun fromValue(v: Long): _MIDL_IBindStatusCallback_0005 = entries.firstOrNull { it.value == v }
+            ?: error("Unknown _MIDL_IBindStatusCallback_0005 value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum __MIDL_IBindStatusCallback_0006}
+ */
+enum class _MIDL_IBindStatusCallback_0006(val value: Long) {
+    BSCF_FIRSTDATANOTIFICATION(1L), BSCF_INTERMEDIATEDATANOTIFICATION(2L), BSCF_LASTDATANOTIFICATION(4L), BSCF_DATAFULLYAVAILABLE(8L), BSCF_AVAILABLEDATASIZEUNKNOWN(16L), BSCF_SKIPDRAINDATAFORFILEURLS(32L), BSCF_64BITLENGTHDOWNLOAD(64L);
+
+    companion object {
+        fun fromValue(v: Long): _MIDL_IBindStatusCallback_0006 = entries.firstOrNull { it.value == v }
+            ?: error("Unknown _MIDL_IBindStatusCallback_0006 value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagBINDSTATUS}
+ */
+enum class tagBINDSTATUS(val value: Long) {
+    BINDSTATUS_FINDINGRESOURCE(1L), BINDSTATUS_CONNECTING(2L), BINDSTATUS_REDIRECTING(3L), BINDSTATUS_BEGINDOWNLOADDATA(4L), BINDSTATUS_DOWNLOADINGDATA(5L), BINDSTATUS_ENDDOWNLOADDATA(6L), BINDSTATUS_BEGINDOWNLOADCOMPONENTS(7L), BINDSTATUS_INSTALLINGCOMPONENTS(8L), BINDSTATUS_ENDDOWNLOADCOMPONENTS(9L), BINDSTATUS_USINGCACHEDCOPY(10L), BINDSTATUS_SENDINGREQUEST(11L), BINDSTATUS_CLASSIDAVAILABLE(12L), BINDSTATUS_MIMETYPEAVAILABLE(13L), BINDSTATUS_CACHEFILENAMEAVAILABLE(14L), BINDSTATUS_BEGINSYNCOPERATION(15L), BINDSTATUS_ENDSYNCOPERATION(16L), BINDSTATUS_BEGINUPLOADDATA(17L), BINDSTATUS_UPLOADINGDATA(18L), BINDSTATUS_ENDUPLOADDATA(19L), BINDSTATUS_PROTOCOLCLASSID(20L), BINDSTATUS_ENCODING(21L), BINDSTATUS_VERIFIEDMIMETYPEAVAILABLE(22L), BINDSTATUS_CLASSINSTALLLOCATION(23L), BINDSTATUS_DECODING(24L), BINDSTATUS_LOADINGMIMEHANDLER(25L), BINDSTATUS_CONTENTDISPOSITIONATTACH(26L), BINDSTATUS_FILTERREPORTMIMETYPE(27L), BINDSTATUS_CLSIDCANINSTANTIATE(28L), BINDSTATUS_IUNKNOWNAVAILABLE(29L), BINDSTATUS_DIRECTBIND(30L), BINDSTATUS_RAWMIMETYPE(31L), BINDSTATUS_PROXYDETECTING(32L), BINDSTATUS_ACCEPTRANGES(33L), BINDSTATUS_COOKIE_SENT(34L), BINDSTATUS_COMPACT_POLICY_RECEIVED(35L), BINDSTATUS_COOKIE_SUPPRESSED(36L), BINDSTATUS_COOKIE_STATE_UNKNOWN(37L), BINDSTATUS_COOKIE_STATE_ACCEPT(38L), BINDSTATUS_COOKIE_STATE_REJECT(39L), BINDSTATUS_COOKIE_STATE_PROMPT(40L), BINDSTATUS_COOKIE_STATE_LEASH(41L), BINDSTATUS_COOKIE_STATE_DOWNGRADE(42L), BINDSTATUS_POLICY_HREF(43L), BINDSTATUS_P3P_HEADER(44L), BINDSTATUS_SESSION_COOKIE_RECEIVED(45L), BINDSTATUS_PERSISTENT_COOKIE_RECEIVED(46L), BINDSTATUS_SESSION_COOKIES_ALLOWED(47L), BINDSTATUS_CACHECONTROL(48L), BINDSTATUS_CONTENTDISPOSITIONFILENAME(49L), BINDSTATUS_MIMETEXTPLAINMISMATCH(50L), BINDSTATUS_PUBLISHERAVAILABLE(51L), BINDSTATUS_DISPLAYNAMEAVAILABLE(52L), BINDSTATUS_SSLUX_NAVBLOCKED(53L), BINDSTATUS_SERVER_MIMETYPEAVAILABLE(54L), BINDSTATUS_SNIFFED_CLASSIDAVAILABLE(55L), BINDSTATUS_64BIT_PROGRESS(56L), BINDSTATUS_LAST(56L), BINDSTATUS_RESERVED_0(57L), BINDSTATUS_RESERVED_1(58L), BINDSTATUS_RESERVED_2(59L), BINDSTATUS_RESERVED_3(60L), BINDSTATUS_RESERVED_4(61L), BINDSTATUS_RESERVED_5(62L), BINDSTATUS_RESERVED_6(63L), BINDSTATUS_RESERVED_7(64L), BINDSTATUS_RESERVED_8(65L), BINDSTATUS_RESERVED_9(66L), BINDSTATUS_RESERVED_A(67L), BINDSTATUS_RESERVED_B(68L), BINDSTATUS_RESERVED_C(69L), BINDSTATUS_RESERVED_D(70L), BINDSTATUS_RESERVED_E(71L), BINDSTATUS_RESERVED_F(72L), BINDSTATUS_RESERVED_10(73L), BINDSTATUS_RESERVED_11(74L), BINDSTATUS_RESERVED_12(75L), BINDSTATUS_RESERVED_13(76L), BINDSTATUS_RESERVED_14(77L), BINDSTATUS_LAST_PRIVATE(77L);
+
+    companion object {
+        fun fromValue(v: Long): tagBINDSTATUS = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagBINDSTATUS value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum __MIDL_IBindStatusCallbackEx_0001}
+ */
+enum class _MIDL_IBindStatusCallbackEx_0001(val value: Long) {
+    BINDF2_DISABLEBASICOVERHTTP(1L), BINDF2_DISABLEAUTOCOOKIEHANDLING(2L), BINDF2_READ_DATA_GREATER_THAN_4GB(4L), BINDF2_DISABLE_HTTP_REDIRECT_XSECURITYID(8L), BINDF2_SETDOWNLOADMODE(32L), BINDF2_DISABLE_HTTP_REDIRECT_CACHING(64L), BINDF2_KEEP_CALLBACK_MODULE_LOADED(128L), BINDF2_ALLOW_PROXY_CRED_PROMPT(256L), BINDF2_RESERVED_17(512L), BINDF2_RESERVED_16(1024L), BINDF2_RESERVED_15(2048L), BINDF2_RESERVED_14(4096L), BINDF2_RESERVED_13(8192L), BINDF2_RESERVED_12(16384L), BINDF2_RESERVED_11(32768L), BINDF2_RESERVED_10(65536L), BINDF2_RESERVED_F(131072L), BINDF2_RESERVED_E(262144L), BINDF2_RESERVED_D(524288L), BINDF2_RESERVED_C(1048576L), BINDF2_RESERVED_B(2097152L), BINDF2_RESERVED_A(4194304L), BINDF2_RESERVED_9(8388608L), BINDF2_RESERVED_8(16777216L), BINDF2_RESERVED_7(33554432L), BINDF2_RESERVED_6(67108864L), BINDF2_RESERVED_5(134217728L), BINDF2_RESERVED_4(268435456L), BINDF2_RESERVED_3(536870912L), BINDF2_RESERVED_2(1073741824L), BINDF2_RESERVED_1(-2147483648L);
+
+    companion object {
+        fun fromValue(v: Long): _MIDL_IBindStatusCallbackEx_0001 = entries.firstOrNull { it.value == v }
+            ?: error("Unknown _MIDL_IBindStatusCallbackEx_0001 value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum __MIDL_IAuthenticateEx_0001}
+ */
+enum class _MIDL_IAuthenticateEx_0001(val value: Long) {
+    AUTHENTICATEF_PROXY(1L), AUTHENTICATEF_BASIC(2L), AUTHENTICATEF_HTTP(4L);
+
+    companion object {
+        fun fromValue(v: Long): _MIDL_IAuthenticateEx_0001 = entries.firstOrNull { it.value == v }
+            ?: error("Unknown _MIDL_IAuthenticateEx_0001 value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum __MIDL_ICodeInstall_0001}
+ */
+enum class _MIDL_ICodeInstall_0001(val value: Long) {
+    CIP_DISK_FULL(0L), CIP_ACCESS_DENIED(1L), CIP_NEWER_VERSION_EXISTS(2L), CIP_OLDER_VERSION_EXISTS(3L), CIP_NAME_CONFLICT(4L), CIP_TRUST_VERIFICATION_COMPONENT_MISSING(5L), CIP_EXE_SELF_REGISTERATION_TIMEOUT(6L), CIP_UNSAFE_TO_ABORT(7L), CIP_NEED_REBOOT(8L), CIP_NEED_REBOOT_UI_PERMISSION(9L);
+
+    companion object {
+        fun fromValue(v: Long): _MIDL_ICodeInstall_0001 = entries.firstOrNull { it.value == v }
+            ?: error("Unknown _MIDL_ICodeInstall_0001 value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum __MIDL_IUri_0001}
+ */
+enum class _MIDL_IUri_0001(val value: Long) {
+    Uri_PROPERTY_ABSOLUTE_URI(0L), Uri_PROPERTY_STRING_START(0L), Uri_PROPERTY_AUTHORITY(1L), Uri_PROPERTY_DISPLAY_URI(2L), Uri_PROPERTY_DOMAIN(3L), Uri_PROPERTY_EXTENSION(4L), Uri_PROPERTY_FRAGMENT(5L), Uri_PROPERTY_HOST(6L), Uri_PROPERTY_PASSWORD(7L), Uri_PROPERTY_PATH(8L), Uri_PROPERTY_PATH_AND_QUERY(9L), Uri_PROPERTY_QUERY(10L), Uri_PROPERTY_RAW_URI(11L), Uri_PROPERTY_SCHEME_NAME(12L), Uri_PROPERTY_USER_INFO(13L), Uri_PROPERTY_USER_NAME(14L), Uri_PROPERTY_STRING_LAST(14L), Uri_PROPERTY_HOST_TYPE(15L), Uri_PROPERTY_DWORD_START(15L), Uri_PROPERTY_PORT(16L), Uri_PROPERTY_SCHEME(17L), Uri_PROPERTY_ZONE(18L), Uri_PROPERTY_DWORD_LAST(18L);
+
+    companion object {
+        fun fromValue(v: Long): _MIDL_IUri_0001 = entries.firstOrNull { it.value == v }
+            ?: error("Unknown _MIDL_IUri_0001 value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum __MIDL_IUri_0002}
+ */
+enum class _MIDL_IUri_0002(val value: Long) {
+    Uri_HOST_UNKNOWN(0L), Uri_HOST_DNS(1L), Uri_HOST_IPV4(2L), Uri_HOST_IPV6(3L), Uri_HOST_IDN(4L);
+
+    companion object {
+        fun fromValue(v: Long): _MIDL_IUri_0002 = entries.firstOrNull { it.value == v }
+            ?: error("Unknown _MIDL_IUri_0002 value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagBINDSTRING}
+ */
+enum class tagBINDSTRING(val value: Long) {
+    BINDSTRING_HEADERS(1L), BINDSTRING_ACCEPT_MIMES(2L), BINDSTRING_EXTRA_URL(3L), BINDSTRING_LANGUAGE(4L), BINDSTRING_USERNAME(5L), BINDSTRING_PASSWORD(6L), BINDSTRING_UA_PIXELS(7L), BINDSTRING_UA_COLOR(8L), BINDSTRING_OS(9L), BINDSTRING_USER_AGENT(10L), BINDSTRING_ACCEPT_ENCODINGS(11L), BINDSTRING_POST_COOKIE(12L), BINDSTRING_POST_DATA_MIME(13L), BINDSTRING_URL(14L), BINDSTRING_IID(15L), BINDSTRING_FLAG_BIND_TO_OBJECT(16L), BINDSTRING_PTR_BIND_CONTEXT(17L), BINDSTRING_XDR_ORIGIN(18L), BINDSTRING_DOWNLOADPATH(19L), BINDSTRING_ROOTDOC_URL(20L), BINDSTRING_INITIAL_FILENAME(21L), BINDSTRING_PROXY_USERNAME(22L), BINDSTRING_PROXY_PASSWORD(23L), BINDSTRING_ENTERPRISE_ID(24L), BINDSTRING_DOC_URL(25L), BINDSTRING_SAMESITE_COOKIE_LEVEL(26L);
+
+    companion object {
+        fun fromValue(v: Long): tagBINDSTRING = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagBINDSTRING value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum _tagPI_FLAGS}
+ */
+enum class _tagPI_FLAGS(val value: Long) {
+    PI_PARSE_URL(1L), PI_FILTER_MODE(2L), PI_FORCE_ASYNC(4L), PI_USE_WORKERTHREAD(8L), PI_MIMEVERIFICATION(16L), PI_CLSIDLOOKUP(32L), PI_DATAPROGRESS(64L), PI_SYNCHRONOUS(128L), PI_APARTMENTTHREADED(256L), PI_CLASSINSTALL(512L), PI_PASSONBINDCTX(8192L), PI_NOMIMEHANDLER(32768L), PI_LOADAPPDIRECT(16384L), PD_FORCE_SWITCH(65536L), PI_PREFERDEFAULTHANDLER(131072L);
+
+    companion object {
+        fun fromValue(v: Long): _tagPI_FLAGS = entries.firstOrNull { it.value == v }
+            ?: error("Unknown _tagPI_FLAGS value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum _tagOIBDG_FLAGS}
+ */
+enum class _tagOIBDG_FLAGS(val value: Long) {
+    OIBDG_APARTMENTTHREADED(256L), OIBDG_DATAONLY(4096L);
+
+    companion object {
+        fun fromValue(v: Long): _tagOIBDG_FLAGS = entries.firstOrNull { it.value == v }
+            ?: error("Unknown _tagOIBDG_FLAGS value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum _tagPARSEACTION}
+ */
+enum class _tagPARSEACTION(val value: Long) {
+    PARSE_CANONICALIZE(1L), PARSE_FRIENDLY(2L), PARSE_SECURITY_URL(3L), PARSE_ROOTDOCUMENT(4L), PARSE_DOCUMENT(5L), PARSE_ANCHOR(6L), PARSE_ENCODE_IS_UNESCAPE(7L), PARSE_DECODE_IS_ESCAPE(8L), PARSE_PATH_FROM_URL(9L), PARSE_URL_FROM_PATH(10L), PARSE_MIME(11L), PARSE_SERVER(12L), PARSE_SCHEMA(13L), PARSE_SITE(14L), PARSE_DOMAIN(15L), PARSE_LOCATION(16L), PARSE_SECURITY_DOMAIN(17L), PARSE_ESCAPE(18L), PARSE_UNESCAPE(19L);
+
+    companion object {
+        fun fromValue(v: Long): _tagPARSEACTION = entries.firstOrNull { it.value == v }
+            ?: error("Unknown _tagPARSEACTION value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum _tagPSUACTION}
+ */
+enum class _tagPSUACTION(val value: Long) {
+    PSU_DEFAULT(1L), PSU_SECURITY_URL_ONLY(2L);
+
+    companion object {
+        fun fromValue(v: Long): _tagPSUACTION = entries.firstOrNull { it.value == v }
+            ?: error("Unknown _tagPSUACTION value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum _tagQUERYOPTION}
+ */
+enum class _tagQUERYOPTION(val value: Long) {
+    QUERY_EXPIRATION_DATE(1L), QUERY_TIME_OF_LAST_CHANGE(2L), QUERY_CONTENT_ENCODING(3L), QUERY_CONTENT_TYPE(4L), QUERY_REFRESH(5L), QUERY_RECOMBINE(6L), QUERY_CAN_NAVIGATE(7L), QUERY_USES_NETWORK(8L), QUERY_IS_CACHED(9L), QUERY_IS_INSTALLEDENTRY(10L), QUERY_IS_CACHED_OR_MAPPED(11L), QUERY_USES_CACHE(12L), QUERY_IS_SECURE(13L), QUERY_IS_SAFE(14L), QUERY_USES_HISTORYFOLDER(15L), QUERY_IS_CACHED_AND_USABLE_OFFLINE(16L);
+
+    companion object {
+        fun fromValue(v: Long): _tagQUERYOPTION = entries.firstOrNull { it.value == v }
+            ?: error("Unknown _tagQUERYOPTION value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum _tagINTERNETFEATURELIST}
+ */
+enum class _tagINTERNETFEATURELIST(val value: Long) {
+    FEATURE_OBJECT_CACHING(0L), FEATURE_ZONE_ELEVATION(1L), FEATURE_MIME_HANDLING(2L), FEATURE_MIME_SNIFFING(3L), FEATURE_WINDOW_RESTRICTIONS(4L), FEATURE_WEBOC_POPUPMANAGEMENT(5L), FEATURE_BEHAVIORS(6L), FEATURE_DISABLE_MK_PROTOCOL(7L), FEATURE_LOCALMACHINE_LOCKDOWN(8L), FEATURE_SECURITYBAND(9L), FEATURE_RESTRICT_ACTIVEXINSTALL(10L), FEATURE_VALIDATE_NAVIGATE_URL(11L), FEATURE_RESTRICT_FILEDOWNLOAD(12L), FEATURE_ADDON_MANAGEMENT(13L), FEATURE_PROTOCOL_LOCKDOWN(14L), FEATURE_HTTP_USERNAME_PASSWORD_DISABLE(15L), FEATURE_SAFE_BINDTOOBJECT(16L), FEATURE_UNC_SAVEDFILECHECK(17L), FEATURE_GET_URL_DOM_FILEPATH_UNENCODED(18L), FEATURE_TABBED_BROWSING(19L), FEATURE_SSLUX(20L), FEATURE_DISABLE_NAVIGATION_SOUNDS(21L), FEATURE_DISABLE_LEGACY_COMPRESSION(22L), FEATURE_FORCE_ADDR_AND_STATUS(23L), FEATURE_XMLHTTP(24L), FEATURE_DISABLE_TELNET_PROTOCOL(25L), FEATURE_FEEDS(26L), FEATURE_BLOCK_INPUT_PROMPTS(27L), FEATURE_ENTRY_COUNT(28L);
+
+    companion object {
+        fun fromValue(v: Long): _tagINTERNETFEATURELIST = entries.firstOrNull { it.value == v }
+            ?: error("Unknown _tagINTERNETFEATURELIST value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum __MIDL_IInternetSecurityManager_0001}
+ */
+enum class _MIDL_IInternetSecurityManager_0001(val value: Long) {
+    PUAF_DEFAULT(0L), PUAF_NOUI(1L), PUAF_ISFILE(2L), PUAF_WARN_IF_DENIED(4L), PUAF_FORCEUI_FOREGROUND(8L), PUAF_CHECK_TIFS(16L), PUAF_DONTCHECKBOXINDIALOG(32L), PUAF_TRUSTED(64L), PUAF_ACCEPT_WILDCARD_SCHEME(128L), PUAF_ENFORCERESTRICTED(256L), PUAF_NOSAVEDFILECHECK(512L), PUAF_REQUIRESAVEDFILECHECK(1024L), PUAF_DONT_USE_CACHE(4096L), PUAF_RESERVED1(8192L), PUAF_RESERVED2(16384L), PUAF_LMZ_UNLOCKED(65536L), PUAF_LMZ_LOCKED(131072L), PUAF_DEFAULTZONEPOL(262144L), PUAF_NPL_USE_LOCKED_IF_RESTRICTED(524288L), PUAF_NOUIIFLOCKED(1048576L), PUAF_DRAGPROTOCOLCHECK(2097152L);
+
+    companion object {
+        fun fromValue(v: Long): _MIDL_IInternetSecurityManager_0001 = entries.firstOrNull { it.value == v }
+            ?: error("Unknown _MIDL_IInternetSecurityManager_0001 value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum __MIDL_IInternetSecurityManager_0002}
+ */
+enum class _MIDL_IInternetSecurityManager_0002(val value: Long) {
+    PUAFOUT_DEFAULT(0L), PUAFOUT_ISLOCKZONEPOLICY(1L);
+
+    companion object {
+        fun fromValue(v: Long): _MIDL_IInternetSecurityManager_0002 = entries.firstOrNull { it.value == v }
+            ?: error("Unknown _MIDL_IInternetSecurityManager_0002 value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum __MIDL_IInternetSecurityManager_0003}
+ */
+enum class _MIDL_IInternetSecurityManager_0003(val value: Long) {
+    SZM_CREATE(0L), SZM_DELETE(1L);
+
+    companion object {
+        fun fromValue(v: Long): _MIDL_IInternetSecurityManager_0003 = entries.firstOrNull { it.value == v }
+            ?: error("Unknown _MIDL_IInternetSecurityManager_0003 value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagURLZONE}
+ */
+enum class tagURLZONE(val value: Long) {
+    URLZONE_INVALID(-1L), URLZONE_PREDEFINED_MIN(0L), URLZONE_LOCAL_MACHINE(0L), URLZONE_INTRANET(1L), URLZONE_TRUSTED(2L), URLZONE_INTERNET(3L), URLZONE_UNTRUSTED(4L), URLZONE_PREDEFINED_MAX(999L), URLZONE_USER_MIN(1000L), URLZONE_USER_MAX(10000L);
+
+    companion object {
+        fun fromValue(v: Long): tagURLZONE = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagURLZONE value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagURLTEMPLATE}
+ */
+enum class tagURLTEMPLATE(val value: Long) {
+    URLTEMPLATE_CUSTOM(0L), URLTEMPLATE_PREDEFINED_MIN(65536L), URLTEMPLATE_LOW(65536L), URLTEMPLATE_MEDLOW(66816L), URLTEMPLATE_MEDIUM(69632L), URLTEMPLATE_MEDHIGH(70912L), URLTEMPLATE_HIGH(73728L), URLTEMPLATE_PREDEFINED_MAX(131072L);
+
+    companion object {
+        fun fromValue(v: Long): tagURLTEMPLATE = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagURLTEMPLATE value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum __MIDL_IInternetZoneManager_0001}
+ */
+enum class _MIDL_IInternetZoneManager_0001(val value: Long) {
+    MAX_ZONE_PATH(260L), MAX_ZONE_DESCRIPTION(200L);
+
+    companion object {
+        fun fromValue(v: Long): _MIDL_IInternetZoneManager_0001 = entries.firstOrNull { it.value == v }
+            ?: error("Unknown _MIDL_IInternetZoneManager_0001 value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum __MIDL_IInternetZoneManager_0002}
+ */
+enum class _MIDL_IInternetZoneManager_0002(val value: Long) {
+    ZAFLAGS_CUSTOM_EDIT(1L), ZAFLAGS_ADD_SITES(2L), ZAFLAGS_REQUIRE_VERIFICATION(4L), ZAFLAGS_INCLUDE_PROXY_OVERRIDE(8L), ZAFLAGS_INCLUDE_INTRANET_SITES(16L), ZAFLAGS_NO_UI(32L), ZAFLAGS_SUPPORTS_VERIFICATION(64L), ZAFLAGS_UNC_AS_INTRANET(128L), ZAFLAGS_DETECT_INTRANET(256L), ZAFLAGS_USE_LOCKED_ZONES(65536L), ZAFLAGS_VERIFY_TEMPLATE_SETTINGS(131072L), ZAFLAGS_NO_CACHE(262144L);
+
+    companion object {
+        fun fromValue(v: Long): _MIDL_IInternetZoneManager_0002 = entries.firstOrNull { it.value == v }
+            ?: error("Unknown _MIDL_IInternetZoneManager_0002 value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum _URLZONEREG}
+ */
+enum class _URLZONEREG(val value: Long) {
+    URLZONEREG_DEFAULT(0L), URLZONEREG_HKLM(1L), URLZONEREG_HKCU(2L);
+
+    companion object {
+        fun fromValue(v: Long): _URLZONEREG = entries.firstOrNull { it.value == v }
+            ?: error("Unknown _URLZONEREG value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum __MIDL_IGetBindHandle_0001}
+ */
+enum class _MIDL_IGetBindHandle_0001(val value: Long) {
+    BINDHANDLETYPES_APPCACHE(0L), BINDHANDLETYPES_DEPENDENCY(1L), BINDHANDLETYPES_COUNT(2L);
+
+    companion object {
+        fun fromValue(v: Long): _MIDL_IGetBindHandle_0001 = entries.firstOrNull { it.value == v }
+            ?: error("Unknown _MIDL_IGetBindHandle_0001 value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum PIDMSI_STATUS_VALUE}
+ */
+enum class PIDMSI_STATUS_VALUE(val value: Long) {
+    PIDMSI_STATUS_NORMAL(0L), PIDMSI_STATUS_NEW(1L), PIDMSI_STATUS_PRELIM(2L), PIDMSI_STATUS_DRAFT(3L), PIDMSI_STATUS_INPROGRESS(4L), PIDMSI_STATUS_EDIT(5L), PIDMSI_STATUS_REVIEW(6L), PIDMSI_STATUS_PROOF(7L), PIDMSI_STATUS_FINAL(8L), PIDMSI_STATUS_OTHER(32767L);
+
+    companion object {
+        fun fromValue(v: Long): PIDMSI_STATUS_VALUE = entries.firstOrNull { it.value == v }
+            ?: error("Unknown PIDMSI_STATUS_VALUE value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum INTERACTION_ID}
+ */
+enum class INTERACTION_ID(val value: Long) {
+    INTERACTION_ID_NONE(0L), INTERACTION_ID_MANIPULATION(1L), INTERACTION_ID_TAP(2L), INTERACTION_ID_SECONDARY_TAP(3L), INTERACTION_ID_HOLD(4L), INTERACTION_ID_DRAG(5L), INTERACTION_ID_CROSS_SLIDE(6L), INTERACTION_ID_MAX(-1L);
+
+    companion object {
+        fun fromValue(v: Long): INTERACTION_ID = entries.firstOrNull { it.value == v }
+            ?: error("Unknown INTERACTION_ID value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum INTERACTION_FLAGS}
+ */
+enum class INTERACTION_FLAGS(val value: Long) {
+    INTERACTION_FLAG_NONE(0L), INTERACTION_FLAG_BEGIN(1L), INTERACTION_FLAG_END(2L), INTERACTION_FLAG_CANCEL(4L), INTERACTION_FLAG_INERTIA(8L), INTERACTION_FLAG_MAX(-1L);
+
+    companion object {
+        fun fromValue(v: Long): INTERACTION_FLAGS = entries.firstOrNull { it.value == v }
+            ?: error("Unknown INTERACTION_FLAGS value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum INTERACTION_CONFIGURATION_FLAGS}
+ */
+enum class INTERACTION_CONFIGURATION_FLAGS(val value: Long) {
+    INTERACTION_CONFIGURATION_FLAG_NONE(0L), INTERACTION_CONFIGURATION_FLAG_MANIPULATION(1L), INTERACTION_CONFIGURATION_FLAG_MANIPULATION_TRANSLATION_X(2L), INTERACTION_CONFIGURATION_FLAG_MANIPULATION_TRANSLATION_Y(4L), INTERACTION_CONFIGURATION_FLAG_MANIPULATION_ROTATION(8L), INTERACTION_CONFIGURATION_FLAG_MANIPULATION_SCALING(16L), INTERACTION_CONFIGURATION_FLAG_MANIPULATION_TRANSLATION_INERTIA(32L), INTERACTION_CONFIGURATION_FLAG_MANIPULATION_ROTATION_INERTIA(64L), INTERACTION_CONFIGURATION_FLAG_MANIPULATION_SCALING_INERTIA(128L), INTERACTION_CONFIGURATION_FLAG_MANIPULATION_RAILS_X(256L), INTERACTION_CONFIGURATION_FLAG_MANIPULATION_RAILS_Y(512L), INTERACTION_CONFIGURATION_FLAG_MANIPULATION_EXACT(1024L), INTERACTION_CONFIGURATION_FLAG_MANIPULATION_MULTIPLE_FINGER_PANNING(2048L), INTERACTION_CONFIGURATION_FLAG_CROSS_SLIDE(1L), INTERACTION_CONFIGURATION_FLAG_CROSS_SLIDE_HORIZONTAL(2L), INTERACTION_CONFIGURATION_FLAG_CROSS_SLIDE_SELECT(4L), INTERACTION_CONFIGURATION_FLAG_CROSS_SLIDE_SPEED_BUMP(8L), INTERACTION_CONFIGURATION_FLAG_CROSS_SLIDE_REARRANGE(16L), INTERACTION_CONFIGURATION_FLAG_CROSS_SLIDE_EXACT(32L), INTERACTION_CONFIGURATION_FLAG_TAP(1L), INTERACTION_CONFIGURATION_FLAG_TAP_DOUBLE(2L), INTERACTION_CONFIGURATION_FLAG_TAP_MULTIPLE_FINGER(4L), INTERACTION_CONFIGURATION_FLAG_SECONDARY_TAP(1L), INTERACTION_CONFIGURATION_FLAG_HOLD(1L), INTERACTION_CONFIGURATION_FLAG_HOLD_MOUSE(2L), INTERACTION_CONFIGURATION_FLAG_HOLD_MULTIPLE_FINGER(4L), INTERACTION_CONFIGURATION_FLAG_DRAG(1L), INTERACTION_CONFIGURATION_FLAG_MAX(-1L);
+
+    companion object {
+        fun fromValue(v: Long): INTERACTION_CONFIGURATION_FLAGS = entries.firstOrNull { it.value == v }
+            ?: error("Unknown INTERACTION_CONFIGURATION_FLAGS value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum INERTIA_PARAMETER}
+ */
+enum class INERTIA_PARAMETER(val value: Long) {
+    INERTIA_PARAMETER_TRANSLATION_DECELERATION(1L), INERTIA_PARAMETER_TRANSLATION_DISPLACEMENT(2L), INERTIA_PARAMETER_ROTATION_DECELERATION(3L), INERTIA_PARAMETER_ROTATION_ANGLE(4L), INERTIA_PARAMETER_EXPANSION_DECELERATION(5L), INERTIA_PARAMETER_EXPANSION_EXPANSION(6L), INERTIA_PARAMETER_MAX(-1L);
+
+    companion object {
+        fun fromValue(v: Long): INERTIA_PARAMETER = entries.firstOrNull { it.value == v }
+            ?: error("Unknown INERTIA_PARAMETER value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum INTERACTION_STATE}
+ */
+enum class INTERACTION_STATE(val value: Long) {
+    INTERACTION_STATE_IDLE(0L), INTERACTION_STATE_IN_INTERACTION(1L), INTERACTION_STATE_POSSIBLE_DOUBLE_TAP(2L), INTERACTION_STATE_MAX(-1L);
+
+    companion object {
+        fun fromValue(v: Long): INTERACTION_STATE = entries.firstOrNull { it.value == v }
+            ?: error("Unknown INTERACTION_STATE value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum INTERACTION_CONTEXT_PROPERTY}
+ */
+enum class INTERACTION_CONTEXT_PROPERTY(val value: Long) {
+    INTERACTION_CONTEXT_PROPERTY_MEASUREMENT_UNITS(1L), INTERACTION_CONTEXT_PROPERTY_INTERACTION_UI_FEEDBACK(2L), INTERACTION_CONTEXT_PROPERTY_FILTER_POINTERS(3L), INTERACTION_CONTEXT_PROPERTY_MAX(-1L);
+
+    companion object {
+        fun fromValue(v: Long): INTERACTION_CONTEXT_PROPERTY = entries.firstOrNull { it.value == v }
+            ?: error("Unknown INTERACTION_CONTEXT_PROPERTY value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum CROSS_SLIDE_THRESHOLD}
+ */
+enum class CROSS_SLIDE_THRESHOLD(val value: Long) {
+    CROSS_SLIDE_THRESHOLD_SELECT_START(0L), CROSS_SLIDE_THRESHOLD_SPEED_BUMP_START(1L), CROSS_SLIDE_THRESHOLD_SPEED_BUMP_END(2L), CROSS_SLIDE_THRESHOLD_REARRANGE_START(3L), CROSS_SLIDE_THRESHOLD_COUNT(4L), CROSS_SLIDE_THRESHOLD_MAX(-1L);
+
+    companion object {
+        fun fromValue(v: Long): CROSS_SLIDE_THRESHOLD = entries.firstOrNull { it.value == v }
+            ?: error("Unknown CROSS_SLIDE_THRESHOLD value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum CROSS_SLIDE_FLAGS}
+ */
+enum class CROSS_SLIDE_FLAGS(val value: Long) {
+    CROSS_SLIDE_FLAGS_NONE(0L), CROSS_SLIDE_FLAGS_SELECT(1L), CROSS_SLIDE_FLAGS_SPEED_BUMP(2L), CROSS_SLIDE_FLAGS_REARRANGE(4L), CROSS_SLIDE_FLAGS_MAX(-1L);
+
+    companion object {
+        fun fromValue(v: Long): CROSS_SLIDE_FLAGS = entries.firstOrNull { it.value == v }
+            ?: error("Unknown CROSS_SLIDE_FLAGS value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum MOUSE_WHEEL_PARAMETER}
+ */
+enum class MOUSE_WHEEL_PARAMETER(val value: Long) {
+    MOUSE_WHEEL_PARAMETER_CHAR_TRANSLATION_X(1L), MOUSE_WHEEL_PARAMETER_CHAR_TRANSLATION_Y(2L), MOUSE_WHEEL_PARAMETER_DELTA_SCALE(3L), MOUSE_WHEEL_PARAMETER_DELTA_ROTATION(4L), MOUSE_WHEEL_PARAMETER_PAGE_TRANSLATION_X(5L), MOUSE_WHEEL_PARAMETER_PAGE_TRANSLATION_Y(6L), MOUSE_WHEEL_PARAMETER_MAX(-1L);
+
+    companion object {
+        fun fromValue(v: Long): MOUSE_WHEEL_PARAMETER = entries.firstOrNull { it.value == v }
+            ?: error("Unknown MOUSE_WHEEL_PARAMETER value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum TAP_PARAMETER}
+ */
+enum class TAP_PARAMETER(val value: Long) {
+    TAP_PARAMETER_MIN_CONTACT_COUNT(0L), TAP_PARAMETER_MAX_CONTACT_COUNT(1L), TAP_PARAMETER_MAX(-1L);
+
+    companion object {
+        fun fromValue(v: Long): TAP_PARAMETER = entries.firstOrNull { it.value == v }
+            ?: error("Unknown TAP_PARAMETER value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum HOLD_PARAMETER}
+ */
+enum class HOLD_PARAMETER(val value: Long) {
+    HOLD_PARAMETER_MIN_CONTACT_COUNT(0L), HOLD_PARAMETER_MAX_CONTACT_COUNT(1L), HOLD_PARAMETER_THRESHOLD_RADIUS(2L), HOLD_PARAMETER_THRESHOLD_START_DELAY(3L), HOLD_PARAMETER_MAX(-1L);
+
+    companion object {
+        fun fromValue(v: Long): HOLD_PARAMETER = entries.firstOrNull { it.value == v }
+            ?: error("Unknown HOLD_PARAMETER value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum TRANSLATION_PARAMETER}
+ */
+enum class TRANSLATION_PARAMETER(val value: Long) {
+    TRANSLATION_PARAMETER_MIN_CONTACT_COUNT(0L), TRANSLATION_PARAMETER_MAX_CONTACT_COUNT(1L), TRANSLATION_PARAMETER_MAX(-1L);
+
+    companion object {
+        fun fromValue(v: Long): TRANSLATION_PARAMETER = entries.firstOrNull { it.value == v }
+            ?: error("Unknown TRANSLATION_PARAMETER value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum MANIPULATION_RAILS_STATE}
+ */
+enum class MANIPULATION_RAILS_STATE(val value: Long) {
+    MANIPULATION_RAILS_STATE_UNDECIDED(0L), MANIPULATION_RAILS_STATE_FREE(1L), MANIPULATION_RAILS_STATE_RAILED(2L), MANIPULATION_RAILS_STATE_MAX(-1L);
+
+    companion object {
+        fun fromValue(v: Long): MANIPULATION_RAILS_STATE = entries.firstOrNull { it.value == v }
+            ?: error("Unknown MANIPULATION_RAILS_STATE value: $v")
+    }
+}
+
+/**
+ * {@snippet lang=c : CreateInteractionContext typedef HRESULT = Long((typedef HINTERACTIONCONTEXT = (Declared(HINTERACTIONCONTEXT__))*)*)
+ */
+private val CreateInteractionContext_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private var CreateInteractionContext_HANDLE: MethodHandle? = null
+
+fun CreateInteractionContext(arg0: MemorySegment): Int {
+    check(_initialized) { "Win32 CreateInteractionContext called before init()" }
+    val _handle = CreateInteractionContext_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
+ * {@snippet lang=c : DestroyInteractionContext typedef HRESULT = Long(typedef HINTERACTIONCONTEXT = (Declared(HINTERACTIONCONTEXT__))*)
+ */
+private val DestroyInteractionContext_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private var DestroyInteractionContext_HANDLE: MethodHandle? = null
+
+fun DestroyInteractionContext(arg0: MemorySegment): Int {
+    check(_initialized) { "Win32 DestroyInteractionContext called before init()" }
+    val _handle = DestroyInteractionContext_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
+ * {@snippet lang=c : RegisterOutputCallbackInteractionContext typedef HRESULT = Long(typedef HINTERACTIONCONTEXT = (Declared(HINTERACTIONCONTEXT__))*,typedef INTERACTION_CONTEXT_OUTPUT_CALLBACK = (Void((Void)*,(Declared(INTERACTION_CONTEXT_OUTPUT))*))*,(Void)*)
+ */
+private val RegisterOutputCallbackInteractionContext_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private var RegisterOutputCallbackInteractionContext_HANDLE: MethodHandle? = null
+
+fun RegisterOutputCallbackInteractionContext(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment): Int {
+    check(_initialized) { "Win32 RegisterOutputCallbackInteractionContext called before init()" }
+    val _handle = RegisterOutputCallbackInteractionContext_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0, arg1, arg2) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
+ * {@snippet lang=c : SetInteractionConfigurationInteractionContext typedef HRESULT = Long(typedef HINTERACTIONCONTEXT = (Declared(HINTERACTIONCONTEXT__))*,typedef UINT32 = UNSIGNED = Int,(typedef INTERACTION_CONTEXT_CONFIGURATION = Declared(INTERACTION_CONTEXT_CONFIGURATION))*)
+ */
+private val SetInteractionConfigurationInteractionContext_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private var SetInteractionConfigurationInteractionContext_HANDLE: MethodHandle? = null
+
+fun SetInteractionConfigurationInteractionContext(arg0: MemorySegment, arg1: Int, arg2: MemorySegment): Int {
+    check(_initialized) { "Win32 SetInteractionConfigurationInteractionContext called before init()" }
+    val _handle = SetInteractionConfigurationInteractionContext_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0, arg1, arg2) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
+ * {@snippet lang=c : GetInteractionConfigurationInteractionContext typedef HRESULT = Long(typedef HINTERACTIONCONTEXT = (Declared(HINTERACTIONCONTEXT__))*,typedef UINT32 = UNSIGNED = Int,(typedef INTERACTION_CONTEXT_CONFIGURATION = Declared(INTERACTION_CONTEXT_CONFIGURATION))*)
+ */
+private val GetInteractionConfigurationInteractionContext_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private var GetInteractionConfigurationInteractionContext_HANDLE: MethodHandle? = null
+
+fun GetInteractionConfigurationInteractionContext(arg0: MemorySegment, arg1: Int, arg2: MemorySegment): Int {
+    check(_initialized) { "Win32 GetInteractionConfigurationInteractionContext called before init()" }
+    val _handle = GetInteractionConfigurationInteractionContext_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0, arg1, arg2) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
+ * {@snippet lang=c : SetPropertyInteractionContext typedef HRESULT = Long(typedef HINTERACTIONCONTEXT = (Declared(HINTERACTIONCONTEXT__))*,typedef INTERACTION_CONTEXT_PROPERTY = Declared(INTERACTION_CONTEXT_PROPERTY),typedef UINT32 = UNSIGNED = Int)
+ */
+private val SetPropertyInteractionContext_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
+private var SetPropertyInteractionContext_HANDLE: MethodHandle? = null
+
+fun SetPropertyInteractionContext(arg0: MemorySegment, arg1: INTERACTION_CONTEXT_PROPERTY, arg2: Int): Int {
+    check(_initialized) { "Win32 SetPropertyInteractionContext called before init()" }
+    val _handle = SetPropertyInteractionContext_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0, arg1.value.toInt(), arg2) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
+ * {@snippet lang=c : GetPropertyInteractionContext typedef HRESULT = Long(typedef HINTERACTIONCONTEXT = (Declared(HINTERACTIONCONTEXT__))*,typedef INTERACTION_CONTEXT_PROPERTY = Declared(INTERACTION_CONTEXT_PROPERTY),(typedef UINT32 = UNSIGNED = Int)*)
+ */
+private val GetPropertyInteractionContext_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private var GetPropertyInteractionContext_HANDLE: MethodHandle? = null
+
+fun GetPropertyInteractionContext(arg0: MemorySegment, arg1: INTERACTION_CONTEXT_PROPERTY, arg2: MemorySegment): Int {
+    check(_initialized) { "Win32 GetPropertyInteractionContext called before init()" }
+    val _handle = GetPropertyInteractionContext_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0, arg1.value.toInt(), arg2) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
+ * {@snippet lang=c : ResetInteractionContext typedef HRESULT = Long(typedef HINTERACTIONCONTEXT = (Declared(HINTERACTIONCONTEXT__))*)
+ */
+private val ResetInteractionContext_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private var ResetInteractionContext_HANDLE: MethodHandle? = null
+
+fun ResetInteractionContext(arg0: MemorySegment): Int {
+    check(_initialized) { "Win32 ResetInteractionContext called before init()" }
+    val _handle = ResetInteractionContext_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
+ * {@snippet lang=c : AddPointerInteractionContext typedef HRESULT = Long(typedef HINTERACTIONCONTEXT = (Declared(HINTERACTIONCONTEXT__))*,typedef UINT32 = UNSIGNED = Int)
+ */
+private val AddPointerInteractionContext_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
+private var AddPointerInteractionContext_HANDLE: MethodHandle? = null
+
+fun AddPointerInteractionContext(arg0: MemorySegment, arg1: Int): Int {
+    check(_initialized) { "Win32 AddPointerInteractionContext called before init()" }
+    val _handle = AddPointerInteractionContext_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0, arg1) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
+ * {@snippet lang=c : RemovePointerInteractionContext typedef HRESULT = Long(typedef HINTERACTIONCONTEXT = (Declared(HINTERACTIONCONTEXT__))*,typedef UINT32 = UNSIGNED = Int)
+ */
+private val RemovePointerInteractionContext_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
+private var RemovePointerInteractionContext_HANDLE: MethodHandle? = null
+
+fun RemovePointerInteractionContext(arg0: MemorySegment, arg1: Int): Int {
+    check(_initialized) { "Win32 RemovePointerInteractionContext called before init()" }
+    val _handle = RemovePointerInteractionContext_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0, arg1) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
+ * {@snippet lang=c : ProcessPointerFramesInteractionContext typedef HRESULT = Long(typedef HINTERACTIONCONTEXT = (Declared(HINTERACTIONCONTEXT__))*,typedef UINT32 = UNSIGNED = Int,typedef UINT32 = UNSIGNED = Int,(typedef POINTER_INFO = Declared(tagPOINTER_INFO))*)
+ */
+private val ProcessPointerFramesInteractionContext_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private var ProcessPointerFramesInteractionContext_HANDLE: MethodHandle? = null
+
+fun ProcessPointerFramesInteractionContext(arg0: MemorySegment, arg1: Int, arg2: Int, arg3: MemorySegment): Int {
+    check(_initialized) { "Win32 ProcessPointerFramesInteractionContext called before init()" }
+    val _handle = ProcessPointerFramesInteractionContext_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0, arg1, arg2, arg3) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
 
 /**
  * Initializes all Win32 bindings.
@@ -5186,6 +7216,16 @@ fun init() {
     }
     _DLL_KERNEL32_DLL = try {
         SymbolLookup.libraryLookup("Kernel32.dll", Arena.global())
+    } catch (ex: Throwable) {
+        null
+    }
+    _DLL_NINPUT_DLL = try {
+        SymbolLookup.libraryLookup("Ninput.dll", Arena.global())
+    } catch (ex: Throwable) {
+        null
+    }
+    _DLL_OLE32_DLL = try {
+        SymbolLookup.libraryLookup("Ole32.dll", Arena.global())
     } catch (ex: Throwable) {
         null
     }
@@ -5216,6 +7256,7 @@ fun init() {
     TranslateMessage_HANDLE = _lookup("TranslateMessage").find("TranslateMessage").map { Linker.nativeLinker().downcallHandle(it, TranslateMessage_DESC) }.orElse(null)
     DispatchMessageW_HANDLE = _lookup("DispatchMessageW").find("DispatchMessageW").map { Linker.nativeLinker().downcallHandle(it, DispatchMessageW_DESC) }.orElse(null)
     PeekMessageW_HANDLE = _lookup("PeekMessageW").find("PeekMessageW").map { Linker.nativeLinker().downcallHandle(it, PeekMessageW_DESC) }.orElse(null)
+    GetMessageExtraInfo_HANDLE = _lookup("GetMessageExtraInfo").find("GetMessageExtraInfo").map { Linker.nativeLinker().downcallHandle(it, GetMessageExtraInfo_DESC) }.orElse(null)
     SendMessageW_HANDLE = _lookup("SendMessageW").find("SendMessageW").map { Linker.nativeLinker().downcallHandle(it, SendMessageW_DESC) }.orElse(null)
     PostMessageW_HANDLE = _lookup("PostMessageW").find("PostMessageW").map { Linker.nativeLinker().downcallHandle(it, PostMessageW_DESC) }.orElse(null)
     DefWindowProcW_HANDLE = _lookup("DefWindowProcW").find("DefWindowProcW").map { Linker.nativeLinker().downcallHandle(it, DefWindowProcW_DESC) }.orElse(null)
@@ -5232,12 +7273,22 @@ fun init() {
     IsWindowVisible_HANDLE = _lookup("IsWindowVisible").find("IsWindowVisible").map { Linker.nativeLinker().downcallHandle(it, IsWindowVisible_DESC) }.orElse(null)
     IsIconic_HANDLE = _lookup("IsIconic").find("IsIconic").map { Linker.nativeLinker().downcallHandle(it, IsIconic_DESC) }.orElse(null)
     IsZoomed_HANDLE = _lookup("IsZoomed").find("IsZoomed").map { Linker.nativeLinker().downcallHandle(it, IsZoomed_DESC) }.orElse(null)
+    GetFocus_HANDLE = _lookup("GetFocus").find("GetFocus").map { Linker.nativeLinker().downcallHandle(it, GetFocus_DESC) }.orElse(null)
     GetKeyState_HANDLE = _lookup("GetKeyState").find("GetKeyState").map { Linker.nativeLinker().downcallHandle(it, GetKeyState_DESC) }.orElse(null)
     GetKeyboardState_HANDLE = _lookup("GetKeyboardState").find("GetKeyboardState").map { Linker.nativeLinker().downcallHandle(it, GetKeyboardState_DESC) }.orElse(null)
     SendInput_HANDLE = _lookup("SendInput").find("SendInput").map { Linker.nativeLinker().downcallHandle(it, SendInput_DESC) }.orElse(null)
     GetTouchInputInfo_HANDLE = _lookup("GetTouchInputInfo").find("GetTouchInputInfo").map { Linker.nativeLinker().downcallHandle(it, GetTouchInputInfo_DESC) }.orElse(null)
     CloseTouchInputHandle_HANDLE = _lookup("CloseTouchInputHandle").find("CloseTouchInputHandle").map { Linker.nativeLinker().downcallHandle(it, CloseTouchInputHandle_DESC) }.orElse(null)
     RegisterTouchWindow_HANDLE = _lookup("RegisterTouchWindow").find("RegisterTouchWindow").map { Linker.nativeLinker().downcallHandle(it, RegisterTouchWindow_DESC) }.orElse(null)
+    InitializeTouchInjection_HANDLE = _lookup("InitializeTouchInjection").find("InitializeTouchInjection").map { Linker.nativeLinker().downcallHandle(it, InitializeTouchInjection_DESC) }.orElse(null)
+    InjectTouchInput_HANDLE = _lookup("InjectTouchInput").find("InjectTouchInput").map { Linker.nativeLinker().downcallHandle(it, InjectTouchInput_DESC) }.orElse(null)
+    GetPointerType_HANDLE = _lookup("GetPointerType").find("GetPointerType").map { Linker.nativeLinker().downcallHandle(it, GetPointerType_DESC) }.orElse(null)
+    GetPointerInfo_HANDLE = _lookup("GetPointerInfo").find("GetPointerInfo").map { Linker.nativeLinker().downcallHandle(it, GetPointerInfo_DESC) }.orElse(null)
+    GetPointerFrameInfoHistory_HANDLE = _lookup("GetPointerFrameInfoHistory").find("GetPointerFrameInfoHistory").map { Linker.nativeLinker().downcallHandle(it, GetPointerFrameInfoHistory_DESC) }.orElse(null)
+    GetPointerTouchInfo_HANDLE = _lookup("GetPointerTouchInfo").find("GetPointerTouchInfo").map { Linker.nativeLinker().downcallHandle(it, GetPointerTouchInfo_DESC) }.orElse(null)
+    GetPointerFrameTouchInfoHistory_HANDLE = _lookup("GetPointerFrameTouchInfoHistory").find("GetPointerFrameTouchInfoHistory").map { Linker.nativeLinker().downcallHandle(it, GetPointerFrameTouchInfoHistory_DESC) }.orElse(null)
+    GetPointerPenInfo_HANDLE = _lookup("GetPointerPenInfo").find("GetPointerPenInfo").map { Linker.nativeLinker().downcallHandle(it, GetPointerPenInfo_DESC) }.orElse(null)
+    GetPointerFramePenInfoHistory_HANDLE = _lookup("GetPointerFramePenInfoHistory").find("GetPointerFramePenInfoHistory").map { Linker.nativeLinker().downcallHandle(it, GetPointerFramePenInfoHistory_DESC) }.orElse(null)
     MapVirtualKeyW_HANDLE = _lookup("MapVirtualKeyW").find("MapVirtualKeyW").map { Linker.nativeLinker().downcallHandle(it, MapVirtualKeyW_DESC) }.orElse(null)
     MapVirtualKeyExW_HANDLE = _lookup("MapVirtualKeyExW").find("MapVirtualKeyExW").map { Linker.nativeLinker().downcallHandle(it, MapVirtualKeyExW_DESC) }.orElse(null)
     GetCapture_HANDLE = _lookup("GetCapture").find("GetCapture").map { Linker.nativeLinker().downcallHandle(it, GetCapture_DESC) }.orElse(null)
@@ -5270,11 +7321,13 @@ fun init() {
     GetCursor_HANDLE = _lookup("GetCursor").find("GetCursor").map { Linker.nativeLinker().downcallHandle(it, GetCursor_DESC) }.orElse(null)
     ClientToScreen_HANDLE = _lookup("ClientToScreen").find("ClientToScreen").map { Linker.nativeLinker().downcallHandle(it, ClientToScreen_DESC) }.orElse(null)
     ScreenToClient_HANDLE = _lookup("ScreenToClient").find("ScreenToClient").map { Linker.nativeLinker().downcallHandle(it, ScreenToClient_DESC) }.orElse(null)
+    WindowFromPoint_HANDLE = _lookup("WindowFromPoint").find("WindowFromPoint").map { Linker.nativeLinker().downcallHandle(it, WindowFromPoint_DESC) }.orElse(null)
     ClipCursor_HANDLE = _lookup("ClipCursor").find("ClipCursor").map { Linker.nativeLinker().downcallHandle(it, ClipCursor_DESC) }.orElse(null)
     FillRect_HANDLE = _lookup("FillRect").find("FillRect").map { Linker.nativeLinker().downcallHandle(it, FillRect_DESC) }.orElse(null)
     GetWindowLongPtrW_HANDLE = _lookup("GetWindowLongPtrW").find("GetWindowLongPtrW").map { Linker.nativeLinker().downcallHandle(it, GetWindowLongPtrW_DESC) }.orElse(null)
     SetWindowLongPtrW_HANDLE = _lookup("SetWindowLongPtrW").find("SetWindowLongPtrW").map { Linker.nativeLinker().downcallHandle(it, SetWindowLongPtrW_DESC) }.orElse(null)
     FindWindowExW_HANDLE = _lookup("FindWindowExW").find("FindWindowExW").map { Linker.nativeLinker().downcallHandle(it, FindWindowExW_DESC) }.orElse(null)
+    GetWindowThreadProcessId_HANDLE = _lookup("GetWindowThreadProcessId").find("GetWindowThreadProcessId").map { Linker.nativeLinker().downcallHandle(it, GetWindowThreadProcessId_DESC) }.orElse(null)
     LoadCursorW_HANDLE = _lookup("LoadCursorW").find("LoadCursorW").map { Linker.nativeLinker().downcallHandle(it, LoadCursorW_DESC) }.orElse(null)
     DestroyCursor_HANDLE = _lookup("DestroyCursor").find("DestroyCursor").map { Linker.nativeLinker().downcallHandle(it, DestroyCursor_DESC) }.orElse(null)
     CreateIcon_HANDLE = _lookup("CreateIcon").find("CreateIcon").map { Linker.nativeLinker().downcallHandle(it, CreateIcon_DESC) }.orElse(null)
@@ -5290,6 +7343,22 @@ fun init() {
     DwmEnableBlurBehindWindow_HANDLE = _lookup("DwmEnableBlurBehindWindow").find("DwmEnableBlurBehindWindow").map { Linker.nativeLinker().downcallHandle(it, DwmEnableBlurBehindWindow_DESC) }.orElse(null)
     DwmExtendFrameIntoClientArea_HANDLE = _lookup("DwmExtendFrameIntoClientArea").find("DwmExtendFrameIntoClientArea").map { Linker.nativeLinker().downcallHandle(it, DwmExtendFrameIntoClientArea_DESC) }.orElse(null)
     DwmSetWindowAttribute_HANDLE = _lookup("DwmSetWindowAttribute").find("DwmSetWindowAttribute").map { Linker.nativeLinker().downcallHandle(it, DwmSetWindowAttribute_DESC) }.orElse(null)
+    CoUninitialize_HANDLE = _lookup("CoUninitialize").find("CoUninitialize").map { Linker.nativeLinker().downcallHandle(it, CoUninitialize_DESC) }.orElse(null)
+    CoInitializeEx_HANDLE = _lookup("CoInitializeEx").find("CoInitializeEx").map { Linker.nativeLinker().downcallHandle(it, CoInitializeEx_DESC) }.orElse(null)
+    CoCreateInstance_HANDLE = _lookup("CoCreateInstance").find("CoCreateInstance").map { Linker.nativeLinker().downcallHandle(it, CoCreateInstance_DESC) }.orElse(null)
+    CoTaskMemAlloc_HANDLE = _lookup("CoTaskMemAlloc").find("CoTaskMemAlloc").map { Linker.nativeLinker().downcallHandle(it, CoTaskMemAlloc_DESC) }.orElse(null)
+    CoTaskMemFree_HANDLE = _lookup("CoTaskMemFree").find("CoTaskMemFree").map { Linker.nativeLinker().downcallHandle(it, CoTaskMemFree_DESC) }.orElse(null)
+    CreateInteractionContext_HANDLE = _lookup("CreateInteractionContext").find("CreateInteractionContext").map { Linker.nativeLinker().downcallHandle(it, CreateInteractionContext_DESC) }.orElse(null)
+    DestroyInteractionContext_HANDLE = _lookup("DestroyInteractionContext").find("DestroyInteractionContext").map { Linker.nativeLinker().downcallHandle(it, DestroyInteractionContext_DESC) }.orElse(null)
+    RegisterOutputCallbackInteractionContext_HANDLE = _lookup("RegisterOutputCallbackInteractionContext").find("RegisterOutputCallbackInteractionContext").map { Linker.nativeLinker().downcallHandle(it, RegisterOutputCallbackInteractionContext_DESC) }.orElse(null)
+    SetInteractionConfigurationInteractionContext_HANDLE = _lookup("SetInteractionConfigurationInteractionContext").find("SetInteractionConfigurationInteractionContext").map { Linker.nativeLinker().downcallHandle(it, SetInteractionConfigurationInteractionContext_DESC) }.orElse(null)
+    GetInteractionConfigurationInteractionContext_HANDLE = _lookup("GetInteractionConfigurationInteractionContext").find("GetInteractionConfigurationInteractionContext").map { Linker.nativeLinker().downcallHandle(it, GetInteractionConfigurationInteractionContext_DESC) }.orElse(null)
+    SetPropertyInteractionContext_HANDLE = _lookup("SetPropertyInteractionContext").find("SetPropertyInteractionContext").map { Linker.nativeLinker().downcallHandle(it, SetPropertyInteractionContext_DESC) }.orElse(null)
+    GetPropertyInteractionContext_HANDLE = _lookup("GetPropertyInteractionContext").find("GetPropertyInteractionContext").map { Linker.nativeLinker().downcallHandle(it, GetPropertyInteractionContext_DESC) }.orElse(null)
+    ResetInteractionContext_HANDLE = _lookup("ResetInteractionContext").find("ResetInteractionContext").map { Linker.nativeLinker().downcallHandle(it, ResetInteractionContext_DESC) }.orElse(null)
+    AddPointerInteractionContext_HANDLE = _lookup("AddPointerInteractionContext").find("AddPointerInteractionContext").map { Linker.nativeLinker().downcallHandle(it, AddPointerInteractionContext_DESC) }.orElse(null)
+    RemovePointerInteractionContext_HANDLE = _lookup("RemovePointerInteractionContext").find("RemovePointerInteractionContext").map { Linker.nativeLinker().downcallHandle(it, RemovePointerInteractionContext_DESC) }.orElse(null)
+    ProcessPointerFramesInteractionContext_HANDLE = _lookup("ProcessPointerFramesInteractionContext").find("ProcessPointerFramesInteractionContext").map { Linker.nativeLinker().downcallHandle(it, ProcessPointerFramesInteractionContext_DESC) }.orElse(null)
 
     _initialized = true
 }

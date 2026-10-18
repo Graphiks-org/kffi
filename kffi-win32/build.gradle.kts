@@ -43,6 +43,18 @@ tasks.withType<Test>().configureEach {
 }
 
 val jvmTestTask = tasks.named<Test>("jvmTest")
+// Native input generation stays in a separate, explicitly requested test artifact.
+val nativeTestSupportJar = tasks.register<Jar>("nativeTestSupportJar") {
+    dependsOn(tasks.named("jvmTestClasses"))
+    archiveClassifier.set("native-test-support")
+    from(jvmTestTask.map { it.testClassesDirs })
+    include("org/graphiks/kffi/win32/testsupport/**")
+}
+publishing {
+    publications.withType<org.gradle.api.publish.maven.MavenPublication>().configureEach {
+        if (name == "jvm") artifact(nativeTestSupportJar)
+    }
+}
 val win32IntegrationEnabled = providers.environmentVariable("KFFI_WIN32_INTEGRATION")
     .map { it == "1" }
     .orElse(false)
@@ -62,6 +74,9 @@ tasks.register<Test>("win32IntegrationTest") {
         includeTestsMatching("org.graphiks.kffi.win32.managed.Win32InputIntegrationTest")
         includeTestsMatching("org.graphiks.kffi.win32.managed.Win32WindowPropertiesIntegrationTest")
         includeTestsMatching("org.graphiks.kffi.win32.managed.Win32AdvancedWindowIntegrationTest")
+        includeTestsMatching("org.graphiks.kffi.win32.managed.Win32TextServicesIntegrationTest")
+        includeTestsMatching("org.graphiks.kffi.win32.managed.Win32PointerPacketsIntegrationTest")
+        includeTestsMatching("org.graphiks.kffi.win32.managed.Win32InteractionContextIntegrationTest")
     }
 
     systemProperty(

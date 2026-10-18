@@ -12,7 +12,7 @@ Push-Location $repo
 try {
     # The local coordinate is a test alias. Keep the runtime VERSION contract
     # on the normal build version and publish exactly the jars tested below.
-    & $wrapper :kffi:jvmTest :kffi-win32:jvmTest :kffi:jvmJar :kffi-win32:jvmJar "-PreleaseVersion=$BuildVersion" --configure-on-demand --console=plain
+    & $wrapper :kffi:jvmTest :kffi-win32:jvmTest :kffi:jvmJar :kffi-win32:jvmJar :kffi-win32:nativeTestSupportJar "-PreleaseVersion=$BuildVersion" --configure-on-demand --console=plain
     if ($LASTEXITCODE -ne 0) { throw 'JVM build failed' }
     # Full KMP publication resolves Android/NDK and Dokka. This isolated Maven build
     # publishes the tested JVM jars and POM aliases only; it is not a release gate.
@@ -33,6 +33,9 @@ publishing {
                 version = localVersion
                 artifact(new File(sourceRepo, "${module}/build/libs/${module}-jvm-${buildVersion}.jar"))
                 if (module == 'kffi-win32') {
+                    artifact(new File(sourceRepo, "${module}/build/libs/${module}-${buildVersion}-native-test-support.jar")) {
+                        classifier = 'native-test-support'
+                    }
                     pom.withXml {
                         def dependency = asNode().appendNode('dependencies').appendNode('dependency')
                         dependency.appendNode('groupId', 'org.graphiks')

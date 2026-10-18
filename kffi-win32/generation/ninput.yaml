@@ -1,0 +1,16 @@
+dllMap:
+  "Ninput.dll":
+    functions:
+      - CreateInteractionContext
+      - DestroyInteractionContext
+      - SetInteractionConfigurationInteractionContext
+      - GetInteractionConfigurationInteractionContext
+      - SetPropertyInteractionContext
+      - GetPropertyInteractionContext
+      - RegisterOutputCallbackInteractionContext
+      - ProcessPointerFramesInteractionContext
+      - AddPointerInteractionContext
+      - RemovePointerInteractionContext
+      - ResetInteractionContext
+    structs: []
+    constants: []
