@@ -12,7 +12,11 @@ import java.util.concurrent.atomic.AtomicBoolean
 import org.graphiks.kffi.posix.LinuxErrno
 import org.graphiks.kffi.posix.PollFd
 import org.graphiks.kffi.wayland.invokeNativePoll
+import org.graphiks.kffi.wayland.wlKeyboardInterface
 import org.graphiks.kffi.wayland.wlOutputInterface
+import org.graphiks.kffi.wayland.wlPointerInterface
+import org.graphiks.kffi.wayland.wlProxyMarshalArrayFlags
+import org.graphiks.kffi.wayland.wlSeatInterface
 import org.graphiks.kffi.wayland.wlDisplayCancelRead
 import org.graphiks.kffi.wayland.wlDisplayConnect
 import org.graphiks.kffi.wayland.wlDisplayDisconnect
@@ -70,6 +74,87 @@ public class WaylandClient private constructor(
      * the roundtrip cannot refresh the registry.
      */
     /**
+     * Binds the zwlr_virtual_pointer_manager_v1 global (authored interface:
+     * the wlr protocol is not exported by libwayland-client). Returns the
+     * raw manager proxy for the injection harness.
+     */
+    public fun bindVirtualPointerManager(): MemorySegment? {
+        registry
+        if (!roundtrip()) return null
+        val (name, advertised) = synchronized(advertisedGlobals) {
+            advertisedGlobals["zwlr_virtual_pointer_manager_v1"] ?: return null
+        }
+        return bindWithInterface(
+            name,
+            org.graphiks.kffi.wayland.virtualPointerManagerInterfaceV1,
+            minOf(advertised, 2),
+        )
+    }
+
+    /**
+     * Creates the virtual pointer attached to [seat] through [managerProxy];
+     * attaching it grants the seat the pointer capability and the injected
+     * events flow to every regular pointer listener.
+     */
+    public fun createVirtualPointer(managerProxy: MemorySegment, seat: WaylandSeat): MemorySegment? =
+        org.graphiks.kffi.wayland.createVirtualPointer(managerProxy, seat.rawProxy)
+
+    /** Injects one absolute pointer motion (centre of a 640x480 layout). */
+    public fun injectPointerMotion(virtualPointer: MemorySegment, x: Double, y: Double) {
+        org.graphiks.kffi.wayland.virtualPointerMotionAbsolute(virtualPointer, 0, x, y, 640.0, 480.0)
+    }
+
+    /** Injects one button event (BTN_LEFT=0x110). */
+    public fun injectPointerButton(virtualPointer: MemorySegment, button: Int, state: Int) {
+        org.graphiks.kffi.wayland.virtualPointerButton(virtualPointer, 0, button, state)
+    }
+
+    /** Terminates the injected pointer batch. */
+    public fun injectPointerFrame(virtualPointer: MemorySegment) {
+        org.graphiks.kffi.wayland.virtualPointerFrame(virtualPointer)
+    }
+
+    /** Injects one value120 scroll unit (0 = vertical axis). */
+    public fun injectPointerAxisValue120(virtualPointer: MemorySegment, axis: Int, value120: Int) {
+        org.graphiks.kffi.wayland.virtualPointerAxisValue120(virtualPointer, 0, axis, value120)
+    }
+
+    /**
+     * Binds one advertised `wl_seat` global and wraps it in the managed
+     * [WaylandSeat] facade; pointer/keyboard sub-objects are created lazily
+     * when their listener is requested (the get_pointer/get_keyboard
+     * requests go through the fixed-arity array marshal).
+     */
+    public fun bindSeat(name: Int, maxVersion: Int = 9): WaylandSeat? {
+        // clamp to the advertised version: binding above it is a protocol error
+        registry
+        if (!roundtrip()) {
+            throw WaylandWindowingException("wl_display roundtrip failed while resolving 'wl_seat'")
+        }
+        val advertised = synchronized(advertisedGlobals) { advertisedGlobals["wl_seat"]?.second } ?: return null
+        val proxy = bindByGlobalName(name, "wl_seat", minOf(advertised, maxVersion)) ?: return null
+        return WaylandSeat(proxy.proxy, managedArena, managedLock, ::requestSubObject)
+    }
+
+    /**
+     * Issues one new_id request (get_pointer/get_keyboard) through the
+     * fixed-arity array marshal: the array carries only the new_id slot,
+     * which libwayland fills from the interface.
+     */
+    private fun requestSubObject(proxy: MemorySegment, opcode: Int, interfaceName: String): MemorySegment {
+        val marshalArray = requireHandle(wlProxyMarshalArrayFlags)
+        val interfacePointer = requireNotNull(interfacePointer(interfaceName)) {
+            "required libwayland interface '$interfaceName' is unavailable"
+        }
+        Arena.ofConfined().use { arena ->
+            val args = arena.allocate(ValueLayout.ADDRESS, 1)
+            return marshalArray.invoke(
+                proxy, opcode, interfacePointer, 1, 0, args,
+            ) as MemorySegment
+        }
+    }
+
+    /**
      * Binds one advertised `wl_output` global and wraps it in the managed
      * [WaylandOutput] facade (native listener installed lazily at the first
      * consumer). The global [name] comes from the registry globals listener.
@@ -89,6 +174,26 @@ public class WaylandClient private constructor(
         val (name, advertised) = synchronized(advertisedGlobals) { advertisedGlobals[interfaceName] }
             ?: return null
         return bindByGlobalName(name, interfaceName, minOf(advertised, maxVersion))
+    }
+
+    private fun bindWithInterface(name: Int, interfacePointer: MemorySegment, version: Int): MemorySegment? {
+        val bind = requireHandle(wlProxyMarshalBind)
+        val interfaceName = "zwlr_virtual_pointer_manager_v1"
+        Arena.ofConfined().use { temp ->
+            val namePointer = temp.allocateFrom(interfaceName)
+            val proxy = bind.invoke(
+                registryProxy,
+                WL_REGISTRY_BIND,
+                interfacePointer,
+                version,
+                0,
+                name,
+                namePointer,
+                version,
+                MemorySegment.NULL,
+            ) as MemorySegment
+            return proxy.takeIf { it != MemorySegment.NULL }
+        }
     }
 
     private fun bindByGlobalName(name: Int, interfaceName: String, version: Int): ManagedProxy? {
@@ -123,6 +228,9 @@ public class WaylandClient private constructor(
         "xdg_wm_base" -> xdg_wm_base_interface
         "wl_shm" -> wlShmInterface
         "wl_output" -> wlOutputInterface
+        "wl_seat" -> wlSeatInterface
+        "wl_pointer" -> wlPointerInterface
+        "wl_keyboard" -> wlKeyboardInterface
         else -> null
     }
 
