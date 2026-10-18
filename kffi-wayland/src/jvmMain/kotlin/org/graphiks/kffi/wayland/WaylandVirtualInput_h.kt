@@ -81,6 +81,46 @@ val virtualKeyboardManagerInterface: MemorySegment by lazy {
     )
 }
 
+private val textInputInterface: MemorySegment by lazy {
+    iface(
+        "zwp_text_input_v3", 1,
+        arrayOf(
+            msg("destroy", ""),
+            msg("enable", ""),
+            msg("disable", ""),
+            msg("set_surrounding_text", "sii"),
+            msg("set_text_change_cause", "u"),
+            msg("set_content_type", "uu"),
+            msg("set_cursor_rectangle", "iiii"),
+            msg("commit", ""),
+        ),
+        arrayOf(
+            msg("enter", "o", null),
+            msg("leave", "o", null),
+            msg("preedit_string", "?sii"),
+            msg("commit_string", "?s"),
+            msg("delete_surrounding_text", "uu"),
+            msg("done", "u"),
+        ),
+    )
+}
+
+private val textInputManagerInterface: MemorySegment by lazy {
+    iface(
+        "zwp_text_input_manager_v3", 1,
+        arrayOf(
+            msg("destroy", ""),
+            msg("get_text_input", "no", null),
+        ),
+    )
+}
+
+/** Authored zwp_text_input_v3 interface (wire order per the protocol XML). */
+val zwpTextInputInterfaceV1: MemorySegment get() = textInputInterface
+
+/** Authored zwp_text_input_manager_v3 interface. */
+val zwpTextInputManagerInterfaceV1: MemorySegment get() = textInputManagerInterface
+
 val virtualKeyboardManagerInterfaceV1: MemorySegment by lazy {
     // wire order per the protocol: seat object first, then the new_id
     iface(

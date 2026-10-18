@@ -67,6 +67,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - The frame-listener revocation gate was inverted and silently dropped
   every live frame callback; the handshake mapping proof now genuinely
   requires the presentation frame.
+- Managed `zwp_text_input_v3` bindings (`WaylandTextInput`): per-seat
+  creation through the array marshal, state requests (enable, disable,
+  surrounding text with UTF-8 byte offsets, change cause, content type,
+  cursor rectangle) sealed by commit, and IME events (enter/leave,
+  preedit/commit strings, delete-surrounding byte counts) batched at
+  every done(serial) with payloads copied in the upcall. The registry
+  bind now carries the real interface name (a mismatched name string is
+  a protocol error).
 - Interactive toplevel operations: `xdg_toplevel` move and resize marshal
   with the seat object and the input serial, `set_min_size` and
   `set_max_size` take effect at the next commit, `set_fullscreen` targets
