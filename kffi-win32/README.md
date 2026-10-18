@@ -52,7 +52,11 @@ connection is required for the first generation.
 Native test input is packaged separately under the JVM classifier
 `native-test-support`. Its controlled touch harness injects genuine Windows
 contacts into an explicitly selected visible test window and pumps its owner
-thread. It is absent from the production jar.
+thread. `prepareForeground` confirms an unmeasured native DOWN/UP on that HWND,
+plus foreground/focus readback, before collectors are installed. `drive` drains
+the queue to bounded quiescence after injection. Set `KFFI_WIN32_TOUCH_TRACE=1`
+to attach a bounded injection/message trace to recognizer assertion failures.
+It is absent from the production jar.
 
 `Win32InteractionContext` submits complete, copied window-owned frames with
 native pointer filtering disabled (read back as zero). Screen-pixel units,
@@ -242,7 +246,7 @@ revokes immediately and defers destruction until native processing is quiescent.
 Inertia, touchpad pressure and precision-touchpad semantics are not configured.
 
 Native tests use real HWNDs, COM edit sessions, injected touch frames and Ninput
-callbacks. Injection explicitly establishes foreground/focus before measurement;
+callbacks. Injection confirms native touch delivery and foreground/focus before measurement;
 a denied prerequisite fails instead of passing by skip. These tests do not certify
 an installed Japanese/Chinese IME, physical pen/eraser hardware or mixed-monitor
 candidate placement. Those require application-level manual reception. The

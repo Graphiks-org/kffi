@@ -12,6 +12,7 @@ class Win32InteractionContextIntegrationTest {
     @BeforeTest fun nativeGate() {
         assumeTrue(System.getProperty("os.name").startsWith("Windows"))
         assumeTrue(System.getenv("KFFI_WIN32_INTEGRATION") == "1")
+        Win32InjectedTouchHarness.resetTrace()
     }
 
     @Test fun realWindowsRecognizerEmitsManipulationAndDoubleTap() {
@@ -50,7 +51,7 @@ class Win32InteractionContextIntegrationTest {
                     frame(Contact(0, 300, 300, DOWN)); frame(Contact(0, 300, 300, UP))
                     frame(Contact(0, 300, 300, DOWN)); frame(Contact(0, 300, 300, UP))
                 }
-                assertTrue(outputs.any { it.interactionId == 2 && it.tapCount == 2 }, "No Windows double tap: beforeReset=$lastManipulationFrame frames=$tapFrames outputs=$outputs")
+                assertTrue(outputs.any { it.interactionId == 2 && it.tapCount == 2 }, "No Windows double tap: beforeReset=$lastManipulationFrame frames=$tapFrames outputs=$outputs trace=${Win32InjectedTouchHarness.traceSnapshot()}")
             }
         }
     }
@@ -73,19 +74,23 @@ class Win32InteractionContextIntegrationTest {
                 repeat(10) { index -> frame(Contact(0, 120 + index * 20, 100, MOVE)) }
                 frame(Contact(0, 300, 100, UP))
             }
-            assertTrue(delivered > 0, "Native callback was not reached: frames=$frames closed=${context.nativeClosed}")
+            assertTrue(delivered > 0, "Native callback was not reached: frames=$frames closed=${context.nativeClosed} trace=${Win32InjectedTouchHarness.traceSnapshot()}")
             assertTrue(context.nativeClosed)
         }
     }
 
     @Test fun aFreshWindowsContextRecognizesTwoNativeTaps() {
         val outputs = mutableListOf<Win32InteractionOutput>()
+        val frames = mutableListOf<String>()
         Win32InteractionContext.open(2, onOutput=outputs::add).use { context ->
-            Win32InjectedTouchHarness.run(onFrame = context::process) {
+            Win32InjectedTouchHarness.run(onFrame = {
+                if (frames.size < 32) frames += describe(it)
+                context.process(it)
+            }) {
                 frame(Contact(0, 300, 300, DOWN)); frame(Contact(0, 300, 300, UP))
                 frame(Contact(0, 300, 300, DOWN)); frame(Contact(0, 300, 300, UP))
             }
-            assertTrue(outputs.any { it.interactionId == 2 && it.tapCount == 2 }, "Native taps: $outputs")
+            assertTrue(outputs.any { it.interactionId == 2 && it.tapCount == 2 }, "Native taps: frames=$frames outputs=$outputs trace=${Win32InjectedTouchHarness.traceSnapshot()}")
         }
     }
 

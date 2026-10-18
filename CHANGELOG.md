@@ -27,6 +27,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   Native layouts remain confined to the managed Win32 module.
 
 ### Fixed
+- Confirm native DOWN/UP delivery to the test HWND before measured touch sequences,
+  even when foreground/focus readback already matches the target.
+- Wait for bounded UI queue quiescence after native test injection, so posted
+  window messages cannot leave the final pointer release undispatched.
 - Bind TSF caret geometry to the accepted document and caret; provisional native
   selection or composition changes return `TS_E_NOLAYOUT` until fresh geometry.
 - Preserve pointer-frame deduplication across interaction-context reset; native

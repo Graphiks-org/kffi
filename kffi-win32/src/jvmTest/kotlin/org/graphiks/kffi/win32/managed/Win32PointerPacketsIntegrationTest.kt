@@ -14,6 +14,75 @@ class Win32PointerPacketsIntegrationTest {
         assumeTrue(System.getenv("KFFI_WIN32_INTEGRATION") == "1")
     }
 
+    @Test fun focusedWindowStillAcknowledgesANativeTouchReadinessProbe() {
+        var downs = 0; var ups = 0
+        Win32ManagedWindow.open("touch-ready-receipt") { hwnd, message, w, l ->
+            when (message) {
+                0x246 -> { downs++; 0L }
+                0x247 -> { ups++; 0L }
+                0x245, 0x249, 0x24a, 0x24c -> 0L
+                0x24b -> 1L
+                else -> DefWindowProcW(MemorySegment.ofAddress(hwnd), message, w, l)
+            }
+        }.use { window ->
+            val hwnd = MemorySegment.ofAddress(window.hwnd)
+            assertTrue(SetWindowPos(hwnd, MemorySegment.NULL, 10, 10, 800, 650, 0x14) != 0)
+            window.setVisible(true); Win32WindowOperations.setTopmost(window.hwnd, true)
+            org.graphiks.kffi.win32.testsupport.Win32InjectedTouchHarness.prepareForeground(window.hwnd)
+            assertEquals(window.hwnd, GetForegroundWindow().address())
+            assertEquals(window.hwnd, GetFocus().address())
+            downs=0; ups=0
+            org.graphiks.kffi.win32.testsupport.Win32InjectedTouchHarness.prepareForeground(window.hwnd)
+            assertTrue(downs > 0 && ups > 0, "Focused HWND had no input readiness receipt: down=$downs up=$ups")
+        }
+    }
+
+    @Test fun injectedDriveDeliversTheFinalReleaseBehindPostedMessages() {
+        val sequenceDone = java.util.concurrent.CountDownLatch(1)
+        var released = false
+        var backlog = 0
+        var blocked = false
+        Win32ManagedWindow.open("touch-delivery-backlog") { hwnd, message, w, l ->
+            when (message) {
+                0x8003 -> {
+                    blocked = true
+                    check(sequenceDone.await(3, java.util.concurrent.TimeUnit.SECONDS))
+                    Thread.sleep(50) // Hold UI until the injector has returned and its backlog is queued.
+                    0L
+                }
+                0x8004 -> { backlog++; 0L }
+                0x247 -> { released = true; 0L }
+                0x245, 0x246, 0x249, 0x24a, 0x24c -> 0L
+                0x24b -> 1L
+                else -> DefWindowProcW(MemorySegment.ofAddress(hwnd), message, w, l)
+            }
+        }.use { window ->
+            val hwnd = MemorySegment.ofAddress(window.hwnd)
+            assertTrue(SetWindowPos(hwnd, MemorySegment.NULL, 10, 10, 800, 650, 0x14) != 0)
+            window.setVisible(true); Win32WindowOperations.setTopmost(window.hwnd, true)
+            org.graphiks.kffi.win32.testsupport.Win32InjectedTouchHarness.prepareForeground(window.hwnd)
+            released = false
+            assertTrue(PostMessageW(hwnd, 0x8003, 0, 0) != 0)
+            org.graphiks.kffi.win32.testsupport.Win32InjectedTouchHarness.drive(window.hwnd) {
+                try {
+                    frame(org.graphiks.kffi.win32.testsupport.Win32InjectedTouchHarness.Contact(0, 100, 100, 0x10006))
+                    frame(org.graphiks.kffi.win32.testsupport.Win32InjectedTouchHarness.Contact(0, 100, 100, 0x40000))
+                    repeat(1_000) { check(PostMessageW(hwnd, 0x8004, 0, 0) != 0) }
+                } finally { sequenceDone.countDown() }
+            }
+            val releasedAtReturn = released
+            val backlogAtReturn = backlog
+            // Cleanup must not change the receipt captured when drive returned.
+            Win32ControlWindow.open { _, _, _, _ -> 0 }.use { pump ->
+                val deadline = System.nanoTime() + 3_000_000_000L
+                while (pump.pollOne(0) && System.nanoTime() < deadline) { }
+            }
+            assertTrue(blocked)
+            assertTrue(releasedAtReturn, "drive returned before native UP: dispatched=$backlogAtReturn/1000")
+            assertEquals(1_000, backlogAtReturn)
+        }
+    }
+
     @Test fun injectedTouchFramesAreReadInsideTheirRealWindowCallback() {
         var failure: Throwable? = null
         val seen = mutableListOf<Pair<Int, Win32PointerFrame>>()

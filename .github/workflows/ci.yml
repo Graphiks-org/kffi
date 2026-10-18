@@ -143,6 +143,7 @@ jobs:
         if: matrix.os == 'windows-latest'
         env:
           KFFI_WIN32_INTEGRATION: '1'
+          KFFI_WIN32_TOUCH_TRACE: '1'
         run: ./gradlew :kffi-win32:win32IntegrationTest
       - name: Upload Win32 integration artifacts
         if: always() && matrix.os == 'windows-latest'
