@@ -79,5 +79,19 @@ dllMap:
       - GetSystemMetrics
       - GetWindowDisplayAffinity
       - SetWindowDisplayAffinity
-    structs: []
+      - GetWindowThreadProcessId
+      - GetFocus
+      - GetPointerType
+      - GetPointerInfo
+      - GetPointerTouchInfo
+      - GetPointerPenInfo
+      - GetPointerFrameInfoHistory
+      - GetPointerFrameTouchInfoHistory
+      - GetPointerFramePenInfoHistory
+      - GetMessageExtraInfo
+      - InitializeTouchInjection
+      - InjectTouchInput
+      - WindowFromPoint
+    structs:
+      - tagPOINT
     constants: []

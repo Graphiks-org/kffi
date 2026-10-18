@@ -11,7 +11,7 @@
 set -euo pipefail
 
 MODE="generate"
-KEXTRACT_REVISION="14248c87c2e87b3eb2d572435df714278d63450b"
+KEXTRACT_REVISION="e1d922eefb6b65887c6cc4bd98370ad2d7ba8b45"
 WINDOWS_SDK_VERSION="10.0.28000.0"
 
 usage() {
@@ -141,13 +141,20 @@ if [[ ! -d "$WINDOWS_SDK_INCLUDE/um" || ! -d "$WINDOWS_SDK_INCLUDE/shared" || ! 
     exit 1
 fi
 
+# The SDK depends on MSVC CRT headers, which are absent from a standalone SDK install.
+# Keep the official, hash-pinned source-only package in ignored build output.
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "$(windows_path "$REPO_ROOT/scripts/prepare-win32-crt.ps1")" \
+    -BuildDirectory "$(windows_path "$REPO_ROOT/kffi-win32/build")"
+CRT_INCLUDE="$(windows_path "$REPO_ROOT/kffi-win32/build/crt-14.44.35220")"
+
 SDK_ARGS=(
     -A "-isystem" -A "$WINDOWS_SDK_INCLUDE/um"
     -A "-isystem" -A "$WINDOWS_SDK_INCLUDE/shared"
     -A "-isystem" -A "$WINDOWS_SDK_INCLUDE/ucrt"
+    -A "-isystem" -A "$CRT_INCLUDE"
 )
 
-DLLS=(user32 kernel32 gdi32 dwmapi)
+DLLS=(user32 kernel32 gdi32 dwmapi ole32 ninput)
 GENERATION_DIR="$REPO_ROOT/kffi-win32/generation"
 STAGING="$REPO_ROOT/kffi-win32/build/generated"
 OUTPUT_PACKAGE="$REPO_ROOT/kffi-win32/src/jvmMain/kotlin/org/graphiks/kffi/win32/generated"
@@ -163,6 +170,7 @@ rm -rf -- "$STAGING"
 mkdir -p "$STAGING"
 
 ALL_FUNCTIONS=()
+ALL_STRUCTS=()
 for dll in "${DLLS[@]}"; do
     yaml="$GENERATION_DIR/${dll}.yaml"
     if [[ ! -f "$yaml" ]]; then
@@ -174,6 +182,13 @@ for dll in "${DLLS[@]}"; do
     done < <(sed -n '/^    functions:/,/^    structs:/{
         /^    functions:/d
         /^    structs:/d
+        /^      - /{s/^      - //; p}
+    }' "$yaml")
+    while IFS= read -r structure; do
+        ALL_STRUCTS+=("$structure")
+    done < <(sed -n '/^    structs:/,/^    constants:/{
+        /^    structs:/d
+        /^    constants:/d
         /^      - /{s/^      - //; p}
     }' "$yaml")
 done
@@ -188,6 +203,8 @@ cat > "$TMP_HEADER" <<'EOF'
 #define NOMINMAX
 #include <windows.h>
 #include <dwmapi.h>
+#include <objbase.h>
+#include <interactioncontext.h>
 EOF
 
 echo "→ Regenerating ${#ALL_FUNCTIONS[@]} Win32 functions"
@@ -200,6 +217,9 @@ KEXTRACT_ARGS=(
 )
 for function in "${ALL_FUNCTIONS[@]}"; do
     KEXTRACT_ARGS+=(--include-function "$function")
+done
+for structure in "${ALL_STRUCTS[@]}"; do
+    KEXTRACT_ARGS+=(--include-struct "$structure")
 done
 KEXTRACT_ARGS+=(
     "${SDK_ARGS[@]}"
