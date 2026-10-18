@@ -8,6 +8,42 @@ import java.util.concurrent.TimeUnit
 import kotlin.test.*
 
 class Win32TextServicesTest {
+    @Test fun acceptedCaretDoesNotFollowProvisionalNativeSelection() {
+        document().use { document ->
+            Win32TextComObject(document, 7, config(), limits(), {}).use { owner ->
+                Arena.ofConfined().use { arena ->
+                    val selection=arena.allocate(16, 4).fill(0)
+                    selection.set(ValueLayout.JAVA_INT, 0, 1)
+                    selection.set(ValueLayout.JAVA_INT, 4, 1)
+                    val rect=arena.allocate(16, 4); val clipped=arena.allocate(4, 4)
+                    owner.updateCursor(0, Win32WindowRect(10, 20, 2, 24))
+                    document.requestLock(6) {
+                        assertEquals(0, Win32TextComAbi.call(owner.address, 9, "ip", 1, selection))
+                        assertEquals(0x80040206.toInt(), Win32TextComAbi.call(owner.address, 26, "iiipp", 1, 1, 1, rect, clipped))
+                        0
+                    }
+                }
+            }
+        }
+    }
+
+    @Test fun sameLengthCompositionInvalidatesAcceptedCaretLayout() {
+        document().use { document ->
+            Win32TextComObject(document, 7, config(), limits(), {}).use { owner ->
+                Arena.ofConfined().use { arena ->
+                    val rect=arena.allocate(16, 4); val clipped=arena.allocate(4, 4)
+                    owner.updateCursor(0, Win32WindowRect(10, 20, 2, 24))
+                    document.requestLock(6) {
+                        document.setComposition(Win32TextRange(0, 1), Win32TextRange(0, 0))
+                        document.setText(0, 1, "x")
+                        document.setSelection(0, 0)
+                        assertEquals(0x80040206.toInt(), Win32TextComAbi.call(owner.address, 26, "iiipp", 1, 0, 0, rect, clipped))
+                        0
+                    }
+                }
+            }
+        }
+    }
     @Test fun aVirtualThreadCannotOwnAnOsThreadApartment() {
         val port = ApartmentPort(0)
         var caught: Throwable? = null
@@ -72,7 +108,7 @@ class Win32TextServicesTest {
                     val clipped = arena.allocate(4, 4)
                     document.requestLock(2) {
                         assertEquals(0x80040206.toInt(), Win32TextComAbi.call(owner.address, 26, "iiipp", 1, 0, 1, rect, clipped))
-                        owner.cursor = 0L to Win32WindowRect(-30, 40, 2, 20)
+                        owner.updateCursor(0, Win32WindowRect(-30, 40, 2, 20))
                         assertEquals(0, Win32TextComAbi.call(owner.address, 26, "iiipp", 1, 0, 0, rect, clipped))
                         assertEquals(listOf(-30, 40, -28, 60), (0..3).map { rect.get(ValueLayout.JAVA_INT, it * 4L) })
                         assertEquals(0x80040206.toInt(), Win32TextComAbi.call(owner.address, 26, "iiipp", 1, 0, 1, rect, clipped))

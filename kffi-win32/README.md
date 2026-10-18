@@ -216,7 +216,9 @@ revocation. Initialization failure reports a numeric HRESULT, including an
 incompatible existing COM apartment, without unbalancing CoUninitialize.
 
 `updateCursor()` takes **screen physical pixels** for the accepted epoch. Only
-the supplied caret range has layout; other ranges return `TS_E_NOLAYOUT`, and
+the accepted caret range has layout. Native selection, text or composition edits
+invalidate that layout until application adoption and a new cursor update;
+provisional ACP positions never inherit the previous rectangle. Other ranges return `TS_E_NOLAYOUT`, and
 ACP-from-point does not guess character positions. `Win32Pointer.clientToScreen`
 and `screenToClient` preserve full signed coordinates. Text-purpose scopes and
 enter actions have explicit mappings; capitalization/autocorrect are hints and

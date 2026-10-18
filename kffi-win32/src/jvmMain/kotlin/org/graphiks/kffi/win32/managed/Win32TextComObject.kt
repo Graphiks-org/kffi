@@ -26,7 +26,9 @@ internal class Win32TextComObject(
     internal var sink = 0L
     internal var sinkMask = 0
     internal var sinkEpoch = 0L
-    internal var cursor: Pair<Long, Win32WindowRect>? = null
+    internal var cursor: Win32TextCaret? = null
+        private set
+    internal fun updateCursor(epoch: Long, rect: Win32WindowRect) { cursor = document.bindCursor(epoch, rect) }
     internal var requestedScope = false
     internal var compositionView = 0L
     internal val nativeCalls: Int get() = calls.get()

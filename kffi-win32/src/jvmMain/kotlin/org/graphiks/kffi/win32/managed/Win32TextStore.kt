@@ -136,7 +136,7 @@ public class Win32TextStore internal constructor(
         services.checkThread()
         checkAdmitted()
         if (epoch != accepted.epoch || rect.width < 0 || rect.height < 0) throw Win32TextException(Win32TextDocument.INVALID_ARGUMENT)
-        com.cursor = epoch to rect
+        com.updateCursor(epoch, rect)
         notifyLayout()
     }
 

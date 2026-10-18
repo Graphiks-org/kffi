@@ -205,11 +205,11 @@ internal class Win32TextStoreMethods(private val owner: Win32TextComObject) {
         if (args.int(0) != 1) throw Win32TextException(Win32TextDocument.INVALID_ARGUMENT)
         checkRange(args.int(1), args.int(2), snapshot.text.length)
         val cursor = owner.cursor
-        if (cursor == null || cursor.first != snapshot.epoch || args.int(1) != args.int(2) ||
-            args.int(1) != snapshot.selection.endExclusive) throw Win32TextException(0x80040206.toInt())
+        if (cursor == null || !document.hasLayout(cursor) || args.int(1) != args.int(2) ||
+            args.int(1) != cursor.acp) throw Win32TextException(0x80040206.toInt())
         Win32TextComAbi.requirePointer(args.pointer(3))
         Win32TextComAbi.requirePointer(args.pointer(4))
-        val rect = cursor.second
+        val rect = cursor.rect
         val right = rect.x.toLong() + rect.width
         val bottom = rect.y.toLong() + rect.height
         if (right !in Int.MIN_VALUE..Int.MAX_VALUE || bottom !in Int.MIN_VALUE..Int.MAX_VALUE) throw Win32TextException(Win32TextDocument.INVALID_ARGUMENT)

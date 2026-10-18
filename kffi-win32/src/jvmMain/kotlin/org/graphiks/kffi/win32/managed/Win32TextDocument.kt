@@ -10,6 +10,8 @@ internal class Win32TextDocument(
     private var accepted = initial
     private var viewText = initial.text
     private var viewSelection = initial.selection
+    private var viewLayout = Any()
+    private var acceptedLayout = viewLayout
     private var acceptedLease: AutoCloseable? = null
     private var viewLease: AutoCloseable? = null
     private var changeLease: AutoCloseable? = null
@@ -42,6 +44,15 @@ internal class Win32TextDocument(
 
     /** Internal application-side view; COM readers still use [read] under a document lock. */
     fun peek(): Win32TextSnapshot { checkOpen(); return Win32TextSnapshot(viewText, viewSelection, accepted.epoch) }
+    fun bindCursor(epoch: Long, rect: Win32WindowRect): Win32TextCaret {
+        checkOpen()
+        if (epoch != accepted.epoch) fail(INVALID_ARGUMENT)
+        return Win32TextCaret(epoch, accepted.selection.endExclusive, acceptedLayout, rect)
+    }
+    fun hasLayout(caret: Win32TextCaret): Boolean {
+        checkOpen()
+        return caret.epoch == accepted.epoch && caret.layout === viewLayout
+    }
     val canWrite: Boolean get() { checkOpen(); return lock == 0 && !notifying && !awaitingCommit && pending == null }
     fun drainPendingLocks() { checkOpen(); drain() }
 
@@ -83,6 +94,7 @@ internal class Win32TextDocument(
         viewLease = lease
         viewText = next
         viewSelection = Win32TextRange(start + text.length, start + text.length)
+        viewLayout = Any()
         dirty = true
     }
 
@@ -90,6 +102,7 @@ internal class Win32TextDocument(
         checkWrite()
         checkRange(start, endExclusive, viewText.length)
         viewSelection = Win32TextRange(start, endExclusive)
+        viewLayout = Any()
         dirty = true
     }
 
@@ -107,6 +120,7 @@ internal class Win32TextDocument(
             checkRange(base.start, base.endExclusive, accepted.text.length)
             composition = Composition(base, range, selection)
         }
+        viewLayout = Any()
         dirty = true
     }
 
@@ -136,6 +150,8 @@ internal class Win32TextDocument(
         accepted = snapshot
         viewText = snapshot.text
         viewSelection = snapshot.selection
+        viewLayout = Any()
+        acceptedLayout = viewLayout
         composition = rebased
         awaitingCommit = false
         if (drainLocks && !notifying) drain()
@@ -256,3 +272,5 @@ internal class Win32TextDocument(
         private fun fail(hresult: Int): Nothing = throw Win32TextException(hresult)
     }
 }
+
+internal data class Win32TextCaret(val epoch: Long, val acp: Int, val layout: Any, val rect: Win32WindowRect)

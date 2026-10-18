@@ -27,6 +27,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   Native layouts remain confined to the managed Win32 module.
 
 ### Fixed
+- Bind TSF caret geometry to the accepted document and caret; provisional native
+  selection or composition changes return `TS_E_NOLAYOUT` until fresh geometry.
 - Preserve pointer-frame deduplication across interaction-context reset; native
   packet history can still contain frames submitted before the reset.
 - Intersect pointer confinement with the visible virtual desktop and register
