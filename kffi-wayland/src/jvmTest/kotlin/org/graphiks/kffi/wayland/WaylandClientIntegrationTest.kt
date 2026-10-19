@@ -204,6 +204,40 @@ class WaylandClientIntegrationTest {
     }
 
     @Test
+    fun managedDataDeviceBindsAndReleasesCleanly() {
+        requireCompositorEnvironment()
+        val client = WaylandClient.connect()
+        assertNotNull(client)
+        client.use {
+            var seatName: Int? = null
+            var managerSeen = false
+            it.registry.addGlobalsListener(
+                onGlobal = { name, interfaceName, _ ->
+                    if (interfaceName == "wl_seat" && seatName == null) seatName = name
+                    if (interfaceName == "wl_data_device_manager") managerSeen = true
+                },
+            )
+            client.roundtrip()
+            assertNotNull(seatName, "no wl_seat announced")
+            assertTrue(managerSeen, "sway does not expose wl_data_device_manager")
+            val seat = it.bindSeat(seatName!!)
+            assertNotNull(seat)
+            val device = it.createDataDevice(seat!!)
+            assertNotNull(device)
+            device.use { dev ->
+                val events = java.util.concurrent.CopyOnWriteArrayList<org.graphiks.kffi.wayland.managed.WaylandDataDeviceEvent>()
+                dev.addListener { event -> events.add(event) }
+                client.roundtrip()
+                // the binding installs the listener and releases cleanly: no
+                // protocol error, connection healthy. Drag events themselves
+                // need an external drag source (the O3 oracle of kadre
+                // phase 7); a selection event may already arrive on sway.
+                assertTrue(!client.hasError(), "the data-device lifecycle must round-trip cleanly")
+            }
+        }
+    }
+
+    @Test
     fun managedTextInputLifecycleRoundTripsOnSway() {
         requireCompositorEnvironment()
         val client = WaylandClient.connect()

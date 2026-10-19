@@ -67,6 +67,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - The frame-listener revocation gate was inverted and silently dropped
   every live frame callback; the handshake mapping proof now genuinely
   requires the presentation frame.
+- Managed `wl_data_device`/`wl_data_offer` bindings: one data device per
+  seat through the array marshal with a single native listener fanned
+  out to revocable consumers (data_offer, enter with wl_fixed decoded,
+  leave, motion, drop, selection); the offer collects MIME announces
+  and action changes, and marshals accept (nullable mime), receive (the
+  static-inline helper delegates to wl_proxy_receive — the fd is owned
+  by the caller), finish and destroy.
 - Managed `zwp_text_input_v3` bindings (`WaylandTextInput`): per-seat
   creation through the array marshal, state requests (enable, disable,
   surrounding text with UTF-8 byte offsets, change cause, content type,
