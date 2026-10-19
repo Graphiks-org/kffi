@@ -154,7 +154,7 @@ SDK_ARGS=(
     -A "-isystem" -A "$CRT_INCLUDE"
 )
 
-DLLS=(user32 kernel32 gdi32 dwmapi ole32 ninput)
+DLLS=(user32 kernel32 gdi32 dwmapi ole32 ninput shcore)
 GENERATION_DIR="$REPO_ROOT/kffi-win32/generation"
 STAGING="$REPO_ROOT/kffi-win32/build/generated"
 OUTPUT_PACKAGE="$REPO_ROOT/kffi-win32/src/jvmMain/kotlin/org/graphiks/kffi/win32/generated"
@@ -205,6 +205,7 @@ cat > "$TMP_HEADER" <<'EOF'
 #include <dwmapi.h>
 #include <objbase.h>
 #include <interactioncontext.h>
+#include <shellscalingapi.h>
 EOF
 
 echo "→ Regenerating ${#ALL_FUNCTIONS[@]} Win32 functions"

@@ -10,6 +10,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Managed Win32 multi-monitor display inventory: one synchronous
+  `EnumDisplayMonitors` walk with a process-lifetime callback stub and a
+  thread-confined collector, per-monitor `GetMonitorInfoW` bounds/work area,
+  `GetDpiForMonitor` (MDT_EFFECTIVE_DPI) scale, and `EnumDisplaySettingsExW`
+  mode walks (current + indexed, bounded) copied into scalars — a monitor
+  whose scale or modes cannot be read fails the whole snapshot with a typed
+  code instead of being published with approximated values. Generated
+  bindings gain `EnumDisplayMonitors`, `EnumDisplaySettingsExW`,
+  `GetRawInputDeviceList`-era companions `GetRegisteredRawInputDevices`
+  (already listed), `GetDpiForMonitor` via the new Shcore.dll map, and the
+  `_devicemodeW` layout.
 - Managed Win32 raw-input registration frontier: one process-lifetime
   generic-desktop mouse registration per process with a foreign-registration
   preflight (`GetRegisteredRawInputDevices` refuses with a typed code instead

@@ -22,18 +22,20 @@ private var _DLL_GDI32_DLL: SymbolLookup? = null
 private var _DLL_KERNEL32_DLL: SymbolLookup? = null
 private var _DLL_NINPUT_DLL: SymbolLookup? = null
 private var _DLL_OLE32_DLL: SymbolLookup? = null
+private var _DLL_SHCORE_DLL: SymbolLookup? = null
 private var _DLL_USER32_DLL: SymbolLookup? = null
 
 @Volatile private var _initialized: Boolean = false
 
 private fun _lookup(symbol: String): SymbolLookup {
     return when (symbol) {
-        "RegisterClassExW", "CreateWindowExW", "FindWindowExW", "GetDC", "ReleaseDC", "FillRect", "ShowWindow", "UpdateWindow", "DestroyWindow", "DefWindowProcW", "SetWindowTextW", "PostQuitMessage", "GetKeyState", "GetKeyboardState", "GetKeyboardLayout", "MapVirtualKeyExW", "ToUnicodeEx", "SystemParametersInfoW", "PeekMessageW", "GetMessageW", "TranslateMessage", "DispatchMessageW", "MsgWaitForMultipleObjectsEx", "LoadCursorW", "SetProcessDpiAwarenessContext", "GetDpiForWindow", "InvalidateRect", "ValidateRect", "TrackMouseEvent", "RegisterTouchWindow", "GetTouchInputInfo", "CloseTouchInputHandle", "GetGestureInfo", "CloseGestureInfoHandle", "ScreenToClient", "ClientToScreen", "GetCursorPos", "GetSystemMenu", "TrackPopupMenu", "EnableMenuItem", "SetMenuDefaultItem", "ReleaseCapture", "EnableWindow", "GetClientRect", "GetWindowRect", "AdjustWindowRectExForDpi", "MonitorFromWindow", "GetMonitorInfoW", "SetWindowLongPtrW", "GetWindowLongPtrW", "IsZoomed", "IsIconic", "IsWindow", "IsWindowVisible", "GetWindowTextW", "GetWindowTextLengthW", "SetWindowPos", "GetForegroundWindow", "SetForegroundWindow", "MapVirtualKeyW", "SendInput", "SetCursorPos", "SetCursor", "ShowCursor", "ClipCursor", "PostMessageW", "SendMessageW", "CreateIcon", "DestroyIcon", "FlashWindowEx", "CreateIconIndirect", "DestroyCursor", "GetCursor", "GetCapture", "GetClipCursor", "GetSystemMetrics", "GetWindowDisplayAffinity", "SetWindowDisplayAffinity", "GetWindowThreadProcessId", "GetFocus", "GetPointerType", "GetPointerInfo", "GetPointerTouchInfo", "GetPointerPenInfo", "GetPointerFrameInfoHistory", "GetPointerFrameTouchInfoHistory", "GetPointerFramePenInfoHistory", "GetMessageExtraInfo", "InitializeTouchInjection", "InjectTouchInput", "WindowFromPoint", "RegisterClipboardFormatW", "GetPropW", "RegisterRawInputDevices", "GetRawInputData", "GetRawInputDeviceList", "GetRegisteredRawInputDevices" -> _DLL_USER32_DLL ?: SymbolLookup.loaderLookup()
+        "RegisterClassExW", "CreateWindowExW", "FindWindowExW", "GetDC", "ReleaseDC", "FillRect", "ShowWindow", "UpdateWindow", "DestroyWindow", "DefWindowProcW", "SetWindowTextW", "PostQuitMessage", "GetKeyState", "GetKeyboardState", "GetKeyboardLayout", "MapVirtualKeyExW", "ToUnicodeEx", "SystemParametersInfoW", "PeekMessageW", "GetMessageW", "TranslateMessage", "DispatchMessageW", "MsgWaitForMultipleObjectsEx", "LoadCursorW", "SetProcessDpiAwarenessContext", "GetDpiForWindow", "InvalidateRect", "ValidateRect", "TrackMouseEvent", "RegisterTouchWindow", "GetTouchInputInfo", "CloseTouchInputHandle", "GetGestureInfo", "CloseGestureInfoHandle", "ScreenToClient", "ClientToScreen", "GetCursorPos", "GetSystemMenu", "TrackPopupMenu", "EnableMenuItem", "SetMenuDefaultItem", "ReleaseCapture", "EnableWindow", "GetClientRect", "GetWindowRect", "AdjustWindowRectExForDpi", "MonitorFromWindow", "GetMonitorInfoW", "SetWindowLongPtrW", "GetWindowLongPtrW", "IsZoomed", "IsIconic", "IsWindow", "IsWindowVisible", "GetWindowTextW", "GetWindowTextLengthW", "SetWindowPos", "GetForegroundWindow", "SetForegroundWindow", "MapVirtualKeyW", "SendInput", "SetCursorPos", "SetCursor", "ShowCursor", "ClipCursor", "PostMessageW", "SendMessageW", "CreateIcon", "DestroyIcon", "FlashWindowEx", "CreateIconIndirect", "DestroyCursor", "GetCursor", "GetCapture", "GetClipCursor", "GetSystemMetrics", "GetWindowDisplayAffinity", "SetWindowDisplayAffinity", "GetWindowThreadProcessId", "GetFocus", "GetPointerType", "GetPointerInfo", "GetPointerTouchInfo", "GetPointerPenInfo", "GetPointerFrameInfoHistory", "GetPointerFrameTouchInfoHistory", "GetPointerFramePenInfoHistory", "GetMessageExtraInfo", "InitializeTouchInjection", "InjectTouchInput", "WindowFromPoint", "RegisterClipboardFormatW", "GetPropW", "RegisterRawInputDevices", "GetRawInputData", "GetRawInputDeviceList", "GetRegisteredRawInputDevices", "EnumDisplayMonitors", "EnumDisplaySettingsExW" -> _DLL_USER32_DLL ?: SymbolLookup.loaderLookup()
         "GetCurrentThreadId", "GetModuleHandleW", "SetLastError", "GetLastError", "GlobalAlloc", "GlobalLock", "GlobalUnlock", "GlobalSize" -> _DLL_KERNEL32_DLL ?: SymbolLookup.loaderLookup()
         "CreateRectRgn", "CreateCompatibleDC", "CreateCompatibleBitmap", "CreateSolidBrush", "SelectObject", "BitBlt", "GetDIBits", "DeleteDC", "DeleteObject", "CreateBitmap", "CreateDIBSection" -> _DLL_GDI32_DLL ?: SymbolLookup.loaderLookup()
         "DwmSetWindowAttribute", "DwmEnableBlurBehindWindow", "DwmExtendFrameIntoClientArea" -> _DLL_DWMAPI_DLL ?: SymbolLookup.loaderLookup()
         "CoInitializeEx", "CoUninitialize", "CoCreateInstance", "CoTaskMemAlloc", "CoTaskMemFree", "OleInitialize", "OleUninitialize", "RegisterDragDrop", "RevokeDragDrop", "ReleaseStgMedium", "CreateStreamOnHGlobal" -> _DLL_OLE32_DLL ?: SymbolLookup.loaderLookup()
         "CreateInteractionContext", "DestroyInteractionContext", "SetInteractionConfigurationInteractionContext", "GetInteractionConfigurationInteractionContext", "SetPropertyInteractionContext", "GetPropertyInteractionContext", "RegisterOutputCallbackInteractionContext", "ProcessPointerFramesInteractionContext", "AddPointerInteractionContext", "RemovePointerInteractionContext", "ResetInteractionContext" -> _DLL_NINPUT_DLL ?: SymbolLookup.loaderLookup()
+        "GetDpiForMonitor" -> _DLL_SHCORE_DLL ?: SymbolLookup.loaderLookup()
         else -> SymbolLookup.loaderLookup()
     }
 }
@@ -2051,6 +2053,275 @@ typealias FXPT2DOT30 = Int
  * {@snippet lang=c : typedef UNSIGNED = Char BCHAR;}
  */
 typealias BCHAR = Byte
+
+/**
+ * {@snippet lang=c : STRUCT _devicemodeW
+ */
+class _devicemodeW {
+    companion object {
+        val layout: GroupLayout = MemoryLayout.structLayout(
+            MemoryLayout.sequenceLayout(32, ValueLayout.JAVA_CHAR.withByteAlignment(2)).withByteAlignment(2).withName("dmDeviceName"),
+            ValueLayout.JAVA_SHORT.withByteAlignment(2).withName("dmSpecVersion"),
+            ValueLayout.JAVA_SHORT.withByteAlignment(2).withName("dmDriverVersion"),
+            ValueLayout.JAVA_SHORT.withByteAlignment(2).withName("dmSize"),
+            ValueLayout.JAVA_SHORT.withByteAlignment(2).withName("dmDriverExtra"),
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("dmFields"),
+            MemoryLayout.paddingLayout(16L),
+            ValueLayout.JAVA_SHORT.withByteAlignment(2).withName("dmColor"),
+            ValueLayout.JAVA_SHORT.withByteAlignment(2).withName("dmDuplex"),
+            ValueLayout.JAVA_SHORT.withByteAlignment(2).withName("dmYResolution"),
+            ValueLayout.JAVA_SHORT.withByteAlignment(2).withName("dmTTOption"),
+            ValueLayout.JAVA_SHORT.withByteAlignment(2).withName("dmCollate"),
+            MemoryLayout.sequenceLayout(32, ValueLayout.JAVA_CHAR.withByteAlignment(2)).withByteAlignment(2).withName("dmFormName"),
+            ValueLayout.JAVA_SHORT.withByteAlignment(2).withName("dmLogPixels"),
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("dmBitsPerPel"),
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("dmPelsWidth"),
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("dmPelsHeight"),
+            MemoryLayout.paddingLayout(4L),
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("dmDisplayFrequency"),
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("dmICMMethod"),
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("dmICMIntent"),
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("dmMediaType"),
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("dmDitherType"),
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("dmReserved1"),
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("dmReserved2"),
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("dmPanningWidth"),
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("dmPanningHeight")
+        ).withByteAlignment(4L).withName("_devicemodeW")
+
+        val byteSize: Long
+            get() = layout.byteSize()
+
+        fun allocate(allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(layout)
+
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout))
+
+        fun asSlice(array: MemorySegment, index: Long): MemorySegment =
+            array.asSlice(byteSize * index)
+
+        fun reinterpret(addr: MemorySegment): MemorySegment =
+            addr.reinterpret(byteSize)
+
+        fun reinterpret(addr: MemorySegment, elementCount: Long): MemorySegment =
+            addr.reinterpret(byteSize * elementCount)
+
+    } // End companion object
+
+    fun dmDeviceName(segment: MemorySegment): MemorySegment =
+        segment.asSlice(layout.byteOffset(groupElement("dmDeviceName")), layout.select(groupElement("dmDeviceName")).byteSize())
+
+    val dmSpecVersion_VH: VarHandle = layout.varHandle(groupElement("dmSpecVersion"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun dmSpecVersion(segment: MemorySegment): Short =
+        dmSpecVersion_VH.get(segment, 0L) as Short
+
+    fun dmSpecVersion(segment: MemorySegment, value: Short) =
+        dmSpecVersion_VH.set(segment, 0L, value)
+
+    val dmDriverVersion_VH: VarHandle = layout.varHandle(groupElement("dmDriverVersion"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun dmDriverVersion(segment: MemorySegment): Short =
+        dmDriverVersion_VH.get(segment, 0L) as Short
+
+    fun dmDriverVersion(segment: MemorySegment, value: Short) =
+        dmDriverVersion_VH.set(segment, 0L, value)
+
+    val dmSize_VH: VarHandle = layout.varHandle(groupElement("dmSize"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun dmSize(segment: MemorySegment): Short =
+        dmSize_VH.get(segment, 0L) as Short
+
+    fun dmSize(segment: MemorySegment, value: Short) =
+        dmSize_VH.set(segment, 0L, value)
+
+    val dmDriverExtra_VH: VarHandle = layout.varHandle(groupElement("dmDriverExtra"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun dmDriverExtra(segment: MemorySegment): Short =
+        dmDriverExtra_VH.get(segment, 0L) as Short
+
+    fun dmDriverExtra(segment: MemorySegment, value: Short) =
+        dmDriverExtra_VH.set(segment, 0L, value)
+
+    val dmFields_VH: VarHandle = layout.varHandle(groupElement("dmFields"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun dmFields(segment: MemorySegment): Int =
+        dmFields_VH.get(segment, 0L) as Int
+
+    fun dmFields(segment: MemorySegment, value: Int) =
+        dmFields_VH.set(segment, 0L, value)
+
+    val dmColor_VH: VarHandle = layout.varHandle(groupElement("dmColor"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun dmColor(segment: MemorySegment): Short =
+        dmColor_VH.get(segment, 0L) as Short
+
+    fun dmColor(segment: MemorySegment, value: Short) =
+        dmColor_VH.set(segment, 0L, value)
+
+    val dmDuplex_VH: VarHandle = layout.varHandle(groupElement("dmDuplex"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun dmDuplex(segment: MemorySegment): Short =
+        dmDuplex_VH.get(segment, 0L) as Short
+
+    fun dmDuplex(segment: MemorySegment, value: Short) =
+        dmDuplex_VH.set(segment, 0L, value)
+
+    val dmYResolution_VH: VarHandle = layout.varHandle(groupElement("dmYResolution"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun dmYResolution(segment: MemorySegment): Short =
+        dmYResolution_VH.get(segment, 0L) as Short
+
+    fun dmYResolution(segment: MemorySegment, value: Short) =
+        dmYResolution_VH.set(segment, 0L, value)
+
+    val dmTTOption_VH: VarHandle = layout.varHandle(groupElement("dmTTOption"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun dmTTOption(segment: MemorySegment): Short =
+        dmTTOption_VH.get(segment, 0L) as Short
+
+    fun dmTTOption(segment: MemorySegment, value: Short) =
+        dmTTOption_VH.set(segment, 0L, value)
+
+    val dmCollate_VH: VarHandle = layout.varHandle(groupElement("dmCollate"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun dmCollate(segment: MemorySegment): Short =
+        dmCollate_VH.get(segment, 0L) as Short
+
+    fun dmCollate(segment: MemorySegment, value: Short) =
+        dmCollate_VH.set(segment, 0L, value)
+
+    fun dmFormName(segment: MemorySegment): MemorySegment =
+        segment.asSlice(layout.byteOffset(groupElement("dmFormName")), layout.select(groupElement("dmFormName")).byteSize())
+
+    val dmLogPixels_VH: VarHandle = layout.varHandle(groupElement("dmLogPixels"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun dmLogPixels(segment: MemorySegment): Short =
+        dmLogPixels_VH.get(segment, 0L) as Short
+
+    fun dmLogPixels(segment: MemorySegment, value: Short) =
+        dmLogPixels_VH.set(segment, 0L, value)
+
+    val dmBitsPerPel_VH: VarHandle = layout.varHandle(groupElement("dmBitsPerPel"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun dmBitsPerPel(segment: MemorySegment): Int =
+        dmBitsPerPel_VH.get(segment, 0L) as Int
+
+    fun dmBitsPerPel(segment: MemorySegment, value: Int) =
+        dmBitsPerPel_VH.set(segment, 0L, value)
+
+    val dmPelsWidth_VH: VarHandle = layout.varHandle(groupElement("dmPelsWidth"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun dmPelsWidth(segment: MemorySegment): Int =
+        dmPelsWidth_VH.get(segment, 0L) as Int
+
+    fun dmPelsWidth(segment: MemorySegment, value: Int) =
+        dmPelsWidth_VH.set(segment, 0L, value)
+
+    val dmPelsHeight_VH: VarHandle = layout.varHandle(groupElement("dmPelsHeight"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun dmPelsHeight(segment: MemorySegment): Int =
+        dmPelsHeight_VH.get(segment, 0L) as Int
+
+    fun dmPelsHeight(segment: MemorySegment, value: Int) =
+        dmPelsHeight_VH.set(segment, 0L, value)
+
+    val dmDisplayFrequency_VH: VarHandle = layout.varHandle(groupElement("dmDisplayFrequency"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun dmDisplayFrequency(segment: MemorySegment): Int =
+        dmDisplayFrequency_VH.get(segment, 0L) as Int
+
+    fun dmDisplayFrequency(segment: MemorySegment, value: Int) =
+        dmDisplayFrequency_VH.set(segment, 0L, value)
+
+    val dmICMMethod_VH: VarHandle = layout.varHandle(groupElement("dmICMMethod"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun dmICMMethod(segment: MemorySegment): Int =
+        dmICMMethod_VH.get(segment, 0L) as Int
+
+    fun dmICMMethod(segment: MemorySegment, value: Int) =
+        dmICMMethod_VH.set(segment, 0L, value)
+
+    val dmICMIntent_VH: VarHandle = layout.varHandle(groupElement("dmICMIntent"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun dmICMIntent(segment: MemorySegment): Int =
+        dmICMIntent_VH.get(segment, 0L) as Int
+
+    fun dmICMIntent(segment: MemorySegment, value: Int) =
+        dmICMIntent_VH.set(segment, 0L, value)
+
+    val dmMediaType_VH: VarHandle = layout.varHandle(groupElement("dmMediaType"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun dmMediaType(segment: MemorySegment): Int =
+        dmMediaType_VH.get(segment, 0L) as Int
+
+    fun dmMediaType(segment: MemorySegment, value: Int) =
+        dmMediaType_VH.set(segment, 0L, value)
+
+    val dmDitherType_VH: VarHandle = layout.varHandle(groupElement("dmDitherType"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun dmDitherType(segment: MemorySegment): Int =
+        dmDitherType_VH.get(segment, 0L) as Int
+
+    fun dmDitherType(segment: MemorySegment, value: Int) =
+        dmDitherType_VH.set(segment, 0L, value)
+
+    val dmReserved1_VH: VarHandle = layout.varHandle(groupElement("dmReserved1"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun dmReserved1(segment: MemorySegment): Int =
+        dmReserved1_VH.get(segment, 0L) as Int
+
+    fun dmReserved1(segment: MemorySegment, value: Int) =
+        dmReserved1_VH.set(segment, 0L, value)
+
+    val dmReserved2_VH: VarHandle = layout.varHandle(groupElement("dmReserved2"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun dmReserved2(segment: MemorySegment): Int =
+        dmReserved2_VH.get(segment, 0L) as Int
+
+    fun dmReserved2(segment: MemorySegment, value: Int) =
+        dmReserved2_VH.set(segment, 0L, value)
+
+    val dmPanningWidth_VH: VarHandle = layout.varHandle(groupElement("dmPanningWidth"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun dmPanningWidth(segment: MemorySegment): Int =
+        dmPanningWidth_VH.get(segment, 0L) as Int
+
+    fun dmPanningWidth(segment: MemorySegment, value: Int) =
+        dmPanningWidth_VH.set(segment, 0L, value)
+
+    val dmPanningHeight_VH: VarHandle = layout.varHandle(groupElement("dmPanningHeight"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun dmPanningHeight(segment: MemorySegment): Int =
+        dmPanningHeight_VH.get(segment, 0L) as Int
+
+    fun dmPanningHeight(segment: MemorySegment, value: Int) =
+        dmPanningHeight_VH.set(segment, 0L, value)
+} // End class
 
 /**
  * NS_ENUM: {@snippet lang=c : enum DISPLAYCONFIG_VIDEO_OUTPUT_TECHNOLOGY}
@@ -4249,6 +4520,26 @@ enum class tagHANDEDNESS(val value: Long) {
 }
 
 /**
+ * {@snippet lang=c : EnumDisplaySettingsExW typedef BOOL = Int(typedef LPCWSTR = (UNSIGNED = Short)*,typedef DWORD = UNSIGNED = Long,(typedef DEVMODEW = Declared(_devicemodeW))*,typedef DWORD = UNSIGNED = Long)
+ */
+private val EnumDisplaySettingsExW_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
+private var EnumDisplaySettingsExW_HANDLE: MethodHandle? = null
+
+fun EnumDisplaySettingsExW(arg0: MemorySegment, arg1: Int, arg2: MemorySegment, arg3: Int): Int {
+    check(_initialized) { "Win32 EnumDisplaySettingsExW called before init()" }
+    val _handle = EnumDisplaySettingsExW_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0, arg1, arg2, arg3) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
  * {@snippet lang=c : SystemParametersInfoW typedef BOOL = Int(typedef UINT = UNSIGNED = Int,typedef UINT = UNSIGNED = Int,typedef PVOID = (Void)*,typedef UINT = UNSIGNED = Int)
  */
 private val SystemParametersInfoW_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
@@ -4299,6 +4590,26 @@ fun GetMonitorInfoW(arg0: MemorySegment, arg1: MemorySegment): Int {
     val _handle = GetMonitorInfoW_HANDLE ?: return 0
     try {
         return _handle.invokeExact(arg0, arg1) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
+ * {@snippet lang=c : EnumDisplayMonitors typedef BOOL = Int(typedef HDC = (Declared(HDC__))*,typedef LPCRECT = (Declared(tagRECT))*,typedef MONITORENUMPROC = (Int((Declared(HMONITOR__))*,(Declared(HDC__))*,(Declared(tagRECT))*,LongLong))*,typedef LPARAM = LongLong)
+ */
+private val EnumDisplayMonitors_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
+private var EnumDisplayMonitors_HANDLE: MethodHandle? = null
+
+fun EnumDisplayMonitors(arg0: MemorySegment, arg1: MemorySegment, arg2: MemorySegment, arg3: Long): Int {
+    check(_initialized) { "Win32 EnumDisplayMonitors called before init()" }
+    val _handle = EnumDisplayMonitors_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0, arg1, arg2, arg3) as Int
     } catch (ex: Error) {
         throw ex
     } catch (ex: RuntimeException) {
@@ -8057,6 +8368,149 @@ fun ProcessPointerFramesInteractionContext(arg0: MemorySegment, arg1: Int, arg2:
     }
 }
 
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagSTRRET_TYPE}
+ */
+enum class tagSTRRET_TYPE(val value: Long) {
+    STRRET_WSTR(0L), STRRET_OFFSET(1L), STRRET_CSTR(2L);
+
+    companion object {
+        fun fromValue(v: Long): tagSTRRET_TYPE = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagSTRRET_TYPE value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagPERCEIVED}
+ */
+enum class tagPERCEIVED(val value: Long) {
+    PERCEIVED_TYPE_FIRST(-3L), PERCEIVED_TYPE_CUSTOM(-3L), PERCEIVED_TYPE_UNSPECIFIED(-2L), PERCEIVED_TYPE_FOLDER(-1L), PERCEIVED_TYPE_UNKNOWN(0L), PERCEIVED_TYPE_TEXT(1L), PERCEIVED_TYPE_IMAGE(2L), PERCEIVED_TYPE_AUDIO(3L), PERCEIVED_TYPE_VIDEO(4L), PERCEIVED_TYPE_COMPRESSED(5L), PERCEIVED_TYPE_DOCUMENT(6L), PERCEIVED_TYPE_SYSTEM(7L), PERCEIVED_TYPE_APPLICATION(8L), PERCEIVED_TYPE_GAMEMEDIA(9L), PERCEIVED_TYPE_CONTACTS(10L), PERCEIVED_TYPE_LAST(10L);
+
+    companion object {
+        fun fromValue(v: Long): tagPERCEIVED = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagPERCEIVED value: $v")
+    }
+}
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Long PERCEIVEDFLAG;}
+ */
+typealias PERCEIVEDFLAG = Int
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Long KF_REDIRECT_FLAGS;}
+ */
+typealias KF_REDIRECT_FLAGS = Int
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum tagSHCOLSTATE}
+ */
+enum class tagSHCOLSTATE(val value: Long) {
+    SHCOLSTATE_DEFAULT(0L), SHCOLSTATE_TYPE_STR(1L), SHCOLSTATE_TYPE_INT(2L), SHCOLSTATE_TYPE_DATE(3L), SHCOLSTATE_TYPEMASK(15L), SHCOLSTATE_ONBYDEFAULT(16L), SHCOLSTATE_SLOW(32L), SHCOLSTATE_EXTENDED(64L), SHCOLSTATE_SECONDARYUI(128L), SHCOLSTATE_HIDDEN(256L), SHCOLSTATE_PREFER_VARCMP(512L), SHCOLSTATE_PREFER_FMTCMP(1024L), SHCOLSTATE_NOSORTBYFOLDERNESS(2048L), SHCOLSTATE_VIEWONLY(65536L), SHCOLSTATE_BATCHREAD(131072L), SHCOLSTATE_NO_GROUPBY(262144L), SHCOLSTATE_FIXED_WIDTH(4096L), SHCOLSTATE_NODPISCALE(8192L), SHCOLSTATE_FIXED_RATIO(16384L), SHCOLSTATE_DISPLAYMASK(61440L);
+
+    companion object {
+        fun fromValue(v: Long): tagSHCOLSTATE = entries.firstOrNull { it.value == v }
+            ?: error("Unknown tagSHCOLSTATE value: $v")
+    }
+}
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Long SHCOLSTATEF;}
+ */
+typealias SHCOLSTATEF = Int
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum DEVICE_SCALE_FACTOR}
+ */
+enum class DEVICE_SCALE_FACTOR(val value: Long) {
+    DEVICE_SCALE_FACTOR_INVALID(0L), SCALE_100_PERCENT(100L), SCALE_120_PERCENT(120L), SCALE_125_PERCENT(125L), SCALE_140_PERCENT(140L), SCALE_150_PERCENT(150L), SCALE_160_PERCENT(160L), SCALE_175_PERCENT(175L), SCALE_180_PERCENT(180L), SCALE_200_PERCENT(200L), SCALE_225_PERCENT(225L), SCALE_250_PERCENT(250L), SCALE_300_PERCENT(300L), SCALE_350_PERCENT(350L), SCALE_400_PERCENT(400L), SCALE_450_PERCENT(450L), SCALE_500_PERCENT(500L);
+
+    companion object {
+        fun fromValue(v: Long): DEVICE_SCALE_FACTOR = entries.firstOrNull { it.value == v }
+            ?: error("Unknown DEVICE_SCALE_FACTOR value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum DISPLAY_DEVICE_TYPE}
+ */
+enum class DISPLAY_DEVICE_TYPE(val value: Long) {
+    DEVICE_PRIMARY(0L), DEVICE_IMMERSIVE(1L);
+
+    companion object {
+        fun fromValue(v: Long): DISPLAY_DEVICE_TYPE = entries.firstOrNull { it.value == v }
+            ?: error("Unknown DISPLAY_DEVICE_TYPE value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum SCALE_CHANGE_FLAGS}
+ */
+enum class SCALE_CHANGE_FLAGS(val value: Long) {
+    SCF_VALUE_NONE(0L), SCF_SCALE(1L), SCF_PHYSICAL(2L);
+
+    companion object {
+        fun fromValue(v: Long): SCALE_CHANGE_FLAGS = entries.firstOrNull { it.value == v }
+            ?: error("Unknown SCALE_CHANGE_FLAGS value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum PROCESS_DPI_AWARENESS}
+ */
+enum class PROCESS_DPI_AWARENESS(val value: Long) {
+    PROCESS_DPI_UNAWARE(0L), PROCESS_SYSTEM_DPI_AWARE(1L), PROCESS_PER_MONITOR_DPI_AWARE(2L);
+
+    companion object {
+        fun fromValue(v: Long): PROCESS_DPI_AWARENESS = entries.firstOrNull { it.value == v }
+            ?: error("Unknown PROCESS_DPI_AWARENESS value: $v")
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum MONITOR_DPI_TYPE}
+ */
+enum class MONITOR_DPI_TYPE(val value: Long) {
+    MDT_EFFECTIVE_DPI(0L), MDT_ANGULAR_DPI(1L), MDT_RAW_DPI(2L), MDT_DEFAULT(0L);
+
+    companion object {
+        fun fromValue(v: Long): MONITOR_DPI_TYPE = entries.firstOrNull { it.value == v }
+            ?: error("Unknown MONITOR_DPI_TYPE value: $v")
+    }
+}
+
+/**
+ * {@snippet lang=c : GetDpiForMonitor typedef HRESULT = Long(typedef HMONITOR = (Declared(HMONITOR__))*,typedef MONITOR_DPI_TYPE = Declared(MONITOR_DPI_TYPE),(typedef UINT = UNSIGNED = Int)*,(typedef UINT = UNSIGNED = Int)*)
+ */
+private val GetDpiForMonitor_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private var GetDpiForMonitor_HANDLE: MethodHandle? = null
+
+fun GetDpiForMonitor(arg0: MemorySegment, arg1: MONITOR_DPI_TYPE, arg2: MemorySegment, arg3: MemorySegment): Int {
+    check(_initialized) { "Win32 GetDpiForMonitor called before init()" }
+    val _handle = GetDpiForMonitor_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0, arg1.value.toInt(), arg2, arg3) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum SHELL_UI_COMPONENT}
+ */
+enum class SHELL_UI_COMPONENT(val value: Long) {
+    SHELL_UI_COMPONENT_TASKBARS(0L), SHELL_UI_COMPONENT_NOTIFICATIONAREA(1L), SHELL_UI_COMPONENT_DESKBAND(2L);
+
+    companion object {
+        fun fromValue(v: Long): SHELL_UI_COMPONENT = entries.firstOrNull { it.value == v }
+            ?: error("Unknown SHELL_UI_COMPONENT value: $v")
+    }
+}
+
 
 /**
  * Initializes all Win32 bindings.
@@ -8088,6 +8542,11 @@ fun init() {
     }
     _DLL_OLE32_DLL = try {
         SymbolLookup.libraryLookup("Ole32.dll", Arena.global())
+    } catch (ex: Throwable) {
+        null
+    }
+    _DLL_SHCORE_DLL = try {
+        SymbolLookup.libraryLookup("Shcore.dll", Arena.global())
     } catch (ex: Throwable) {
         null
     }
@@ -8201,9 +8660,11 @@ fun init() {
     CreateIcon_HANDLE = _lookup("CreateIcon").find("CreateIcon").map { Linker.nativeLinker().downcallHandle(it, CreateIcon_DESC) }.orElse(null)
     DestroyIcon_HANDLE = _lookup("DestroyIcon").find("DestroyIcon").map { Linker.nativeLinker().downcallHandle(it, DestroyIcon_DESC) }.orElse(null)
     CreateIconIndirect_HANDLE = _lookup("CreateIconIndirect").find("CreateIconIndirect").map { Linker.nativeLinker().downcallHandle(it, CreateIconIndirect_DESC) }.orElse(null)
+    EnumDisplaySettingsExW_HANDLE = _lookup("EnumDisplaySettingsExW").find("EnumDisplaySettingsExW").map { Linker.nativeLinker().downcallHandle(it, EnumDisplaySettingsExW_DESC) }.orElse(null)
     SystemParametersInfoW_HANDLE = _lookup("SystemParametersInfoW").find("SystemParametersInfoW").map { Linker.nativeLinker().downcallHandle(it, SystemParametersInfoW_DESC) }.orElse(null)
     MonitorFromWindow_HANDLE = _lookup("MonitorFromWindow").find("MonitorFromWindow").map { Linker.nativeLinker().downcallHandle(it, MonitorFromWindow_DESC) }.orElse(null)
     GetMonitorInfoW_HANDLE = _lookup("GetMonitorInfoW").find("GetMonitorInfoW").map { Linker.nativeLinker().downcallHandle(it, GetMonitorInfoW_DESC) }.orElse(null)
+    EnumDisplayMonitors_HANDLE = _lookup("EnumDisplayMonitors").find("EnumDisplayMonitors").map { Linker.nativeLinker().downcallHandle(it, EnumDisplayMonitors_DESC) }.orElse(null)
     GetDpiForWindow_HANDLE = _lookup("GetDpiForWindow").find("GetDpiForWindow").map { Linker.nativeLinker().downcallHandle(it, GetDpiForWindow_DESC) }.orElse(null)
     SetProcessDpiAwarenessContext_HANDLE = _lookup("SetProcessDpiAwarenessContext").find("SetProcessDpiAwarenessContext").map { Linker.nativeLinker().downcallHandle(it, SetProcessDpiAwarenessContext_DESC) }.orElse(null)
     GetRawInputData_HANDLE = _lookup("GetRawInputData").find("GetRawInputData").map { Linker.nativeLinker().downcallHandle(it, GetRawInputData_DESC) }.orElse(null)
@@ -8237,6 +8698,7 @@ fun init() {
     AddPointerInteractionContext_HANDLE = _lookup("AddPointerInteractionContext").find("AddPointerInteractionContext").map { Linker.nativeLinker().downcallHandle(it, AddPointerInteractionContext_DESC) }.orElse(null)
     RemovePointerInteractionContext_HANDLE = _lookup("RemovePointerInteractionContext").find("RemovePointerInteractionContext").map { Linker.nativeLinker().downcallHandle(it, RemovePointerInteractionContext_DESC) }.orElse(null)
     ProcessPointerFramesInteractionContext_HANDLE = _lookup("ProcessPointerFramesInteractionContext").find("ProcessPointerFramesInteractionContext").map { Linker.nativeLinker().downcallHandle(it, ProcessPointerFramesInteractionContext_DESC) }.orElse(null)
+    GetDpiForMonitor_HANDLE = _lookup("GetDpiForMonitor").find("GetDpiForMonitor").map { Linker.nativeLinker().downcallHandle(it, GetDpiForMonitor_DESC) }.orElse(null)
 
     _initialized = true
 }

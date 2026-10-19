@@ -98,6 +98,8 @@ dllMap:
       - GetRawInputData
       - GetRawInputDeviceList
       - GetRegisteredRawInputDevices
+      - EnumDisplayMonitors
+      - EnumDisplaySettingsExW
     structs:
       - tagPOINT
       - tagRAWINPUTDEVICE
@@ -106,4 +108,5 @@ dllMap:
       - tagRAWMOUSE
       - tagRAWKEYBOARD
       - tagRAWHID
+      - _devicemodeW
     constants: []

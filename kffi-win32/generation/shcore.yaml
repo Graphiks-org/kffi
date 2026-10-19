@@ -1,0 +1,6 @@
+dllMap:
+  "Shcore.dll":
+    functions:
+      - GetDpiForMonitor
+    structs: []
+    constants: []
