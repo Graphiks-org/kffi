@@ -16,6 +16,8 @@ import org.graphiks.kffi.wayland.wlKeyboardInterface
 import org.graphiks.kffi.wayland.wlOutputInterface
 import org.graphiks.kffi.wayland.wlPointerInterface
 import org.graphiks.kffi.wayland.wlProxyMarshalArrayFlags
+import org.graphiks.kffi.wayland.wlDataDeviceInterface
+import org.graphiks.kffi.wayland.wlDataDeviceManagerInterface
 import org.graphiks.kffi.wayland.zwpTextInputManagerInterfaceV1
 import org.graphiks.kffi.wayland.zwpTextInputInterfaceV1
 import org.graphiks.kffi.wayland.wlSeatInterface
@@ -101,6 +103,33 @@ public class WaylandClient private constructor(
             args.set(ValueLayout.ADDRESS, 8, seat.rawProxy)
             val proxy = marshal.invoke(manager, 1, interfacePointer, 1, 0, args) as MemorySegment
             return WaylandTextInput(proxy, managedArena, managedLock)
+        }
+    }
+
+    /**
+     * Creates the `wl_data_device` for [seat] through the fixed-arity
+     * array marshal (wire order: new_id then the seat object).
+     */
+    public fun createDataDevice(seat: WaylandSeat): WaylandDataDevice? {
+        registry
+        if (!roundtrip()) return null
+        val (name, advertised) = synchronized(advertisedGlobals) {
+            advertisedGlobals["wl_data_device_manager"] ?: return null
+        }
+        val manager = bindWithInterface(
+            name,
+            wlDataDeviceManagerInterface ?: return null,
+            minOf(advertised, 3),
+            "wl_data_device_manager",
+        ) ?: return null
+        val marshal = requireHandle(wlProxyMarshalArrayFlags)
+        val interfacePointer = wlDataDeviceInterface ?: return null
+        Arena.ofConfined().use { arena ->
+            val args = arena.allocate(ValueLayout.ADDRESS, 2)
+            args.set(ValueLayout.ADDRESS, 0, MemorySegment.NULL)
+            args.set(ValueLayout.ADDRESS, 8, seat.rawProxy)
+            val proxy = marshal.invoke(manager, 1, interfacePointer, 1, 0, args) as MemorySegment
+            return WaylandDataDevice(proxy, managedArena, managedLock)
         }
     }
 

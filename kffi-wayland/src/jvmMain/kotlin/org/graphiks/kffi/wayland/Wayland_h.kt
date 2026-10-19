@@ -339,6 +339,32 @@ val wlProxyMarshalFlagsStringTwoInt: MethodHandle? by lazy {
         ))
 }
 
+val wlProxyMarshalFlagsUintString: MethodHandle? by lazy {
+    // accept(serial, ?mime): uint then a nullable string pointer
+    libWaylandClient.downcall("wl_proxy_marshal_flags",
+        FunctionDescriptor.ofVoid(
+            ValueLayout.ADDRESS,
+            ValueLayout.JAVA_INT,
+            ValueLayout.ADDRESS,
+            ValueLayout.JAVA_INT,
+            ValueLayout.JAVA_INT,
+            ValueLayout.JAVA_INT,
+            ValueLayout.ADDRESS,
+        ))
+}
+
+val wlProxyReceiveFd: MethodHandle? by lazy {
+    // wl_proxy_receive(proxy, mime) -> int fd: the static-inline
+    // wl_data_offer_receive helper delegates here (symbol present in
+    // libwayland-client); the fd is owned by the caller
+    libWaylandClient.downcall("wl_proxy_receive",
+        FunctionDescriptor.of(
+            ValueLayout.JAVA_INT,
+            ValueLayout.ADDRESS,
+            ValueLayout.ADDRESS,
+        ))
+}
+
 val wlProxyMarshalFlagsFourInt: MethodHandle? by lazy {
     libWaylandClient.downcall("wl_proxy_marshal_flags",
         FunctionDescriptor.ofVoid(
