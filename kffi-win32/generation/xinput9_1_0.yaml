@@ -1,0 +1,14 @@
+dllMap:
+  "Xinput9_1_0.dll":
+    functions:
+      - XInputGetState
+      - XInputSetState
+      - XInputGetCapabilities
+      - XInputGetBatteryInformation
+    structs:
+      - _XINPUT_GAMEPAD
+      - _XINPUT_STATE
+      - _XINPUT_VIBRATION
+      - _XINPUT_CAPABILITIES
+      - _XINPUT_BATTERY_INFORMATION
+    constants: []
