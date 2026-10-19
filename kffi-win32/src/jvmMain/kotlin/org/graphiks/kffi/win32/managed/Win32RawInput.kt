@@ -86,15 +86,26 @@ public class Win32RawInput private constructor(
 
     public companion object {
         /** True when this process already holds any raw-input registration (foreign ownership). */
-        public fun hasRegistration(): Boolean = hasRegistration(Win32RawInputNativePort.native)
+        public fun hasRegistration(): Boolean {
+            check(Win32ControlWindow.isSupported()) { "Win32 raw input requires Windows" }
+            init()
+            return hasRegistration(Win32RawInputNativePort.native)
+        }
 
         /**
          * Registers the relative mouse sink on [hwnd]. Requires Windows; refuses
          * any preexisting process registration with [Win32RawInputException.ALREADY_REGISTERED].
          */
-        public fun register(hwnd: Long, onMotion: (deltaX: Int, deltaY: Int, device: Long) -> Unit, onFailure: (Throwable) -> Unit): Win32RawInput =
-            registerForTesting(hwnd, onMotion, onFailure, Win32RawInputNativePort.native)
+        public fun register(hwnd: Long, onMotion: (deltaX: Int, deltaY: Int, device: Long) -> Unit, onFailure: (Throwable) -> Unit): Win32RawInput {
+            check(Win32ControlWindow.isSupported()) {
+                "Win32 raw input requires Windows; this platform (" +
+                    System.getProperty("os.name") + ") is unsupported — no native library was loaded."
+            }
+            init()
+            return registerForTesting(hwnd, onMotion, onFailure, Win32RawInputNativePort.native)
+        }
 
+        /** Port-injected path: platform-independent, provable with a fake port anywhere. */
         internal fun registerForTesting(
             hwnd: Long,
             onMotion: (deltaX: Int, deltaY: Int, device: Long) -> Unit,
@@ -102,11 +113,6 @@ public class Win32RawInput private constructor(
             port: Win32RawInputNativePort,
         ): Win32RawInput {
             require(hwnd != 0L)
-            check(Win32ControlWindow.isSupported()) {
-                "Win32 raw input requires Windows; this platform (" +
-                    System.getProperty("os.name") + ") is unsupported — no native library was loaded."
-            }
-            init()
             if (hasRegistration(port)) throw Win32RawInputException(FOREIGN_REGISTERED)
             Arena.ofConfined().use { arena ->
                 val device = tagRAWINPUTDEVICE.allocate(arena)
@@ -124,7 +130,6 @@ public class Win32RawInput private constructor(
         }
 
         internal fun hasRegistration(port: Win32RawInputNativePort): Boolean {
-            init()
             Arena.ofConfined().use { arena ->
                 val countPointer = arena.allocate(ValueLayout.JAVA_INT)
                 countPointer.set(ValueLayout.JAVA_INT, 0, 0)

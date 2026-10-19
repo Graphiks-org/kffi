@@ -68,6 +68,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   Native layouts remain confined to the managed Win32 module.
 
 ### Fixed
+- Keep the Win32 raw-input Windows platform gate in the public
+  `register`/`hasRegistration` entry points only: the port-injected path used
+  by portable tests no longer throws on non-Windows hosts (publication
+  blocker on macOS).
 - Confirm native DOWN/UP delivery to the test HWND before measured touch sequences,
   even when foreground/focus readback already matches the target.
 - Wait for bounded UI queue quiescence after native test injection, so posted
