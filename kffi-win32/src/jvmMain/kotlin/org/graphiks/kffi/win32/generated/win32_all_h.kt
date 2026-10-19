@@ -28,11 +28,11 @@ private var _DLL_USER32_DLL: SymbolLookup? = null
 
 private fun _lookup(symbol: String): SymbolLookup {
     return when (symbol) {
-        "RegisterClassExW", "CreateWindowExW", "FindWindowExW", "GetDC", "ReleaseDC", "FillRect", "ShowWindow", "UpdateWindow", "DestroyWindow", "DefWindowProcW", "SetWindowTextW", "PostQuitMessage", "GetKeyState", "GetKeyboardState", "GetKeyboardLayout", "MapVirtualKeyExW", "ToUnicodeEx", "SystemParametersInfoW", "PeekMessageW", "GetMessageW", "TranslateMessage", "DispatchMessageW", "MsgWaitForMultipleObjectsEx", "LoadCursorW", "SetProcessDpiAwarenessContext", "GetDpiForWindow", "InvalidateRect", "ValidateRect", "TrackMouseEvent", "RegisterTouchWindow", "GetTouchInputInfo", "CloseTouchInputHandle", "GetGestureInfo", "CloseGestureInfoHandle", "ScreenToClient", "ClientToScreen", "GetCursorPos", "GetSystemMenu", "TrackPopupMenu", "EnableMenuItem", "SetMenuDefaultItem", "ReleaseCapture", "EnableWindow", "GetClientRect", "GetWindowRect", "AdjustWindowRectExForDpi", "MonitorFromWindow", "GetMonitorInfoW", "SetWindowLongPtrW", "GetWindowLongPtrW", "IsZoomed", "IsIconic", "IsWindow", "IsWindowVisible", "GetWindowTextW", "GetWindowTextLengthW", "SetWindowPos", "GetForegroundWindow", "SetForegroundWindow", "MapVirtualKeyW", "SendInput", "SetCursorPos", "SetCursor", "ShowCursor", "ClipCursor", "PostMessageW", "SendMessageW", "CreateIcon", "DestroyIcon", "FlashWindowEx", "CreateIconIndirect", "DestroyCursor", "GetCursor", "GetCapture", "GetClipCursor", "GetSystemMetrics", "GetWindowDisplayAffinity", "SetWindowDisplayAffinity", "GetWindowThreadProcessId", "GetFocus", "GetPointerType", "GetPointerInfo", "GetPointerTouchInfo", "GetPointerPenInfo", "GetPointerFrameInfoHistory", "GetPointerFrameTouchInfoHistory", "GetPointerFramePenInfoHistory", "GetMessageExtraInfo", "InitializeTouchInjection", "InjectTouchInput", "WindowFromPoint" -> _DLL_USER32_DLL ?: SymbolLookup.loaderLookup()
-        "GetCurrentThreadId", "GetModuleHandleW", "SetLastError", "GetLastError" -> _DLL_KERNEL32_DLL ?: SymbolLookup.loaderLookup()
+        "RegisterClassExW", "CreateWindowExW", "FindWindowExW", "GetDC", "ReleaseDC", "FillRect", "ShowWindow", "UpdateWindow", "DestroyWindow", "DefWindowProcW", "SetWindowTextW", "PostQuitMessage", "GetKeyState", "GetKeyboardState", "GetKeyboardLayout", "MapVirtualKeyExW", "ToUnicodeEx", "SystemParametersInfoW", "PeekMessageW", "GetMessageW", "TranslateMessage", "DispatchMessageW", "MsgWaitForMultipleObjectsEx", "LoadCursorW", "SetProcessDpiAwarenessContext", "GetDpiForWindow", "InvalidateRect", "ValidateRect", "TrackMouseEvent", "RegisterTouchWindow", "GetTouchInputInfo", "CloseTouchInputHandle", "GetGestureInfo", "CloseGestureInfoHandle", "ScreenToClient", "ClientToScreen", "GetCursorPos", "GetSystemMenu", "TrackPopupMenu", "EnableMenuItem", "SetMenuDefaultItem", "ReleaseCapture", "EnableWindow", "GetClientRect", "GetWindowRect", "AdjustWindowRectExForDpi", "MonitorFromWindow", "GetMonitorInfoW", "SetWindowLongPtrW", "GetWindowLongPtrW", "IsZoomed", "IsIconic", "IsWindow", "IsWindowVisible", "GetWindowTextW", "GetWindowTextLengthW", "SetWindowPos", "GetForegroundWindow", "SetForegroundWindow", "MapVirtualKeyW", "SendInput", "SetCursorPos", "SetCursor", "ShowCursor", "ClipCursor", "PostMessageW", "SendMessageW", "CreateIcon", "DestroyIcon", "FlashWindowEx", "CreateIconIndirect", "DestroyCursor", "GetCursor", "GetCapture", "GetClipCursor", "GetSystemMetrics", "GetWindowDisplayAffinity", "SetWindowDisplayAffinity", "GetWindowThreadProcessId", "GetFocus", "GetPointerType", "GetPointerInfo", "GetPointerTouchInfo", "GetPointerPenInfo", "GetPointerFrameInfoHistory", "GetPointerFrameTouchInfoHistory", "GetPointerFramePenInfoHistory", "GetMessageExtraInfo", "InitializeTouchInjection", "InjectTouchInput", "WindowFromPoint", "RegisterClipboardFormatW", "GetPropW" -> _DLL_USER32_DLL ?: SymbolLookup.loaderLookup()
+        "GetCurrentThreadId", "GetModuleHandleW", "SetLastError", "GetLastError", "GlobalAlloc", "GlobalLock", "GlobalUnlock", "GlobalSize" -> _DLL_KERNEL32_DLL ?: SymbolLookup.loaderLookup()
         "CreateRectRgn", "CreateCompatibleDC", "CreateCompatibleBitmap", "CreateSolidBrush", "SelectObject", "BitBlt", "GetDIBits", "DeleteDC", "DeleteObject", "CreateBitmap", "CreateDIBSection" -> _DLL_GDI32_DLL ?: SymbolLookup.loaderLookup()
         "DwmSetWindowAttribute", "DwmEnableBlurBehindWindow", "DwmExtendFrameIntoClientArea" -> _DLL_DWMAPI_DLL ?: SymbolLookup.loaderLookup()
-        "CoInitializeEx", "CoUninitialize", "CoCreateInstance", "CoTaskMemAlloc", "CoTaskMemFree" -> _DLL_OLE32_DLL ?: SymbolLookup.loaderLookup()
+        "CoInitializeEx", "CoUninitialize", "CoCreateInstance", "CoTaskMemAlloc", "CoTaskMemFree", "OleInitialize", "OleUninitialize", "RegisterDragDrop", "RevokeDragDrop", "ReleaseStgMedium", "CreateStreamOnHGlobal" -> _DLL_OLE32_DLL ?: SymbolLookup.loaderLookup()
         "CreateInteractionContext", "DestroyInteractionContext", "SetInteractionConfigurationInteractionContext", "GetInteractionConfigurationInteractionContext", "SetPropertyInteractionContext", "GetPropertyInteractionContext", "RegisterOutputCallbackInteractionContext", "ProcessPointerFramesInteractionContext", "AddPointerInteractionContext", "RemovePointerInteractionContext", "ResetInteractionContext" -> _DLL_NINPUT_DLL ?: SymbolLookup.loaderLookup()
         else -> SymbolLookup.loaderLookup()
     }
@@ -1859,6 +1859,86 @@ enum class FILE_FLUSH_MODE(val value: Long) {
 }
 
 /**
+ * {@snippet lang=c : GlobalAlloc typedef HGLOBAL = (Void)*(typedef UINT = UNSIGNED = Int,typedef SIZE_T = UNSIGNED = LongLong)
+ */
+private val GlobalAlloc_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG)
+private var GlobalAlloc_HANDLE: MethodHandle? = null
+
+fun GlobalAlloc(arg0: Int, arg1: Long): MemorySegment {
+    check(_initialized) { "Win32 GlobalAlloc called before init()" }
+    val _handle = GlobalAlloc_HANDLE ?: return MemorySegment.NULL
+    try {
+        return _handle.invokeExact(arg0, arg1) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return MemorySegment.NULL
+    }
+}
+
+/**
+ * {@snippet lang=c : GlobalSize typedef SIZE_T = UNSIGNED = LongLong(typedef HGLOBAL = (Void)*)
+ */
+private val GlobalSize_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
+private var GlobalSize_HANDLE: MethodHandle? = null
+
+fun GlobalSize(arg0: MemorySegment): Long {
+    check(_initialized) { "Win32 GlobalSize called before init()" }
+    val _handle = GlobalSize_HANDLE ?: return 0L
+    try {
+        return _handle.invokeExact(arg0) as Long
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0L
+    }
+}
+
+/**
+ * {@snippet lang=c : GlobalUnlock typedef BOOL = Int(typedef HGLOBAL = (Void)*)
+ */
+private val GlobalUnlock_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private var GlobalUnlock_HANDLE: MethodHandle? = null
+
+fun GlobalUnlock(arg0: MemorySegment): Int {
+    check(_initialized) { "Win32 GlobalUnlock called before init()" }
+    val _handle = GlobalUnlock_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
+ * {@snippet lang=c : GlobalLock typedef LPVOID = (Void)*(typedef HGLOBAL = (Void)*)
+ */
+private val GlobalLock_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private var GlobalLock_HANDLE: MethodHandle? = null
+
+fun GlobalLock(arg0: MemorySegment): MemorySegment {
+    check(_initialized) { "Win32 GlobalLock called before init()" }
+    val _handle = GlobalLock_HANDLE ?: return MemorySegment.NULL
+    try {
+        return _handle.invokeExact(arg0) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return MemorySegment.NULL
+    }
+}
+
+/**
  * NS_ENUM: {@snippet lang=c : enum _DEP_SYSTEM_POLICY_TYPE}
  */
 enum class _DEP_SYSTEM_POLICY_TYPE(val value: Long) {
@@ -2822,6 +2902,26 @@ enum class DIALOG_DPI_CHANGE_BEHAVIORS(val value: Long) {
 }
 
 /**
+ * {@snippet lang=c : RegisterClipboardFormatW typedef UINT = UNSIGNED = Int(typedef LPCWSTR = (UNSIGNED = Short)*)
+ */
+private val RegisterClipboardFormatW_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private var RegisterClipboardFormatW_HANDLE: MethodHandle? = null
+
+fun RegisterClipboardFormatW(arg0: MemorySegment): Int {
+    check(_initialized) { "Win32 RegisterClipboardFormatW called before init()" }
+    val _handle = RegisterClipboardFormatW_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
  * {@snippet lang=c : GetFocus typedef HWND = (Declared(HWND__))*()
  */
 private val GetFocus_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS)
@@ -3576,6 +3676,26 @@ fun ValidateRect(arg0: MemorySegment, arg1: MemorySegment): Int {
         throw ex
     } catch (ex: Throwable) {
         return 0
+    }
+}
+
+/**
+ * {@snippet lang=c : GetPropW typedef HANDLE = (Void)*(typedef HWND = (Declared(HWND__))*,typedef LPCWSTR = (UNSIGNED = Short)*)
+ */
+private val GetPropW_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private var GetPropW_HANDLE: MethodHandle? = null
+
+fun GetPropW(arg0: MemorySegment, arg1: MemorySegment): MemorySegment {
+    check(_initialized) { "Win32 GetPropW called before init()" }
+    val _handle = GetPropW_HANDLE ?: return MemorySegment.NULL
+    try {
+        return _handle.invokeExact(arg0, arg1) as MemorySegment
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return MemorySegment.NULL
     }
 }
 
@@ -5797,6 +5917,87 @@ enum class tagMKREDUCE(val value: Long) {
 }
 
 /**
+ * {@snippet lang=c : STRUCT tagFORMATETC
+ */
+class tagFORMATETC {
+    companion object {
+        val layout: GroupLayout = MemoryLayout.structLayout(
+            ValueLayout.JAVA_SHORT.withByteAlignment(2).withName("cfFormat"),
+            MemoryLayout.paddingLayout(6L),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("ptd"),
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("dwAspect"),
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("lindex"),
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("tymed"),
+            MemoryLayout.paddingLayout(4L)
+        ).withByteAlignment(8L).withName("tagFORMATETC")
+
+        val byteSize: Long
+            get() = layout.byteSize()
+
+        fun allocate(allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(layout)
+
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout))
+
+        fun asSlice(array: MemorySegment, index: Long): MemorySegment =
+            array.asSlice(byteSize * index)
+
+        fun reinterpret(addr: MemorySegment): MemorySegment =
+            addr.reinterpret(byteSize)
+
+        fun reinterpret(addr: MemorySegment, elementCount: Long): MemorySegment =
+            addr.reinterpret(byteSize * elementCount)
+
+    } // End companion object
+
+    val cfFormat_VH: VarHandle = layout.varHandle(groupElement("cfFormat"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun cfFormat(segment: MemorySegment): Short =
+        cfFormat_VH.get(segment, 0L) as Short
+
+    fun cfFormat(segment: MemorySegment, value: Short) =
+        cfFormat_VH.set(segment, 0L, value)
+
+    val ptd_VH: VarHandle = layout.varHandle(groupElement("ptd"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun ptd(segment: MemorySegment): MemorySegment =
+        ptd_VH.get(segment, 0L) as MemorySegment
+
+    fun ptd(segment: MemorySegment, value: MemorySegment) =
+        ptd_VH.set(segment, 0L, value)
+
+    val dwAspect_VH: VarHandle = layout.varHandle(groupElement("dwAspect"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun dwAspect(segment: MemorySegment): Int =
+        dwAspect_VH.get(segment, 0L) as Int
+
+    fun dwAspect(segment: MemorySegment, value: Int) =
+        dwAspect_VH.set(segment, 0L, value)
+
+    val lindex_VH: VarHandle = layout.varHandle(groupElement("lindex"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun lindex(segment: MemorySegment): Int =
+        lindex_VH.get(segment, 0L) as Int
+
+    fun lindex(segment: MemorySegment, value: Int) =
+        lindex_VH.set(segment, 0L, value)
+
+    val tymed_VH: VarHandle = layout.varHandle(groupElement("tymed"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun tymed(segment: MemorySegment): Int =
+        tymed_VH.get(segment, 0L) as Int
+
+    fun tymed(segment: MemorySegment, value: Int) =
+        tymed_VH.set(segment, 0L, value)
+} // End class
+
+/**
  * NS_ENUM: {@snippet lang=c : enum tagADVF}
  */
 enum class tagADVF(val value: Long) {
@@ -5819,6 +6020,56 @@ enum class tagTYMED(val value: Long) {
             ?: error("Unknown tagTYMED value: $v")
     }
 }
+
+/**
+ * {@snippet lang=c : STRUCT tagSTGMEDIUM
+ */
+class tagSTGMEDIUM {
+    companion object {
+        val layout: GroupLayout = MemoryLayout.structLayout(
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("tymed"),
+            MemoryLayout.paddingLayout(12L),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("pUnkForRelease")
+        ).withByteAlignment(8L).withName("tagSTGMEDIUM")
+
+        val byteSize: Long
+            get() = layout.byteSize()
+
+        fun allocate(allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(layout)
+
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout))
+
+        fun asSlice(array: MemorySegment, index: Long): MemorySegment =
+            array.asSlice(byteSize * index)
+
+        fun reinterpret(addr: MemorySegment): MemorySegment =
+            addr.reinterpret(byteSize)
+
+        fun reinterpret(addr: MemorySegment, elementCount: Long): MemorySegment =
+            addr.reinterpret(byteSize * elementCount)
+
+    } // End companion object
+
+    val tymed_VH: VarHandle = layout.varHandle(groupElement("tymed"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun tymed(segment: MemorySegment): Int =
+        tymed_VH.get(segment, 0L) as Int
+
+    fun tymed(segment: MemorySegment, value: Int) =
+        tymed_VH.set(segment, 0L, value)
+
+    val pUnkForRelease_VH: VarHandle = layout.varHandle(groupElement("pUnkForRelease"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun pUnkForRelease(segment: MemorySegment): MemorySegment =
+        pUnkForRelease_VH.get(segment, 0L) as MemorySegment
+
+    fun pUnkForRelease(segment: MemorySegment, value: MemorySegment) =
+        pUnkForRelease_VH.set(segment, 0L, value)
+} // End class
 
 /**
  * NS_ENUM: {@snippet lang=c : enum tagDATADIR}
@@ -6248,6 +6499,126 @@ enum class tagOLEVERBATTRIB(val value: Long) {
     companion object {
         fun fromValue(v: Long): tagOLEVERBATTRIB = entries.firstOrNull { it.value == v }
             ?: error("Unknown tagOLEVERBATTRIB value: $v")
+    }
+}
+
+/**
+ * {@snippet lang=c : OleInitialize typedef HRESULT = Long(typedef LPVOID = (Void)*)
+ */
+private val OleInitialize_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private var OleInitialize_HANDLE: MethodHandle? = null
+
+fun OleInitialize(arg0: MemorySegment): Int {
+    check(_initialized) { "Win32 OleInitialize called before init()" }
+    val _handle = OleInitialize_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
+ * {@snippet lang=c : OleUninitialize Void()
+ */
+private val OleUninitialize_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid()
+private var OleUninitialize_HANDLE: MethodHandle? = null
+
+fun OleUninitialize(): Unit {
+    check(_initialized) { "Win32 OleUninitialize called before init()" }
+    val _handle = OleUninitialize_HANDLE ?: return
+    try {
+        _handle.invokeExact()
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        // ignore — null handle on non-Windows
+    }
+}
+
+/**
+ * {@snippet lang=c : RegisterDragDrop typedef HRESULT = Long(typedef HWND = (Declared(HWND__))*,typedef LPDROPTARGET = (Void)*)
+ */
+private val RegisterDragDrop_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS)
+private var RegisterDragDrop_HANDLE: MethodHandle? = null
+
+fun RegisterDragDrop(arg0: MemorySegment, arg1: MemorySegment): Int {
+    check(_initialized) { "Win32 RegisterDragDrop called before init()" }
+    val _handle = RegisterDragDrop_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0, arg1) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
+ * {@snippet lang=c : RevokeDragDrop typedef HRESULT = Long(typedef HWND = (Declared(HWND__))*)
+ */
+private val RevokeDragDrop_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private var RevokeDragDrop_HANDLE: MethodHandle? = null
+
+fun RevokeDragDrop(arg0: MemorySegment): Int {
+    check(_initialized) { "Win32 RevokeDragDrop called before init()" }
+    val _handle = RevokeDragDrop_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
+ * {@snippet lang=c : ReleaseStgMedium Void(typedef LPSTGMEDIUM = (Declared(tagSTGMEDIUM))*)
+ */
+private val ReleaseStgMedium_DESC: FunctionDescriptor = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS)
+private var ReleaseStgMedium_HANDLE: MethodHandle? = null
+
+fun ReleaseStgMedium(arg0: MemorySegment): Unit {
+    check(_initialized) { "Win32 ReleaseStgMedium called before init()" }
+    val _handle = ReleaseStgMedium_HANDLE ?: return
+    try {
+        _handle.invokeExact(arg0)
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        // ignore — null handle on non-Windows
+    }
+}
+
+/**
+ * {@snippet lang=c : CreateStreamOnHGlobal typedef HRESULT = Long(typedef HGLOBAL = (Void)*,typedef BOOL = Int,(typedef LPSTREAM = (Void)*)*)
+ */
+private val CreateStreamOnHGlobal_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private var CreateStreamOnHGlobal_HANDLE: MethodHandle? = null
+
+fun CreateStreamOnHGlobal(arg0: MemorySegment, arg1: Int, arg2: MemorySegment): Int {
+    check(_initialized) { "Win32 CreateStreamOnHGlobal called before init()" }
+    val _handle = CreateStreamOnHGlobal_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0, arg1, arg2) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
     }
 }
 
@@ -7238,6 +7609,10 @@ fun init() {
     SetLastError_HANDLE = _lookup("SetLastError").find("SetLastError").map { Linker.nativeLinker().downcallHandle(it, SetLastError_DESC) }.orElse(null)
     GetCurrentThreadId_HANDLE = _lookup("GetCurrentThreadId").find("GetCurrentThreadId").map { Linker.nativeLinker().downcallHandle(it, GetCurrentThreadId_DESC) }.orElse(null)
     GetModuleHandleW_HANDLE = _lookup("GetModuleHandleW").find("GetModuleHandleW").map { Linker.nativeLinker().downcallHandle(it, GetModuleHandleW_DESC) }.orElse(null)
+    GlobalAlloc_HANDLE = _lookup("GlobalAlloc").find("GlobalAlloc").map { Linker.nativeLinker().downcallHandle(it, GlobalAlloc_DESC) }.orElse(null)
+    GlobalSize_HANDLE = _lookup("GlobalSize").find("GlobalSize").map { Linker.nativeLinker().downcallHandle(it, GlobalSize_DESC) }.orElse(null)
+    GlobalUnlock_HANDLE = _lookup("GlobalUnlock").find("GlobalUnlock").map { Linker.nativeLinker().downcallHandle(it, GlobalUnlock_DESC) }.orElse(null)
+    GlobalLock_HANDLE = _lookup("GlobalLock").find("GlobalLock").map { Linker.nativeLinker().downcallHandle(it, GlobalLock_DESC) }.orElse(null)
     BitBlt_HANDLE = _lookup("BitBlt").find("BitBlt").map { Linker.nativeLinker().downcallHandle(it, BitBlt_DESC) }.orElse(null)
     CreateBitmap_HANDLE = _lookup("CreateBitmap").find("CreateBitmap").map { Linker.nativeLinker().downcallHandle(it, CreateBitmap_DESC) }.orElse(null)
     CreateCompatibleBitmap_HANDLE = _lookup("CreateCompatibleBitmap").find("CreateCompatibleBitmap").map { Linker.nativeLinker().downcallHandle(it, CreateCompatibleBitmap_DESC) }.orElse(null)
@@ -7273,6 +7648,7 @@ fun init() {
     IsWindowVisible_HANDLE = _lookup("IsWindowVisible").find("IsWindowVisible").map { Linker.nativeLinker().downcallHandle(it, IsWindowVisible_DESC) }.orElse(null)
     IsIconic_HANDLE = _lookup("IsIconic").find("IsIconic").map { Linker.nativeLinker().downcallHandle(it, IsIconic_DESC) }.orElse(null)
     IsZoomed_HANDLE = _lookup("IsZoomed").find("IsZoomed").map { Linker.nativeLinker().downcallHandle(it, IsZoomed_DESC) }.orElse(null)
+    RegisterClipboardFormatW_HANDLE = _lookup("RegisterClipboardFormatW").find("RegisterClipboardFormatW").map { Linker.nativeLinker().downcallHandle(it, RegisterClipboardFormatW_DESC) }.orElse(null)
     GetFocus_HANDLE = _lookup("GetFocus").find("GetFocus").map { Linker.nativeLinker().downcallHandle(it, GetFocus_DESC) }.orElse(null)
     GetKeyState_HANDLE = _lookup("GetKeyState").find("GetKeyState").map { Linker.nativeLinker().downcallHandle(it, GetKeyState_DESC) }.orElse(null)
     GetKeyboardState_HANDLE = _lookup("GetKeyboardState").find("GetKeyboardState").map { Linker.nativeLinker().downcallHandle(it, GetKeyboardState_DESC) }.orElse(null)
@@ -7307,6 +7683,7 @@ fun init() {
     ReleaseDC_HANDLE = _lookup("ReleaseDC").find("ReleaseDC").map { Linker.nativeLinker().downcallHandle(it, ReleaseDC_DESC) }.orElse(null)
     InvalidateRect_HANDLE = _lookup("InvalidateRect").find("InvalidateRect").map { Linker.nativeLinker().downcallHandle(it, InvalidateRect_DESC) }.orElse(null)
     ValidateRect_HANDLE = _lookup("ValidateRect").find("ValidateRect").map { Linker.nativeLinker().downcallHandle(it, ValidateRect_DESC) }.orElse(null)
+    GetPropW_HANDLE = _lookup("GetPropW").find("GetPropW").map { Linker.nativeLinker().downcallHandle(it, GetPropW_DESC) }.orElse(null)
     SetWindowTextW_HANDLE = _lookup("SetWindowTextW").find("SetWindowTextW").map { Linker.nativeLinker().downcallHandle(it, SetWindowTextW_DESC) }.orElse(null)
     GetWindowTextW_HANDLE = _lookup("GetWindowTextW").find("GetWindowTextW").map { Linker.nativeLinker().downcallHandle(it, GetWindowTextW_DESC) }.orElse(null)
     GetWindowTextLengthW_HANDLE = _lookup("GetWindowTextLengthW").find("GetWindowTextLengthW").map { Linker.nativeLinker().downcallHandle(it, GetWindowTextLengthW_DESC) }.orElse(null)
@@ -7343,6 +7720,12 @@ fun init() {
     DwmEnableBlurBehindWindow_HANDLE = _lookup("DwmEnableBlurBehindWindow").find("DwmEnableBlurBehindWindow").map { Linker.nativeLinker().downcallHandle(it, DwmEnableBlurBehindWindow_DESC) }.orElse(null)
     DwmExtendFrameIntoClientArea_HANDLE = _lookup("DwmExtendFrameIntoClientArea").find("DwmExtendFrameIntoClientArea").map { Linker.nativeLinker().downcallHandle(it, DwmExtendFrameIntoClientArea_DESC) }.orElse(null)
     DwmSetWindowAttribute_HANDLE = _lookup("DwmSetWindowAttribute").find("DwmSetWindowAttribute").map { Linker.nativeLinker().downcallHandle(it, DwmSetWindowAttribute_DESC) }.orElse(null)
+    OleInitialize_HANDLE = _lookup("OleInitialize").find("OleInitialize").map { Linker.nativeLinker().downcallHandle(it, OleInitialize_DESC) }.orElse(null)
+    OleUninitialize_HANDLE = _lookup("OleUninitialize").find("OleUninitialize").map { Linker.nativeLinker().downcallHandle(it, OleUninitialize_DESC) }.orElse(null)
+    RegisterDragDrop_HANDLE = _lookup("RegisterDragDrop").find("RegisterDragDrop").map { Linker.nativeLinker().downcallHandle(it, RegisterDragDrop_DESC) }.orElse(null)
+    RevokeDragDrop_HANDLE = _lookup("RevokeDragDrop").find("RevokeDragDrop").map { Linker.nativeLinker().downcallHandle(it, RevokeDragDrop_DESC) }.orElse(null)
+    ReleaseStgMedium_HANDLE = _lookup("ReleaseStgMedium").find("ReleaseStgMedium").map { Linker.nativeLinker().downcallHandle(it, ReleaseStgMedium_DESC) }.orElse(null)
+    CreateStreamOnHGlobal_HANDLE = _lookup("CreateStreamOnHGlobal").find("CreateStreamOnHGlobal").map { Linker.nativeLinker().downcallHandle(it, CreateStreamOnHGlobal_DESC) }.orElse(null)
     CoUninitialize_HANDLE = _lookup("CoUninitialize").find("CoUninitialize").map { Linker.nativeLinker().downcallHandle(it, CoUninitialize_DESC) }.orElse(null)
     CoInitializeEx_HANDLE = _lookup("CoInitializeEx").find("CoInitializeEx").map { Linker.nativeLinker().downcallHandle(it, CoInitializeEx_DESC) }.orElse(null)
     CoCreateInstance_HANDLE = _lookup("CoCreateInstance").find("CoCreateInstance").map { Linker.nativeLinker().downcallHandle(it, CoCreateInstance_DESC) }.orElse(null)
