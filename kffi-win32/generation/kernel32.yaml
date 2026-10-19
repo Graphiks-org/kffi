@@ -5,5 +5,9 @@ dllMap:
       - GetModuleHandleW
       - SetLastError
       - GetLastError
+      - GlobalAlloc
+      - GlobalLock
+      - GlobalUnlock
+      - GlobalSize
     structs: []
     constants: []

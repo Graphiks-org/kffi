@@ -92,6 +92,8 @@ dllMap:
       - InitializeTouchInjection
       - InjectTouchInput
       - WindowFromPoint
+      - RegisterClipboardFormatW
+      - GetPropW
     structs:
       - tagPOINT
     constants: []
