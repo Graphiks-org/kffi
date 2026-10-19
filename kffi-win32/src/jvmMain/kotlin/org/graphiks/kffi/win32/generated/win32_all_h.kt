@@ -28,7 +28,7 @@ private var _DLL_USER32_DLL: SymbolLookup? = null
 
 private fun _lookup(symbol: String): SymbolLookup {
     return when (symbol) {
-        "RegisterClassExW", "CreateWindowExW", "FindWindowExW", "GetDC", "ReleaseDC", "FillRect", "ShowWindow", "UpdateWindow", "DestroyWindow", "DefWindowProcW", "SetWindowTextW", "PostQuitMessage", "GetKeyState", "GetKeyboardState", "GetKeyboardLayout", "MapVirtualKeyExW", "ToUnicodeEx", "SystemParametersInfoW", "PeekMessageW", "GetMessageW", "TranslateMessage", "DispatchMessageW", "MsgWaitForMultipleObjectsEx", "LoadCursorW", "SetProcessDpiAwarenessContext", "GetDpiForWindow", "InvalidateRect", "ValidateRect", "TrackMouseEvent", "RegisterTouchWindow", "GetTouchInputInfo", "CloseTouchInputHandle", "GetGestureInfo", "CloseGestureInfoHandle", "ScreenToClient", "ClientToScreen", "GetCursorPos", "GetSystemMenu", "TrackPopupMenu", "EnableMenuItem", "SetMenuDefaultItem", "ReleaseCapture", "EnableWindow", "GetClientRect", "GetWindowRect", "AdjustWindowRectExForDpi", "MonitorFromWindow", "GetMonitorInfoW", "SetWindowLongPtrW", "GetWindowLongPtrW", "IsZoomed", "IsIconic", "IsWindow", "IsWindowVisible", "GetWindowTextW", "GetWindowTextLengthW", "SetWindowPos", "GetForegroundWindow", "SetForegroundWindow", "MapVirtualKeyW", "SendInput", "SetCursorPos", "SetCursor", "ShowCursor", "ClipCursor", "PostMessageW", "SendMessageW", "CreateIcon", "DestroyIcon", "FlashWindowEx", "CreateIconIndirect", "DestroyCursor", "GetCursor", "GetCapture", "GetClipCursor", "GetSystemMetrics", "GetWindowDisplayAffinity", "SetWindowDisplayAffinity", "GetWindowThreadProcessId", "GetFocus", "GetPointerType", "GetPointerInfo", "GetPointerTouchInfo", "GetPointerPenInfo", "GetPointerFrameInfoHistory", "GetPointerFrameTouchInfoHistory", "GetPointerFramePenInfoHistory", "GetMessageExtraInfo", "InitializeTouchInjection", "InjectTouchInput", "WindowFromPoint", "RegisterClipboardFormatW", "GetPropW" -> _DLL_USER32_DLL ?: SymbolLookup.loaderLookup()
+        "RegisterClassExW", "CreateWindowExW", "FindWindowExW", "GetDC", "ReleaseDC", "FillRect", "ShowWindow", "UpdateWindow", "DestroyWindow", "DefWindowProcW", "SetWindowTextW", "PostQuitMessage", "GetKeyState", "GetKeyboardState", "GetKeyboardLayout", "MapVirtualKeyExW", "ToUnicodeEx", "SystemParametersInfoW", "PeekMessageW", "GetMessageW", "TranslateMessage", "DispatchMessageW", "MsgWaitForMultipleObjectsEx", "LoadCursorW", "SetProcessDpiAwarenessContext", "GetDpiForWindow", "InvalidateRect", "ValidateRect", "TrackMouseEvent", "RegisterTouchWindow", "GetTouchInputInfo", "CloseTouchInputHandle", "GetGestureInfo", "CloseGestureInfoHandle", "ScreenToClient", "ClientToScreen", "GetCursorPos", "GetSystemMenu", "TrackPopupMenu", "EnableMenuItem", "SetMenuDefaultItem", "ReleaseCapture", "EnableWindow", "GetClientRect", "GetWindowRect", "AdjustWindowRectExForDpi", "MonitorFromWindow", "GetMonitorInfoW", "SetWindowLongPtrW", "GetWindowLongPtrW", "IsZoomed", "IsIconic", "IsWindow", "IsWindowVisible", "GetWindowTextW", "GetWindowTextLengthW", "SetWindowPos", "GetForegroundWindow", "SetForegroundWindow", "MapVirtualKeyW", "SendInput", "SetCursorPos", "SetCursor", "ShowCursor", "ClipCursor", "PostMessageW", "SendMessageW", "CreateIcon", "DestroyIcon", "FlashWindowEx", "CreateIconIndirect", "DestroyCursor", "GetCursor", "GetCapture", "GetClipCursor", "GetSystemMetrics", "GetWindowDisplayAffinity", "SetWindowDisplayAffinity", "GetWindowThreadProcessId", "GetFocus", "GetPointerType", "GetPointerInfo", "GetPointerTouchInfo", "GetPointerPenInfo", "GetPointerFrameInfoHistory", "GetPointerFrameTouchInfoHistory", "GetPointerFramePenInfoHistory", "GetMessageExtraInfo", "InitializeTouchInjection", "InjectTouchInput", "WindowFromPoint", "RegisterClipboardFormatW", "GetPropW", "RegisterRawInputDevices", "GetRawInputData", "GetRawInputDeviceList", "GetRegisteredRawInputDevices" -> _DLL_USER32_DLL ?: SymbolLookup.loaderLookup()
         "GetCurrentThreadId", "GetModuleHandleW", "SetLastError", "GetLastError", "GlobalAlloc", "GlobalLock", "GlobalUnlock", "GlobalSize" -> _DLL_KERNEL32_DLL ?: SymbolLookup.loaderLookup()
         "CreateRectRgn", "CreateCompatibleDC", "CreateCompatibleBitmap", "CreateSolidBrush", "SelectObject", "BitBlt", "GetDIBits", "DeleteDC", "DeleteObject", "CreateBitmap", "CreateDIBSection" -> _DLL_GDI32_DLL ?: SymbolLookup.loaderLookup()
         "DwmSetWindowAttribute", "DwmEnableBlurBehindWindow", "DwmExtendFrameIntoClientArea" -> _DLL_DWMAPI_DLL ?: SymbolLookup.loaderLookup()
@@ -4349,6 +4349,497 @@ fun SetProcessDpiAwarenessContext(arg0: MemorySegment): Int {
 }
 
 /**
+ * {@snippet lang=c : STRUCT tagRAWINPUTHEADER
+ */
+class tagRAWINPUTHEADER {
+    companion object {
+        val layout: GroupLayout = MemoryLayout.structLayout(
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("dwType"),
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("dwSize"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("hDevice"),
+            ValueLayout.JAVA_LONG.withByteAlignment(8).withName("wParam")
+        ).withByteAlignment(8L).withName("tagRAWINPUTHEADER")
+
+        val byteSize: Long
+            get() = layout.byteSize()
+
+        fun allocate(allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(layout)
+
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout))
+
+        fun asSlice(array: MemorySegment, index: Long): MemorySegment =
+            array.asSlice(byteSize * index)
+
+        fun reinterpret(addr: MemorySegment): MemorySegment =
+            addr.reinterpret(byteSize)
+
+        fun reinterpret(addr: MemorySegment, elementCount: Long): MemorySegment =
+            addr.reinterpret(byteSize * elementCount)
+
+    } // End companion object
+
+    val dwType_VH: VarHandle = layout.varHandle(groupElement("dwType"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun dwType(segment: MemorySegment): Int =
+        dwType_VH.get(segment, 0L) as Int
+
+    fun dwType(segment: MemorySegment, value: Int) =
+        dwType_VH.set(segment, 0L, value)
+
+    val dwSize_VH: VarHandle = layout.varHandle(groupElement("dwSize"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun dwSize(segment: MemorySegment): Int =
+        dwSize_VH.get(segment, 0L) as Int
+
+    fun dwSize(segment: MemorySegment, value: Int) =
+        dwSize_VH.set(segment, 0L, value)
+
+    val hDevice_VH: VarHandle = layout.varHandle(groupElement("hDevice"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun hDevice(segment: MemorySegment): MemorySegment =
+        hDevice_VH.get(segment, 0L) as MemorySegment
+
+    fun hDevice(segment: MemorySegment, value: MemorySegment) =
+        hDevice_VH.set(segment, 0L, value)
+
+    val wParam_VH: VarHandle = layout.varHandle(groupElement("wParam"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun wParam(segment: MemorySegment): Long =
+        wParam_VH.get(segment, 0L) as Long
+
+    fun wParam(segment: MemorySegment, value: Long) =
+        wParam_VH.set(segment, 0L, value)
+} // End class
+
+/**
+ * {@snippet lang=c : STRUCT tagRAWMOUSE
+ */
+class tagRAWMOUSE {
+    companion object {
+        val layout: GroupLayout = MemoryLayout.structLayout(
+            ValueLayout.JAVA_SHORT.withByteAlignment(2).withName("usFlags"),
+            MemoryLayout.paddingLayout(6L),
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("ulRawButtons"),
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("lLastX"),
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("lLastY"),
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("ulExtraInformation")
+        ).withByteAlignment(4L).withName("tagRAWMOUSE")
+
+        val byteSize: Long
+            get() = layout.byteSize()
+
+        fun allocate(allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(layout)
+
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout))
+
+        fun asSlice(array: MemorySegment, index: Long): MemorySegment =
+            array.asSlice(byteSize * index)
+
+        fun reinterpret(addr: MemorySegment): MemorySegment =
+            addr.reinterpret(byteSize)
+
+        fun reinterpret(addr: MemorySegment, elementCount: Long): MemorySegment =
+            addr.reinterpret(byteSize * elementCount)
+
+    } // End companion object
+
+    val usFlags_VH: VarHandle = layout.varHandle(groupElement("usFlags"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun usFlags(segment: MemorySegment): Short =
+        usFlags_VH.get(segment, 0L) as Short
+
+    fun usFlags(segment: MemorySegment, value: Short) =
+        usFlags_VH.set(segment, 0L, value)
+
+    val ulRawButtons_VH: VarHandle = layout.varHandle(groupElement("ulRawButtons"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun ulRawButtons(segment: MemorySegment): Int =
+        ulRawButtons_VH.get(segment, 0L) as Int
+
+    fun ulRawButtons(segment: MemorySegment, value: Int) =
+        ulRawButtons_VH.set(segment, 0L, value)
+
+    val lLastX_VH: VarHandle = layout.varHandle(groupElement("lLastX"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun lLastX(segment: MemorySegment): Int =
+        lLastX_VH.get(segment, 0L) as Int
+
+    fun lLastX(segment: MemorySegment, value: Int) =
+        lLastX_VH.set(segment, 0L, value)
+
+    val lLastY_VH: VarHandle = layout.varHandle(groupElement("lLastY"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun lLastY(segment: MemorySegment): Int =
+        lLastY_VH.get(segment, 0L) as Int
+
+    fun lLastY(segment: MemorySegment, value: Int) =
+        lLastY_VH.set(segment, 0L, value)
+
+    val ulExtraInformation_VH: VarHandle = layout.varHandle(groupElement("ulExtraInformation"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun ulExtraInformation(segment: MemorySegment): Int =
+        ulExtraInformation_VH.get(segment, 0L) as Int
+
+    fun ulExtraInformation(segment: MemorySegment, value: Int) =
+        ulExtraInformation_VH.set(segment, 0L, value)
+} // End class
+
+/**
+ * {@snippet lang=c : STRUCT tagRAWKEYBOARD
+ */
+class tagRAWKEYBOARD {
+    companion object {
+        val layout: GroupLayout = MemoryLayout.structLayout(
+            ValueLayout.JAVA_SHORT.withByteAlignment(2).withName("MakeCode"),
+            ValueLayout.JAVA_SHORT.withByteAlignment(2).withName("Flags"),
+            ValueLayout.JAVA_SHORT.withByteAlignment(2).withName("Reserved"),
+            ValueLayout.JAVA_SHORT.withByteAlignment(2).withName("VKey"),
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("Message"),
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("ExtraInformation")
+        ).withByteAlignment(4L).withName("tagRAWKEYBOARD")
+
+        val byteSize: Long
+            get() = layout.byteSize()
+
+        fun allocate(allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(layout)
+
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout))
+
+        fun asSlice(array: MemorySegment, index: Long): MemorySegment =
+            array.asSlice(byteSize * index)
+
+        fun reinterpret(addr: MemorySegment): MemorySegment =
+            addr.reinterpret(byteSize)
+
+        fun reinterpret(addr: MemorySegment, elementCount: Long): MemorySegment =
+            addr.reinterpret(byteSize * elementCount)
+
+    } // End companion object
+
+    val MakeCode_VH: VarHandle = layout.varHandle(groupElement("MakeCode"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun MakeCode(segment: MemorySegment): Short =
+        MakeCode_VH.get(segment, 0L) as Short
+
+    fun MakeCode(segment: MemorySegment, value: Short) =
+        MakeCode_VH.set(segment, 0L, value)
+
+    val Flags_VH: VarHandle = layout.varHandle(groupElement("Flags"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun Flags(segment: MemorySegment): Short =
+        Flags_VH.get(segment, 0L) as Short
+
+    fun Flags(segment: MemorySegment, value: Short) =
+        Flags_VH.set(segment, 0L, value)
+
+    val Reserved_VH: VarHandle = layout.varHandle(groupElement("Reserved"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun Reserved(segment: MemorySegment): Short =
+        Reserved_VH.get(segment, 0L) as Short
+
+    fun Reserved(segment: MemorySegment, value: Short) =
+        Reserved_VH.set(segment, 0L, value)
+
+    val VKey_VH: VarHandle = layout.varHandle(groupElement("VKey"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun VKey(segment: MemorySegment): Short =
+        VKey_VH.get(segment, 0L) as Short
+
+    fun VKey(segment: MemorySegment, value: Short) =
+        VKey_VH.set(segment, 0L, value)
+
+    val Message_VH: VarHandle = layout.varHandle(groupElement("Message"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun Message(segment: MemorySegment): Int =
+        Message_VH.get(segment, 0L) as Int
+
+    fun Message(segment: MemorySegment, value: Int) =
+        Message_VH.set(segment, 0L, value)
+
+    val ExtraInformation_VH: VarHandle = layout.varHandle(groupElement("ExtraInformation"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun ExtraInformation(segment: MemorySegment): Int =
+        ExtraInformation_VH.get(segment, 0L) as Int
+
+    fun ExtraInformation(segment: MemorySegment, value: Int) =
+        ExtraInformation_VH.set(segment, 0L, value)
+} // End class
+
+/**
+ * {@snippet lang=c : STRUCT tagRAWHID
+ */
+class tagRAWHID {
+    companion object {
+        val layout: GroupLayout = MemoryLayout.structLayout(
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("dwSizeHid"),
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("dwCount"),
+            MemoryLayout.sequenceLayout(1, ValueLayout.JAVA_BYTE.withByteAlignment(1)).withByteAlignment(1).withName("bRawData"),
+            MemoryLayout.paddingLayout(3L)
+        ).withByteAlignment(4L).withName("tagRAWHID")
+
+        val byteSize: Long
+            get() = layout.byteSize()
+
+        fun allocate(allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(layout)
+
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout))
+
+        fun asSlice(array: MemorySegment, index: Long): MemorySegment =
+            array.asSlice(byteSize * index)
+
+        fun reinterpret(addr: MemorySegment): MemorySegment =
+            addr.reinterpret(byteSize)
+
+        fun reinterpret(addr: MemorySegment, elementCount: Long): MemorySegment =
+            addr.reinterpret(byteSize * elementCount)
+
+    } // End companion object
+
+    val dwSizeHid_VH: VarHandle = layout.varHandle(groupElement("dwSizeHid"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun dwSizeHid(segment: MemorySegment): Int =
+        dwSizeHid_VH.get(segment, 0L) as Int
+
+    fun dwSizeHid(segment: MemorySegment, value: Int) =
+        dwSizeHid_VH.set(segment, 0L, value)
+
+    val dwCount_VH: VarHandle = layout.varHandle(groupElement("dwCount"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun dwCount(segment: MemorySegment): Int =
+        dwCount_VH.get(segment, 0L) as Int
+
+    fun dwCount(segment: MemorySegment, value: Int) =
+        dwCount_VH.set(segment, 0L, value)
+
+    fun bRawData(segment: MemorySegment): MemorySegment =
+        segment.asSlice(layout.byteOffset(groupElement("bRawData")), layout.select(groupElement("bRawData")).byteSize())
+} // End class
+
+/**
+ * {@snippet lang=c : GetRawInputData typedef UINT = UNSIGNED = Int(typedef HRAWINPUT = (Declared(HRAWINPUT__))*,typedef UINT = UNSIGNED = Int,typedef LPVOID = (Void)*,typedef PUINT = (UNSIGNED = Int)*,typedef UINT = UNSIGNED = Int)
+ */
+private val GetRawInputData_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
+private var GetRawInputData_HANDLE: MethodHandle? = null
+
+fun GetRawInputData(arg0: MemorySegment, arg1: Int, arg2: MemorySegment, arg3: MemorySegment, arg4: Int): Int {
+    check(_initialized) { "Win32 GetRawInputData called before init()" }
+    val _handle = GetRawInputData_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0, arg1, arg2, arg3, arg4) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
+ * {@snippet lang=c : STRUCT tagRAWINPUTDEVICE
+ */
+class tagRAWINPUTDEVICE {
+    companion object {
+        val layout: GroupLayout = MemoryLayout.structLayout(
+            ValueLayout.JAVA_SHORT.withByteAlignment(2).withName("usUsagePage"),
+            ValueLayout.JAVA_SHORT.withByteAlignment(2).withName("usUsage"),
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("dwFlags"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("hwndTarget")
+        ).withByteAlignment(8L).withName("tagRAWINPUTDEVICE")
+
+        val byteSize: Long
+            get() = layout.byteSize()
+
+        fun allocate(allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(layout)
+
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout))
+
+        fun asSlice(array: MemorySegment, index: Long): MemorySegment =
+            array.asSlice(byteSize * index)
+
+        fun reinterpret(addr: MemorySegment): MemorySegment =
+            addr.reinterpret(byteSize)
+
+        fun reinterpret(addr: MemorySegment, elementCount: Long): MemorySegment =
+            addr.reinterpret(byteSize * elementCount)
+
+    } // End companion object
+
+    val usUsagePage_VH: VarHandle = layout.varHandle(groupElement("usUsagePage"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun usUsagePage(segment: MemorySegment): Short =
+        usUsagePage_VH.get(segment, 0L) as Short
+
+    fun usUsagePage(segment: MemorySegment, value: Short) =
+        usUsagePage_VH.set(segment, 0L, value)
+
+    val usUsage_VH: VarHandle = layout.varHandle(groupElement("usUsage"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun usUsage(segment: MemorySegment): Short =
+        usUsage_VH.get(segment, 0L) as Short
+
+    fun usUsage(segment: MemorySegment, value: Short) =
+        usUsage_VH.set(segment, 0L, value)
+
+    val dwFlags_VH: VarHandle = layout.varHandle(groupElement("dwFlags"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun dwFlags(segment: MemorySegment): Int =
+        dwFlags_VH.get(segment, 0L) as Int
+
+    fun dwFlags(segment: MemorySegment, value: Int) =
+        dwFlags_VH.set(segment, 0L, value)
+
+    val hwndTarget_VH: VarHandle = layout.varHandle(groupElement("hwndTarget"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun hwndTarget(segment: MemorySegment): MemorySegment =
+        hwndTarget_VH.get(segment, 0L) as MemorySegment
+
+    fun hwndTarget(segment: MemorySegment, value: MemorySegment) =
+        hwndTarget_VH.set(segment, 0L, value)
+} // End class
+
+/**
+ * {@snippet lang=c : RegisterRawInputDevices typedef BOOL = Int(typedef PCRAWINPUTDEVICE = (Declared(tagRAWINPUTDEVICE))*,typedef UINT = UNSIGNED = Int,typedef UINT = UNSIGNED = Int)
+ */
+private val RegisterRawInputDevices_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
+private var RegisterRawInputDevices_HANDLE: MethodHandle? = null
+
+fun RegisterRawInputDevices(arg0: MemorySegment, arg1: Int, arg2: Int): Int {
+    check(_initialized) { "Win32 RegisterRawInputDevices called before init()" }
+    val _handle = RegisterRawInputDevices_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0, arg1, arg2) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
+ * {@snippet lang=c : GetRegisteredRawInputDevices typedef UINT = UNSIGNED = Int(typedef PRAWINPUTDEVICE = (Declared(tagRAWINPUTDEVICE))*,typedef PUINT = (UNSIGNED = Int)*,typedef UINT = UNSIGNED = Int)
+ */
+private val GetRegisteredRawInputDevices_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
+private var GetRegisteredRawInputDevices_HANDLE: MethodHandle? = null
+
+fun GetRegisteredRawInputDevices(arg0: MemorySegment, arg1: MemorySegment, arg2: Int): Int {
+    check(_initialized) { "Win32 GetRegisteredRawInputDevices called before init()" }
+    val _handle = GetRegisteredRawInputDevices_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0, arg1, arg2) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
+ * {@snippet lang=c : STRUCT tagRAWINPUTDEVICELIST
+ */
+class tagRAWINPUTDEVICELIST {
+    companion object {
+        val layout: GroupLayout = MemoryLayout.structLayout(
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("hDevice"),
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("dwType"),
+            MemoryLayout.paddingLayout(4L)
+        ).withByteAlignment(8L).withName("tagRAWINPUTDEVICELIST")
+
+        val byteSize: Long
+            get() = layout.byteSize()
+
+        fun allocate(allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(layout)
+
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout))
+
+        fun asSlice(array: MemorySegment, index: Long): MemorySegment =
+            array.asSlice(byteSize * index)
+
+        fun reinterpret(addr: MemorySegment): MemorySegment =
+            addr.reinterpret(byteSize)
+
+        fun reinterpret(addr: MemorySegment, elementCount: Long): MemorySegment =
+            addr.reinterpret(byteSize * elementCount)
+
+    } // End companion object
+
+    val hDevice_VH: VarHandle = layout.varHandle(groupElement("hDevice"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun hDevice(segment: MemorySegment): MemorySegment =
+        hDevice_VH.get(segment, 0L) as MemorySegment
+
+    fun hDevice(segment: MemorySegment, value: MemorySegment) =
+        hDevice_VH.set(segment, 0L, value)
+
+    val dwType_VH: VarHandle = layout.varHandle(groupElement("dwType"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun dwType(segment: MemorySegment): Int =
+        dwType_VH.get(segment, 0L) as Int
+
+    fun dwType(segment: MemorySegment, value: Int) =
+        dwType_VH.set(segment, 0L, value)
+} // End class
+
+/**
+ * {@snippet lang=c : GetRawInputDeviceList typedef UINT = UNSIGNED = Int(typedef PRAWINPUTDEVICELIST = (Declared(tagRAWINPUTDEVICELIST))*,typedef PUINT = (UNSIGNED = Int)*,typedef UINT = UNSIGNED = Int)
+ */
+private val GetRawInputDeviceList_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
+private var GetRawInputDeviceList_HANDLE: MethodHandle? = null
+
+fun GetRawInputDeviceList(arg0: MemorySegment, arg1: MemorySegment, arg2: Int): Int {
+    check(_initialized) { "Win32 GetRawInputDeviceList called before init()" }
+    val _handle = GetRawInputDeviceList_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0, arg1, arg2) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
  * NS_ENUM: {@snippet lang=c : enum tagPOINTER_DEVICE_TYPE}
  */
 enum class tagPOINTER_DEVICE_TYPE(val value: Long) {
@@ -7715,6 +8206,10 @@ fun init() {
     GetMonitorInfoW_HANDLE = _lookup("GetMonitorInfoW").find("GetMonitorInfoW").map { Linker.nativeLinker().downcallHandle(it, GetMonitorInfoW_DESC) }.orElse(null)
     GetDpiForWindow_HANDLE = _lookup("GetDpiForWindow").find("GetDpiForWindow").map { Linker.nativeLinker().downcallHandle(it, GetDpiForWindow_DESC) }.orElse(null)
     SetProcessDpiAwarenessContext_HANDLE = _lookup("SetProcessDpiAwarenessContext").find("SetProcessDpiAwarenessContext").map { Linker.nativeLinker().downcallHandle(it, SetProcessDpiAwarenessContext_DESC) }.orElse(null)
+    GetRawInputData_HANDLE = _lookup("GetRawInputData").find("GetRawInputData").map { Linker.nativeLinker().downcallHandle(it, GetRawInputData_DESC) }.orElse(null)
+    RegisterRawInputDevices_HANDLE = _lookup("RegisterRawInputDevices").find("RegisterRawInputDevices").map { Linker.nativeLinker().downcallHandle(it, RegisterRawInputDevices_DESC) }.orElse(null)
+    GetRegisteredRawInputDevices_HANDLE = _lookup("GetRegisteredRawInputDevices").find("GetRegisteredRawInputDevices").map { Linker.nativeLinker().downcallHandle(it, GetRegisteredRawInputDevices_DESC) }.orElse(null)
+    GetRawInputDeviceList_HANDLE = _lookup("GetRawInputDeviceList").find("GetRawInputDeviceList").map { Linker.nativeLinker().downcallHandle(it, GetRawInputDeviceList_DESC) }.orElse(null)
     GetGestureInfo_HANDLE = _lookup("GetGestureInfo").find("GetGestureInfo").map { Linker.nativeLinker().downcallHandle(it, GetGestureInfo_DESC) }.orElse(null)
     CloseGestureInfoHandle_HANDLE = _lookup("CloseGestureInfoHandle").find("CloseGestureInfoHandle").map { Linker.nativeLinker().downcallHandle(it, CloseGestureInfoHandle_DESC) }.orElse(null)
     DwmEnableBlurBehindWindow_HANDLE = _lookup("DwmEnableBlurBehindWindow").find("DwmEnableBlurBehindWindow").map { Linker.nativeLinker().downcallHandle(it, DwmEnableBlurBehindWindow_DESC) }.orElse(null)

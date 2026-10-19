@@ -94,6 +94,16 @@ dllMap:
       - WindowFromPoint
       - RegisterClipboardFormatW
       - GetPropW
+      - RegisterRawInputDevices
+      - GetRawInputData
+      - GetRawInputDeviceList
+      - GetRegisteredRawInputDevices
     structs:
       - tagPOINT
+      - tagRAWINPUTDEVICE
+      - tagRAWINPUTHEADER
+      - tagRAWINPUTDEVICELIST
+      - tagRAWMOUSE
+      - tagRAWKEYBOARD
+      - tagRAWHID
     constants: []
