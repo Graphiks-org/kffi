@@ -35,6 +35,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `GetRegisteredRawInputDevices` and the `RAWINPUTDEVICE`/`RAWINPUTHEADER`/
   `RAWMOUSE`/`RAWKEYBOARD`/`RAWHID`/`RAWINPUTDEVICELIST` layouts (141
   functions total).
+- `kffi-posix` gains the AF_UNIX socket surface the D-Bus control plane
+  rides: socket/socketpair/bind/listen/accept/accept4/connect/shutdown/
+  send/recv/sendmsg/recvmsg plus getuid/geteuid/getpid, the
+  sockaddr_un/iovec/cmsghdr/msghdr layouts, the AF_/PF_/SOCK_/MSG_/
+  SCM_/SOL_/SHUT_ constants, and a committed alias reconciling glibc's
+  transparent-union address typedefs (the x11 pattern). The pinned
+  kextract revision moves to the recorded submodule SHA so regeneration
+  works from a fresh clone, and the managed `LinuxPosix` facade exposes
+  the socket calls with captured errno. LinuxPosixSocketTest proves the
+  stream pair, the unix-path connect and the SCM_RIGHTS fd passing.
 - New `kffi-evdev` module, generated through the kextract pipeline
   (`scripts/gen-kffi-evdev.sh`, `docker/kffi-evdev-codegen`) from the kernel
   uapi and libudev headers: ioctl numbers and ABI constants follow the

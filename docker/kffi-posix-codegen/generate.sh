@@ -6,7 +6,7 @@ JDK_HOME="${JDK_HOME:-/opt/java/openjdk}"
 LLVM_HOME="${LLVM_HOME:-/usr/lib/llvm-18}"
 REPO=/work
 KEXTRACT_DIR="${KEXTRACT_DIR:-$REPO/third_party/kextract}"
-REQUIRED_KEXTRACT_REVISION=9252fb417ea91dae882a6a9e9d06ab672c50adc3
+REQUIRED_KEXTRACT_REVISION=e1d922eefb6b65887c6cc4bd98370ad2d7ba8b45
 OUT_KT="$REPO/kffi-posix/src/jvmMain/kotlin"
 STAGING_KT="$REPO/kffi-posix/build/linux-posix-generated"
 GENERATED_KT="$OUT_KT/org/graphiks/kffi/posix/generated"
@@ -58,6 +58,8 @@ functions=(
     mmap munmap shm_open shm_unlink memfd_create ftruncate
     shmget shmat shmdt shmctl
     eventfd pipe pipe2 read write close poll
+    socket socketpair connect shutdown send recv recvmsg
+    bind listen accept accept4 sendmsg
 )
 
 args=(
@@ -74,6 +76,7 @@ while read -r constant; do args+=(--include-constant "$constant"); done < <(
     cpp -dM -include "$HEADER_INPUT" - </dev/null |
         awk '$1 == "#define" && $2 !~ /\(/ &&
             ($2 ~ /^(PROT_|MAP_|O_|IPC_|POLL)/ ||
+             $2 ~ /^(AF_|PF_|SOCK_|MSG_|SCM_|SOL_)/ ||
              $2 ~ /^F_(GETFD|SETFD|GETFL|SETFL)$/ ||
              $2 == "MFD_CLOEXEC" ||
              $2 == "EINTR" || $2 == "EAGAIN" || $2 == "ENOMEM" ||
@@ -83,12 +86,23 @@ while read -r constant; do args+=(--include-constant "$constant"); done < <(
         sort -u
 )
 
+for struct in sockaddr_un cmsghdr iovec msghdr; do
+    args+=("--include-struct" "$struct" "--include-typedef" "$struct")
+done
+# glibc wraps connect's address argument in a union typedef
+args+=("--include-typedef" "__CONST_SOCKADDR_ARG" "--include-typedef" "__SOCKADDR_ARG")
+
 echo "[gen] generating Kotlin FFM bindings with kextract"
 "$KEXTRACT" "${args[@]}" "$HEADER_INPUT"
 
 rm -rf "$GENERATED_KT"
 mkdir -p "$(dirname "$GENERATED_KT")"
 mv "$STAGING_KT/org/graphiks/kffi/posix/generated" "$GENERATED_KT"
+
+# Committed companion sources ride alongside the generated output (x11
+# pattern): the alias reconciles kextract's stripped typedef spelling.
+cp "$REPO/docker/kffi-posix-codegen/posix_compat_aliases.kt" \
+    "$GENERATED_KT/PosixCompatAliases.kt"
 
 # kextract emits indentation-only blank lines. Normalize generated whitespace
 # so regenerated sources pass Git's whitespace checks without altering bindings.
