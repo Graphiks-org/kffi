@@ -28,10 +28,13 @@ on the generated bindings: `Win32Structs` (WNDCLASSEXW/MSG Win64 layouts),
 `Win32ManagedFunctions.wndProc` (revocable WNDPROC registration with
 quiescence), `Win32ControlWindow` (never-shown control window),
 `Win32ManagedWindow` (managed top-level window; the handler owns the
-`WM_CLOSE` decision), and `Win32DropServices`/`Win32DropTarget`/`Win32DropData`
+`WM_CLOSE` decision), `Win32DropServices`/`Win32DropTarget`/`Win32DropData`
 (managed OLE drop frontier: balanced `OleInitialize` STA ownership, a per-HWND
 `IDropTarget` COM object revoked with quiescence, and bounded `IDataObject`
-reads over `HGLOBAL` copies or retained `IStream` references). The generated
+reads over `HGLOBAL` copies or retained `IStream` references), and
+`Win32RawInput` (managed raw-input registration: one process-lifetime mouse
+registration per process with a foreign-registration preflight, and bounded
+copies of relative `RAWMOUSE` deltas read during `WM_INPUT`). The generated
 package stays untouched; all FFI remains in KFFI.
 
 ## Generate on Windows
