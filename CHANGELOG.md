@@ -10,6 +10,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Managed Win32 XInput polling frontier for the four user gamepad slots:
+  `XInputGetState`/`XInputSetState`/`XInputGetCapabilities`/
+  `XInputGetBatteryInformation` over the `Xinput9_1_0.dll` map, every struct
+  copied into scalars before return (`ERROR_DEVICE_NOT_CONNECTED` surfaces
+  as a typed null, never as an invented pad), typed failures for the other
+  error codes, out-of-range slot indices refused up front, and thread-safe
+  polling documented by the API. Generated bindings gain the four functions
+  and the `_XINPUT_STATE`/`_XINPUT_GAMEPAD`/`_XINPUT_VIBRATION`/
+  `_XINPUT_CAPABILITIES`/`_XINPUT_BATTERY_INFORMATION` layouts.
 - Managed Win32 multi-monitor display inventory: one synchronous
   `EnumDisplayMonitors` walk with a process-lifetime callback stub and a
   thread-confined collector, per-monitor `GetMonitorInfoW` bounds/work area,

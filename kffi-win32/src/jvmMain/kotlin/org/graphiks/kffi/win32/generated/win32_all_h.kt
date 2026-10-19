@@ -24,6 +24,7 @@ private var _DLL_NINPUT_DLL: SymbolLookup? = null
 private var _DLL_OLE32_DLL: SymbolLookup? = null
 private var _DLL_SHCORE_DLL: SymbolLookup? = null
 private var _DLL_USER32_DLL: SymbolLookup? = null
+private var _DLL_XINPUT9_1_0_DLL: SymbolLookup? = null
 
 @Volatile private var _initialized: Boolean = false
 
@@ -36,6 +37,7 @@ private fun _lookup(symbol: String): SymbolLookup {
         "CoInitializeEx", "CoUninitialize", "CoCreateInstance", "CoTaskMemAlloc", "CoTaskMemFree", "OleInitialize", "OleUninitialize", "RegisterDragDrop", "RevokeDragDrop", "ReleaseStgMedium", "CreateStreamOnHGlobal" -> _DLL_OLE32_DLL ?: SymbolLookup.loaderLookup()
         "CreateInteractionContext", "DestroyInteractionContext", "SetInteractionConfigurationInteractionContext", "GetInteractionConfigurationInteractionContext", "SetPropertyInteractionContext", "GetPropertyInteractionContext", "RegisterOutputCallbackInteractionContext", "ProcessPointerFramesInteractionContext", "AddPointerInteractionContext", "RemovePointerInteractionContext", "ResetInteractionContext" -> _DLL_NINPUT_DLL ?: SymbolLookup.loaderLookup()
         "GetDpiForMonitor" -> _DLL_SHCORE_DLL ?: SymbolLookup.loaderLookup()
+        "XInputGetState", "XInputSetState", "XInputGetCapabilities", "XInputGetBatteryInformation" -> _DLL_XINPUT9_1_0_DLL ?: SymbolLookup.loaderLookup()
         else -> SymbolLookup.loaderLookup()
     }
 }
@@ -8511,6 +8513,393 @@ enum class SHELL_UI_COMPONENT(val value: Long) {
     }
 }
 
+/**
+ * {@snippet lang=c : STRUCT _XINPUT_GAMEPAD
+ */
+class _XINPUT_GAMEPAD {
+    companion object {
+        val layout: GroupLayout = MemoryLayout.structLayout(
+            ValueLayout.JAVA_SHORT.withByteAlignment(2).withName("wButtons"),
+            ValueLayout.JAVA_BYTE.withByteAlignment(1).withName("bLeftTrigger"),
+            ValueLayout.JAVA_BYTE.withByteAlignment(1).withName("bRightTrigger"),
+            ValueLayout.JAVA_SHORT.withByteAlignment(2).withName("sThumbLX"),
+            ValueLayout.JAVA_SHORT.withByteAlignment(2).withName("sThumbLY"),
+            ValueLayout.JAVA_SHORT.withByteAlignment(2).withName("sThumbRX"),
+            ValueLayout.JAVA_SHORT.withByteAlignment(2).withName("sThumbRY")
+        ).withByteAlignment(2L).withName("_XINPUT_GAMEPAD")
+
+        val byteSize: Long
+            get() = layout.byteSize()
+
+        fun allocate(allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(layout)
+
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout))
+
+        fun asSlice(array: MemorySegment, index: Long): MemorySegment =
+            array.asSlice(byteSize * index)
+
+        fun reinterpret(addr: MemorySegment): MemorySegment =
+            addr.reinterpret(byteSize)
+
+        fun reinterpret(addr: MemorySegment, elementCount: Long): MemorySegment =
+            addr.reinterpret(byteSize * elementCount)
+
+    } // End companion object
+
+    val wButtons_VH: VarHandle = layout.varHandle(groupElement("wButtons"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun wButtons(segment: MemorySegment): Short =
+        wButtons_VH.get(segment, 0L) as Short
+
+    fun wButtons(segment: MemorySegment, value: Short) =
+        wButtons_VH.set(segment, 0L, value)
+
+    val bLeftTrigger_VH: VarHandle = layout.varHandle(groupElement("bLeftTrigger"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun bLeftTrigger(segment: MemorySegment): Byte =
+        bLeftTrigger_VH.get(segment, 0L) as Byte
+
+    fun bLeftTrigger(segment: MemorySegment, value: Byte) =
+        bLeftTrigger_VH.set(segment, 0L, value)
+
+    val bRightTrigger_VH: VarHandle = layout.varHandle(groupElement("bRightTrigger"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun bRightTrigger(segment: MemorySegment): Byte =
+        bRightTrigger_VH.get(segment, 0L) as Byte
+
+    fun bRightTrigger(segment: MemorySegment, value: Byte) =
+        bRightTrigger_VH.set(segment, 0L, value)
+
+    val sThumbLX_VH: VarHandle = layout.varHandle(groupElement("sThumbLX"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun sThumbLX(segment: MemorySegment): Short =
+        sThumbLX_VH.get(segment, 0L) as Short
+
+    fun sThumbLX(segment: MemorySegment, value: Short) =
+        sThumbLX_VH.set(segment, 0L, value)
+
+    val sThumbLY_VH: VarHandle = layout.varHandle(groupElement("sThumbLY"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun sThumbLY(segment: MemorySegment): Short =
+        sThumbLY_VH.get(segment, 0L) as Short
+
+    fun sThumbLY(segment: MemorySegment, value: Short) =
+        sThumbLY_VH.set(segment, 0L, value)
+
+    val sThumbRX_VH: VarHandle = layout.varHandle(groupElement("sThumbRX"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun sThumbRX(segment: MemorySegment): Short =
+        sThumbRX_VH.get(segment, 0L) as Short
+
+    fun sThumbRX(segment: MemorySegment, value: Short) =
+        sThumbRX_VH.set(segment, 0L, value)
+
+    val sThumbRY_VH: VarHandle = layout.varHandle(groupElement("sThumbRY"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun sThumbRY(segment: MemorySegment): Short =
+        sThumbRY_VH.get(segment, 0L) as Short
+
+    fun sThumbRY(segment: MemorySegment, value: Short) =
+        sThumbRY_VH.set(segment, 0L, value)
+} // End class
+
+/**
+ * {@snippet lang=c : STRUCT _XINPUT_STATE
+ */
+class _XINPUT_STATE {
+    companion object {
+        val layout: GroupLayout = MemoryLayout.structLayout(
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("dwPacketNumber"),
+            _XINPUT_GAMEPAD.layout.withByteAlignment(2).withName("Gamepad")
+        ).withByteAlignment(4L).withName("_XINPUT_STATE")
+
+        val byteSize: Long
+            get() = layout.byteSize()
+
+        fun allocate(allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(layout)
+
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout))
+
+        fun asSlice(array: MemorySegment, index: Long): MemorySegment =
+            array.asSlice(byteSize * index)
+
+        fun reinterpret(addr: MemorySegment): MemorySegment =
+            addr.reinterpret(byteSize)
+
+        fun reinterpret(addr: MemorySegment, elementCount: Long): MemorySegment =
+            addr.reinterpret(byteSize * elementCount)
+
+    } // End companion object
+
+    val dwPacketNumber_VH: VarHandle = layout.varHandle(groupElement("dwPacketNumber"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun dwPacketNumber(segment: MemorySegment): Int =
+        dwPacketNumber_VH.get(segment, 0L) as Int
+
+    fun dwPacketNumber(segment: MemorySegment, value: Int) =
+        dwPacketNumber_VH.set(segment, 0L, value)
+
+    fun Gamepad(segment: MemorySegment): MemorySegment =
+        segment.asSlice(layout.byteOffset(groupElement("Gamepad")), layout.select(groupElement("Gamepad")).byteSize())
+} // End class
+
+/**
+ * {@snippet lang=c : STRUCT _XINPUT_VIBRATION
+ */
+class _XINPUT_VIBRATION {
+    companion object {
+        val layout: GroupLayout = MemoryLayout.structLayout(
+            ValueLayout.JAVA_SHORT.withByteAlignment(2).withName("wLeftMotorSpeed"),
+            ValueLayout.JAVA_SHORT.withByteAlignment(2).withName("wRightMotorSpeed")
+        ).withByteAlignment(2L).withName("_XINPUT_VIBRATION")
+
+        val byteSize: Long
+            get() = layout.byteSize()
+
+        fun allocate(allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(layout)
+
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout))
+
+        fun asSlice(array: MemorySegment, index: Long): MemorySegment =
+            array.asSlice(byteSize * index)
+
+        fun reinterpret(addr: MemorySegment): MemorySegment =
+            addr.reinterpret(byteSize)
+
+        fun reinterpret(addr: MemorySegment, elementCount: Long): MemorySegment =
+            addr.reinterpret(byteSize * elementCount)
+
+    } // End companion object
+
+    val wLeftMotorSpeed_VH: VarHandle = layout.varHandle(groupElement("wLeftMotorSpeed"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun wLeftMotorSpeed(segment: MemorySegment): Short =
+        wLeftMotorSpeed_VH.get(segment, 0L) as Short
+
+    fun wLeftMotorSpeed(segment: MemorySegment, value: Short) =
+        wLeftMotorSpeed_VH.set(segment, 0L, value)
+
+    val wRightMotorSpeed_VH: VarHandle = layout.varHandle(groupElement("wRightMotorSpeed"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun wRightMotorSpeed(segment: MemorySegment): Short =
+        wRightMotorSpeed_VH.get(segment, 0L) as Short
+
+    fun wRightMotorSpeed(segment: MemorySegment, value: Short) =
+        wRightMotorSpeed_VH.set(segment, 0L, value)
+} // End class
+
+/**
+ * {@snippet lang=c : STRUCT _XINPUT_CAPABILITIES
+ */
+class _XINPUT_CAPABILITIES {
+    companion object {
+        val layout: GroupLayout = MemoryLayout.structLayout(
+            ValueLayout.JAVA_BYTE.withByteAlignment(1).withName("Type"),
+            ValueLayout.JAVA_BYTE.withByteAlignment(1).withName("SubType"),
+            ValueLayout.JAVA_SHORT.withByteAlignment(2).withName("Flags"),
+            _XINPUT_GAMEPAD.layout.withByteAlignment(2).withName("Gamepad"),
+            _XINPUT_VIBRATION.layout.withByteAlignment(2).withName("Vibration")
+        ).withByteAlignment(2L).withName("_XINPUT_CAPABILITIES")
+
+        val byteSize: Long
+            get() = layout.byteSize()
+
+        fun allocate(allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(layout)
+
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout))
+
+        fun asSlice(array: MemorySegment, index: Long): MemorySegment =
+            array.asSlice(byteSize * index)
+
+        fun reinterpret(addr: MemorySegment): MemorySegment =
+            addr.reinterpret(byteSize)
+
+        fun reinterpret(addr: MemorySegment, elementCount: Long): MemorySegment =
+            addr.reinterpret(byteSize * elementCount)
+
+    } // End companion object
+
+    val Type_VH: VarHandle = layout.varHandle(groupElement("Type"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun Type(segment: MemorySegment): Byte =
+        Type_VH.get(segment, 0L) as Byte
+
+    fun Type(segment: MemorySegment, value: Byte) =
+        Type_VH.set(segment, 0L, value)
+
+    val SubType_VH: VarHandle = layout.varHandle(groupElement("SubType"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun SubType(segment: MemorySegment): Byte =
+        SubType_VH.get(segment, 0L) as Byte
+
+    fun SubType(segment: MemorySegment, value: Byte) =
+        SubType_VH.set(segment, 0L, value)
+
+    val Flags_VH: VarHandle = layout.varHandle(groupElement("Flags"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun Flags(segment: MemorySegment): Short =
+        Flags_VH.get(segment, 0L) as Short
+
+    fun Flags(segment: MemorySegment, value: Short) =
+        Flags_VH.set(segment, 0L, value)
+
+    fun Gamepad(segment: MemorySegment): MemorySegment =
+        segment.asSlice(layout.byteOffset(groupElement("Gamepad")), layout.select(groupElement("Gamepad")).byteSize())
+
+    fun Vibration(segment: MemorySegment): MemorySegment =
+        segment.asSlice(layout.byteOffset(groupElement("Vibration")), layout.select(groupElement("Vibration")).byteSize())
+} // End class
+
+/**
+ * {@snippet lang=c : STRUCT _XINPUT_BATTERY_INFORMATION
+ */
+class _XINPUT_BATTERY_INFORMATION {
+    companion object {
+        val layout: GroupLayout = MemoryLayout.structLayout(
+            ValueLayout.JAVA_BYTE.withByteAlignment(1).withName("BatteryType"),
+            ValueLayout.JAVA_BYTE.withByteAlignment(1).withName("BatteryLevel")
+        ).withByteAlignment(1L).withName("_XINPUT_BATTERY_INFORMATION")
+
+        val byteSize: Long
+            get() = layout.byteSize()
+
+        fun allocate(allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(layout)
+
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout))
+
+        fun asSlice(array: MemorySegment, index: Long): MemorySegment =
+            array.asSlice(byteSize * index)
+
+        fun reinterpret(addr: MemorySegment): MemorySegment =
+            addr.reinterpret(byteSize)
+
+        fun reinterpret(addr: MemorySegment, elementCount: Long): MemorySegment =
+            addr.reinterpret(byteSize * elementCount)
+
+    } // End companion object
+
+    val BatteryType_VH: VarHandle = layout.varHandle(groupElement("BatteryType"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun BatteryType(segment: MemorySegment): Byte =
+        BatteryType_VH.get(segment, 0L) as Byte
+
+    fun BatteryType(segment: MemorySegment, value: Byte) =
+        BatteryType_VH.set(segment, 0L, value)
+
+    val BatteryLevel_VH: VarHandle = layout.varHandle(groupElement("BatteryLevel"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun BatteryLevel(segment: MemorySegment): Byte =
+        BatteryLevel_VH.get(segment, 0L) as Byte
+
+    fun BatteryLevel(segment: MemorySegment, value: Byte) =
+        BatteryLevel_VH.set(segment, 0L, value)
+} // End class
+
+/**
+ * {@snippet lang=c : XInputGetState typedef DWORD = UNSIGNED = Long(typedef DWORD = UNSIGNED = Long,(typedef XINPUT_STATE = Declared(_XINPUT_STATE))*)
+ */
+private val XInputGetState_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private var XInputGetState_HANDLE: MethodHandle? = null
+
+fun XInputGetState(arg0: Int, arg1: MemorySegment): Int {
+    check(_initialized) { "Win32 XInputGetState called before init()" }
+    val _handle = XInputGetState_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0, arg1) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
+ * {@snippet lang=c : XInputSetState typedef DWORD = UNSIGNED = Long(typedef DWORD = UNSIGNED = Long,(typedef XINPUT_VIBRATION = Declared(_XINPUT_VIBRATION))*)
+ */
+private val XInputSetState_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private var XInputSetState_HANDLE: MethodHandle? = null
+
+fun XInputSetState(arg0: Int, arg1: MemorySegment): Int {
+    check(_initialized) { "Win32 XInputSetState called before init()" }
+    val _handle = XInputSetState_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0, arg1) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
+ * {@snippet lang=c : XInputGetCapabilities typedef DWORD = UNSIGNED = Long(typedef DWORD = UNSIGNED = Long,typedef DWORD = UNSIGNED = Long,(typedef XINPUT_CAPABILITIES = Declared(_XINPUT_CAPABILITIES))*)
+ */
+private val XInputGetCapabilities_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private var XInputGetCapabilities_HANDLE: MethodHandle? = null
+
+fun XInputGetCapabilities(arg0: Int, arg1: Int, arg2: MemorySegment): Int {
+    check(_initialized) { "Win32 XInputGetCapabilities called before init()" }
+    val _handle = XInputGetCapabilities_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0, arg1, arg2) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
+/**
+ * {@snippet lang=c : XInputGetBatteryInformation typedef DWORD = UNSIGNED = Long(typedef DWORD = UNSIGNED = Long,typedef BYTE = UNSIGNED = Char,(typedef XINPUT_BATTERY_INFORMATION = Declared(_XINPUT_BATTERY_INFORMATION))*)
+ */
+private val XInputGetBatteryInformation_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS)
+private var XInputGetBatteryInformation_HANDLE: MethodHandle? = null
+
+fun XInputGetBatteryInformation(arg0: Int, arg1: Byte, arg2: MemorySegment): Int {
+    check(_initialized) { "Win32 XInputGetBatteryInformation called before init()" }
+    val _handle = XInputGetBatteryInformation_HANDLE ?: return 0
+    try {
+        return _handle.invokeExact(arg0, arg1, arg2) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        return 0
+    }
+}
+
 
 /**
  * Initializes all Win32 bindings.
@@ -8552,6 +8941,11 @@ fun init() {
     }
     _DLL_USER32_DLL = try {
         SymbolLookup.libraryLookup("User32.dll", Arena.global())
+    } catch (ex: Throwable) {
+        null
+    }
+    _DLL_XINPUT9_1_0_DLL = try {
+        SymbolLookup.libraryLookup("Xinput9_1_0.dll", Arena.global())
     } catch (ex: Throwable) {
         null
     }
@@ -8699,6 +9093,10 @@ fun init() {
     RemovePointerInteractionContext_HANDLE = _lookup("RemovePointerInteractionContext").find("RemovePointerInteractionContext").map { Linker.nativeLinker().downcallHandle(it, RemovePointerInteractionContext_DESC) }.orElse(null)
     ProcessPointerFramesInteractionContext_HANDLE = _lookup("ProcessPointerFramesInteractionContext").find("ProcessPointerFramesInteractionContext").map { Linker.nativeLinker().downcallHandle(it, ProcessPointerFramesInteractionContext_DESC) }.orElse(null)
     GetDpiForMonitor_HANDLE = _lookup("GetDpiForMonitor").find("GetDpiForMonitor").map { Linker.nativeLinker().downcallHandle(it, GetDpiForMonitor_DESC) }.orElse(null)
+    XInputGetState_HANDLE = _lookup("XInputGetState").find("XInputGetState").map { Linker.nativeLinker().downcallHandle(it, XInputGetState_DESC) }.orElse(null)
+    XInputSetState_HANDLE = _lookup("XInputSetState").find("XInputSetState").map { Linker.nativeLinker().downcallHandle(it, XInputSetState_DESC) }.orElse(null)
+    XInputGetCapabilities_HANDLE = _lookup("XInputGetCapabilities").find("XInputGetCapabilities").map { Linker.nativeLinker().downcallHandle(it, XInputGetCapabilities_DESC) }.orElse(null)
+    XInputGetBatteryInformation_HANDLE = _lookup("XInputGetBatteryInformation").find("XInputGetBatteryInformation").map { Linker.nativeLinker().downcallHandle(it, XInputGetBatteryInformation_DESC) }.orElse(null)
 
     _initialized = true
 }

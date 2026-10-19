@@ -34,7 +34,11 @@ quiescence), `Win32ControlWindow` (never-shown control window),
 reads over `HGLOBAL` copies or retained `IStream` references), and
 `Win32RawInput` (managed raw-input registration: one process-lifetime mouse
 registration per process with a foreign-registration preflight, and bounded
-copies of relative `RAWMOUSE` deltas read during `WM_INPUT`). The generated
+copies of relative `RAWMOUSE` deltas read during `WM_INPUT`), and
+`Win32XInput` (managed XInput polling: the four user slots read through
+`XInputGetState`, scalar copies with typed `ERROR_DEVICE_NOT_CONNECTED`
+handling, `XInputSetState` dual rumble, `XInputGetCapabilities` and
+`XInputGetBatteryInformation`). The generated
 package stays untouched; all FFI remains in KFFI.
 
 ## Generate on Windows
