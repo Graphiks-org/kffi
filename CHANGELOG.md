@@ -10,6 +10,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- New `kffi-evdev` module, generated through the kextract pipeline
+  (`scripts/gen-kffi-evdev.sh`, `docker/kffi-evdev-codegen`) from the kernel
+  uapi and libudev headers: ioctl numbers and ABI constants follow the
+  headers instead of being transcribed, the `input_id`/`input_absinfo`/
+  `input_event` layouts and the 48-byte `ff_effect` storage (union flattened
+  per the x11 Storage pattern) are emitted with named accessors, and the
+  variadic `ioctl`/`open`/`fcntl` bind one address-register slot serving
+  both pointer and zero-extended integer arguments. The managed layer adds
+  gamepad capability probing, event decode/encode, errno through
+  `__errno_location`, non-blocking libudev node enumeration plus the
+  hotplug monitor filter, and the uinput oracle: a managed virtual gamepad
+  (UI_DEV_SETUP/UI_ABS_SETUP/UI_DEV_CREATE, event injection, the FF
+  upload/erase BEGIN/END handshake, forwarded play/stop requests, sysfs
+  name discovery).
 - Managed Win32 OLE drop frontier: balanced `OleInitialize`/`OleUninitialize`
   STA services (S_OK and S_FALSE consumed exactly once, no silent apartment
   conversion), a per-HWND managed `IDropTarget` COM object (`DragEnter`,

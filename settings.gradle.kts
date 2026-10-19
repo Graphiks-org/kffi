@@ -21,6 +21,7 @@ dependencyResolutionManagement {
 include("docs")
 include("kffi")
 include("kffi-posix")
+include("kffi-evdev")
 include("kffi-wayland")
 include("kffi-x11")
 include("kffi-objc")
