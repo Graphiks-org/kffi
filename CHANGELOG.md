@@ -10,6 +10,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Managed Win32 OLE drop frontier: balanced `OleInitialize`/`OleUninitialize`
+  STA services (S_OK and S_FALSE consumed exactly once, no silent apartment
+  conversion), a per-HWND managed `IDropTarget` COM object (`DragEnter`,
+  `DragOver`, `DragLeave`, `Drop`) whose application callbacks are revoked
+  before COM cleanup and whose `pdwEffect` output is always defined, and
+  bounded `IDataObject` reads: format enumeration, `QueryGetData` probes,
+  size-checked `HGLOBAL` copies with systematic `ReleaseStgMedium`, and
+  retained `IStream` references that stay readable after the native callback
+  returns. Generated bindings gain `OleInitialize`, `OleUninitialize`,
+  `RegisterDragDrop`, `RevokeDragDrop`, `ReleaseStgMedium`,
+  `CreateStreamOnHGlobal`, `GlobalAlloc`/`GlobalLock`/`GlobalUnlock`/
+  `GlobalSize`, `RegisterClipboardFormatW`, `GetPropW` and the
+  `FORMATETC`/`STGMEDIUM` layouts (137 functions total).
 - Managed Win32 STA text services with a revision-neutral UTF-16 document protocol,
   ITextStoreACP, composition sinks, input scopes, bounded character delivery and
   screen caret geometry. Application callbacks are revoked before COM cleanup.
