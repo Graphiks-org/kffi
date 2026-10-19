@@ -10,6 +10,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Managed Win32 raw-input registration frontier: one process-lifetime
+  generic-desktop mouse registration per process with a foreign-registration
+  preflight (`GetRegisteredRawInputDevices` refuses with a typed code instead
+  of stealing), foreground-only delivery (the OS refuses RIDEV_INPUTSINK for
+  the mouse usage with ERROR_INVALID_PARAMETER), and bounded `GetRawInputData`
+  copies of relative `RAWMOUSE` deltas during the message — absolute payloads,
+  other devices and non-mouse types return no value instead of being
+  approximated. Close performs no native mutation: every `RIDEV_REMOVE` form
+  is refused by the OS with ERROR_INVALID_FLAGS on the observed hosts, so the
+  registration is documented as process-lifetime. Generated bindings gain
+  `RegisterRawInputDevices`, `GetRawInputData`, `GetRawInputDeviceList`,
+  `GetRegisteredRawInputDevices` and the `RAWINPUTDEVICE`/`RAWINPUTHEADER`/
+  `RAWMOUSE`/`RAWKEYBOARD`/`RAWHID`/`RAWINPUTDEVICELIST` layouts (141
+  functions total).
 - New `kffi-evdev` module, generated through the kextract pipeline
   (`scripts/gen-kffi-evdev.sh`, `docker/kffi-evdev-codegen`) from the kernel
   uapi and libudev headers: ioctl numbers and ABI constants follow the
