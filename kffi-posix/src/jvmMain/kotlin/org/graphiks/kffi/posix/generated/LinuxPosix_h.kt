@@ -368,6 +368,391 @@ fun MAP_HUGE_SHIFT(): Int = (26).toInt()
 fun MAP_HUGE_MASK(): Int = (63).toInt()
 
 /**
+ * {@snippet lang=c : #define PF_UNSPEC 0
+ */
+fun PF_UNSPEC(): Int = (0).toInt()
+
+/**
+ * {@snippet lang=c : #define PF_LOCAL 1
+ */
+fun PF_LOCAL(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define PF_INET 2
+ */
+fun PF_INET(): Int = (2).toInt()
+
+/**
+ * {@snippet lang=c : #define PF_AX25 3
+ */
+fun PF_AX25(): Int = (3).toInt()
+
+/**
+ * {@snippet lang=c : #define PF_IPX 4
+ */
+fun PF_IPX(): Int = (4).toInt()
+
+/**
+ * {@snippet lang=c : #define PF_APPLETALK 5
+ */
+fun PF_APPLETALK(): Int = (5).toInt()
+
+/**
+ * {@snippet lang=c : #define PF_NETROM 6
+ */
+fun PF_NETROM(): Int = (6).toInt()
+
+/**
+ * {@snippet lang=c : #define PF_BRIDGE 7
+ */
+fun PF_BRIDGE(): Int = (7).toInt()
+
+/**
+ * {@snippet lang=c : #define PF_ATMPVC 8
+ */
+fun PF_ATMPVC(): Int = (8).toInt()
+
+/**
+ * {@snippet lang=c : #define PF_X25 9
+ */
+fun PF_X25(): Int = (9).toInt()
+
+/**
+ * {@snippet lang=c : #define PF_INET6 10
+ */
+fun PF_INET6(): Int = (10).toInt()
+
+/**
+ * {@snippet lang=c : #define PF_ROSE 11
+ */
+fun PF_ROSE(): Int = (11).toInt()
+
+/**
+ * {@snippet lang=c : #define PF_DECnet 12
+ */
+fun PF_DECnet(): Int = (12).toInt()
+
+/**
+ * {@snippet lang=c : #define PF_NETBEUI 13
+ */
+fun PF_NETBEUI(): Int = (13).toInt()
+
+/**
+ * {@snippet lang=c : #define PF_SECURITY 14
+ */
+fun PF_SECURITY(): Int = (14).toInt()
+
+/**
+ * {@snippet lang=c : #define PF_KEY 15
+ */
+fun PF_KEY(): Int = (15).toInt()
+
+/**
+ * {@snippet lang=c : #define PF_NETLINK 16
+ */
+fun PF_NETLINK(): Int = (16).toInt()
+
+/**
+ * {@snippet lang=c : #define PF_PACKET 17
+ */
+fun PF_PACKET(): Int = (17).toInt()
+
+/**
+ * {@snippet lang=c : #define PF_ASH 18
+ */
+fun PF_ASH(): Int = (18).toInt()
+
+/**
+ * {@snippet lang=c : #define PF_ECONET 19
+ */
+fun PF_ECONET(): Int = (19).toInt()
+
+/**
+ * {@snippet lang=c : #define PF_ATMSVC 20
+ */
+fun PF_ATMSVC(): Int = (20).toInt()
+
+/**
+ * {@snippet lang=c : #define PF_RDS 21
+ */
+fun PF_RDS(): Int = (21).toInt()
+
+/**
+ * {@snippet lang=c : #define PF_SNA 22
+ */
+fun PF_SNA(): Int = (22).toInt()
+
+/**
+ * {@snippet lang=c : #define PF_IRDA 23
+ */
+fun PF_IRDA(): Int = (23).toInt()
+
+/**
+ * {@snippet lang=c : #define PF_PPPOX 24
+ */
+fun PF_PPPOX(): Int = (24).toInt()
+
+/**
+ * {@snippet lang=c : #define PF_WANPIPE 25
+ */
+fun PF_WANPIPE(): Int = (25).toInt()
+
+/**
+ * {@snippet lang=c : #define PF_LLC 26
+ */
+fun PF_LLC(): Int = (26).toInt()
+
+/**
+ * {@snippet lang=c : #define PF_IB 27
+ */
+fun PF_IB(): Int = (27).toInt()
+
+/**
+ * {@snippet lang=c : #define PF_MPLS 28
+ */
+fun PF_MPLS(): Int = (28).toInt()
+
+/**
+ * {@snippet lang=c : #define PF_CAN 29
+ */
+fun PF_CAN(): Int = (29).toInt()
+
+/**
+ * {@snippet lang=c : #define PF_TIPC 30
+ */
+fun PF_TIPC(): Int = (30).toInt()
+
+/**
+ * {@snippet lang=c : #define PF_BLUETOOTH 31
+ */
+fun PF_BLUETOOTH(): Int = (31).toInt()
+
+/**
+ * {@snippet lang=c : #define PF_IUCV 32
+ */
+fun PF_IUCV(): Int = (32).toInt()
+
+/**
+ * {@snippet lang=c : #define PF_RXRPC 33
+ */
+fun PF_RXRPC(): Int = (33).toInt()
+
+/**
+ * {@snippet lang=c : #define PF_ISDN 34
+ */
+fun PF_ISDN(): Int = (34).toInt()
+
+/**
+ * {@snippet lang=c : #define PF_PHONET 35
+ */
+fun PF_PHONET(): Int = (35).toInt()
+
+/**
+ * {@snippet lang=c : #define PF_IEEE802154 36
+ */
+fun PF_IEEE802154(): Int = (36).toInt()
+
+/**
+ * {@snippet lang=c : #define PF_CAIF 37
+ */
+fun PF_CAIF(): Int = (37).toInt()
+
+/**
+ * {@snippet lang=c : #define PF_ALG 38
+ */
+fun PF_ALG(): Int = (38).toInt()
+
+/**
+ * {@snippet lang=c : #define PF_NFC 39
+ */
+fun PF_NFC(): Int = (39).toInt()
+
+/**
+ * {@snippet lang=c : #define PF_VSOCK 40
+ */
+fun PF_VSOCK(): Int = (40).toInt()
+
+/**
+ * {@snippet lang=c : #define PF_KCM 41
+ */
+fun PF_KCM(): Int = (41).toInt()
+
+/**
+ * {@snippet lang=c : #define PF_QIPCRTR 42
+ */
+fun PF_QIPCRTR(): Int = (42).toInt()
+
+/**
+ * {@snippet lang=c : #define PF_SMC 43
+ */
+fun PF_SMC(): Int = (43).toInt()
+
+/**
+ * {@snippet lang=c : #define PF_XDP 44
+ */
+fun PF_XDP(): Int = (44).toInt()
+
+/**
+ * {@snippet lang=c : #define PF_MCTP 45
+ */
+fun PF_MCTP(): Int = (45).toInt()
+
+/**
+ * {@snippet lang=c : #define PF_MAX 46
+ */
+fun PF_MAX(): Int = (46).toInt()
+
+/**
+ * {@snippet lang=c : #define SOL_RAW 255
+ */
+fun SOL_RAW(): Int = (255).toInt()
+
+/**
+ * {@snippet lang=c : #define SOL_DECNET 261
+ */
+fun SOL_DECNET(): Int = (261).toInt()
+
+/**
+ * {@snippet lang=c : #define SOL_X25 262
+ */
+fun SOL_X25(): Int = (262).toInt()
+
+/**
+ * {@snippet lang=c : #define SOL_PACKET 263
+ */
+fun SOL_PACKET(): Int = (263).toInt()
+
+/**
+ * {@snippet lang=c : #define SOL_ATM 264
+ */
+fun SOL_ATM(): Int = (264).toInt()
+
+/**
+ * {@snippet lang=c : #define SOL_AAL 265
+ */
+fun SOL_AAL(): Int = (265).toInt()
+
+/**
+ * {@snippet lang=c : #define SOL_IRDA 266
+ */
+fun SOL_IRDA(): Int = (266).toInt()
+
+/**
+ * {@snippet lang=c : #define SOL_NETBEUI 267
+ */
+fun SOL_NETBEUI(): Int = (267).toInt()
+
+/**
+ * {@snippet lang=c : #define SOL_LLC 268
+ */
+fun SOL_LLC(): Int = (268).toInt()
+
+/**
+ * {@snippet lang=c : #define SOL_DCCP 269
+ */
+fun SOL_DCCP(): Int = (269).toInt()
+
+/**
+ * {@snippet lang=c : #define SOL_NETLINK 270
+ */
+fun SOL_NETLINK(): Int = (270).toInt()
+
+/**
+ * {@snippet lang=c : #define SOL_TIPC 271
+ */
+fun SOL_TIPC(): Int = (271).toInt()
+
+/**
+ * {@snippet lang=c : #define SOL_RXRPC 272
+ */
+fun SOL_RXRPC(): Int = (272).toInt()
+
+/**
+ * {@snippet lang=c : #define SOL_PPPOL2TP 273
+ */
+fun SOL_PPPOL2TP(): Int = (273).toInt()
+
+/**
+ * {@snippet lang=c : #define SOL_BLUETOOTH 274
+ */
+fun SOL_BLUETOOTH(): Int = (274).toInt()
+
+/**
+ * {@snippet lang=c : #define SOL_PNPIPE 275
+ */
+fun SOL_PNPIPE(): Int = (275).toInt()
+
+/**
+ * {@snippet lang=c : #define SOL_RDS 276
+ */
+fun SOL_RDS(): Int = (276).toInt()
+
+/**
+ * {@snippet lang=c : #define SOL_IUCV 277
+ */
+fun SOL_IUCV(): Int = (277).toInt()
+
+/**
+ * {@snippet lang=c : #define SOL_CAIF 278
+ */
+fun SOL_CAIF(): Int = (278).toInt()
+
+/**
+ * {@snippet lang=c : #define SOL_ALG 279
+ */
+fun SOL_ALG(): Int = (279).toInt()
+
+/**
+ * {@snippet lang=c : #define SOL_NFC 280
+ */
+fun SOL_NFC(): Int = (280).toInt()
+
+/**
+ * {@snippet lang=c : #define SOL_KCM 281
+ */
+fun SOL_KCM(): Int = (281).toInt()
+
+/**
+ * {@snippet lang=c : #define SOL_TLS 282
+ */
+fun SOL_TLS(): Int = (282).toInt()
+
+/**
+ * {@snippet lang=c : #define SOL_XDP 283
+ */
+fun SOL_XDP(): Int = (283).toInt()
+
+/**
+ * {@snippet lang=c : #define SOL_MPTCP 284
+ */
+fun SOL_MPTCP(): Int = (284).toInt()
+
+/**
+ * {@snippet lang=c : #define SOL_MCTP 285
+ */
+fun SOL_MCTP(): Int = (285).toInt()
+
+/**
+ * {@snippet lang=c : #define SOL_SMC 286
+ */
+fun SOL_SMC(): Int = (286).toInt()
+
+/**
+ * {@snippet lang=c : #define SOL_SOCKET 1
+ */
+fun SOL_SOCKET(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define SCM_TIMESTAMPING_OPT_STATS 54
+ */
+fun SCM_TIMESTAMPING_OPT_STATS(): Int = (54).toInt()
+
+/**
+ * {@snippet lang=c : #define SCM_TIMESTAMPING_PKTINFO 58
+ */
+fun SCM_TIMESTAMPING_PKTINFO(): Int = (58).toInt()
+
+/**
  * {@snippet lang=c : typedef Int error_t;}
  */
 typealias error_t = Int
@@ -678,6 +1063,55 @@ typealias _sig_atomic_t = Int
 typealias size_t = Long
 
 /**
+ * {@snippet lang=c : STRUCT iovec
+ */
+class iovec {
+    companion object {
+        val layout: GroupLayout = MemoryLayout.structLayout(
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("iov_base"),
+            ValueLayout.JAVA_LONG.withByteAlignment(8).withName("iov_len")
+        ).withByteAlignment(8L).withName("iovec")
+
+        val byteSize: Long
+            get() = layout.byteSize()
+
+        fun allocate(allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(layout)
+
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout))
+
+        fun asSlice(array: MemorySegment, index: Long): MemorySegment =
+            array.asSlice(byteSize * index)
+
+        fun reinterpret(addr: MemorySegment): MemorySegment =
+            addr.reinterpret(byteSize)
+
+        fun reinterpret(addr: MemorySegment, elementCount: Long): MemorySegment =
+            addr.reinterpret(byteSize * elementCount)
+
+    } // End companion object
+
+    val iov_base_VH: VarHandle = layout.varHandle(groupElement("iov_base"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun iov_base(segment: MemorySegment): MemorySegment =
+        iov_base_VH.get(segment, 0L) as MemorySegment
+
+    fun iov_base(segment: MemorySegment, value: MemorySegment) =
+        iov_base_VH.set(segment, 0L, value)
+
+    val iov_len_VH: VarHandle = layout.varHandle(groupElement("iov_len"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun iov_len(segment: MemorySegment): Long =
+        iov_len_VH.get(segment, 0L) as Long
+
+    fun iov_len(segment: MemorySegment, value: Long) =
+        iov_len_VH.set(segment, 0L, value)
+} // End class
+
+/**
  * NS_ENUM: {@snippet lang=c : enum __pid_type}
  */
 enum class _pid_type(val value: Long) {
@@ -723,8 +1157,8 @@ typealias nfds_t = Long
  * {@snippet lang=c : poll Int((Declared(pollfd))*,UNSIGNED = Long,Int)
  */
 private val poll_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT)
-private val poll_ADDR: MemorySegment = LOOKUP.find("poll").orElseThrow()
-private val poll_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(poll_ADDR, poll_DESC)
+private val poll_ADDR: MemorySegment by lazy { LOOKUP.find("poll").orElseThrow() }
+private val poll_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(poll_ADDR, poll_DESC) }
 
 fun poll(arg0: MemorySegment, arg1: Long, arg2: Int): Int {
     try {
@@ -899,8 +1333,8 @@ typealias eventfd_t = Long
  * {@snippet lang=c : eventfd Int(UNSIGNED = Int,Int)
  */
 private val eventfd_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val eventfd_ADDR: MemorySegment = LOOKUP.find("eventfd").orElseThrow()
-private val eventfd_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(eventfd_ADDR, eventfd_DESC)
+private val eventfd_ADDR: MemorySegment by lazy { LOOKUP.find("eventfd").orElseThrow() }
+private val eventfd_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(eventfd_ADDR, eventfd_DESC) }
 
 fun eventfd(arg0: Int, arg1: Int): Int {
     try {
@@ -938,8 +1372,8 @@ typealias key_t = Int
  * {@snippet lang=c : memfd_create Int((Char)*,UNSIGNED = Int)
  */
 private val memfd_create_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
-private val memfd_create_ADDR: MemorySegment = LOOKUP.find("memfd_create").orElseThrow()
-private val memfd_create_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(memfd_create_ADDR, memfd_create_DESC)
+private val memfd_create_ADDR: MemorySegment by lazy { LOOKUP.find("memfd_create").orElseThrow() }
+private val memfd_create_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(memfd_create_ADDR, memfd_create_DESC) }
 
 fun memfd_create(arg0: MemorySegment, arg1: Int): Int {
     try {
@@ -957,8 +1391,8 @@ fun memfd_create(arg0: MemorySegment, arg1: Int): Int {
  * {@snippet lang=c : mmap (Void)*((Void)*,UNSIGNED = Long,Int,Int,Int,Long)
  */
 private val mmap_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG)
-private val mmap_ADDR: MemorySegment = LOOKUP.find("mmap").orElseThrow()
-private val mmap_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(mmap_ADDR, mmap_DESC)
+private val mmap_ADDR: MemorySegment by lazy { LOOKUP.find("mmap").orElseThrow() }
+private val mmap_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(mmap_ADDR, mmap_DESC) }
 
 fun mmap(arg0: MemorySegment, arg1: Long, arg2: Int, arg3: Int, arg4: Int, arg5: Long): MemorySegment {
     try {
@@ -976,8 +1410,8 @@ fun mmap(arg0: MemorySegment, arg1: Long, arg2: Int, arg3: Int, arg4: Int, arg5:
  * {@snippet lang=c : munmap Int((Void)*,UNSIGNED = Long)
  */
 private val munmap_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
-private val munmap_ADDR: MemorySegment = LOOKUP.find("munmap").orElseThrow()
-private val munmap_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(munmap_ADDR, munmap_DESC)
+private val munmap_ADDR: MemorySegment by lazy { LOOKUP.find("munmap").orElseThrow() }
+private val munmap_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(munmap_ADDR, munmap_DESC) }
 
 fun munmap(arg0: MemorySegment, arg1: Long): Int {
     try {
@@ -995,8 +1429,8 @@ fun munmap(arg0: MemorySegment, arg1: Long): Int {
  * {@snippet lang=c : shm_open Int((Char)*,Int,UNSIGNED = Int)
  */
 private val shm_open_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val shm_open_ADDR: MemorySegment = LOOKUP.find("shm_open").orElseThrow()
-private val shm_open_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(shm_open_ADDR, shm_open_DESC)
+private val shm_open_ADDR: MemorySegment by lazy { LOOKUP.find("shm_open").orElseThrow() }
+private val shm_open_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(shm_open_ADDR, shm_open_DESC) }
 
 fun shm_open(arg0: MemorySegment, arg1: Int, arg2: Int): Int {
     try {
@@ -1014,8 +1448,8 @@ fun shm_open(arg0: MemorySegment, arg1: Int, arg2: Int): Int {
  * {@snippet lang=c : shm_unlink Int((Char)*)
  */
 private val shm_unlink_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
-private val shm_unlink_ADDR: MemorySegment = LOOKUP.find("shm_unlink").orElseThrow()
-private val shm_unlink_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(shm_unlink_ADDR, shm_unlink_DESC)
+private val shm_unlink_ADDR: MemorySegment by lazy { LOOKUP.find("shm_unlink").orElseThrow() }
+private val shm_unlink_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(shm_unlink_ADDR, shm_unlink_DESC) }
 
 fun shm_unlink(arg0: MemorySegment): Int {
     try {
@@ -1038,8 +1472,8 @@ typealias shmatt_t = Long
  * {@snippet lang=c : shmctl Int(Int,Int,(Declared(shmid_ds))*)
  */
 private val shmctl_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
-private val shmctl_ADDR: MemorySegment = LOOKUP.find("shmctl").orElseThrow()
-private val shmctl_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(shmctl_ADDR, shmctl_DESC)
+private val shmctl_ADDR: MemorySegment by lazy { LOOKUP.find("shmctl").orElseThrow() }
+private val shmctl_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(shmctl_ADDR, shmctl_DESC) }
 
 fun shmctl(arg0: Int, arg1: Int, arg2: MemorySegment): Int {
     try {
@@ -1057,8 +1491,8 @@ fun shmctl(arg0: Int, arg1: Int, arg2: MemorySegment): Int {
  * {@snippet lang=c : shmget Int(Int,UNSIGNED = Long,Int)
  */
 private val shmget_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT)
-private val shmget_ADDR: MemorySegment = LOOKUP.find("shmget").orElseThrow()
-private val shmget_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(shmget_ADDR, shmget_DESC)
+private val shmget_ADDR: MemorySegment by lazy { LOOKUP.find("shmget").orElseThrow() }
+private val shmget_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(shmget_ADDR, shmget_DESC) }
 
 fun shmget(arg0: Int, arg1: Long, arg2: Int): Int {
     try {
@@ -1076,8 +1510,8 @@ fun shmget(arg0: Int, arg1: Long, arg2: Int): Int {
  * {@snippet lang=c : shmat (Void)*(Int,(Void)*,Int)
  */
 private val shmat_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
-private val shmat_ADDR: MemorySegment = LOOKUP.find("shmat").orElseThrow()
-private val shmat_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(shmat_ADDR, shmat_DESC)
+private val shmat_ADDR: MemorySegment by lazy { LOOKUP.find("shmat").orElseThrow() }
+private val shmat_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(shmat_ADDR, shmat_DESC) }
 
 fun shmat(arg0: Int, arg1: MemorySegment, arg2: Int): MemorySegment {
     try {
@@ -1095,8 +1529,8 @@ fun shmat(arg0: Int, arg1: MemorySegment, arg2: Int): MemorySegment {
  * {@snippet lang=c : shmdt Int((Void)*)
  */
 private val shmdt_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
-private val shmdt_ADDR: MemorySegment = LOOKUP.find("shmdt").orElseThrow()
-private val shmdt_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(shmdt_ADDR, shmdt_DESC)
+private val shmdt_ADDR: MemorySegment by lazy { LOOKUP.find("shmdt").orElseThrow() }
+private val shmdt_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(shmdt_ADDR, shmdt_DESC) }
 
 fun shmdt(arg0: MemorySegment): Int {
     try {
@@ -1111,9 +1545,84 @@ fun shmdt(arg0: MemorySegment): Int {
 }
 
 /**
+ * {@snippet lang=c : typedef UNSIGNED = Char u_char;}
+ */
+typealias u_char = Byte
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Short u_short;}
+ */
+typealias u_short = Short
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Int u_int;}
+ */
+typealias u_int = Int
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Long u_long;}
+ */
+typealias u_long = Long
+
+/**
+ * {@snippet lang=c : typedef Long quad_t;}
+ */
+typealias quad_t = Long
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Long u_quad_t;}
+ */
+typealias u_quad_t = Long
+
+/**
+ * {@snippet lang=c : typedef Long loff_t;}
+ */
+typealias loff_t = Long
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Long ino_t;}
+ */
+typealias ino_t = Long
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Long ino64_t;}
+ */
+typealias ino64_t = Long
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Long dev_t;}
+ */
+typealias dev_t = Long
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Long nlink_t;}
+ */
+typealias nlink_t = Long
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Int id_t;}
+ */
+typealias id_t = Int
+
+/**
  * {@snippet lang=c : typedef Long ssize_t;}
  */
 typealias ssize_t = Long
+
+/**
+ * {@snippet lang=c : typedef Int daddr_t;}
+ */
+typealias daddr_t = Int
+
+/**
+ * {@snippet lang=c : typedef Long clock_t;}
+ */
+typealias clock_t = Long
+
+/**
+ * {@snippet lang=c : typedef Int clockid_t;}
+ */
+typealias clockid_t = Int
 
 /**
  * {@snippet lang=c : typedef UNSIGNED = Int useconds_t;}
@@ -1121,16 +1630,1112 @@ typealias ssize_t = Long
 typealias useconds_t = Int
 
 /**
+ * {@snippet lang=c : typedef Long suseconds_t;}
+ */
+typealias suseconds_t = Long
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Long ulong;}
+ */
+typealias ulong = Long
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Short ushort;}
+ */
+typealias ushort = Short
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Int uint;}
+ */
+typealias uint = Int
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Char u_int8_t;}
+ */
+typealias u_int8_t = Byte
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Short u_int16_t;}
+ */
+typealias u_int16_t = Short
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Int u_int32_t;}
+ */
+typealias u_int32_t = Int
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Long u_int64_t;}
+ */
+typealias u_int64_t = Long
+
+/**
+ * {@snippet lang=c : typedef Long register_t;}
+ */
+typealias register_t = Long
+
+/**
+ * {@snippet lang=c : typedef Long __fd_mask;}
+ */
+typealias _fd_mask = Long
+
+/**
+ * {@snippet lang=c : typedef Long fd_mask;}
+ */
+typealias fd_mask = Long
+
+/**
+ * {@snippet lang=c : typedef Long blksize_t;}
+ */
+typealias blksize_t = Long
+
+/**
+ * {@snippet lang=c : typedef Long blkcnt_t;}
+ */
+typealias blkcnt_t = Long
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Long fsblkcnt_t;}
+ */
+typealias fsblkcnt_t = Long
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Long fsfilcnt_t;}
+ */
+typealias fsfilcnt_t = Long
+
+/**
+ * {@snippet lang=c : typedef Long blkcnt64_t;}
+ */
+typealias blkcnt64_t = Long
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Long fsblkcnt64_t;}
+ */
+typealias fsblkcnt64_t = Long
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Long fsfilcnt64_t;}
+ */
+typealias fsfilcnt64_t = Long
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Int __tss_t;}
+ */
+typealias _tss_t = Int
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Long __thrd_t;}
+ */
+typealias _thrd_t = Long
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Long pthread_t;}
+ */
+typealias pthread_t = Long
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Int pthread_key_t;}
+ */
+typealias pthread_key_t = Int
+
+/**
+ * {@snippet lang=c : typedef Int pthread_once_t;}
+ */
+typealias pthread_once_t = Int
+
+/**
+ * {@snippet lang=c : typedef Int pthread_spinlock_t;}
+ */
+typealias pthread_spinlock_t = Int
+
+/**
  * {@snippet lang=c : typedef UNSIGNED = Int socklen_t;}
  */
 typealias socklen_t = Int
 
 /**
+ * NS_ENUM: {@snippet lang=c : enum __socket_type}
+ */
+enum class _socket_type(val value: Long) {
+    SOCK_STREAM(1L), SOCK_DGRAM(2L), SOCK_RAW(3L), SOCK_RDM(4L), SOCK_SEQPACKET(5L), SOCK_DCCP(6L), SOCK_PACKET(10L), SOCK_CLOEXEC(524288L), SOCK_NONBLOCK(2048L);
+
+    companion object {
+        fun fromValue(v: Long): _socket_type = entries.firstOrNull { it.value == v }
+            ?: error("Unknown _socket_type value: $v")
+    }
+}
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Short sa_family_t;}
+ */
+typealias sa_family_t = Short
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /usr/include/x86_64-linux-gnu/bits/socket.h:205:1)}
+ */
+enum class enum_unnamed_at_usr_include_x86_64_linux_gnu_bits_socket_h_205_1_(val value: Long) {
+    MSG_OOB(1L), MSG_PEEK(2L), MSG_DONTROUTE(4L), MSG_TRYHARD(4L), MSG_CTRUNC(8L), MSG_PROXY(16L), MSG_TRUNC(32L), MSG_DONTWAIT(64L), MSG_EOR(128L), MSG_WAITALL(256L), MSG_FIN(512L), MSG_SYN(1024L), MSG_CONFIRM(2048L), MSG_RST(4096L), MSG_ERRQUEUE(8192L), MSG_NOSIGNAL(16384L), MSG_MORE(32768L), MSG_WAITFORONE(65536L), MSG_BATCH(262144L), MSG_ZEROCOPY(67108864L), MSG_FASTOPEN(536870912L), MSG_CMSG_CLOEXEC(1073741824L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_usr_include_x86_64_linux_gnu_bits_socket_h_205_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_usr_include_x86_64_linux_gnu_bits_socket_h_205_1_ value: $v")
+    }
+}
+
+/**
+ * {@snippet lang=c : STRUCT msghdr
+ */
+class msghdr {
+    companion object {
+        val layout: GroupLayout = MemoryLayout.structLayout(
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("msg_name"),
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("msg_namelen"),
+            MemoryLayout.paddingLayout(4L),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("msg_iov"),
+            ValueLayout.JAVA_LONG.withByteAlignment(8).withName("msg_iovlen"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("msg_control"),
+            ValueLayout.JAVA_LONG.withByteAlignment(8).withName("msg_controllen"),
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("msg_flags"),
+            MemoryLayout.paddingLayout(4L)
+        ).withByteAlignment(8L).withName("msghdr")
+
+        val byteSize: Long
+            get() = layout.byteSize()
+
+        fun allocate(allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(layout)
+
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout))
+
+        fun asSlice(array: MemorySegment, index: Long): MemorySegment =
+            array.asSlice(byteSize * index)
+
+        fun reinterpret(addr: MemorySegment): MemorySegment =
+            addr.reinterpret(byteSize)
+
+        fun reinterpret(addr: MemorySegment, elementCount: Long): MemorySegment =
+            addr.reinterpret(byteSize * elementCount)
+
+    } // End companion object
+
+    val msg_name_VH: VarHandle = layout.varHandle(groupElement("msg_name"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun msg_name(segment: MemorySegment): MemorySegment =
+        msg_name_VH.get(segment, 0L) as MemorySegment
+
+    fun msg_name(segment: MemorySegment, value: MemorySegment) =
+        msg_name_VH.set(segment, 0L, value)
+
+    val msg_namelen_VH: VarHandle = layout.varHandle(groupElement("msg_namelen"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun msg_namelen(segment: MemorySegment): Int =
+        msg_namelen_VH.get(segment, 0L) as Int
+
+    fun msg_namelen(segment: MemorySegment, value: Int) =
+        msg_namelen_VH.set(segment, 0L, value)
+
+    val msg_iov_VH: VarHandle = layout.varHandle(groupElement("msg_iov"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun msg_iov(segment: MemorySegment): MemorySegment =
+        msg_iov_VH.get(segment, 0L) as MemorySegment
+
+    fun msg_iov(segment: MemorySegment, value: MemorySegment) =
+        msg_iov_VH.set(segment, 0L, value)
+
+    val msg_iovlen_VH: VarHandle = layout.varHandle(groupElement("msg_iovlen"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun msg_iovlen(segment: MemorySegment): Long =
+        msg_iovlen_VH.get(segment, 0L) as Long
+
+    fun msg_iovlen(segment: MemorySegment, value: Long) =
+        msg_iovlen_VH.set(segment, 0L, value)
+
+    val msg_control_VH: VarHandle = layout.varHandle(groupElement("msg_control"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun msg_control(segment: MemorySegment): MemorySegment =
+        msg_control_VH.get(segment, 0L) as MemorySegment
+
+    fun msg_control(segment: MemorySegment, value: MemorySegment) =
+        msg_control_VH.set(segment, 0L, value)
+
+    val msg_controllen_VH: VarHandle = layout.varHandle(groupElement("msg_controllen"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun msg_controllen(segment: MemorySegment): Long =
+        msg_controllen_VH.get(segment, 0L) as Long
+
+    fun msg_controllen(segment: MemorySegment, value: Long) =
+        msg_controllen_VH.set(segment, 0L, value)
+
+    val msg_flags_VH: VarHandle = layout.varHandle(groupElement("msg_flags"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun msg_flags(segment: MemorySegment): Int =
+        msg_flags_VH.get(segment, 0L) as Int
+
+    fun msg_flags(segment: MemorySegment, value: Int) =
+        msg_flags_VH.set(segment, 0L, value)
+} // End class
+
+/**
+ * {@snippet lang=c : STRUCT cmsghdr
+ */
+class cmsghdr {
+    companion object {
+        val layout: GroupLayout = MemoryLayout.structLayout(
+            ValueLayout.JAVA_LONG.withByteAlignment(8).withName("cmsg_len"),
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("cmsg_level"),
+            ValueLayout.JAVA_INT.withByteAlignment(4).withName("cmsg_type"),
+            MemoryLayout.sequenceLayout(0, ValueLayout.JAVA_BYTE.withByteAlignment(1)).withByteAlignment(1).withName("__cmsg_data")
+        ).withByteAlignment(8L).withName("cmsghdr")
+
+        val byteSize: Long
+            get() = layout.byteSize()
+
+        fun allocate(allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(layout)
+
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout))
+
+        fun asSlice(array: MemorySegment, index: Long): MemorySegment =
+            array.asSlice(byteSize * index)
+
+        fun reinterpret(addr: MemorySegment): MemorySegment =
+            addr.reinterpret(byteSize)
+
+        fun reinterpret(addr: MemorySegment, elementCount: Long): MemorySegment =
+            addr.reinterpret(byteSize * elementCount)
+
+    } // End companion object
+
+    val cmsg_len_VH: VarHandle = layout.varHandle(groupElement("cmsg_len"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun cmsg_len(segment: MemorySegment): Long =
+        cmsg_len_VH.get(segment, 0L) as Long
+
+    fun cmsg_len(segment: MemorySegment, value: Long) =
+        cmsg_len_VH.set(segment, 0L, value)
+
+    val cmsg_level_VH: VarHandle = layout.varHandle(groupElement("cmsg_level"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun cmsg_level(segment: MemorySegment): Int =
+        cmsg_level_VH.get(segment, 0L) as Int
+
+    fun cmsg_level(segment: MemorySegment, value: Int) =
+        cmsg_level_VH.set(segment, 0L, value)
+
+    val cmsg_type_VH: VarHandle = layout.varHandle(groupElement("cmsg_type"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun cmsg_type(segment: MemorySegment): Int =
+        cmsg_type_VH.get(segment, 0L) as Int
+
+    fun cmsg_type(segment: MemorySegment, value: Int) =
+        cmsg_type_VH.set(segment, 0L, value)
+
+    fun _cmsg_data(segment: MemorySegment): MemorySegment =
+        segment.asSlice(layout.byteOffset(groupElement("__cmsg_data")), layout.select(groupElement("__cmsg_data")).byteSize())
+} // End class
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /usr/include/x86_64-linux-gnu/bits/socket.h:363:1)}
+ */
+enum class enum_unnamed_at_usr_include_x86_64_linux_gnu_bits_socket_h_363_1_(val value: Long) {
+    SCM_RIGHTS(1L), SCM_CREDENTIALS(2L), SCM_SECURITY(3L), SCM_PIDFD(4L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_usr_include_x86_64_linux_gnu_bits_socket_h_363_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_usr_include_x86_64_linux_gnu_bits_socket_h_363_1_ value: $v")
+    }
+}
+
+/**
+ * {@snippet lang=c : typedef Int __kernel_key_t;}
+ */
+typealias _kernel_key_t = Int
+
+/**
+ * {@snippet lang=c : typedef Int __kernel_mqd_t;}
+ */
+typealias _kernel_mqd_t = Int
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Short __kernel_old_uid_t;}
+ */
+typealias _kernel_old_uid_t = Short
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Short __kernel_old_gid_t;}
+ */
+typealias _kernel_old_gid_t = Short
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Long __kernel_old_dev_t;}
+ */
+typealias _kernel_old_dev_t = Long
+
+/**
+ * {@snippet lang=c : typedef Long __kernel_long_t;}
+ */
+typealias _kernel_long_t = Long
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Long __kernel_ulong_t;}
+ */
+typealias _kernel_ulong_t = Long
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Long __kernel_ino_t;}
+ */
+typealias _kernel_ino_t = Long
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Int __kernel_mode_t;}
+ */
+typealias _kernel_mode_t = Int
+
+/**
+ * {@snippet lang=c : typedef Int __kernel_pid_t;}
+ */
+typealias _kernel_pid_t = Int
+
+/**
+ * {@snippet lang=c : typedef Int __kernel_ipc_pid_t;}
+ */
+typealias _kernel_ipc_pid_t = Int
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Int __kernel_uid_t;}
+ */
+typealias _kernel_uid_t = Int
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Int __kernel_gid_t;}
+ */
+typealias _kernel_gid_t = Int
+
+/**
+ * {@snippet lang=c : typedef Long __kernel_suseconds_t;}
+ */
+typealias _kernel_suseconds_t = Long
+
+/**
+ * {@snippet lang=c : typedef Int __kernel_daddr_t;}
+ */
+typealias _kernel_daddr_t = Int
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Int __kernel_uid32_t;}
+ */
+typealias _kernel_uid32_t = Int
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Int __kernel_gid32_t;}
+ */
+typealias _kernel_gid32_t = Int
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Long __kernel_size_t;}
+ */
+typealias _kernel_size_t = Long
+
+/**
+ * {@snippet lang=c : typedef Long __kernel_ssize_t;}
+ */
+typealias _kernel_ssize_t = Long
+
+/**
+ * {@snippet lang=c : typedef Long __kernel_ptrdiff_t;}
+ */
+typealias _kernel_ptrdiff_t = Long
+
+/**
+ * {@snippet lang=c : typedef Long __kernel_off_t;}
+ */
+typealias _kernel_off_t = Long
+
+/**
+ * {@snippet lang=c : typedef LongLong __kernel_loff_t;}
+ */
+typealias _kernel_loff_t = Long
+
+/**
+ * {@snippet lang=c : typedef Long __kernel_old_time_t;}
+ */
+typealias _kernel_old_time_t = Long
+
+/**
+ * {@snippet lang=c : typedef Long __kernel_time_t;}
+ */
+typealias _kernel_time_t = Long
+
+/**
+ * {@snippet lang=c : typedef LongLong __kernel_time64_t;}
+ */
+typealias _kernel_time64_t = Long
+
+/**
+ * {@snippet lang=c : typedef Long __kernel_clock_t;}
+ */
+typealias _kernel_clock_t = Long
+
+/**
+ * {@snippet lang=c : typedef Int __kernel_timer_t;}
+ */
+typealias _kernel_timer_t = Int
+
+/**
+ * {@snippet lang=c : typedef Int __kernel_clockid_t;}
+ */
+typealias _kernel_clockid_t = Int
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Short __kernel_uid16_t;}
+ */
+typealias _kernel_uid16_t = Short
+
+/**
+ * {@snippet lang=c : typedef UNSIGNED = Short __kernel_gid16_t;}
+ */
+typealias _kernel_gid16_t = Short
+
+/**
+ * NS_ENUM: {@snippet lang=c : enum enum (unnamed at /usr/include/x86_64-linux-gnu/sys/socket.h:41:1)}
+ */
+enum class enum_unnamed_at_usr_include_x86_64_linux_gnu_sys_socket_h_41_1_(val value: Long) {
+    SHUT_RD(0L), SHUT_WR(1L), SHUT_RDWR(2L);
+
+    companion object {
+        fun fromValue(v: Long): enum_unnamed_at_usr_include_x86_64_linux_gnu_sys_socket_h_41_1_ = entries.firstOrNull { it.value == v }
+            ?: error("Unknown enum_unnamed_at_usr_include_x86_64_linux_gnu_sys_socket_h_41_1_ value: $v")
+    }
+}
+
+/**
+ * WARNING: This was originally a C union. Fields overlap in memory!
+ * {@snippet lang=c : UNION __SOCKADDR_ARG
+ */
+/**
+ * {@snippet lang=c : UNION __SOCKADDR_ARG
+ */
+class _SOCKADDR_ARG {
+    companion object {
+        val layout: GroupLayout = MemoryLayout.unionLayout(
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("__sockaddr__"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("__sockaddr_at__"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("__sockaddr_ax25__"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("__sockaddr_dl__"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("__sockaddr_eon__"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("__sockaddr_in__"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("__sockaddr_in6__"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("__sockaddr_inarp__"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("__sockaddr_ipx__"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("__sockaddr_iso__"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("__sockaddr_ns__"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("__sockaddr_un__"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("__sockaddr_x25__"),
+            MemoryLayout.paddingLayout(8L)
+        ).withByteAlignment(8L).withName("__SOCKADDR_ARG")
+
+        val byteSize: Long
+            get() = layout.byteSize()
+
+        fun allocate(allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(layout)
+
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout))
+
+        fun asSlice(array: MemorySegment, index: Long): MemorySegment =
+            array.asSlice(byteSize * index)
+
+        fun reinterpret(addr: MemorySegment): MemorySegment =
+            addr.reinterpret(byteSize)
+
+        fun reinterpret(addr: MemorySegment, elementCount: Long): MemorySegment =
+            addr.reinterpret(byteSize * elementCount)
+
+    } // End companion object
+
+    val _sockaddr__VH: VarHandle = layout.varHandle(groupElement("__sockaddr__"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun _sockaddr_(segment: MemorySegment): MemorySegment =
+        _sockaddr__VH.get(segment, 0L) as MemorySegment
+
+    fun _sockaddr_(segment: MemorySegment, value: MemorySegment) =
+        _sockaddr__VH.set(segment, 0L, value)
+
+    val _sockaddr_at__VH: VarHandle = layout.varHandle(groupElement("__sockaddr_at__"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun _sockaddr_at_(segment: MemorySegment): MemorySegment =
+        _sockaddr_at__VH.get(segment, 0L) as MemorySegment
+
+    fun _sockaddr_at_(segment: MemorySegment, value: MemorySegment) =
+        _sockaddr_at__VH.set(segment, 0L, value)
+
+    val _sockaddr_ax25__VH: VarHandle = layout.varHandle(groupElement("__sockaddr_ax25__"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun _sockaddr_ax25_(segment: MemorySegment): MemorySegment =
+        _sockaddr_ax25__VH.get(segment, 0L) as MemorySegment
+
+    fun _sockaddr_ax25_(segment: MemorySegment, value: MemorySegment) =
+        _sockaddr_ax25__VH.set(segment, 0L, value)
+
+    val _sockaddr_dl__VH: VarHandle = layout.varHandle(groupElement("__sockaddr_dl__"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun _sockaddr_dl_(segment: MemorySegment): MemorySegment =
+        _sockaddr_dl__VH.get(segment, 0L) as MemorySegment
+
+    fun _sockaddr_dl_(segment: MemorySegment, value: MemorySegment) =
+        _sockaddr_dl__VH.set(segment, 0L, value)
+
+    val _sockaddr_eon__VH: VarHandle = layout.varHandle(groupElement("__sockaddr_eon__"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun _sockaddr_eon_(segment: MemorySegment): MemorySegment =
+        _sockaddr_eon__VH.get(segment, 0L) as MemorySegment
+
+    fun _sockaddr_eon_(segment: MemorySegment, value: MemorySegment) =
+        _sockaddr_eon__VH.set(segment, 0L, value)
+
+    val _sockaddr_in__VH: VarHandle = layout.varHandle(groupElement("__sockaddr_in__"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun _sockaddr_in_(segment: MemorySegment): MemorySegment =
+        _sockaddr_in__VH.get(segment, 0L) as MemorySegment
+
+    fun _sockaddr_in_(segment: MemorySegment, value: MemorySegment) =
+        _sockaddr_in__VH.set(segment, 0L, value)
+
+    val _sockaddr_in6__VH: VarHandle = layout.varHandle(groupElement("__sockaddr_in6__"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun _sockaddr_in6_(segment: MemorySegment): MemorySegment =
+        _sockaddr_in6__VH.get(segment, 0L) as MemorySegment
+
+    fun _sockaddr_in6_(segment: MemorySegment, value: MemorySegment) =
+        _sockaddr_in6__VH.set(segment, 0L, value)
+
+    val _sockaddr_inarp__VH: VarHandle = layout.varHandle(groupElement("__sockaddr_inarp__"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun _sockaddr_inarp_(segment: MemorySegment): MemorySegment =
+        _sockaddr_inarp__VH.get(segment, 0L) as MemorySegment
+
+    fun _sockaddr_inarp_(segment: MemorySegment, value: MemorySegment) =
+        _sockaddr_inarp__VH.set(segment, 0L, value)
+
+    val _sockaddr_ipx__VH: VarHandle = layout.varHandle(groupElement("__sockaddr_ipx__"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun _sockaddr_ipx_(segment: MemorySegment): MemorySegment =
+        _sockaddr_ipx__VH.get(segment, 0L) as MemorySegment
+
+    fun _sockaddr_ipx_(segment: MemorySegment, value: MemorySegment) =
+        _sockaddr_ipx__VH.set(segment, 0L, value)
+
+    val _sockaddr_iso__VH: VarHandle = layout.varHandle(groupElement("__sockaddr_iso__"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun _sockaddr_iso_(segment: MemorySegment): MemorySegment =
+        _sockaddr_iso__VH.get(segment, 0L) as MemorySegment
+
+    fun _sockaddr_iso_(segment: MemorySegment, value: MemorySegment) =
+        _sockaddr_iso__VH.set(segment, 0L, value)
+
+    val _sockaddr_ns__VH: VarHandle = layout.varHandle(groupElement("__sockaddr_ns__"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun _sockaddr_ns_(segment: MemorySegment): MemorySegment =
+        _sockaddr_ns__VH.get(segment, 0L) as MemorySegment
+
+    fun _sockaddr_ns_(segment: MemorySegment, value: MemorySegment) =
+        _sockaddr_ns__VH.set(segment, 0L, value)
+
+    val _sockaddr_un__VH: VarHandle = layout.varHandle(groupElement("__sockaddr_un__"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun _sockaddr_un_(segment: MemorySegment): MemorySegment =
+        _sockaddr_un__VH.get(segment, 0L) as MemorySegment
+
+    fun _sockaddr_un_(segment: MemorySegment, value: MemorySegment) =
+        _sockaddr_un__VH.set(segment, 0L, value)
+
+    val _sockaddr_x25__VH: VarHandle = layout.varHandle(groupElement("__sockaddr_x25__"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun _sockaddr_x25_(segment: MemorySegment): MemorySegment =
+        _sockaddr_x25__VH.get(segment, 0L) as MemorySegment
+
+    fun _sockaddr_x25_(segment: MemorySegment, value: MemorySegment) =
+        _sockaddr_x25__VH.set(segment, 0L, value)
+} // End class
+
+/**
+ * WARNING: This was originally a C union. Fields overlap in memory!
+ * {@snippet lang=c : UNION __CONST_SOCKADDR_ARG
+ */
+/**
+ * {@snippet lang=c : UNION __CONST_SOCKADDR_ARG
+ */
+class _CONST_SOCKADDR_ARG {
+    companion object {
+        val layout: GroupLayout = MemoryLayout.unionLayout(
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("__sockaddr__"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("__sockaddr_at__"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("__sockaddr_ax25__"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("__sockaddr_dl__"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("__sockaddr_eon__"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("__sockaddr_in__"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("__sockaddr_in6__"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("__sockaddr_inarp__"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("__sockaddr_ipx__"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("__sockaddr_iso__"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("__sockaddr_ns__"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("__sockaddr_un__"),
+            ValueLayout.ADDRESS.withByteAlignment(8).withName("__sockaddr_x25__"),
+            MemoryLayout.paddingLayout(8L)
+        ).withByteAlignment(8L).withName("__CONST_SOCKADDR_ARG")
+
+        val byteSize: Long
+            get() = layout.byteSize()
+
+        fun allocate(allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(layout)
+
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout))
+
+        fun asSlice(array: MemorySegment, index: Long): MemorySegment =
+            array.asSlice(byteSize * index)
+
+        fun reinterpret(addr: MemorySegment): MemorySegment =
+            addr.reinterpret(byteSize)
+
+        fun reinterpret(addr: MemorySegment, elementCount: Long): MemorySegment =
+            addr.reinterpret(byteSize * elementCount)
+
+    } // End companion object
+
+    val _sockaddr__VH: VarHandle = layout.varHandle(groupElement("__sockaddr__"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun _sockaddr_(segment: MemorySegment): MemorySegment =
+        _sockaddr__VH.get(segment, 0L) as MemorySegment
+
+    fun _sockaddr_(segment: MemorySegment, value: MemorySegment) =
+        _sockaddr__VH.set(segment, 0L, value)
+
+    val _sockaddr_at__VH: VarHandle = layout.varHandle(groupElement("__sockaddr_at__"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun _sockaddr_at_(segment: MemorySegment): MemorySegment =
+        _sockaddr_at__VH.get(segment, 0L) as MemorySegment
+
+    fun _sockaddr_at_(segment: MemorySegment, value: MemorySegment) =
+        _sockaddr_at__VH.set(segment, 0L, value)
+
+    val _sockaddr_ax25__VH: VarHandle = layout.varHandle(groupElement("__sockaddr_ax25__"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun _sockaddr_ax25_(segment: MemorySegment): MemorySegment =
+        _sockaddr_ax25__VH.get(segment, 0L) as MemorySegment
+
+    fun _sockaddr_ax25_(segment: MemorySegment, value: MemorySegment) =
+        _sockaddr_ax25__VH.set(segment, 0L, value)
+
+    val _sockaddr_dl__VH: VarHandle = layout.varHandle(groupElement("__sockaddr_dl__"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun _sockaddr_dl_(segment: MemorySegment): MemorySegment =
+        _sockaddr_dl__VH.get(segment, 0L) as MemorySegment
+
+    fun _sockaddr_dl_(segment: MemorySegment, value: MemorySegment) =
+        _sockaddr_dl__VH.set(segment, 0L, value)
+
+    val _sockaddr_eon__VH: VarHandle = layout.varHandle(groupElement("__sockaddr_eon__"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun _sockaddr_eon_(segment: MemorySegment): MemorySegment =
+        _sockaddr_eon__VH.get(segment, 0L) as MemorySegment
+
+    fun _sockaddr_eon_(segment: MemorySegment, value: MemorySegment) =
+        _sockaddr_eon__VH.set(segment, 0L, value)
+
+    val _sockaddr_in__VH: VarHandle = layout.varHandle(groupElement("__sockaddr_in__"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun _sockaddr_in_(segment: MemorySegment): MemorySegment =
+        _sockaddr_in__VH.get(segment, 0L) as MemorySegment
+
+    fun _sockaddr_in_(segment: MemorySegment, value: MemorySegment) =
+        _sockaddr_in__VH.set(segment, 0L, value)
+
+    val _sockaddr_in6__VH: VarHandle = layout.varHandle(groupElement("__sockaddr_in6__"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun _sockaddr_in6_(segment: MemorySegment): MemorySegment =
+        _sockaddr_in6__VH.get(segment, 0L) as MemorySegment
+
+    fun _sockaddr_in6_(segment: MemorySegment, value: MemorySegment) =
+        _sockaddr_in6__VH.set(segment, 0L, value)
+
+    val _sockaddr_inarp__VH: VarHandle = layout.varHandle(groupElement("__sockaddr_inarp__"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun _sockaddr_inarp_(segment: MemorySegment): MemorySegment =
+        _sockaddr_inarp__VH.get(segment, 0L) as MemorySegment
+
+    fun _sockaddr_inarp_(segment: MemorySegment, value: MemorySegment) =
+        _sockaddr_inarp__VH.set(segment, 0L, value)
+
+    val _sockaddr_ipx__VH: VarHandle = layout.varHandle(groupElement("__sockaddr_ipx__"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun _sockaddr_ipx_(segment: MemorySegment): MemorySegment =
+        _sockaddr_ipx__VH.get(segment, 0L) as MemorySegment
+
+    fun _sockaddr_ipx_(segment: MemorySegment, value: MemorySegment) =
+        _sockaddr_ipx__VH.set(segment, 0L, value)
+
+    val _sockaddr_iso__VH: VarHandle = layout.varHandle(groupElement("__sockaddr_iso__"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun _sockaddr_iso_(segment: MemorySegment): MemorySegment =
+        _sockaddr_iso__VH.get(segment, 0L) as MemorySegment
+
+    fun _sockaddr_iso_(segment: MemorySegment, value: MemorySegment) =
+        _sockaddr_iso__VH.set(segment, 0L, value)
+
+    val _sockaddr_ns__VH: VarHandle = layout.varHandle(groupElement("__sockaddr_ns__"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun _sockaddr_ns_(segment: MemorySegment): MemorySegment =
+        _sockaddr_ns__VH.get(segment, 0L) as MemorySegment
+
+    fun _sockaddr_ns_(segment: MemorySegment, value: MemorySegment) =
+        _sockaddr_ns__VH.set(segment, 0L, value)
+
+    val _sockaddr_un__VH: VarHandle = layout.varHandle(groupElement("__sockaddr_un__"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun _sockaddr_un_(segment: MemorySegment): MemorySegment =
+        _sockaddr_un__VH.get(segment, 0L) as MemorySegment
+
+    fun _sockaddr_un_(segment: MemorySegment, value: MemorySegment) =
+        _sockaddr_un__VH.set(segment, 0L, value)
+
+    val _sockaddr_x25__VH: VarHandle = layout.varHandle(groupElement("__sockaddr_x25__"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun _sockaddr_x25_(segment: MemorySegment): MemorySegment =
+        _sockaddr_x25__VH.get(segment, 0L) as MemorySegment
+
+    fun _sockaddr_x25_(segment: MemorySegment, value: MemorySegment) =
+        _sockaddr_x25__VH.set(segment, 0L, value)
+} // End class
+
+/**
+ * {@snippet lang=c : socket Int(Int,Int,Int)
+ */
+private val socket_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
+private val socket_ADDR: MemorySegment by lazy { LOOKUP.find("socket").orElseThrow() }
+private val socket_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(socket_ADDR, socket_DESC) }
+
+fun socket(arg0: Int, arg1: Int, arg2: Int): Int {
+    try {
+        return socket_HANDLE.invokeExact(arg0, arg1, arg2) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : socketpair Int(Int,Int,Int,(Int)*)
+ */
+private val socketpair_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
+private val socketpair_ADDR: MemorySegment by lazy { LOOKUP.find("socketpair").orElseThrow() }
+private val socketpair_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(socketpair_ADDR, socketpair_DESC) }
+
+fun socketpair(arg0: Int, arg1: Int, arg2: Int, arg3: MemorySegment): Int {
+    try {
+        return socketpair_HANDLE.invokeExact(arg0, arg1, arg2, arg3) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : bind Int(Int,Declared(__CONST_SOCKADDR_ARG),UNSIGNED = Int)
+ */
+private val bind_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, __CONST_SOCKADDR_ARG.layout, ValueLayout.JAVA_INT)
+private val bind_ADDR: MemorySegment by lazy { LOOKUP.find("bind").orElseThrow() }
+private val bind_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(bind_ADDR, bind_DESC) }
+
+fun bind(arg0: Int, arg1: MemorySegment, arg2: Int): Int {
+    try {
+        return bind_HANDLE.invokeExact(arg0, arg1, arg2) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : connect Int(Int,Declared(__CONST_SOCKADDR_ARG),UNSIGNED = Int)
+ */
+private val connect_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, __CONST_SOCKADDR_ARG.layout, ValueLayout.JAVA_INT)
+private val connect_ADDR: MemorySegment by lazy { LOOKUP.find("connect").orElseThrow() }
+private val connect_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(connect_ADDR, connect_DESC) }
+
+fun connect(arg0: Int, arg1: MemorySegment, arg2: Int): Int {
+    try {
+        return connect_HANDLE.invokeExact(arg0, arg1, arg2) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : send Long(Int,(Void)*,UNSIGNED = Long,Int)
+ */
+private val send_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT)
+private val send_ADDR: MemorySegment by lazy { LOOKUP.find("send").orElseThrow() }
+private val send_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(send_ADDR, send_DESC) }
+
+fun send(arg0: Int, arg1: MemorySegment, arg2: Long, arg3: Int): Long {
+    try {
+        return send_HANDLE.invokeExact(arg0, arg1, arg2, arg3) as Long
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : recv Long(Int,(Void)*,UNSIGNED = Long,Int)
+ */
+private val recv_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT)
+private val recv_ADDR: MemorySegment by lazy { LOOKUP.find("recv").orElseThrow() }
+private val recv_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(recv_ADDR, recv_DESC) }
+
+fun recv(arg0: Int, arg1: MemorySegment, arg2: Long, arg3: Int): Long {
+    try {
+        return recv_HANDLE.invokeExact(arg0, arg1, arg2, arg3) as Long
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : sendmsg Long(Int,(Declared(msghdr))*,Int)
+ */
+private val sendmsg_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
+private val sendmsg_ADDR: MemorySegment by lazy { LOOKUP.find("sendmsg").orElseThrow() }
+private val sendmsg_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(sendmsg_ADDR, sendmsg_DESC) }
+
+fun sendmsg(arg0: Int, arg1: MemorySegment, arg2: Int): Long {
+    try {
+        return sendmsg_HANDLE.invokeExact(arg0, arg1, arg2) as Long
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : recvmsg Long(Int,(Declared(msghdr))*,Int)
+ */
+private val recvmsg_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
+private val recvmsg_ADDR: MemorySegment by lazy { LOOKUP.find("recvmsg").orElseThrow() }
+private val recvmsg_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(recvmsg_ADDR, recvmsg_DESC) }
+
+fun recvmsg(arg0: Int, arg1: MemorySegment, arg2: Int): Long {
+    try {
+        return recvmsg_HANDLE.invokeExact(arg0, arg1, arg2) as Long
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : listen Int(Int,Int)
+ */
+private val listen_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
+private val listen_ADDR: MemorySegment by lazy { LOOKUP.find("listen").orElseThrow() }
+private val listen_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(listen_ADDR, listen_DESC) }
+
+fun listen(arg0: Int, arg1: Int): Int {
+    try {
+        return listen_HANDLE.invokeExact(arg0, arg1) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : accept Int(Int,Declared(__SOCKADDR_ARG),(typedef socklen_t = UNSIGNED = Int)*)
+ */
+private val accept_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, __SOCKADDR_ARG.layout, ValueLayout.ADDRESS)
+private val accept_ADDR: MemorySegment by lazy { LOOKUP.find("accept").orElseThrow() }
+private val accept_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(accept_ADDR, accept_DESC) }
+
+fun accept(arg0: Int, arg1: MemorySegment, arg2: MemorySegment): Int {
+    try {
+        return accept_HANDLE.invokeExact(arg0, arg1, arg2) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : accept4 Int(Int,Declared(__SOCKADDR_ARG),(typedef socklen_t = UNSIGNED = Int)*,Int)
+ */
+private val accept4_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, __SOCKADDR_ARG.layout, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
+private val accept4_ADDR: MemorySegment by lazy { LOOKUP.find("accept4").orElseThrow() }
+private val accept4_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(accept4_ADDR, accept4_DESC) }
+
+fun accept4(arg0: Int, arg1: MemorySegment, arg2: MemorySegment, arg3: Int): Int {
+    try {
+        return accept4_HANDLE.invokeExact(arg0, arg1, arg2, arg3) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : shutdown Int(Int,Int)
+ */
+private val shutdown_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
+private val shutdown_ADDR: MemorySegment by lazy { LOOKUP.find("shutdown").orElseThrow() }
+private val shutdown_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(shutdown_ADDR, shutdown_DESC) }
+
+fun shutdown(arg0: Int, arg1: Int): Int {
+    try {
+        return shutdown_HANDLE.invokeExact(arg0, arg1) as Int
+    } catch (ex: Error) {
+        throw ex
+    } catch (ex: RuntimeException) {
+        throw ex
+    } catch (ex: Throwable) {
+        throw AssertionError("should not reach here", ex)
+    }
+}
+
+/**
+ * {@snippet lang=c : STRUCT sockaddr_un
+ */
+class sockaddr_un {
+    companion object {
+        val layout: GroupLayout = MemoryLayout.structLayout(
+            ValueLayout.JAVA_SHORT.withByteAlignment(2).withName("sun_family"),
+            MemoryLayout.sequenceLayout(108, ValueLayout.JAVA_BYTE.withByteAlignment(1)).withByteAlignment(1).withName("sun_path")
+        ).withByteAlignment(2L).withName("sockaddr_un")
+
+        val byteSize: Long
+            get() = layout.byteSize()
+
+        fun allocate(allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(layout)
+
+        fun allocateArray(elementCount: Long, allocator: SegmentAllocator): MemorySegment =
+            allocator.allocate(MemoryLayout.sequenceLayout(elementCount, layout))
+
+        fun asSlice(array: MemorySegment, index: Long): MemorySegment =
+            array.asSlice(byteSize * index)
+
+        fun reinterpret(addr: MemorySegment): MemorySegment =
+            addr.reinterpret(byteSize)
+
+        fun reinterpret(addr: MemorySegment, elementCount: Long): MemorySegment =
+            addr.reinterpret(byteSize * elementCount)
+
+    } // End companion object
+
+    val sun_family_VH: VarHandle = layout.varHandle(groupElement("sun_family"))
+
+    @Suppress("UNCHECKED_CAST")
+    fun sun_family(segment: MemorySegment): Short =
+        sun_family_VH.get(segment, 0L) as Short
+
+    fun sun_family(segment: MemorySegment, value: Short) =
+        sun_family_VH.set(segment, 0L, value)
+
+    fun sun_path(segment: MemorySegment): MemorySegment =
+        segment.asSlice(layout.byteOffset(groupElement("sun_path")), layout.select(groupElement("sun_path")).byteSize())
+} // End class
+
+/**
+ * {@snippet lang=c : typedef Long ptrdiff_t;}
+ */
+typealias ptrdiff_t = Long
+
+/**
+ * {@snippet lang=c : typedef Int wchar_t;}
+ */
+typealias wchar_t = Int
+
+/**
  * {@snippet lang=c : close Int(Int)
  */
 private val close_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT)
-private val close_ADDR: MemorySegment = LOOKUP.find("close").orElseThrow()
-private val close_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(close_ADDR, close_DESC)
+private val close_ADDR: MemorySegment by lazy { LOOKUP.find("close").orElseThrow() }
+private val close_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(close_ADDR, close_DESC) }
 
 fun close(arg0: Int): Int {
     try {
@@ -1148,8 +2753,8 @@ fun close(arg0: Int): Int {
  * {@snippet lang=c : read Long(Int,(Void)*,UNSIGNED = Long)
  */
 private val read_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
-private val read_ADDR: MemorySegment = LOOKUP.find("read").orElseThrow()
-private val read_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(read_ADDR, read_DESC)
+private val read_ADDR: MemorySegment by lazy { LOOKUP.find("read").orElseThrow() }
+private val read_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(read_ADDR, read_DESC) }
 
 fun read(arg0: Int, arg1: MemorySegment, arg2: Long): Long {
     try {
@@ -1167,8 +2772,8 @@ fun read(arg0: Int, arg1: MemorySegment, arg2: Long): Long {
  * {@snippet lang=c : write Long(Int,(Void)*,UNSIGNED = Long)
  */
 private val write_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG)
-private val write_ADDR: MemorySegment = LOOKUP.find("write").orElseThrow()
-private val write_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(write_ADDR, write_DESC)
+private val write_ADDR: MemorySegment by lazy { LOOKUP.find("write").orElseThrow() }
+private val write_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(write_ADDR, write_DESC) }
 
 fun write(arg0: Int, arg1: MemorySegment, arg2: Long): Long {
     try {
@@ -1186,8 +2791,8 @@ fun write(arg0: Int, arg1: MemorySegment, arg2: Long): Long {
  * {@snippet lang=c : pipe Int((Int)*)
  */
 private val pipe_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS)
-private val pipe_ADDR: MemorySegment = LOOKUP.find("pipe").orElseThrow()
-private val pipe_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(pipe_ADDR, pipe_DESC)
+private val pipe_ADDR: MemorySegment by lazy { LOOKUP.find("pipe").orElseThrow() }
+private val pipe_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(pipe_ADDR, pipe_DESC) }
 
 fun pipe(arg0: MemorySegment): Int {
     try {
@@ -1205,8 +2810,8 @@ fun pipe(arg0: MemorySegment): Int {
  * {@snippet lang=c : pipe2 Int((Int)*,Int)
  */
 private val pipe2_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT)
-private val pipe2_ADDR: MemorySegment = LOOKUP.find("pipe2").orElseThrow()
-private val pipe2_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(pipe2_ADDR, pipe2_DESC)
+private val pipe2_ADDR: MemorySegment by lazy { LOOKUP.find("pipe2").orElseThrow() }
+private val pipe2_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(pipe2_ADDR, pipe2_DESC) }
 
 fun pipe2(arg0: MemorySegment, arg1: Int): Int {
     try {
@@ -1260,8 +2865,8 @@ enum class enum_unnamed_at_usr_include_x86_64_linux_gnu_bits_confname_h_539_1_(v
  * {@snippet lang=c : ftruncate Int(Int,Long)
  */
 private val ftruncate_DESC: FunctionDescriptor = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG)
-private val ftruncate_ADDR: MemorySegment = LOOKUP.find("ftruncate").orElseThrow()
-private val ftruncate_HANDLE: MethodHandle = Linker.nativeLinker().downcallHandle(ftruncate_ADDR, ftruncate_DESC)
+private val ftruncate_ADDR: MemorySegment by lazy { LOOKUP.find("ftruncate").orElseThrow() }
+private val ftruncate_HANDLE: MethodHandle by lazy { Linker.nativeLinker().downcallHandle(ftruncate_ADDR, ftruncate_DESC) }
 
 fun ftruncate(arg0: Int, arg1: Long): Int {
     try {
@@ -1351,6 +2956,296 @@ fun MAP_ANON(): Int = (32).toInt()
 fun MFD_CLOEXEC(): Int = (1).toInt()
 
 // Skipped constant MAP_FAILED: numeric value cannot be represented as MemorySegment
+
+/**
+ * {@snippet lang=c : #define PF_UNIX 1
+ */
+fun PF_UNIX(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define PF_FILE 1
+ */
+fun PF_FILE(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define PF_ROUTE 16
+ */
+fun PF_ROUTE(): Int = (16).toInt()
+
+/**
+ * {@snippet lang=c : #define AF_UNSPEC 0
+ */
+fun AF_UNSPEC(): Int = (0).toInt()
+
+/**
+ * {@snippet lang=c : #define AF_LOCAL 1
+ */
+fun AF_LOCAL(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define AF_UNIX 1
+ */
+fun AF_UNIX(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define AF_FILE 1
+ */
+fun AF_FILE(): Int = (1).toInt()
+
+/**
+ * {@snippet lang=c : #define AF_INET 2
+ */
+fun AF_INET(): Int = (2).toInt()
+
+/**
+ * {@snippet lang=c : #define AF_AX25 3
+ */
+fun AF_AX25(): Int = (3).toInt()
+
+/**
+ * {@snippet lang=c : #define AF_IPX 4
+ */
+fun AF_IPX(): Int = (4).toInt()
+
+/**
+ * {@snippet lang=c : #define AF_APPLETALK 5
+ */
+fun AF_APPLETALK(): Int = (5).toInt()
+
+/**
+ * {@snippet lang=c : #define AF_NETROM 6
+ */
+fun AF_NETROM(): Int = (6).toInt()
+
+/**
+ * {@snippet lang=c : #define AF_BRIDGE 7
+ */
+fun AF_BRIDGE(): Int = (7).toInt()
+
+/**
+ * {@snippet lang=c : #define AF_ATMPVC 8
+ */
+fun AF_ATMPVC(): Int = (8).toInt()
+
+/**
+ * {@snippet lang=c : #define AF_X25 9
+ */
+fun AF_X25(): Int = (9).toInt()
+
+/**
+ * {@snippet lang=c : #define AF_INET6 10
+ */
+fun AF_INET6(): Int = (10).toInt()
+
+/**
+ * {@snippet lang=c : #define AF_ROSE 11
+ */
+fun AF_ROSE(): Int = (11).toInt()
+
+/**
+ * {@snippet lang=c : #define AF_DECnet 12
+ */
+fun AF_DECnet(): Int = (12).toInt()
+
+/**
+ * {@snippet lang=c : #define AF_NETBEUI 13
+ */
+fun AF_NETBEUI(): Int = (13).toInt()
+
+/**
+ * {@snippet lang=c : #define AF_SECURITY 14
+ */
+fun AF_SECURITY(): Int = (14).toInt()
+
+/**
+ * {@snippet lang=c : #define AF_KEY 15
+ */
+fun AF_KEY(): Int = (15).toInt()
+
+/**
+ * {@snippet lang=c : #define AF_NETLINK 16
+ */
+fun AF_NETLINK(): Int = (16).toInt()
+
+/**
+ * {@snippet lang=c : #define AF_ROUTE 16
+ */
+fun AF_ROUTE(): Int = (16).toInt()
+
+/**
+ * {@snippet lang=c : #define AF_PACKET 17
+ */
+fun AF_PACKET(): Int = (17).toInt()
+
+/**
+ * {@snippet lang=c : #define AF_ASH 18
+ */
+fun AF_ASH(): Int = (18).toInt()
+
+/**
+ * {@snippet lang=c : #define AF_ECONET 19
+ */
+fun AF_ECONET(): Int = (19).toInt()
+
+/**
+ * {@snippet lang=c : #define AF_ATMSVC 20
+ */
+fun AF_ATMSVC(): Int = (20).toInt()
+
+/**
+ * {@snippet lang=c : #define AF_RDS 21
+ */
+fun AF_RDS(): Int = (21).toInt()
+
+/**
+ * {@snippet lang=c : #define AF_SNA 22
+ */
+fun AF_SNA(): Int = (22).toInt()
+
+/**
+ * {@snippet lang=c : #define AF_IRDA 23
+ */
+fun AF_IRDA(): Int = (23).toInt()
+
+/**
+ * {@snippet lang=c : #define AF_PPPOX 24
+ */
+fun AF_PPPOX(): Int = (24).toInt()
+
+/**
+ * {@snippet lang=c : #define AF_WANPIPE 25
+ */
+fun AF_WANPIPE(): Int = (25).toInt()
+
+/**
+ * {@snippet lang=c : #define AF_LLC 26
+ */
+fun AF_LLC(): Int = (26).toInt()
+
+/**
+ * {@snippet lang=c : #define AF_IB 27
+ */
+fun AF_IB(): Int = (27).toInt()
+
+/**
+ * {@snippet lang=c : #define AF_MPLS 28
+ */
+fun AF_MPLS(): Int = (28).toInt()
+
+/**
+ * {@snippet lang=c : #define AF_CAN 29
+ */
+fun AF_CAN(): Int = (29).toInt()
+
+/**
+ * {@snippet lang=c : #define AF_TIPC 30
+ */
+fun AF_TIPC(): Int = (30).toInt()
+
+/**
+ * {@snippet lang=c : #define AF_BLUETOOTH 31
+ */
+fun AF_BLUETOOTH(): Int = (31).toInt()
+
+/**
+ * {@snippet lang=c : #define AF_IUCV 32
+ */
+fun AF_IUCV(): Int = (32).toInt()
+
+/**
+ * {@snippet lang=c : #define AF_RXRPC 33
+ */
+fun AF_RXRPC(): Int = (33).toInt()
+
+/**
+ * {@snippet lang=c : #define AF_ISDN 34
+ */
+fun AF_ISDN(): Int = (34).toInt()
+
+/**
+ * {@snippet lang=c : #define AF_PHONET 35
+ */
+fun AF_PHONET(): Int = (35).toInt()
+
+/**
+ * {@snippet lang=c : #define AF_IEEE802154 36
+ */
+fun AF_IEEE802154(): Int = (36).toInt()
+
+/**
+ * {@snippet lang=c : #define AF_CAIF 37
+ */
+fun AF_CAIF(): Int = (37).toInt()
+
+/**
+ * {@snippet lang=c : #define AF_ALG 38
+ */
+fun AF_ALG(): Int = (38).toInt()
+
+/**
+ * {@snippet lang=c : #define AF_NFC 39
+ */
+fun AF_NFC(): Int = (39).toInt()
+
+/**
+ * {@snippet lang=c : #define AF_VSOCK 40
+ */
+fun AF_VSOCK(): Int = (40).toInt()
+
+/**
+ * {@snippet lang=c : #define AF_KCM 41
+ */
+fun AF_KCM(): Int = (41).toInt()
+
+/**
+ * {@snippet lang=c : #define AF_QIPCRTR 42
+ */
+fun AF_QIPCRTR(): Int = (42).toInt()
+
+/**
+ * {@snippet lang=c : #define AF_SMC 43
+ */
+fun AF_SMC(): Int = (43).toInt()
+
+/**
+ * {@snippet lang=c : #define AF_XDP 44
+ */
+fun AF_XDP(): Int = (44).toInt()
+
+/**
+ * {@snippet lang=c : #define AF_MCTP 45
+ */
+fun AF_MCTP(): Int = (45).toInt()
+
+/**
+ * {@snippet lang=c : #define AF_MAX 46
+ */
+fun AF_MAX(): Int = (46).toInt()
+
+/**
+ * {@snippet lang=c : #define SCM_WIFI_STATUS 41
+ */
+fun SCM_WIFI_STATUS(): Int = (41).toInt()
+
+/**
+ * {@snippet lang=c : #define SCM_TXTIME 61
+ */
+fun SCM_TXTIME(): Int = (61).toInt()
+
+/**
+ * {@snippet lang=c : #define SCM_TIMESTAMP 29
+ */
+fun SCM_TIMESTAMP(): Int = (29).toInt()
+
+/**
+ * {@snippet lang=c : #define SCM_TIMESTAMPNS 35
+ */
+fun SCM_TIMESTAMPNS(): Int = (35).toInt()
+
+/**
+ * {@snippet lang=c : #define SCM_TIMESTAMPING 37
+ */
+fun SCM_TIMESTAMPING(): Int = (37).toInt()
 
 /**
  * {@snippet lang=c : #define KFFI_MAP_FAILED_ADDRESS -1
