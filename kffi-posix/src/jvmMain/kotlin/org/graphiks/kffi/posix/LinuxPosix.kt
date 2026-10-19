@@ -28,6 +28,12 @@ import org.graphiks.kffi.posix.generated.O_NONBLOCK as generatedONonblock
 import org.graphiks.kffi.posix.generated.O_RDWR as generatedORdwr
 import org.graphiks.kffi.posix.generated.PROT_READ as generatedProtRead
 import org.graphiks.kffi.posix.generated.PROT_WRITE as generatedProtWrite
+import org.graphiks.kffi.posix.generated.AF_UNIX as generatedAfUnix
+import org.graphiks.kffi.posix.generated.SOL_SOCKET as generatedSolSocket
+import org.graphiks.kffi.posix.generated._socket_type as generatedSocketType
+import org.graphiks.kffi.posix.generated.enum_unnamed_at_usr_include_x86_64_linux_gnu_bits_socket_h_205_1_ as generatedMsgEnum
+import org.graphiks.kffi.posix.generated.enum_unnamed_at_usr_include_x86_64_linux_gnu_bits_socket_h_363_1_ as generatedScmEnum
+import org.graphiks.kffi.posix.generated.enum_unnamed_at_usr_include_x86_64_linux_gnu_sys_socket_h_41_1_ as generatedShutEnum
 
 /** Captures errno for Linux libc downcalls before their temporary call state is released. */
 internal object LinuxNativeCalls {
@@ -221,6 +227,139 @@ object LinuxPosix {
 
     fun close(fd: Int) {
         scalar("close", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT), listOf(fd))
+    }
+
+    // ---------------------------------------------------------- unix sockets
+
+    val AF_UNIX: Int get() = generatedAfUnix()
+    val SOL_SOCKET: Int get() = generatedSolSocket()
+
+    val SOCK_STREAM: Int get() = generatedSocketType.SOCK_STREAM.value.toInt()
+    val SOCK_CLOEXEC: Int get() = generatedSocketType.SOCK_CLOEXEC.value.toInt()
+    val SOCK_NONBLOCK: Int get() = generatedSocketType.SOCK_NONBLOCK.value.toInt()
+
+    val MSG_NOSIGNAL: Int get() = generatedMsgEnum.MSG_NOSIGNAL.value.toInt()
+    val MSG_DONTWAIT: Int get() = generatedMsgEnum.MSG_DONTWAIT.value.toInt()
+    val MSG_CMSG_CLOEXEC: Int get() = generatedMsgEnum.MSG_CMSG_CLOEXEC.value.toInt()
+
+    val SCM_RIGHTS: Int get() = generatedScmEnum.SCM_RIGHTS.value.toInt()
+    val SHUT_RDWR: Int get() = generatedShutEnum.SHUT_RDWR.value.toInt()
+
+    fun socket(domain: Int, type: Int, protocol: Int = 0): Int {
+        val result = LinuxNativeCalls.call<Int>(
+            "socket",
+            FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT),
+            listOf(domain, type, protocol),
+        )
+        if (result.value < 0) throw PosixException("socket", result.errno)
+        return result.value
+    }
+
+    fun socketpair(domain: Int = AF_UNIX, type: Int, flags: Int = 0): FdPair {
+        Arena.ofConfined().use { arena ->
+            val fds = arena.allocate(ValueLayout.JAVA_INT, 2)
+            val result = LinuxNativeCalls.call<Int>(
+                "socketpair",
+                FunctionDescriptor.of(
+                    ValueLayout.JAVA_INT,
+                    ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS,
+                ),
+                listOf(domain, type, flags, fds),
+            )
+            if (result.value < 0) throw PosixException("socketpair", result.errno)
+            return FdPair(fds.get(ValueLayout.JAVA_INT, 0L), fds.get(ValueLayout.JAVA_INT, 4L))
+        }
+    }
+
+    fun connect(fd: Int, address: MemorySegment, addressLength: Int) {
+        scalar(
+            "connect",
+            FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT),
+            listOf(fd, address, addressLength),
+        )
+    }
+
+    fun bind(fd: Int, address: MemorySegment, addressLength: Int) {
+        scalar(
+            "bind",
+            FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT),
+            listOf(fd, address, addressLength),
+        )
+    }
+
+    fun listen(fd: Int, backlog: Int = 16) {
+        scalar(
+            "listen",
+            FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT),
+            listOf(fd, backlog),
+        )
+    }
+
+    fun accept(serverFd: Int): Int {
+        val result = LinuxNativeCalls.call<Int>(
+            "accept",
+            FunctionDescriptor.of(
+                ValueLayout.JAVA_INT,
+                ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS,
+            ),
+            listOf(serverFd, MemorySegment.NULL, MemorySegment.NULL),
+        )
+        if (result.value < 0) throw PosixException("accept", result.errno)
+        return result.value
+    }
+
+    fun send(fd: Int, source: MemorySegment, flags: Int = 0): Long {
+        val result = LinuxNativeCalls.call<Long>(
+            "send",
+            FunctionDescriptor.of(
+                ValueLayout.JAVA_LONG,
+                ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT,
+            ),
+            listOf(fd, source, source.byteSize(), flags),
+        )
+        if (result.value < 0) throw PosixException("send", result.errno)
+        return result.value
+    }
+
+    fun recv(fd: Int, destination: MemorySegment, flags: Int = 0): Long {
+        val result = LinuxNativeCalls.call<Long>(
+            "recv",
+            FunctionDescriptor.of(
+                ValueLayout.JAVA_LONG,
+                ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT,
+            ),
+            listOf(fd, destination, destination.byteSize(), flags),
+        )
+        if (result.value < 0) throw PosixException("recv", result.errno)
+        return result.value
+    }
+
+    fun sendmsg(fd: Int, message: MemorySegment, flags: Int = 0): Long {
+        val result = LinuxNativeCalls.call<Long>(
+            "sendmsg",
+            FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT),
+            listOf(fd, message, flags),
+        )
+        if (result.value < 0) throw PosixException("sendmsg", result.errno)
+        return result.value
+    }
+
+    fun recvmsg(fd: Int, message: MemorySegment, flags: Int = 0): Long {
+        val result = LinuxNativeCalls.call<Long>(
+            "recvmsg",
+            FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT),
+            listOf(fd, message, flags),
+        )
+        if (result.value < 0) throw PosixException("recvmsg", result.errno)
+        return result.value
+    }
+
+    fun shutdown(fd: Int, how: Int = SHUT_RDWR) {
+        scalar(
+            "shutdown",
+            FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT),
+            listOf(fd, how),
+        )
     }
 
     fun shmget(key: Int, size: Long, flags: Int): Int = scalar(
