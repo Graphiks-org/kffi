@@ -26,6 +26,7 @@ internal object Win32GraphicsCaptureAbi {
     const val DXGI_ACCESS = "a9b3d012-3df2-4ee3-b8d1-8695f457d3c1"
     const val IDXGI_DEVICE = "54ec77fa-1377-44e6-8c32-88fd5f44c84c"
     const val D3D11_TEXTURE2D = "6f15aaf2-d208-4e89-9ab4-489535d34f9c"
+    const val DIRECT3D_DEVICE = "a37624ab-8d5f-4650-9d3e-9eae3d9bc670"
     const val ICLOSABLE = "30d5a829-7fa4-4026-83bb-d75bae4ea99e"
 
     // IGraphicsCaptureItemInterop (IUnknown-derived)
@@ -80,10 +81,7 @@ internal object Win32GraphicsCaptureAbi {
         try {
             val out = arena.allocate(ValueLayout.ADDRESS)
             val slot = if (window) SLOT_CREATE_FOR_WINDOW else SLOT_CREATE_FOR_MONITOR
-            run {
-                val code = Win32TextComAbi.call(factory, slot, "ppp", MemorySegment.ofAddress(target), Win32TextComAbi.guid(arena, ITEM), out)
-                if (code < 0) throw Win32GraphicsCaptureException(0x10000000.toInt() or code)
-            }
+            Win32TextComAbi.check(Win32TextComAbi.call(factory, slot, "ppp", MemorySegment.ofAddress(target), Win32TextComAbi.guid(arena, ITEM), out))
             return out.get(ValueLayout.ADDRESS, 0).address()
         } finally {
             Win32TextComAbi.release(factory)
@@ -105,15 +103,13 @@ internal object Win32GraphicsCaptureAbi {
     fun createSession(framePool: Long, item: Long): Long {
         Arena.ofConfined().use { arena ->
             val out = arena.allocate(ValueLayout.ADDRESS)
-            val code = Win32TextComAbi.call(framePool, POOL_CREATE_SESSION, "pp", MemorySegment.ofAddress(item), out)
-            if (code < 0) throw Win32GraphicsCaptureException(0x10000000.toInt() or code)
+            Win32TextComAbi.check(Win32TextComAbi.call(framePool, POOL_CREATE_SESSION, "pp", MemorySegment.ofAddress(item), out))
             return out.get(ValueLayout.ADDRESS, 0).address()
         }
     }
 
     fun startCapture(session: Long) {
-        val code = Win32TextComAbi.call(session, SESSION_START_CAPTURE, "")
-        if (code < 0) throw Win32GraphicsCaptureException(0x40000000.toInt() or code)
+        Win32TextComAbi.check(Win32TextComAbi.call(session, SESSION_START_CAPTURE, ""))
     }
 
     fun closableClose(address: Long) {
@@ -189,7 +185,7 @@ internal object Win32GraphicsCaptureAbi {
                 try {
                     Win32TextComAbi.call(context, CONTEXT_COPY_RESOURCE, "pp", MemorySegment.ofAddress(staged), MemorySegment.ofAddress(texture))
                     val mapped = arena.allocate(16)
-                    Win32TextComAbi.check(Win32TextComAbi.call(context, CONTEXT_MAP, "piip", MemorySegment.ofAddress(staged), 0, D3D11_MAP_READ, 0, mapped))
+                    Win32TextComAbi.check(Win32TextComAbi.call(context, CONTEXT_MAP, "piiip", MemorySegment.ofAddress(staged), 0, D3D11_MAP_READ, 0, mapped))
                     try {
                         val data = mapped.get(ValueLayout.ADDRESS, 0).address()
                         val rowPitch = mapped.get(ValueLayout.JAVA_INT, 8)
@@ -200,7 +196,7 @@ internal object Win32GraphicsCaptureAbi {
                         }
                         return Win32CaptureFrameValue(width, height, ticks, contentWidth, contentHeight, bytes)
                     } finally {
-                        Win32TextComAbi.call(context, CONTEXT_UNMAP, "pii", MemorySegment.ofAddress(staged), 0, 0)
+                        Win32TextComAbi.call(context, CONTEXT_UNMAP, "pi", MemorySegment.ofAddress(staged), 0)
                     }
                 } finally {
                     Win32TextComAbi.release(staged)
@@ -225,49 +221,4 @@ internal object Win32GraphicsCaptureAbi {
         }
 
     internal data class Size(val width: Int, val height: Int)
-}
-internal object Win32CaptureFrameArrivedBridge {
-    private val routes = ConcurrentHashMap<Long, () -> Unit>()
-    private val arena = Arena.global()
-    private val signatures = listOf("p", "p", "p", "pp") // QI, AddRef, Release, Invoke(receiver, args)
-
-    private val table: MemorySegment by lazy {
-        val vtable = arena.allocate(signatures.size * 8L, 8)
-        signatures.forEachIndexed { slot, signature ->
-            val descriptor = Win32TextComAbi.descriptor(signature)
-            val dispatcher = MethodHandles.lookup().findStatic(
-                Win32CaptureFrameArrivedBridge::class.java, "dispatch",
-                MethodType.methodType(Int::class.javaPrimitiveType, Int::class.javaPrimitiveType, Array<Any>::class.java),
-            )
-            val target = MethodHandles.insertArguments(dispatcher, 0, slot)
-                .asCollector(Array<Any>::class.java, signature.length + 1)
-                .asType(descriptor.toMethodType())
-            vtable.set(ValueLayout.ADDRESS, slot * 8L, Win32TextComAbi.linker.upcallStub(target, descriptor, arena))
-        }
-        vtable
-    }
-
-    fun register(onSignal: () -> Unit, ownerArena: Arena): MemorySegment =
-        ownerArena.allocate(ValueLayout.ADDRESS).also {
-            it.set(ValueLayout.ADDRESS, 0, table)
-            check(routes.putIfAbsent(it.address(), onSignal) == null)
-        }
-
-    fun revoke(interfaceObject: Long) { routes.remove(interfaceObject) }
-
-    @JvmStatic fun dispatch(slot: Int, arguments: Array<Any>): Int {
-        val receiver = (arguments[0] as MemorySegment).address()
-        val onSignal = routes[receiver] ?: return Win32DropComBridge.DISCONNECTED
-        return try {
-            if (slot == 3) onSignal()
-            0
-        } catch (failure: Throwable) {
-            Win32DropComBridge.E_FAIL
-        }
-    }
-}
-
-internal class Win32CaptureFrameArrived(private val onSignal: () -> Unit) {
-    private val registered = Win32CaptureFrameArrivedBridge.register(onSignal, Arena.ofShared())
-    internal val address: Long get() = registered.address()
 }

@@ -82,11 +82,18 @@ public object Win32GraphicsCaptureGeneratedPort : Win32GraphicsCaptureNativePort
  * windows.graphics.directx.direct3d11.interop.h, d3d11.h): IInspectable
  * methods start at slot 6; interop/dxgi-access are IUnknown-derived (slot 3);
  * D3D11 device CreateTexture2D is slot 5, immediate-context Map 14 /
- * CopyResource 47. All frame pixels are copied to a [Win32CaptureFrameValue]
- * inside the FrameArrived callback and nothing native is retained. Close
- * order: remove handler, IClosable session, IClosable frame pool, release
- * refs, RoUninitialize. `RoGetActivationFactory` is case sensitive: runtime
+ * CopyResource 47 (C vtbl and C++ declarations agree). WinRT structs of eight
+ * bytes travel by value in a register: SizeInt32 rides one LONG, packed as
+ * width | height shl 32. `RoGetActivationFactory` is case sensitive: runtime
  * class names carry the `Windows.Graphics.Capture.` prefix verbatim.
+ *
+ * Frames are pulled on a daemon poller rather than pushed through
+ * FrameArrived: the WinRT event registration answers 0x8000001C on the
+ * observed hosts, while a bounded TryGetNextFrame walk delivers the same
+ * stream contract without it. All frame pixels are copied into a
+ * [Win32CaptureFrameValue] inside the poller and nothing native is retained.
+ * Close order: IClosable session, IClosable frame pool, release refs,
+ * RoUninitialize.
  */
 public class Win32GraphicsCapture private constructor(
     private val port: Win32GraphicsCaptureNativePort,
@@ -102,8 +109,8 @@ public class Win32GraphicsCapture private constructor(
     private var device: Long = 0
     private var context: Long = 0
     private var directDevice: Long = 0
-    private var token: Long = 0
-    private var delegateAddress: Long = 0
+    private var d3dDevice: Long = 0
+    private var poller: Thread? = null
     private var apartmentOwned: Boolean = false
 
     internal var probeFailureCode: Int = 0
@@ -127,8 +134,8 @@ public class Win32GraphicsCapture private constructor(
 
     /**
      * Opens capture for one HWND (window=true) or HMONITOR (window=false).
-     * [onFrame] runs on the OS frame thread with an already-copied value;
-     * D3D11 immediate-context work is serialized under [lock].
+     * [onFrame] runs on the poller thread with an already-copied value; D3D11
+     * immediate-context work is serialized under [lock].
      */
     public fun open(target: Long, window: Boolean, onFrame: (Win32CaptureFrameValue) -> Unit) {
         synchronized(lock) {
@@ -149,14 +156,12 @@ public class Win32GraphicsCapture private constructor(
             }
             val session = Win32GraphicsCaptureAbi.createSession(framePool, item)
             references += session
-            val delegate = Win32CaptureFrameArrived { drainFrame() }
-            delegateAddress = delegate.address
-            val tokenOut = outPointer(arena)
-            Win32TextComAbi.check(
-                Win32TextComAbi.call(framePool, SLOT_ADD_FRAME_ARRIVED, "pp",
-                    MemorySegment.ofAddress(delegateAddress), tokenOut),
-            )
-            token = tokenOut.get(ValueLayout.JAVA_LONG, 0)
+            poller = Thread({
+                while (!synchronized(lock) { closed }) {
+                    drainFrame()
+                    Thread.sleep(16)
+                }
+            }, "kffi-wgc-frame-poll").apply { isDaemon = true; start() }
             synchronized(lock) {
                 this.item = item
                 this.session = session
@@ -187,20 +192,16 @@ public class Win32GraphicsCapture private constructor(
     }
 
     private fun closeOwners() {
-        synchronized(lock) {
-            if (framePool != 0L && token != 0L) {
-                runCatching { Win32TextComAbi.call(framePool, SLOT_REMOVE_FRAME_ARRIVED, "l", token) }
-            }
-            token = 0
-        }
-        if (delegateAddress != 0L) Win32CaptureFrameArrivedBridge.revoke(delegateAddress)
+        val poller = poller
+        this.poller = null
+        poller?.join(500)
         sequenceOf(session, framePool).forEach { address ->
             if (address != 0L) runCatching { Win32GraphicsCaptureAbi.closableClose(address) }
         }
         val owned = synchronized(lock) {
             val list = references.toList()
             references.clear()
-            item = 0; session = 0; framePool = 0; device = 0; context = 0; directDevice = 0; delegateAddress = 0
+            item = 0; session = 0; framePool = 0; device = 0; context = 0; directDevice = 0; d3dDevice = 0
             list
         }
         owned.reversed().forEach { runCatching { Win32TextComAbi.release(it) } }
@@ -237,12 +238,18 @@ public class Win32GraphicsCapture private constructor(
         Win32TextComAbi.check(port.createDirect3D11DeviceFromDXGIDevice(MemorySegment.ofAddress(dxgiDevice), directOut))
         directDevice = directOut.get(ValueLayout.ADDRESS, 0).address()
         references += directDevice
+        val d3dDeviceOut = outPointer(arena)
+        Win32TextComAbi.check(
+            Win32TextComAbi.call(directDevice, 0, "pp", Win32TextComAbi.guid(arena, Win32GraphicsCaptureAbi.DIRECT3D_DEVICE), d3dDeviceOut),
+        )
+        d3dDevice = d3dDeviceOut.get(ValueLayout.ADDRESS, 0).address()
+        references += d3dDevice
         val poolOut = outPointer(arena)
         Win32TextComAbi.check(
             Win32TextComAbi.call(
-                poolStatics, SLOT_CREATE_FREE_THREADED, "piipp",
-                MemorySegment.ofAddress(directDevice), FORMAT_BGRA8, 2,
-                sizeStruct(arena, width, height), poolOut,
+                poolStatics, SLOT_CREATE_FREE_THREADED, "piilp",
+                MemorySegment.ofAddress(d3dDevice), FORMAT_BGRA8, 2,
+                (width.toLong() and 0xffffffffL) or (height.toLong() shl 32), poolOut,
             ),
         )
         framePool = poolOut.get(ValueLayout.ADDRESS, 0).address()
@@ -267,18 +274,10 @@ public class Win32GraphicsCapture private constructor(
         internal const val D3D11_SDK_VERSION: Int = 7
         internal const val FORMAT_BGRA8: Int = 87 // DXGI_FORMAT_B8G8R8A8_UNORM
         internal const val SLOT_CREATE_FREE_THREADED: Int = 6
-        internal const val SLOT_ADD_FRAME_ARRIVED: Int = 8
-        internal const val SLOT_REMOVE_FRAME_ARRIVED: Int = 9
         internal const val CLASS_FRAME_POOL: String = "Windows.Graphics.Capture.Direct3D11CaptureFramePool"
         internal const val CLASS_ITEM: String = "Windows.Graphics.Capture.GraphicsCaptureItem"
 
         internal fun outPointer(arena: Arena): MemorySegment = arena.allocate(ValueLayout.ADDRESS)
-
-        internal fun sizeStruct(arena: Arena, width: Int, height: Int): MemorySegment =
-            arena.allocate(8).also {
-                it.set(ValueLayout.JAVA_INT, 0, width)
-                it.set(ValueLayout.JAVA_INT, 4, height)
-            }
 
         /** Public entry: verify the frontier at run time; never assume availability. */
         @JvmStatic public fun probe(port: Win32GraphicsCaptureNativePort = Win32GraphicsCaptureGeneratedPort): Boolean =
