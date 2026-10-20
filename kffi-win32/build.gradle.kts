@@ -78,6 +78,7 @@ tasks.register<Test>("win32IntegrationTest") {
         includeTestsMatching("org.graphiks.kffi.win32.managed.Win32DropServicesIntegrationTest")
         includeTestsMatching("org.graphiks.kffi.win32.managed.Win32RawInputIntegrationTest")
         includeTestsMatching("org.graphiks.kffi.win32.managed.Win32DisplaysIntegrationTest")
+        includeTestsMatching("org.graphiks.kffi.win32.managed.Win32GraphicsCaptureIntegrationTest")
         includeTestsMatching("org.graphiks.kffi.win32.managed.Win32PointerPacketsIntegrationTest")
         includeTestsMatching("org.graphiks.kffi.win32.managed.Win32InteractionContextIntegrationTest")
     }

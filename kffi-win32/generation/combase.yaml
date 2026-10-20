@@ -1,0 +1,11 @@
+dllMap:
+  "combase.dll":
+    functions:
+      - RoInitialize
+      - RoUninitialize
+      - RoGetActivationFactory
+      - WindowsCreateString
+      - WindowsDeleteString
+      - WindowsGetStringRawBuffer
+    structs: []
+    constants: []
