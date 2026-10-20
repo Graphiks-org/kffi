@@ -3,11 +3,6 @@ package org.graphiks.kffi.win32.managed
 import java.lang.foreign.Arena
 import java.lang.foreign.MemorySegment
 import java.lang.foreign.ValueLayout
-import java.lang.invoke.MethodHandles
-import java.lang.invoke.MethodType
-import java.util.concurrent.ConcurrentHashMap
-import java.util.concurrent.atomic.AtomicBoolean
-import java.util.concurrent.atomic.AtomicInteger
 
 /** Typed native failure for the WGC frontier; HRESULT carrier only. */
 public class Win32GraphicsCaptureException(public val hresult: Int) :
@@ -47,32 +42,36 @@ public interface Win32GraphicsCaptureNativePort {
 public object Win32GraphicsCaptureGeneratedPort : Win32GraphicsCaptureNativePort {
     @Suppress("unused") private val loaded = org.graphiks.kffi.win32.generated.init()
 
-        override fun roInitialize(initType: Int): Int =
-        org.graphiks.kffi.win32.generated.RoInitialize(org.graphiks.kffi.win32.generated.RO_INIT_TYPE.entries.first { it.value == initType.toLong() })
+    override fun roInitialize(initType: Int): Int =
+        org.graphiks.kffi.win32.generated.RoInitialize(
+            org.graphiks.kffi.win32.generated.RO_INIT_TYPE.entries.first { it.value == initType.toLong() },
+        )
 
-        override fun roUninitialize() = org.graphiks.kffi.win32.generated.RoUninitialize()
-        override fun roGetActivationFactory(classId: MemorySegment, iid: MemorySegment, factory: MemorySegment): Int =
+    override fun roUninitialize() = org.graphiks.kffi.win32.generated.RoUninitialize()
+
+    override fun roGetActivationFactory(classId: MemorySegment, iid: MemorySegment, factory: MemorySegment): Int =
         org.graphiks.kffi.win32.generated.RoGetActivationFactory(classId, iid, factory)
 
-        override fun windowsCreateString(source: MemorySegment, length: Int, hstring: MemorySegment): Int =
+    override fun windowsCreateString(source: MemorySegment, length: Int, hstring: MemorySegment): Int =
         org.graphiks.kffi.win32.generated.WindowsCreateString(source, length, hstring)
 
-        override fun windowsDeleteString(hstring: MemorySegment): Int =
+    override fun windowsDeleteString(hstring: MemorySegment): Int =
         org.graphiks.kffi.win32.generated.WindowsDeleteString(hstring)
 
-        override fun windowsGetStringRawBuffer(hstring: MemorySegment, length: MemorySegment): MemorySegment =
+    override fun windowsGetStringRawBuffer(hstring: MemorySegment, length: MemorySegment): MemorySegment =
         org.graphiks.kffi.win32.generated.WindowsGetStringRawBuffer(hstring, length)
 
-        override fun d3d11CreateDevice(
+    override fun d3d11CreateDevice(
         adapter: MemorySegment, driverType: Int, software: MemorySegment, flags: Int,
         levels: MemorySegment, levelCount: Int, sdkVersion: Int,
         device: MemorySegment, featureLevel: MemorySegment, context: MemorySegment,
     ): Int = org.graphiks.kffi.win32.generated.D3D11CreateDevice(
-        adapter, org.graphiks.kffi.win32.generated.D3D_DRIVER_TYPE.entries.first { it.value == driverType.toLong() }, software, flags,
-        levels, levelCount, sdkVersion, device, featureLevel, context,
+        adapter,
+        org.graphiks.kffi.win32.generated.D3D_DRIVER_TYPE.entries.first { it.value == driverType.toLong() },
+        software, flags, levels, levelCount, sdkVersion, device, featureLevel, context,
     )
 
-        override fun createDirect3D11DeviceFromDXGIDevice(dxgiDevice: MemorySegment, graphicsDevice: MemorySegment): Int =
+    override fun createDirect3D11DeviceFromDXGIDevice(dxgiDevice: MemorySegment, graphicsDevice: MemorySegment): Int =
         org.graphiks.kffi.win32.generated.CreateDirect3D11DeviceFromDXGIDevice(dxgiDevice, graphicsDevice)
 }
 
@@ -83,10 +82,11 @@ public object Win32GraphicsCaptureGeneratedPort : Win32GraphicsCaptureNativePort
  * windows.graphics.directx.direct3d11.interop.h, d3d11.h): IInspectable
  * methods start at slot 6; interop/dxgi-access are IUnknown-derived (slot 3);
  * D3D11 device CreateTexture2D is slot 5, immediate-context Map 14 /
- * CopyResource 47 (C vtbl and C++ declarations agree). All frame pixels are
- * copied to a [Win32CaptureFrameValue] inside the FrameArrived callback and
- * nothing native is retained. Close order: remove handler, IClosable session,
- * IClosable frame pool, release refs, RoUninitialize.
+ * CopyResource 47. All frame pixels are copied to a [Win32CaptureFrameValue]
+ * inside the FrameArrived callback and nothing native is retained. Close
+ * order: remove handler, IClosable session, IClosable frame pool, release
+ * refs, RoUninitialize. `RoGetActivationFactory` is case sensitive: runtime
+ * class names carry the `Windows.Graphics.Capture.` prefix verbatim.
  */
 public class Win32GraphicsCapture private constructor(
     private val port: Win32GraphicsCaptureNativePort,
@@ -95,7 +95,7 @@ public class Win32GraphicsCapture private constructor(
     private val references = ArrayList<Long>()
     private val lock = Object()
     private var closed = false
-    private var handler: Win32CaptureFrameHandler? = null
+    private var handler: ((Win32CaptureFrameValue) -> Unit)? = null
     private var framePool: Long = 0
     private var session: Long = 0
     private var item: Long = 0
@@ -106,12 +106,11 @@ public class Win32GraphicsCapture private constructor(
     private var delegateAddress: Long = 0
     private var apartmentOwned: Boolean = false
 
-    /** Probe without owning anything: activation must succeed; the apartment pair stays balanced. */
     internal var probeFailureCode: Int = 0
         private set
 
+    /** Probe without owning anything: activation must succeed; the apartment pair stays balanced. */
     public fun probe(): Boolean {
-        if (port.roInitialize(RO_INIT_MULTITHREADED) < 0) { probeFailureCode = -1; return false }
         if (port.roInitialize(RO_INIT_MULTITHREADED) < 0) return false
         try {
             val factory = activationFactory(CLASS_FRAME_POOL, Win32GraphicsCaptureAbi.FRAME_POOL_STATICS)
@@ -129,7 +128,7 @@ public class Win32GraphicsCapture private constructor(
     /**
      * Opens capture for one HWND (window=true) or HMONITOR (window=false).
      * [onFrame] runs on the OS frame thread with an already-copied value;
-     * native context operations are serialized under [frameLock].
+     * D3D11 immediate-context work is serialized under [lock].
      */
     public fun open(target: Long, window: Boolean, onFrame: (Win32CaptureFrameValue) -> Unit) {
         synchronized(lock) {
@@ -159,7 +158,9 @@ public class Win32GraphicsCapture private constructor(
             )
             token = tokenOut.get(ValueLayout.JAVA_LONG, 0)
             synchronized(lock) {
-                this.item = item; this.session = session; this.handler = Win32CaptureFrameHandler(onFrame)
+                this.item = item
+                this.session = session
+                this.handler = onFrame
             }
             Win32GraphicsCaptureAbi.startCapture(session)
         } catch (failure: Throwable) {
@@ -170,8 +171,10 @@ public class Win32GraphicsCapture private constructor(
 
     internal fun drainFrame() {
         val handler = synchronized(lock) { handler } ?: return
-        val value = Win32GraphicsCaptureAbi.copyNextFrame(port, framePool, device, context)
-        if (value != null) handler.deliver(value)
+        val value = synchronized(lock) {
+            Win32GraphicsCaptureAbi.copyNextFrame(port, framePool, device, context)
+        }
+        if (value != null) handler(value)
     }
 
     override fun close() {
@@ -224,7 +227,9 @@ public class Win32GraphicsCapture private constructor(
         references += context
         val dxgiDevice = Arena.ofConfined().use { tmp ->
             val qi = tmp.allocate(ValueLayout.ADDRESS)
-            Win32TextComAbi.check(Win32TextComAbi.call(device, 0, "pp", Win32TextComAbi.guid(tmp, Win32GraphicsCaptureAbi.IDXGI_DEVICE), qi))
+            Win32TextComAbi.check(
+                Win32TextComAbi.call(device, 0, "pp", Win32TextComAbi.guid(tmp, Win32GraphicsCaptureAbi.IDXGI_DEVICE), qi),
+            )
             qi.get(ValueLayout.ADDRESS, 0).address()
         }
         references += dxgiDevice
@@ -233,10 +238,13 @@ public class Win32GraphicsCapture private constructor(
         directDevice = directOut.get(ValueLayout.ADDRESS, 0).address()
         references += directDevice
         val poolOut = outPointer(arena)
-        run {
-            val code = Win32TextComAbi.call(poolStatics, SLOT_CREATE_FREE_THREADED, "ppiip", MemorySegment.ofAddress(directDevice), FORMAT_BGRA8, 2, sizeStruct(arena, width, height), poolOut)
-            if (code < 0) throw Win32GraphicsCaptureException(0x20000000.toInt() or code)
-        }
+        Win32TextComAbi.check(
+            Win32TextComAbi.call(
+                poolStatics, SLOT_CREATE_FREE_THREADED, "piipp",
+                MemorySegment.ofAddress(directDevice), FORMAT_BGRA8, 2,
+                sizeStruct(arena, width, height), poolOut,
+            ),
+        )
         framePool = poolOut.get(ValueLayout.ADDRESS, 0).address()
         references += framePool
     }
@@ -252,8 +260,6 @@ public class Win32GraphicsCapture private constructor(
         }
     }
 
-    private fun Long.toHstringArg(arena: Arena): MemorySegment = MemorySegment.ofAddress(this)
-
     internal companion object {
         internal const val RO_INIT_MULTITHREADED: Int = 1
         internal const val DRIVER_TYPE_HARDWARE: Int = 1
@@ -268,7 +274,8 @@ public class Win32GraphicsCapture private constructor(
 
         internal fun outPointer(arena: Arena): MemorySegment = arena.allocate(ValueLayout.ADDRESS)
 
-        internal fun sizeStruct(arena: Arena, width: Int, height: Int): MemorySegment =            arena.allocate(8).also {
+        internal fun sizeStruct(arena: Arena, width: Int, height: Int): MemorySegment =
+            arena.allocate(8).also {
                 it.set(ValueLayout.JAVA_INT, 0, width)
                 it.set(ValueLayout.JAVA_INT, 4, height)
             }
@@ -279,8 +286,4 @@ public class Win32GraphicsCapture private constructor(
 
         internal fun forTesting(port: Win32GraphicsCaptureNativePort): Win32GraphicsCapture = Win32GraphicsCapture(port)
     }
-}
-
-internal class Win32CaptureFrameHandler(private val deliver: (Win32CaptureFrameValue) -> Unit) {
-    fun deliver(value: Win32CaptureFrameValue) { deliver(value) }
 }

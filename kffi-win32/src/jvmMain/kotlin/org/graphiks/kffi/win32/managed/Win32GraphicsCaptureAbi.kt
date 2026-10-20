@@ -64,11 +64,10 @@ internal object Win32GraphicsCaptureAbi {
             bytes.forEachIndexed { index, byte -> segment.set(ValueLayout.JAVA_BYTE, index.toLong(), byte) }
         }
         val out = arena.allocate(ValueLayout.ADDRESS)
-        Win32TextComAbi.check(port.windowsCreateString(MemorySegment.ofAddress(source.address()), value.length, out))
+        Win32TextComAbi.check(port.windowsCreateString(source, value.length, out))
         return out.get(ValueLayout.ADDRESS, 0)
     }
-
-    fun itemSize(item: Long): Win32GraphicsCaptureAbi.Size {
+    fun itemSize(item: Long): Size {
         Arena.ofConfined().use { arena ->
             val out = arena.allocate(8)
             Win32TextComAbi.check(Win32TextComAbi.call(item, ITEM_GET_SIZE, "p", out))
@@ -106,12 +105,16 @@ internal object Win32GraphicsCaptureAbi {
     fun createSession(framePool: Long, item: Long): Long {
         Arena.ofConfined().use { arena ->
             val out = arena.allocate(ValueLayout.ADDRESS)
-            Win32TextComAbi.check(Win32TextComAbi.call(framePool, POOL_CREATE_SESSION, "pp", MemorySegment.ofAddress(item), out))
+            val code = Win32TextComAbi.call(framePool, POOL_CREATE_SESSION, "pp", MemorySegment.ofAddress(item), out)
+            if (code < 0) throw Win32GraphicsCaptureException(0x10000000.toInt() or code)
             return out.get(ValueLayout.ADDRESS, 0).address()
         }
     }
 
-    fun startCapture(session: Long) { Win32TextComAbi.check(Win32TextComAbi.call(session, SESSION_START_CAPTURE, "")) }
+    fun startCapture(session: Long) {
+        val code = Win32TextComAbi.call(session, SESSION_START_CAPTURE, "")
+        if (code < 0) throw Win32GraphicsCaptureException(0x40000000.toInt() or code)
+    }
 
     fun closableClose(address: Long) {
         Arena.ofConfined().use { arena ->
@@ -168,8 +171,7 @@ internal object Win32GraphicsCaptureAbi {
         contentHeight: Int,
     ): Win32CaptureFrameValue {
         val accessOut = arena.allocate(ValueLayout.ADDRESS)
-        val qiCode = Win32TextComAbi.call(surface, 0, "pp", Win32TextComAbi.guid(arena, DXGI_ACCESS), accessOut)
-        Win32TextComAbi.check(qiCode)
+        Win32TextComAbi.check(Win32TextComAbi.call(surface, 0, "pp", Win32TextComAbi.guid(arena, DXGI_ACCESS), accessOut))
         val access = accessOut.get(ValueLayout.ADDRESS, 0).address()
         try {
             val textureOut = arena.allocate(ValueLayout.ADDRESS)
@@ -177,7 +179,7 @@ internal object Win32GraphicsCaptureAbi {
             val texture = textureOut.get(ValueLayout.ADDRESS, 0).address()
             try {
                 val desc = arena.allocate(44)
-                Win32TextComAbi.call(texture, 10, "p", desc) // ID3D11Texture2D::GetDesc
+                Win32TextComAbi.call(texture, 10, "p", desc)
                 val width = desc.get(ValueLayout.JAVA_INT, 0)
                 val height = desc.get(ValueLayout.JAVA_INT, 4)
                 val staging = stagingDesc(arena, desc)
@@ -194,8 +196,7 @@ internal object Win32GraphicsCaptureAbi {
                         val bytes = ByteArray(width * 4 * height)
                         val source = MemorySegment.ofAddress(data).reinterpret(rowPitch.toLong() * height.toLong())
                         for (row in 0 until height) {
-                            MemorySegment.copy(source, ValueLayout.JAVA_BYTE, row * rowPitch.toLong(),
-                                bytes, row * width * 4, width * 4)
+                            MemorySegment.copy(source, ValueLayout.JAVA_BYTE, row * rowPitch.toLong(), bytes, row * width * 4, width * 4)
                         }
                         return Win32CaptureFrameValue(width, height, ticks, contentWidth, contentHeight, bytes)
                     } finally {
@@ -215,22 +216,16 @@ internal object Win32GraphicsCaptureAbi {
     private fun stagingDesc(arena: Arena, desc: MemorySegment): MemorySegment =
         arena.allocate(44).also { staging ->
             for (offset in longArrayOf(0, 4, 8, 12, 16)) staging.set(ValueLayout.JAVA_INT, offset, desc.get(ValueLayout.JAVA_INT, offset))
-            staging.set(ValueLayout.JAVA_INT, 20, 1) // SampleDesc.Count
-            staging.set(ValueLayout.JAVA_INT, 24, 0) // SampleDesc.Quality
+            staging.set(ValueLayout.JAVA_INT, 20, 1)
+            staging.set(ValueLayout.JAVA_INT, 24, 0)
             staging.set(ValueLayout.JAVA_INT, 28, D3D11_USAGE_STAGING)
-            staging.set(ValueLayout.JAVA_INT, 32, 0) // BindFlags
+            staging.set(ValueLayout.JAVA_INT, 32, 0)
             staging.set(ValueLayout.JAVA_INT, 36, D3D11_CPU_ACCESS_READ)
-            staging.set(ValueLayout.JAVA_INT, 40, 0) // MiscFlags
+            staging.set(ValueLayout.JAVA_INT, 40, 0)
         }
 
     internal data class Size(val width: Int, val height: Int)
 }
-
-/**
- * FrameArrived delegate: one COM identity per session (IUnknown + Invoke at
- * slot 3). Routes by interface-object address; revocation disconnects the
- * route before the pool is closed.
- */
 internal object Win32CaptureFrameArrivedBridge {
     private val routes = ConcurrentHashMap<Long, () -> Unit>()
     private val arena = Arena.global()
