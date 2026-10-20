@@ -45,23 +45,25 @@ public interface Win32GraphicsCaptureNativePort {
 
 /** The real generated frontier; injectable for tests. */
 public object Win32GraphicsCaptureGeneratedPort : Win32GraphicsCaptureNativePort {
-    override fun roInitialize(initType: Int): Int =
+    @Suppress("unused") private val loaded = org.graphiks.kffi.win32.generated.init()
+
+        override fun roInitialize(initType: Int): Int =
         org.graphiks.kffi.win32.generated.RoInitialize(org.graphiks.kffi.win32.generated.RO_INIT_TYPE.entries.first { it.value == initType.toLong() })
 
-    override fun roUninitialize() = org.graphiks.kffi.win32.generated.RoUninitialize()
-    override fun roGetActivationFactory(classId: MemorySegment, iid: MemorySegment, factory: MemorySegment): Int =
+        override fun roUninitialize() = org.graphiks.kffi.win32.generated.RoUninitialize()
+        override fun roGetActivationFactory(classId: MemorySegment, iid: MemorySegment, factory: MemorySegment): Int =
         org.graphiks.kffi.win32.generated.RoGetActivationFactory(classId, iid, factory)
 
-    override fun windowsCreateString(source: MemorySegment, length: Int, hstring: MemorySegment): Int =
+        override fun windowsCreateString(source: MemorySegment, length: Int, hstring: MemorySegment): Int =
         org.graphiks.kffi.win32.generated.WindowsCreateString(source, length, hstring)
 
-    override fun windowsDeleteString(hstring: MemorySegment): Int =
+        override fun windowsDeleteString(hstring: MemorySegment): Int =
         org.graphiks.kffi.win32.generated.WindowsDeleteString(hstring)
 
-    override fun windowsGetStringRawBuffer(hstring: MemorySegment, length: MemorySegment): MemorySegment =
+        override fun windowsGetStringRawBuffer(hstring: MemorySegment, length: MemorySegment): MemorySegment =
         org.graphiks.kffi.win32.generated.WindowsGetStringRawBuffer(hstring, length)
 
-    override fun d3d11CreateDevice(
+        override fun d3d11CreateDevice(
         adapter: MemorySegment, driverType: Int, software: MemorySegment, flags: Int,
         levels: MemorySegment, levelCount: Int, sdkVersion: Int,
         device: MemorySegment, featureLevel: MemorySegment, context: MemorySegment,
@@ -70,7 +72,7 @@ public object Win32GraphicsCaptureGeneratedPort : Win32GraphicsCaptureNativePort
         levels, levelCount, sdkVersion, device, featureLevel, context,
     )
 
-    override fun createDirect3D11DeviceFromDXGIDevice(dxgiDevice: MemorySegment, graphicsDevice: MemorySegment): Int =
+        override fun createDirect3D11DeviceFromDXGIDevice(dxgiDevice: MemorySegment, graphicsDevice: MemorySegment): Int =
         org.graphiks.kffi.win32.generated.CreateDirect3D11DeviceFromDXGIDevice(dxgiDevice, graphicsDevice)
 }
 
@@ -102,19 +104,26 @@ public class Win32GraphicsCapture private constructor(
     private var directDevice: Long = 0
     private var token: Long = 0
     private var delegateAddress: Long = 0
+    private var apartmentOwned: Boolean = false
 
-    /** Probe without owning anything: activation + device must both succeed. */
-    public fun probe(): Boolean = try {
-        port.roInitialize(RO_INIT_MULTITHREADED)
+    /** Probe without owning anything: activation must succeed; the apartment pair stays balanced. */
+    internal var probeFailureCode: Int = 0
+        private set
+
+    public fun probe(): Boolean {
+        if (port.roInitialize(RO_INIT_MULTITHREADED) < 0) { probeFailureCode = -1; return false }
+        if (port.roInitialize(RO_INIT_MULTITHREADED) < 0) return false
         try {
             val factory = activationFactory(CLASS_FRAME_POOL, Win32GraphicsCaptureAbi.FRAME_POOL_STATICS)
+            references.remove(factory)
             Win32TextComAbi.release(factory)
-            true
+            return true
+        } catch (failure: Win32TextException) {
+            probeFailureCode = failure.hresult
+            return false
         } finally {
             port.roUninitialize()
         }
-    } catch (failure: Win32GraphicsCaptureException) {
-        false
     }
 
     /**
@@ -128,6 +137,7 @@ public class Win32GraphicsCapture private constructor(
             check(handler == null) { "capture session already open" }
         }
         port.roInitialize(RO_INIT_MULTITHREADED)
+        apartmentOwned = true
         try {
             val item = Win32GraphicsCaptureAbi.createItem(port, arena, target, window).also { references += it }
             val size = Win32GraphicsCaptureAbi.itemSize(item)
@@ -191,7 +201,10 @@ public class Win32GraphicsCapture private constructor(
             list
         }
         owned.reversed().forEach { runCatching { Win32TextComAbi.release(it) } }
-        runCatching { port.roUninitialize() }
+        if (apartmentOwned) {
+            apartmentOwned = false
+            runCatching { port.roUninitialize() }
+        }
     }
 
     private fun createDeviceAndPool(poolStatics: Long, width: Int, height: Int) {
@@ -253,8 +266,8 @@ public class Win32GraphicsCapture private constructor(
         internal const val SLOT_CREATE_FREE_THREADED: Int = 6
         internal const val SLOT_ADD_FRAME_ARRIVED: Int = 8
         internal const val SLOT_REMOVE_FRAME_ARRIVED: Int = 9
-        internal const val CLASS_FRAME_POOL: String = "windows.graphics.capture.Direct3D11CaptureFramePool"
-        internal const val CLASS_ITEM: String = "windows.graphics.capture.GraphicsCaptureItem"
+        internal const val CLASS_FRAME_POOL: String = "Windows.Graphics.Capture.Direct3D11CaptureFramePool"
+        internal const val CLASS_ITEM: String = "Windows.Graphics.Capture.GraphicsCaptureItem"
 
         internal fun outPointer(arena: Arena): MemorySegment = arena.allocate(ValueLayout.ADDRESS)
 
@@ -266,6 +279,8 @@ public class Win32GraphicsCapture private constructor(
         /** Public entry: verify the frontier at run time; never assume availability. */
         @JvmStatic public fun probe(port: Win32GraphicsCaptureNativePort = Win32GraphicsCaptureGeneratedPort): Boolean =
             Win32GraphicsCapture(port).use { it.probe() }
+
+        internal fun forTesting(port: Win32GraphicsCaptureNativePort): Win32GraphicsCapture = Win32GraphicsCapture(port)
     }
 }
 

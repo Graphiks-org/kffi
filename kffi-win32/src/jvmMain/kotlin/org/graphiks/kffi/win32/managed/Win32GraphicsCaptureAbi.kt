@@ -81,7 +81,7 @@ internal object Win32GraphicsCaptureAbi {
         try {
             val out = arena.allocate(ValueLayout.ADDRESS)
             val slot = if (window) SLOT_CREATE_FOR_WINDOW else SLOT_CREATE_FOR_MONITOR
-            Win32TextComAbi.check(Win32TextComAbi.call(factory, slot, "lpp", target, Win32TextComAbi.guid(arena, ITEM), out))
+            Win32TextComAbi.check(Win32TextComAbi.call(factory, slot, "ppp", MemorySegment.ofAddress(target), Win32TextComAbi.guid(arena, ITEM), out))
             return out.get(ValueLayout.ADDRESS, 0).address()
         } finally {
             Win32TextComAbi.release(factory)
@@ -90,7 +90,7 @@ internal object Win32GraphicsCaptureAbi {
 
     /** Activation of GraphicsCaptureItem QI'd straight to the interop interface. */
     fun createActivationFactoryForItem(port: Win32GraphicsCaptureNativePort, arena: Arena): Long {
-        val hstring = createHstring(port, arena, "windows.graphics.capture.GraphicsCaptureItem")
+        val hstring = createHstring(port, arena, "Windows.Graphics.Capture.GraphicsCaptureItem")
         try {
             val out = arena.allocate(ValueLayout.ADDRESS)
             Win32TextComAbi.check(port.roGetActivationFactory(hstring, Win32TextComAbi.guid(arena, ITEM_INTEROP), out))
