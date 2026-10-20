@@ -20,12 +20,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Codegen pipeline `docker/kffi-pipewire-codegen` (pinned image, tracked
   output verification, kextract revision pin) and the
   `scripts/gen-kffi-pipewire.sh` wrapper.
+- Managed Win32 XInput polling frontier for the four user gamepad slots:
+  `XInputGetState`/`XInputSetState`/`XInputGetCapabilities`/
+  `XInputGetBatteryInformation` over the `Xinput9_1_0.dll` map, every struct
+  copied into scalars before return (`ERROR_DEVICE_NOT_CONNECTED` surfaces
+  as a typed null, never as an invented pad), typed failures for the other
+  error codes, out-of-range slot indices refused up front, and thread-safe
+  polling documented by the API. Generated bindings gain the four functions
+  and the `_XINPUT_STATE`/`_XINPUT_GAMEPAD`/`_XINPUT_VIBRATION`/
+  `_XINPUT_CAPABILITIES`/`_XINPUT_BATTERY_INFORMATION` layouts.
 
-### Fixed
-- The PipeWire context factory converted the `pw_thread_loop` handle
-  instead of the `struct pw_loop` obtained through
-  `pw_thread_loop_get_loop`, so `pw_context_new` received the wrong
-  pointer and failed or corrupted state.
 - Managed Win32 multi-monitor display inventory: one synchronous
   `EnumDisplayMonitors` walk with a process-lifetime callback stub and a
   thread-confined collector, per-monitor `GetMonitorInfoW` bounds/work area,
@@ -105,6 +109,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   Native layouts remain confined to the managed Win32 module.
 
 ### Fixed
+- The PipeWire context factory converted the `pw_thread_loop` handle
+  instead of the `struct pw_loop` obtained through
+  `pw_thread_loop_get_loop`, so `pw_context_new` received the wrong
+  pointer and failed or corrupted state.
 - Keep the Win32 raw-input Windows platform gate in the public
   `register`/`hasRegistration` entry points only: the port-injected path used
   by portable tests no longer throws on non-Windows hosts (publication
