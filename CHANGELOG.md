@@ -10,6 +10,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- `kffi-pipewire` module: consumer-side PipeWire stream bindings generated
+  through kextract from the pinned `libpipewire-0.3-dev` headers
+  (`pw_thread_loop`, `pw_context`/`pw_core` via fd, `pw_stream` with a
+  marshaled events struct, `pw_buffer`/SPA buffer views, KFFI_-prefixed
+  enum constants re-exported from the compat header). The managed facade
+  owns teardown order and the event upcalls; `pw_stream_connect` binds raw
+  because the C enum flags combine with `|` beyond the NS_ENUM carrier.
+- Codegen pipeline `docker/kffi-pipewire-codegen` (pinned image, tracked
+  output verification, kextract revision pin) and the
+  `scripts/gen-kffi-pipewire.sh` wrapper.
+
+### Fixed
+- The PipeWire context factory converted the `pw_thread_loop` handle
+  instead of the `struct pw_loop` obtained through
+  `pw_thread_loop_get_loop`, so `pw_context_new` received the wrong
+  pointer and failed or corrupted state.
 - Managed Win32 multi-monitor display inventory: one synchronous
   `EnumDisplayMonitors` walk with a process-lifetime callback stub and a
   thread-confined collector, per-monitor `GetMonitorInfoW` bounds/work area,
