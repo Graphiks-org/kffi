@@ -38,7 +38,11 @@ copies of relative `RAWMOUSE` deltas read during `WM_INPUT`), and
 `Win32XInput` (managed XInput polling: the four user slots read through
 `XInputGetState`, scalar copies with typed `ERROR_DEVICE_NOT_CONNECTED`
 handling, `XInputSetState` dual rumble, `XInputGetCapabilities` and
-`XInputGetBatteryInformation`). The generated
+`XInputGetBatteryInformation`), and `Win32GraphicsCapture` (managed Windows
+Graphics Capture: WinRT activation, interop CreateForWindow/CreateForMonitor,
+a free-threaded frame pool over a D3D11 BGRA device, and a bounded staging
+copy that lands every frame as scalar-only BGRA8 bytes; frames are pulled on
+a daemon poller). The generated
 package stays untouched; all FFI remains in KFFI.
 
 ## Generate on Windows

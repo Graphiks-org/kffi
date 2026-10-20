@@ -1,0 +1,6 @@
+dllMap:
+  "dxgi.dll":
+    functions:
+      - CreateDXGIFactory1
+    structs: []
+    constants: []

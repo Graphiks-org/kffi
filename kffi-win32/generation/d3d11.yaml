@@ -1,0 +1,7 @@
+dllMap:
+  "d3d11.dll":
+    functions:
+      - D3D11CreateDevice
+      - CreateDirect3D11DeviceFromDXGIDevice
+    structs: []
+    constants: []

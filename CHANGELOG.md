@@ -20,6 +20,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Codegen pipeline `docker/kffi-pipewire-codegen` (pinned image, tracked
   output verification, kextract revision pin) and the
   `scripts/gen-kffi-pipewire.sh` wrapper.
+- Managed Windows Graphics Capture frontier: WinRT activation
+  (RoGetActivationFactory over the new combase map, case-sensitive runtime
+  class names), IGraphicsCaptureItemInterop CreateForWindow/CreateForMonitor,
+  a free-threaded Direct3D11CaptureFramePool over a D3D11 BGRA device, and a
+  bounded staging copy that lands every frame as scalar-only BGRA8 bytes.
+  Generated bindings gain RoInitialize/RoGetActivationFactory, the HSTRING
+  helpers, D3D11CreateDevice, CreateDirect3D11DeviceFromDXGIDevice and
+  CreateDXGIFactory1 (157 functions). Frames are pulled on a daemon poller:
+  the FrameArrived registration answers 0x8000001C on the observed hosts and
+  the poll delivers the same stream contract without it. SizeInt32 rides one
+  register (width | height shl 32) per the x64 calling convention.
 - Managed Win32 XInput polling frontier for the four user gamepad slots:
   `XInputGetState`/`XInputSetState`/`XInputGetCapabilities`/
   `XInputGetBatteryInformation` over the `Xinput9_1_0.dll` map, every struct

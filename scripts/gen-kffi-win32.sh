@@ -135,8 +135,8 @@ fi
 # Reproducible committed output uses one exact Windows SDK installation path.
 # Its absolute path is reflected in generated declaration names.
 WINDOWS_SDK_INCLUDE="C:/Program Files (x86)/Windows Kits/10/Include/$WINDOWS_SDK_VERSION"
-if [[ ! -d "$WINDOWS_SDK_INCLUDE/um" || ! -d "$WINDOWS_SDK_INCLUDE/shared" || ! -d "$WINDOWS_SDK_INCLUDE/ucrt" ]]; then
-    echo "error: Windows SDK $WINDOWS_SDK_VERSION with um, shared and ucrt headers was not found" >&2
+if [[ ! -d "$WINDOWS_SDK_INCLUDE/um" || ! -d "$WINDOWS_SDK_INCLUDE/shared" || ! -d "$WINDOWS_SDK_INCLUDE/ucrt" || ! -d "$WINDOWS_SDK_INCLUDE/winrt" ]]; then
+    echo "error: Windows SDK $WINDOWS_SDK_VERSION with um, shared, ucrt and winrt headers was not found" >&2
     echo "hint: install it at 'C:/Program Files (x86)/Windows Kits/10/Include/$WINDOWS_SDK_VERSION'" >&2
     exit 1
 fi
@@ -151,10 +151,11 @@ SDK_ARGS=(
     -A "-isystem" -A "$WINDOWS_SDK_INCLUDE/um"
     -A "-isystem" -A "$WINDOWS_SDK_INCLUDE/shared"
     -A "-isystem" -A "$WINDOWS_SDK_INCLUDE/ucrt"
+    -A "-isystem" -A "$WINDOWS_SDK_INCLUDE/winrt"
     -A "-isystem" -A "$CRT_INCLUDE"
 )
 
-DLLS=(user32 kernel32 gdi32 dwmapi ole32 ninput shcore xinput9_1_0)
+DLLS=(user32 kernel32 gdi32 dwmapi ole32 ninput shcore xinput9_1_0 combase d3d11 dxgi)
 GENERATION_DIR="$REPO_ROOT/kffi-win32/generation"
 STAGING="$REPO_ROOT/kffi-win32/build/generated"
 OUTPUT_PACKAGE="$REPO_ROOT/kffi-win32/src/jvmMain/kotlin/org/graphiks/kffi/win32/generated"
@@ -207,6 +208,13 @@ cat > "$TMP_HEADER" <<'EOF'
 #include <interactioncontext.h>
 #include <shellscalingapi.h>
 #include <xinput.h>
+#include <roapi.h>
+#include <winstring.h>
+#include <d3d11.h>
+#include <dxgi.h>
+/* windows.graphics.directx.direct3d11.interop.h is C++-only; its flat export is
+   declared here so the C parser can extract the d3d11.dll binding. */
+STDAPI CreateDirect3D11DeviceFromDXGIDevice(IDXGIDevice* dxgiDevice, IInspectable** graphicsDevice);
 EOF
 
 echo "→ Regenerating ${#ALL_FUNCTIONS[@]} Win32 functions"
