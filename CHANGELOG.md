@@ -31,6 +31,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   the FrameArrived registration answers 0x8000001C on the observed hosts and
   the poll delivers the same stream contract without it. SizeInt32 rides one
   register (width | height shl 32) per the x64 calling convention.
+  The capture session opener (`openCapture`) and the static probe entry
+  points are reachable from consumer modules (public companion).
 - Managed Win32 XInput polling frontier for the four user gamepad slots:
   `XInputGetState`/`XInputSetState`/`XInputGetCapabilities`/
   `XInputGetBatteryInformation` over the `Xinput9_1_0.dll` map, every struct
