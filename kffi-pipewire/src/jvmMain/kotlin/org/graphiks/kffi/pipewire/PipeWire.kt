@@ -31,6 +31,7 @@ import org.graphiks.kffi.pipewire.generated.pw_stream_new
 import org.graphiks.kffi.pipewire.generated.pw_stream_queue_buffer
 import org.graphiks.kffi.pipewire.generated.pw_stream_update_params
 import org.graphiks.kffi.pipewire.generated.pw_thread_loop_destroy
+import org.graphiks.kffi.pipewire.generated.pw_thread_loop_get_loop
 import org.graphiks.kffi.pipewire.generated.pw_thread_loop_lock
 import org.graphiks.kffi.pipewire.generated.pw_thread_loop_new
 import org.graphiks.kffi.pipewire.generated.pw_thread_loop_signal
@@ -168,7 +169,10 @@ public class PipeWireContext private constructor(
         public fun create(loop: PipeWireThreadLoop, properties: PipeWireProperties?): PipeWireContext {
             PipeWire.ensureInitialized()
             val propsSegment = properties?.handle() ?: MemorySegment.NULL
-            val context = pw_context_new(loop.handle(), propsSegment, 0L)
+            // pw_context_new wants the struct pw_loop*, not the thread loop
+            val pwLoop = pw_thread_loop_get_loop(loop.handle())
+            check(pwLoop != MemorySegment.NULL) { "pw_thread_loop_get_loop failed" }
+            val context = pw_context_new(pwLoop, propsSegment, 0L)
             check(context != MemorySegment.NULL) { "pw_context_new failed" }
             return PipeWireContext(context)
         }
@@ -209,6 +213,33 @@ public interface PipeWireStreamEvents {
 }
 
 /**
+ * pw_stream_connect's C enum flags combine with `|`; the generated NS_ENUM
+ * carrier cannot express a mask, so this single call binds raw against the
+ * same library. Signature: (stream*, pw_direction, uint32 target,
+ * pw_stream_flags, spa_pod**, uint32 n_params) -> int.
+ */
+private val RAW_CONNECT_HANDLE: MethodHandle by lazy {
+    java.lang.foreign.Linker.nativeLinker().downcallHandle(
+        java.lang.foreign.SymbolLookup.libraryLookup("libpipewire-0.3.so.0", Arena.global())
+            .find("pw_stream_connect").orElseThrow(),
+        FunctionDescriptor.of(
+            ValueLayout.JAVA_INT,
+            ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT,
+            ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT,
+        ),
+    )
+}
+
+internal fun pwStreamConnectRaw(
+    stream: MemorySegment,
+    direction: Int,
+    targetId: Int,
+    flagsMask: Int,
+    params: MemorySegment,
+    count: Int,
+): Int = RAW_CONNECT_HANDLE.invoke(stream, direction, targetId, flagsMask, params, count) as Int
+
+/**
  * Managed `pw_stream`. The native events struct, spa_hook storage and every
  * upcall stub live in one arena closed by [close] — after close returns, no
  * consumer callback runs again (the loop must be stopped first: PipeWire
@@ -226,20 +257,22 @@ public class PipeWireStream private constructor(
     internal fun handle(): MemorySegment = handle
 
     /**
-     * Connects the stream. [pods] are serialized synchronously into the
-     * connect command: their segments only need to outlive this call.
+     * Connects the stream. [flagsMask] is a C `|` combination of
+     * PW_STREAM_FLAG_* values (the enum carrier cannot express the mask).
+     * [pods] are serialized synchronously into the connect command: their
+     * segments only need to outlive this call.
      */
     public fun connect(
-        direction: org.graphiks.kffi.pipewire.generated.spa_direction,
+        direction: Int,
         targetId: Int,
-        flags: pw_stream_flags,
+        flagsMask: Int,
         pods: List<MemorySegment>,
     ): Int {
         val params = arena.allocate(ValueLayout.ADDRESS, pods.size.toLong())
         pods.forEachIndexed { index, pod ->
             params.set(ValueLayout.ADDRESS, index.toLong(), pod)
         }
-        return pw_stream_connect(handle, direction, targetId, flags, params, pods.size)
+        return pwStreamConnectRaw(handle, direction, targetId, flagsMask, params, pods.size)
     }
 
     /** Updates stream params (serialized synchronously, as [connect]). */
