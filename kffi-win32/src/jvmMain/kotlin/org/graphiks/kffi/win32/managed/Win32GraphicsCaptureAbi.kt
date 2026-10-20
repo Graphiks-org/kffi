@@ -81,7 +81,10 @@ internal object Win32GraphicsCaptureAbi {
         try {
             val out = arena.allocate(ValueLayout.ADDRESS)
             val slot = if (window) SLOT_CREATE_FOR_WINDOW else SLOT_CREATE_FOR_MONITOR
-            Win32TextComAbi.check(Win32TextComAbi.call(factory, slot, "ppp", MemorySegment.ofAddress(target), Win32TextComAbi.guid(arena, ITEM), out))
+            run {
+                val code = Win32TextComAbi.call(factory, slot, "ppp", MemorySegment.ofAddress(target), Win32TextComAbi.guid(arena, ITEM), out)
+                if (code < 0) throw Win32GraphicsCaptureException(0x10000000.toInt() or code)
+            }
             return out.get(ValueLayout.ADDRESS, 0).address()
         } finally {
             Win32TextComAbi.release(factory)

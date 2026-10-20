@@ -233,13 +233,10 @@ public class Win32GraphicsCapture private constructor(
         directDevice = directOut.get(ValueLayout.ADDRESS, 0).address()
         references += directDevice
         val poolOut = outPointer(arena)
-        Win32TextComAbi.check(
-            Win32TextComAbi.call(
-                poolStatics, SLOT_CREATE_FREE_THREADED, "ppiip",
-                MemorySegment.ofAddress(directDevice), FORMAT_BGRA8, 2,
-                sizeStruct(arena, width, height), poolOut,
-            ),
-        )
+        run {
+            val code = Win32TextComAbi.call(poolStatics, SLOT_CREATE_FREE_THREADED, "ppiip", MemorySegment.ofAddress(directDevice), FORMAT_BGRA8, 2, sizeStruct(arena, width, height), poolOut)
+            if (code < 0) throw Win32GraphicsCaptureException(0x20000000.toInt() or code)
+        }
         framePool = poolOut.get(ValueLayout.ADDRESS, 0).address()
         references += framePool
     }
