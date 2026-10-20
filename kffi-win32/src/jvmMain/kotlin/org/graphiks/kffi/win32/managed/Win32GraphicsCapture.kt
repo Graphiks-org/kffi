@@ -267,7 +267,7 @@ public class Win32GraphicsCapture private constructor(
         }
     }
 
-    internal companion object {
+    public companion object {
         internal const val RO_INIT_MULTITHREADED: Int = 1
         internal const val DRIVER_TYPE_HARDWARE: Int = 1
         internal const val D3D11_CREATE_DEVICE_BGRA_SUPPORT: Int = 0x20
@@ -282,6 +282,22 @@ public class Win32GraphicsCapture private constructor(
         /** Public entry: verify the frontier at run time; never assume availability. */
         @JvmStatic public fun probe(port: Win32GraphicsCaptureNativePort = Win32GraphicsCaptureGeneratedPort): Boolean =
             Win32GraphicsCapture(port).use { it.probe() }
+
+        /**
+         * Opens one live capture session for a caller-owned consumer; the
+         * returned handle closes the session (owners closed in the documented
+         * order). Throws on any native failure instead of half-opening.
+         */
+        @JvmStatic public fun openCapture(
+            target: Long,
+            window: Boolean,
+            port: Win32GraphicsCaptureNativePort = Win32GraphicsCaptureGeneratedPort,
+            onFrame: (Win32CaptureFrameValue) -> Unit,
+        ): Win32GraphicsCapture {
+            val capture = Win32GraphicsCapture(port)
+            capture.open(target, window, onFrame)
+            return capture
+        }
 
         internal fun forTesting(port: Win32GraphicsCaptureNativePort): Win32GraphicsCapture = Win32GraphicsCapture(port)
     }
