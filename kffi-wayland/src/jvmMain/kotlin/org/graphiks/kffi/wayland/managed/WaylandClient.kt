@@ -427,7 +427,17 @@ public class WaylandClient private constructor(
                     WaylandPollOutcome.Failed
                 }
             }
-            val displayReady = PollFd.revents(descriptors, 0) != 0.toShort()
+            // A hung-up or erroneous display is terminal: treating HUP as a
+            // plain readable event leaves a session spinning forever against
+            // a dead peer (EOF is not surfaced by wl_display_read_events).
+            val displayRevents = PollFd.revents(descriptors, 0)
+            val terminalEvents = PollFd.POLLERR.toInt() or
+                PollFd.POLLHUP.toInt() or
+                PollFd.POLLNVAL.toInt()
+            if (displayRevents.toInt() and terminalEvents != 0) {
+                return WaylandPollOutcome.Failed
+            }
+            val displayReady = displayRevents != 0.toShort()
             val wakeReady = PollFd.revents(descriptors, 1) != 0.toShort()
             return when {
                 wakeReady -> WaylandPollOutcome.WakeOnly

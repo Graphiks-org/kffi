@@ -122,6 +122,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   Native layouts remain confined to the managed Win32 module.
 
 ### Fixed
+- The Wayland event poll treats `POLLERR`/`POLLHUP`/`POLLNVAL` on the
+  display fd as terminal (connection lost) instead of a plain readable
+  event — a closed peer no longer leaves a client spinning.
 - The PipeWire context factory converted the `pw_thread_loop` handle
   instead of the `struct pw_loop` obtained through
   `pw_thread_loop_get_loop`, so `pw_context_new` received the wrong
