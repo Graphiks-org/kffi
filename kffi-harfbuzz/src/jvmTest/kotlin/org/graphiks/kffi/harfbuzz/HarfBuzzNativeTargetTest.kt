@@ -19,7 +19,7 @@ class HarfBuzzNativeTargetTest {
         assertEquals("40214afd46cb9e657ebccf88fde2a0e1fa298751c43121c9bdc06f94fdeab9ca", target.librarySha256)
         assertEquals("lwjgl-harfbuzz-3.4.3", target.buildChainIdentity)
         assertEquals(
-            "org.graphiks:kffi-harfbuzz-jvm:1.0.0-SNAPSHOT:windows-x64/libharfbuzz.dll",
+            "org.graphiks.kffi:harfbuzz-jvm:1.0.0-SNAPSHOT:windows-x64/libharfbuzz.dll",
             target.artifactId,
         )
     }

@@ -81,7 +81,7 @@ class AndroidHarfBuzzDeviceTest {
         assertEquals("14.3.0", identity.engineVersion)
         assertEquals("4c2aa804671d7276e8a0eb95da07202ead05c843", identity.upstreamSourceRevision)
         assertTrue(identity.buildChainIdentity.contains("ndk-30.0.15729638"))
-        assertTrue(identity.artifactId.startsWith("org.graphiks:kffi-harfbuzz-android:"))
+        assertTrue(identity.artifactId.startsWith("org.graphiks.kffi:harfbuzz-android:"))
         assertTrue(identity.artifactId.contains("$abi/libharfbuzz.so"))
         // The digest is observed best-effort: a 64-hex value, or empty when the packaging hides it.
         assertTrue(identity.artifactSha256.isEmpty() || identity.artifactSha256.matches(Regex("[0-9a-f]{64}")))
