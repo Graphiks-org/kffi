@@ -121,6 +121,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   per-window DPI frame conversion, monitor bounds and native track limits.
   Native layouts remain confined to the managed Win32 module.
 
+### Changed
+- **Breaking:** published Maven coordinates now follow the Kalligraphie
+  convention — the groupId carries the project (`org.graphiks.kffi`) and
+  artifactIds drop the `kffi-` prefix. `org.graphiks:kffi-harfbuzz`
+  publishes as `org.graphiks.kffi:harfbuzz`, and the root artifact becomes
+  `org.graphiks.kffi:kffi`. Embedded HarfBuzz binding identities (JVM,
+  Android, iOS, wasm), the local Win32 publication script, and the
+  documentation follow the new coordinates. No compatibility aliases are
+  published: consumers must move to the new coordinates.
+
 ### Fixed
 - The Wayland event poll treats `POLLERR`/`POLLHUP`/`POLLNVAL` on the
   display fd as terminal (connection lost) instead of a plain readable

@@ -27,9 +27,12 @@ def sourceRepo = file(providers.gradleProperty('sourceRepo').get())
 publishing {
     publications {
         ['kffi', 'kffi-win32'].each { module ->
+            // Kalligraphie coordinate normalization: the group carries the project,
+            // the artifactId drops the kffi- prefix (module dirs/jars keep their names).
+            def artifact = module.startsWith('kffi-') ? module.substring('kffi-'.length()) : module
             create(module.replace('-', '') + 'Jvm', MavenPublication) {
-                groupId = 'org.graphiks'
-                artifactId = module + '-jvm'
+                groupId = 'org.graphiks.kffi'
+                artifactId = artifact + '-jvm'
                 version = localVersion
                 artifact(new File(sourceRepo, "${module}/build/libs/${module}-jvm-${buildVersion}.jar"))
                 if (module == 'kffi-win32') {
@@ -38,22 +41,22 @@ publishing {
                     }
                     pom.withXml {
                         def dependency = asNode().appendNode('dependencies').appendNode('dependency')
-                        dependency.appendNode('groupId', 'org.graphiks')
-                        dependency.appendNode('artifactId', 'kffi-jvm')
+                        dependency.appendNode('groupId', 'org.graphiks.kffi')
+                        dependency.appendNode('artifactId', "${artifact}-jvm")
                         dependency.appendNode('version', localVersion)
                         dependency.appendNode('scope', 'compile')
                     }
                 }
             }
             create(module.replace('-', '') + 'Alias', MavenPublication) {
-                groupId = 'org.graphiks'
-                artifactId = module
+                groupId = 'org.graphiks.kffi'
+                artifactId = artifact
                 version = localVersion
                 pom.packaging = 'pom'
                 pom.withXml {
                     def dependency = asNode().appendNode('dependencies').appendNode('dependency')
-                    dependency.appendNode('groupId', 'org.graphiks')
-                    dependency.appendNode('artifactId', module + '-jvm')
+                    dependency.appendNode('groupId', 'org.graphiks.kffi')
+                    dependency.appendNode('artifactId', "${artifact}-jvm")
                     dependency.appendNode('version', localVersion)
                     dependency.appendNode('scope', 'compile')
                 }

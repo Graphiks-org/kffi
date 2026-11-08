@@ -42,19 +42,19 @@ aggregated `./gradlew publishToMavenCentral` task.
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            implementation("org.graphiks:kffi:1.0.0-SNAPSHOT") // or an explicitly selected published version
+            implementation("org.graphiks.kffi:kffi:1.0.0-SNAPSHOT") // or an explicitly selected published version
         }
     }
 }
 ```
 
-JVM-only project: `implementation("org.graphiks:kffi-jvm:1.0.0-SNAPSHOT")`
+JVM-only project: `implementation("org.graphiks.kffi:kffi-jvm:1.0.0-SNAPSHOT")`
 (JDK 25+ for `java.lang.foreign`).
 
-Android project: `implementation("org.graphiks:kffi-android:1.0.0-SNAPSHOT")`
+Android project: `implementation("org.graphiks.kffi:kffi-android:1.0.0-SNAPSHOT")`
 (minSdk 28).
 
-Native project: the root artifact `org.graphiks:kffi` is sufficient; Gradle
+Native project: the root artifact `org.graphiks.kffi:kffi` is sufficient; Gradle
 resolves the `kffi-<target>` variant (for example, `kffi-macosarm64`). There is
 no aggregate `kffi-native` artifact.
 

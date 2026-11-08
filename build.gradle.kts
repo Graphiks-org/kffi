@@ -6,7 +6,7 @@ allprojects {
 		mavenCentral()
 	}
 
-	group = "org.graphiks"
+	group = "org.graphiks.kffi"
 }
 
 val releaseVersion = providers.gradleProperty("releaseVersion")

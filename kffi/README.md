@@ -1,6 +1,6 @@
 # kffi — cross-platform FFI layer for wgpu4k-native
 
-Kotlin Multiplatform module `org.graphiks:kffi`: a low-level access layer for
+Kotlin Multiplatform module `org.graphiks.kffi:kffi`: a low-level access layer for
 native memory and FFI calls, shared by the wgpu4k-native bindings.
 The `expect/actual` contract lives in `commonMain` (`org.graphiks.kffi`):
 `NativeAddress`, `MemoryBuffer`, `MemoryAllocator` (+ `memoryScope`, `globalMemory`),
