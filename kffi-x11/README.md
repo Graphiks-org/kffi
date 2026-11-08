@@ -9,7 +9,7 @@ with `scripts/gen-kffi-x11.sh`; generation is not run as part of the Gradle
 build. The generated bindings load `libX11.so.6`, `libXext.so.6`, and
 `libXcomposite.so.1`.
 
-The module depends on `org.graphiks:kffi-posix`, uses JDK 25 bytecode, and
+The module depends on `org.graphiks.kffi:posix`, uses JDK 25 bytecode, and
 requires a JDK 25 runtime. The contract tests do not require an X server.
 
 The generated core X11 API covers graphics contexts and their state setters,

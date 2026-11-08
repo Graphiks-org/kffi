@@ -8,11 +8,11 @@ access with `--enable-native-access=ALL-UNNAMED` on the JVM.
 
 ```kotlin
 dependencies {
-    implementation("org.graphiks:kffi-harfbuzz-jvm:1.0.0-SNAPSHOT")
+    implementation("org.graphiks.kffi:harfbuzz-jvm:1.0.0-SNAPSHOT")
 }
 ```
 
-KMP JVM consumers can use `org.graphiks:kffi-harfbuzz:1.0.0-SNAPSHOT` in
+KMP JVM consumers can use `org.graphiks.kffi:harfbuzz:1.0.0-SNAPSHOT` in
 `jvmMain`. These are the module's publication coordinates; consume a version
 that has actually been published using the repositories described in the root
 README. Module publication follows the existing `releaseVersion` convention.

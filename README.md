@@ -103,13 +103,13 @@ Multiplatform naming scheme:
 
 | Context | Artifact | Notes |
 |---------|----------|-------|
-| KMP consumer | `org.graphiks:kffi` | Root artifact (metadata); Gradle resolves the platform variant automatically |
-| JVM-only project | `org.graphiks:kffi-jvm` | Requires a JDK with `java.lang.foreign` (25+) |
-| Android project | `org.graphiks:kffi-android` | AAR with `release`/`debug` variants; minSdk 28 |
-| Native project | `org.graphiks:kffi-<target>` | One artifact per Native target (see the list below) |
+| KMP consumer | `org.graphiks.kffi:kffi` | Root artifact (metadata); Gradle resolves the platform variant automatically |
+| JVM-only project | `org.graphiks.kffi:kffi-jvm` | Requires a JDK with `java.lang.foreign` (25+) |
+| Android project | `org.graphiks.kffi:kffi-android` | AAR with `release`/`debug` variants; minSdk 28 |
+| Native project | `org.graphiks.kffi:kffi-<target>` | One artifact per Native target (see the list below) |
 
 There is no aggregate `kffi-native` artifact: each Native target is published
-separately. For a KMP consumer, declare the root `org.graphiks:kffi` artifact;
+separately. For a KMP consumer, declare the root `org.graphiks.kffi:kffi` artifact;
 Gradle selects the variant for the target being compiled.
 
 Published Native targets:
@@ -132,7 +132,7 @@ Published Native targets:
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            implementation("org.graphiks:kffi:1.0.0-SNAPSHOT") // or an explicitly selected published version
+            implementation("org.graphiks.kffi:kffi:1.0.0-SNAPSHOT") // or an explicitly selected published version
         }
     }
 }
@@ -141,14 +141,14 @@ kotlin {
 ```kotlin
 // build.gradle.kts - JVM-only project
 dependencies {
-    implementation("org.graphiks:kffi-jvm:1.0.0-SNAPSHOT")
+    implementation("org.graphiks.kffi:kffi-jvm:1.0.0-SNAPSHOT")
 }
 ```
 
 ```kotlin
 // build.gradle.kts - Android project
 dependencies {
-    implementation("org.graphiks:kffi-android:1.0.0-SNAPSHOT")
+    implementation("org.graphiks.kffi:kffi-android:1.0.0-SNAPSHOT")
 }
 ```
 

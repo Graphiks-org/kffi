@@ -47,7 +47,7 @@ not to add a tablet-specific runtime API in this change. The local wlroots
 snapshot comes from commit
 `0855cdacb2eeeff35849e2e9c4db0aa996d78d10`. It is consumed only by the Docker
 generation pipeline and is not processed by the Gradle build. The generated
-`kffi-wayland` module depends on `org.graphiks:kffi-posix` for POSIX symbol
+`kffi-wayland` module depends on `org.graphiks.kffi:posix` for POSIX symbol
 downcalls and does not include the higher-level `kadre-wayland` event-loop
 layer.
 
