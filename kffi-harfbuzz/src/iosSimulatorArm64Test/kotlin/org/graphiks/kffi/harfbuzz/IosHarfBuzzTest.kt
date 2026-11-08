@@ -76,7 +76,7 @@ class IosHarfBuzzTest {
         // machine that produced it.
         assertTrue(identity.artifactSha256.matches(Regex("[0-9a-f]{64}")))
         assertEquals(iosHarfBuzzArtifactSha256, identity.artifactSha256)
-        assertTrue(identity.artifactId.startsWith("org.graphiks:kffi-harfbuzz-iossimulatorarm64:"))
+        assertTrue(identity.artifactId.startsWith("org.graphiks.kffi:harfbuzz-iossimulatorarm64:"))
         assertTrue(identity.artifactId.endsWith("/libharfbuzz.a"))
         assertTrue(identity.buildChainIdentity.contains("iphonesimulator-sdk-"))
         assertTrue(identity.buildChainIdentity.contains("deployment-target-15.0"))

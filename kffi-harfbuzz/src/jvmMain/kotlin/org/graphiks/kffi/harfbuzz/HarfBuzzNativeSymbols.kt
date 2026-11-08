@@ -57,7 +57,7 @@ internal data class HarfBuzzNativeTarget(
 ) {
     /** The Maven coordinate and classifier under which this embedded artifact is published. */
     val artifactId: String
-        get() = "org.graphiks:kffi-harfbuzz-jvm:$KFFI_HARFBUZZ_VERSION:$operatingSystem-$architecture/$fileName"
+        get() = "org.graphiks.kffi:harfbuzz-jvm:$KFFI_HARFBUZZ_VERSION:$operatingSystem-$architecture/$fileName"
 }
 
 /**

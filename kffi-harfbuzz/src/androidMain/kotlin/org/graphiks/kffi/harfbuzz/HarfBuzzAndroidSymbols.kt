@@ -56,7 +56,7 @@ internal class HarfBuzzAndroidLoader private constructor(
         HarfBuzzBindingIdentity(
             operatingSystem = "android",
             architecture = normalizedArchitecture(abi),
-            artifactId = "org.graphiks:kffi-harfbuzz-android:$KFFI_HARFBUZZ_VERSION:$abi/$libraryFileName",
+            artifactId = "org.graphiks.kffi:harfbuzz-android:$KFFI_HARFBUZZ_VERSION:$abi/$libraryFileName",
             artifactSha256 = observedLibrarySha256(libraryFileName),
             upstreamSourceRevision = ANDROID_HARFBUZZ_SOURCE_REVISION,
             buildChainIdentity = ANDROID_HARFBUZZ_BUILD_CHAIN,

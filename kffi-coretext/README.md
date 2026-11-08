@@ -8,11 +8,11 @@ Enable native access with `--enable-native-access=ALL-UNNAMED`.
 
 ```kotlin
 dependencies {
-    implementation("org.graphiks:kffi-coretext-jvm:1.0.0-SNAPSHOT")
+    implementation("org.graphiks.kffi:coretext-jvm:1.0.0-SNAPSHOT")
 }
 ```
 
-KMP JVM consumers can use `org.graphiks:kffi-coretext:1.0.0-SNAPSHOT` in
+KMP JVM consumers can use `org.graphiks.kffi:coretext:1.0.0-SNAPSHOT` in
 `jvmMain`. These are the module's publication coordinates; consume a version
 that has actually been published using the repositories described in the root
 README. Module publication follows the existing `releaseVersion` convention.
