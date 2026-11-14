@@ -1,6 +1,6 @@
 param(
-    [string]$Version = '1.0.0-win32-phase4-local-SNAPSHOT',
-    [string]$BuildVersion = '1.0.0-SNAPSHOT'
+    [string]$Version = '0.1.0-win32-phase4-local-SNAPSHOT',
+    [string]$BuildVersion = '0.1.0-SNAPSHOT'
 )
 $ErrorActionPreference = 'Stop'
 if ($Version -notmatch '^[A-Za-z0-9.-]+-local-SNAPSHOT$') {

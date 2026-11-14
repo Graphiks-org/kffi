@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- The publication version is now `0.1.0`: the default `releaseVersion` is `0.1.0-SNAPSHOT`, `Kffi.VERSION` reports `0.1.0`, and the documentation, the HarfBuzz binding identities, and the local Win32 publication script follow (#149).
+
 ## [0.1.0] - 2026-11-14
 
 First published release: the `kffi` runtime and its binding modules. Each item

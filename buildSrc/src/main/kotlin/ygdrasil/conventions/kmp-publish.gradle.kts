@@ -8,7 +8,7 @@ group = "org.graphiks.kffi"
 version = (project.findProperty("releaseVersion") as? String)
     ?.trim()
     ?.takeIf { it.isNotBlank() }
-    ?: "1.0.0-SNAPSHOT"
+    ?: "0.1.0-SNAPSHOT"
 
 val isPublishing = project.findProperty("signingInMemoryKey")?.toString()?.trim()?.isNotBlank() == true
     || project.findProperty("signing.keyId")?.toString()?.trim()?.isNotBlank() == true

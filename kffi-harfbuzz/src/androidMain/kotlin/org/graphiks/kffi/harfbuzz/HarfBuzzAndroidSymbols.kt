@@ -15,7 +15,7 @@ internal const val HARFBUZZ_VERSION: String = "14.3.0"
  * This constant is hand-mirrored from the Gradle project version and may drift under
  * `-PreleaseVersion`; it only feeds the diagnostic `artifactId`, never library selection.
  */
-internal const val KFFI_HARFBUZZ_VERSION: String = "1.0.0-SNAPSHOT"
+internal const val KFFI_HARFBUZZ_VERSION: String = "0.1.0-SNAPSHOT"
 
 /** The from-source HarfBuzz revision the bundled Android binaries were built from. */
 internal const val ANDROID_HARFBUZZ_SOURCE_REVISION: String = "4c2aa804671d7276e8a0eb95da07202ead05c843"

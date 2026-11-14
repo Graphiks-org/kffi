@@ -194,10 +194,10 @@ This project follows [Semantic Versioning](https://semver.org/).
 - `MINOR` — backward-compatible feature
 - `PATCH` — backward-compatible fix
 
-Snapshot versions (`1.0.0-SNAPSHOT`) are used during active development. The
+Snapshot versions (`0.1.0-SNAPSHOT`) are used during active development. The
 Gradle publication version is selected with the `releaseVersion` property,
 using `-PreleaseVersion=...`; without an explicit value, it defaults to
-`1.0.0-SNAPSHOT`. Publication uses the aggregated root task
+`0.1.0-SNAPSHOT`. Publication uses the aggregated root task
 `./gradlew publishToMavenCentral`, with workflow dispatch input or a release tag
 selecting the publication version.
 

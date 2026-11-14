@@ -162,13 +162,13 @@ dead-key entry still require tests with the corresponding layout and keyboard.
 
 For local Windows JVM development, run `scripts/publish-win32-local.ps1`.
 It tests and builds the two JVM jars and publishes them with Maven POM aliases as
-`1.0.0-win32-phase4-local-SNAPSHOT` (override with `-Version`). The isolated
+`0.1.0-win32-phase4-local-SNAPSHOT` (override with `-Version`). The isolated
 publication avoids configuring Android/NDK and Dokka on a Windows-only host.
 It contains no multiplatform metadata or documentation artifacts and is not a
 production release verification. Use a distinct `-local-SNAPSHOT` version and
 explicitly opt the consumer into Maven local.
 The local coordinates label a test alias: `Kffi.VERSION` retains the normal
-build version (`1.0.0-SNAPSHOT` by default, override with `-BuildVersion`),
+build version (`0.1.0-SNAPSHOT` by default, override with `-BuildVersion`),
 whose existing runtime-version test must pass before publication.
 
 ## Checked window properties
