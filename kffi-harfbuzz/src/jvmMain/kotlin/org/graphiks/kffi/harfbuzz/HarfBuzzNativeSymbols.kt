@@ -17,7 +17,7 @@ import java.security.MessageDigest
 internal const val HARFBUZZ_VERSION: String = "14.3.0"
 
 /** The published kffi-harfbuzz version, mirrored from the module version. */
-internal const val KFFI_HARFBUZZ_VERSION: String = "0.1.0-SNAPSHOT"
+internal const val KFFI_HARFBUZZ_VERSION: String = "1.0.0-SNAPSHOT"
 
 /**
  * The runtime platform as reported by the JVM, used to select the bundled HarfBuzz binary.

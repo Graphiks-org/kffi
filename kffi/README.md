@@ -92,6 +92,6 @@ consumer's responsibility.
 
 ## Version
 
-`Kffi.VERSION` (`0.1.0`) — group `org.graphiks`. This README is the module's
+`Kffi.VERSION` (`1.0.0`) — group `org.graphiks`. This README is the module's
 consumer contract; the semantic reference is the common KDoc
 (`MemoryBuffer.kt`, `MemoryAllocator.kt` in `commonMain`).

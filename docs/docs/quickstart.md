@@ -10,7 +10,7 @@ contract).
 ## 1. Dependency
 
 The group is `org.graphiks`. Release artifacts are consumed from Maven Central.
-Development snapshots default to `0.1.0-SNAPSHOT` and can be consumed from the
+Development snapshots default to `1.0.0-SNAPSHOT` and can be consumed from the
 Central Portal snapshot repository:
 
 ```kotlin
@@ -29,11 +29,11 @@ dependencyResolutionManagement {
 }
 ```
 
-The dependency snippets use `0.1.0-SNAPSHOT` by default; replace it with the
-published release version, `0.1.0`, when consuming the release. Gradle
+The dependency snippets use `1.0.0-SNAPSHOT` by default; replace it with an
+explicitly selected published version when consuming a release. Gradle
 publication version selection uses the `releaseVersion` property, set with
 `-PreleaseVersion=...`; without an explicit value, it defaults to
-`0.1.0-SNAPSHOT`. The canonical root publication workflow selects the version
+`1.0.0-SNAPSHOT`. The canonical root publication workflow selects the version
 from workflow dispatch input or a release tag and publishes through the single
 aggregated `./gradlew publishToMavenCentral` task.
 
@@ -42,16 +42,16 @@ aggregated `./gradlew publishToMavenCentral` task.
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            implementation("org.graphiks.kffi:kffi:0.1.0-SNAPSHOT") // or an explicitly selected published version
+            implementation("org.graphiks.kffi:kffi:1.0.0-SNAPSHOT") // or an explicitly selected published version
         }
     }
 }
 ```
 
-JVM-only project: `implementation("org.graphiks.kffi:kffi-jvm:0.1.0-SNAPSHOT")`
+JVM-only project: `implementation("org.graphiks.kffi:kffi-jvm:1.0.0-SNAPSHOT")`
 (JDK 25+ for `java.lang.foreign`).
 
-Android project: `implementation("org.graphiks.kffi:kffi-android:0.1.0-SNAPSHOT")`
+Android project: `implementation("org.graphiks.kffi:kffi-android:1.0.0-SNAPSHOT")`
 (minSdk 28).
 
 Native project: the root artifact `org.graphiks.kffi:kffi` is sufficient; Gradle

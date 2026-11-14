@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-expected_version="0.1.0-SNAPSHOT"
+expected_version="1.0.0-SNAPSHOT"
 actual_version="$(./gradlew :kffi:properties --no-daemon --console=plain -PreleaseVersion= \
   | sed -n 's/^version: //p' \
   | tail -n 1)"

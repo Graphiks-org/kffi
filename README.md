@@ -70,7 +70,7 @@ contract is unified across all three backends (spec P3).
 ### Repositories
 
 Release artifacts are consumed from Maven Central. Development snapshots
-default to `0.1.0-SNAPSHOT` and can be consumed from the Central Portal snapshot
+default to `1.0.0-SNAPSHOT` and can be consumed from the Central Portal snapshot
 repository, so consumers of those snapshots need both repositories:
 
 ```kotlin
@@ -91,7 +91,7 @@ dependencyResolutionManagement {
 
 Gradle publication version selection uses the `releaseVersion` property, set
 with `-PreleaseVersion=...`; without an explicit value, it defaults to
-`0.1.0-SNAPSHOT`. The canonical publication workflow selects the version from
+`1.0.0-SNAPSHOT`. The canonical publication workflow selects the version from
 workflow dispatch input or a release tag and publishes through the single
 aggregated `./gradlew publishToMavenCentral` task. Development snapshots use the
 Central Portal snapshot repository shown above; releases use Maven Central.
@@ -119,20 +119,20 @@ Published Native targets:
 
 ### Dependency declaration
 
-> **M2.4 note:** The standalone snapshot coordinate is `0.1.0-SNAPSHOT`,
+> **M2.4 note:** The standalone snapshot coordinate is `1.0.0-SNAPSHOT`,
 > effective after the M2.4 migration (independent versioning for the kffi
 > module). Before this migration, the module inherited the host repository
 > version.
 >
-> The examples below use `0.1.0-SNAPSHOT`. Replace it with the published
-> release version, `0.1.0`, when consuming the release.
+> The examples below use `1.0.0-SNAPSHOT`. Replace it with an explicitly
+> selected published version when consuming a release.
 
 ```kotlin
 // build.gradle.kts - KMP project
 kotlin {
     sourceSets {
         commonMain.dependencies {
-            implementation("org.graphiks.kffi:kffi:0.1.0-SNAPSHOT") // or an explicitly selected published version
+            implementation("org.graphiks.kffi:kffi:1.0.0-SNAPSHOT") // or an explicitly selected published version
         }
     }
 }
@@ -141,14 +141,14 @@ kotlin {
 ```kotlin
 // build.gradle.kts - JVM-only project
 dependencies {
-    implementation("org.graphiks.kffi:kffi-jvm:0.1.0-SNAPSHOT")
+    implementation("org.graphiks.kffi:kffi-jvm:1.0.0-SNAPSHOT")
 }
 ```
 
 ```kotlin
 // build.gradle.kts - Android project
 dependencies {
-    implementation("org.graphiks.kffi:kffi-android:0.1.0-SNAPSHOT")
+    implementation("org.graphiks.kffi:kffi-android:1.0.0-SNAPSHOT")
 }
 ```
 
@@ -504,20 +504,21 @@ a native callback that has not entered the Kotlin dispatcher yet.
 
 ## Versioning
 
-kffi follows strict SemVer. `0.1.0` is the first published release: it ships
-the P1-P4 redesign (downcall/upcall engines, I2-a lifetime policy, I3 `unsafe`
-option, and M1 optimization). The public API is not yet declared stable; the
-`1.0.0` release will be the first stable contract, and breaking changes before
-it require a minor version bump.
+kffi follows strict SemVer. `1.0.0` is the **first stable contract**: the P1-P4
+redesign (downcall/upcall engines, I2-a lifetime policy, I3 `unsafe` option, and
+M1 optimization) is the final redesign before 1.0. Public APIs are stable from
+this version; breaking changes require a major version bump.
 
-- Releases use `x.y.z`; the current runtime version is `0.1.0`.
+- Releases use `x.y.z` and the current runtime version is being prepared as
+  `1.0.0`.
 - The Gradle publication version is selected with `releaseVersion`, using
   `-PreleaseVersion=...`; without an override, it defaults to
-  `0.1.0-SNAPSHOT`.
+  `1.0.0-SNAPSHOT`.
 - The canonical publication workflow uses the aggregated root task
   `./gradlew publishToMavenCentral`, with workflow dispatch input or a release
   tag selecting the publication version.
-- The current runtime version is exposed as `Kffi.VERSION` (`0.1.0`).
+- The current runtime version is exposed as `Kffi.VERSION` (`1.0.0`, starting
+  with the M2.4 module version).
 
 ## Contributing
 
