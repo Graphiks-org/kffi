@@ -542,7 +542,7 @@ This repository is a standalone Kotlin Multiplatform build. The root
 | `:kffi-objc` | JVM-only generated macOS Objective-C, Foundation, and AppKit bindings |
 | `:kffi-coretext` | Optional JVM-only source-byte CoreText font creation, raw metrics and bounded Darwin reads |
 | `:kffi-harfbuzz` | Optional typed HarfBuzz shaping bindings for JVM (macOS/Linux x64+arm64) and Android |
-| `:kffi-benchmark-spi` | Shared multiplatform benchmark model and test contracts |
+| `:kffi-benchmark-spi` | Shared multiplatform benchmark model and test contracts; internal, not published |
 | `:kffi-benchmark-jvm` | JVM JMH benchmarks for kffi |
 | `:kffi-benchmark-native` | Kotlin/Native benchmark harness |
 | `:kffi-benchmark-android` | Android instrumented benchmark harness |

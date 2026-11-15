@@ -9,6 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Maven Central publication uses `com.vanniktech.maven.publish` 0.37.0, which stops uploading the checksums of `.asc` signature files and the `sha256`/`sha512` checksums that neither Gradle nor Maven Central reads. Only `md5` and `sha1` are published, cutting the number of files uploaded per release.
+- `kffi-benchmark-spi` is no longer published. It is internal benchmark tooling consumed as a Gradle project by `kffi-benchmark-jvm`, `kffi-benchmark-native`, and `kffi-benchmark-android`, none of which publish either.
+
 ## [0.1.0] - 2026-11-14
 
 First published release: the `kffi` runtime and its binding modules. Each item
