@@ -1,6 +1,5 @@
 plugins {
     `kotlin-multiplatform`
-    id("ygdrasil.conventions.kmp-publish")
     id("com.android.kotlin.multiplatform.library")
 }
 
